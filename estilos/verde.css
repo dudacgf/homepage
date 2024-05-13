@@ -1,0 +1,114 @@
+/*----------------------------------------------------------
+
+  verde.css
+  (c) ecgf - 2005
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*----------------------------------------------------------
+  Estilo verde - cores verdes em dias claros... 
+----------------------------------------------------------*/
+body.verde
+  {
+  background-color: SeaGreen;
+  color: white; 
+  background-image: url("../imagens/verde_bkg.gif");
+  }
+body.verde a
+  { 
+  color: white; 
+  }
+body.verde a:hover span.popup 
+  {
+  background-color: SeaGreen;
+  color: white;
+  border-right-color: DarkGreen;
+  border-bottom-color: DarkGreen;
+  }
+body.verde span.separador
+  {
+  color: white;
+  }
+body.verde div.tituloCategoria, body.verde div.tituloLateral
+  {
+  border-Top-color: LightGreen; 
+  border-Left-color: LightGreen;
+  border-Bottom-color: DarkGreen; 
+  border-Right-color: DarkGreen;
+  background-color: LimeGreen;
+  }
+body.verde div.titulo, body.verde div.wtitulo
+  {
+  background-color: LimeGreen;
+  }
+body.verde div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.verde div.headexpandable
+  {
+  background-color: SeaGreen;
+  border-top-color: LightGreen;
+  border-left-color: LightGreen;
+  }
+body.verde div.headclickable 
+  {
+  background-color: SeaGreen;
+  border-top-color: LightGreen;
+  border-left-color: LightGreen;
+  }
+body.verde div.expanded, body.verde div.expandable:hover, body.verde div.interior:hover
+  {
+  background-color: LimeGreen;
+  border-Top-color: LightGreen; 
+  border-Left-color: LightGreen;
+  border-Bottom-color: DarkGreen; 
+  border-Right-color: DarkGreen;
+  }
+body.verde div.expanded a, body.verde div.expandable:hover a, body.verde div.interior:hover a
+  {
+  Color: darkgreen;
+  }
+body.verde div.fortune
+  {
+  background-color: LimeGreen;
+  color: white;
+  }
+body.verde input, body.verde select
+  {
+  background-color: palegreen;
+  color: darkgreen;
+  border-Top-color: darkGreen; 
+  border-Left-color: darkGreen;
+  border-Bottom-color: lightGreen; 
+  border-Right-color: lightGreen;
+  }
+body.verde input.submit
+  {
+  border-Top-color: LightGreen; 
+  border-Left-color: LightGreen;
+  border-Bottom-color: DarkGreen; 
+  border-Right-color: DarkGreen;
+  background-color: green;
+  color: black;
+  }	
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.verde div.subTitulo, body.verde div.itemLateral, body.verde div.coluna, body.verde div.tituloColuna {
+  border-Top-color: LightGreen; 
+  border-Left-color: LightGreen;
+  border-Bottom-color: DarkGreen; 
+  border-Right-color: DarkGreen;
+  background-color: green;
+  color: white;
+}
+body.verde div.item {
+	border-color: green;
+}
+body.black div.colunaTransparente {
+	border-bottom: 1pt green solid;
+}

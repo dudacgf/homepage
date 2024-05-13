@@ -1,0 +1,14 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+
+<connections>
+   <connection ID="1">
+       <!-- <dbHost>68.178.217.16</dbHost> -->
+       <!-- last dbHost>homepagedudacgf.db.3283822.hostedresource.com</dbHost> -->
+
+       <dbHost>localhost</dbHost>
+       <dbUser>u258095091_dudacgf</dbUser>
+       <dbPassword>U9L8BJTr#7z</dbPassword>
+       <dbSchema>u258095091_homepage</dbSchema>
+
+   </connection>
+</connections>

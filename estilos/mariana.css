@@ -1,0 +1,109 @@
+/*----------------------------------------------------------
+
+  mariana.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*------------------------------------------------------------
+  Cores da Mariana
+------------------------------------------------------------*/
+body.mariana
+  {
+  background-color: plum;
+  color: white; 
+  background-image: url("../imagens/dvioleta_bkg.gif");
+  }
+body.mariana a
+  { 
+  color: purple; 
+  }
+body.mariana a:hover span.popup 
+  {
+  background-color: plum;
+  color: purple;
+  border-Bottom-color: purple; 
+  border-Right-color: purple;
+  }
+body.mariana span.separador
+  {
+  color: orchid;
+  }
+body.mariana div.tituloCategoria, body.mariana div.tituloLateral
+  {
+  background-color: orchid;
+  border-Top-color: #FFCCFF; 
+  border-Left-color: #FFCCFF;
+  border-Bottom-color: purple; 
+  border-Right-color: purple;
+  }
+body.mariana div.titulo
+  {
+  background-color: orchid;
+  }
+body.mariana div.headexpandable
+  {
+  background-color: orchid;
+  border-top-color: #FFCCFF;
+  border-left-color: #FFCCFF;
+  }
+body.mariana div.headclickable 
+  {
+  background-color: orchid;
+  border-top-color: #FFCCFF;
+  border-left-color: #FFCCFF;
+  }
+body.mariana div.expanded, body.mariana div.expandable:hover, body.mariana div.interior:hover
+  {
+  background-color: thistle;
+  border-Top-color: #FFCCFF; 
+  border-Left-color: #FFCCFF;
+  border-Bottom-color: purple; 
+  border-Right-color: purple;
+  }
+body.mariana div.expanded a, body.mariana div.expandable:hover a, body.mariana div.interior:hover a
+  { 
+  color: white;
+  }
+body.mariana div.fortune
+  {
+  background-color: orchid;
+  color: white;
+  }
+body.mariana input, body.mariana select
+  {
+  background-color: thistle;
+  color: purple;
+  border-Top-color: purple; 
+  border-Left-color: purple;
+  border-Bottom-color: #FFCCFF;
+  border-Right-color: #FFCCFF;
+  }
+body.mariana input.submit
+  {
+  background-color: orchid;
+  border-Top-color: #FFCCFF; 
+  border-Left-color: #FFCCFF;
+  border-Bottom-color: purple; 
+  border-Right-color: purple;
+  Color: white;
+  }
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.mariana div.subTitulo, body.mariana div.itemLateral, body.mariana div.coluna, body.mariana div.tituloColuna {
+  background-color: orchid;
+  border-Top-color: #FFCCFF; 
+  border-Left-color: #FFCCFF;
+  border-Bottom-color: purple; 
+  border-Right-color: purple;
+  Color: white;
+}
+body.mariana div.item {
+  border-color: orchid;
+}
+body.mariana div.colunaTransparente {
+	border-bottom: 1pt orchid solid;
+}

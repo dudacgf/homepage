@@ -1,0 +1,123 @@
+/*----------------------------------------------------------
+
+  wAzul.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*------------------------------------------------------------
+  Estilo wAzul - fundo branco, detalhes em azul escuro
+------------------------------------------------------------*/
+body.wAzul
+  {
+  background-color: white;
+  color: white; 
+  background-image: url("../imagens/wazul_bkg.gif");
+  }
+body.wAzul a
+  { 
+  color: darkblue; 
+  }
+body.wAzul a:hover span.popup 
+  {
+  background-color: white;
+  color: steelblue;
+  border-right-color: DarkBlue;
+  border-bottom-color: DarkBlue;
+  }
+body.wAzul span.separador
+  {
+  color: white;
+  }
+body.wAzul div.tituloCategoria, body.wAzul div.tituloLateral
+  {
+  background-color: steelblue; 
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  }
+body.wAzul div.titulo, body.wAzul div.wtitulo
+  {
+  background-color: steelblue;
+  }
+body.wAzul div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.wAzul div.headexpandable
+  {
+  background-color: steelblue;
+  border-top-color: lightblue;
+  border-left-color: lightblue;
+  }
+body.wAzul div.headclickable 
+  {
+  background-color: steelblue;
+  border-top-color: lightblue;
+  border-left-color: lightblue;
+  }
+body.wAzul div.expanded, body.wAzul div.expandable:hover, body.wAzul div.interior:hover
+  {
+  background-color: steelblue;
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  }
+body.wAzul div.expanded a, body.wAzul div.expandable:hover a, body.wAzul div.interior:hover a
+  {
+  color: white;
+  }
+body.wAzul a:hover, body.wAzul div.expanded a:hover, body.wAzul div.expandable:hover a:hover, body.wAzul div.interior:hover a:hover
+  {
+  background-color: white;
+  color: steelblue; 
+  }
+body.wAzul div.fortune
+  {
+  background-color: steelblue;
+  color: white;
+  }
+body.wAzul input, body.wAzul select
+  {
+  background-color: lightgrey;
+  color: DarkBlue;
+  border-Top-color: steelblue; 
+  border-Left-color: steelblue;
+  border-Bottom-color: grey;
+  border-Right-color: grey;
+  }
+body.wAzul input.submit
+  {
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  background-color: steelBlue;
+  color: white;
+  }
+body.wAzul div.footer
+  {
+  color: steelblue;
+  }
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.wAzul div.subTitulo, body.wAzul div.itemLateral, body.wAzul div.coluna, body.wAzul div.tituloColuna {
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  background-color: steelBlue;
+  color: white;
+}
+body.wAzul div.item {
+  border-color: steelblue; color: steelblue;
+}
+body.wAzul div.colunaTransparente {
+	border-bottom: 1pt steelblue solid;
+}

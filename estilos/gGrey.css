@@ -1,0 +1,56 @@
+/*---------------------------------------------------------------------
+
+  gGrey.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+
+  Estilo gGrey - fundo em cinza, detalhes em abobora sobre grafite
+---------------------------------------------------------------------*/
+
+
+body.gGrey { background-color: #708090; color: #202020; background-image: url("../drawing/background.php?r=119&g=136&b=153"); } 
+body.gGrey a { color: #101010; } 
+body.gGrey a:hover span.popup { background-color: #990000; border-top-color: #FFFFFF; border-left-color: #FFFFFF; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.coluna {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.expandable:hover a {  color: #ffffff; } 
+body.gGrey div.expandable:hover a:hover { background-color: #990000; } 
+body.gGrey div.expandable:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.expanded a {  color: #ffffff; } 
+body.gGrey div.expanded a:hover { background-color: #990000; } 
+body.gGrey div.expanded {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.fortune { background-color: #404040; color: #ffa500; } 
+body.gGrey div.headclickable { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; } 
+body.gGrey div.headexpandable {  color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; } 
+body.gGrey div.interior:hover a {  color: #ffffff; } 
+body.gGrey div.interior:hover a:hover { background-color: #990000; } 
+body.gGrey div.interior:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.itemLateral { color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.subTitulo { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.titulo, body.gGrey div.wtitulo { color: #ffa500; background-color: #404040; } 
+body.gGrey div.wtitulo a { color: $ffffff; font-weight: bold; }
+body.gGrey div.tituloCategoria { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.tituloColuna { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey div.tituloLateral { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey input.submit {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gGrey span.separador { color: #202020; } 
+
+#theBody { color: #202020; } 
+body.gGrey div.titulo { color: #c6b9a6; } 
+body.gGrey div.fortune { color: #e4dcbb; } 
+body.gGrey div.tituloCategoria { color: #e4dcbb; } 
+body.gGrey div.tituloLateral { color: #e4dcbb; } 
+body.gGrey div.itemLateral { color: #e4dcbb; } 
+body.gGrey div.subTitulo { color: #e4dcbb; } 
+body.gGrey div.coluna { color: #e4dcbb; } 
+body.gGrey div.tituloColuna { color: #e4dcbb; } 
+body.gGrey div.headexpandable { color: #e4dcbb; } 
+body.gGrey div.headclickable { color: #e4dcbb; } 
+body.gGrey input.submit { color: #e4dcbb; } 
+body.gGrey div.expanded a { color: #e4dcbb; } 
+body.gGrey div.expandable:hover a { color: #e4dcbb; } 
+body.gGrey div.interior:hover a { color: #e4dcbb; } 
+body.gGrey a:hover { background-color: #339966; } 
+body.gGrey div.expanded a:hover { background-color: #339966; } 
+body.gGrey div.expandable:hover a:hover { background-color: #339966; } 
+body.gGrey div.interior:hover a:hover { background-color: #339966; } 

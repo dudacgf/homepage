@@ -1,0 +1,36 @@
+/*---------------------------------------------------------------------
+
+  gAbobora.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+
+  Estilo gAbobora - fundo em cinza, detalhes em abobora sobre grafite
+---------------------------------------------------------------------*/
+
+
+body.gAbobora { background-color: #708090; color: #202020; background-image: url("../drawing/background.php?r=119&g=136&b=153"); } 
+body.gAbobora a { color: #101010; } 
+body.gAbobora a:hover span.popup { background-color: #990000; border-top-color: #FFFFFF; border-left-color: #FFFFFF; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.coluna {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.expandable:hover a {  color: #ffffff; } 
+body.gAbobora div.expandable:hover a:hover { background-color: #990000; } 
+body.gAbobora div.expandable:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.expanded a {  color: #ffffff; } 
+body.gAbobora div.expanded a:hover { background-color: #990000; } 
+body.gAbobora div.expanded {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.fortune { background-color: #404040; color: #ffa500; } 
+body.gAbobora div.headclickable { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; } 
+body.gAbobora div.headexpandable {  color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; } 
+body.gAbobora div.interior:hover a {  color: #ffffff; } 
+body.gAbobora div.interior:hover a:hover { background-color: #990000; } 
+body.gAbobora div.interior:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.itemLateral { color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.subTitulo { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.titulo, body.gAbobora div.wtitulo { color: #ffa500; background-color: #404040; } 
+body.gAbobora div.wtitulo a { color: $ffffff; font-weight: bold; }
+body.gAbobora div.tituloCategoria { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.tituloColuna { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora div.tituloLateral { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora input.submit {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
+body.gAbobora span.separador { color: #202020; } 

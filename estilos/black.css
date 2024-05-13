@@ -1,0 +1,113 @@
+/*----------------------------------------------------------
+
+  black.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*------------------------------------------------------------
+  Estilo black - fundo grafite escuro, destaques em abobora
+------------------------------------------------------------*/
+body.black
+  {
+  background-color: #373737;
+  color: white;
+  background-image: url("../drawing/background.php?r=77&g=73&b=69");
+  }
+body.black a
+  { 
+  color: white; 
+  }
+body.black title {
+	background-color: #7F7F7F;
+color: white;
+}
+body.black a:hover span.popup 
+  {
+  background-color: #FFCC66;
+  color: #B22222;
+  border-right-color: #D2691E;
+  border-bottom-color: #D2691E;
+  }
+body.black span.separador
+  {
+  color: black;
+  }
+body.black div.tituloCategoria, body.black div.tituloLateral
+  { 
+  background-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  }
+body.black div.titulo, body.black div.wtitulo
+  {
+  background-color: #FF8C00;
+  }
+body.black div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.black div.headclickable, body.black div.headexpandable
+  {
+  background-color: #FF8C00;
+  border-Top-color: #FFFF00; 
+  border-Left-color: #FFFF00;
+  }
+body.black div.expanded, body.black div.expandable:hover, body.black div.interior:hover
+  {
+  BackGround-color: #C0C0C0;
+  border-Top-color: #7F7F7F; 
+  border-Left-color: #7F7F7F;
+  border-Bottom-color: #202020; 
+  border-Right-color: #202020;
+  color: black;
+  }
+body.black div.expanded a, body.black div.expandable:hover a, body.black div.interior:hover a
+  { 
+  color: black;
+  }
+body.black a:hover, body.black div.expanded a:hover, body.black div.expandable:hover a:hover, body.black div.interior:hover a:hover
+  {
+  background-color: #373737;
+  color: white; 
+  }
+body.black div.fortune
+  {
+  background-color: #FFCC66;
+  color: #B22222;
+  }
+body.black input, body.black select
+  {
+  background-color: #DFDFDF;
+  }
+body.black input.submit
+  {
+  background-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  color: black;
+  }
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.black div.subTitulo, body.black div.itemLateral, body.black div.coluna, body.black div.tituloColuna {
+  background-color: darkorange;	
+  border-Top-color: Gold; 
+  border-Left-color: Gold;
+  border-Bottom-color: Chocolate; 
+  border-Right-color: Chocolate;
+  color: black;
+}
+body.black div.item {
+	border-color: darkorange;
+}
+body.black div.colunaTransparente {
+	border-bottom: 1pt darkorange solid;
+}

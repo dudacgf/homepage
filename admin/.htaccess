@@ -1,0 +1,7 @@
+authtype basic
+#authgroupfile /dev/null
+#authuserfile /home/content/d/u/d/dudacgf/htconfig/.htpassword.ghtpassword
+#authuserfile /home/u258095091/public_html/admin/.htpasswd.ghtpasswd
+authuserfile /var/www/html/public_html/admin/.htpasswd.ghtpasswd
+authname "Secure Area"
+require user admin

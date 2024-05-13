@@ -1,0 +1,114 @@
+/*----------------------------------------------------------
+
+  abobora.css
+  (c) ecgf - 2006
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*------------------------------------------------------------
+  Estilo abobora - fundo salmão, destaques em abobora.
+------------------------------------------------------------*/
+body.abobora
+  {
+  background-color: #FFCC66; 
+  color: white;
+  background-image: url("../imagens/abobora_bkg.gif");
+  }
+body.abobora a
+  { 
+  color: #B22222; 
+  }
+body.abobora a:hover span.popup 
+  {
+  background-color: #FFCC66;
+  color: #B22222;
+  border-right-color: #D2691E;
+  border-bottom-color: #D2691E;
+  }
+body.abobora span.separador
+  {
+  color: white;
+  }
+body.abobora div.tituloCategoria, body.abobora div.tituloLateral
+  { 
+  background-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  }
+body.abobora div.titulo, body.abobora div.wtitulo
+  {
+  background-color: #FF8C00;
+  }
+body.abobora div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.abobora div.headexpandable
+  {
+  background-color: #FF8C00;
+  border-Top-color: #FFFF00; 
+  border-Left-color: #FFFF00;
+  }
+body.abobora div.headclickable
+  {
+  background-color: #FF8C00;
+  border-Top-color: #FFFF00; 
+  border-Left-color: #FFFF00;
+  }
+body.abobora div.expanded, body.abobora div.expandable:hover, body.abobora div.interior:hover
+  {
+  BackGround-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  }
+body.abobora div.expanded a, body.abobora div.expandable:hover, body.abobora div.interior:hover a
+  { 
+  color: white;
+  }
+body.abobora div.fortune
+  {
+  background-color: #FFFF99;
+  color: #B22222;
+  }
+body.abobora input, body.abobora select
+  {
+  background-color: #FFFF99;
+  color: #B22222;
+  border-Top-color: orange; 
+  border-Left-color: orange;
+  border-Bottom-color: yellow;
+  border-Right-color: yellow;
+  }
+body.abobora input.submit
+  {
+  background-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  color: white;
+  }
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.abobora div.subTitulo, body.abobora div.itemLateral, body.abobora div.coluna, body.abobora div.tituloColuna {
+  background-color: #FF8C00;
+  border-Top-color: #FFD700; 
+  border-Left-color: #FFD700;
+  border-Bottom-color: #D2691E; 
+  border-Right-color: #D2691E;
+  color: white;
+}
+body.abobora div.item {
+	border-color: darkorange;
+}
+body.abobora div.colunaTransparente {
+	border-bottom: 1pt darkorange solid;
+}

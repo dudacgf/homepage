@@ -1,0 +1,124 @@
+/*----------------------------------------------------------
+
+  nazul.css
+  (c) ecgf - 2007
+
+  ver base.css, que determina a estrutura da página.
+----------------------------------------------------------*/
+
+/*------------------------------------------------------------
+  Estilo nazul - fundo azul claro vivo, destaques em azul escuro navy e branco.
+------------------------------------------------------------*/
+body.nazul {
+ color: #ffffff;
+background-image: url("../drawing/background.php?r=95&g=158&b=160");
+background-color: #6495ed;
+}
+body.nazul a:hover {
+ background-color: #000080;
+}
+body.nazul div.fortune {
+ background-color: #000080;
+color: #ffffff;
+}
+body.nazul div.expanded {
+ background-color: #6699FF;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+}
+body.nazul div.interior:hover {
+ background-color: #6699FF;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+}
+body.nazul div.expandable:hover {
+ background-color: #6699FF;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+}
+body.nazul input.submit {
+ color: #ffffff;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+background-color: #000080;
+}
+body.nazul a {
+ color: #ffffff;
+}
+body.nazul div.tituloCategoria {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+color: #ffffff;
+background-color: #000080;
+}
+body.nazul div.tituloLateral {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+color: #ffffff;
+background-color: #000080;
+}
+body.nazul  {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+}
+body.nazul div.subTitulo {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+color: #ffffff;
+background-color: #000080;
+}
+body.nazul div.coluna {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+color: #ffffff;
+background-color: #000080;
+}
+body.nazul div.tituloColuna {
+ border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+border-bottom-color: #000000;
+border-right-color: #000000;
+color: #ffffff;
+background-color: #000080;
+}
+body.nazul div.titulo, body.nazul div.wtitulo {
+ background-color: #000080;
+}
+body.nazul div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.nazul div.headexpandable {
+ background-color: #000080;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+}
+body.nazul div.headclickable {
+ background-color: #000080;
+border-top-color: #99CCFF;
+border-left-color: #99CCFF;
+}
+body.nazul div.itemLateral {
+ color: #ffffff;
+background-color: #000080;
+}
+

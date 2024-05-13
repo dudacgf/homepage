@@ -1,0 +1,185 @@
+/*------------------------------------------------------------------
+
+  Styles.css
+  (c) ecgf - 2005
+
+  Estilos utilizados em minha página pessoal.
+
+--------------------------------------------------------------------*/
+
+/*------------------------------------------------------------------
+  Base.css - o básico dos estilos - tamanho, estrutura, borda, etc.  
+  nada do que está aqui deveria ser modificado nos estilos de cor.
+--------------------------------------------------------------------*/
+* { 
+font-size: 1em; font-family: georgia, roboto, verdana, tahoma, sans-serif;
+}
+body {
+overflow: hidden; text-align: left; vertical-align: bottom; text-decoration: none;
+margin: 0pt; padding: 0pt; border: 0pt none;
+background-repeat: no-repeat; background-position: top right;  behavior: url("estilos/csshover.htc");
+}
+a { 
+display: block; text-decoration: none; font-weight: normal; white-space: nowrap;
+font-size: 0.9em;
+}
+a:hover { 
+text-decoration: underline;
+}
+a span.popup {
+display: none;
+}
+a:hover span.popup {
+display: block; position: absolute; width: 200px; padding: 5px; margin: 5px; 
+border-right: 1px solid; border-bottom: 1px solid;
+}
+span.separador {
+font-weight: bold;
+}
+.texto {
+vertical-align: bottom;
+}
+form {
+margin-top: 0pt; margin-bottom: 0pt;
+}
+form a {
+display: inline;
+}
+input, select {
+font-family: verdana, arial, helvetica, sans-serif;  font-size: 0.9em;
+border-Top: 1pt solid; border-Left: 1pt solid; Margin: 1pt;
+}
+select {
+margin-left: 2pt;
+}
+input.FormExtra {
+Margin-Left: 2pt;
+}
+input.submit {
+border-width: 1pt; border-style: solid; vertical-align: top; text-align: center; 
+font-size: 1em; font-weight: bold;
+}
+/*----------------------------------------
+ *------- Estrutura da tabela de links ---
+ *---------------------------------------*/
+div.titulo, div.titulo a {
+clear: both; font-size: 2.0em; font-weight: bold; height: 30px; vertical-align: middle; padding: 2pt;
+}
+div.content {
+clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center;
+}
+div.footer {
+clear: both; position: relative; bottom: 0px;
+}
+div.tituloCategoria {
+clear: both; font-size: 1.1em; font-weight: bold; border-style: solid; border-width: 1px; margin-bottom: 5px; padding: 3px; 
+}
+table {
+clear: both; margin: 0 auto; 
+}
+div.lineForm {
+clear: both; border-style: solid none; border-width: 1pt; height: 30px;
+  }
+div.tituloLateral { 
+border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: 1.2em; width: 90px;
+}
+div.formLateral {
+border-width: 0pt; padding: 0pt; margin-top: 2pt; float: left;
+}
+div.fortune {
+font-size: 0.9em; clear: both; padding: 2pt; border: 1pt;
+}
+
+div.fortune a {
+font-weight: bold; display: inline; font-size: 1em;
+}
+/* 
+ * Específico das páginas wap.
+ */
+div.wtitulo {
+clear: both; font-size: 2.0em; font-weight: bold; height: 35px; vertical-align: middle; padding-left: 5px; padding-bottom: 5px; margin-bottom: 3px;
+}
+div.wcategoria {
+clear: both; font-size: 1.7em; font-weight: bold; height: 30px; vertical-align: middle; padding-left: 15px; padding-bottom: 5px; margin-bottom: 2px;
+}
+div.wgrupo {
+clear: both; font-size: 1.5em; font-weight: bold; height: 20px; vertical-align: middle; padding-left: 25px; padding-bottom: 5px; margin-bottom: 1px;
+}
+div.wlink {
+clear: both; font-size: 1.3em; font-weight: bold; height: 15px; vertical-align: middle; padding-left: 40px; padding-bottom: 5px;
+}
+/*
+ * as classes a seguir fazem a magica dos menus expansiveis. São de dois tipos:
+ * no primeiro, que se expande quando se passa o mouse por  cima, uso a 
+ * seguinte estrutura:
+ * <div class="interior">
+ * <div class="expandable" onMouse[over<->out] => class="[expandable<->interior]">
+ *   <div class="headexpandable">headname</div>
+ *   [  grupos de links   ]
+ * </div>
+ * </div>
+ * no segundo, que se expande quando se clica em seu cabeçalho, a seguinte
+ * estrutura foi utilizada:
+ * <div class="interior">
+ * <div class="expandable" onClick[expandable<->expanded]>
+ *   <div class="headclickable">headname</div>
+ *   [  grupos de links   ]
+ * </div>
+ * </div>
+*/
+div.interior {
+clear: both; border-width: 0pt; padding: 2pt;
+}
+div.expandable, div.clickable {
+overflow: hidden; height: 18pt; border-width: 0pt; 
+}
+div.expanded, div.interior:hover, div.expandable:hover {
+padding: 2pt; margin-bottom: 5pt; margin-top: 3px; border-style: solid; border-width: 1pt; 
+overflow: visible; height: auto; 
+}
+div.headclickable, div.headexpandable {
+border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-left-style: solid;
+height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
+}
+/* 
+ * páginas administrativas. 
+ *
+ */
+div.subTitulo {
+font-size: 1.1em; font-weight: bold; border-bottom: 1pt solid; clear: both; padding: 5px;
+}
+div.itemLateral {
+font-size: 0.9em; font-weight: bold; border: 0pt; float: left; width: 25%; height: 21pt; clear: left; margin: 2pt; padding: 3px 0 0 3px;
+}
+div.item {
+font-size: 0.9em; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;
+}
+div.exemploCategoria {
+position: absolute; float: right; right: 5px; top: 70px; width: 30%; text-align: left;
+}
+div.exemploCategoria a {
+display: block;
+}
+div.exemploCategoria span.separador {
+text-align: left;
+}
+div.coluna, div.colunaTransparente {
+float: left; padding: 2pt; margin: 3pt; font-size: 1em; width: 15%;
+}
+div.tituloColuna { 
+border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: 1em; width: 15%;
+}
+body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body div.interior:hover a:hover, body div.exemploCategoria a:hover
+{
+padding: 0.3em 0.3em 0.3em 0.3em;
+}
+/* não adianta. ie6 ainda não faz o before...
+div.headexpandable:before
+{
+content: '(+)';
+}
+div.headclickable:before
+{
+content: '[+]';
+}
+*/

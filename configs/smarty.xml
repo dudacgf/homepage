@@ -1,0 +1,10 @@
+<?xml version ='1.0' encoding ='UTF-8' ?>
+
+<configurations>
+   <configuration ID="1">
+	   <Smarty_Templates_PATH>templates/</Smarty_Templates_PATH>
+       <Smarty_Compile_PATH>/var/www/html/public_html/smarty/templates_c</Smarty_Compile_PATH>
+       <Smarty_Cache_PATH>/var/www/html/public_html/smarty/cache</Smarty_Cache_PATH>
+	   <Smarty_Config_PATH>configs/</Smarty_Config_PATH>
+   </configuration>
+</configurations>
