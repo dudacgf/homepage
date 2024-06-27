@@ -5,6 +5,9 @@ header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 // Carregar apenas uma vez.
 require_once('common.php');
 
+// arruma path para authfile, se necessário
+check_admin_htaccess();
+
 // 
 // verifica se houve pedido de upload...
 if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '') 
@@ -169,6 +172,25 @@ if (isset($requests['gr']))
 
 $homepage->display('index.tpl');
 
+function check_admin_htaccess() {
+    $htaccessFilePath = HOMEPAGE_PATH . '/admin/.htaccess';
+    $htaccessFileContents = file_get_contents($htaccessFilePath);
+    $newAuthFileLine = 'authuserfile ' . HOMEPAGE_PATH . 'admin/.htpasswd.ghtpasswd';
+    if (!$htaccessFileContents) {
+        $F = fopen($htaccessFilePath, 'w');
+        fwrite($F, 'authtype basic' . PHP_EOL);
+        fwrite($F, $newAuthFileLine . PHP_EOL);
+        fwrite($F, 'authname "Secure Area"' . PHP_EOL);
+        fwrite($F, 'require user admin' . PHP_EOL);
+    }
+    else {
+        $newFileContents = preg_replace('/authuserfile .*(\s)/', $newAuthFileLine . '$1', $htaccessFileContents);
+        if ($htaccessFileContents != $newFileContents)
+        {
+            file_put_contents($htaccessFilePath, $newFileContents);
+        }
+    }
+}
 //-- vi: set tabstop=4 shiftwidth=4 showmatch: 
 
 ?>
