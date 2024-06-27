@@ -3,9 +3,7 @@
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+3 hour" ) ));
 header('Content-type: image/png');
 
-define('RELATIVE_PATH', './../');
-
-$background=imagecreatefromgif(RELATIVE_PATH . './imagens/white_bkg.gif');
+$background=imagecreatefromgif('../imagens/white_bkg.gif');
 
 $color=imagecolorallocate($background, $_REQUEST['r'], $_REQUEST['g'], $_REQUEST['b']);
 
