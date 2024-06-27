@@ -14,12 +14,12 @@
 </tr>
 
 <tr>
-	<th class="categoria" colspan="10">DescriÁ„o</th>
+	<th class="categoria" colspan="10">Descri√ß√£o</th>
 <tr>
 
 <tr>
 	<td class="categoria">
-		Clique, por enquanto, no bot„o. para sair. daqui.
+		Clique, por enquanto, no bot√£o. para sair. daqui.
 	</td><td>
 	 	<form name="exElm" id="exElm" action="javascript: doForm()">
 			<input type="hidden" name="mode" value="dlElm">

@@ -1,4 +1,4 @@
-<a href="http://bilbo.homelinux.net/__webcam.htm"><span style="text-align: center; font-weight:bold;">lแ em casa</span>
+<a href="http://bilbo.homelinux.net/__webcam.htm"><span style="text-align: center; font-weight:bold;">lรก em casa</span>
 	<span class="popup">
 		<IMG ID="webcam" SRC="http://bilbo.homelinux.net/webcam/DCAMImage.jpg" WIDTH="192" HEIGHT="144">
 	</span>

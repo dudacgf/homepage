@@ -55,7 +55,7 @@ class database extends mysqli
 	    if (!parent::ping()) parent::connect();
 		if (!($query = parent::query($sql)))
 		{
-			die(sprintf("Não consegui executar o query. Error: %s", $this->error));
+			die(sprintf("NÃ£o consegui executar o query. Error: %s", $this->error));
 		}
 
 		if (!is_object($query)) {

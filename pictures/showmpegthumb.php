@@ -1,6 +1,6 @@
 <?php
 //
-// configuraÁıes para exibiÁ„o das fotos
+// configura√ß√µes para exibi√ß√£o das fotos
 $fotos = simplexml_load_file('../configs/pictures.xml');
 foreach ($fotos as $fotoDir)
 {
@@ -12,17 +12,17 @@ foreach ($fotos as $fotoDir)
 	   $linhas = (int) $fotoDir->linhas;
    }
 }
-// obtÈm a largura solicitada...
+// obt√©m a largura solicitada...
 $width = ( isset($_REQUEST['width']) ) ? $_REQUEST['width'] : 120 ;
 
-// Se ainda n„o existe cache para este tamanho, cria
+// Se ainda n√£o existe cache para este tamanho, cria
 $dircache .= ".w=$width" ;
 if (!file_exists($dircache))
 {
 	mkdir($dircache, 0777, true);
 }
 
-// se este diretÛrio ainda n„o existe no cache, cria
+// se este diret√≥rio ainda n√£o existe no cache, cria
 $pic = $_REQUEST['pic'];
 $pic = str_replace('..', '', $pic);
 if (!file_exists($dircache . '/' . dirname($pic))) 
@@ -30,26 +30,26 @@ if (!file_exists($dircache . '/' . dirname($pic)))
 	mkdir($dircache . '/' . dirname($pic), 0777, true);
 }
 
-// LocalizaÁ„o e nome do arquivo de saÌda no cache
+// Localiza√ß√£o e nome do arquivo de sa√≠da no cache
 $cacheFile = $dircache . $pic;
 
-// obtÈm o nome base deste arquivo (sem a extens„o)
+// obt√©m o nome base deste arquivo (sem a extens√£o)
 $cacheFile_info = pathinfo($cacheFile);
 $cacheFile_name = basename($cacheFile_info['basename'], '.' . $cacheFile_info['extension']);
 
-// Arquivo com as informaÁıes que ser„o exibidas no popup...
+// Arquivo com as informa√ß√µes que ser√£o exibidas no popup...
 $txtFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.txt';
 
-// se este filme ainda n„o tem frame-thumb no cache, cria
+// se este filme ainda n√£o tem frame-thumb no cache, cria
 if (!file_exists($cacheFile))
 {
 	// cria uma frame a partir do filme original
 	$infile = $dirfotos . $pic;
 	
 	// 
-	// ff_fileOption È como eu tenho que compor o nome do arquivo de saÌda para que ffmpeg o aceite
-	// ff_outFile È o arquivo de saÌda pp dito. ser· removido ao final.
-	// txtFile È o arquivo com informaÁıes gerado durante a convers„o. ser· removido ao final.
+	// ff_fileOption √© como eu tenho que compor o nome do arquivo de sa√≠da para que ffmpeg o aceite
+	// ff_outFile √© o arquivo de sa√≠da pp dito. ser√° removido ao final.
+	// txtFile √© o arquivo com informa√ß√µes gerado durante a convers√£o. ser√° removido ao final.
 	$ff_fileOption = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '%d.jpg';
 	$ff_outFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '1.jpg';
 	$ff_flvFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.flv';
@@ -58,10 +58,10 @@ if (!file_exists($cacheFile))
 	// utilizo o ffmpeg.
 	exec("ffmpeg-jpg.exe -an -img jpeg -i \"$infile\" -t 00:00:00.001 \"$ff_fileOption\" 2>&1", $output);
 
-	// lÍ a frame-thumb criada anteriormente
+	// l√™ a frame-thumb criada anteriormente
 	$im    = imagecreatefromjpeg($ff_outFile);
 
-	// calcula as novas dimensıes da imagem a partir das dimensıes da imagem original
+	// calcula as novas dimens√µes da imagem a partir das dimens√µes da imagem original
 	$old_x=imageSX($im);
 	$old_y=imageSY($im);
 	if ($old_x > 0 && $old_y > 0) 
@@ -85,7 +85,7 @@ if (!file_exists($cacheFile))
 			$thumb_h=$new_h;
 		}
 
-		// cria a nova imagem com as dimensıes calculadas. o fundo ser· darkorange...
+		// cria a nova imagem com as dimens√µes calculadas. o fundo ser√° darkorange...
 		$thumb=ImageCreateTrueColor($thumb_w + 2,$thumb_h + 2);
 		$darkorange = imagecolorallocate($thumb, 255, 140, 0);
 		imagefill($thumb, 0, 0, $darkorange);
@@ -94,13 +94,13 @@ if (!file_exists($cacheFile))
 		imagedestroy($im);
 		unset($im);
 
-		// cria um arquivo com a descriÁ„o deste filme. de repente eu consigo usar, nÈ?
+		// cria um arquivo com a descri√ß√£o deste filme. de repente eu consigo usar, n√©?
 		$output[0] = $pic;
-		$output[1] = preg_replace('/Duration/', 'DuraÁ„o', $output[1]);
+		$output[1] = preg_replace('/Duration/', 'Dura√ß√£o', $output[1]);
 		$output[2] = preg_replace('/Stream \#0\.0\:/', '', $output[2]);
 		$output[3] = preg_replace('/Stream \#0\.0\:/', '', $output[3]);
 		$th = fopen($txtFile, 'wb');
-		$output = array_slice($output, 0, 4); // quero sÛ informaÁıes sobre o filme
+		$output = array_slice($output, 0, 4); // quero s√≥ informa√ß√µes sobre o filme
 		fwrite($th, implode("\n", $output));
 		fclose($th);
 

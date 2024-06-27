@@ -1,17 +1,17 @@
 <?php
 //----------------------------------------------------------------------------//
 //
-// Inicializações
+// InicializaÃ§Ãµes
 //
 //----------------------------------------------------------------------------//
 
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
 //
-// configurações para exibição das fotos
+// configuraÃ§Ãµes para exibiÃ§Ã£o das fotos
 $fotos = simplexml_load_file($pictures_info_xml_path);
 foreach ($fotos as $fotoDir)
 {
@@ -26,17 +26,17 @@ foreach ($fotos as $fotoDir)
 
 //
 //
-// envia para o cliente o header e o início do body, até o título da tabela.
+// envia para o cliente o header e o inÃ­cio do body, atÃ© o tÃ­tulo da tabela.
 //
 enviarInicioPagina();
 
 //
 //
-// cria os diretórios base do cache
+// cria os diretÃ³rios base do cache
 //
 
 //
-// diretório de flv's para os mpegs
+// diretÃ³rio de flv's para os mpegs
 criarDiretorioSeNecessario($dircache . '.flv');
 
 //
@@ -60,38 +60,38 @@ criarCacheDiretorio($dirfotos, 1);
 $fim = time();
 
 //
-// último relatório e fim da execução
+// Ãºltimo relatÃ³rio e fim da execuÃ§Ã£o
 enviarImediatamente("<hr><br /><b>Tempo total para convers&atilde;o: " . ($fim - $inicio) . " segundos</b><br /><br />");
 
 //
 //
-// envia o final da página, desde o fim da tabela até o último </html>
+// envia o final da pÃ¡gina, desde o fim da tabela atÃ© o Ãºltimo </html>
 enviarFinalPagina();
 exit;
 
 //----------------------------------------------------------------------------//
 //
-// Funções de processamento de midia.
+// FunÃ§Ãµes de processamento de midia.
 //
 //----------------------------------------------------------------------------//
 
 function criarCacheDiretorio($currentDir, $howDeep) {
 	global $dircache, $thumbWidth, $pictureWidth;
 
-	// dou 600 segundos a cada diretório - se passar disso o programa morre.
+	// dou 600 segundos a cada diretÃ³rio - se passar disso o programa morre.
 	set_time_limit(600);
 
-	// se for um diretório e existir um arquivo de nome 'naolistar.info' no diretório, nao faz nada.
+	// se for um diretÃ³rio e existir um arquivo de nome 'naolistar.info' no diretÃ³rio, nao faz nada.
 	if (file_exists($currentDir . '/' . '/naolistar.info')) return;
 
-	// se for um diretório e não existir um arquivo de nome 'listar.info', nao faz nada.
+	// se for um diretÃ³rio e nÃ£o existir um arquivo de nome 'listar.info', nao faz nada.
 	if (!file_exists($currentDir . '/' . '/listar.info')) return;
 
-	// informa o início do diretório e o número de fotos
+	// informa o inÃ­cio do diretÃ³rio e o nÃºmero de fotos
 	$numThumbs = countthumbs($currentDir);
 	enviarInicioDiretorio($currentDir, $numThumbs);
 
-	// se este diretório ainda não existe nos caches, cria logo de uma vez para não dar confusão depois...
+	// se este diretÃ³rio ainda nÃ£o existe nos caches, cria logo de uma vez para nÃ£o dar confusÃ£o depois...
 	if ($howDeep > 1) 
 	{
 		criarDiretorioSeNecessario($dircache . '.flv/' . obterCaminhoAnterior($currentDir, $howDeep - 1));
@@ -99,12 +99,12 @@ function criarCacheDiretorio($currentDir, $howDeep) {
 		criarDiretorioSeNecessario($dircache . '.w=' . $pictureWidth . '/' . obterCaminhoAnterior($currentDir, $howDeep - 1));
 	}
 
-	// este é o loop principal.
+	// este Ã© o loop principal.
 	$listaArquivos = opendir($currentDir);
 	while ($arquivo = readdir($listaArquivos))
 	{
 
-		// não faço nada caso o arquivo não seja .jpeg, .mpeg ou um diretório diferente dos ponteiros default (. e ..)
+		// nÃ£o faÃ§o nada caso o arquivo nÃ£o seja .jpeg, .mpeg ou um diretÃ³rio diferente dos ponteiros default (. e ..)
 		if ($arquivo == '.' || $arquivo == '..') continue;
 		if (!preg_match('/(jpg|mpg|jpeg|mpeg)$/', strtolower($arquivo)) && !is_dir($currentDir . '/' . $arquivo)) continue;
 
@@ -130,14 +130,14 @@ function criarCacheDiretorio($currentDir, $howDeep) {
 }
 
 //
-// Funções de processamento de midia.
+// FunÃ§Ãµes de processamento de midia.
 //
 //
 
 function criarFlv($currentDir, $mov, $howDeep) {
 	global $dircache;
 
-	// Localização e nome do arquivo de saída no cache
+	// LocalizaÃ§Ã£o e nome do arquivo de saÃ­da no cache
 	if ($howDeep > 1) 
 	{
 		$cacheFile = $dircache . '.flv' . '/' . obterCaminhoAnterior($currentDir, $howDeep - 1) . '/' . $mov;
@@ -152,35 +152,35 @@ function criarFlv($currentDir, $mov, $howDeep) {
 	// nome do arquivo
 	$infile = $currentDir . '/' . $mov;
 
-	// obtém o nome base deste arquivo (sem a extensão)
+	// obtÃ©m o nome base deste arquivo (sem a extensÃ£o)
 	$cacheFile_info = pathinfo($cacheFile);
 	$cacheFile_name = basename($cacheFile_info['basename'], '.' . $cacheFile_info['extension']);
 
-	// ff_flvFile é o arquivo de saída em formato flv
+	// ff_flvFile Ã© o arquivo de saÃ­da em formato flv
 	$ff_flvFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.flv';
 
-	// se este filme ainda não tem seu flv no cache, cria...
+	// se este filme ainda nÃ£o tem seu flv no cache, cria...
 	if (!file_exists($ff_flvFile))
 	{
 		enviarInfoMidia($mov, 320);
 
-		// dispara a conversão do vídeo para o formato flv
-		// a conversão é feita em duas etapas. 
+		// dispara a conversÃ£o do vÃ­deo para o formato flv
+		// a conversÃ£o Ã© feita em duas etapas. 
 		// Primeiro, ffmpeg transforma de mpg em flv. 
-		// Por fim, flvtool2 insere meta-tags(?) para permitir a navegação no filme quando exibido via flvprovider.php...
+		// Por fim, flvtool2 insere meta-tags(?) para permitir a navegaÃ§Ã£o no filme quando exibido via flvprovider.php...
 		exec("ffmpeg-flv.exe -i \"$infile\" -b 360 -r 25 -s 320x240 -hq -deinterlace  -ab 56 -ar 22050 -ac 1  \"$ff_flvFile\" 2>&1", $output);
 		exec("flvtool2.exe u \"$ff_flvFile\" \"$ff_flvFile\" 2>&1", $output);
 
-		// txtFile é o arquivo com informações gerado durante a conversão. 
+		// txtFile Ã© o arquivo com informaÃ§Ãµes gerado durante a conversÃ£o. 
 		$txtFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.txt';
 
-		// cria um arquivo com a descrição deste filme.
+		// cria um arquivo com a descriÃ§Ã£o deste filme.
 		$output[0] = $mov;
-		$output[1] = preg_replace('/Duration/', 'Duração', $output[1]);
+		$output[1] = preg_replace('/Duration/', 'DuraÃ§Ã£o', $output[1]);
 		$output[2] = preg_replace('/Stream \#0\.0\:/', '', $output[2]);
 		$output[3] = preg_replace('/Stream \#0\.0\:/', '', $output[3]);
 		$th = fopen($txtFile, 'wb');
-		$output = array_slice($output, 0, 4); // quero só informações sobre o filme
+		$output = array_slice($output, 0, 4); // quero sÃ³ informaÃ§Ãµes sobre o filme
 		fwrite($th, implode("\n", $output));
 		fclose($th);
 	}
@@ -189,7 +189,7 @@ function criarFlv($currentDir, $mov, $howDeep) {
 function criarPictureThumb($currentDir, $pic, $howDeep, $width) {
 	global $dircache;
 
-	// Localização e nome do arquivo de saída no cache
+	// LocalizaÃ§Ã£o e nome do arquivo de saÃ­da no cache
 	if ($howDeep > 1) 
 	{
 		$cacheFile = $dircache . ".w=$width" . '/' . obterCaminhoAnterior($currentDir, $howDeep - 1) . '/' . $pic;
@@ -199,15 +199,15 @@ function criarPictureThumb($currentDir, $pic, $howDeep, $width) {
 		$cacheFile = $dircache . ".w=$width" . '/' . $pic;
 	}
 
-	// se esta foto ainda não está no cache, cria
+	// se esta foto ainda nÃ£o estÃ¡ no cache, cria
 	if (!file_exists($cacheFile))
 	{
 		enviarInfoMidia($pic, $width);
 
-		// lê a foto no diretório original
+		// lÃª a foto no diretÃ³rio original
 		$im    = imagecreatefromjpeg($currentDir . '/' . $pic);
 
-		// calcula as novas dimensões da imagem a partir das dimensões da imagem original
+		// calcula as novas dimensÃµes da imagem a partir das dimensÃµes da imagem original
 		$old_x=imageSX($im);
 		$old_y=imageSY($im);
 		$new_w=(int)($width);
@@ -229,7 +229,7 @@ function criarPictureThumb($currentDir, $pic, $howDeep, $width) {
 			$thumb_h=$new_h;
 		}
 
-		// cria a nova imagem com as dimensões calculadas. o fundo será darkorange...
+		// cria a nova imagem com as dimensÃµes calculadas. o fundo serÃ¡ darkorange...
 		$thumb=ImageCreateTrueColor($thumb_w + 2,$thumb_h + 2);
 		$darkorange = imagecolorallocate($thumb, 255, 140, 0);
 		imagefill($thumb, 0, 0, $darkorange);
@@ -243,7 +243,7 @@ function criarPictureThumb($currentDir, $pic, $howDeep, $width) {
 function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 	global $dircache;
 
-	// Localização e nome do arquivo de saída no cache
+	// LocalizaÃ§Ã£o e nome do arquivo de saÃ­da no cache
 	if ($howDeep > 1) 
 	{
 		$cacheFile = $dircache . ".w=$width" . '/' . obterCaminhoAnterior($currentDir, $howDeep - 1) . '/' . $mov;
@@ -253,24 +253,24 @@ function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 		$cacheFile = $dircache . ".w=$width" . '/' . $mov;
 	}
 
-	// obtém o nome base deste arquivo (sem a extensão)
+	// obtÃ©m o nome base deste arquivo (sem a extensÃ£o)
 	$cacheFile_info = pathinfo($cacheFile);
 	$cacheFile_name = basename($cacheFile_info['basename'], '.' . $cacheFile_info['extension']);
-	// nome do arquivo que será efetivamente armazenado no cache.
+	// nome do arquivo que serÃ¡ efetivamente armazenado no cache.
 	$ff_flvFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.jpg';
 
-	// se este filme ainda não tem frame-thumb no cache, cria
+	// se este filme ainda nÃ£o tem frame-thumb no cache, cria
 	if (!file_exists($ff_flvFile))
 	{
 		enviarInfoMidia($mov, $width);
 
-		// mídia original
+		// mÃ­dia original
 		$infile = $currentDir . '/' . $mov;
 		
 		// 
-		// ff_fileOption é como eu tenho que compor o nome do arquivo de saída para que ffmpeg o aceite
-		// ff_outFile é o arquivo de saída pp dito. será removido ao final.
-		// txtFile é o arquivo com informações gerado durante a conversão. será removido ao final.
+		// ff_fileOption Ã© como eu tenho que compor o nome do arquivo de saÃ­da para que ffmpeg o aceite
+		// ff_outFile Ã© o arquivo de saÃ­da pp dito. serÃ¡ removido ao final.
+		// txtFile Ã© o arquivo com informaÃ§Ãµes gerado durante a conversÃ£o. serÃ¡ removido ao final.
 		$ff_fileOption = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '%d.jpg';
 		$ff_outFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '1.jpg';
 		$txtFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.txt';
@@ -278,10 +278,10 @@ function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 		// utilizo o ffmpeg.
 		exec("ffmpeg-jpg.exe -an -img jpeg -i \"$infile\" -t 00:00:00.001 \"$ff_fileOption\" 2>&1", $output);
 
-		// lê a frame-thumb criada anteriormente
+		// lÃª a frame-thumb criada anteriormente
 		$im    = imagecreatefromjpeg($ff_outFile);
 
-		// calcula as novas dimensões da imagem a partir das dimensões da imagem original
+		// calcula as novas dimensÃµes da imagem a partir das dimensÃµes da imagem original
 		$old_x=imageSX($im);
 		$old_y=imageSY($im);
 		if ($old_x > 0 && $old_y > 0) 
@@ -305,7 +305,7 @@ function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 				$thumb_h=$new_h;
 			}
 
-			// cria a nova imagem com as dimensões calculadas. o fundo será darkorange...
+			// cria a nova imagem com as dimensÃµes calculadas. o fundo serÃ¡ darkorange...
 			$thumb=ImageCreateTrueColor($thumb_w + 2,$thumb_h + 2);
 			$darkorange = imagecolorallocate($thumb, 255, 140, 0);
 			imagefill($thumb, 0, 0, $darkorange);
@@ -314,13 +314,13 @@ function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 			imagedestroy($im);
 			unset($im);
 
-			// cria um arquivo com a descrição deste filme. de repente eu consigo usar, né?
+			// cria um arquivo com a descriÃ§Ã£o deste filme. de repente eu consigo usar, nÃ©?
 			$output[0] = $mov;
-			$output[1] = preg_replace('/Duration/', 'Duração', $output[1]);
+			$output[1] = preg_replace('/Duration/', 'DuraÃ§Ã£o', $output[1]);
 			$output[2] = preg_replace('/Stream \#0\.0\:/', '', $output[2]);
 			$output[3] = preg_replace('/Stream \#0\.0\:/', '', $output[3]);
 			$th = fopen($txtFile, 'wb');
-			$output = array_slice($output, 0, 4); // quero só informações sobre o filme
+			$output = array_slice($output, 0, 4); // quero sÃ³ informaÃ§Ãµes sobre o filme
 			fwrite($th, implode("\n", $output));
 			fclose($th);
 
@@ -339,12 +339,12 @@ function criarMpegThumb($currentDir, $mov, $howDeep, $width) {
 
 //----------------------------------------------------------------------------//
 //
-// Funções de envio de texto para a página
+// FunÃ§Ãµes de envio de texto para a pÃ¡gina
 //
 //----------------------------------------------------------------------------//
 
 //
-// Do começo da html até o início da table é responsabilidade do template page_header.tpl
+// Do comeÃ§o da html atÃ© o inÃ­cio da table Ã© responsabilidade do template page_header.tpl
 function enviarInicioPagina()
 {
 	global $dirfotos, $homepage;
@@ -415,13 +415,13 @@ function enviarImediatamente($text)
 
 //----------------------------------------------------------------------------//
 //
-// Funções auxiliares ao processamento
+// FunÃ§Ãµes auxiliares ao processamento
 //
 //----------------------------------------------------------------------------//
 
 //
-// conta o número de possíveis thumbs a serem exibidos em um determinado diretório.
-// os possíveis thumbs são os arquivos de extensão $ext e os diretórios.
+// conta o nÃºmero de possÃ­veis thumbs a serem exibidos em um determinado diretÃ³rio.
+// os possÃ­veis thumbs sÃ£o os arquivos de extensÃ£o $ext e os diretÃ³rios.
 function countthumbs($dir)
 {
   
@@ -448,7 +448,7 @@ function countthumbs($dir)
 }
 
 //
-// recebe um path e devolve os últimos n diretorios
+// recebe um path e devolve os Ãºltimos n diretorios
 function obterCaminhoAnterior($theFile, $howDeep) {
 	$pathParts = preg_split('!/|\\\\!', $theFile);
 	$pathLen = count($pathParts);
@@ -460,11 +460,11 @@ function obterCaminhoAnterior($theFile, $howDeep) {
 }
 
 // 
-// cria um diretório se for necessário
+// cria um diretÃ³rio se for necessÃ¡rio
 function criarDiretorioSeNecessario($theCacheDir) {
 	if (!file_exists($theCacheDir))
 	{
-		enviarImediatamente("<b> Vou criar o diretório: $theCacheDir...</b><br />\n");
+		enviarImediatamente("<b> Vou criar o diretÃ³rio: $theCacheDir...</b><br />\n");
 		mkdir($theCacheDir, 0777, true);
 	}
 }

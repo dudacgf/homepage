@@ -1,21 +1,21 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
 if (isset($_REQUEST['navpanel']) and $_REQUEST['navpanel'] == 'yes') 
 {
-	// le as categorias, grupos e elementos desta página...
+	// le as categorias, grupos e elementos desta pÃ¡gina...
 	include(HOMEPAGE_PATH . 'homepage.php');
 }
 else
 {
 
-	// A página de administração tem idPagina = 5
+	// A pÃ¡gina de administraÃ§Ã£o tem idPagina = 5
 	$_idPagina = 5;
 
-	// abro e inicializo minha página
+	// abro e inicializo minha pÃ¡gina
 	$pagina = new pagina($_idPagina);
 	$homepage->assign('idPagina', $pagina->idPagina);
 	$homepage->assign('tituloPagina', $pagina->tituloPagina);

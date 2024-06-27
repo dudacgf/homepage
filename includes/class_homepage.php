@@ -1,6 +1,6 @@
 <?php
 
-// define os tipos de elementos possíveis
+// define os tipos de elementos possÃ­veis
 define('ELEMENTO_SIMPLES', 1);
 define('ELEMENTO_AGRUPADO', 2);
 
@@ -22,7 +22,7 @@ class tiposElementos
 		$tipos = $global_hpDB->query($_sql);
 		if (!$tipos)
 		{
-			die('não consegui ler a tabela de tipos de elementos!');
+			die('nÃ£o consegui ler a tabela de tipos de elementos!');
 		}
 		else
 		{
@@ -48,7 +48,7 @@ class tiposGrupos
 		$tipos = $global_hpDB->query($_sql);
 		if (!$tipos)
 		{
-			die('não consegui ler a tabela de tipos de grupos!');
+			die('nÃ£o consegui ler a tabela de tipos de grupos!');
 		}
 		else
 		{
@@ -74,7 +74,7 @@ class cssEstilos
 		$cssestilos = $global_hpDB->query($_sql);
 		if (!$cssestilos)
 		{
-			die('não consegui ler a tabela de tipos de grupos!');
+			die('nÃ£o consegui ler a tabela de tipos de grupos!');
 		}
 		else
 		{
@@ -100,7 +100,7 @@ class cssEstilos
 		$cssestilos = $global_hpDB->query($_sql);
 		if (!$cssestilos)
 		{
-			die('não consegui ler a tabela de tipos de grupos!');
+			die('nÃ£o consegui ler a tabela de tipos de grupos!');
 		}
 		else
 		{
@@ -125,7 +125,7 @@ abstract class elemento
 	var $descricaoElemento;
 	var $tipoElemento;
 
-	// finalmente resolvido o problema da conexão única com a utilização da variáveil $global_hpDB;
+	// finalmente resolvido o problema da conexÃ£o Ãºnica com a utilizaÃ§Ã£o da variÃ¡veil $global_hpDB;
 	function elemento()
 	{
 		global $global_hpDB;
@@ -190,14 +190,14 @@ class wLink extends elemento
 	var $targetLink;
 	var $urlElementoSVN;
 	
-	public function __construct($_idLink) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idLink) // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_LINK;
 		parent::elemento();
 
-		// se não passou um id para este link, é porque ele está sendo criado.
-		// se passou, ele já existe e vai ser lido.
+		// se nÃ£o passou um id para este link, Ã© porque ele estÃ¡ sendo criado.
+		// se passou, ele jÃ¡ existe e vai ser lido.
 		if (isset($_idLink) && $_idLink != NULL) {
 
 			$line = $this->hpDB->query("SELECT * from hp_elementos where idElemento = $_idLink");
@@ -323,7 +323,7 @@ class wLink extends elemento
 		}
 		else
 		{
-			die('erro em wLink::getArray(). Não inicializado!');
+			die('erro em wLink::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -375,7 +375,7 @@ class wForm extends elemento
 	var $tamanhoCampo;
 	var $descricaoForm;
 	
-	public function __construct($_idForm) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idForm) // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_FORM;
@@ -482,7 +482,7 @@ class wForm extends elemento
 		}
 		else
 		{
-			die('erro em wForm::getArray(). Não inicializado!');
+			die('erro em wForm::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -528,7 +528,7 @@ class wSeparador extends elemento
 	var $descricaoSeparador;
 	var $breakBefore;
 	
-	public function __construct($_idSeparador) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idSeparador) // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_SEPARADOR;
@@ -626,7 +626,7 @@ class wSeparador extends elemento
 		}
 		else
 		{
-			die('erro em wSeparador::getArray(). Não inicializado!');
+			die('erro em wSeparador::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -670,7 +670,7 @@ class wImagem extends elemento
 	var $descricaoImagem;
 	var $ImagemURL;
 	
-	public function __construct($_idImagem)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idImagem)  // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_IMAGEM;
@@ -771,7 +771,7 @@ class wImagem extends elemento
 		}
 		else
 		{
-			die('erro em wImagem::getArray(). Não inicializado!');
+			die('erro em wImagem::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -816,7 +816,7 @@ class wRssFeed extends elemento
 	var $rssURL;
 	var $rssItemNum;
 	
-	public function __construct($_idRssFeed)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idRssFeed)  // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_RSSFEED;
@@ -915,7 +915,7 @@ class wRssFeed extends elemento
 		}
 		else
 		{
-			die('erro em wRssFeed::getArray(). Não inicializado!');
+			die('erro em wRssFeed::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -959,7 +959,7 @@ class wTemplate extends elemento
 	var $descricaoTemplate;
 	var $nomeTemplate;
 	
-	public function __construct($_idTemplate)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
+	public function __construct($_idTemplate)  // < 0 -> sÃ³ cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lÃª
 	{
 
 		$this->tipoElemento = ELEMENTO_TEMPLATE;
@@ -1057,7 +1057,7 @@ class wTemplate extends elemento
 		}
 		else
 		{
-			die('erro em wTemplate::getArray(). Não inicializado!');
+			die('erro em wTemplate::getArray(). NÃ£o inicializado!');
 		}
 	}
 
@@ -1230,7 +1230,7 @@ class grupo extends elementoAgrupado
 		}
 		else
 		{
-			die('erro em grupo::getArray(). Não inicializado!');
+			die('erro em grupo::getArray(). NÃ£o inicializado!');
 		}	
 	}
 	
@@ -1254,7 +1254,7 @@ class grupo extends elementoAgrupado
 	{
 		if (!isset($this->idGrupo))
 		{
-			die('não posso ler o numero de elementos de um grupo se não souber o grupo!');
+			die('nÃ£o posso ler o numero de elementos de um grupo se nÃ£o souber o grupo!');
 		}
 
 		$_count = $this->hpDB->query("select COUNT(*) as numElementos from hp_elementos where idGrupo = $this->idGrupo");
@@ -1270,7 +1270,7 @@ class grupo extends elementoAgrupado
 		
 	function lerElementos()
 	{
-		// lê tudo: links, forms e separadores
+		// lÃª tudo: links, forms e separadores
 		// $_elementos = $this->hpDB->query("call obtemElementosdoGrupo($this->idGrupo)");
 		$_elementos = $this->hpDB->query("select * from hp_elementos where idGrupo = $this->idGrupo order by posGrupo");
 
@@ -1315,7 +1315,7 @@ class grupo extends elementoAgrupado
 
 	public function elementoNaPosicao($_posElemento)
 	{
-		// lê tudo: links, forms e separadores
+		// lÃª tudo: links, forms e separadores
 		$_sql = "select *
 				   from hp_elementos 
 				  where idGrupo = $this->idGrupo and posGrupo = $_posElemento";
@@ -1323,7 +1323,7 @@ class grupo extends elementoAgrupado
 
 		if (!$_elemento or count($_elemento) == 0) 
 		{
-			die ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo na posição $_posElemento");
+			die ("NÃ£o hÃ¡ qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo na posiÃ§Ã£o $_posElemento");
 		}
 
 		
@@ -1362,7 +1362,7 @@ class grupo extends elementoAgrupado
 
 	function elementoDeCodigo($_idElemento)
 	{
-		// lê tudo: links, forms e separadores
+		// lÃª tudo: links, forms e separadores
 		$_sql = "select *
 				   from hp_elementos 
 				  where idGrupo = $this->idGrupo and idElemento = $_idElemento";
@@ -1370,7 +1370,7 @@ class grupo extends elementoAgrupado
 
 		if (!$_elemento or count($_elemento) == 0) 
 		{
-			die ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
 		}
 
 		
@@ -1412,16 +1412,16 @@ class grupo extends elementoAgrupado
 
 	function deslocarElementoParaCima($_idElemento)
 	{ 
-		// calcula a posição do elemento anterior.
+		// calcula a posiÃ§Ã£o do elemento anterior.
 		$_sql = "SELECT posGrupo FROM hp_elementos WHERE idGrupo = $this->idGrupo  AND idElemento = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
 		}
 		$_ProxPosGrupo = $_return[0]['posGrupo']-1;
 		if ($_ProxPosGrupo > 0) {
-			// desloca o elemento anterior para baixo (se ele não existir, não tem problema).
+			// desloca o elemento anterior para baixo (se ele nÃ£o existir, nÃ£o tem problema).
 		    $_sql = "UPDATE hp_elementos set posGrupo = posGrupo + 1 WHERE idGrupo = $this->idGrupo AND posGrupo = $_ProxPosGrupo";
 			$_return = $this->hpDB->query($_sql);
 		
@@ -1435,21 +1435,21 @@ class grupo extends elementoAgrupado
 	function deslocarElementoParaBaixo($_idElemento)
 	{ 
 
-		// calcula a posição do elemento anterior.
+		// calcula a posiÃ§Ã£o do elemento anterior.
 		$_sql = "SELECT posGrupo FROM hp_elementos WHERE idGrupo = $this->idGrupo AND idElemento = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
 		}
 		$_ProxPosGrupo = $_return[0]['posGrupo']+1;
 
-		// obtém o total de elementos deste grupo.
+		// obtÃ©m o total de elementos deste grupo.
 		$_sql = "SELECT Count(1) as numElementos from hp_elementos WHERE idGrupo = $this->idGrupo";
 		$_return = $this->hpDB->query($_sql);
 
 		if ($_return[0]['numElementos'] >= $_ProxPosGrupo) {
-			// desloca o elemento posterior para cima. (se ele não existir não tem problema)
+			// desloca o elemento posterior para cima. (se ele nÃ£o existir nÃ£o tem problema)
 			$_sql = "UPDATE hp_elementos set posGrupo = posGrupo - 1 WHERE idGrupo = $this->idGrupo AND posGrupo = $_ProxPosGrupo";
 			$_return = $this->hpDB->query($_sql);
 
@@ -1470,15 +1470,15 @@ class grupo extends elementoAgrupado
 	
 	static function getGrupos()
 	{
-		// como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
-		// desta forma, tenho que usar uma nova conexão para a base de dados, ainda que já haja uma aberta.
+		// como esta funÃ§Ã£o Ã© um mÃ©todo de classe, nÃ£o posso usar nenhuma variÃ¡vel de instÃ¢ncia, apenas locais e globais.
+		// desta forma, tenho que usar uma nova conexÃ£o para a base de dados, ainda que jÃ¡ haja uma aberta.
 		global $global_hpDB;
 
 		$_sql = "SELECT * FROM hp_grupos order by descricaoGrupo";
 		$_grupos = $global_hpDB->query($_sql);
 		if (!$_grupos) 
 		{
-			die('erro: não consegui ler nenhum grupo!');
+			die('erro: nÃ£o consegui ler nenhum grupo!');
 		}
 		else
 		{
@@ -1527,7 +1527,7 @@ class categoria extends elementoAgrupado
 
 		parent::elementoAgrupado();
 
-		// se não passou $_idCategoria, deve provavelmente estar criando uma categoria.
+		// se nÃ£o passou $_idCategoria, deve provavelmente estar criando uma categoria.
 		if ($_idCategoria == NULL) 
 		{
 			return true;
@@ -1640,7 +1640,7 @@ class categoria extends elementoAgrupado
 		}
 		else
 		{
-			die('erro em categoria::getArray(). Não inicializado!');
+			die('erro em categoria::getArray(). NÃ£o inicializado!');
 		}
 	}
 	
@@ -1664,7 +1664,7 @@ class categoria extends elementoAgrupado
 	{
 
 		// verifica se foi pedido algum grupo restrito
-		// na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
+		// na stored proc chamada, eu faÃ§o um REGEXP com os grupos passados. aqui eu monto a expressÃ£o regular...
 		if (isset($_REQUEST['gr'])) 
 		{
 			if (strpos($_REQUEST['gr'], 'all') !== false) 
@@ -1677,12 +1677,12 @@ class categoria extends elementoAgrupado
 				$_grParm = str_replace(array(",", ".", ";", "+", "-"), "|", $_REQUEST['gr']);
 				while (strpos($_grParm, "||") !== FALSE) $_grParm = str_replace("||", "|", $_grParm);
 			}
-			else // não, coloca o default
+			else // nÃ£o, coloca o default
 			{
 				$_grParm = "_";
 			}
 		}
-		else // não pediu nenhum grupo restrito
+		else // nÃ£o pediu nenhum grupo restrito
 		{
 			$_grParm = "_";
 		}
@@ -1713,9 +1713,9 @@ class categoria extends elementoAgrupado
 	function elementoDeCodigo($_idElemento) { }
 	
 	// se $_idPagina foi informado quando categoria:: foi instanciada, 
-	// 		lê todos os grupos que não pertencem a esta página
-	// senão, 
-	//		lê todos os grupos que não pertencem a esta categoria
+	// 		lÃª todos os grupos que nÃ£o pertencem a esta pÃ¡gina
+	// senÃ£o, 
+	//		lÃª todos os grupos que nÃ£o pertencem a esta categoria
 	function lerNaoElementos() 
 	{ 
 		$_sql = "SELECT DISTINCT g.*, 0 as idCategoria, 0 as idTipoGrupo, '' as descricaoTipoGrupo, 0 as posCategoria
@@ -1736,16 +1736,16 @@ class categoria extends elementoAgrupado
 
 	function deslocarElementoParaCima($_idElemento) 
 	{ 
-		// calcula a posição do grupo anterior.
+		// calcula a posiÃ§Ã£o do grupo anterior.
 		$_sql = "SELECT posCategoria FROM hp_gruposxcategorias  WHERE idCategoria = $this->idCategoria AND idGrupo = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer grupo na categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer grupo na categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
 		}
 		$_ProxPosCategoria = $_return[0]['posCategoria']-1;
 		if ($_ProxPosCategoria > 0) {
-			// desloca o grupo anterior para baixo (se ele não existir, não tem problema).
+			// desloca o grupo anterior para baixo (se ele nÃ£o existir, nÃ£o tem problema).
 		    $_sql = "UPDATE hp_gruposxcategorias set posCategoria = posCategoria + 1 WHERE idCategoria = $this->idCategoria AND posCategoria = $_ProxPosCategoria";
 			$_return = $this->hpDB->query($_sql);
 		
@@ -1758,21 +1758,21 @@ class categoria extends elementoAgrupado
 
 	public function deslocarElementoParaBaixo($_idElemento)
 	{
-		// calcula a posição do elemento posterior.
+		// calcula a posiÃ§Ã£o do elemento posterior.
 		$_sql = "SELECT posCategoria FROM hp_gruposxcategorias WHERE idCategoria = $this->idCategoria AND idGrupo = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer grupo da Categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer grupo da Categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
 		}
 		$_ProxPosCategoria = $_return[0]['posCategoria']+1;
 
-		// obtém o total de elementos deste grupo.
+		// obtÃ©m o total de elementos deste grupo.
 		$_sql = "SELECT Count(1) as numGrupos from hp_gruposxcategorias WHERE idCategoria = $this->idCategoria";
 		$_return = $this->hpDB->query($_sql);
 
 		if ($_return[0]['numGrupos'] >= $_ProxPosCategoria) {
-			// desloca o elemento posterior para cima. (se ele não existir não tem problema)
+			// desloca o elemento posterior para cima. (se ele nÃ£o existir nÃ£o tem problema)
 		    $_sql = "UPDATE hp_gruposxcategorias set posCategoria = posCategoria - 1 WHERE idCategoria = $this->idCategoria AND posCategoria = $_ProxPosCategoria";
 			$_return = $this->hpDB->query($_sql);
 
@@ -1816,15 +1816,15 @@ class categoria extends elementoAgrupado
 
 	static function getCategorias()
 	{
-		// como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
-		// desta forma, tenho que usar uma nova conexão para a base de dados, ainda que já haja uma aberta.
+		// como esta funÃ§Ã£o Ã© um mÃ©todo de classe, nÃ£o posso usar nenhuma variÃ¡vel de instÃ¢ncia, apenas locais e globais.
+		// desta forma, tenho que usar uma nova conexÃ£o para a base de dados, ainda que jÃ¡ haja uma aberta.
 		global $global_hpDB;
 
 		$_sql = "SELECT * FROM hp_categorias";
 		$_categorias = $global_hpDB->query($_sql);
 		if (!$_categorias) 
 		{
-			die('erro: não consegui ler nenhuma categoria!');
+			die('erro: nÃ£o consegui ler nenhuma categoria!');
 		}
 		else
 		{
@@ -1873,7 +1873,7 @@ class subPagina extends elementoAgrupado
 
 		parent::elementoAgrupado();
 
-		// se não passou $_idCategoria, deve provavelmente estar criando uma categoria.
+		// se nÃ£o passou $_idCategoria, deve provavelmente estar criando uma categoria.
 		if ($_idCategoria == NULL) 
 		{
 			return true;
@@ -1986,7 +1986,7 @@ class subPagina extends elementoAgrupado
 		}
 		else
 		{
-			die('erro em categoria::getArray(). Não inicializado!');
+			die('erro em categoria::getArray(). NÃ£o inicializado!');
 		}
 	}
 	
@@ -2010,7 +2010,7 @@ class subPagina extends elementoAgrupado
 	{
 
 		// verifica se foi pedido algum grupo restrito
-		// na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
+		// na stored proc chamada, eu faÃ§o um REGEXP com os grupos passados. aqui eu monto a expressÃ£o regular...
 		if (isset($_REQUEST['gr'])) 
 		{
 			if (strpos($_REQUEST['gr'], 'all') !== false) 
@@ -2023,12 +2023,12 @@ class subPagina extends elementoAgrupado
 				$_grParm = str_replace(array(",", ".", ";", "+", "-"), "|", $_REQUEST['gr']);
 				while (strpos($_grParm, "||") !== FALSE) $_grParm = str_replace("||", "|", $_grParm);
 			}
-			else // não, coloca o default
+			else // nÃ£o, coloca o default
 			{
 				$_grParm = "_";
 			}
 		}
-		else // não pediu nenhum grupo restrito
+		else // nÃ£o pediu nenhum grupo restrito
 		{
 			$_grParm = "_";
 		}
@@ -2059,9 +2059,9 @@ class subPagina extends elementoAgrupado
 	function elementoDeCodigo($_idElemento) { }
 	
 	// se $_idPagina foi informado quando categoria:: foi instanciada, 
-	// 		lê todos os grupos que não pertencem a esta página
-	// senão, 
-	//		lê todos os grupos que não pertencem a esta categoria
+	// 		lÃª todos os grupos que nÃ£o pertencem a esta pÃ¡gina
+	// senÃ£o, 
+	//		lÃª todos os grupos que nÃ£o pertencem a esta categoria
 	function lerNaoElementos() 
 	{ 
 		$_sql = "SELECT DISTINCT g.*, 0 as idCategoria, 0 as idTipoGrupo, '' as descricaoTipoGrupo, 0 as posCategoria
@@ -2082,16 +2082,16 @@ class subPagina extends elementoAgrupado
 
 	function deslocarElementoParaCima($_idElemento) 
 	{ 
-		// calcula a posição do grupo anterior.
+		// calcula a posiÃ§Ã£o do grupo anterior.
 		$_sql = "SELECT posCategoria FROM hp_gruposxcategorias  WHERE idCategoria = $this->idCategoria AND idGrupo = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer grupo na categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer grupo na categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
 		}
 		$_ProxPosCategoria = $_return[0]['posCategoria']-1;
 		if ($_ProxPosCategoria > 0) {
-			// desloca o grupo anterior para baixo (se ele não existir, não tem problema).
+			// desloca o grupo anterior para baixo (se ele nÃ£o existir, nÃ£o tem problema).
 		    $_sql = "UPDATE hp_gruposxcategorias set posCategoria = posCategoria + 1 WHERE idCategoria = $this->idCategoria AND posCategoria = $_ProxPosCategoria";
 			$_return = $this->hpDB->query($_sql);
 		
@@ -2104,21 +2104,21 @@ class subPagina extends elementoAgrupado
 
 	public function deslocarElementoParaBaixo($_idElemento)
 	{
-		// calcula a posição do elemento posterior.
+		// calcula a posiÃ§Ã£o do elemento posterior.
 		$_sql = "SELECT posCategoria FROM hp_gruposxcategorias WHERE idCategoria = $this->idCategoria AND idGrupo = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer grupo da Categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer grupo da Categoria : $this->idCategoria :  $this->descricaoCategoria com chave $_idElemento");
 		}
 		$_ProxPosCategoria = $_return[0]['posCategoria']+1;
 
-		// obtém o total de elementos deste grupo.
+		// obtÃ©m o total de elementos deste grupo.
 		$_sql = "SELECT Count(1) as numGrupos from hp_gruposxcategorias WHERE idCategoria = $this->idCategoria";
 		$_return = $this->hpDB->query($_sql);
 
 		if ($_return[0]['numGrupos'] >= $_ProxPosCategoria) {
-			// desloca o elemento posterior para cima. (se ele não existir não tem problema)
+			// desloca o elemento posterior para cima. (se ele nÃ£o existir nÃ£o tem problema)
 		    $_sql = "UPDATE hp_gruposxcategorias set posCategoria = posCategoria - 1 WHERE idCategoria = $this->idCategoria AND posCategoria = $_ProxPosCategoria";
 			$_return = $this->hpDB->query($_sql);
 
@@ -2162,15 +2162,15 @@ class subPagina extends elementoAgrupado
 
 	static function getCategorias()
 	{
-		// como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
-		// desta forma, tenho que usar uma nova conexão para a base de dados, ainda que já haja uma aberta.
+		// como esta funÃ§Ã£o Ã© um mÃ©todo de classe, nÃ£o posso usar nenhuma variÃ¡vel de instÃ¢ncia, apenas locais e globais.
+		// desta forma, tenho que usar uma nova conexÃ£o para a base de dados, ainda que jÃ¡ haja uma aberta.
 		global $global_hpDB;
 
 		$_sql = "SELECT * FROM hp_categorias";
 		$_categorias = $global_hpDB->query($_sql);
 		if (!$_categorias) 
 		{
-			die('erro: não consegui ler nenhuma categoria!');
+			die('erro: nÃ£o consegui ler nenhuma categoria!');
 		}
 		else
 		{
@@ -2258,7 +2258,7 @@ class pagina extends elementoAgrupado
 		$result = $this->hpDB->query($_sql);
 		if (!$result)
 		{
-			die ("erro ao gravar a página: " . $this->idPagina . ": " . $this->tituloPagina);
+			die ("erro ao gravar a pÃ¡gina: " . $this->idPagina . ": " . $this->tituloPagina);
 		}
 		else
 		{
@@ -2284,7 +2284,7 @@ class pagina extends elementoAgrupado
 		$result = $this->hpDB->query($_sql);
 		if (!$result)
 		{
-			die ("erro ao gravar a página: " . $this->idPagina . ": " . $this->tituloPagina);
+			die ("erro ao gravar a pÃ¡gina: " . $this->idPagina . ": " . $this->tituloPagina);
 		}
 		else
 		{
@@ -2335,7 +2335,7 @@ class pagina extends elementoAgrupado
 		}
 		else
 		{
-			die('erro em pagina::getArray(). Não inicializado!');
+			die('erro em pagina::getArray(). NÃ£o inicializado!');
 		}
 	}
 	
@@ -2343,11 +2343,11 @@ class pagina extends elementoAgrupado
     {
         if ( !isset( $this->idPagina ) )
         {
-            die ( 'Não é possível ler esta página. ' );
+            die ( 'NÃ£o Ã© possÃ­vel ler esta pÃ¡gina. ' );
         }
 
 		// verifica se foi pedido algum grupo restrito
-		// na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
+		// na stored proc chamada, eu faÃ§o um REGEXP com os grupos passados. aqui eu monto a expressÃ£o regular...
 		if (isset($_REQUEST['gr'])) 
 		{
 			if (strpos($_REQUEST['gr'], 'all') !== false) 
@@ -2361,12 +2361,12 @@ class pagina extends elementoAgrupado
 				// limpa separadores repetidos no meio da string.
 				while (strpos($_grParm, "||") !== FALSE) $_grParm = str_replace("||", "|", $_grParm);
 			}
-			else // não, coloca o default
+			else // nÃ£o, coloca o default
 			{
 				$_grParm = "_";
 			}
 		}
-		else // não pediu nenhum grupo restrito
+		else // nÃ£o pediu nenhum grupo restrito
 		{
 			$_grParm = "_";
 		}
@@ -2441,7 +2441,7 @@ class pagina extends elementoAgrupado
 	{
 
 		// verifica se foi pedido algum grupo restrito
-		// na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
+		// na stored proc chamada, eu faÃ§o um REGEXP com os grupos passados. aqui eu monto a expressÃ£o regular...
 		if (isset($_REQUEST['gr'])) 
 		{
 			if (strpos($_REQUEST['gr'], 'all') !== false) 
@@ -2455,12 +2455,12 @@ class pagina extends elementoAgrupado
 				// limpa separadores repetidos no meio da string.
 				while (strpos($_grParm, "||") !== FALSE) $_grParm = str_replace("||", "|", $_grParm);
 			}
-			else // não, coloca o default
+			else // nÃ£o, coloca o default
 			{
 				$_grParm = "_";
 			}
 		}
-		else // não pediu nenhum grupo restrito
+		else // nÃ£o pediu nenhum grupo restrito
 		{
 			$_grParm = "_";
 		}
@@ -2509,17 +2509,17 @@ class pagina extends elementoAgrupado
 
 	function deslocarElementoParaCima($_idElemento)
 	{
-		// calcula a posição do elemento anterior.
+		// calcula a posiÃ§Ã£o do elemento anterior.
 		$_sql = "SELECT posPagina FROM hp_categoriasxpaginas WHERE idPagina = $this->idPagina AND idCategoria = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer categoria da página : $this->idPagina :  $this->tituloPagina com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer categoria da pÃ¡gina : $this->idPagina :  $this->tituloPagina com chave $_idElemento");
 		}
 		$_ProxPosPagina = $_return[0]['posPagina']-1;
 
 		if ($_ProxPosPagina > 0) {
-			// desloca o elemento anterior para baixo. (se ele não existir não tem problema)
+			// desloca o elemento anterior para baixo. (se ele nÃ£o existir nÃ£o tem problema)
 		    $_sql = "UPDATE hp_categoriasxpaginas set posPagina = posPagina + 1 WHERE idPagina = $this->idPagina AND posPagina = $_ProxPosPagina";
 			$_return = $this->hpDB->query($_sql);
 
@@ -2533,21 +2533,21 @@ class pagina extends elementoAgrupado
 
 	public function deslocarElementoParaBaixo($_idElemento)
 	{
-		// calcula a posição do elemento posterior.
+		// calcula a posiÃ§Ã£o do elemento posterior.
 		$_sql = "SELECT posPagina FROM hp_categoriasxpaginas WHERE idPagina = $this->idPagina AND idCategoria = $_idElemento";
 		$_return = $this->hpDB->query($_sql);
 		if (!$_return or count($_return) == 0) 
 		{
-			die ("Não há qualquer categoria da página : $this->idPagina :  $this->tituloPagina com chave $_idElemento");
+			die ("NÃ£o hÃ¡ qualquer categoria da pÃ¡gina : $this->idPagina :  $this->tituloPagina com chave $_idElemento");
 		}
 		$_ProxPosPagina = $_return[0]['posPagina']+1;
 
-		// obtém o total de elementos deste grupo.
+		// obtÃ©m o total de elementos deste grupo.
 		$_sql = "SELECT Count(1) as numCategorias from hp_categoriasxpaginas WHERE idPagina = $this->idPagina";
 		$_return = $this->hpDB->query($_sql);
 
 		if ($_return[0]['numCategorias'] >= $_ProxPosPagina) {
-			// desloca o elemento posterior para cima. (se ele não existir não tem problema)
+			// desloca o elemento posterior para cima. (se ele nÃ£o existir nÃ£o tem problema)
 		    $_sql = "UPDATE hp_categoriasxpaginas set posPagina = posPagina - 1 WHERE idPagina = $this->idPagina AND posPagina = $_ProxPosPagina";
 			$_return = $this->hpDB->query($_sql);
 
@@ -2574,7 +2574,7 @@ class pagina extends elementoAgrupado
 		$result = $this->hpDB->query($_sql);
 		if (!$result) 
 		{
-			die('erro ao inserir elemento na página: ' . $this->idPagina . ' : ' . $_idElemento);
+			die('erro ao inserir elemento na pÃ¡gina: ' . $this->idPagina . ' : ' . $_idElemento);
 		}
 		else
 		{
@@ -2591,15 +2591,15 @@ class pagina extends elementoAgrupado
 
 	static function getPaginas()
 	{
-		// como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
-		// desta forma, tenho que usar uma nova conexão para a base de dados, ainda que já haja uma aberta.
+		// como esta funÃ§Ã£o Ã© um mÃ©todo de classe, nÃ£o posso usar nenhuma variÃ¡vel de instÃ¢ncia, apenas locais e globais.
+		// desta forma, tenho que usar uma nova conexÃ£o para a base de dados, ainda que jÃ¡ haja uma aberta.
 		global $global_hpDB;
 
 		$_sql = "SELECT idPagina FROM hp_paginas";
 		$_paginas = $global_hpDB->query($_sql);
 		if (!$_paginas) 
 		{
-			die('erro: não consegui ler nenhuma página!');
+			die('erro: nÃ£o consegui ler nenhuma pÃ¡gina!');
 		}
 		else
 		{

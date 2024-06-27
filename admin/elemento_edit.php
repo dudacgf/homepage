@@ -1,24 +1,24 @@
 <?php
 
 //
-// DefiniÁıes necess·rias para todos os programas, principalmente paths e localizaÁıes de arquivos/classes.  
+// Defini√ß√µes necess√°rias para todos os programas, principalmente paths e localiza√ß√µes de arquivos/classes.  
 // Carregar apenas uma vez.
 include_once('../common.php');
 
-// se n„o foi passado nenhum grupo, morre.
+// se n√£o foi passado nenhum grupo, morre.
 if (isset($requests['idGrp']))
 {
 	$_idGrupo = $requests['idGrp'];
 }
 else
 {
-	die("n„o posso prosseguir sem um grupo selecionado!");
+	die("n√£o posso prosseguir sem um grupo selecionado!");
 }
-	// lÍ o grupo deste elemento
+	// l√™ o grupo deste elemento
 	$grupo = new grupo($_idGrupo);
 	$homepage->assign('grupo', $grupo->getArray());
 
-	// se tenho o id do elemento a editar/excluir/salvar, lÍ e passa para o template
+	// se tenho o id do elemento a editar/excluir/salvar, l√™ e passa para o template
 	if (isset($requests['idElm']) && $requests['idElm'] != '0')
 	{
 		$_idElm = $requests['idElm'];
@@ -26,7 +26,7 @@ else
 		$homepage->assign('elemento', $elemento->getArray());
 	}
 
-	// se n„o passou nenhum mode, entra em modo de seleÁ„o de elementos
+	// se n√£o passou nenhum mode, entra em modo de sele√ß√£o de elementos
 	if (!isset($requests['mode']))
 	{
 		$requests['mode'] = 'slElm';
@@ -77,23 +77,23 @@ else
 	switch ($requests['mode'])
 	{
 
-		// confirmar exclus„o do elemento - volta mais tarde no modo ExElm
+		// confirmar exclus√£o do elemento - volta mais tarde no modo ExElm
 		case 'cfExElm': 
 			$template = 'admin/delete_confirm.tpl';
 		break;
 
-		// form de exclus„o j· foi exibido. verifica resposta do usu·rio
+		// form de exclus√£o j√° foi exibido. verifica resposta do usu√°rio
 		case 'exElm':
 			switch ($requests['go'])
 			{
 				case $lang['sim']:
 					if ($elemento->excluir())
 					{
-						$homepage->assign('msgAlerta', "Elemento [$elemento->descricaoElemento] excluÌdo com sucesso!");
+						$homepage->assign('msgAlerta', "Elemento [$elemento->descricaoElemento] exclu√≠do com sucesso!");
 					}
 					else
 					{
-						$homepage->assign('msgAlerta', "N„o foi possÌvel excluir o elemento [$elemento->descricaoElemento]!");
+						$homepage->assign('msgAlerta', "N√£o foi poss√≠vel excluir o elemento [$elemento->descricaoElemento]!");
 					}
 				break;
 
@@ -105,12 +105,12 @@ else
 
 		/*------------------------------------------------------------------------+
 		|                                                                         |
-		|  GerÍncia de elementos do tipo 'Link'.								  |
-		|  funÁıes implementadas: 												  |
-		| 	nwLnk - Apresenta um formul·rio para inclus„o de um novo link		  |
-		|   crLnk - Salva um link na base de dados, finalizando sua inclus„o	  |
-		|   edLnk - Apresenta um formul·rio para ediÁ„o de um link j· existente	  |
-		|   svLnk - Atualizar um link na base de dados apÛs a ediÁ„o			  |
+		|  Ger√™ncia de elementos do tipo 'Link'.								  |
+		|  fun√ß√µes implementadas: 												  |
+		| 	nwLnk - Apresenta um formul√°rio para inclus√£o de um novo link		  |
+		|   crLnk - Salva um link na base de dados, finalizando sua inclus√£o	  |
+		|   edLnk - Apresenta um formul√°rio para edi√ß√£o de um link j√° existente	  |
+		|   svLnk - Atualizar um link na base de dados ap√≥s a edi√ß√£o			  |
 		|                                                                         |
 		|------------------------------------------------------------------------*/
 		// novo Link
@@ -143,7 +143,7 @@ else
 			$_idElm = $link->inserir();
 			if (!$_idElm)
 			{
-				$homepage->assign('msgAlerta', "N„o foi possÌvel criar o link [$link->descricaoLink]!");
+				$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar o link [$link->descricaoLink]!");
 			}
 			else
 			{
@@ -152,7 +152,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o do Link
+	// edi√ß√£o do Link
 	case 'edLnk':
 		$link = new wLink($_idElm);	
 		$homepage->assign('elemento', $link->getArray());
@@ -172,7 +172,7 @@ else
 		$link->targetLink = $requests['targetLink'];
 		if (!$link->atualizar())
 		{
-			$homepage->assign('msgAlerta', $global_hpDB->real_escape_string("N„o foi possÌvel atualizar o link [$link->descricaoLink]!") );
+			$homepage->assign('msgAlerta', $global_hpDB->real_escape_string("N√£o foi poss√≠vel atualizar o link [$link->descricaoLink]!") );
 		}
 		else
 		{
@@ -183,12 +183,12 @@ else
 	
 	/*------------------------------------------------------------------------+
 	|                                                                         |
-	|  GerÍncia de elementos do tipo 'Form'.								  |
-	|  funÁıes implementadas: 												  |
-	| 	nwFrm - Apresenta um formul·rio para inclus„o de um novo form		  |
-	|   crFrm - Salva um form na base de dados, finalizando sua inclus„o	  |
-	|   edFrm - Apresenta um formul·rio para ediÁ„o de um form j· existente	  |
-	|   svFrm - Atualizar um form na base de dados apÛs a ediÁ„o			  |
+	|  Ger√™ncia de elementos do tipo 'Form'.								  |
+	|  fun√ß√µes implementadas: 												  |
+	| 	nwFrm - Apresenta um formul√°rio para inclus√£o de um novo form		  |
+	|   crFrm - Salva um form na base de dados, finalizando sua inclus√£o	  |
+	|   edFrm - Apresenta um formul√°rio para edi√ß√£o de um form j√° existente	  |
+	|   svFrm - Atualizar um form na base de dados ap√≥s a edi√ß√£o			  |
 	|                                                                         |
 	|------------------------------------------------------------------------*/
 	// novo Form
@@ -217,7 +217,7 @@ else
 		$_idElm = $form->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar o form [$form->descricaoForm]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar o form [$form->descricaoForm]!");
 		}
 		else
 		{
@@ -226,7 +226,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o do Form
+	// edi√ß√£o do Form
 	case 'edFrm':
 		$form = new wForm($_idElm);	
 		$homepage->assign('elemento', $form->getArray());
@@ -244,7 +244,7 @@ else
 		$form->descricaoForm = $requests['descricaoForm'];
 		if (!$form->atualizar())
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar o form [$form->descricaoForm!]");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar o form [$form->descricaoForm!]");
 		}
 		else
 		{
@@ -255,12 +255,12 @@ else
 	
 	/*------------------------------------------------------------------------------+
 	|		                                                                        |
-	|  GerÍncia de elementos do tipo 'Separador'.							  		|
-	|  funÁıes implementadas: 												  		|
-	| 	nwSrp - Apresenta um formul·rio para inclus„o de um novo Separador	  		|
-	|   crSrp - Salva um separadorna base de dados, finalizando sua inclus„o  		|
-	|   edSrp - Apresenta um formul·rio para ediÁ„o de um separador j· existente	|
-	|   svSrp - Atualizar um separador na base de dados apÛs a ediÁ„o			  	|
+	|  Ger√™ncia de elementos do tipo 'Separador'.							  		|
+	|  fun√ß√µes implementadas: 												  		|
+	| 	nwSrp - Apresenta um formul√°rio para inclus√£o de um novo Separador	  		|
+	|   crSrp - Salva um separadorna base de dados, finalizando sua inclus√£o  		|
+	|   edSrp - Apresenta um formul√°rio para edi√ß√£o de um separador j√° existente	|
+	|   svSrp - Atualizar um separador na base de dados ap√≥s a edi√ß√£o			  	|
 	|                                                                         		|
 	+------------------------------------------------------------------------------*/
 	// novo Separador
@@ -283,7 +283,7 @@ else
 		$_idElm = $separador->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar o separador [$separador->descricaoSeparador]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar o separador [$separador->descricaoSeparador]!");
 		}
 		else
 		{
@@ -292,7 +292,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o do Separador
+	// edi√ß√£o do Separador
 	case 'edSrp':
 		$separador = new wSeparador($_idElm);	
 		$homepage->assign('elemento', $separador->getArray());
@@ -307,7 +307,7 @@ else
 		$separador->breakBefore = ( isset($requests['breakBefore']) ) ? 1 : 0 ;
 		if (!$separador->atualizar())
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar o separador [$separador->descricaoSeparador]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar o separador [$separador->descricaoSeparador]!");
 		}
 		else
 		{
@@ -318,12 +318,12 @@ else
 
 	/*------------------------------------------------------------------------------+
 	|		                                                                        |
-	|  GerÍncia de elementos do tipo 'Imagem'.							  			|
-	|  funÁıes implementadas: 												  		|
-	| 	nwImg - Apresenta um formul·rio para inclus„o de uma nova Imagem			|
-	|   crImg - Salva uma imagem na base de dados, finalizando sua inclus„o  		|
-	|   edImg - Apresenta um formul·rio para ediÁ„o de uma imagem j· existente		|
-	|   svImg - Atualizar uma imagem na base de dados apÛs a ediÁ„o			  		|
+	|  Ger√™ncia de elementos do tipo 'Imagem'.							  			|
+	|  fun√ß√µes implementadas: 												  		|
+	| 	nwImg - Apresenta um formul√°rio para inclus√£o de uma nova Imagem			|
+	|   crImg - Salva uma imagem na base de dados, finalizando sua inclus√£o  		|
+	|   edImg - Apresenta um formul√°rio para edi√ß√£o de uma imagem j√° existente		|
+	|   svImg - Atualizar uma imagem na base de dados ap√≥s a edi√ß√£o			  		|
 	|                                                                         		|
 	+------------------------------------------------------------------------------*/
 	// novo Imagem
@@ -348,7 +348,7 @@ else
 		$_idElm = $imagem->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar a imagem [$imagem->descricaoImagem]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar a imagem [$imagem->descricaoImagem]!");
 		}
 		else
 		{
@@ -357,7 +357,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o da Imagem
+	// edi√ß√£o da Imagem
 	case 'edImg':
 		$imagem = new wImagem($_idElm);	
 		$homepage->assign('elemento', $imagem->getArray());
@@ -373,7 +373,7 @@ else
 		$imagem->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
 		if (!$imagem->atualizar())
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar a imagem [$imagem->descricaoImagem]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar a imagem [$imagem->descricaoImagem]!");
 		}
 		else
 		{
@@ -384,12 +384,12 @@ else
 
 	/*------------------------------------------------------------------------------+
 	|		                                                                        |
-	|  GerÍncia de elementos do tipo 'RssFeed'.							  			|
-	|  funÁıes implementadas: 												  		|
-	| 	nwRss - Apresenta um formul·rio para inclus„o de um novo RssFeed			|
-	|   crRss - Salva um rssfeed na base de dados, finalizando sua inclus„o  		|
-	|   edRss - Apresenta um formul·rio para ediÁ„o de um rssfeed j· existente		|
-	|   svRss - Atualizar um rssfeed na base de dados apÛs a ediÁ„o			  		|
+	|  Ger√™ncia de elementos do tipo 'RssFeed'.							  			|
+	|  fun√ß√µes implementadas: 												  		|
+	| 	nwRss - Apresenta um formul√°rio para inclus√£o de um novo RssFeed			|
+	|   crRss - Salva um rssfeed na base de dados, finalizando sua inclus√£o  		|
+	|   edRss - Apresenta um formul√°rio para edi√ß√£o de um rssfeed j√° existente		|
+	|   svRss - Atualizar um rssfeed na base de dados ap√≥s a edi√ß√£o			  		|
 	|                                                                         		|
 	+------------------------------------------------------------------------------*/
 	// novo RssFeed
@@ -412,7 +412,7 @@ else
 		$_idElm = $rssfeed->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar o rssfeed [$rssfeed->rssURL]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar o rssfeed [$rssfeed->rssURL]!");
 		}
 		else
 		{
@@ -421,7 +421,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o do RssFeed
+	// edi√ß√£o do RssFeed
 	case 'edRss':
 		$rssfeed = new wRssFeed($_idElm);	
 		$homepage->assign('elemento', $rssfeed->getArray());
@@ -436,7 +436,7 @@ else
 		$rssfeed->rssItemNum = $requests['rssItemNum'];
 		if (!$rssfeed->atualizar())
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar o rssfeed [$rssfeed->rssURL]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar o rssfeed [$rssfeed->rssURL]!");
 		}
 		else
 		{
@@ -447,12 +447,12 @@ else
 
 	/*------------------------------------------------------------------------------+
 	|		                                                                        |
-	|  GerÍncia de elementos do tipo 'Template'.							  		|
-	|  funÁıes implementadas: 												  		|
-	| 	nwTpt - Apresenta um formul·rio para inclus„o de um novo Template			|
-	|   crTpt - Salva um Template na base de dados, finalizando sua inclus„o  		|
-	|   edTpt - Apresenta um formul·rio para ediÁ„o de um Template j· existente		|
-	|   svTpt - Atualizar um Template na base de dados apÛs a ediÁ„o			  	|
+	|  Ger√™ncia de elementos do tipo 'Template'.							  		|
+	|  fun√ß√µes implementadas: 												  		|
+	| 	nwTpt - Apresenta um formul√°rio para inclus√£o de um novo Template			|
+	|   crTpt - Salva um Template na base de dados, finalizando sua inclus√£o  		|
+	|   edTpt - Apresenta um formul√°rio para edi√ß√£o de um Template j√° existente		|
+	|   svTpt - Atualizar um Template na base de dados ap√≥s a edi√ß√£o			  	|
 	|                                                                         		|
 	+------------------------------------------------------------------------------*/
 	// novo Template
@@ -475,7 +475,7 @@ else
 		$_idElm = $Template->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar o Template [$Template->descricaoTemplate]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar o Template [$Template->descricaoTemplate]!");
 		}
 		else
 		{
@@ -484,7 +484,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// ediÁ„o do Template
+	// edi√ß√£o do Template
 	case 'edTpt':
 		$Template = new wTemplate($_idElm);	
 		$homepage->assign('elemento', $Template->getArray());
@@ -500,7 +500,7 @@ else
 		$Template->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
 		if (!$Template->atualizar())
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar o Template [$Template->descricaoTemplate]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar o Template [$Template->descricaoTemplate]!");
 		}
 		else
 		{
@@ -509,7 +509,7 @@ else
 		$template = 'admin/window_close.tpl';
 	break;
 
-	// cancela uma ediÁ„o
+	// cancela uma edi√ß√£o
 	default:
 		$template = 'admin/window_close.tpl';
 	break;
@@ -648,7 +648,7 @@ switch ($template)
 
 }
 
-// le os cookies e passa para a p·gina a ser carregada.
+// le os cookies e passa para a p√°gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray(5);
 if ($colorCookies) 

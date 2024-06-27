@@ -1,24 +1,24 @@
 <?php
 // add cookie 
-// - cria um cookie de cor para a página atual e retorna uma string apontando os elementos da página que 
-//   deverão ter sua cor imediatamente modificada.
+// - cria um cookie de cor para a pÃ¡gina atual e retorna uma string apontando os elementos da pÃ¡gina que 
+//   deverÃ£o ter sua cor imediatamente modificada.
 //
 
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
 require_once($include_path . 'class_database.php');
 require_once($include_path . 'class_estilos.php');
 
-// localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
+// localizaÃ§Ã£o do xml com detalhes da conexÃ£o e o nÃºmero da conexÃ£o a ser utilizada...
 $connection_info_xml_path = $config_path . 'connections.xml';
 
-// global que manterá a conexão à base de dados única para todos os objetos instanciados.
+// global que manterÃ¡ a conexÃ£o Ã  base de dados Ãºnica para todos os objetos instanciados.
 $global_hpDB = new database($connection_info_xml_path, 1);
 
-// obtém as chaves da página, do elementocolorido e do valorCor a partir da request url
+// obtÃ©m as chaves da pÃ¡gina, do elementocolorido e do valorCor a partir da request url
 if (!isset($_REQUEST['id']) || !isset($_REQUEST['el']) || !isset($_REQUEST['c'])) 
 {
 	echo 'NOK'; flush();

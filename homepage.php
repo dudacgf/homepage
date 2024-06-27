@@ -1,7 +1,7 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('common.php');
 
@@ -21,7 +21,7 @@ if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '')
 	}
 }
 
-// instancia a página informada a partir do id e coloca o título na página...
+// instancia a pÃ¡gina informada a partir do id e coloca o tÃ­tulo na pÃ¡gina...
 if (isset($requests['id'])) {
 	$_idPagina = $requests['id'];
 }
@@ -30,7 +30,7 @@ else
 	$_idPagina = 1;
 }
 
-// abro e inicializo minha página
+// abro e inicializo minha pÃ¡gina
 $pagina = new pagina($_idPagina);
 $homepage->assign('idPagina', $_idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
@@ -43,7 +43,7 @@ $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
 $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
 
 //
-// se esta página apresentar fortune, obtém uma...
+// se esta pÃ¡gina apresentar fortune, obtÃ©m uma...
 if ($pagina->displayFortune != 0) {
 	require($include_path . "class_fortune.php");
 	$f = new fortune;
@@ -55,13 +55,13 @@ if ($pagina->displayFortune != 0) {
 	$homepage->assign("fortuneCookie", $biscoitinho);
 }
 
-// exibe o form de seleção de cores se:
+// exibe o form de seleÃ§Ã£o de cores se:
 // - foi requisitado na url
-// - a página está configurada para exibí-lo
+// - a pÃ¡gina estÃ¡ configurada para exibÃ­-lo
 if ( (isset($requests['selectcolor']) && $requests['selectcolor'] == 'sim') || ($pagina->displaySelectColor == 1))
 {
 	$homepage->assign('displaySelectColor', 1);
-	// lê os elementos coloridos e os pares de cores
+	// lÃª os elementos coloridos e os pares de cores
 	$homepage->assign('elementosColoridos', elementoColorido::getArray());
 	$homepage->assign('paresCores', RGBColor::getArray());
 }
@@ -70,9 +70,9 @@ else
 	$homepage->assign('displaySelectColor', 0);
 }
 
-// exibe o form do dicionário se:
+// exibe o form do dicionÃ¡rio se:
 // - foi requisitado na url
-// - a página está configurada para exibí-lo (ainda não está implementado).
+// - a pÃ¡gina estÃ¡ configurada para exibÃ­-lo (ainda nÃ£o estÃ¡ implementado).
 if ( (isset($requests['dicionario']) && $requests['dicionario'] == 'sim') ) // || ($pagina->displayDicionario == 1))
 {
 	$homepage->assign('displayDicionario', 1);
@@ -82,7 +82,7 @@ else
 	$homepage->assign('displayDicionario', 0);
 }
 
-// le os cookies e passa para a página a ser carregada.
+// le os cookies e passa para a pÃ¡gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
@@ -93,7 +93,7 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-// Leio todos os elementos da página e percorro-os, quebrando por categoria e grupo e os vou incluindo no template
+// Leio todos os elementos da pÃ¡gina e percorro-os, quebrando por categoria e grupo e os vou incluindo no template
 $elementosLidos = $pagina->getBigArray();
 $categAnterior = 'xx';
 $grupoAnterior = 'xx';
@@ -102,7 +102,7 @@ foreach ($elementosLidos as $elemento) {
 
     // realiza a quebra por grupo. 
     // para cada grupo, tenho que guardar sua descricao para comparar novamente e seu tipo para o template.
-    // para o primeiro grupo da primeira categoria, como obviamente ainda não tenho elementos, faço uma quebra falsa.
+    // para o primeiro grupo da primeira categoria, como obviamente ainda nÃ£o tenho elementos, faÃ§o uma quebra falsa.
     if ( $elemento['descricaoGrupo'] != $grupoAnterior ) {
         if ( isset ( $elementos ) ) {
         //    localEcho( $elementos, "ELEMENTOS ($grupoAnterior)" );
@@ -115,7 +115,7 @@ foreach ($elementosLidos as $elemento) {
 
     // realiza a quebra por categoria.
     // para cada categoria, tenho que guardar sua descricao para comparar novamente e sua posicao na pagina.
-    // para a primeira categoria, como obviamente não tenho grupos, faço uma quebra falsa.
+    // para a primeira categoria, como obviamente nÃ£o tenho grupos, faÃ§o uma quebra falsa.
     if ( $elemento['descricaoCategoria'] != $categAnterior ) {
         if ( isset ( $grupos ) ) {
             $descricoesGrupos[] = array('index' => $posicaoAnterior, 'idGrupo' => $elemento['idGrupo'], 'grupos' => $grupos);
@@ -126,8 +126,8 @@ foreach ($elementosLidos as $elemento) {
         $descricoesCategorias[] = array('index' => $elemento['posPagina'], 'categoria' => $elemento['descricaoCategoria']);
     }
 
-    // incluo os elementos de um grupo num array que na quebra de grupos será adicionado a um array de grupos.
-    // este array de grupos será incluido num array co-irmão do array de categorias a cada quebra de categoria.
+    // incluo os elementos de um grupo num array que na quebra de grupos serÃ¡ adicionado a um array de grupos.
+    // este array de grupos serÃ¡ incluido num array co-irmÃ£o do array de categorias a cada quebra de categoria.
     $elementos[] = array( 
                    'idElemento' => $elemento['idElemento'],
                    'descricaoLink' => $elemento['descricaoElemento'],
@@ -154,7 +154,7 @@ foreach ($elementosLidos as $elemento) {
             );
 }
 
-// neste tipo de loop com quebra no início, fica sempre faltando adicionar os grupos da última categoria.
+// neste tipo de loop com quebra no inÃ­cio, fica sempre faltando adicionar os grupos da Ãºltima categoria.
 $grupos[] = array('grupo' => $grupoAnterior, 'idtipoGrupo' => $idTipoGrupoAnterior, 'elementos' => $elementos);
 $descricoesGrupos[] = array('index' => $posicaoAnterior, 'idGrupo' => $elemento['idGrupo'], 'grupos' => $grupos);
 

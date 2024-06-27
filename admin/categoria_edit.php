@@ -1,33 +1,33 @@
 <?php
 
 //
-// DefiniÁıes necess·rias para todos os programas, principalmente paths e localizaÁıes de arquivos/classes.  
+// Defini√ß√µes necess√°rias para todos os programas, principalmente paths e localiza√ß√µes de arquivos/classes.  
 // Carregar apenas uma vez.
 include_once('../common.php');
 
-// classes especÌficas da homepage
+// classes espec√≠ficas da homepage
 include_once($include_path . 'class_homepage.php');
 
-// este flag eu vou usar mais tarde (em categoria_edit_body.tpl para configurar a action do formul·rio).
+// este flag eu vou usar mais tarde (em categoria_edit_body.tpl para configurar a action do formul√°rio).
 $criarCategoria = false;
 
-// garante que v„o aparecer todos os grupos
+// garante que v√£o aparecer todos os grupos
 $_REQUEST['gr'] = 'all';
 
-// verifica se passou p·gina. se houver, vai apresent·-la no form
+// verifica se passou p√°gina. se houver, vai apresent√°-la no form
 if (isset($requests['id'])) 
 {
 	$_idPagina = $requests['id'];
 }
 
-// se n„o foi passada nenhuma categoria, entra em modo de seleÁ„o de categorias
+// se n√£o foi passada nenhuma categoria, entra em modo de sele√ß√£o de categorias
 if (isset($requests['idCat']))
 {
 	$_idCategoria = $requests['idCat'];
 }
 
 //
-// se n„o passou nenhum mode, entra em modo de seleÁ„o de categorias
+// se n√£o passou nenhum mode, entra em modo de sele√ß√£o de categorias
 if (!isset($requests['mode']))
 {
 	$requests['mode'] = 'slCat';
@@ -36,7 +36,7 @@ if (!isset($requests['mode']))
 switch ($requests['mode'])
 {
 
-	// ediÁ„o da categoria
+	// edi√ß√£o da categoria
 	case 'edCat': 
 		$template = 'admin/categoria_edit.tpl';
 	break;
@@ -59,7 +59,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir uma categoria da p·gina
+	// excluir uma categoria da p√°gina
 	case 'rmGrp':
 		$categoria = new categoria($_idCategoria);
 		$categoria->excluirElemento($requests['idGrp']);
@@ -68,7 +68,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// incluir nova categoria na p·gina
+	// incluir nova categoria na p√°gina
 	case 'inGrp':
 		$categoria = new categoria($_idCategoria);
 		$categoria->incluirElemento($requests['grupoSelector']);
@@ -77,7 +77,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 				
-	// Atualiza a categoria atualmente em ediÁ„o
+	// Atualiza a categoria atualmente em edi√ß√£o
 	case 'svCat':
 		$categoria = new categoria($_idCategoria);
 		$categoria->descricaoCategoria = (string) $requests['descricaoCategoria'];
@@ -89,21 +89,21 @@ switch ($requests['mode'])
 		} 
 		else
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel salvar a categoria [$categoria->descricaoCategoria]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel salvar a categoria [$categoria->descricaoCategoria]!");
 		}
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// apresenta um form vazio para a criaÁ„o de uma nova p·gina. O flag $criarCategoria vai mudar o comportamento do 
+	// apresenta um form vazio para a cria√ß√£o de uma nova p√°gina. O flag $criarCategoria vai mudar o comportamento do 
 	// template.
 	case 'nwCat':
 		$criarCategoria = true;
 		$template = 'admin/categoria_edit.tpl';
 	break;
 
-	// criar uma nova Categoria (chamado a partir do form de ediÁ„o com tag <form> alterada quando $criarCategoria = true) 
+	// criar uma nova Categoria (chamado a partir do form de edi√ß√£o com tag <form> alterada quando $criarCategoria = true) 
 	case 'crCat':
 		$homepage->assign('requests', $requests);
 		$categoria = new categoria(NULL);
@@ -114,7 +114,7 @@ switch ($requests['mode'])
 		if (!$_idCategoria) 
 		{
 			$homepage->assign('scriptMode', 'slCat');
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar a categoria [$categoria->descricaoCategoria]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar a categoria [$categoria->descricaoCategoria]!");
 		}
 		else
 		{	
@@ -125,12 +125,12 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir esta categoria da base - exibe o form de confirmaÁ„o para voltar mais tarde no modo ExCat
+	// excluir esta categoria da base - exibe o form de confirma√ß√£o para voltar mais tarde no modo ExCat
 	case 'cfExCat':
 		$template = 'admin/delete_confirm.tpl';
 	break;
 
-	// excluir uma categoria (j· foi exibido o form de confirmaÁ„o).
+	// excluir uma categoria (j√° foi exibido o form de confirma√ß√£o).
 	case 'exCat':
 		switch ($requests['go'])
 		{
@@ -138,13 +138,13 @@ switch ($requests['mode'])
 				$categoria = new categoria($_idCategoria);
 				if ($categoria->excluir())
 				{
-					$homepage->assign('msgAlerta', "Categoria [$categoria->descricaoCategoria] excluÌda com sucesso!");
+					$homepage->assign('msgAlerta', "Categoria [$categoria->descricaoCategoria] exclu√≠da com sucesso!");
 					$homepage->assign('script2reload', 'admin/categoria_edit.php');
 					$homepage->assign('scriptMode', 'slCat');
 				}
 				else
 				{
-					$homepage->assign('msgAlerta', "N„o foi possÌvel excluir a categoria [$categoria->descricaoCategoria]!");
+					$homepage->assign('msgAlerta', "N√£o foi poss√≠vel excluir a categoria [$categoria->descricaoCategoria]!");
 					$homepage->assign('script2reload', 'admin/categoria_edit.php');
 					$homepage->assign('scriptMode', 'edCat');
 				}
@@ -165,7 +165,7 @@ switch ($requests['mode'])
 	break;
 }
 
-// le os cookies e passa para a p·gina a ser carregada.
+// le os cookies e passa para a p√°gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray(5);
 if ($colorCookies) 
@@ -183,7 +183,7 @@ switch ($template)
 	case 'admin/categoria_edit.tpl':
 		if (!$criarCategoria) 
 		{
-			// lÍ a p·gina desta categoria.
+			// l√™ a p√°gina desta categoria.
 			if (isset($_idPagina)) {
 				$pagina = new pagina($_idPagina);
 				$homepage->assign('idPagina', $_idPagina);
@@ -196,7 +196,7 @@ switch ($template)
 				#$homepage->assign('$id_Pagina', 0);
 			}
 
-			// lÍ a categoria
+			// l√™ a categoria
 			$categoria = new categoria($_idCategoria);
 			$homepage->assign('idCategoria', $_idCategoria);
 			$homepage->assign('descricaoCategoria', $categoria->descricaoCategoria);
@@ -207,7 +207,7 @@ switch ($template)
 			$homepage->assign('tituloPaginaAlternativo', $categoria->descricaoCategoria . ' :: Edi&ccedil;&atilde;o');
 			$homepage->assign('tituloTabelaAlternativo', $categoria->descricaoCategoria . ' :: Edi&ccedil;&atilde;o');
 
-			// lÍ os grupos desta categoria
+			// l√™ os grupos desta categoria
 			$categoria->lerElementos();
 			$descricoesGrupos[] = '';
 			foreach ($categoria->elementos as $grupo)
@@ -221,7 +221,7 @@ switch ($template)
 		}
 		else
 		{
-		// inicializa os campos para criaÁ„o de uma nova p·gina
+		// inicializa os campos para cria√ß√£o de uma nova p√°gina
 			$homepage->assign('$id_Pagina', 0);
 			$homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Categoria');
 			$homepage->assign('tituloTabelaAlternativo', ' :: Nova Categoria :: ');

@@ -19,7 +19,7 @@ $grupos[] = array(
 	'idtipoGrupo' => 1,
 	'elementos' => $elementos);
 
-// cria o segundo grupo, clickable e o chama de clicável
+// cria o segundo grupo, clickable e o chama de clicÃ¡vel
 unset($elementos);
 $elementos[] = array( 
 	'tipoElemento' => 1,
@@ -35,7 +35,7 @@ $grupos[] = array(
 	'idtipoGrupo' => 2,
 	'elementos' => $elementos);
 
-// cria o terceiro grupo, expandable e o chama de expansível
+// cria o terceiro grupo, expandable e o chama de expansÃ­vel
 unset($elementos); 
 $elementos[] = array( 
 	'tipoElemento' => 1,
@@ -51,7 +51,7 @@ $grupos[] = array(
 	'idtipoGrupo' => 3,
 	'elementos' => $elementos);
 
-// cria o quarto grupo, flat. inclui nele o template de um botão.
+// cria o quarto grupo, flat. inclui nele o template de um botÃ£o.
 unset($elementos); 
 $elementos[] = array( 
 	'tipoElemento' => 6,
@@ -62,13 +62,13 @@ $grupos[] = array(
 	'idtipoGrupo' => 1,
 	'elementos' => $elementos);
 
-// cria o array com os grupos, que será passado para o template
+// cria o array com os grupos, que serÃ¡ passado para o template
 $descricoesGrupos[] = array( 
 	'index' => 0,
 	'idGrupo' => 0,
 	'grupos' => $grupos);
 
-// cria a categoria, que será passada para o template
+// cria a categoria, que serÃ¡ passada para o template
 $categoriaExemplo[] = array(
 	'index' => 0,
 	'categoria' => 'Exemplo');

@@ -38,8 +38,8 @@ function getSel()
 
 function GoLink(url)
 {
-	// # ManuelC: 2004-06-07: Verfica se o URL È para outro ponto na Internet ou se È para o prÛprio site.
-	//# N„o È a maneira mais elegante de o fazer, mas È a que envolve menos esforÁo de correcÁ„o...
+	// # ManuelC: 2004-06-07: Verfica se o URL √© para outro ponto na Internet ou se √© para o pr√≥prio site.
+	//# N√£o √© a maneira mais elegante de o fazer, mas √© a que envolve menos esfor√ßo de correc√ß√£o...
 	if (url.indexOf("http://www.") != 0) {
 		document.areas.action = url;
 		document.areas.__VIEWSTATE.name = 'NOTVIEWSTATE';
@@ -113,7 +113,7 @@ function GetSeachValue()
 	}
 
 
-	// funÁ„o para capturar o enter da p·gina e a submeter
+	// fun√ß√£o para capturar o enter da p√°gina e a submeter
 	function AccaoDoEnter(e, objValue)
 	{	
 		var key;
@@ -135,7 +135,7 @@ function GetSeachValue()
 		}
 		
 		/*
-		hugos: CÛdigo original
+		hugos: C√≥digo original
 		if(window.event || !e.which) // IE
 		{
 			key = e.keyCode; // for IE, same as window.event.keyCode
@@ -170,7 +170,7 @@ function GetSeachValue()
 		}
 	}	
 	
-	// funÁ„o para popular input escondida com a string a procurar, antes de submeter
+	// fun√ß√£o para popular input escondida com a string a procurar, antes de submeter
 	
 	function SearchKey()
 	{		
@@ -180,7 +180,7 @@ function GetSeachValue()
 	function ObtemDicionario()
 	{
 		
-	  // obtÈm nome da p·gina
+	  // obt√©m nome da p√°gina
 	  var sPathO = window.location.pathname;	
 //	  if(sPathO.indexOf('/PRIBERAM_2003_01')	!= -1)
 //	  {
@@ -203,7 +203,7 @@ function GetSeachValue()
 	  //alert(document.getElementById("__VIEWSTATE").name)// = 'NOTVIEWSTATE';
 	  document.areas.__VIEWSTATE.name = 'NOTVIEWSTATE';
 		
-		// obtem dicion·rio
+		// obtem dicion√°rio
 	  var sPage = ObtemDicionario();	  
 
 	  //alert("SELECCIONA ACCAO:" + accao);
@@ -624,10 +624,10 @@ function GetSeachValue()
 
 	function MostraSeccao(seccao, index)
 	{	
-		// obtem dicion·rio
+		// obtem dicion√°rio
 		var sPage = ObtemDicionario();	
 	
-	    // obtem dicion·rio
+	    // obtem dicion√°rio
 	    var sDicionario = ObtemDicionario();
 	  
 		sPage = '/' + sPage;
@@ -637,7 +637,7 @@ function GetSeachValue()
 		//alert("MOSTRA SECCAO:" + seccao + "," + index);
 		switch (index) {
 			case 0:				
-				// RaÌz da Ajuda				
+				// Ra√≠z da Ajuda				
 				switch(sDicionario)				
 				{
 					case 'dlpo':
@@ -673,7 +673,7 @@ function GetSeachValue()
 				}
 				break;				
 			case 3:
-				// VisualizaÁ„o
+				// Visualiza√ß√£o
 				switch(sDicionario)				
 				{
 					case 'dlpo':
@@ -733,7 +733,7 @@ function GetSeachValue()
 				}
 				break;				
 			case 8:
-				// ConjugaÁ„o de Verbos
+				// Conjuga√ß√£o de Verbos
 				switch(sDicionario)				
 				{
 					case 'dlpo':
@@ -745,7 +745,7 @@ function GetSeachValue()
 				}
 				break;				
 			case 9:
-				// PreferÍncias
+				// Prefer√™ncias
 				switch(sDicionario)				
 				{
 					case 'dlpo':
@@ -757,7 +757,7 @@ function GetSeachValue()
 				}
 				break;				
 			case 10:
-				// Gram·tica
+				// Gram√°tica
 				switch(sDicionario)				
 				{
 					case 'dlpo':
@@ -769,7 +769,7 @@ function GetSeachValue()
 				}
 				break;				
 			case 12:
-				// Teclados N„o Portugueses
+				// Teclados N√£o Portugueses
 				targetUrl = sPage + '/ajuda/ajuda_tecladosnport.aspx';
 				break;
 				/*
@@ -784,7 +784,7 @@ function GetSeachValue()
 				}
 				*/				
 			case 13:
-				// Procurar a partir da sua p·gina
+				// Procurar a partir da sua p√°gina
 				targetUrl = sPage + '/ajuda/ajuda_apartirdasuapag.aspx';
 				break;
 				/*
@@ -820,6 +820,6 @@ function GetSeachValue()
 		//alert(targetUrl);
 		location.href= targetUrl;
 		
-		// ManuelC: N„o sei para que serve esta linha...
+		// ManuelC: N√£o sei para que serve esta linha...
 		//document.forms[0].h_seccao_index.value = index;
 	}

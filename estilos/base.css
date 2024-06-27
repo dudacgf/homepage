@@ -3,13 +3,13 @@
   Styles.css
   (c) ecgf - 2005
 
-  Estilos utilizados em minha p·gina pessoal.
+  Estilos utilizados em minha p√°gina pessoal.
 
 --------------------------------------------------------------------*/
 
 /*------------------------------------------------------------------
-  Base.css - o b·sico dos estilos - tamanho, estrutura, borda, etc.  
-  nada do que est· aqui deveria ser modificado nos estilos de cor.
+  Base.css - o b√°sico dos estilos - tamanho, estrutura, borda, etc.  
+  nada do que est√° aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
 * { 
 font-size: 1em; font-family: georgia, roboto, verdana, tahoma, sans-serif;
@@ -94,7 +94,7 @@ div.fortune a {
 font-weight: bold; display: inline; font-size: 1em;
 }
 /* 
- * EspecÌfico das p·ginas wap.
+ * Espec√≠fico das p√°ginas wap.
  */
 div.wtitulo {
 clear: both; font-size: 2.0em; font-weight: bold; height: 35px; vertical-align: middle; padding-left: 5px; padding-bottom: 5px; margin-bottom: 3px;
@@ -109,7 +109,7 @@ div.wlink {
 clear: both; font-size: 1.3em; font-weight: bold; height: 15px; vertical-align: middle; padding-left: 40px; padding-bottom: 5px;
 }
 /*
- * as classes a seguir fazem a magica dos menus expansiveis. S„o de dois tipos:
+ * as classes a seguir fazem a magica dos menus expansiveis. S√£o de dois tipos:
  * no primeiro, que se expande quando se passa o mouse por  cima, uso a 
  * seguinte estrutura:
  * <div class="interior">
@@ -118,7 +118,7 @@ clear: both; font-size: 1.3em; font-weight: bold; height: 15px; vertical-align: 
  *   [  grupos de links   ]
  * </div>
  * </div>
- * no segundo, que se expande quando se clica em seu cabeÁalho, a seguinte
+ * no segundo, que se expande quando se clica em seu cabe√ßalho, a seguinte
  * estrutura foi utilizada:
  * <div class="interior">
  * <div class="expandable" onClick[expandable<->expanded]>
@@ -142,7 +142,7 @@ border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-l
 height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
 }
 /* 
- * p·ginas administrativas. 
+ * p√°ginas administrativas. 
  *
  */
 div.subTitulo {
@@ -173,7 +173,7 @@ body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body
 {
 padding: 0.3em 0.3em 0.3em 0.3em;
 }
-/* n„o adianta. ie6 ainda n„o faz o before...
+/* n√£o adianta. ie6 ainda n√£o faz o before...
 div.headexpandable:before
 {
 content: '(+)';

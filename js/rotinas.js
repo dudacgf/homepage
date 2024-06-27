@@ -64,7 +64,7 @@ function pesq_isbn() {
 	sodilerUrl = 'http://www.sodiler.com.br/resultados-isbn.cfm?OrdemResults=DESCR&isbn=' + theIsbn;
 	window.open(sodilerUrl);
 
-	// monta a url para pesquisa de livros de inform·tica...
+	// monta a url para pesquisa de livros de inform√°tica...
 	infoUrl = 'http://www.livrosdeinformatica.com.br/defaultlivros.asp?Origem=Pesquisa&';
 	infoUrl = infoUrl + 'Pesquisar=Ok&TipoPesquisa=ISBN&PalavraChave=' + theIsbn;
 	window.open(infoUrl);
@@ -138,10 +138,10 @@ function toggleClass(thisElement, umaClass, outraClass) {
 }
 
 // 
-// cria e envia um request para processamento din‚mico coloca o retorno no innerHTML de um elemento na p·gina
+// cria e envia um request para processamento din√¢mico coloca o retorno no innerHTML de um elemento na p√°gina
 //
 // recebe: url - url para o XMLHttpRequest
-// 		   idElemento - elemento que receber·, em seu innerHTML, o retorno do processamento da url
+// 		   idElemento - elemento que receber√°, em seu innerHTML, o retorno do processamento da url
 //
 function xhttpInnerHtml(url, idElemento) { 
 	if (url.substring(0, 4) != 'http') {
@@ -182,7 +182,7 @@ function xhttpInnerHtml(url, idElemento) {
 	xmlhttp.send(null); 
 } 
 
-// adiciona um novo grupo ou categoria restrita ‡ pagina atual
+// adiciona um novo grupo ou categoria restrita √† pagina atual
 //
 function onemoreGR(grAadicionar) {
 	url = document.location + '.' + grAadicionar;

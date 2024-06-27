@@ -3,11 +3,11 @@
   abobora.css
   (c) ecgf - 2006
 
-  ver base.css, que determina a estrutura da p·gina.
+  ver base.css, que determina a estrutura da p√°gina.
 ----------------------------------------------------------*/
 
 /*------------------------------------------------------------
-  Estilo abobora - fundo salm„o, destaques em abobora.
+  Estilo abobora - fundo salm√£o, destaques em abobora.
 ------------------------------------------------------------*/
 body.abobora
   {
@@ -95,7 +95,7 @@ body.abobora input.submit
   color: white;
   }
 /* 
- * p·ginas administrativas. 
+ * p√°ginas administrativas. 
  *
  */
 body.abobora div.subTitulo, body.abobora div.itemLateral, body.abobora div.coluna, body.abobora div.tituloColuna {

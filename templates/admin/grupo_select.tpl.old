@@ -28,7 +28,7 @@
 		<select name="idGrp" id="idGrp" size="5">
 		{section name=g loop=$grupos}
 			<option value="{$grupos[g].idGrupo}">
-				{$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restrição - {$grupos[g].restricaoGrupo} ]{else}[ sem restrição ]{/if}
+				{$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restriÃ§Ã£o - {$grupos[g].restricaoGrupo} ]{else}[ sem restriÃ§Ã£o ]{/if}
 			</option>
 		{/section}
 		</select>

@@ -1,30 +1,30 @@
 <?php
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-// A página de exemplo de cores tem idPagina = 7
+// A pÃ¡gina de exemplo de cores tem idPagina = 7
 $_idPagina = 7;
 
-// abro e inicializo minha página
+// abro e inicializo minha pÃ¡gina
 $pagina = new pagina($_idPagina);
 $homepage->assign('idPagina', $pagina->idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);
 $homepage->assign('classPagina', $pagina->classPagina);
 
-// manda um biscoitinho da sorte para lá, para poder ver as cores.
-$homepage->assign('fortuneCookie', 'NÃ£o tem nada aqui. passe para  pr&oacute;ima.<br /><b>-- autor anÃ´nimo</b>');
+// manda um biscoitinho da sorte para lÃ¡, para poder ver as cores.
+$homepage->assign('fortuneCookie', 'NÃƒÂ£o tem nada aqui. passe para  pr&oacute;ima.<br /><b>-- autor anÃƒÂ´nimo</b>');
 $homepage->assign('displayFortune', 1);
 
-// indica a inclusão do form de cores
+// indica a inclusÃ£o do form de cores
 $homepage->assign('displaySelectColor', 1);
 
-// lê os elementos coloridos e os pares de cores
+// lÃª os elementos coloridos e os pares de cores
 $homepage->assign('elementosColoridos', elementoColorido::getArray());
 $homepage->assign('paresCores', RGBColor::getArray());
 
-// le os cookies e passa para a página a ser carregada.
+// le os cookies e passa para a pÃ¡gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
@@ -38,19 +38,19 @@ $homepage->assign('cookedStyles', $cookedStyles);
 // Pego a pagina de exemplo para ter todos os tipos de elemento.
 include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');
 
-// Leio as categorias da página e percorro-as, incluíndo-as no template
+// Leio as categorias da pÃ¡gina e percorro-as, incluÃ­ndo-as no template
 $pagina->lerElementos();
 foreach ($pagina->elementos as $categ) {
 
 	$descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
 	
-	// Leio os grupos desta categoria e percorro-os, incluíndo-os no template
+	// Leio os grupos desta categoria e percorro-os, incluÃ­ndo-os no template
 	$categ->lerElementos();
 	unset($grupos);
 	foreach ($categ->elementos as $grupo) 
 	{
 
-		// Leio os elementos deste grupo e percorro-os, incluíndo-os no template
+		// Leio os elementos deste grupo e percorro-os, incluÃ­ndo-os no template
 		$grupo->lerElementos();
 		unset($elementos);
 		foreach($grupo->elementos as $elemento) 
@@ -75,7 +75,7 @@ foreach ($pagina->elementos as $categ) {
 
 $homepage->assign('displayImagemTitulo', '1');
 
-// adiciona o exemplo ao grupo dos que vão para a página.
+// adiciona o exemplo ao grupo dos que vÃ£o para a pÃ¡gina.
 $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 
 $homepage->assign('descricoesCategorias', $descricoesCategorias);

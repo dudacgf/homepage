@@ -3,7 +3,7 @@
   Styles.css
   (c) ecgf - 2006
 
-  ver base.css, que determina a estrutura da página.
+  ver base.css, que determina a estrutura da pÃ¡gina.
 ----------------------------------------------------------*/
 
 /*------------------------------------------------------------
@@ -95,7 +95,7 @@ body.admin input.submit
   color: black;
   }
 /* 
- * páginas administrativas. 
+ * pÃ¡ginas administrativas. 
  *
  */
 body.admin div.subTitulo, body.admin div.itemLateral, body.admin div.coluna, body.admin div.tituloColuna {

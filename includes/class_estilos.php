@@ -70,7 +70,7 @@ class elementoColorido
 		$elementos = $global_hpDB->query($_sql);
 		if (!$elementos)
 		{
-			die('n„o consegui ler a tabela de elementos coloridos!');
+			die('n√£o consegui ler a tabela de elementos coloridos!');
 		}
 		else
 		{
@@ -103,7 +103,7 @@ class RGBColor
 	public function __construct($nomeCor = '') 
 	{
 
-		if ($nomeCor[0] === '#') { // È uma cor no formato #RRGGBB - trunca no tamanho correto.
+		if ($nomeCor[0] === '#') { // √© uma cor no formato #RRGGBB - trunca no tamanho correto.
 			$valorCor = substr($nomeCor, 0, 7);
 		}
 		else
@@ -114,7 +114,7 @@ class RGBColor
 			$parCor = $global_hpDB->query($_sql);
 			if (!$parCor)
 			{
-				die('n„o consegui ler a tabela de pares de cores!');
+				die('n√£o consegui ler a tabela de pares de cores!');
 			}
 			$valorCor = $parCor[0]['valorCor'];
 		}
@@ -157,7 +157,7 @@ class RGBColor
 		$pares = $global_hpDB->query($_sql);
 		if (!$pares)
 		{
-			die('n„o consegui ler a tabela de pares de cores!');
+			die('n√£o consegui ler a tabela de pares de cores!');
 		}
 		else
 		{
@@ -235,7 +235,7 @@ class cookedStyle
 		}
 	}
 
-	// verifica se h· cookies e, neste caso, cria os estilos adicionais.
+	// verifica se h√° cookies e, neste caso, cria os estilos adicionais.
 	public static function getArray($_idPagina = 1)
 	{
 
@@ -257,7 +257,7 @@ class cookedStyle
 		$_cookies = $global_hpDB->query($_sql);
 		if (!isset($_cookies))
 		{
-			die('n„o consegui ler o array de cookies coloridos!');
+			die('n√£o consegui ler o array de cookies coloridos!');
 		}
 		else
 		{

@@ -2,7 +2,7 @@
 /*
  * Created on 02/04/2006
  *
- * contÈm os strings que ser&atilde;o usados nos di&aacute;logos de cria&ccedil;&atilde;o dos elementos das p&aacute;ginas.
+ * cont√©m os strings que ser&atilde;o usados nos di&aacute;logos de cria&ccedil;&atilde;o dos elementos das p&aacute;ginas.
  * 
  * (c) ecgf - abr/2006
  */
@@ -85,7 +85,7 @@ $lang['hp_templates_nomeTemplate'] = 'Nome do arquivo template';
 //
 //
 
-// Utilizados nos botıes e links para cria&ccedil;&atilde;o de objetos
+// Utilizados nos bot√µes e links para cria&ccedil;&atilde;o de objetos
 $lang['novaPagina'] = 'Nova p&aacute;gina';
 $lang['novaCategoria'] = 'Nova categoria';
 $lang['novoGrupo'] = 'Novo grupo';
@@ -175,7 +175,7 @@ $lang['tituloPaginaCriarTemplate'] = ':: Cria&ccedil;&atilde;o de Template ::';
 $lang['confirmarExclusaoTemplate'] = 'Tem certeza que deseja excluir o Template ';
 $lang['tituloPaginaConfirmarExclusaoTemplate'] = ':: Exclus&atilde;o de Template ::';
 
-// botıes
+// bot√µes
 $lang['incluir'] = 'Incluir';
 $lang['gravar'] = 'Gravar';
 $lang['excluir'] = 'Excluir';

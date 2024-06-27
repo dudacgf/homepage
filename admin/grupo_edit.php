@@ -1,22 +1,22 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-// este flag eu vou usar mais tarde (em grupo_edit_body.tpl para configurar a action do formulário).
+// este flag eu vou usar mais tarde (em grupo_edit_body.tpl para configurar a action do formulÃ¡rio).
 $criarGrupo = false;
 
-// garante que vão aparecer todos os grupos
+// garante que vÃ£o aparecer todos os grupos
 $_REQUEST['gr'] = 'all';
 
-// verifica se passou página. se houver, vai apresentá-la no form
+// verifica se passou pÃ¡gina. se houver, vai apresentÃ¡-la no form
 if (isset($requests['id']) && $requests['id'] != '') 
 {
 	$_idPagina = $requests['id'];
 }
 
-// verifica se passou categoria. se houver, vai apresentá-la no form
+// verifica se passou categoria. se houver, vai apresentÃ¡-la no form
 if (isset($requests['idCat']) && $requests['idCat'] != '') 
 {
 	$_idCategoria = $requests['idCat'];
@@ -31,7 +31,7 @@ if (isset($requests['idGrp']))
 }
 
 //
-// se não passou nenhum mode, entra em modo de seleção de grupos
+// se nÃ£o passou nenhum mode, entra em modo de seleÃ§Ã£o de grupos
 if (!isset($requests['mode']))
 {
 	$requests['mode'] = 'slGrp';
@@ -39,13 +39,13 @@ if (!isset($requests['mode']))
 
 switch ($requests['mode'])
 {
-	// pediu para voltar - apresenta a página de estatísticas
+	// pediu para voltar - apresenta a pÃ¡gina de estatÃ­sticas
 	case 'stats':
 		$homepage->assign('script2reload', 'admin/estatisticas.php');
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// edição do grupo
+	// ediÃ§Ã£o do grupo
 	case 'edGrp': 
 		$template = 'admin/grupo_edit.tpl';
 	break;
@@ -77,7 +77,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// Atualiza o grupo atualmente em edição
+	// Atualiza o grupo atualmente em ediÃ§Ã£o
 	case 'svGrp':
 		$grupo = new grupo($_idGrupo);
 		$grupo->descricaoGrupo = (string) $requests['descricaoGrupo'];
@@ -90,21 +90,21 @@ switch ($requests['mode'])
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o grupo [$grupo->descricaoGrupo]!");
+			$homepage->assign('msgAlerta', "NÃ£o foi possÃ­vel atualizar o grupo [$grupo->descricaoGrupo]!");
 		}
 		$homepage->assign('script2reload', 'admin/grupo_edit.php');
 		$homepage->assign('scriptMode', 'edGrp');
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// apresenta um form vazio para a criação de uma novo grupo. O flag $criarGrupo vai mudar o comportamento do 
+	// apresenta um form vazio para a criaÃ§Ã£o de uma novo grupo. O flag $criarGrupo vai mudar o comportamento do 
 	// template.
 	case 'nwGrp':
 		$criarGrupo = true;
 		$template = 'admin/grupo_edit.tpl';
 	break;
 
-	// criar uma nova Grupo (chamado a partir do form de edição com tag <form> alterada quando $criarGrupo = true) 
+	// criar uma nova Grupo (chamado a partir do form de ediÃ§Ã£o com tag <form> alterada quando $criarGrupo = true) 
 	case 'crGrp':
 		$homepage->assign('requests', $requests);
 		$grupo = new grupo(NULL);
@@ -115,7 +115,7 @@ switch ($requests['mode'])
 		$_idGrupo = $grupo->inserir();
 		if (!$_idGrupo) 
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar o grupo [$grupo->descricaoGrupo]!");
+			$homepage->assign('msgAlerta', "NÃ£o foi possÃ­vel criar o grupo [$grupo->descricaoGrupo]!");
 			$homepage->assign('scriptMode', 'slGrp');
 		}
 		else
@@ -127,12 +127,12 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir esta grupo da base - exibe o form de confirmação para voltar mais tarde no modo ExGrp
+	// excluir esta grupo da base - exibe o form de confirmaÃ§Ã£o para voltar mais tarde no modo ExGrp
 	case 'cfExGrp':
 		$template = 'admin/delete_confirm.tpl';
 	break;
 
-	// excluir um grupo (já foi exibido o form de confirmação).
+	// excluir um grupo (jÃ¡ foi exibido o form de confirmaÃ§Ã£o).
 	case 'exGrp':
 		switch ($requests['go'])
 		{
@@ -140,12 +140,12 @@ switch ($requests['mode'])
 				$grupo = new grupo($_idGrupo);
 				if ($grupo->excluir())
 				{
-					$homepage->assign('msgAlerta', "Grupo [$grupo->descricaoGrupo] excluído com sucesso!");
+					$homepage->assign('msgAlerta', "Grupo [$grupo->descricaoGrupo] excluÃ­do com sucesso!");
 					$homepage->assign('scriptMode', 'slGrp');
 				}
 				else
 				{
-					$homepage->assign('msgAlerta', "Não foi possível excluir o grupo [$grupo->descricaoGrupo]!");
+					$homepage->assign('msgAlerta', "NÃ£o foi possÃ­vel excluir o grupo [$grupo->descricaoGrupo]!");
 					$homepage->assign('scriptMode', 'edGrp');
 				}
 			break;
@@ -164,7 +164,7 @@ switch ($requests['mode'])
 	break;
 }
 	
-// le os cookies e passa para a página a ser carregada.
+// le os cookies e passa para a pÃ¡gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray(5);
 if ($colorCookies) 
@@ -180,7 +180,7 @@ switch ($template)
 	case 'admin/grupo_edit.tpl':
 		if (!$criarGrupo) 
 		{
-			// lê a página deste grupo.
+			// lÃª a pÃ¡gina deste grupo.
 			if (isset($_idPagina)) 
 			{
 				$pagina = new pagina($_idPagina);
@@ -191,21 +191,21 @@ switch ($template)
 				$homepage->assign('classPagina', 'admin');
 			}
 
-			// lê a categoria deste grupo.
+			// lÃª a categoria deste grupo.
 			if (isset($_idCategoria)) 
 			{
 				$categoria = new categoria($_idCategoria);
 				$homepage->assign('categoria', $categoria->getArray());
 			}
 
-			// lê o grupo
+			// lÃª o grupo
 			$grupo = new grupo($_idGrupo);
 			$homepage->assign('grupo', $grupo->getArray());
 
 			$homepage->assign('tituloPaginaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
 			$homepage->assign('tituloTabelaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
 
-			// lê os elementos deste grupo
+			// lÃª os elementos deste grupo
 			$grupo->lerElementos();
 			$elementos[] = '';
 			foreach ($grupo->elementos as $elemento)
@@ -219,7 +219,7 @@ switch ($template)
 		}
 		else
 		{
-		// inicializa os campos para criação de uma nova página
+		// inicializa os campos para criaÃ§Ã£o de uma nova pÃ¡gina
 			$homepage->assign('grupo', array(
 					'descricaoGrupo' => $lang['hp_grupos_DescricaoGrupo'],
 					'idTipoGrupo' => 0,

@@ -1,12 +1,12 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 include_once('../common.php');
 
 
 //
-// configurações para exibição das fotos
+// configuraÃ§Ãµes para exibiÃ§Ã£o das fotos
 $fotos = simplexml_load_file($pictures_info_xml_path);
 foreach ($fotos as $fotoDir)
 {
@@ -18,7 +18,7 @@ foreach ($fotos as $fotoDir)
 	   $linhas = (int) $fotoDir->linhas;
    }
 }
-$dircache = $dircache . '.flv' ;	// os flv ficam em um diretório próprio 
+$dircache = $dircache . '.flv' ;	// os flv ficam em um diretÃ³rio prÃ³prio 
 
 // nome do filme a passar
 if (isset($_REQUEST['mov'])) {
@@ -32,7 +32,7 @@ if (!file_exists($dircache))
 	mkdir($dircache, 0777, true);
 }
 
-// se este diretório ainda não existe no cache, cria
+// se este diretÃ³rio ainda nÃ£o existe no cache, cria
 if (!file_exists($dircache . '/' . dirname($mov))) 
 {
 	mkdir($dircache . '/' . dirname($mov), 0777, true);
@@ -40,37 +40,37 @@ if (!file_exists($dircache . '/' . dirname($mov)))
 
 // cria uma frame a partir do filme original
 $infile = $dirfotos . $mov;
-// Localização e nome do arquivo de saída no cache
+// LocalizaÃ§Ã£o e nome do arquivo de saÃ­da no cache
 $cacheFile = $dircache . $mov;
 
-// obtém o nome base deste arquivo (sem a extensão)
+// obtÃ©m o nome base deste arquivo (sem a extensÃ£o)
 $cacheFile_info = pathinfo($cacheFile);
 $cacheFile_name = basename($cacheFile_info['basename'], '.' . $cacheFile_info['extension']);
 
-// Arquivo com as informações que serão exibidas no popup...
+// Arquivo com as informaÃ§Ãµes que serÃ£o exibidas no popup...
 $txtFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.txt';
-// ff_flvFile é o arquivo de saída em formato flv
-// txtFile é o arquivo com informações gerado durante a conversão. será removido ao final.
+// ff_flvFile Ã© o arquivo de saÃ­da em formato flv
+// txtFile Ã© o arquivo com informaÃ§Ãµes gerado durante a conversÃ£o. serÃ¡ removido ao final.
 $ff_flvFile = $cacheFile_info['dirname'] . '/' . $cacheFile_name . '.flv';
 
-// se este filme ainda não tem seu flv no cache, cria...
+// se este filme ainda nÃ£o tem seu flv no cache, cria...
 if (!file_exists($ff_flvFile))
 {
-	// dispara a conversão do vídeo para o formato flv
-	// a conversão é feita em duas etapas. 
+	// dispara a conversÃ£o do vÃ­deo para o formato flv
+	// a conversÃ£o Ã© feita em duas etapas. 
 	// Primeiro, ffmpeg transforma de mpg em flv. 
-	// Por fim, flvtool2 insere meta-tags(?) para permitir a navegação no filme quando exibido via flvprovider.php...
+	// Por fim, flvtool2 insere meta-tags(?) para permitir a navegaÃ§Ã£o no filme quando exibido via flvprovider.php...
 	exec("ffmpeg-flv.exe -i \"$infile\" -b 360 -r 25 -s 320x240 -hq -deinterlace  -ab 56 -ar 22050 -ac 1  \"$ff_flvFile\" 2>&1", $output);
 	exec("flvtool2.exe u \"$ff_flvFile\" \"$ff_flvFile\" 2>&1", $output);
 }
 
-// insere dados no array que será passado para o template
+// insere dados no array que serÃ¡ passado para o template
 $arquivo = array(
 		'arquivo' => $requests['mov'],
 		'tipo' => 'flv',
 		'url' => str_replace(array("MPG", "mpg", "MPEG", "mpeg"), "flv", $mov));
 
-// Passa as variáveis para o template e o exibe.
+// Passa as variÃ¡veis para o template e o exibe.
 $homepage->assign('tituloPaginaAlternativo', ':: ' . $requests['mov'] . ' ::');
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $requests['mov'] . ' ::');
 $homepage->assign('includePATH', INCLUDE_PATH);

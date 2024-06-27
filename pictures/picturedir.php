@@ -1,12 +1,12 @@
 <?php
 
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
 //
-// configurações para exibição das fotos
+// configuraÃ§Ãµes para exibiÃ§Ã£o das fotos
 $fotos = simplexml_load_file($pictures_info_xml_path);
 foreach ($fotos as $fotoDir)
 {
@@ -31,13 +31,13 @@ else
 }
 
 //
-// só continua se não existir um arquivo de nome naolistar.info no diretório
+// sÃ³ continua se nÃ£o existir um arquivo de nome naolistar.info no diretÃ³rio
 if (file_exists($dirfotos . '/naolistar.info')) {
 	die('hacking attempt!!!');
 }
 
 // 
-// só continua se existir um arquivo de nome listar.info
+// sÃ³ continua se existir um arquivo de nome listar.info
 if (!file_exists($dirfotos . '/listar.info')) {
 	die('hacking attempt!!!');
 }
@@ -52,10 +52,10 @@ else
 	$pag = 1;
 }
 
-// limpa o cache de tipo de arquivos - provavelmente desnecessário. vou pesquisar mais tarde.
+// limpa o cache de tipo de arquivos - provavelmente desnecessÃ¡rio. vou pesquisar mais tarde.
 clearstatcache();
 
-// inicializações. 
+// inicializaÃ§Ãµes. 
 $numThumbs = countthumbs($dirfotos);
 $maxFotos = $colunas * $linhas;
 $numPaginas =  ceil($numThumbs / $maxFotos);
@@ -64,25 +64,25 @@ $ultimoThumb = $maxFotos * $pag;
 $nFotos = 1;
 $thumbNum = 0;
 
-// este é o loop principal.
+// este Ã© o loop principal.
 $listaArquivos = opendir($dirfotos);
 while ($arquivo = readdir($listaArquivos))
 {
-	// não faço nada caso o arquivo não seja .jpeg ou um diretório diferente dos ponteiros default (. e ..)
+	// nÃ£o faÃ§o nada caso o arquivo nÃ£o seja .jpeg ou um diretÃ³rio diferente dos ponteiros default (. e ..)
 	if ($arquivo == '.' || $arquivo == '..') continue;
 	if (!preg_match('/(jpg|mpg|jpeg|mpeg)$/', strtolower($arquivo)) && !is_dir($dirfotos . '/' . $arquivo)) continue;
 
-	// se for um diretório e existir um arquivo de nome 'naolistar.info' no diretório, nao faz nada.
+	// se for um diretÃ³rio e existir um arquivo de nome 'naolistar.info' no diretÃ³rio, nao faz nada.
 	if (is_dir($dirfotos . '/' . $arquivo) && file_exists($dirfotos . '/' . $arquivo . '/naolistar.info')) continue;
 
-	// se for um diretório e não existir um arquivo de nome 'listar.info', nao faz nada.
+	// se for um diretÃ³rio e nÃ£o existir um arquivo de nome 'listar.info', nao faz nada.
 	if (is_dir($dirfotos . '/' . $arquivo) && !file_exists($dirfotos . '/' . $arquivo . '/listar.info')) continue;
 
-	// só continuo se estiver no intervalo correto para a página solicitada
+	// sÃ³ continuo se estiver no intervalo correto para a pÃ¡gina solicitada
 	$thumbNum++;
 	if ($thumbNum < $primoThumb || $thumbNum > $ultimoThumb) continue;
 
-	// flag para verificar (no template) se há necessidade de quebra de linhas...
+	// flag para verificar (no template) se hÃ¡ necessidade de quebra de linhas...
 	$fimColuna = ($nFotos % $colunas) == 0;
 
 	// insere dados no array
@@ -115,7 +115,7 @@ while ($arquivo = readdir($listaArquivos))
 }
 closedir($listaArquivos);
 
-// Passa as variáveis para o template e o exibe.
+// Passa as variÃ¡veis para o template e o exibe.
 $homepage->assign('tituloPaginaAlternativo', ':: ' . $requests['dir'] . ' ::');
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $requests['dir'] . ' ::');
 $homepage->assign('includePATH', INCLUDE_PATH);
@@ -130,8 +130,8 @@ $homepage->assign('numpaginas', $numPaginas);
 
 $homepage->display('pictures/picturedir.tpl');
 
-// conta o número de possíveis thumbs a serem exibidos em um determinado diretório.
-// os possíveis thumbs são os arquivos de extensão $ext e os diretórios.
+// conta o nÃºmero de possÃ­veis thumbs a serem exibidos em um determinado diretÃ³rio.
+// os possÃ­veis thumbs sÃ£o os arquivos de extensÃ£o $ext e os diretÃ³rios.
 function countthumbs($dir)
 {
   

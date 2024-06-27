@@ -1,11 +1,11 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 include_once($include_path  . 'class_fortune.php');
 
-// obtém as estatísticas na base e as repassa ao template
+// obtÃ©m as estatÃ­sticas na base e as repassa ao template
 $homepage->assign('numPaginas', pagina::getCount());
 $homepage->assign('numCategorias', categoria::getCount());
 $homepage->assign('numGrupos', grupo::getCount());
@@ -17,7 +17,7 @@ $homepage->assign('numRssFeeds', wRssFeed::getCount());
 $homepage->assign('numTemplates', wTemplate::getCount());
 $homepage->assign('numFortunes', Fortune::getCount());
 
-// le os cookies e passa para a página a ser carregada.
+// le os cookies e passa para a pÃ¡gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray(5);
 if ($colorCookies) 
@@ -28,7 +28,7 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-// propriedades gerais da página
+// propriedades gerais da pÃ¡gina
 $homepage->assign('displayImagemTitulo', '1');
 
 $homepage->assign('classPagina', 'admin');

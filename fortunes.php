@@ -1,19 +1,19 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('common.php');
 
-// classes específicas da homepage
+// classes especÃ­ficas da homepage
 include_once($include_path . 'class_homepage.php');
 
-// garante que vão aparecer todos os grupos
+// garante que vÃ£o aparecer todos os grupos
 $_REQUEST['gr'] = 'all';
 
-// id_Pagina é sempre 1.
+// id_Pagina Ã© sempre 1.
 $_idPagina = 1;
 
-// le os cookies e passa para a página a ser carregada.
+// le os cookies e passa para a pÃ¡gina a ser carregada.
 $cookedStyles = '';
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
@@ -24,7 +24,7 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-// lê o biscoitinho da sorte
+// lÃª o biscoitinho da sorte
 require($include_path . "class_fortune.php");
 $f = new Fortune;
 $biscoitinho = $f->fortune;
@@ -34,7 +34,7 @@ if (strpos($biscoitinho, "--") > 0)
 }
 $homepage->assign("fortuneCookie", $biscoitinho);
 
-// Monta o restante da página
+// Monta o restante da pÃ¡gina
 $homepage->left_delimiter = '<!--{';
 $homepage->right_delimiter = '}-->';
 

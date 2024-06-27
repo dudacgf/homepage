@@ -40,7 +40,7 @@
 {elseif $elemento.tipoElemento == 6}
   {include file=$elemento.nomeTemplate}
 {else}
-  n„o È nada n„o...
+  n√£o √© nada n√£o...
 {/if}
 {/section}
 {/strip}

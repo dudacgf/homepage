@@ -9,7 +9,7 @@ $background=imagecreatefromgif(RELATIVE_PATH . './imagens/white_bkg.gif');
 
 $color=imagecolorallocate($background, $_REQUEST['r'], $_REQUEST['g'], $_REQUEST['b']);
 
-// de círculo em círculo
+// de cÃ­rculo em cÃ­rculo
 imagefill($background, 43, 175,$color);
 imagefill($background, 175, 175,$color);
 imagefill($background, 275, 175,$color);

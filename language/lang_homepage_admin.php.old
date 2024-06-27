@@ -2,41 +2,41 @@
 /*
  * Created on 02/04/2006
  *
- * contém os strings que serão usados nos diálogos de criação dos elementos das páginas.
+ * contÃ©m os strings que serÃ£o usados nos diÃ¡logos de criaÃ§Ã£o dos elementos das pÃ¡ginas.
  * 
  * (c) ecgf - abr/2006
  */
 
 //
 //
-// Atributos de cada tipo de objeto - utilizados nos diálogos de edição/criação.
+// Atributos de cada tipo de objeto - utilizados nos diÃ¡logos de ediÃ§Ã£o/criaÃ§Ã£o.
 //
 //
 
-// atributos da página
-$lang['hp_paginas_FormTitulo'] = 'Páginas';
-$lang['hp_paginas_idPagina'] = 'Id desta página';
-$lang['hp_paginas_TituloPagina'] = 'Título da página';
-$lang['hp_paginas_TituloTabela'] = 'Título da tabela';
-$lang['hp_paginas_classPagina'] = 'Classe da Página';
+// atributos da pÃ¡gina
+$lang['hp_paginas_FormTitulo'] = 'PÃ¡ginas';
+$lang['hp_paginas_idPagina'] = 'Id desta pÃ¡gina';
+$lang['hp_paginas_TituloPagina'] = 'TÃ­tulo da pÃ¡gina';
+$lang['hp_paginas_TituloTabela'] = 'TÃ­tulo da tabela';
+$lang['hp_paginas_classPagina'] = 'Classe da PÃ¡gina';
 $lang['hp_paginas_exibirdotdot'] = 'Exibir: ';
 $lang['hp_paginas_displayGoogle'] = 'form do Google';
 $lang['hp_paginas_displayFindaMap'] = 'form do Find a Map';
 $lang['hp_paginas_displayFortune'] = 'biscoitinho da sorte';
-$lang['hp_paginas_displayImagemTitulo'] = 'Imagem no Título';
-$lang['hp_paginas_displaySelectColor'] = 'Formulário de cores';
+$lang['hp_paginas_displayImagemTitulo'] = 'Imagem no TÃ­tulo';
+$lang['hp_paginas_displaySelectColor'] = 'FormulÃ¡rio de cores';
 
 // atributos de uma categoria (coluna)
-$lang['hp_categorias_DescricaoCategoria'] = 'Título da categoria (coluna)';
+$lang['hp_categorias_DescricaoCategoria'] = 'TÃ­tulo da categoria (coluna)';
 $lang['hp_categorias_CategoriaRestrita'] = 'Marque este quadro caso a categoria seja restrita';
-$lang['hp_categorias_RestricaoCategoria'] = 'Indique a restrição a aplicar a esta categoria';
+$lang['hp_categorias_RestricaoCategoria'] = 'Indique a restriÃ§Ã£o a aplicar a esta categoria';
 $lang['hp_categorias_Label_Restricao'] = 'Categoria restrita';
 
 // atributos de um grupo
 $lang['hp_grupos_DescricaoGrupo'] = 'Nome do Grupo';
 $lang['hp_grupos_TipoGrupo'] = 'Tipo de Grupo';
 $lang['hp_grupos_GrupoRestrito'] = 'Marque este quadro caso o grupo seja restrito';
-$lang['hp_grupos_RestricaoGrupo'] = 'Indique a restrição a aplicar a este grupo';
+$lang['hp_grupos_RestricaoGrupo'] = 'Indique a restriÃ§Ã£o a aplicar a este grupo';
 $lang['hp_grupos_Label_Restricao'] = 'Grupo restrito';
 
 // 
@@ -46,18 +46,18 @@ $lang['hp_elementos_Descricao'] = 'nome do Elemento';
 $lang['hp_links_FormTitulo'] = 'Links';
 $lang['hp_links_idLink'] = 'Id deste link';
 $lang['hp_links_idGrupo'] = 'Grupo do link' ;
-$lang['hp_links_PosGrupo'] = 'Posição do link' ;
+$lang['hp_links_PosGrupo'] = 'PosiÃ§Ã£o do link' ;
 $lang['hp_links_linkURL'] = 'URL do link (sem o http://)';
 $lang['hp_links_descricaoLink'] = 'Descricao do link';
 $lang['hp_links_dicaLink'] = 'Dica para o link';
 $lang['hp_links_localLink'] = 'Link local';
 $lang['hp_links_urlElementoSSL'] = 'Link seguro (https)';
 $lang['hp_links_urlElementoSVN'] = 'Link svn+ssh';
-$lang['hp_links_targetLink'] = 'Target (frame) no qual este link será exibido';
+$lang['hp_links_targetLink'] = 'Target (frame) no qual este link serÃ¡ exibido';
 
 // atributos de um elemento Form
-$lang['hp_forms_nomeForm'] = 'Nome do Formulário (campo name=)';
-$lang['hp_forms_acao'] = 'Ação executada pelo formulário (campo action=)';
+$lang['hp_forms_nomeForm'] = 'Nome do FormulÃ¡rio (campo name=)';
+$lang['hp_forms_acao'] = 'AÃ§Ã£o executada pelo formulÃ¡rio (campo action=)';
 $lang['hp_forms_nomeCampo'] = 'Nome do campo de busca';
 $lang['hp_forms_tamanhoCampo'] = 'Tamanho do campo de busca';
 $lang['hp_forms_descricaoForm'] = 'descricaoFormulario';
@@ -73,7 +73,7 @@ $lang['hp_imagens_localLink'] = 'link local';
 
 // atributos de um elemento tipo RssFeed
 $lang['hp_rssfeeds_rssURL'] = 'Url para o Rss';
-$lang['hp_rssfeeds_rssItemNum'] = 'Número de ordem do item a resgatar';
+$lang['hp_rssfeeds_rssItemNum'] = 'NÃºmero de ordem do item a resgatar';
 
 // atributos de um elemento tipo Template
 $lang['hp_templates_descricaoTemplate'] = 'Descricao do template';
@@ -81,141 +81,141 @@ $lang['hp_templates_nomeTemplate'] = 'Nome do arquivo template';
 
 //
 //
-// Constantes utilizadas nos vários diálogos de edição/criação/confirmação/exclusão.
+// Constantes utilizadas nos vÃ¡rios diÃ¡logos de ediÃ§Ã£o/criaÃ§Ã£o/confirmaÃ§Ã£o/exclusÃ£o.
 //
 //
 
-// Utilizados nos botões e links para criação de objetos
-$lang['novaPagina'] = 'Nova página';
+// Utilizados nos botÃµes e links para criaÃ§Ã£o de objetos
+$lang['novaPagina'] = 'Nova pÃ¡gina';
 $lang['novaCategoria'] = 'Nova categoria';
 $lang['novoGrupo'] = 'Novo grupo';
 $lang['novosElementos'] = 'Novos Elementos';
 $lang['novoLink'] = 'Novo link';
-$lang['novoForm'] = 'Novo formulário';
+$lang['novoForm'] = 'Novo formulÃ¡rio';
 $lang['novaImagem'] = 'Nova imagem';
 $lang['novoSeparador'] = 'Novo separador';
 $lang['novoRssFeed'] = 'Novo Rss Feed';
 $lang['novoTemplate'] = 'Novo template';
 
-// Utilizado em diálogos de confirmação
+// Utilizado em diÃ¡logos de confirmaÃ§Ã£o
 $lang['tituloTabelaConfirmarExclusao'] = ':: Leia com atencao ::';
 
-// para o diálogo de seleção da página
-$lang['tituloPaginaSelecionarPagina'] = 'Edição de página';
-$lang['tituloTabelaSelecionarPagina'] = ':: Lista de páginas';
-$lang['selecionarPagina'] = 'Por favor, selecione a página a editar:';
+// para o diÃ¡logo de seleÃ§Ã£o da pÃ¡gina
+$lang['tituloPaginaSelecionarPagina'] = 'EdiÃ§Ã£o de pÃ¡gina';
+$lang['tituloTabelaSelecionarPagina'] = ':: Lista de pÃ¡ginas';
+$lang['selecionarPagina'] = 'Por favor, selecione a pÃ¡gina a editar:';
 
-// para o diálogo de confirmação exclusão de página
-$lang['confirmarExclusaoPagina'] = 'Tem certeza que deseja excluir a página ';
-$lang['tituloPaginaConfirmarExclusao'] = ':: Exclusão de página ::';
+// para o diÃ¡logo de confirmaÃ§Ã£o exclusÃ£o de pÃ¡gina
+$lang['confirmarExclusaoPagina'] = 'Tem certeza que deseja excluir a pÃ¡gina ';
+$lang['tituloPaginaConfirmarExclusao'] = ':: ExclusÃ£o de pÃ¡gina ::';
 
-// para o diálogo de seleção da categoria
-$lang['tituloPaginaSelecionarCategoria'] = 'Edição de categoria';
+// para o diÃ¡logo de seleÃ§Ã£o da categoria
+$lang['tituloPaginaSelecionarCategoria'] = 'EdiÃ§Ã£o de categoria';
 $lang['tituloTabelaSelecionarCategoria'] = ':: Lista de categorias';
 $lang['selecionarCategoria'] = 'Por favor, selecione a categoria a editar:';
 
-// para o diálogo de confirmação de exclusão de categoria
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de categoria
 $lang['confirmarExclusaoCategoria'] = 'Tem certeza que deseja excluir a categoria ';
-$lang['tituloPaginaConfirmarExclusaoCategoria'] = ':: Exclusão de categoria ::';
+$lang['tituloPaginaConfirmarExclusaoCategoria'] = ':: ExclusÃ£o de categoria ::';
 
-// para o diálogo de seleção de grupo
-$lang['tituloPaginaSelecionarGrupo'] = 'Edição de grupo';
+// para o diÃ¡logo de seleÃ§Ã£o de grupo
+$lang['tituloPaginaSelecionarGrupo'] = 'EdiÃ§Ã£o de grupo';
 $lang['tituloTabelaSelecionarGrupo'] = ':: Lista de grupos';
 $lang['selecionarCategoria'] = 'Por favor, selecione o grupo a editar:';
 
-// para o diálogo de confirmação de exclusão de grupo
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de grupo
 $lang['confirmarExclusaoGrupo'] = 'Tem certeza que deseja excluir o grupo ';
-$lang['tituloPaginaConfirmarExclusaoGrupo'] = ':: Exclusão de grupo ::';
+$lang['tituloPaginaConfirmarExclusaoGrupo'] = ':: ExclusÃ£o de grupo ::';
 
-// para o diálogo de edição e criação de links
-$lang['tituloPaginaEditarLink'] = ':: Edição de Link ::';
-$lang['tituloPaginaCriarLink'] = ':: Criação de Link ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de links
+$lang['tituloPaginaEditarLink'] = ':: EdiÃ§Ã£o de Link ::';
+$lang['tituloPaginaCriarLink'] = ':: CriaÃ§Ã£o de Link ::';
 
-// para o diálogo de confirmação de exclusão de link
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de link
 $lang['confirmarExclusaoLink'] = 'Tem certeza que deseja excluir o link ';
-$lang['tituloPaginaConfirmarExclusaoLink'] = ':: Exclusão de Link ::';
+$lang['tituloPaginaConfirmarExclusaoLink'] = ':: ExclusÃ£o de Link ::';
 
-// para o diálogo de edição e criação de forms
-$lang['tituloPaginaEditarForm'] = ':: Edição de Form ::'; 
-$lang['tituloPaginaCriarForm'] = ':: Criação de Form ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de forms
+$lang['tituloPaginaEditarForm'] = ':: EdiÃ§Ã£o de Form ::'; 
+$lang['tituloPaginaCriarForm'] = ':: CriaÃ§Ã£o de Form ::';
 
-// para o diálogo de confirmação de exclusão de form
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de form
 $lang['confirmarExclusaoForm'] = 'Tem certeza que deseja excluir o Form ';
-$lang['tituloPaginaConfirmarExclusaoForm'] = ':: Exclusão de Form ::';
+$lang['tituloPaginaConfirmarExclusaoForm'] = ':: ExclusÃ£o de Form ::';
 
-// para o diálogo de edição e criação de separadores
-$lang['tituloPaginaEditarSeparador'] = ':: Edição de Separador ::'; 
-$lang['tituloPaginaCriarSeparador'] = ':: Criação de Separador ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de separadores
+$lang['tituloPaginaEditarSeparador'] = ':: EdiÃ§Ã£o de Separador ::'; 
+$lang['tituloPaginaCriarSeparador'] = ':: CriaÃ§Ã£o de Separador ::';
 
-// para o diálogo de confirmação de exclusão de separador
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de separador
 $lang['confirmarExclusaoSeparador'] = 'Tem certeza que deseja excluir o Separador ';
-$lang['tituloPaginaConfirmarExclusaoSeparador'] = ':: Exclusão de Separador ::';
+$lang['tituloPaginaConfirmarExclusaoSeparador'] = ':: ExclusÃ£o de Separador ::';
 
-// para o diálogo de edição e criação de imagens
-$lang['tituloPaginaEditarImagem'] = ':: Edição de Imagem ::'; 
-$lang['tituloPaginaCriarImagem'] = ':: Criação de Imagem ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de imagens
+$lang['tituloPaginaEditarImagem'] = ':: EdiÃ§Ã£o de Imagem ::'; 
+$lang['tituloPaginaCriarImagem'] = ':: CriaÃ§Ã£o de Imagem ::';
 
-// para o diálogo de confirmação de exclusão de separador
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de separador
 $lang['confirmarExclusaoImagem'] = 'Tem certeza que deseja excluir a Imagem ';
-$lang['tituloPaginaConfirmarExclusaoImagem'] = ':: Exclusão de Imagem ::';
+$lang['tituloPaginaConfirmarExclusaoImagem'] = ':: ExclusÃ£o de Imagem ::';
 
-// para o diálogo de edição e criação de rssfeeds
-$lang['tituloPaginaEditarRssFeed'] = ':: Edição de Rss Feed ::'; 
-$lang['tituloPaginaCriarRssFeed'] = ':: Criação de Rss Feed ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de rssfeeds
+$lang['tituloPaginaEditarRssFeed'] = ':: EdiÃ§Ã£o de Rss Feed ::'; 
+$lang['tituloPaginaCriarRssFeed'] = ':: CriaÃ§Ã£o de Rss Feed ::';
 
-// para o diálogo de confirmação de exclusão de separador
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de separador
 $lang['confirmarExclusaoRssFeed'] = 'Tem certeza que deseja excluir o Rss Feed ';
-$lang['tituloPaginaConfirmarExclusaoRssFeed'] = ':: Exclusão de Rss Feed ::';
+$lang['tituloPaginaConfirmarExclusaoRssFeed'] = ':: ExclusÃ£o de Rss Feed ::';
 
-// para o diálogo de edição e criação de templates
-$lang['tituloPaginaEditarTemplate'] = ':: Edição de Template ::'; 
-$lang['tituloPaginaCriarTemplate'] = ':: Criação de Template ::';
+// para o diÃ¡logo de ediÃ§Ã£o e criaÃ§Ã£o de templates
+$lang['tituloPaginaEditarTemplate'] = ':: EdiÃ§Ã£o de Template ::'; 
+$lang['tituloPaginaCriarTemplate'] = ':: CriaÃ§Ã£o de Template ::';
 
-// para o diálogo de confirmação de exclusão de separador
+// para o diÃ¡logo de confirmaÃ§Ã£o de exclusÃ£o de separador
 $lang['confirmarExclusaoTemplate'] = 'Tem certeza que deseja excluir o Template ';
-$lang['tituloPaginaConfirmarExclusaoTemplate'] = ':: Exclusão de Template ::';
+$lang['tituloPaginaConfirmarExclusaoTemplate'] = ':: ExclusÃ£o de Template ::';
 
-// botões
+// botÃµes
 $lang['incluir'] = 'Incluir';
 $lang['gravar'] = 'Gravar';
 $lang['excluir'] = 'Excluir';
 $lang['cancelar'] = 'Cancelar';
 $lang['confirmar'] = 'Confirmar';
-$lang['exibir'] = 'Exibir página';
+$lang['exibir'] = 'Exibir pÃ¡gina';
 $lang['voltar'] = 'Voltar';
 $lang['sim'] = 'Sim';
-$lang['nao'] = 'Não';
+$lang['nao'] = 'NÃ£o';
 
-// Utilizados nas tabelas de elementos na edição de páginas, categorias e grupos
+// Utilizados nas tabelas de elementos na ediÃ§Ã£o de pÃ¡ginas, categorias e grupos
 $lang['subir'] = 'Subir';
 $lang['descer'] = 'Descer';
 $lang['categoriaRestrita'] = 'Categoria Restrita';
 $lang['grupoRestrito'] = 'Grupo Restrito';
 $lang['tipoGrupo'] = 'Tipo de Grupo';
 $lang['tipoElemento'] = 'Tipo de Elemento';
-$lang['configuracao'] = 'Configuração';
+$lang['configuracao'] = 'ConfiguraÃ§Ã£o';
 
-$lang['paginas'] = 'Páginas';
-$lang['categorias'] = 'Categorias da Página';
+$lang['paginas'] = 'PÃ¡ginas';
+$lang['categorias'] = 'Categorias da PÃ¡gina';
 $lang['grupos'] = 'Grupos da Categoria';
 $lang['elementos'] = 'Elementos do Grupo';
 
-$lang['semTitulo'] = ':: sem título ::';
-$lang['paginavazia'] = ':: Página sem categorias ::';
+$lang['semTitulo'] = ':: sem tÃ­tulo ::';
+$lang['paginavazia'] = ':: PÃ¡gina sem categorias ::';
 $lang['categoriavazia'] = ':: Categoria sem grupos ::';
 $lang['grupovazio'] = ':: Grupo vazio ::';
 
-// pagina de estatísticas
-$lang['paginaEstatisticasTituloPagina'] = 'Administração de páginas - Estatísticas';
-$lang['paginaEstatisticasTituloTabela'] = ':: Estatísticas ::';
-$lang['NumPaginas'] = 'Número de páginas existentes';
-$lang['NumCategorias'] = 'Número de categorias cadastradas';
-$lang['NumGrupos'] = 'Número de grupos disponíveis';
-$lang['NumLinks'] = 'Número de links cadastrados';
-$lang['NumSeparadores'] = 'Número de separadores de links';
-$lang['NumImagens'] = 'Número de imagens armazenadas';
-$lang['NumForms'] = 'Número de forms cadastrados';
-$lang['NumRssFeeds'] = 'Número de feeds';
-$lang['NumTemplates'] = 'Número de Templates';
-$lang['NumFortunes'] = 'Número de biscoitinhos da sorte';
+// pagina de estatÃ­sticas
+$lang['paginaEstatisticasTituloPagina'] = 'AdministraÃ§Ã£o de pÃ¡ginas - EstatÃ­sticas';
+$lang['paginaEstatisticasTituloTabela'] = ':: EstatÃ­sticas ::';
+$lang['NumPaginas'] = 'NÃºmero de pÃ¡ginas existentes';
+$lang['NumCategorias'] = 'NÃºmero de categorias cadastradas';
+$lang['NumGrupos'] = 'NÃºmero de grupos disponÃ­veis';
+$lang['NumLinks'] = 'NÃºmero de links cadastrados';
+$lang['NumSeparadores'] = 'NÃºmero de separadores de links';
+$lang['NumImagens'] = 'NÃºmero de imagens armazenadas';
+$lang['NumForms'] = 'NÃºmero de forms cadastrados';
+$lang['NumRssFeeds'] = 'NÃºmero de feeds';
+$lang['NumTemplates'] = 'NÃºmero de Templates';
+$lang['NumFortunes'] = 'NÃºmero de biscoitinhos da sorte';
 ?>

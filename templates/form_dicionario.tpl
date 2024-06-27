@@ -1,10 +1,10 @@
 <div class="lineForm">
 	<div class="tituloLateral">
-		Dicion·rio
+		Dicion√°rio
 	</div>
 	<div class="formLateral">
 		<form name="areas" method="post" action="http://www.priberam.pt/dlpo/definir_resultados.aspx" id="areas"><div>
-			<!-- DefiniÁıes a guarda do utilizador -->
+			<!-- Defini√ß√µes a guarda do utilizador -->
 			<input type="hidden" name="__EVENTTARGET" value="" />
 			<input type="hidden" name="__EVENTARGUMENT" value="" />
 			<input type="hidden" name="__VIEWSTATE" value="dDw1MDM3NzQ4MjA7Oz5pmpc/3Ns+U1B88TRVCLLtXHc+QQ==" />

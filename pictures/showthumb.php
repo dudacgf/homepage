@@ -1,6 +1,6 @@
 <?php
 //
-// configurações para exibição das fotos
+// configuraÃ§Ãµes para exibiÃ§Ã£o das fotos
 $fotos = simplexml_load_file('../configs/pictures.xml');
 foreach ($fotos as $fotoDir)
 {
@@ -13,30 +13,30 @@ foreach ($fotos as $fotoDir)
    }
 }
 
-// obtém a largura solicitada...
+// obtÃ©m a largura solicitada...
 $width = ( isset($_REQUEST['width']) ) ? $_REQUEST['width'] : 120 ;
 
-// Se ainda não existe cache para este tamanho, cria
+// Se ainda nÃ£o existe cache para este tamanho, cria
 $dircache .= ".w=$width" ;
 if (!file_exists($dircache))
 {
 	mkdir($dircache, 0777, true);
 }
 
-// se este diretório ainda não existe no cache, cria
+// se este diretÃ³rio ainda nÃ£o existe no cache, cria
 $pic = $_REQUEST['pic'];
 if (!file_exists($dircache . '/' . dirname($pic))) 
 {
 	mkdir($dircache . '/' . dirname($pic), 0777, true);
 }
 
-// se esta foto ainda não está no cache, cria
+// se esta foto ainda nÃ£o estÃ¡ no cache, cria
 if (!file_exists($dircache . '/' . $pic))
 {
-	// lê a foto no diretório original
+	// lÃª a foto no diretÃ³rio original
 	$im    = imagecreatefromjpeg($dirfotos . '/' . $pic);
 
-	// calcula as novas dimensões da imagem a partir das dimensões da imagem original
+	// calcula as novas dimensÃµes da imagem a partir das dimensÃµes da imagem original
 	$old_x=imageSX($im);
 	$old_y=imageSY($im);
 	$new_w=(int)($width);
@@ -58,7 +58,7 @@ if (!file_exists($dircache . '/' . $pic))
 		$thumb_h=$new_h;
 	}
 
-	// cria a nova imagem com as dimensões calculadas. o fundo será darkorange...
+	// cria a nova imagem com as dimensÃµes calculadas. o fundo serÃ¡ darkorange...
 	$thumb=ImageCreateTrueColor($thumb_w + 2,$thumb_h + 2);
 	$darkorange = imagecolorallocate($thumb, 255, 140, 0);
 	imagefill($thumb, 0, 0, $darkorange);

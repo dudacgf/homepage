@@ -59,7 +59,7 @@ class Fortune {
 		if (strlen($textoQuote) > 512 || strlen($autorQuote) > 127) 
 			return FAILSIZE;
 		$hashQuote = md5($textoQuote . $autorQuote);
-		// verifica se j· existe um fortune com este mesmo hash
+		// verifica se j√° existe um fortune com este mesmo hash
 		$_sql = "select idFortune from hp_fortunes where hashfortune = '" . $global_hpDB->real_escape_string($hashQuote) . "'";
 		$result = $global_hpDB->query($_sql);
 		if ($result) {
@@ -125,7 +125,7 @@ class Fortune {
 			echo "<br />" . str_repeat(".", 30) . " $totalQuotes fortunes indexados!<br />"; flush();
 			echo str_repeat(".", 30) . " $totalCreated fortunes inseridos na base de dados<br />"; flush();
 			echo str_repeat(".", 30) . " $totalFailSize fortunes recusados por ter tamanho muito grande<br />"; flush();
-			echo str_repeat(".", 30) . " $totalFailExists fortunes recusados por j· existirem na base<br /><hr />"; flush();
+			echo str_repeat(".", 30) . " $totalFailExists fortunes recusados por j√° existirem na base<br /><hr />"; flush();
 		}
 
 		return array('totalQuotes' => $totalQuotes, 

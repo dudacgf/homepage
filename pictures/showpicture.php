@@ -1,11 +1,11 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 include_once(RELATIVE_PATH . 'common.php');
 
 //
-// configurações para exibição das fotos
+// configuraÃ§Ãµes para exibiÃ§Ã£o das fotos
 $fotos = simplexml_load_file($pictures_info_xml_path);
 foreach ($fotos as $fotoDir)
 {
@@ -25,18 +25,18 @@ if (isset($requests['pic']))
 	$picture = str_replace(array('\\', '//'), '/', $picture);
 }
 
-// obtem a extensão, que será utilizada pelo template
+// obtem a extensÃ£o, que serÃ¡ utilizada pelo template
 $picture_info = pathinfo($picture);
 $url = htmlentities("showpicture.php?pic=" . $requests['pic']);
 
-// insere dados no array que será passado para o template
+// insere dados no array que serÃ¡ passado para o template
 $arquivo = array(
 		'image' => "showthumb.php?pic=" . $requests['pic'] . "&width=640",
 		'arquivo' => $requests['pic'],
 		'tipo' => $picture['extension'],
 		'url' => $url);
 
-// Passa as variáveis para o template e o exibe.
+// Passa as variÃ¡veis para o template e o exibe.
 $homepage->assign('tituloPaginaAlternativo', ':: ' . $requests['pic'] . ' ::');
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $requests['pic'] . ' ::');
 $homepage->assign('relativePATH', RELATIVE_PATH);

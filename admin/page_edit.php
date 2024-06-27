@@ -1,19 +1,19 @@
 <?php
 //
-// DefiniÁıes necess·rias para todos os programas, principalmente paths e localizaÁıes de arquivos/classes.  
+// Defini√ß√µes necess√°rias para todos os programas, principalmente paths e localiza√ß√µes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-// classes especÌficas da homepage
+// classes espec√≠ficas da homepage
 include_once($include_path . 'class_homepage.php');
 
-// este flag eu vou usar mais tarde (em page_edit_body.tpl para configurar a action do formul·rio).
+// este flag eu vou usar mais tarde (em page_edit_body.tpl para configurar a action do formul√°rio).
 $criarPagina = false;
 
-// garante que v„o aparecer todas as categorias.
+// garante que v√£o aparecer todas as categorias.
 $_REQUEST['gr'] = 'all';
 
-// se n„o foi passado nenhuma p·gina, entre em modo de seleÁ„o de p·gina
+// se n√£o foi passado nenhuma p√°gina, entre em modo de sele√ß√£o de p√°gina
 if (isset($requests['id'])) 
 {
 	$_idPagina = $requests['id'];
@@ -29,7 +29,7 @@ if ( !isset($requests['mode']) || (isset($_idPagina) && $_idPagina == '') )
 switch ($requests['mode'])
 {
 
-	// ediÁ„o da p·gina
+	// edi√ß√£o da p√°gina
 	case 'edPag': 
 		$template = 'admin/page_edit.tpl';
 	break;
@@ -52,7 +52,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir uma categoria da p·gina
+	// excluir uma categoria da p√°gina
 	case 'rmCat':
 		$pagina = new pagina($_idPagina);
 		$pagina->excluirElemento($_REQUEST['idCat']);
@@ -61,7 +61,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// incluir nova categoria na p·gina
+	// incluir nova categoria na p√°gina
 	case 'inCat':
 		$pagina = new pagina($_idPagina);
 		$pagina->incluirElemento($_REQUEST['categoriaSelector']);
@@ -70,7 +70,7 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 				
-	// salvar a p·gina (um dos botıes do form foi clicado)
+	// salvar a p√°gina (um dos bot√µes do form foi clicado)
 	case 'svPag':
 		$pagina = new pagina($_idPagina);
 		$pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
@@ -83,25 +83,25 @@ switch ($requests['mode'])
 		$pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
 		if ($pagina->atualizar()) 
 		{
-			$homepage->assign('msgAlerta', "P·gina [$pagina->tituloPagina] atualizada com sucesso!");
+			$homepage->assign('msgAlerta', "P√°gina [$pagina->tituloPagina] atualizada com sucesso!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "N„o foi possÌvel atualizar a p·gina [$pagina->tituloPagina]!");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel atualizar a p√°gina [$pagina->tituloPagina]!");
 		}
 		$homepage->assign('script2reload', 'admin/page_edit.php');
 		$homepage->assign('scriptMode', 'edPag');
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// apresenta um form vazio para a criaÁ„o de uma nova p·gina. O flag $criarPagina vai mudar o comportamento do 
+	// apresenta um form vazio para a cria√ß√£o de uma nova p√°gina. O flag $criarPagina vai mudar o comportamento do 
 	// template.
 	case 'nwPag':
 		$criarPagina = true;
 		$template = 'admin/page_edit.tpl';
 	break;
 
-	// criar uma nova p·gina (chamado a partir do form de ediÁ„o com tag <form> alterada quando $criarPagina = true) 
+	// criar uma nova p√°gina (chamado a partir do form de edi√ß√£o com tag <form> alterada quando $criarPagina = true) 
 	case 'crPag':
 		$pagina = new pagina(NULL);
 		$pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
@@ -116,23 +116,23 @@ switch ($requests['mode'])
 		if (!$_idPagina) 
 		{
 			$homepage->assign('scriptMode', 'slPag');
-			$homepage->assign('msgAlerta', "N„o foi possÌvel criar a p·gina [$pagina->tituloPagina]");
+			$homepage->assign('msgAlerta', "N√£o foi poss√≠vel criar a p√°gina [$pagina->tituloPagina]");
 		}
 		else
 		{
 			$homepage->assign('scriptMode', 'edPag');
-			$homepage->assign('msgAlerta', "P·gina [$pagina->tituloPagina] criada com sucesso!");
+			$homepage->assign('msgAlerta', "P√°gina [$pagina->tituloPagina] criada com sucesso!");
 		}
 		$homepage->assign('script2reload', 'admin/page_edit.php');
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir esta p·gina da base - exibe o form de confirmaÁ„o para voltar mais tarde no modo ExPag
+	// excluir esta p√°gina da base - exibe o form de confirma√ß√£o para voltar mais tarde no modo ExPag
 	case 'cfExPag':
 		$template = 'admin/delete_confirm.tpl';
 	break;
 
-	// excluir uma p·gina (j· foi exibido o form de confirmaÁ„o).
+	// excluir uma p√°gina (j√° foi exibido o form de confirma√ß√£o).
 	case 'exPag':
 		switch ($requests['go'])
 		{
@@ -140,12 +140,12 @@ switch ($requests['mode'])
 				$pagina = new pagina($_idPagina);
 				if ($pagina->excluir())
 				{
-					$homepage->assign('msgAlerta', "P·gina [$pagina->tituloPagina] excluÌda com sucesso!");
+					$homepage->assign('msgAlerta', "P√°gina [$pagina->tituloPagina] exclu√≠da com sucesso!");
 					$homepage->assign('scriptMode', 'slPag');
 				}
 				else
 				{
-					$homepage->assign('msgAlerta', "N„o foi possÌvel excluir a p·gina [$pagina->tituloPagina]!");
+					$homepage->assign('msgAlerta', "N√£o foi poss√≠vel excluir a p√°gina [$pagina->tituloPagina]!");
 					$homepage->assign('scriptMode', 'edPag');
 				}
 			break;
@@ -165,7 +165,7 @@ switch ($requests['mode'])
 }
 
 //
-// Inicializo vari·veis e passo, dependendo do template que vou carregar...
+// Inicializo vari√°veis e passo, dependendo do template que vou carregar...
 $homepage->assign('displayImagemTitulo', '1');
 
 switch ($template)
@@ -176,14 +176,14 @@ switch ($template)
 		$homepage->assign('descricoesGrupos', $descricoesGrupos);
 		$homepage->assign('criarPagina', $criarPagina);
 		
-                /* obtÈm a lista */
+                /* obt√©m a lista */
                 $homepage->assign( 'classNames', cssEstilos::getClassNames( ) );
 
 		if (!$criarPagina) 
 		{
 			$homepage->assign('cookedStyles', '');
 
-			// se a p·gina j· existir, carrega e exibe
+			// se a p√°gina j√° existir, carrega e exibe
 			$pagina = new pagina($_idPagina);
 			$homepage->assign('tituloPaginaAlternativo', $pagina->tituloPagina . ' :: Edi&ccedil;&atilde;o');
 			$homepage->assign('tituloTabelaAlternativo', $pagina->tituloTabela . ' :: Edi&ccedil;&atilde;o');
@@ -210,7 +210,7 @@ switch ($template)
 		{
 			$homepage->assign('cookedStyles', '');
 
-			// inicializa os campos para criaÁ„o de uma nova p·gina
+			// inicializa os campos para cria√ß√£o de uma nova p√°gina
 			$homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de p&aacute;gina');
 			$homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
 			$homepage->assign('tituloPagina', $lang['hp_paginas_TituloPagina']);
@@ -225,7 +225,7 @@ switch ($template)
 	break;
 
 	case 'admin/page_select.tpl':
-		// le os cookies e passa para a p·gina a ser carregada.
+		// le os cookies e passa para a p√°gina a ser carregada.
 		$homepage->assign('cookedStyles', '');
 
 		$homepage->assign('paginas', pagina::getPaginas());

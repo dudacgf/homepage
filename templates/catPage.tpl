@@ -20,7 +20,7 @@
 			<select name="idCat" id="idCat" size="5">
 			{section name=cat loop=$categorias}
 				<option value="{$categorias[cat].idCategoria}">
-					{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
+					{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restriÃ§Ã£o - {$categorias[cat].restricaoCategoria} ]{else}[ sem restriÃ§Ã£o ]{/if}
 				</option>
 			{/section}
 			</select>

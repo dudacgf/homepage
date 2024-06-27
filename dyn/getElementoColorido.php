@@ -1,10 +1,10 @@
 <?php
 //
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// DefiniÃ§Ãµes necessÃ¡rias para todos os programas, principalmente paths e localizaÃ§Ãµes de arquivos/classes.  
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-// obtém as chaves da página, do elementocolorido e do valorCor a partir da request url
+// obtÃ©m as chaves da pÃ¡gina, do elementocolorido e do valorCor a partir da request url
 if (!isset($requests['el'])) 
 {
 	echo 'NOK';
