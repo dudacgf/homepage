@@ -1,7 +1,7 @@
 {include file="page_header.tpl"}
 
 <td>
-<form action="{$relativePATH}{$script2call}" method="POST">
+<form action="{$includePATH}{$script2call}" method="POST">
 <input type="hidden" name="mode" id="mode" value="{$scriptMode}" />
 {if isset($idPagina)}
 	<input type="hidden" name="id" id="id" value="{$idPagina}" />

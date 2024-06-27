@@ -19,7 +19,7 @@
 
 
 <td>
-<form name="cdel" action="{$relativePATH}admin/grupo_edit.php" method="GET">
+<form name="cdel" action="{$includePATH}admin/grupo_edit.php" method="GET">
 <input type="hidden" id="mode" name="mode" value="edGrp">
 	<table width="600px" style="text-align: center;">
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarGrupo}</th></tr>

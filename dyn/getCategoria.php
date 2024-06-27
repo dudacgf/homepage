@@ -1,5 +1,4 @@
 <?php
-
 header('Content-Type: text/html; charset=iso-8859-1');
 
 // 
@@ -21,12 +20,11 @@ if (!isset($_REQUEST['gr'])) {
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('RELATIVE_PATH', './../');
-define('HOMEPAGE_PATH', './../');
+require_once('../common.php');
 
-include_once(RELATIVE_PATH . 'includes/class_database.php');
+require_once($include_path . 'class_database.php');
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = RELATIVE_PATH . 'configs/connections.xml';
+$connection_info_xml_path = $config_path . 'connections.xml';
 
 // global que manterá a conexão à base de dados única para todos os objetos instanciados.
 try {
@@ -41,7 +39,7 @@ catch (Exception $e) {
 // Leio a categoria e percorro-a, incluíndo-a e a seus grupos no template
 
 // classes da estrutura da página, para a leitura da categoria, dos grupos e seus elementos.
-include_once(RELATIVE_PATH . 'includes/class_homepage.php');
+require_once($include_path . 'class_homepage.php');
 $categ = new Categoria($idCat);
 
 // Leio os grupos desta categoria e percorro-os, incluíndo-os num array que será passado para o template
@@ -69,22 +67,14 @@ foreach ($categ->elementos as $grupo)
 $descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
 $descricoesGrupos[] = array('index' => $grupo->posCategoria, 'idGrupo' => $grupo->idGrupo, 'grupos' => $grupos);
 
-//
-// obtenho via smarty a página que vou utilizar.
-
 // localização da library do smarty, suas classes e plugins
-include_once(RELATIVE_PATH . 'configs/smarty_location.php');
-include_once(RELATIVE_PATH . 'includes/class_hp_smarty.php');
-
-// localização do xml com detalhes da configuração do smarty
-$smarty_info_xml_path = RELATIVE_PATH . 'configs/smarty.xml';
-$smarty_info_xml_id = 1;
+require_once($include_path . 'class_hp_smarty.php');
 
 // cria o template smart, associa valores
-$catInnerHtml = new hp_smarty($smarty_info_xml_path, $smarty_info_xml_id);
+$catInnerHtml = new hp_smarty();
 $catInnerHtml->assign('descricoesCategorias', $descricoesCategorias);
 $catInnerHtml->assign('descricoesGrupos', $descricoesGrupos);
-$catInnerHtml->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 
 // retorna o que vier do template para quem me chamou
 echo $catInnerHtml->fetch('page_body.tpl');

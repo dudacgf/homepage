@@ -1,10 +1,7 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
 include_once(RELATIVE_PATH . 'common.php');
 
 //

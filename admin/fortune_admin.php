@@ -1,11 +1,8 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 // insere a classe de fortunes.
 require($include_path . "class_fortune.php");
@@ -26,7 +23,7 @@ $homepage->assign('displayImagemTitulo', '1');
 $homepage->assign('tituloPagina', ':: Administra&ccedil;&atilde;o de Fortunes');
 $homepage->assign('tituloTabela', ' :: Biscoitinhos da sorte :: administra&ccedil;&atilde;o ::');
 $homepage->assign('classPagina', 'admin');
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('displaySelectColor', 0);
 
 echo $homepage->fetch("page_header.tpl");

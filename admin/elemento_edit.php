@@ -1,22 +1,19 @@
-	<?php
+<?php
 
-	//
-	// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-	// Carregar apenas uma vez.
-	define('HOMEPAGE_PATH', getcwd() . '/../');
-	define('RELATIVE_PATH', './../');
-	include_once(HOMEPAGE_PATH . 'common.php');
+//
+// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// Carregar apenas uma vez.
+include_once('../common.php');
 
-	// se não foi passado nenhum grupo, morre.
-	if (isset($requests['idGrp']))
-	{
-		$_idGrupo = $requests['idGrp'];
-	}
-	else
-	{
-		die("não posso prosseguir sem um grupo selecionado!");
-	}
-
+// se não foi passado nenhum grupo, morre.
+if (isset($requests['idGrp']))
+{
+	$_idGrupo = $requests['idGrp'];
+}
+else
+{
+	die("não posso prosseguir sem um grupo selecionado!");
+}
 	// lê o grupo deste elemento
 	$grupo = new grupo($_idGrupo);
 	$homepage->assign('grupo', $grupo->getArray());
@@ -662,7 +659,7 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarElemento', $criarElemento);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('classPagina', 'admin');

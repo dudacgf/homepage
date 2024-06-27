@@ -1,5 +1,5 @@
 {include file="page_header.tpl"}
-<script type="text/javascript" src="{$relativePATH}js/form_cores.js"></script>
+<script type="text/javascript" src="{$includePATH}js/form_cores.js"></script>
 
 <div id='help' class='expanded'>
 </div>

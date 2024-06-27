@@ -1,11 +1,8 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 // classes específicas da homepage
 include_once($include_path . 'class_homepage.php');
@@ -174,7 +171,7 @@ $homepage->assign('displayImagemTitulo', '1');
 switch ($template)
 {
 	case 'admin/page_edit.tpl':
-		include(RELATIVE_PATH . 'admin/criar_exemplo.php');
+		include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');
 		$homepage->assign('descricoesCategorias', $categoriaExemplo);
 		$homepage->assign('descricoesGrupos', $descricoesGrupos);
 		$homepage->assign('criarPagina', $criarPagina);
@@ -260,7 +257,7 @@ switch ($template)
 	break;
 }
 
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
 

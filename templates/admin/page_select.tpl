@@ -4,13 +4,13 @@
 <!--
 	function doAction(pressed) {ldelim}
 		if (pressed == '{$LANG.confirmar}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/page_edit.php?mode=edPag&id=' + document.getElementById('id').value;
+			document.cdel.action = '{$includePATH}admin/page_edit.php?mode=edPag&id=' + document.getElementById('id').value;
 		{rdelim} 
 		else if (pressed == '{$LANG.novaPagina}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/page_edit.php?mode=nwPag';
+			document.cdel.action = '{$includePATH}admin/page_edit.php?mode=nwPag';
 		{rdelim} 
 		else if (pressed == '{$LANG.voltar}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/estatisticas.php';
+			document.cdel.action = '{$includePATH}admin/estatisticas.php';
 		{rdelim}
 		document.cdel.submit();
 	{rdelim}
@@ -19,7 +19,7 @@
 
 
 <td>
-<form name="cdel" action="{$relativePATH}admin/page_edit.php" method="POST">
+<form name="cdel" action="{$includePATH}admin/page_edit.php" method="POST">
 	<table width="600px" style="text-align: center;">
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarPagina}</th></tr>
 	<tr><td>

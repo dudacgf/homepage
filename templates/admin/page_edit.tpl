@@ -8,25 +8,25 @@
 		if (mode != 'crPag') {ldelim}
 			switch (pressed) {ldelim}
 				case '{$LANG.gravar}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=svPag&id=' + document.getElementById('id').value; 
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=svPag&id=' + document.getElementById('id').value; 
 					break;
 				case '{$LANG.excluir}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=cfExPag&id=' + document.getElementById('id').value; 
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=cfExPag&id=' + document.getElementById('id').value; 
 					break;
 				case '{$LANG.novaPagina}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=nwPag';
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=nwPag';
 					break;
 				case '{$LANG.cancelar}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=slPag';
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
 					break;
 			{rdelim}
 		{rdelim} else {ldelim}
 			switch (pressed) {ldelim}
 				case '{$LANG.gravar}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=crPag';
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=crPag';
 					break;
 				case '{$LANG.cancelar}':
-					document.edPag.action = '{$relativePATH}admin/page_edit.php?mode=slPag';
+					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
 					break;
 			{rdelim}
 		{rdelim}
@@ -91,16 +91,16 @@
 {section name=dc loop=$categoriasPresentes}
 <p>
 	<div class="tituloColuna" style="clear: left;">
-		<a href="{$relativePATH}admin/categoria_edit.php?mode=edCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">{$categoriasPresentes[dc].descricaoCategoria}</a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=edCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">{$categoriasPresentes[dc].descricaoCategoria}</a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/page_edit.php?mode=upCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/up_arrow.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=upCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/up_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/page_edit.php?mode=downCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/down_arrow.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=downCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/down_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/page_edit.php?mode=rmCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/delete.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=rmCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/delete.gif"></a>
 	</div>
 	<div class="coluna" >
 			{if $categoriasPresentes[dc].categoriaRestrita == 1}Sim [{$categoriasPresentes[dc].restricaoCategoria}]{else}N&atilde;o{/if}
@@ -109,7 +109,7 @@
 {/section}
 <div class="subTitulo">{$LANG.novaCategoria}:</div>
 <div class="fortune">
-<form id="nwCat" action="{$relativePATH}admin/page_edit.php?mode=inCat&id={$idPagina}" method="POST">
+<form id="nwCat" action="{$includePATH}admin/page_edit.php?mode=inCat&id={$idPagina}" method="POST">
 	<select id="categoriaSelector" name="categoriaSelector">
 	{section name=dnc loop=$categoriasAusentes}
 		<option value="{$categoriasAusentes[dnc].idCategoria}">{$categoriasAusentes[dnc].descricaoCategoria}</option>

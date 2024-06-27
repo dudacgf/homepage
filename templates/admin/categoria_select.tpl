@@ -4,13 +4,13 @@
 <!--
 	function doAction(pressed) {ldelim}
 		if (pressed == '{$LANG.confirmar}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/categoria_edit.php?mode=edCat&idCat=' + document.getElementById('idCat').value;
+			document.cdel.action = '{$includePATH}admin/categoria_edit.php?mode=edCat&idCat=' + document.getElementById('idCat').value;
 		{rdelim} 
 		else if (pressed == '{$LANG.novaCategoria}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/categoria_edit.php?mode=nwCat';
+			document.cdel.action = '{$includePATH}admin/categoria_edit.php?mode=nwCat';
 		{rdelim} 
 		else if (pressed == '{$LANG.voltar}') {ldelim}
-			document.cdel.action = '{$relativePATH}admin/estatisticas.php';
+			document.cdel.action = '{$includePATH}admin/estatisticas.php';
 		{rdelim}
 		document.cdel.submit();
 	{rdelim}

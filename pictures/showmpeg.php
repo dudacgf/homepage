@@ -1,14 +1,8 @@
 <?php
-// http://www.jeroenwijering.com/
-// "C:\Program Files\Riva\Riva FLV Encoder 2.0\ffmpeg.exe" -i "C:\Fotos\niver Olivia 2006\04-02-2006 15-25-10.MPG" -b 360 -r 25 -s 240x180 -hq -deinterlace  -ab 56 -ar 22050 -ac 1  "C:\HomePage\ddd\04-02-2006 15-25-10.flv" 2>encode.txt
-//
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+include_once('../common.php');
 
 
 //
@@ -79,7 +73,7 @@ $arquivo = array(
 // Passa as variáveis para o template e o exibe.
 $homepage->assign('tituloPaginaAlternativo', ':: ' . $requests['mov'] . ' ::');
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $requests['mov'] . ' ::');
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('classPagina', 'black');
 $homepage->assign('arquivo', $arquivo);
 

@@ -1,5 +1,13 @@
 # CakePHP 3
 
+?.php
+?.js
+
+/templates_c/*
+/admin/templates_c/*
+/admin/pictures/templates_c/*
+/admin/.htaccess
+
 /vendor/*
 /config/app.php
 

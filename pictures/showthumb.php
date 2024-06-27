@@ -1,15 +1,7 @@
 <?php
-// kokesh@kokeshnet.com 2004
-
-//
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-// Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-
 //
 // configurações para exibição das fotos
-$fotos = simplexml_load_file(RELATIVE_PATH . 'configs/pictures.xml');
+$fotos = simplexml_load_file('../configs/pictures.xml');
 foreach ($fotos as $fotoDir)
 {
    if ($fotoDir['ID'] == "1")

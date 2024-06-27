@@ -3,9 +3,7 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', getcwd() . '/../');
-define('RELATIVE_PATH', './../');
-include_once(HOMEPAGE_PATH . 'common.php');
+include_once('../common.php');
 
 // classes específicas da homepage
 include_once($include_path . 'class_homepage.php');
@@ -275,8 +273,8 @@ switch ($template)
 
 }
 
-$homepage->assign('relativePATH', RELATIVE_PATH);
 $homepage->assign('criarCategoria', $criarCategoria);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
 

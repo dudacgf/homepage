@@ -1,13 +1,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR.UTF-8" lang="pt-BR.UTF-8">
 <head>
-<link rel="shortcut icon" href="{$relativePATH}favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="{$includePATH}favicon.ico" type="image/x-icon" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Type" content="image/jpeg" />
-<link rel="stylesheet" type="text/css" href="{$relativePATH}estilos/base.css" title="default" />
-<link rel="stylesheet" type="text/css" href="{$relativePATH}estilos/{$classPagina}.css" title="default" />
-<script type="text/javascript" src="{$relativePATH}js/rotinas.js"></script>
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" title="default" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" title="default" />
+<script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
 <title>
   {if !isset($tituloPaginaAlternativo)}
     {$tituloPagina}

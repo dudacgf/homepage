@@ -4,7 +4,7 @@
   {else} 
     {assign var="cols" value=8} 
   {/if}
-  {if !isset($edicaoPagina)} <td style="text-align: left; vertical-align: top;width: {math equation=floor(90/$cols)}%;"> {/if}
+  {if !isset($edicaoPagina)} <td style='text-align: left; vertical-align: top;width: {math equation="floor(90/$cols)"}%;'> {/if}
     <div class="tituloCategoria">
       {$descricoesCategorias[dc].categoria}
     </div>

@@ -4,19 +4,19 @@
 <tr>
 	<th class="categoria" style=" width: 100pt; text-align: left;">
 		{if $pagatual > 2}
-			<a href="picturedir.php?dir={$dirAtual}&pag=1"><img src="{$relativePATH}imagens/leftleft_arrow.gif" style=" width: 20px; height: 15px; vertical-align: middle; border: 0pt">&nbsp;</a>
+			<a href="picturedir.php?dir={$dirAtual}&pag=1"><img src="{$includePATH}imagens/leftleft_arrow.gif" style=" width: 20px; height: 15px; vertical-align: middle; border: 0pt">&nbsp;</a>
 		{/if}
 		{if $pagatual > 1}
-			<a href="picturedir.php?dir={$dirAtual}&pag={math equation="pag - 1" pag=$pagatual}"><img src="{$relativePATH}imagens/left_arrow.gif" style=" width: 14px; height: 15px; vertical-align: middle; border: 0pt">&nbsp;</a>
+			<a href="picturedir.php?dir={$dirAtual}&pag={math equation="pag - 1" pag=$pagatual}"><img src="{$includePATH}imagens/left_arrow.gif" style=" width: 14px; height: 15px; vertical-align: middle; border: 0pt">&nbsp;</a>
 		{/if}
 	</th>
 	<td colspan="4" style=" width: 400pt; " class="titulo"><a href="picturedir.php">:: FOTOS ::</a></td>
 	<th class="categoria" style=" width: 100pt; text-align: right;">
 		{if $pagatual < $numpaginas}
-			<a href="picturedir.php?dir={$dirAtual}&pag={$pagproxima}">&nbsp;<img src="{$relativePATH}imagens/right_arrow.gif" style=" width: 14px; height: 15px; vertical-align: middle; border: 0pt;"></a>
+			<a href="picturedir.php?dir={$dirAtual}&pag={$pagproxima}">&nbsp;<img src="{$includePATH}imagens/right_arrow.gif" style=" width: 14px; height: 15px; vertical-align: middle; border: 0pt;"></a>
 		{/if}
 		{if $pagatual < $pagpenultima}
-			<a href="picturedir.php?dir={$dirAtual}&pag={$numpaginas}">&nbsp;<img src="{$relativePATH}imagens/rightright_arrow.gif" style=" width: 20px; height: 15px; vertical-align: middle; border: 0pt;"></a>
+			<a href="picturedir.php?dir={$dirAtual}&pag={$numpaginas}">&nbsp;<img src="{$includePATH}imagens/rightright_arrow.gif" style=" width: 20px; height: 15px; vertical-align: middle; border: 0pt;"></a>
 		{/if}
 	</th>
 </tr><tr>

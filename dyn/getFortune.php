@@ -1,4 +1,8 @@
 <?php
+//
+// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
+// Carregar apenas uma vez.
+require_once('../common.php')
 
 header('Content-Type: text/html; charset=UTF-8');
 
@@ -8,17 +12,10 @@ if (isset($_REQUEST['idFortune']) && !empty($_REQUEST['idFortune'])) {
 	$idFortune = $_REQUEST['idFortune'];
 }
 
-//
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-// Carregar apenas uma vez.
-define('RELATIVE_PATH', './../');
-define('HOMEPAGE_PATH', './../');
-// localização dos includes
-$include_path = HOMEPAGE_PATH . 'includes/';
 
-include_once($include_path . 'class_database.php');
+require_once($include_path . 'class_database.php');
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = RELATIVE_PATH . 'configs/connections.xml';
+$connection_info_xml_path = $config_path . 'connections.xml';
 
 // global que manterá a conexão à base de dados única para todos os objetos instanciados.
 try {

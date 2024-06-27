@@ -3,11 +3,7 @@ header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-if (!defined('RELATIVE_PATH'))
-{
-	define("RELATIVE_PATH", getcwd() . "/");
-}
-include_once(RELATIVE_PATH . 'common.php');
+require_once('common.php');
 
 // 
 // verifica se houve pedido de upload...
@@ -91,9 +87,9 @@ $cookedStyles = '';
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
-	foreach ($colorCookies as $selector => $colorCookie) {
-		$cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
-	}
+    foreach ($colorCookies as $selector => $colorCookie) {
+        $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
+    }
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
@@ -132,7 +128,7 @@ foreach ($elementosLidos as $elemento) {
 
     // incluo os elementos de um grupo num array que na quebra de grupos será adicionado a um array de grupos.
     // este array de grupos será incluido num array co-irmão do array de categorias a cada quebra de categoria.
-	$elementos[] = array( 
+    $elementos[] = array( 
                    'idElemento' => $elemento['idElemento'],
                    'descricaoLink' => $elemento['descricaoElemento'],
                    'tipoElemento' => $elemento['idTipoElemento'],
@@ -165,20 +161,10 @@ $descricoesGrupos[] = array('index' => $posicaoAnterior, 'idGrupo' => $elemento[
 // elementos enviados ao template
 $homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
-/*
-if ( $_idPagina == 5 ) 
-{
-	$homepage->assign('relativePATH', '/');
-}
-else
-{
-	$homepage->assign('relativePATH', '/');
-}
-*/
-$homepage->assign('relativePATH', basename(RELATIVE_PATH) . '/');
+$homepage->assign('includePATH', INCLUDE_PATH);
 if (isset($requests['gr']))
 {
-	$homepage->assign('gr', $requests['gr']);
+    $homepage->assign('gr', $requests['gr']);
 }
 
 $homepage->display('index.tpl');

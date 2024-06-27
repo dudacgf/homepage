@@ -1,5 +1,4 @@
 <?php
-
 //----------------------------------------------------------------------------//
 //
 // Inicializações
@@ -9,9 +8,7 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../../');
-define('RELATIVE_PATH', './../../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 //
 // configurações para exibição das fotos
@@ -358,7 +355,7 @@ function enviarInicioPagina()
 	$homepage->assign('displayGoogle', false);
 	$homepage->assign('displayFindaMap', false);
 	$homepage->assign('displayFortune', false);
-	$homepage->assign('relativePATH', RELATIVE_PATH);
+	$homepage->assign('includePATH', INCLUDE_PATH);
 
 	echo $homepage->fetch('page_header.tpl');
 	echo '<td>';

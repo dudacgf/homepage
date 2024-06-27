@@ -1,22 +1,16 @@
 <?php
-	
-
+//
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-if (!defined('RELATIVE_PATH'))
-{
-    define('RELATIVE_PATH', './../');
-}
-define('HOMEPAGE_PATH', './../');
+require_once('../common.php');
 
 if (isset($_REQUEST['navpanel']) and $_REQUEST['navpanel'] == 'yes') 
 {
 	// le as categorias, grupos e elementos desta página...
-	include(RELATIVE_PATH . 'homepage.php');
+	include(HOMEPAGE_PATH . 'homepage.php');
 }
 else
 {
-    include_once(RELATIVE_PATH . 'common.php');
 
 	// A página de administração tem idPagina = 5
 	$_idPagina = 5;
@@ -30,7 +24,7 @@ else
 	$homepage->assign('displayImagemTitulo', '1');
 	$homepage->assign('displaySelectColor', $pagina->displaySelectColor);
 
-	$homepage->assign('relativePATH', RELATIVE_PATH);
+    $homepage->assign('includePATH', INCLUDE_PATH);
 	$homepage->display('admin/index_admin.tpl');
 }
 

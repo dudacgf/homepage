@@ -3,7 +3,7 @@
   cores.js
   (c) ecgf - 2005
 
-  Rotinas para definição de cor de um ou mais elementos dado seu id ou sua classe.
+  Rotinas para definiÃ§Ã£o de cor de um ou mais elementos dado seu id ou sua classe.
 
   note que este script depende fortemente dos estilos 
   definidos em $hp_homepage_path . estilos.css
@@ -16,6 +16,8 @@ var elSearchCriteria = 2;
 var elSearchTerm = 3;
 var elCookie = 4;
 var elValorCor = 5;
+var path = new URL(document.URL).pathname.split('/').slice(0,-2).join('/');
+path = path.replace('//', '/');
 
 function hexdec(f1) {
 	f1 = f1.toUpperCase();
@@ -39,7 +41,7 @@ function RGBColor(valorCor)
 }
 
 /*
- ** esta função é a que realmente realiza as trocas de cores dos elementos...
+ ** esta funÃ§Ã£o Ã© a que realmente realiza as trocas de cores dos elementos...
  **
 */
 function alterarCorAtributo(theObj, aColorAtribute, aColor) {
@@ -80,7 +82,7 @@ function alterarCorAtributo(theObj, aColorAtribute, aColor) {
 
 /*
  **
- ** Esta função altera a cor de um elemento dado seu id
+ ** Esta funÃ§Ã£o altera a cor de um elemento dado seu id
  **
 */
 function alteraCorElementoPorId(theId, aColorAtribute, aColor) {
@@ -90,9 +92,9 @@ function alteraCorElementoPorId(theId, aColorAtribute, aColor) {
 
 /*
  **
- **  Esta função executa a troca de cores de uma classe dado seu selectorText
+ **  Esta funÃ§Ã£o executa a troca de cores de uma classe dado seu selectorText
  **
- **  Aqui, theSelectorText é o seletor de uma classe, p.ex "div.fortune".
+ **  Aqui, theSelectorText Ã© o seletor de uma classe, p.ex "div.fortune".
  **
 */
 function alterarCorElementoPorClasse(theSelectorText, aColorAtribute, aCor) {
@@ -131,9 +133,9 @@ function alterarCorElementoPorClasse(theSelectorText, aColorAtribute, aCor) {
 
 /*
 **
-**  esta função executa a troca de cores de um ou mais elementos
+**  esta funÃ§Ã£o executa a troca de cores de um ou mais elementos
 **  identificados por um ou mais atributos Id.  Os Ids devem estar
-**  separados por ';' (ponto-e-vírgula).
+**  separados por ';' (ponto-e-vÃ­rgula).
 **
 */
 function alterarCorElementosPorId(theId, aColorAtribute, aColor) {
@@ -146,7 +148,7 @@ function alterarCorElementosPorId(theId, aColorAtribute, aColor) {
 
 /*
 **
-** esta função executa a troca de cores de um ou mais elementos coloridos
+** esta funÃ§Ã£o executa a troca de cores de um ou mais elementos coloridos
 ** identificados por um ou mais 'class selectors' (div.x etc).  Os elementos devem
 ** estar separados por ';' 
 **
@@ -171,12 +173,12 @@ function alterarCorElemento(oElemento, aCor) {
 }
 
 //
-// chamada com um pequeno delay pelas ações do form de seleção de cores.
+// chamada com um pequeno delay pelas aÃ§Ãµes do form de seleÃ§Ã£o de cores.
 // testa o valor do elemento de retorno de xHttpInnerHtml.
 // 'wait ...' - valor inicializado no innerHTML do elemento por xHttpInnerHtml. 
-//  			significa que o handler ainda não recebeu status 4.
-//				A rotina chama a si própria novamente com outro delay
-// 'NOK'	  - retornou com erro. recarrega a página (é mais fácil que tratar o erro).
+//  			significa que o handler ainda nÃ£o recebeu status 4.
+//				A rotina chama a si prÃ³pria novamente com outro delay
+// 'NOK'	  - retornou com erro. recarrega a pÃ¡gina (Ã© mais fÃ¡cil que tratar o erro).
 // outro	  - aparentemente deu certo, tenta alterar a cor do elemento a partir do valor retornado.
 //
 function delayed_AlterarCorElemento() {
@@ -196,25 +198,25 @@ function delayed_AlterarCorElemento() {
 
 /*
  **
- ** Executa a 1ª ação do form colorForm - adicionar uma cor a um par Pagina x elementoColorido
+ ** Executa a 1Âª aÃ§Ã£o do form colorForm - adicionar uma cor a um par Pagina x elementoColorido
  **
 */
 function adicionarCookedStyle() {
 
-  // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
+  // obtÃ©m o elemento cuja cor serÃ¡ alterada pela opÃ§Ã£o selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
   var idElementoColorido = obj.value;
 
-  // obtém a cor pela opção selecionada no <select> com as cores...
+  // obtÃ©m a cor pela opÃ§Ã£o selecionada no <select> com as cores...
   obj = document.getElementById('zzSelectColorForm');
   var valorCor = obj.options[obj.selectedIndex].value;
 
-  // obtém, no form, o id da página que está sendo editada.
+  // obtÃ©m, no form, o id da pÃ¡gina que estÃ¡ sendo editada.
   obj = document.getElementById('id');
   var id = obj.value;
 
   // inclui o cookie na base de dados e a seguir altera a cor no form.
-  insertRequest = "/dyn/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
+  insertRequest = "/" + path + "/dyn/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
   xhttpInnerHtml(insertRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 
@@ -222,37 +224,37 @@ function adicionarCookedStyle() {
 
 /*
  **
- ** Executa a 2ª ação do form colorForm - deletar a associação de uma cor a um par Pagina x elementoColorido e restaurar
- **										  o padrão da classe.
+ ** Executa a 2Âª aÃ§Ã£o do form colorForm - deletar a associaÃ§Ã£o de uma cor a um par Pagina x elementoColorido e restaurar
+ **										  o padrÃ£o da classe.
  **
 */
 function deletarCookedStyle() {
-  // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
+  // obtÃ©m o elemento cuja cor serÃ¡ alterada pela opÃ§Ã£o selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
   var idElementoColorido = obj.value;
 
-  // obtém, no form, o id da página que está sendo editada.
+  // obtÃ©m, no form, o id da pÃ¡gina que estÃ¡ sendo editada.
   obj = document.getElementById('id');
   var id = obj.value;
 
   // deleta o cookie na base de dados e a seguir restaura a cor da classe.
-  deleteRequest = "/dyn/delcookie.php?id=" + id + "&el=" + idElementoColorido;
+  deleteRequest = "/" + path + "/dyn/delcookie.php?id=" + id + "&el=" + idElementoColorido;
   xhttpInnerHtml(deleteRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 }
 
 /*
  **
- ** Executa a 3ª ação do form colorForm - restaurar o padrão da classe, eliminando todos as associações entre uma cor
+ ** Executa a 3Âª aÃ§Ã£o do form colorForm - restaurar o padrÃ£o da classe, eliminando todos as associaÃ§Ãµes entre uma cor
  **										  e um par Pagina x elementoColorido
  **
 */
 function restaurarPagina() {
-  // obtém, no form, o id da página que está sendo editada.
+  // obtÃ©m, no form, o id da pÃ¡gina que estÃ¡ sendo editada.
   var id = document.getElementById('id').value;
 
-  // remove os cookies da base de dados e recarrega a página
-  resetRequest = "/dyn/resetpage.php?id=" + id;
+  // remove os cookies da base de dados e recarrega a pÃ¡gina
+  resetRequest = "/" + path + "/dyn/resetpage.php?id=" + id;
   xhttpInnerHtml(resetRequest, 'xHttpResponse');
   setTimeout('window.location.reload()', 500);
 }

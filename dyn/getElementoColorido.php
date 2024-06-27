@@ -1,11 +1,8 @@
 <?php
- 
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 // obtém as chaves da página, do elementocolorido e do valorCor a partir da request url
 if (!isset($requests['el'])) 

@@ -1,11 +1,8 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', getcwd() . '/../');
-define('RELATIVE_PATH', './../');
-include_once(HOMEPAGE_PATH . 'common.php');
+require_once('../common.php');
 include_once($include_path  . 'class_fortune.php');
 
 // obtém as estatísticas na base e as repassa ao template
@@ -37,7 +34,7 @@ $homepage->assign('displayImagemTitulo', '1');
 $homepage->assign('classPagina', 'admin');
 $homepage->assign('tituloPaginaAlternativo', $lang['paginaEstatisticasTituloPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['paginaEstatisticasTituloTabela']);
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('displaySelectColor', 0);
 $homepage->display('admin/estatisticas.tpl');

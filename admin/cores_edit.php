@@ -1,14 +1,7 @@
 <?php
-	
-
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-if (!defined('RELATIVE_PATH'))
-{
-	define('RELATIVE_PATH', './../');
-}
-define('HOMEPAGE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 // A página de exemplo de cores tem idPagina = 7
 $_idPagina = 7;
@@ -43,7 +36,7 @@ if ($colorCookies)
 $homepage->assign('cookedStyles', $cookedStyles);
 
 // Pego a pagina de exemplo para ter todos os tipos de elemento.
-include(RELATIVE_PATH . 'admin/criar_exemplo.php');
+include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');
 
 // Leio as categorias da página e percorro-as, incluíndo-as no template
 $pagina->lerElementos();
@@ -87,7 +80,7 @@ $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 
 $homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 
 $homepage->display('admin/cores_edit.tpl');
 

@@ -1,5 +1,4 @@
 {include file="page_header.tpl"}
-
 	<div class="itemLateral">{$LANG.NumPaginas}</div>
 	<div class="item">{$numPaginas}</div>
 	<div class="itemLateral">{$LANG.NumCategorias}</div>

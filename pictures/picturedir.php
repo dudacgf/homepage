@@ -3,9 +3,7 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
-include_once(RELATIVE_PATH . 'common.php');
+require_once('../common.php');
 
 //
 // configurações para exibição das fotos
@@ -120,7 +118,7 @@ closedir($listaArquivos);
 // Passa as variáveis para o template e o exibe.
 $homepage->assign('tituloPaginaAlternativo', ':: ' . $requests['dir'] . ' ::');
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $requests['dir'] . ' ::');
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('classPagina', 'black');
 $homepage->assign('arquivos', ( isset($arquivos) ) ? $arquivos : array());
 $homepage->assign('dirAtual', $requests['dir']);

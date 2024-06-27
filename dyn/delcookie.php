@@ -1,5 +1,4 @@
 <?php
-
 // del cookie 
 // - apaga um cookie de cor para a página atual. Retorna OK ou NOK dependendo do sucesso da operação
 //
@@ -7,14 +6,13 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
+require_once('../common.php');
 
-include_once(RELATIVE_PATH . 'includes/class_database.php');
-include_once(RELATIVE_PATH . 'includes/class_estilos.php');
+require_once($include_path . 'class_database.php');
+require_once($include_path . 'class_estilos.php');
 
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = RELATIVE_PATH . 'configs/connections.xml';
+$connection_info_xml_path = $config_path . 'connections.xml';
 
 // obtém as chaves da página e do elementocolorido a partir da request url
 if (!isset($_REQUEST['id']) || !isset($_REQUEST['el'])) 
@@ -37,15 +35,15 @@ if ($cookie->eliminarCookedStyle($idPagina, $idElementoColorido))
 {
 	$elementoColorido = new elementoColorido($idElementoColorido);
 	if ($elementoColorido->idElementoColorido = $idElementoColorido) {
-		include_once(RELATIVE_PATH . 'includes/class_homepage.php');
+		require_once($include_path . 'class_homepage.php');
 		$pagina = new pagina($idPagina);
 
-		$selectors = split(';', $elementoColorido->termoBuscaElemento);
+		$selectors = explode(';', $elementoColorido->termoBuscaElemento);
 		if ($elementoColorido->criterioBuscaElemento == 'id') 
 			$selector = 'body.' . $pagina->classPagina;
 		else
 			$selector = 'body.' . $pagina->classPagina . " $selectors[0]";
-		$atributos = split(';', $elementoColorido->atributoCorElemento); 
+		$atributos = explode(';', $elementoColorido->atributoCorElemento); 
 		$atributo = $atributos[0];
 		switch ($atributo) // como todos os selectors terão os mesmos atributos, só preciso do primeiro
 		{
@@ -73,9 +71,9 @@ if ($cookie->eliminarCookedStyle($idPagina, $idElementoColorido))
 		}
 
 		// agora, obtém o atributo diretamente na folha de estilo, usando um cssparser que eu encontrei por aí (aTutor.org).
-		include_once(RELATIVE_PATH . 'includes/class_cssparser.php');
+		require_once($include_path . 'class_cssparser.php');
 		$css = new cssparser();
-		$css->Parse(RELATIVE_PATH . 'estilos/' . $pagina->classPagina . '.css');
+		$css->Parse($estilos_path . $pagina->classPagina . '.css');
 		$valorCor = urlencode($css->getCSSSelectorAtribute($selector, $atributo));
 
 		echo $elementoColorido->descricaoElemento . "|" . $elementoColorido->atributoCorElemento . "|" .

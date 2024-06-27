@@ -1,5 +1,4 @@
 <?php
-
 // resetpage
 // - apaga os cookies de cor para a página atual. Retorna OK ou NOK dependendo do sucesso da operação
 //
@@ -7,15 +6,13 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
+require_once('../common.php');
 
-echo "estive aqui...";
-include_once(RELATIVE_PATH . 'includes/class_database.php');
-include_once(RELATIVE_PATH . 'includes/class_estilos.php');
+require_once($include_path . 'class_database.php');
+require_once($include_path . 'class_estilos.php');
 
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = RELATIVE_PATH . 'configs/connections.xml';
+$connection_info_xml_path = $config_path . 'connections.xml';
 
 // obtém a chave da página a partir da request url
 if (!isset($_REQUEST['id'])) 

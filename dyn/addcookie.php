@@ -1,5 +1,4 @@
 <?php
-
 // add cookie 
 // - cria um cookie de cor para a página atual e retorna uma string apontando os elementos da página que 
 //   deverão ter sua cor imediatamente modificada.
@@ -8,14 +7,13 @@
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './../');
-define('RELATIVE_PATH', './../');
+require_once('../common.php');
 
-include_once(RELATIVE_PATH . 'includes/class_database.php');
-include_once(RELATIVE_PATH . 'includes/class_estilos.php');
+require_once($include_path . 'class_database.php');
+require_once($include_path . 'class_estilos.php');
 
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = RELATIVE_PATH . 'configs/connections.xml';
+$connection_info_xml_path = $config_path . 'connections.xml';
 
 // global que manterá a conexão à base de dados única para todos os objetos instanciados.
 $global_hpDB = new database($connection_info_xml_path, 1);

@@ -33,14 +33,14 @@
 	{rdelim}
 
 	function editarElemento(mode, idGrupo, idElemento) {ldelim}
-		novodoc = window.open('{$relativePATH}admin/elemento_edit.php?mode=' + mode + '&idGrp=' + idGrupo + '&idElm=' + idElemento, '_blank', 
+		novodoc = window.open('{$includePATH}admin/elemento_edit.php?mode=' + mode + '&idGrp=' + idGrupo + '&idElm=' + idElemento, '_blank', 
 					'top=200, left=200, directories=no, height=300, width=450, location=no, menubar=no, resizable=yes, scrollbars=no, status=no, toolbar=no', false);
 		novodoc.close;
 	{rdelim}
 -->
 </script>
 
-<form id="edGrp" action="{$relativePATH}admin/grupo_edit.php" name="edGrp" method="POST">
+<form id="edGrp" action="{$includePATH}admin/grupo_edit.php" name="edGrp" method="POST">
 {if $criarGrupo}
 	<input type="hidden" id="mode" name="mode" value="crGrp" />
 {else}
@@ -95,13 +95,13 @@
 		<a href="javascript: editarElemento('edElm', {$grupo.idGrupo}, {$elementos[el].idElemento}) ;">{$elementos[el].descricaoElemento|default:"[sem t&iacute;tulo]"}</a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/grupo_edit.php?mode=upElm&idGrp={$grupo.idGrupo}&idElm={$elementos[el].idElemento}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/up_arrow.gif"></a>
+		<a href="{$includePATH}admin/grupo_edit.php?mode=upElm&idGrp={$grupo.idGrupo}&idElm={$elementos[el].idElemento}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/up_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/grupo_edit.php?mode=downElm&idGrp={$grupo.idGrupo}&idElm={$elementos[el].idElemento}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/down_arrow.gif"></a>
+		<a href="{$includePATH}admin/grupo_edit.php?mode=downElm&idGrp={$grupo.idGrupo}&idElm={$elementos[el].idElemento}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/down_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="javascript: editarElemento('cfExElm', {$grupo.idGrupo}, {$elementos[el].idElemento});"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/delete.gif"></a>
+		<a href="javascript: editarElemento('cfExElm', {$grupo.idGrupo}, {$elementos[el].idElemento});"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/delete.gif"></a>
 	</div>
 	<div class="coluna" >
 		{assign var="idTipoElemento" value=$elementos[el].tipoElemento}

@@ -1,11 +1,8 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', getcwd() . '/../');
-define('RELATIVE_PATH', './../');
-include_once(HOMEPAGE_PATH . 'common.php');
+require_once(HOMEPAGE_PATH . 'common.php');
 
 // este flag eu vou usar mais tarde (em grupo_edit_body.tpl para configurar a action do formulário).
 $criarGrupo = false;
@@ -273,7 +270,7 @@ switch ($template)
 
 }
 
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarGrupo', $criarGrupo);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);

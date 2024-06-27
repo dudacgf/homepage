@@ -1,11 +1,8 @@
 <?php
-
 //
 // Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
 // Carregar apenas uma vez.
-define('HOMEPAGE_PATH', './');
-define('RELATIVE_PATH', './');
-include_once(HOMEPAGE_PATH . 'common.php');
+require_once('common.php');
 
 // classes específicas da homepage
 include_once($include_path . 'class_homepage.php');
@@ -13,7 +10,7 @@ include_once($include_path . 'class_homepage.php');
 // garante que vão aparecer todos os grupos
 $_REQUEST['gr'] = 'all';
 
-// id_Pagina Ã© sempre 1.
+// id_Pagina é sempre 1.
 $_idPagina = 1;
 
 // le os cookies e passa para a página a ser carregada.
@@ -27,7 +24,7 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-// lÃª o biscoitinho da sorte
+// lê o biscoitinho da sorte
 require($include_path . "class_fortune.php");
 $f = new Fortune;
 $biscoitinho = $f->fortune;
@@ -37,7 +34,7 @@ if (strpos($biscoitinho, "--") > 0)
 }
 $homepage->assign("fortuneCookie", $biscoitinho);
 
-// Monta o restante da pÃgina
+// Monta o restante da página
 $homepage->left_delimiter = '<!--{';
 $homepage->right_delimiter = '}-->';
 
@@ -45,7 +42,7 @@ $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('idPagina', $_idPagina);
 $homepage->assign('classPagina', 'gAbobora');
 
-$homepage->assign('relativePATH', RELATIVE_PATH);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display('ftnPage.tpl');
 

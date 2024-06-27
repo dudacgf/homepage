@@ -1,24 +1,24 @@
-{include file="page_header.tpl"}
+    {include file="page_header.tpl"}
 
-<script type="text/javascript">
-<!--
-	function doAction(pressed) {ldelim}
-		mode = document.getElementById('mode').value;
-		if (mode != 'crCat') {ldelim}
-			switch (pressed) {ldelim}
-				case '{$LANG.gravar}':
-					document.getElementById('mode').value = 'svCat';
-					break;
-				case '{$LANG.excluir}':
-					document.getElementById('mode').value = 'cfExCat';
-					break;
-				case '{$LANG.novaCategoria}':
-					document.getElementById('mode').value = 'nwCat';
-					break;
-				case '{$LANG.cancelar}':
-					document.getElementById('mode').value = 'slCat';
-					break;
-			{rdelim}
+    <script type="text/javascript">
+    <!--
+        function doAction(pressed) {ldelim}
+            mode = document.getElementById('mode').value;
+            if (mode != 'crCat') {ldelim}
+                switch (pressed) {ldelim}
+                    case '{$LANG.gravar}':
+                        document.getElementById('mode').value = 'svCat';
+                        break;
+                    case '{$LANG.excluir}':
+                        document.getElementById('mode').value = 'cfExCat';
+                        break;
+                    case '{$LANG.novaCategoria}':
+                        document.getElementById('mode').value = 'nwCat';
+                        break;
+                    case '{$LANG.cancelar}':
+                        document.getElementById('mode').value = 'slCat';
+                        break;
+                {rdelim}
 		{rdelim} else {ldelim}
 			switch (pressed) {ldelim}
 				case '{$LANG.gravar}':
@@ -34,7 +34,7 @@
 -->
 </script>
 
-<form id="edCat" name="edCat" method="POST" action="{$relativePATH}admin/categoria_edit.php">
+<form id="edCat" name="edCat" method="POST" action="{$includePATH}admin/categoria_edit.php">
 {if $criarCategoria}
 	<input type="hidden" id="mode" name="mode" value="crCat" />
 {else}
@@ -78,16 +78,16 @@
 {section name=gp loop=$gruposPresentes}
 <p>
 	<div class="tituloColuna" style="clear: left;">
-		<a href="{$relativePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
+		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/categoria_edit.php?mode=upGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/up_arrow.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=upGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/up_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/categoria_edit.php?mode=downGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/down_arrow.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=downGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/down_arrow.gif"></a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$relativePATH}admin/categoria_edit.php?mode=rmGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$relativePATH}imagens/delete.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=rmGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/delete.gif"></a>
   	</div>
 	<div class="coluna" >
 		{assign var="idTipoGrupo" value=$gruposPresentes[gp].idTipoGrupo}
@@ -104,7 +104,7 @@
 {/section}
 <div class="subTitulo">{$LANG.novoGrupo}:</div>
 <div class="fortune">
-<form id="nwCat" action="{$relativePATH}admin/categoria_edit.php?mode=inGrp&idCat={$idCategoria}" method="POST">
+<form id="nwCat" action="{$includePATH}admin/categoria_edit.php?mode=inGrp&idCat={$idCategoria}" method="POST">
 	<select id="grupoSelector" name="grupoSelector">
 	{section name=ne loop=$gruposAusentes}
 		<option value="{$gruposAusentes[ne].idGrupo}">{$gruposAusentes[ne].descricaoGrupo|default:$LANG.semTitulo}</option>

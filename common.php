@@ -1,17 +1,13 @@
 <?php
-
-// obtém a localização atual
-if (!defined('HOMEPAGE_PATH')) {
-	define('HOMEPAGE_PATH', getcwd() . '/');
-}
+// define a localização atual
+define('HOMEPAGE_PATH', __dir__ . '/');
+define('INCLUDE_PATH', '/' . basename(HOMEPAGE_PATH) . '/');
 
 // diretório para uploads...
-$uploaddir = HOMEPAGE_PATH . '/download/';
+$uploaddir = HOMEPAGE_PATH . 'download/';
 
 // localização dos includes
 $include_path = HOMEPAGE_PATH . 'includes/';
-#set_include_path(get_include_path() . PATH_SEPARATOR . $include_path);
-#var_dump(get_include_path());
 
 // localização dos fortunes
 $fortune_path = HOMEPAGE_PATH . 'fortunes/';
@@ -35,13 +31,6 @@ $admin_path = HOMEPAGE_PATH . 'admin/';
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
 $connection_info_xml_path = $config_path . 'connections.xml';
 $connection_info_xml_id = 1;
-
-// localização da library do smarty, suas classes e plugins
-include_once($config_path . 'smarty_location.php');
-
-// localização do xml com detalhes da configuração do smarty
-$smarty_info_xml_path = $config_path . 'smarty.xml';
-$smarty_info_xml_id = 1;
 
 // localização do xml com detalhes de folders especiais para a aplicação
 $pictures_info_xml_path = $config_path . 'pictures.xml';
@@ -81,7 +70,7 @@ $requests = array_merge($_REQUEST, $requests);
 include_once($include_path . 'class_hp_smarty.php');
 
 // Crio a homepage
-$homepage = new hp_smarty($smarty_info_xml_path, $smarty_info_xml_id);
+$homepage = new hp_smarty();
 
 // se for página administrativa, le o arquivo de linguagem
 if (preg_match('/\/admin\//', $_SERVER['SCRIPT_NAME'])) 
