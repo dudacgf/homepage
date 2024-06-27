@@ -1,7 +1,7 @@
 <?php
 // define a localização atual
 define('HOMEPAGE_PATH', __dir__ . '/');
-define('INCLUDE_PATH', '/' . basename(HOMEPAGE_PATH) . '/');
+define('INCLUDE_PATH', str_replace($_SERVER['DOCUMENT_ROOT'], '', HOMEPAGE_PATH));
 
 // diretório para uploads...
 $uploaddir = HOMEPAGE_PATH . 'download/';
