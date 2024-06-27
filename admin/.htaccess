@@ -1,4 +1,0 @@
-authtype basic
-authuserfile /var/www/html/homepage/admin/.htpasswd.ghtpasswd
-authname "Secure Area"
-require user admin
