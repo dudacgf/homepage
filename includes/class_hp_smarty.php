@@ -22,19 +22,21 @@ class hp_smarty extends Smarty
 			$this->debugging = true;
 		}
 
-		// de acordo com o tipo de browser:
-		// - utiliza um atributo ou outro para a classe de um elemento.
-		if (strstr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) 
-		{
-			$this->assign('classAttribute', 'class');
-		}
-		elseif (strstr($_SERVER['HTTP_USER_AGENT'], 'Opera'))
-		{
-			$this->assign('classAttribute', 'class');
-		}	
-		elseif (strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE'))
-		{
-			$this->assign('classAttribute', 'className');
+        if (php_sapi_name() != "cli") {
+            // de acordo com o tipo de browser:
+            // - utiliza um atributo ou outro para a classe de um elemento.
+            if (strstr($_SERVER['HTTP_USER_AGENT'], 'Gecko')) 
+            {
+                $this->assign('classAttribute', 'class');
+            }
+            elseif (strstr($_SERVER['HTTP_USER_AGENT'], 'Opera'))
+            {
+                $this->assign('classAttribute', 'class');
+            }	
+            elseif (strstr($_SERVER['HTTP_USER_AGENT'], 'MSIE'))
+            {
+                $this->assign('classAttribute', 'className');
+            }
 		}	
 
 	}
