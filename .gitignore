@@ -8,6 +8,7 @@
 /admin/pictures/templates_c/*
 /admin/.htaccess
 
+/backup/*.sql
 /vendor/*
 /config/app.php
 
