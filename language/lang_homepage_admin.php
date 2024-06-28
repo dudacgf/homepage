@@ -121,7 +121,7 @@ $lang['tituloPaginaConfirmarExclusaoCategoria'] = ':: Exclus&atilde;o de categor
 // para o di&aacute;logo de sele&ccedil;&atilde;o de grupo
 $lang['tituloPaginaSelecionarGrupo'] = 'Edi&ccedil;&atilde;o de grupo';
 $lang['tituloTabelaSelecionarGrupo'] = ':: Lista de grupos';
-$lang['selecionarCategoria'] = 'Por favor, selecione o grupo a editar:';
+$lang['selecionarGrupo'] = 'Por favor, selecione o grupo a editar:';
 
 // para o di&aacute;logo de confirma&ccedil;&atilde;o de exclus&atilde;o de grupo
 $lang['confirmarExclusaoGrupo'] = 'Tem certeza que deseja excluir o grupo ';
