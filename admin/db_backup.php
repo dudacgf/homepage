@@ -33,7 +33,6 @@ if (php_sapi_name() != "cli") {
     header('Content-Length: ' . filesize($fileWithPath));
     header("Content-Type: text/plain");
     readfile($fileWithPath);
-    echo('<script type="text/javascript">window.history.back();</script>');
 }
 
 ?>
