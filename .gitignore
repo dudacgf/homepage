@@ -3,13 +3,18 @@
 ?.php
 ?.js
 
+# own dirs
 /templates_c/*
 /admin/templates_c/*
 /admin/pictures/templates_c/*
 /admin/.htaccess
-
 /backup/*.sql
 /vendor/*
+/webfonts/*
+
+
+
+
 /config/app.php
 
 /tmp/cache/models/*
