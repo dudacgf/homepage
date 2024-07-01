@@ -46,7 +46,6 @@
 {else}
 	<input type="hidden" id="mode" name="mode" value="svGrp" />
 	<input type="hidden" id="id" name="id" value="{$idPagina}" />
-	<input type="hidden" id="idCat" name="idCat" value="{$categoria.idCategoria}" />
 	<input type="hidden" id="idGrp" name="idGrp" value="{$grupo.idGrupo}" />
 {/if}
 	<div class="subTitulo">{$LANG.configuracao}</div><p />
