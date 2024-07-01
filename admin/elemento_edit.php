@@ -74,82 +74,82 @@ else
 	// para saber o que vou fazer...
 	$criarElemento = false;
 
-	switch ($requests['mode'])
-	{
+switch ($requests['mode'])
+{
 
-		// confirmar exclusão do elemento - volta mais tarde no modo ExElm
-		case 'cfExElm': 
-			$template = 'admin/delete_confirm.tpl';
-		break;
+    // confirmar exclusão do elemento - volta mais tarde no modo ExElm
+    case 'cfExElm': 
+        $template = 'admin/delete_confirm.tpl';
+    break;
 
-		// form de exclusão já foi exibido. verifica resposta do usuário
-		case 'exElm':
-			switch ($requests['go'])
-			{
-				case $lang['sim']:
-					if ($elemento->excluir())
-					{
-						$homepage->assign('msgAlerta', "Elemento [$elemento->descricaoElemento] excluído com sucesso!");
-					}
-					else
-					{
-						$homepage->assign('msgAlerta', "Não foi possível excluir o elemento [$elemento->descricaoElemento]!");
-					}
-				break;
+    // form de exclusão já foi exibido. verifica resposta do usuário
+    case 'exElm':
+        switch ($requests['go'])
+        {
+            case $lang['sim']:
+                if ($elemento->excluir())
+                {
+                    $homepage->assign('msgAlerta', "Elemento [$elemento->descricaoElemento] excluído com sucesso!");
+                }
+                else
+                {
+                    $homepage->assign('msgAlerta', "Não foi possível excluir o elemento [$elemento->descricaoElemento]!");
+                }
+            break;
 
-				case $lang['nao']:
-				break;
-			}
-			$template = 'admin/window_close.tpl';
-		break;
+            case $lang['nao']:
+            break;
+        }
+        $template = 'admin/window_close.tpl';
+    break;
 
-		/*------------------------------------------------------------------------+
-		|                                                                         |
-		|  Gerência de elementos do tipo 'Link'.								  |
-		|  funções implementadas: 												  |
-		| 	nwLnk - Apresenta um formulário para inclusão de um novo link		  |
-		|   crLnk - Salva um link na base de dados, finalizando sua inclusão	  |
-		|   edLnk - Apresenta um formulário para edição de um link já existente	  |
-		|   svLnk - Atualizar um link na base de dados após a edição			  |
-		|                                                                         |
-		|------------------------------------------------------------------------*/
-		// novo Link
-		case 'nwLnk':
-			$criarElemento = true;
-			$homepage->assign('elemento', array(
-				'idGrupo' => $grupo->idGrupo,
-				'descricaoLink' => $lang['hp_links_descricaoLink'],
-				'linkURL' => $lang['hp_links_linkURL'],
-				'dicaLink' => $lang['hp_links_dicaLink'],
-				'localLink' => 0,
-				'urlElementoSSL' => 0,
-				'urlElementoSVN' => 0,
-				'targetLink' => ''));
-			$template = 'admin/link_edit.tpl';
-		break;
+    /*------------------------------------------------------------------------+
+    |                                                                         |
+    |  Gerência de elementos do tipo 'Link'.								  |
+    |  funções implementadas: 												  |
+    | 	nwLnk - Apresenta um formulário para inclusão de um novo link		  |
+    |   crLnk - Salva um link na base de dados, finalizando sua inclusão	  |
+    |   edLnk - Apresenta um formulário para edição de um link já existente	  |
+    |   svLnk - Atualizar um link na base de dados após a edição			  |
+    |                                                                         |
+    |------------------------------------------------------------------------*/
+    // novo Link
+    case 'nwLnk':
+        $criarElemento = true;
+        $homepage->assign('elemento', array(
+            'idGrupo' => $grupo->idGrupo,
+            'descricaoLink' => $lang['hp_links_descricaoLink'],
+            'linkURL' => $lang['hp_links_linkURL'],
+            'dicaLink' => $lang['hp_links_dicaLink'],
+            'localLink' => 0,
+            'urlElementoSSL' => 0,
+            'urlElementoSVN' => 0,
+            'targetLink' => ''));
+        $template = 'admin/link_edit.tpl';
+    break;
 
-		// criar Link
-		case 'crLnk':
-			$link = new wLink(NULL);
-			$link->descricaoLink = $requests['descricaoLink'];
-			$link->linkURL = $requests['linkURL'];
-			$link->dicaLink = $requests['dicaLink'];
-			$link->idGrupo = $requests['idGrp'];
-			$link->posGrupo = $grupo->numeroElementos() + 1;
-			$link->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
-			$link->urlElementoSSL = ( isset($requests['urlElementoSSL']) ) ? 1 : 0 ;
-			$link->urlElementoSVN = ( isset($requests['urlElementoSVN']) ) ? 1 : 0 ;
-			$link->targetLink = $requests['targetLink'];
-			$_idElm = $link->inserir();
-			if (!$_idElm)
-			{
-				$homepage->assign('msgAlerta', "Não foi possível criar o link [$link->descricaoLink]!");
-			}
-			else
-			{
-				$homepage->assign('msgAlerta', "Link [" . $this->hpDB->real_escape_string ($link->descricaoLink) . "] criado com sucesso!");
-		}
-		$template = 'admin/window_close.tpl';
+    // criar Link
+    case 'crLnk':
+        $link = new wLink(NULL);
+        $link->descricaoLink = $requests['descricaoLink'];
+        $link->linkURL = $requests['linkURL'];
+        $link->dicaLink = $requests['dicaLink'];
+        $link->idGrupo = $requests['idGrp'];
+        $link->posGrupo = $grupo->numeroElementos() + 1;
+        $link->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
+        $link->urlElementoSSL = ( isset($requests['urlElementoSSL']) ) ? 1 : 0 ;
+        $link->urlElementoSVN = ( isset($requests['urlElementoSVN']) ) ? 1 : 0 ;
+        $link->targetLink = $requests['targetLink'];
+        $_idElm = $link->inserir();
+        if (!$_idElm)
+        {
+            $homepage->assign('msgAlerta', "Não foi possível criar o link [$link->descricaoLink]!");
+        }
+        else
+        {
+            $homepage->assign('msgAlerta', "Link [" . $this->hpDB->real_escape_string ($link->descricaoLink) . "] criado com sucesso!");
+    }
+    $template = 'admin/window_close.tpl';
 	break;
 
 	// edição do Link
