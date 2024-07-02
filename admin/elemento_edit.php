@@ -14,65 +14,65 @@ else
 {
 	die("não posso prosseguir sem um grupo selecionado!");
 }
-	// lê o grupo deste elemento
-	$grupo = new grupo($_idGrupo);
-	$homepage->assign('grupo', $grupo->getArray());
+// lê o grupo deste elemento
+$grupo = new grupo($_idGrupo);
+$homepage->assign('grupo', $grupo->getArray());
 
-	// se tenho o id do elemento a editar/excluir/salvar, lê e passa para o template
-	if (isset($requests['idElm']) && $requests['idElm'] != '0')
-	{
-		$_idElm = $requests['idElm'];
-		$elemento = $grupo->elementoDeCodigo($_idElm);
-		$homepage->assign('elemento', $elemento->getArray());
-	}
+// se tenho o id do elemento a editar/excluir/salvar, lê e passa para o template
+if (isset($requests['idElm']) && $requests['idElm'] != '0')
+{
+    $_idElm = $requests['idElm'];
+    $elemento = $grupo->elementoDeCodigo($_idElm);
+    $homepage->assign('elemento', $elemento->getArray());
+}
 
-	// se não passou nenhum mode, entra em modo de seleção de elementos
-	if (!isset($requests['mode']))
-	{
-		$requests['mode'] = 'slElm';
-	}
+// se não passou nenhum mode, entra em modo de seleção de elementos
+if (!isset($requests['mode']))
+{
+    $requests['mode'] = 'slElm';
+}
 
-	// se pediu para editar um elemento, verifica-se qual o tipo de elemento e ajusta-se o mode
-	if ($requests['mode'] == 'edElm') 
-	{
-		if (isset($elemento))
-		{
-			switch ($elemento->tipoElemento)
-			{
-				case ELEMENTO_LINK:
-					$requests['mode'] = 'edLnk';
-				break;
+// se pediu para editar um elemento, verifica-se qual o tipo de elemento e ajusta-se o mode
+if ($requests['mode'] == 'edElm') 
+{
+    if (isset($elemento))
+    {
+        switch ($elemento->tipoElemento)
+        {
+            case ELEMENTO_LINK:
+                $requests['mode'] = 'edLnk';
+            break;
 
-				case ELEMENTO_FORM:
-					$requests['mode'] = 'edFrm';
-				break;
+            case ELEMENTO_FORM:
+                $requests['mode'] = 'edFrm';
+            break;
 
-				case ELEMENTO_SEPARADOR:
-					$requests['mode'] = 'edSrp';
-				break;
+            case ELEMENTO_SEPARADOR:
+                $requests['mode'] = 'edSrp';
+            break;
 
-				case ELEMENTO_IMAGEM:
-					$requests['mode'] = 'edImg';
-				break;
+            case ELEMENTO_IMAGEM:
+                $requests['mode'] = 'edImg';
+            break;
 
-				case ELEMENTO_RSSFEED:
-					$requests['mode'] = 'edRss';
-				break;
+            case ELEMENTO_RSSFEED:
+                $requests['mode'] = 'edRss';
+            break;
 
-				case ELEMENTO_TEMPLATE:
-					$requests['mode'] = 'edTpt';
-				break;
+            case ELEMENTO_TEMPLATE:
+                $requests['mode'] = 'edTpt';
+            break;
 
-				default:
-					$requests['mode'] = 'edLnk';
-				break;
+            default:
+                $requests['mode'] = 'edLnk';
+            break;
 
-			}
-		}
-	}
+        }
+    }
+}
 
-	// para saber o que vou fazer...
-	$criarElemento = false;
+// para saber o que vou fazer...
+$criarElemento = false;
 
 switch ($requests['mode'])
 {
@@ -140,15 +140,19 @@ switch ($requests['mode'])
         $link->urlElementoSSL = ( isset($requests['urlElementoSSL']) ) ? 1 : 0 ;
         $link->urlElementoSVN = ( isset($requests['urlElementoSVN']) ) ? 1 : 0 ;
         $link->targetLink = $requests['targetLink'];
-        $_idElm = $link->inserir();
-        if (!$_idElm)
-        {
-            $homepage->assign('msgAlerta', "Não foi possível criar o link [$link->descricaoLink]!");
+        try {
+            $_idElm = $link->inserir();
+            if (!$_idElm)
+            {
+                $homepage->assign('msgAlerta', "Não foi possível criar o link [$link->descricaoLink]!");
+            }
+            else
+            {
+                $homepage->assign('msgAlerta', "Link [" . $link->descricaoLink . "] criado com sucesso!");
+            }
+        } catch(Exception $e) {
+            debug_print_backtrace();
         }
-        else
-        {
-            $homepage->assign('msgAlerta', "Link [" . $this->hpDB->real_escape_string ($link->descricaoLink) . "] criado com sucesso!");
-    }
     $template = 'admin/window_close.tpl';
 	break;
 
