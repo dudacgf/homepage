@@ -28,7 +28,7 @@
       <span class="separador">{$elemento.descricaoSeparador}</span><br />
     {/if}
   {elseif $elemento.tipoElemento == 4}
-      <a href="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}"><img src="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}" alt="{$elemento.descricaoImagem}" width="96" height="72" />
+      <a href="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}"><img src="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}" alt="{$elemento.descricaoImagem}" width="90%" />
     <br />{$elemento.descricaoImagem}</a><p />
 {*---- {elseif $elemento.tipoElemento == 5}
   {assign var="rssURL" value=$elemento.rssURL}
