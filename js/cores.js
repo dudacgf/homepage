@@ -16,28 +16,26 @@ var elSearchCriteria = 2;
 var elSearchTerm = 3;
 var elCookie = 4;
 var elValorCor = 5;
-var path = new URL(document.URL).pathname.split('/').slice(0,-2).join('/');
-path = path.replace('//', '/');
 
 function hexdec(f1) {
-	f1 = f1.toUpperCase();
-	rval = parseInt(f1,16);
-	return rval;
+    f1 = f1.toUpperCase();
+    rval = parseInt(f1,16);
+    return rval;
 }
 
 function RGBColor(valorCor)
 {
-	this.ok = false;
-	if (valorCor.substr(0, 1) == '#') {
-		try {
-			this.r = hexdec(valorCor.substr(1, 2));
-			this.g = hexdec(valorCor.substr(3, 2));
-			this.b = hexdec(valorCor.substr(5, 2));
-			this.ok = true;
-		} catch (err) {
-			this.ok = false;
-		}
-	}
+    this.ok = false;
+    if (valorCor.substr(0, 1) == '#') {
+        try {
+            this.r = hexdec(valorCor.substr(1, 2));
+            this.g = hexdec(valorCor.substr(3, 2));
+            this.b = hexdec(valorCor.substr(5, 2));
+            this.ok = true;
+        } catch (err) {
+            this.ok = false;
+        }
+    }
 }
 
 /*
@@ -67,15 +65,16 @@ function alterarCorAtributo(theObj, aColorAtribute, aColor) {
       case 'rborder':
         theObj.style.borderRightColor = aColor ; 
         break;
-	  case 'bimg':
-		if (aColor.substr(0, 1) == '#') {
-			var color = new RGBColor(aColor);
-			if (color.ok) { // 'ok' is true when the parsing was a success
-				theObj.style.backgroundImage = 'url("../drawing/background.php?r=' + color.r + '&g=' + color.g + '&b=' + color.b + '")'
-			}
-		} else {
-			theObj.style.backgroundImage = aColor;
-		}
+      case 'bimg':
+        if (aColor.substr(0, 1) == '#') {
+            var color = new RGBColor(aColor);
+            if (color.ok) { // 'ok' is true when the parsing was a success
+                var path = new URL("drawing", document.URL);
+                theObj.style.backgroundImage = 'url(path + "/background.php?r=' + color.r + '&g=' + color.g + '&b=' + color.b + '")'
+            }
+        } else {
+            theObj.style.backgroundImage = aColor;
+        }
     }
   }
 }
@@ -162,38 +161,38 @@ function alterarCorElementosPorClasse(theSelector, aColorAtribute, aColor) {
 }
 
 function alterarCorElemento(oElemento, aCor) {
-	switch (oElemento[elSearchCriteria]) {
-		case 'id':
-			alterarCorElementosPorId(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
-			break;
-		case 'class':
-			alterarCorElementosPorClasse(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
-			break;
-	}
+    switch (oElemento[elSearchCriteria]) {
+        case 'id':
+            alterarCorElementosPorId(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
+            break;
+        case 'class':
+            alterarCorElementosPorClasse(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
+            break;
+    }
 }
 
 //
 // chamada com um pequeno delay pelas ações do form de seleção de cores.
 // testa o valor do elemento de retorno de xHttpInnerHtml.
 // 'wait ...' - valor inicializado no innerHTML do elemento por xHttpInnerHtml. 
-//  			significa que o handler ainda não recebeu status 4.
-//				A rotina chama a si própria novamente com outro delay
-// 'NOK'	  - retornou com erro. recarrega a página (é mais fácil que tratar o erro).
-// outro	  - aparentemente deu certo, tenta alterar a cor do elemento a partir do valor retornado.
+//              significa que o handler ainda não recebeu status 4.
+//                A rotina chama a si própria novamente com outro delay
+// 'NOK'      - retornou com erro. recarrega a página (é mais fácil que tratar o erro).
+// outro      - aparentemente deu certo, tenta alterar a cor do elemento a partir do valor retornado.
 //
 function delayed_AlterarCorElemento() {
-	var ua = window.navigator.userAgent;
-	var xhr = document.getElementById('xHttpResponse').innerHTML + '';
+    var ua = window.navigator.userAgent;
+    var xhr = document.getElementById('xHttpResponse').innerHTML + '';
 
-	if (xhr == 'wait ...') 
-	  setTimeout('delayed_AlterarCorElemento()', 50);
-	else if (xhr == 'NOK') 
-		window.location.reload();
-	else {				   
-		var oElemento = xhr.split('|');
-		var aCor = unescape(oElemento[elValorCor]);
-		alterarCorElemento(oElemento, aCor);
-	}
+    if (xhr == 'wait ...') 
+      setTimeout('delayed_AlterarCorElemento()', 50);
+    else if (xhr == 'NOK') 
+        window.location.reload();
+    else {                   
+        var oElemento = xhr.split('|');
+        var aCor = unescape(oElemento[elValorCor]);
+        alterarCorElemento(oElemento, aCor);
+    }
 }
 
 /*
@@ -202,6 +201,8 @@ function delayed_AlterarCorElemento() {
  **
 */
 function adicionarCookedStyle() {
+
+  var path = new URL("dyn", document.URL);
 
   // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
@@ -216,7 +217,7 @@ function adicionarCookedStyle() {
   var id = obj.value;
 
   // inclui o cookie na base de dados e a seguir altera a cor no form.
-  insertRequest = "/" + path + "/dyn/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
+  insertRequest = path + "/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
   xhttpInnerHtml(insertRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 
@@ -225,10 +226,13 @@ function adicionarCookedStyle() {
 /*
  **
  ** Executa a 2ª ação do form colorForm - deletar a associação de uma cor a um par Pagina x elementoColorido e restaurar
- **										  o padrão da classe.
+ **                                          o padrão da classe.
  **
 */
 function deletarCookedStyle() {
+
+  var path = new URL("dyn", document.URL);
+
   // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
   var idElementoColorido = obj.value;
@@ -238,7 +242,7 @@ function deletarCookedStyle() {
   var id = obj.value;
 
   // deleta o cookie na base de dados e a seguir restaura a cor da classe.
-  deleteRequest = "/" + path + "/dyn/delcookie.php?id=" + id + "&el=" + idElementoColorido;
+  deleteRequest = path + "/delcookie.php?id=" + id + "&el=" + idElementoColorido;
   xhttpInnerHtml(deleteRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 }
@@ -246,15 +250,18 @@ function deletarCookedStyle() {
 /*
  **
  ** Executa a 3ª ação do form colorForm - restaurar o padrão da classe, eliminando todos as associações entre uma cor
- **										  e um par Pagina x elementoColorido
+ **                                          e um par Pagina x elementoColorido
  **
 */
 function restaurarPagina() {
+
+  var path = new URL("dyn", document.URL);
+
   // obtém, no form, o id da página que está sendo editada.
   var id = document.getElementById('id').value;
 
   // remove os cookies da base de dados e recarrega a página
-  resetRequest = "/" + path + "/dyn/resetpage.php?id=" + id;
+  resetRequest = path + "/resetpage.php?id=" + id;
   xhttpInnerHtml(resetRequest, 'xHttpResponse');
   setTimeout('window.location.reload()', 500);
 }
