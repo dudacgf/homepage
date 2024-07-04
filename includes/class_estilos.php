@@ -304,7 +304,7 @@ class cookedStyle
 							  case 'bimg':
 								$rgbcolor = new RGBColor($color);
 								if ($rgbcolor->ok) { // 'ok' is true when the parsing was a success
-									$colorCookies[$selector][] = "background-image: url(\"../drawing/background.php?r=" . 
+									$colorCookies[$selector][] = "background-image: url(\"" . INCLUDE_PATH . "/drawing/background.php?r=" . 
 										$rgbcolor->r . "&g=" . $rgbcolor->g . "&b=" . $rgbcolor->b . "\");\n" ; 
 								}
 								break;
