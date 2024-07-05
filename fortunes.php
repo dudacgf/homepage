@@ -40,7 +40,7 @@ $homepage->right_delimiter = '}-->';
 
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('idPagina', $_idPagina);
-$homepage->assign('classPagina', 'gAbobora');
+$homepage->assign('classPagina', 'gGrey');
 
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
