@@ -1,5 +1,5 @@
 <div class="footer">
-  <span class="texto" style="font-weight: bold;">&copy; The Shire's Company 28/02/2007</span>
+  <span class="texto" style="font-weight: normal; font-size: xx-small;">&copy; The Shire's Company 2003-2024</span>
 </div>
 </body>
 </html>
