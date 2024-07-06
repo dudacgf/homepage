@@ -39,6 +39,13 @@ font-weight: bold;
 .texto {
 vertical-align: bottom;
 }
+.copyright {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: xx-small;
+    font-weight: normal;
+}
 form {
 margin-top: 0pt; margin-bottom: 0pt;
 }
