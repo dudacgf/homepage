@@ -92,5 +92,11 @@ include($include_path . "class_database.php");
 // global que manterá a conexão à base de dados única para todos os objetos instanciados.
 $global_hpDB = new database($connection_info_xml_path, $connection_info_xml_id);
 
+// if there was a request with msgAlert, assing it to homepage (may be overwritten later)
+if (isset($requests['msgAlerta']) and !isset($requests['reload']))
+    $homepage->assign('msgAlerta', htmlentities($requests['msgAlerta']));
+elseif (isset($requests['msgAlerta']))
+    $homepage->assign('msgAlerta', htmlentities($requests['msgAlerta']));
+
 //-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
 ?>

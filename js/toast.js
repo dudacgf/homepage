@@ -1,6 +1,3 @@
-const notifications = document.querySelector(".notifications"),
-  buttons = document.querySelectorAll(".buttons .btn")
-
 const toastDetails = {
   timer: 5000,
   success: {
@@ -31,8 +28,13 @@ const removeToast = (toast) => {
   setTimeout(() => toast.remove(), 500)
 }
 
-const createToast = (id) => {
-  const { icon, text } = toastDetails[id]
+const createToast = (id, argText = 'none') => {
+  const notifications = document.querySelector(".notifications")
+  var icon = toastDetails[id].icon
+  if (argText == "none") 
+    var text = toastDetails[id].text
+  else
+    var text = argText
   const toast = document.createElement("li")
   toast.className = `toast ${id}`
   toast.innerHTML = `<div class="column">
@@ -43,8 +45,4 @@ const createToast = (id) => {
   notifications.appendChild(toast) 
   toast.timeoutId = setTimeout(() => removeToast(toast), toastDetails.timer)
 }
-
-buttons.forEach((btn) => {
-  btn.addEventListener("click", () => createToast(btn.id))
-})
 

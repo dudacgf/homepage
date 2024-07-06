@@ -1,4 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
 <head>
 <link rel="shortcut icon" href="{$includePATH}favicon.ico" type="image/x-icon" />
@@ -30,10 +30,16 @@
 <style type="text/css">
 {$cookedStyles|strip}
 </style>
-</head>
-<body class="{$classPagina}" style=" overflow: auto;" id="theBody" >
 {if isset($msgAlerta)}
-<script type="text/javascript">alert('{$msgAlerta}');</script>
+<!-- Font Awesome icons -->
+<link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
+<script src="{$includePATH}js/toast.js" defer></script>
+</head>
+<body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast('info', '{$msgAlerta}');">
+{else}
+</head>
+<body class="{$classPagina}" style=" overflow: auto;" id="theBody">
 {/if}
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
