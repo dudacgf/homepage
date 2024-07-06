@@ -1824,7 +1824,7 @@ class categoria extends elementoAgrupado
         // como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
         global $global_hpDB;
 
-        $_sql = "SELECT * FROM hp_categorias";
+        $_sql = "SELECT * FROM hp_categorias ORDER BY descricaoCategoria";
         $_categorias = $global_hpDB->query($_sql);
         if (!$_categorias) 
         {
