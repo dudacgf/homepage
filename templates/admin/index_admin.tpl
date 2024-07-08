@@ -9,7 +9,7 @@
 <title>{$tituloPagina}</title>
 </head>
 
-<frameset cols="200,*" rows="*" border="2" framespacing="0" frameborder="yes"> 
+<frameset cols="280,*" rows="*" border="2" framespacing="0" frameborder="yes"> 
 	<frame src="{$includePATH}admin/homepage_admin.php?id=5&navpanel=yes" name="_nav_panel" marginwidth="3" marginheight="3" scrolling="no">
 	<frame src="{$includePATH}admin/estatisticas.php" name="_admin_panel" marginwidth="10" marginheight="10" scrolling="auto">
 </frameset>

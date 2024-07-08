@@ -29,14 +29,14 @@ $lang['hp_paginas_displaySelectColor'] = 'Formul&aacute;rio de cores';
 // atributos de uma categoria (coluna)
 $lang['hp_categorias_DescricaoCategoria'] = 'T&iacute;tulo da categoria (coluna)';
 $lang['hp_categorias_CategoriaRestrita'] = 'Marque este quadro caso a categoria seja restrita';
-$lang['hp_categorias_RestricaoCategoria'] = 'Indique a restri&ccedil;&atilde;o a aplicar a esta categoria';
+$lang['hp_categorias_RestricaoCategoria'] = 'Indique a restri&ccedil;&atilde;o';
 $lang['hp_categorias_Label_Restricao'] = 'Categoria restrita';
 
 // atributos de um grupo
 $lang['hp_grupos_DescricaoGrupo'] = 'Nome do Grupo';
 $lang['hp_grupos_TipoGrupo'] = 'Tipo de Grupo';
 $lang['hp_grupos_GrupoRestrito'] = 'Marque este quadro caso o grupo seja restrito';
-$lang['hp_grupos_RestricaoGrupo'] = 'Indique a restri&ccedil;&atilde;o a aplicar a este grupo';
+$lang['hp_grupos_RestricaoGrupo'] = 'Indique a restri&ccedil;&atilde;o';
 $lang['hp_grupos_Label_Restricao'] = 'Grupo restrito';
 
 // 

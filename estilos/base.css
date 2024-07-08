@@ -88,7 +88,7 @@ div.lineForm {
 clear: both; border-style: solid none; border-width: 1pt; height: 30px;
   }
 div.tituloLateral { 
-border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: 1.2em; width: 90px;
+border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: x-small; width: 90px;
 }
 div.formLateral {
 border-width: 0pt; padding: 0pt; margin-top: 2pt; float: left;
