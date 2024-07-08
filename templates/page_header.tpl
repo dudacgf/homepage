@@ -30,13 +30,14 @@
 <style type="text/css">
 {$cookedStyles|strip}
 </style>
-{if isset($msgAlerta)}
+{if isset($smarty.cookies.showAlerta)}
 <!-- Font Awesome icons -->
 <link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
 <script src="{$includePATH}js/toast.js" defer></script>
+<script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;'; </script>
 </head>
-<body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast('info', '{$msgAlerta}');">
+<body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">
 {else}
 </head>
 <body class="{$classPagina}" style=" overflow: auto;" id="theBody">

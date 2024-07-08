@@ -82,13 +82,9 @@ switch ($requests['mode'])
 		$pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
 		$pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
 		if ($pagina->atualizar()) 
-		{
-			$homepage->assign('msgAlerta', "Página [$pagina->tituloPagina] atualizada com sucesso!");
-		}
+			prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] atualizada com sucesso!");
 		else
-		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar a página [$pagina->tituloPagina]!");
-		}
+			prepare_msgAlerta('warning', "Não foi possível atualizar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
 		$homepage->assign('script2reload', 'admin/page_edit.php');
 		$homepage->assign('scriptMode', 'edPag');
 		$template = 'admin/script_reload.tpl';
@@ -116,12 +112,12 @@ switch ($requests['mode'])
 		if (!$_idPagina) 
 		{
 			$homepage->assign('scriptMode', 'slPag');
-			$homepage->assign('msgAlerta', "Não foi possível criar a página [$pagina->tituloPagina]");
+			prepare_msgAlerta('warning', "Não foi possível criar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]");
 		}
 		else
 		{
 			$homepage->assign('scriptMode', 'edPag');
-			$homepage->assign('msgAlerta', "Página [$pagina->tituloPagina] criada com sucesso!");
+			prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] criada com sucesso!");
 		}
 		$homepage->assign('script2reload', 'admin/page_edit.php');
 		$template = 'admin/script_reload.tpl';
@@ -140,12 +136,12 @@ switch ($requests['mode'])
 				$pagina = new pagina($_idPagina);
 				if ($pagina->excluir())
 				{
-					$homepage->assign('msgAlerta', "Página [$pagina->tituloPagina] excluída com sucesso!");
+					prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] excluída com sucesso!");
 					$homepage->assign('scriptMode', 'slPag');
 				}
 				else
 				{
-					$homepage->assign('msgAlerta', "Não foi possível excluir a página [$pagina->tituloPagina]!");
+					prepare_msgAlerta('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
 					$homepage->assign('scriptMode', 'edPag');
 				}
 			break;

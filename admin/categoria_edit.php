@@ -85,11 +85,11 @@ switch ($requests['mode'])
 		$categoria->restricaoCategoria = ( isset($requests['restricaoCategoria']) ) ? (string) $requests['restricaoCategoria'] : '' ;
 		if ($categoria->atualizar()) 
 		{
-			$homepage->assign('msgAlerta', "categoria [$categoria->descricaoCategoria] salva com sucesso!");
+			prepare_msgAlerta('success', "categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "] salva!");
 		} 
 		else
 		{
-			$homepage->assign('msgAlerta', "Não foi possível salvar a categoria [$categoria->descricaoCategoria]!");
+			prepare_msgAlerta('warning', "Não foi possível salvar a categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "]!");
 		}
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
@@ -114,12 +114,12 @@ switch ($requests['mode'])
 		if (!$_idCategoria) 
 		{
 			$homepage->assign('scriptMode', 'slCat');
-			$homepage->assign('msgAlerta', "Não foi possível criar a categoria [$categoria->descricaoCategoria]!");
+			prepare_msgAlerta('warning', "Não foi possível criar a categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "]!");
 		}
 		else
 		{	
 			$homepage->assign('scriptMode', 'edCat');
-			$homepage->assign('msgAlerta', "Categoria [$categoria->descricaoCategoria] salva com sucesso!");
+			prepare_msgAlerta('success', "Categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "] salva!");
 		}
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$template = 'admin/script_reload.tpl';
@@ -138,13 +138,13 @@ switch ($requests['mode'])
 				$categoria = new categoria($_idCategoria);
 				if ($categoria->excluir())
 				{
-					$homepage->assign('msgAlerta', "Categoria [$categoria->descricaoCategoria] excluída com sucesso!");
+					prepare_msgAlerta('success', "Categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "] excluída!");
 					$homepage->assign('script2reload', 'admin/categoria_edit.php');
 					$homepage->assign('scriptMode', 'slCat');
 				}
 				else
 				{
-					$homepage->assign('msgAlerta', "Não foi possível excluir a categoria [$categoria->descricaoCategoria]!");
+					prepare_msgAlerta('warning', "Não foi possível excluir a categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "]!");
 					$homepage->assign('script2reload', 'admin/categoria_edit.php');
 					$homepage->assign('scriptMode', 'edCat');
 				}

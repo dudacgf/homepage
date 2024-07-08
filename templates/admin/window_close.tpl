@@ -1,8 +1,5 @@
 <script type="text/javascript">
 <!--
-{if isset($msgAlerta)}
-	alert('{$msgAlerta}');
-{/if}
 	window.opener.location.reload();
 	window.close();
 -->

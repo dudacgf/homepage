@@ -89,11 +89,11 @@ switch ($requests['mode'])
             case $lang['sim']:
                 if ($elemento->excluir())
                 {
-                    $homepage->assign('msgAlerta', "Elemento [" . $global_hpDB->real_escape_string($elemento->descricaoElemento) . "] excluído com sucesso!");
+                    prepare_msgAlerta('success', "Elemento [" . $global_hpDB->real_escape_string($elemento->descricaoElemento) . "] excluído!");
                 }
                 else
                 {
-                    $homepage->assign('msgAlerta', "Não foi possível excluir o elemento [" . $global_hpDB->real_escape_string($elemento->descricaoElemento) . "]!");
+                    prepare_msgAlerta('warning', "Não foi possível excluir o elemento [" . $global_hpDB->real_escape_string($elemento->descricaoElemento) . "]!");
                 }
             break;
 
@@ -144,11 +144,11 @@ switch ($requests['mode'])
             $_idElm = $link->inserir();
             if (!$_idElm)
             {
-                $homepage->assign('msgAlerta', "Não foi possível criar o link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "]!");
+                prepare_msgAlerta('warning', "Não foi possível criar o link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "]!");
             }
             else
             {
-                $homepage->assign('msgAlerta', "Link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "] criado com sucesso!");
+                prepare_msgAlerta('success', "Link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "] criado!");
             }
         } catch(Exception $e) {
             debug_print_backtrace();
@@ -176,11 +176,11 @@ switch ($requests['mode'])
 		$link->targetLink = $requests['targetLink'];
 		if (!$link->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível atualizar o link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "] atualizado com sucesso!");
+			prepare_msgAlerta('success', "Link [" . $global_hpDB->real_escape_string($link->descricaoLink) . "] atualizado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -221,11 +221,11 @@ switch ($requests['mode'])
 		$_idElm = $form->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar o form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível criar o form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "] criado com sucesso!");
+			prepare_msgAlerta('success', "Form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "] criado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -248,11 +248,11 @@ switch ($requests['mode'])
 		$form->descricaoForm = $requests['descricaoForm'];
 		if (!$form->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "!]");
+			prepare_msgAlerta('warning', "Não foi possível atualizar o form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "!]");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "] atualizado com sucesso!");
+			prepare_msgAlerta('success', "Form [" . $global_hpDB->real_escape_string($form->descricaoForm) . "] atualizado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -287,11 +287,11 @@ switch ($requests['mode'])
 		$_idElm = $separador->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar o separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível criar o separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "] criado com sucesso!");
+			prepare_msgAlerta('success', "Separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "] criado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -311,11 +311,11 @@ switch ($requests['mode'])
 		$separador->breakBefore = ( isset($requests['breakBefore']) ) ? 1 : 0 ;
 		if (!$separador->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível atualizar o separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "] atualizado com sucesso!");
+			prepare_msgAlerta('success', "Separador [" . $global_hpDB->real_escape_string($separador->descricaoSeparador) . "] atualizado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -352,11 +352,11 @@ switch ($requests['mode'])
 		$_idElm = $imagem->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar a imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível criar a imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "] criado com sucesso!");
+			prepare_msgAlerta('success', "Imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "] criado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -377,11 +377,11 @@ switch ($requests['mode'])
 		$imagem->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
 		if (!$imagem->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar a imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível atualizar a imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "] atualizada com sucesso!");
+			prepare_msgAlerta('success', "Imagem [" . $global_hpDB->real_escape_string($imagem->descricaoImagem) . "] atualizada!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -416,11 +416,11 @@ switch ($requests['mode'])
 		$_idElm = $rssfeed->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar o rssfeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível criar o rssfeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "RssFeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "] criado com sucesso!");
+			prepare_msgAlerta('success', "RssFeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "] criado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -440,11 +440,11 @@ switch ($requests['mode'])
 		$rssfeed->rssItemNum = $requests['rssItemNum'];
 		if (!$rssfeed->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o rssfeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível atualizar o rssfeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "RssFeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "] atualizado com sucesso!");
+			prepare_msgAlerta('success', "RssFeed [" . $global_hpDB->real_escape_string($rssfeed->rssURL) . "] atualizado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -479,11 +479,11 @@ switch ($requests['mode'])
 		$_idElm = $Template->inserir();
 		if (!$_idElm)
 		{
-			$homepage->assign('msgAlerta', "Não foi possível criar o Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível criar o Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "] criado com sucesso!");
+			prepare_msgAlerta('success', "Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "] criado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;
@@ -504,11 +504,11 @@ switch ($requests['mode'])
 		$Template->localLink = ( isset($requests['localLink']) ) ? 1 : 0 ;
 		if (!$Template->atualizar())
 		{
-			$homepage->assign('msgAlerta', "Não foi possível atualizar o Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "]!");
+			prepare_msgAlerta('warning', "Não foi possível atualizar o Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "]!");
 		}
 		else
 		{
-			$homepage->assign('msgAlerta', "Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "] atualizado com sucesso!");
+			prepare_msgAlerta('success', "Template [" . $global_hpDB->real_escape_string($Template->descricaoTemplate) . "] atualizado!");
 		}
 		$template = 'admin/window_close.tpl';
 	break;

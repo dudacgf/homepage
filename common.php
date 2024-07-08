@@ -92,11 +92,12 @@ include($include_path . "class_database.php");
 // global que manterá a conexão à base de dados única para todos os objetos instanciados.
 $global_hpDB = new database($connection_info_xml_path, $connection_info_xml_id);
 
-// if there was a request with msgAlert, assing it to homepage (may be overwritten later)
-if (isset($requests['msgAlerta']) and !isset($requests['reload']))
-    $homepage->assign('msgAlerta', htmlentities($requests['msgAlerta']));
-elseif (isset($requests['msgAlerta']))
-    $homepage->assign('msgAlerta', htmlentities($requests['msgAlerta']));
+// função para enviar alertas no reload de páginas (script2reload ou window_close)
+function prepare_msgAlerta($iconAlerta, $msgAlerta) {
+    setcookie('iconAlerta', $iconAlerta, time()+5);
+    setcookie('msgAlerta', $msgAlerta, time()+5);
+    setcookie('showAlerta', 1, time()+5);
+}
 
 //-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
 ?>
