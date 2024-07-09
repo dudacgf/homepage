@@ -18,7 +18,7 @@
   {elseif $elemento.tipoElemento == 2}
     <form method="get" id="{$elemento.nomeForm}" action="{$elemento.acao}"><div>
     <input type="text" size="{$elemento.tamanhoCampo}" name="{$elemento.nomeCampo}" />
-    <a href="javascript: document.{$elemento.nomeForm}.submit(); " name="link" title="{$elemento.acao}">
+    <a href="javascript: document.forms['{$elemento.nomeForm}'].submit(); " name="link" title="{$elemento.acao}">
 		{$elemento.descricaoForm}</a><br /></div></form> 
   {elseif $elemento.tipoElemento == 3}
     {if $elemento.breakBefore == 1}
