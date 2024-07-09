@@ -156,7 +156,7 @@ div.subTitulo {
 font-size: 1.1em; font-weight: bold; border-bottom: 1pt solid; clear: both; padding: 5px;
 }
 div.itemLateral {
-font-size: 0.9em; font-weight: bold; border: 0pt; float: left; width: 25%; height: 21pt; clear: left; margin: 2pt; padding: 3px 0 0 3px;
+text-align: right; font-size: 0.9em; font-weight: bold; border: 0pt; float: left; width: 25%; height: 21pt; clear: left; margin: 2pt; padding: 3px 6px 0px 0px;
 }
 div.item {
 font-size: 0.9em; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;

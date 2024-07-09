@@ -34,7 +34,7 @@
 
 	function editarElemento(mode, idGrupo, idElemento) {ldelim}
 		novodoc = window.open('{$includePATH}admin/elemento_edit.php?mode=' + mode + '&idGrp=' + idGrupo + '&idElm=' + idElemento, '_blank', 
-					'top=200, left=200, directories=no, height=300, width=450, location=no, menubar=no, resizable=yes, scrollbars=no, status=no, toolbar=no', false);
+					'top=200, left=200, directories=no, height=400, width=600, location=no, menubar=no, resizable=yes, scrollbars=no, status=no, toolbar=no', false);
 		novodoc.close;
 	{rdelim}
 -->
