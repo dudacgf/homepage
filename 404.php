@@ -1,13 +1,8 @@
-</h>
-a página não pode ser exibida!
-</h1><hr />
-<!--#echo var="HTTP_HOST" -->
-<!--#echo var="REQUEST_URI" -->
-
-<hr />
 <?php
-    phpinfo();
+
+require_once('common.php');
+
+$homepage->assign('includePATH', INCLUDE_PATH);
+$homepage->display("404.tpl");
+
 ?>
-<!-- 
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
---> 
