@@ -1,0 +1,135 @@
+body.wgazul
+  {
+  background-color: white;
+  color: #fffff0; 
+  background-image: url("/homepage//drawing/background.php?r=240&g=240&b=240");
+  }
+body.wgazul a
+  { 
+  color: darkblue; 
+  }
+body.wgazul a:hover span.popup 
+  {
+  background-color: white;
+  color: steelblue;
+  border-right-color: DarkBlue;
+  border-bottom-color: DarkBlue;
+  }
+body.wgazul span.separador
+  {
+  color: white;
+  }
+body.wgazul div.tituloCategoria, body.wgazul div.tituloLateral
+  {
+  background-color: steelblue; 
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  }
+body.wgazul div.titulo, body.wgazul div.wtitulo
+  {
+  background-color: steelblue;
+  }
+body.wgazul div.wtitulo a
+  {
+  	color: white;
+	font-weight: bold;
+  }
+body.wgazul div.headexpandable
+  {
+  background-color: steelblue;
+  border-top-color: lightblue;
+  border-left-color: lightblue;
+  }
+body.wgazul div.headclickable 
+  {
+  background-color: steelblue;
+  border-top-color: lightblue;
+  border-left-color: lightblue;
+  }
+body.wgazul div.expanded, body.wgazul div.expandable:hover, body.wgazul div.interior:hover
+  {
+  background-color: steelblue;
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  }
+body.wgazul div.expanded a, body.wgazul div.expandable:hover a, body.wgazul div.interior:hover a
+  {
+  color: white;
+  }
+body.wgazul a:hover, body.wgazul div.expanded a:hover, body.wgazul div.expandable:hover a:hover, body.wgazul div.interior:hover a:hover
+  {
+  background-color: white;
+  color: steelblue; 
+  }
+body.wgazul div.fortune
+  {
+  background-color: steelblue;
+  color: white;
+  }
+body.wgazul input, body.wgazul select
+  {
+  background-color: lightgrey;
+  color: DarkBlue;
+  border-Top-color: steelblue; 
+  border-Left-color: steelblue;
+  border-Bottom-color: grey;
+  border-Right-color: grey;
+  }
+body.wgazul input.submit
+  {
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  background-color: steelBlue;
+  color: white;
+  }
+body.wgazul div.footer
+  {
+  color: steelblue;
+  }
+/* 
+ * páginas administrativas. 
+ *
+ */
+body.wgazul div.subTitulo, body.wgazul div.itemLateral, body.wgazul div.coluna, body.wgazul div.tituloColuna {
+  border-Top-color: lightblue; 
+  border-Left-color: lightblue;
+  border-Bottom-color: DarkBlue; 
+  border-Right-color: DarkBlue;
+  background-color: steelBlue;
+  color: white;
+}
+body.wgazul div.item {
+  border-color: steelblue; color: steelblue;
+}
+body.wgazul div.colunaTransparente {
+	border-bottom: 1pt steelblue solid;
+}
+body.wgazul div.titulo { color: #fffff0; }
+body.wgazul div.fortune { color: #f5f5f5; }
+body.wgazul div.tituloCategoria { color: #fffff0; }
+body.wgazul div.tituloLateral { color: #fffff0; }
+body.wgazul div.itemLateral { color: #fffff0; }
+body.wgazul div.subTitulo { color: #fffff0; }
+body.wgazul div.coluna { color: #fffff0; }
+body.wgazul div.tituloColuna { color: #fffff0; }
+body.wgazul div.expanded { background-color: #f5f5f5; }
+body.wgazul div.interior:hover { background-color: #f5f5f5; }
+body.wgazul div.expandable:hover { background-color: #f5f5f5; }
+body.wgazul div.headexpandable { color: #fffff0; }
+body.wgazul div.headclickable { color: #fffff0; }
+body.wgazul input.submit { color: #f5f5f5; }
+body.wgazul span.separador { color: #333333; }
+body.wgazul a { color: #666666; }
+body.wgazul div.expanded a { color: #666666; }
+body.wgazul div.expandable:hover a { color: #666666; }
+body.wgazul div.interior:hover a { color: #666666; }
+body.wgazul a:hover { background-color: #87ceeb; }
+body.wgazul div.expanded a:hover { background-color: #87ceeb; }
+body.wgazul div.expandable:hover a:hover { background-color: #87ceeb; }
+body.wgazul div.interior:hover a:hover { background-color: #87ceeb; }
