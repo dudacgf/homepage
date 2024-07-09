@@ -46,6 +46,9 @@ vertical-align: bottom;
     font-size: xx-small;
     font-weight: normal;
 }
+.copyright:hover {
+    font-size: larger;
+}
 form {
 margin-top: 0pt; margin-bottom: 0pt;
 }
