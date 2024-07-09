@@ -974,7 +974,7 @@ class wTemplate extends elemento
         $_sql->bind_param("i", $this->idTemplate);
         
         // executa o query
-        if (!$result)
+        if (!$_sql->execute())
             throw new Exception ("erro ao excluir o template: '$this->descricaoTemplate'!");
 
         return $this->hpDB->getAffectedRows();
