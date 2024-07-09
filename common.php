@@ -94,9 +94,10 @@ $global_hpDB = new database($connection_info_xml_path, $connection_info_xml_id);
 
 // função para enviar alertas no reload de páginas (script2reload ou window_close)
 function prepare_msgAlerta($iconAlerta, $msgAlerta) {
-    setcookie('iconAlerta', $iconAlerta, time()+5);
-    setcookie('msgAlerta', $msgAlerta, time()+5);
-    setcookie('showAlerta', 1, time()+5);
+    $options = array('expires'=>time()+5, 'path'=>INCLUDE_PATH, 'domain'=>gethostname(), 'secure'=>true, 'httponly'=>false, 'SameSite'=>'Strict');
+    setcookie('iconAlerta', $iconAlerta, $options);
+    setcookie('msgAlerta', $msgAlerta, $options);
+    setcookie('showAlerta', 1, $options);
 }
 
 //-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
