@@ -1,9 +1,11 @@
 <p />
-{if isset($cabecalhoUpload)}
 <div class="tituloLateral" style="width: 100%; float: none; font-size: 0.9em;">
+{if isset($cabecalhoUpload)}
 {$cabecalhoUpload}
-</div>
+{else}
+File Upload
 {/if}
+</div>
 <form name="upform" enctype="multipart/form-data" action="{$form_action}" method="POST">
 	<input type="hidden" name="MAX_FILE_SIZE" value="{$maxfilesize}" />
 	<input name="userfile" type="file" size="{$filenamesize}" />
