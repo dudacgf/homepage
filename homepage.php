@@ -13,15 +13,10 @@ check_admin_htaccess();
 if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '') 
 {
 	$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-
 	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-   	{
-		$homepage->assign('msgAlerta', "Arquivo $uploadfile carregado com sucesso");
-	} 
+		prepare_msgAlerta('success', "Arquivo $uploadfile carregado com sucesso");
 	else 
-	{
-		$homepage->assign('msgAlerta', "Erro ao carregar arquivo $uploadfile");
-	}
+		prepare_msgAlerta('warning', "Erro ao carregar arquivo $uploadfile");
 }
 
 // instancia a página informada a partir do id e coloca o título na página...
