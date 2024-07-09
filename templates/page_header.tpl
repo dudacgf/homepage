@@ -35,7 +35,7 @@
 <link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
 <script src="{$includePATH}js/toast.js" defer></script>
-<script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;'; </script>
+<script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;Path={$includePATH};Domain=' + location.hostname + ';Secure=true;SameSite=Strict;'</script>
 </head>
 <body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">
 {else}
