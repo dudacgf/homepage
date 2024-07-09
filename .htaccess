@@ -1,0 +1,2 @@
+RedirectMatch 404 configs/connections.xml
+ErrorDocument 404 /homepage/404.php
