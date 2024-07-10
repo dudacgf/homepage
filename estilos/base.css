@@ -88,7 +88,7 @@ table {
 clear: both; margin: 0 auto; 
 }
 div.lineForm {
-clear: both; border-style: solid none; border-width: 1pt; height: 30px;
+clear: both; border-style: solid none; border-width: 0pt; height: 30px; padding-top: 2px; padding-bottom: 4px;
   }
 div.tituloLateral { 
 border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: x-small; width: 90px;
