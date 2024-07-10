@@ -1,9 +1,10 @@
-# CakePHP 3
-
+# testes em geral
 ?.php
 ?.js
 
 # own dirs
+/.htaccess
+/404/templates_c/*
 /templates_c/*
 /admin/templates_c/*
 /admin/pictures/templates_c/*
@@ -14,6 +15,8 @@
 
 
 
+
+# CakePHP 3
 
 /config/app.php
 
