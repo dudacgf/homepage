@@ -5,27 +5,28 @@ header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 // Carregar apenas uma vez.
 require_once('common.php');
 
-// arruma path para authfile, se necessário
+// arruma paths em .htaccess
 check_admin_htaccess();
+check_root_htaccess();
 
 // 
 // verifica se houve pedido de upload...
 if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '') 
 {
-	$uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-	if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-		prepare_msgAlerta('success', "Arquivo $uploadfile carregado com sucesso");
-	else 
-		prepare_msgAlerta('warning', "Erro ao carregar arquivo $uploadfile");
+    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
+    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
+        prepare_msgAlerta('success', "Arquivo $uploadfile carregado com sucesso");
+    else 
+        prepare_msgAlerta('warning', "Erro ao carregar arquivo $uploadfile");
 }
 
 // instancia a página informada a partir do id e coloca o título na página...
 if (isset($requests['id'])) {
-	$_idPagina = $requests['id'];
+    $_idPagina = $requests['id'];
 }
 else
 {
-	$_idPagina = 1;
+    $_idPagina = 1;
 }
 
 // abro e inicializo minha página
@@ -43,14 +44,14 @@ $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
 //
 // se esta página apresentar fortune, obtém uma...
 if ($pagina->displayFortune != 0) {
-	require($include_path . "class_fortune.php");
-	$f = new fortune;
-	$biscoitinho = $f->fortune;
-	if (strpos($biscoitinho, "--") > 0) 
-	{
-		$biscoitinho = str_replace("--", "<b>--", $biscoitinho) . "</b>";
-	}
-	$homepage->assign("fortuneCookie", $biscoitinho);
+    require($include_path . "class_fortune.php");
+    $f = new fortune;
+    $biscoitinho = $f->fortune;
+    if (strpos($biscoitinho, "--") > 0) 
+    {
+        $biscoitinho = str_replace("--", "<b>--", $biscoitinho) . "</b>";
+    }
+    $homepage->assign("fortuneCookie", $biscoitinho);
 }
 
 // exibe o form de seleção de cores se:
@@ -58,14 +59,14 @@ if ($pagina->displayFortune != 0) {
 // - a página está configurada para exibí-lo
 if ( (isset($requests['selectcolor']) && $requests['selectcolor'] == 'sim') || ($pagina->displaySelectColor == 1))
 {
-	$homepage->assign('displaySelectColor', 1);
-	// lê os elementos coloridos e os pares de cores
-	$homepage->assign('elementosColoridos', elementoColorido::getArray());
-	$homepage->assign('paresCores', RGBColor::getArray());
+    $homepage->assign('displaySelectColor', 1);
+    // lê os elementos coloridos e os pares de cores
+    $homepage->assign('elementosColoridos', elementoColorido::getArray());
+    $homepage->assign('paresCores', RGBColor::getArray());
 }
 else
 {
-	$homepage->assign('displaySelectColor', 0);
+    $homepage->assign('displaySelectColor', 0);
 }
 
 // exibe o form do dicionário se:
@@ -73,11 +74,11 @@ else
 // - a página está configurada para exibí-lo (ainda não está implementado).
 if ( (isset($requests['dicionario']) && $requests['dicionario'] == 'sim') ) // || ($pagina->displayDicionario == 1))
 {
-	$homepage->assign('displayDicionario', 1);
+    $homepage->assign('displayDicionario', 1);
 }
 else
 {
-	$homepage->assign('displayDicionario', 0);
+    $homepage->assign('displayDicionario', 0);
 }
 
 // le os cookies e passa para a página a ser carregada.
@@ -186,6 +187,33 @@ function check_admin_htaccess() {
         }
     }
 }
+
+function check_root_htaccess() {
+    $htaccessFilePath = HOMEPAGE_PATH . '/.htaccess';
+    $htaccessFileContents = file_get_contents($htaccessFilePath);
+    $newDocumentErrorLine = 'ErrorDocument 404 ' . INCLUDE_PATH . '404/404.php';
+    if (!$htaccessFileContents) {
+        $F = fopen($htaccessFilePath, 'w');
+        if ($F) {
+            fwrite($F, $newDocumentErrorLine . PHP_EOL);
+            fwrite($F, PHP_EOL);
+            fwrite($F, 'RedirectMatch 404 configs/connections.xml' . PHP_EOL);
+            fwrite($F, 'RedirectMatch 404 download/*' . PHP_EOL);
+            fwrite($F, 'RedirectMatch 404 backup/*' . PHP_EOL);
+            fwrite($F, 'RedirectMatch 404 includes/*' . PHP_EOL);
+            fwrite($F, 'RedirectMatch 404 language/*' . PHP_EOL);
+        } else 
+            die("error opening $htaccessFilePath");
+
+    } else {
+        $newFileContents = preg_replace('/ErrorDocument.*(\s)/', $newDocumentErrorLine . '$1', $htaccessFileContents);
+        if ($htaccessFileContents != $newFileContents)
+        {
+            file_put_contents($htaccessFilePath, $newFileContents);
+        }
+    }
+}
+
 //-- vi: set tabstop=4 shiftwidth=4 showmatch: 
 
 ?>
