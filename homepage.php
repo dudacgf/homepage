@@ -199,7 +199,6 @@ function check_root_htaccess() {
             fwrite($F, PHP_EOL);
             fwrite($F, 'RedirectMatch 404 configs/connections.xml' . PHP_EOL);
             fwrite($F, 'RedirectMatch 404 download/*' . PHP_EOL);
-            fwrite($F, 'RedirectMatch 404 backup/*' . PHP_EOL);
             fwrite($F, 'RedirectMatch 404 includes/*' . PHP_EOL);
             fwrite($F, 'RedirectMatch 404 language/*' . PHP_EOL);
         } else 
