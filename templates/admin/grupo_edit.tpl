@@ -107,7 +107,7 @@
 		{$tiposElementos[$idTipoElemento]}
 	</div>
 {/section}
-<div class="subTitulo">{$LANG.novoGrupo}:</div>
+<div class="subTitulo">{$LANG.novosElementos}:</div>
 <div class="fortune" style="text-align: center;">
 	<a href="javascript: editarElemento('nwLnk', {$grupo.idGrupo}, 0);">{$LANG.novoLink}</a> :: 
 	<a href="javascript: editarElemento('nwFrm', {$grupo.idGrupo}, 0);">{$LANG.novoForm}</a> :: 
