@@ -1,7 +1,7 @@
 body.wgazul
   {
   background-color: white;
-  color: #fffff0; 
+  color: #333333; 
   background-image: url("/homepage//drawing/background.php?r=240&g=240&b=240");
   }
 body.wgazul a
@@ -116,8 +116,10 @@ body.wgazul div.tituloCategoria { color: #fffff0; }
 body.wgazul div.tituloLateral { color: #fffff0; }
 body.wgazul div.itemLateral { color: #fffff0; }
 body.wgazul div.subTitulo { color: #fffff0; }
+body.wgazul div.fortune a { color: #fffff0; }
 body.wgazul div.coluna { color: #fffff0; }
 body.wgazul div.tituloColuna { color: #fffff0; }
+body.wgazul div.tituloColuna a { color: #fffff0; }
 body.wgazul div.expanded { background-color: #f5f5f5; }
 body.wgazul div.interior:hover { background-color: #f5f5f5; }
 body.wgazul div.expandable:hover { background-color: #f5f5f5; }
