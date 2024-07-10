@@ -1,7 +1,0 @@
-ErrorDocument 404 /homepage/404.php
-
-RedirectMatch 404 configs/connections.xml
-RedirectMatch 404 download/*
-RedirectMatch 404 backup/*
-RedirectMatch 404 includes/*
-RedirectMatch 404 language/*
