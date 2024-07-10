@@ -24,7 +24,7 @@ unset($elementos);
 $elementos[] = array( 
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
-	'descricaoLink' => 'link em grupo clic&aacute;vel',
+	'descricaoLink' => 'link em grupo clicável',
 	'dicaLink' => 'dica deste link',
 	'urlElementoSSL' =>  0,
 	'urlElementoSVN' => 0,
@@ -40,7 +40,7 @@ unset($elementos);
 $elementos[] = array( 
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
-	'descricaoLink' => 'link em grupo expans&iacute;vel',
+	'descricaoLink' => 'link em grupo expansível',
 	'dicaLink' => 'dica deste link',
 	'urlElementoSSL' =>  0,
 	'urlElementoSVN' => 0,
@@ -55,7 +55,7 @@ $grupos[] = array(
 unset($elementos); 
 $elementos[] = array( 
 	'tipoElemento' => 6,
-	'descricaoTemplate' => 'bot&atilde;o',
+	'descricaoTemplate' => 'botão',
 	'nomeTemplate' => 'admin/sample_button.tpl');
 $grupos[] = array(
 	'grupo' => 'Grupo Com template',
