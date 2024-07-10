@@ -18,9 +18,9 @@
 				<option value="{$paresCores[opt].valorCor}" style="background-color: {$paresCores[opt].valorCor}">{$paresCores[opt].nomeCor}</option>
 {/section}				
 			</select>
-			<a href="javascript: adicionarCookedStyle();" name="Alterar!">Alterar!</a>&nbsp;&nbsp;
-			<a href="javascript: deletarCookedStyle();" name="Alterar!">Restaurar!</a>&nbsp;&nbsp;
-			<a href="javascript: restaurarPagina()" name="link">Restaura Página!</a>
+			<a href="javascript: adicionarCookedStyle('{$includePATH}');" name="Alterar!">Alterar!</a>&nbsp;&nbsp;
+			<a href="javascript: deletarCookedStyle('{$includePATH}');" name="Alterar!">Restaurar!</a>&nbsp;&nbsp;
+			<a href="javascript: restaurarPagina('{$includePATH}')" name="link">Restaura Página!</a>
 		</div></form>
 	</div>
 </div>

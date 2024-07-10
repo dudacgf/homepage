@@ -14,7 +14,7 @@ $homepage->assign('tituloTabela', $pagina->tituloTabela);
 $homepage->assign('classPagina', $pagina->classPagina);
 
 // manda um biscoitinho da sorte para lá, para poder ver as cores.
-$homepage->assign('fortuneCookie', 'NÃ£o tem nada aqui. passe para  pr&oacute;ima.<br /><b>-- autor anÃ´nimo</b>');
+$homepage->assign('fortuneCookie', 'Não tem nada aqui. passe para a próxima.<br /><b>-- autor anônimo</b>');
 $homepage->assign('displayFortune', 1);
 
 // indica a inclusão do form de cores

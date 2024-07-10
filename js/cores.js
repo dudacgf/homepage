@@ -200,9 +200,14 @@ function delayed_AlterarCorElemento() {
  ** Executa a 1ª ação do form colorForm - adicionar uma cor a um par Pagina x elementoColorido
  **
 */
-function adicionarCookedStyle() {
+function adicionarCookedStyle(argPath = '') {
 
-  var path = new URL("dyn", document.URL);
+  var path;
+    
+  if (argPath == '') 
+    path = new URL("dyn", document.URL);
+  else
+    path = argPath;
 
   // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
@@ -217,7 +222,7 @@ function adicionarCookedStyle() {
   var id = obj.value;
 
   // inclui o cookie na base de dados e a seguir altera a cor no form.
-  insertRequest = path + "/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
+  insertRequest = path + "dyn/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
   xhttpInnerHtml(insertRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 
@@ -229,9 +234,14 @@ function adicionarCookedStyle() {
  **                                          o padrão da classe.
  **
 */
-function deletarCookedStyle() {
+function deletarCookedStyle(argPath = '') { 
 
-  var path = new URL("dyn", document.URL);
+  var path;
+    
+  if (argPath == '') 
+    path = new URL("dyn", document.URL);
+  else
+    path = argPath;
 
   // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
   var obj = document.getElementById('elementSelector');
@@ -242,7 +252,7 @@ function deletarCookedStyle() {
   var id = obj.value;
 
   // deleta o cookie na base de dados e a seguir restaura a cor da classe.
-  deleteRequest = path + "/delcookie.php?id=" + id + "&el=" + idElementoColorido;
+  deleteRequest = path + "dyn/delcookie.php?id=" + id + "&el=" + idElementoColorido;
   xhttpInnerHtml(deleteRequest, 'xHttpResponse');
   setTimeout('delayed_AlterarCorElemento()', 50);
 }
@@ -253,15 +263,20 @@ function deletarCookedStyle() {
  **                                          e um par Pagina x elementoColorido
  **
 */
-function restaurarPagina() {
+function restaurarPagina(argPath = '') { 
 
-  var path = new URL("dyn", document.URL);
+  var path;
+    
+  if (argPath == '') 
+    path = new URL("dyn", document.URL);
+  else
+    path = argPath;
 
   // obtém, no form, o id da página que está sendo editada.
   var id = document.getElementById('id').value;
 
   // remove os cookies da base de dados e recarrega a página
-  resetRequest = path + "/resetpage.php?id=" + id;
+  resetRequest = path + "dyn/resetpage.php?id=" + id;
   xhttpInnerHtml(resetRequest, 'xHttpResponse');
   setTimeout('window.location.reload()', 500);
 }
