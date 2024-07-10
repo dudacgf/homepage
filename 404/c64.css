@@ -1,0 +1,21 @@
+/* commodore font from https://www.dafont.com/devin-cook.d820 */
+@font-face {
+    font-family: 'Commodore 64 Angled, Regular';
+    src: url('Commodore Angled v1.2.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.c64 {
+    display: inline-flex;
+    font-family: 'Commodore 64 Angled, Regular';
+    color: lightgray;
+}
+
+.newline {
+    float:none;
+    clear:left; 
+    font-family: 'Commodore 64 Angled, Regular';
+    color: lightgray;
+}
+
