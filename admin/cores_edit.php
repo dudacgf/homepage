@@ -3,11 +3,8 @@
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-// A página de exemplo de cores tem idPagina = 7
-$_idPagina = 7;
-
 // abro e inicializo minha página
-$pagina = new pagina($_idPagina);
+$pagina = new pagina(ID_COR_PAG);
 $homepage->assign('idPagina', $pagina->idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);
@@ -26,7 +23,7 @@ $homepage->assign('paresCores', RGBColor::getArray());
 
 // le os cookies e passa para a página a ser carregada.
 $cookedStyles = '';
-$colorCookies = cookedStyle::getArray($_idPagina);
+$colorCookies = cookedStyle::getArray(ID_COR_PAG);
 if ($colorCookies) 
 {
 	foreach ($colorCookies as $selector => $colorCookie) {

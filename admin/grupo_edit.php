@@ -18,8 +18,6 @@ if (isset($requests['id']) && $requests['id'] != '')
 if (isset($requests['idCat']) && $requests['idCat'] != '') 
     $_idCategoria = $requests['idCat'];
 
-// localEcho($requests, "Requests:");
-
 // verifica se passou grupo
 if (isset($requests['idGrp']))
     $_idGrupo = $requests['idGrp'];
@@ -167,6 +165,9 @@ if ($colorCookies)
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
+// obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
 switch ($template)
 {
     case 'admin/grupo_edit.tpl':
@@ -180,7 +181,7 @@ switch ($template)
             } 
             else 
             {
-                $homepage->assign('classPagina', 'admin');
+                $homepage->assign('classPagina', $admPag->classPagina);
             }
 
             // lê a categoria deste grupo.
@@ -221,7 +222,7 @@ switch ($template)
             $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Grupo');
             $homepage->assign('tituloTabelaAlternativo', ' :: Novo Grupo :: ');
             $homepage->assign('tiposGrupos', tiposGrupos::getArray());
-            $homepage->assign('classPagina', 'admin');
+            $homepage->assign('classPagina', $admPag->classPagina);
         }
     break;
 
@@ -229,7 +230,7 @@ switch ($template)
         $homepage->assign('grupos', grupo::getGrupos());
         $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarGrupo']);
         $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarGrupo']);
-        $homepage->assign('classPagina', 'admin');
+        $homepage->assign('classPagina', $admPag->classPagina);
     break;
 
     case 'admin/delete_confirm.tpl':
@@ -242,7 +243,7 @@ switch ($template)
         $homepage->assign('script2call', 'admin/grupo_edit.php');
         $homepage->assign('deleteConfirmTituloTabela', $lang['confirmarExclusaoGrupo']);
         $homepage->assign('deleteConfirmDescricao', $grupo->descricaoGrupo);
-        $homepage->assign('classPagina', 'admin');
+        $homepage->assign('classPagina', $admPag->classPagina);
     break;
 
     case 'admin/script_reload.tpl':

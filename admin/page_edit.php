@@ -19,6 +19,9 @@ if (isset($requests['id']))
 	$_idPagina = $requests['id'];
 }
 
+// Obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
 //
 // se tem alguma coisa estranha, cai no default (slPag)
 if ( !isset($requests['mode']) || (isset($_idPagina) && $_idPagina == '') )
@@ -162,7 +165,10 @@ switch ($requests['mode'])
 
 //
 // Inicializo variáveis e passo, dependendo do template que vou carregar...
-$homepage->assign('displayImagemTitulo', '1');
+$homepage->assign('displayImagemTitulo', '0');
+
+// A página de administração tem idPagina = 5. vou usar para pegar a classe de estilos da página 
+$pagina = new pagina(5);
 
 switch ($template)
 {
@@ -211,7 +217,7 @@ switch ($template)
 			$homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
 			$homepage->assign('tituloPagina', $lang['hp_paginas_TituloPagina']);
 			$homepage->assign('tituloTabela', $lang['hp_paginas_TituloTabela']);
-			$homepage->assign('classPagina', 'admin');
+			$homepage->assign('classPagina', $admPag->classPagina);
 			$homepage->assign('displayGoogle', 1);
 			$homepage->assign('displayFindaMap', 1);
 			$homepage->assign('displayFortune', 1);
@@ -227,7 +233,7 @@ switch ($template)
 		$homepage->assign('paginas', pagina::getPaginas());
 		$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarPagina']);
 		$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarPagina']);
-		$homepage->assign('classPagina', 'admin');
+		$homepage->assign('classPagina', $admPag->classPagina);
 		$homepage->assign('displaySelectColor', 0);
 	break;
 
@@ -241,7 +247,7 @@ switch ($template)
 		$homepage->assign('script2call', 'admin/page_edit.php');
 		$homepage->assign('deleteConfirmTituloTabela', $lang['confirmarExclusaoPagina']);
 		$homepage->assign('deleteConfirmDescricao', $pagina->tituloPagina . ' :: ' . $pagina->tituloTabela);
-		$homepage->assign('classPagina', 'admin');
+		$homepage->assign('classPagina', $pagina->classPagina);
 		$homepage->assign('displaySelectColor', 0);
 	break;
 

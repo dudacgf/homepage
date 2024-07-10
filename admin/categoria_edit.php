@@ -178,6 +178,9 @@ $homepage->assign('cookedStyles', $cookedStyles);
 
 $homepage->assign('displayImagemTitulo', '1');
 
+// obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
 switch ($template)
 {
 	case 'admin/categoria_edit.tpl':
@@ -191,10 +194,7 @@ switch ($template)
 				$homepage->assign('classPagina', $pagina->classPagina);
 			} 
 			else 
-			{
-				$homepage->assign('classPagina', 'admin');
-				#$homepage->assign('$id_Pagina', 0);
-			}
+				$homepage->assign('classPagina', $admPag->classPagina);
 
 			// lê a categoria
 			$categoria = new categoria($_idCategoria);
@@ -228,7 +228,7 @@ switch ($template)
 			$homepage->assign('descricaoCategoria', $lang['hp_categorias_DescricaoCategoria']);
 			$homepage->assign('categoriaRestrita', 0);
 			$homepage->assign('restricaoCategoria', '');
-			$homepage->assign('classPagina', 'admin');
+			$homepage->assign('classPagina', $admPag->classPagina);
 			$homepage->assign('displaySelectColor', 0);
 		}
 	break;
@@ -243,7 +243,7 @@ switch ($template)
 		$homepage->assign('categorias', categoria::getCategorias());
 		$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarCategoria']);
 		$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarCategoria']);
-		$homepage->assign('classPagina', 'admin');
+		$homepage->assign('classPagina', $admPag->classPagina);
 		$homepage->assign('displaySelectColor', 0);
 	break;
 
@@ -256,7 +256,7 @@ switch ($template)
 		$homepage->assign('script2call', 'admin/categoria_edit.php');
 		$homepage->assign('deleteConfirmTituloTabela', $lang['confirmarExclusaoCategoria']);
 		$homepage->assign('deleteConfirmDescricao', $categoria->descricaoCategoria);
-		$homepage->assign('classPagina', 'admin');
+		$homepage->assign('classPagina', $admPag->classPagina);
 		$homepage->assign('displaySelectColor', 0);
 	break;
 

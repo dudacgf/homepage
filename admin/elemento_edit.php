@@ -18,6 +18,9 @@ else
 $grupo = new grupo($_idGrupo);
 $homepage->assign('grupo', $grupo->getArray());
 
+// obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
 // se tenho o id do elemento a editar/excluir/salvar, lê e passa para o template
 if (isset($requests['idElm']) && $requests['idElm'] != '0')
 {
@@ -607,7 +610,6 @@ switch ($template)
 		$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaConfirmarExclusao']);
 		$homepage->assign('scriptMode', 'exElm');
 		$homepage->assign('script2call', 'admin/elemento_edit.php');
-		$homepage->assign('classPagina', 'admin');
 
 		switch ($elemento->tipoElemento)
 		{
@@ -666,7 +668,7 @@ $homepage->assign('cookedStyles', $cookedStyles);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarElemento', $criarElemento);
 $homepage->assign('imagesPATH', $images_path);
-$homepage->assign('classPagina', 'admin');
+$homepage->assign('classPagina', $admPag->classPagina);
 $homepage->display($template);
 
 //-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 

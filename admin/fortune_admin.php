@@ -17,12 +17,13 @@ if ($colorCookies) {
 }
 $homepage->assign('cookedStyles', $cookedStyles);
 
-// Inicializa a página e a tabela de resultados...
-$homepage->assign('displayImagemTitulo', '1');
+// Obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
 
+$homepage->assign('displayImagemTitulo', '1');
 $homepage->assign('tituloPagina', ':: Administra&ccedil;&atilde;o de Fortunes');
 $homepage->assign('tituloTabela', ' :: Biscoitinhos da sorte :: administra&ccedil;&atilde;o ::');
-$homepage->assign('classPagina', 'admin');
+$homepage->assign('classPagina', $admPag->classPagina);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('displaySelectColor', 0);
 

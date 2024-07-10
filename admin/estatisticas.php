@@ -31,7 +31,10 @@ $homepage->assign('cookedStyles', $cookedStyles);
 // propriedades gerais da página
 $homepage->assign('displayImagemTitulo', '1');
 
-$homepage->assign('classPagina', 'admin');
+// obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
+$homepage->assign('classPagina', $admPag->classPagina);
 $homepage->assign('tituloPaginaAlternativo', $lang['paginaEstatisticasTituloPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['paginaEstatisticasTituloTabela']);
 $homepage->assign('includePATH', INCLUDE_PATH);
