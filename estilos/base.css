@@ -73,7 +73,7 @@ font-size: 1em; font-weight: bold;
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
 div.titulo, div.titulo a {
-clear: both; font-size: 2.0em; font-weight: bold; height: 30px; vertical-align: middle; padding: 2pt;
+clear: both; font-size: 2.0em; font-weight: bold; height: 30px; vertical-align: middle; padding-top: 15px; padding-bottom: 20px; padding-left: 5px;
 }
 div.content {
 clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center;

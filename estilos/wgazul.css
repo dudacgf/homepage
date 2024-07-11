@@ -11,7 +11,7 @@ body.wgazul a
 body.wgazul a:hover span.popup 
   {
   background-color: white;
-  color: steelblue;
+  color: #43609C;
   border-right-color: DarkBlue;
   border-bottom-color: DarkBlue;
   }
@@ -21,7 +21,7 @@ body.wgazul span.separador
   }
 body.wgazul div.tituloCategoria, body.wgazul div.tituloLateral
   {
-  background-color: steelblue; 
+  background-color: #43609C; 
   border-Top-color: lightblue; 
   border-Left-color: lightblue;
   border-Bottom-color: DarkBlue; 
@@ -29,7 +29,7 @@ body.wgazul div.tituloCategoria, body.wgazul div.tituloLateral
   }
 body.wgazul div.titulo, body.wgazul div.wtitulo
   {
-  background-color: steelblue;
+  background-color: #43609C;
   }
 body.wgazul div.wtitulo a
   {
@@ -38,19 +38,19 @@ body.wgazul div.wtitulo a
   }
 body.wgazul div.headexpandable
   {
-  background-color: steelblue;
+  background-color: #43609C;
   border-top-color: lightblue;
   border-left-color: lightblue;
   }
 body.wgazul div.headclickable 
   {
-  background-color: steelblue;
+  background-color: #43609C;
   border-top-color: lightblue;
   border-left-color: lightblue;
   }
 body.wgazul div.expanded, body.wgazul div.expandable:hover, body.wgazul div.interior:hover
   {
-  background-color: steelblue;
+  background-color: #43609C;
   border-Top-color: lightblue; 
   border-Left-color: lightblue;
   border-Bottom-color: DarkBlue; 
@@ -63,19 +63,19 @@ body.wgazul div.expanded a, body.wgazul div.expandable:hover a, body.wgazul div.
 body.wgazul a:hover, body.wgazul div.expanded a:hover, body.wgazul div.expandable:hover a:hover, body.wgazul div.interior:hover a:hover
   {
   background-color: white;
-  color: steelblue; 
+  color: #43609C; 
   }
 body.wgazul div.fortune
   {
-  background-color: steelblue;
+  background-color: #43609C;
   color: white;
   }
 body.wgazul input, body.wgazul select
   {
   background-color: lightgrey;
   color: DarkBlue;
-  border-Top-color: steelblue; 
-  border-Left-color: steelblue;
+  border-Top-color: #43609C; 
+  border-Left-color: #43609C;
   border-Bottom-color: grey;
   border-Right-color: grey;
   }
@@ -85,12 +85,12 @@ body.wgazul input.submit
   border-Left-color: lightblue;
   border-Bottom-color: DarkBlue; 
   border-Right-color: DarkBlue;
-  background-color: steelBlue;
+  background-color: #43609C;
   color: white;
   }
 body.wgazul div.footer
   {
-  color: steelblue;
+  color: #43609C;
   }
 /* 
  * páginas administrativas. 
@@ -101,14 +101,14 @@ body.wgazul div.subTitulo, body.wgazul div.itemLateral, body.wgazul div.coluna, 
   border-Left-color: lightblue;
   border-Bottom-color: DarkBlue; 
   border-Right-color: DarkBlue;
-  background-color: steelBlue;
+  background-color: #43609C;
   color: white;
 }
 body.wgazul div.item {
-  border-color: steelblue; color: steelblue;
+  border-color: #43609C; color: steelblue;
 }
 body.wgazul div.colunaTransparente {
-	border-bottom: 1pt steelblue solid;
+	border-bottom: 1pt #43609C solid;
 }
 body.wgazul div.titulo { color: #fffff0; }
 body.wgazul div.fortune { color: #f5f5f5; }
@@ -131,7 +131,10 @@ body.wgazul a { color: #666666; }
 body.wgazul div.expanded a { color: #666666; }
 body.wgazul div.expandable:hover a { color: #666666; }
 body.wgazul div.interior:hover a { color: #666666; }
-body.wgazul a:hover { background-color: #87ceeb; }
-body.wgazul div.expanded a:hover { background-color: #87ceeb; }
-body.wgazul div.expandable:hover a:hover { background-color: #87ceeb; }
-body.wgazul div.interior:hover a:hover { background-color: #87ceeb; }
+body.wgazul div.expanded a:hover { color: #F5F5F5; }
+body.wgazul div.expandable:hover a:hover { color: #F5F5F5; }
+body.wgazul div.interior:hover a:hover{ color: #F5F5F5; }
+body.wgazul a:hover { background-color: #B0B0B0; }
+body.wgazul div.expanded a:hover { background-color: #B0B0B0; }
+body.wgazul div.expandable:hover a:hover { background-color: #B0B0B0; }
+body.wgazul div.interior:hover a:hover { background-color: #B0B0B0; }
