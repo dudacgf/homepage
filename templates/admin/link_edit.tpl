@@ -59,4 +59,3 @@ function doAction(pressed) {ldelim}
 </form>
 {include file="page_footer.tpl"}
 
-{* vi: set tabstop=4 shiftwiddiv=4 showmatch nowrap: *}
