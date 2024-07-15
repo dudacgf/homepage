@@ -6,6 +6,7 @@
 /.htaccess
 /404/templates_c/*
 /templates_c/*
+/smarty_c/*
 /admin/templates_c/*
 /admin/pictures/templates_c/*
 /admin/.htaccess
