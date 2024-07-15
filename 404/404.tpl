@@ -1,42 +1,31 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<!-- <script language="javascript" type="text/javascript" src="{$includePATH}404/jquery.js"></script> -->
 <link rel="stylesheet" href="{$includePATH}404/c64.css" type="text/css" media="screen" />
 <meta charset="UTF-8">
 <style>
     * { margin:0px;padding:0px; }
     body { background:#7b73de }
     #c64background { height:480px; width:640px; background:#3931a5; }
-    .cont { text-align:left;margin-top:168px;width:640px; color:#7b73de; font-family: verdana; font-size:24px; font-weight:bold;}
-    #ursor { position:relative; top:-0px; left:-3px; color:#7b73de;background:#7b73de;width:20px;height:21px; font-size:1px;display:block}
     #cursor { position:absolute; top:168px; color:#7b73de;background:#7b73de;width:16px;height:16px; font-size:1px;display:block}
-    kbd { float:left;display:none; }
 </style>
 
 <script language="JavaScript">
     // c64 404 page not found by Klaus Hessellund / 200709
     // Feel free to copy this script to you own page. Some credits would be nice, but not mandatory :p
     // c64 charset found here : http://www.dwarffortresswiki.net/index.php/List_of_user_tilesets
-
-    var loadlist;
-    loadlist = "½LOAD\"$\",§8\n";
-    loadlist += "SEARCHING FOR $\nLOADING¤\nREADY.\n";
-    loadlist += "½¤LIST§\n";
-    loadlist += "0 \"TEST DISK       \" 23 2A\n";
-    loadlist += "20   \"FOO\"               PRG\n";
-    loadlist += "3    \"BAR\"               PRG\n";
-    loadlist += "641 BLOCKS FREE.\n";
+    // 
+    // completely readapted for the current use
 
     var text;
-    text = "§ \n";
-    text += "§    **** THE SHIRE'S COMPANY ****\n \n";
-    text += "ERROR 404 PAGE NOT FOUND\n \n";
-    text += "IF YOU THINK THIS IS AN ERROR OF MINE\n";
-    text += "¤½FEEL FREE TO PRESS BACKSPACE\",8§\n" + 
-            "SEARCHING FOR /404/&Acirc;&nbsp;¤\n" +
-            "?FILE NOT FOUND  ERROR\nREADY.\n" + loadlist + 
-            "READY.\n ¤¤¤¤¤¤¤¤¤¤¤¤¤½SYS 64738¤°";
+    text = "§ \n \n";
+    text += "§    **** THE SHIRE'S COMPANY ****    §\n \n";
+    text += "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n";
+    text += "ERROR 404 PAGE NOT FOUND\n";
+    text += "¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤¤\n \n";
+    text += "¤½SOMEWHERE NEARBY IS COLOSSAL CAVE, \n \n¤°WHERE OTHERS HAVE FOUND FORTUNES IN\n \n ";
+    text += "TREASURE AND GOLD, THOUGH IT IS\n \n RUMORED THAT SOME WHO ENTER ARE NEVER\n \n§½ ";
+    text += "SEEN AGAIN. \n \n ¬¬MAGIC IS SAID TO WORK IN THE CAVE.¬¬";
 
     var textlen = text.length;
     var textidx=0;
@@ -58,8 +47,6 @@
         }
 
         movecursor = 1;
-        pause=0;
-        typing=1;
 
         var getchar = text.charAt(textidx);
         if (getchar == '\n') 
