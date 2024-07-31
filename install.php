@@ -1,9 +1,39 @@
 <?php
 require_once('common.php');
+include($language_path . "lang_homepage_admin.php");
 
 // arruma paths em .htaccess
 check_root_htaccess();
 check_admin_htaccess();
+
+$root_ht = file_get_contents(HOMEPAGE_PATH . '/.htaccess');
+$homepage->assign('root_ht', $root_ht);
+
+$admin_ht = file_get_contents(HOMEPAGE_PATH . '/admin/.htaccess');
+$homepage->assign('admin_ht', $admin_ht);
+
+// obtém a página administrativa
+$admPag = new pagina(ID_ADM_PAG);
+
+// títulos
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaInstall']);
+$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaInstall']);
+$homepage->assign('classPagina', $admPag->classPagina);
+
+// le os cookies e passa para a página a ser carregada.
+$cookedStyles = '';
+$colorCookies = cookedStyle::getArray(5);
+if ($colorCookies) 
+{
+    foreach ($colorCookies as $selector => $colorCookie) {
+        $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
+    }
+}
+$homepage->assign('cookedStyles', $cookedStyles);
+
+$homepage->assign('includePATH', INCLUDE_PATH);
+$homepage->assign('imagesPATH', $images_path);
+$homepage->display('admin/post_install.tpl');
 
 function check_admin_htaccess() {
     $htaccessFilePath = HOMEPAGE_PATH . '/admin/.htaccess';

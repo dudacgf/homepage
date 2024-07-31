@@ -65,7 +65,7 @@ margin-left: 2pt;
 input.FormExtra {
 Margin-Left: 2pt;
 }
-input.submit {
+input.submit, button {
 border-width: 1pt; border-style: solid; vertical-align: top; text-align: center; 
 font-size: 1em; font-weight: bold;
 }

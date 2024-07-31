@@ -84,7 +84,7 @@ body.wgazul input, body.wgazul select
   border-Bottom-color: grey;
   border-Right-color: grey;
   }
-body.wgazul input.submit
+body.wgazul input.submit, body.wgazul button
   {
   border-Top-color: lightblue; 
   border-Left-color: lightblue;

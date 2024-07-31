@@ -228,6 +228,10 @@ $lang['NumForms'] = 'Número de forms cadastrados';
 $lang['NumRssFeeds'] = 'Número de feeds';
 $lang['NumTemplates'] = 'Número de Templates';
 $lang['NumFortunes'] = 'Número de biscoitinhos da sorte';
+
+// pagina install
+$lang['tituloPaginaInstall'] = 'Homepage post-install info';
+$lang['tituloTabelaInstall'] = 'root and admin .HTACCESSes';
 ?>
 
 
