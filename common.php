@@ -75,7 +75,7 @@ include_once($include_path . 'class_hp_smarty.php');
 $homepage = new hp_smarty();
 
 // se for página administrativa, le o arquivo de linguagem
-if (preg_match('/\/admin\//', $_SERVER['SCRIPT_NAME'])) 
+if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME'])) 
 {
 	include($language_path . "lang_homepage_admin.php");
 	global $lang;

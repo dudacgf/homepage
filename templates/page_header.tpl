@@ -9,6 +9,8 @@
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Type" content="image/jpeg" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" title="default" />
+<link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
 {if !isset($edicaoPagina)}
   <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" title="default" />
 {else}
@@ -16,7 +18,12 @@
   <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" {if $classNames[cp] == $classPagina}title="default"{/if} />
   {/section}
 {/if}
+<script type="text/javascript">
+    window.includePATH = "{$includePATH}";
+</script>
 <script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
+<script type="text/javascript" src="{$includePATH}js/api.js"></script>
+<script type="text/javascript" src="{$includePATH}js/toast.js"></script>
 {if $displaySelectColor == 1}
 <script type="text/javascript" src="{$includePATH}js/cores.js"></script>
 {/if}
@@ -31,10 +38,6 @@
 {$cookedStyles|strip}
 </style>
 {if isset($smarty.cookies.showAlerta)}
-<!-- Font Awesome icons -->
-<link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
-<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
-<script src="{$includePATH}js/toast.js" defer></script>
 <script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;Path={$includePATH};Domain=' + location.hostname + ';Secure=true;SameSite=Strict;'</script>
 </head>
 <body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">

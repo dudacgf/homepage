@@ -15,6 +15,7 @@ class hp_smarty extends Smarty
 		parent::__construct();
 
         $this->setTemplateDir(HOMEPAGE_PATH . '/templates');
+        $this->setCompileDir(HOMEPAGE_PATH . '/smarty_c');
 
 		// pediu debug?
 		if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'sim') 

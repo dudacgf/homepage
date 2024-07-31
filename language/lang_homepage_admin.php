@@ -194,6 +194,16 @@ $lang['grupoRestrito'] = 'Grupo Restrito';
 $lang['tipoGrupo'] = 'Tipo de Grupo';
 $lang['tipoElemento'] = 'Tipo de Elemento';
 $lang['configuracao'] = 'Configuração';
+$lang['config_new_link'] = 'Novo Link';
+$lang['config_edit_link'] = 'Editar Link';
+$lang['config_new_form'] = 'Novo Form';
+$lang['config_edit_form'] = 'Editar Form';
+$lang['config_new_imagem'] = 'Nova Imagem';
+$lang['config_edit_imagem'] = 'Editar Imagem';
+$lang['config_new_template'] = 'Novo Template';
+$lang['config_edit_template'] = 'Editar Template';
+$lang['config_new_rss'] = 'Novo RSS';
+$lang['config_edit_rss'] = 'Editar RSS';
 
 $lang['paginas'] = 'Páginas';
 $lang['categorias'] = 'Categorias da Página';

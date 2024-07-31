@@ -1,37 +1,34 @@
-    {include file="page_header.tpl"}
-
-    <script type="text/javascript">
-    <!--
-        function doAction(pressed) {ldelim}
-            mode = document.getElementById('mode').value;
-            if (mode != 'crCat') {ldelim}
-                switch (pressed) {ldelim}
-                    case '{$LANG.gravar}':
-                        document.getElementById('mode').value = 'svCat';
-                        break;
-                    case '{$LANG.excluir}':
-                        document.getElementById('mode').value = 'cfExCat';
-                        break;
-                    case '{$LANG.novaCategoria}':
-                        document.getElementById('mode').value = 'nwCat';
-                        break;
-                    case '{$LANG.cancelar}':
-                        document.getElementById('mode').value = 'slCat';
-                        break;
-                {rdelim}
-		{rdelim} else {ldelim}
-			switch (pressed) {ldelim}
-				case '{$LANG.gravar}':
-					document.getElementById('mode').value = 'crCat';
-					break;
-				case '{$LANG.cancelar}':
-					document.getElementById('mode').value = 'slCat';
-					break;
-			{rdelim}
-		{rdelim}
-		document.edCat.submit();
-	{rdelim}
--->
+{include file="page_header.tpl"}
+<script type="text/javascript">
+    function doAction(pressed) {
+        mode = document.getElementById('mode').value;
+        if (mode != 'crCat') {
+            switch (pressed) {
+                case '{$LANG.gravar}':
+                    document.getElementById('mode').value = 'svCat';
+                    break;
+                case '{$LANG.excluir}':
+                    document.getElementById('mode').value = 'cfExCat';
+                    break;
+                case '{$LANG.novaCategoria}':
+                    document.getElementById('mode').value = 'nwCat';
+                    break;
+                case '{$LANG.cancelar}':
+                    document.getElementById('mode').value = 'slCat';
+                    break;
+            }
+    } else {
+        switch (pressed) {
+            case '{$LANG.gravar}':
+                document.getElementById('mode').value = 'crCat';
+                break;
+            case '{$LANG.cancelar}':
+                document.getElementById('mode').value = 'slCat';
+                break;
+        }
+    }
+    document.edCat.submit();
+}
 </script>
 
 <form id="edCat" name="edCat" method="POST" action="{$includePATH}admin/categoria_edit.php">

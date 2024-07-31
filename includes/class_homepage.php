@@ -253,8 +253,8 @@ class wLink extends elemento
                                       SET urlElemento = ?, descricaoElemento = ?, dicaElemento = ?, urlElementoLocal = ?,
                                           urlElementoTarget = ?, urlElementoSSL = ?, urlElementoSVN = ?
                                       WHERE idElemento = ?");
-        $_sql->bind_param("sssisiii", $this->hpDB->real_escape_string($this->linkURL),$this->hpDB->real_escape_string($this->descricaoLink),
-                          $this->hpDB->real_escape_string($this->dicaLink), $this->localLink, $this->hpDB->real_escape_string($this->targetLink),
+        $_sql->bind_param("sssisiii", $this->linkURL, $this->descricaoLink,
+                          $this->dicaLink, $this->localLink, $this->targetLink,
                           $this->urlElementoSSL, $this->urlElementoSVN, $this->idLink);
         
         // executa o query
@@ -1034,6 +1034,74 @@ class wTemplate extends elemento
 
 }#  wTemplate */
 
+class elementoFactory {
+    private $oElemento;
+    private $idTipoElemento;
+
+    public function __construct($_idElm) { 
+        global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare('select idTipoElemento from hp_elementos where idElemento = ?');
+        $_sql->bind_param("i", $_idElm);
+        if (!$_sql->execute())
+            die("{'status': 'error', 'message': 'Não pude ler o elemento solicitado.'}");
+        $results = $_sql->get_result();
+        if (mysqli_num_rows($results) == 0) 
+            return NULL;
+
+        $this->idTipoElemento = $results->fetch_assoc()['idTipoElemento'];
+        switch ($this->idTipoElemento) {
+            case ELEMENTO_LINK:
+                $this->oElemento = new wLink($_idElm);
+                break;
+            case ELEMENTO_FORM:
+                $this->oElemento = new wForm($_idElm);
+                break;
+            case ELEMENTO_SEPARADOR:
+                $this->oElemento = new wSeparador($_idElm);
+                break;
+            case ELEMENTO_IMAGEM:
+                $this->oElemento = new wImagem($_idElm);
+                break;
+            case ELEMENTO_RSSFEED:
+                $this->oElemento = new wRssFeed($_idElm);
+                break;
+            case ELEMENTO_TEMPLATE:
+                $this->oElemento = new wTemplate($_idElm);
+                break;
+            default:
+                return null;
+        }
+        return $this->oElemento;
+    }
+
+    public function excluir() {
+        return $this->oElemento->excluir();
+    }
+
+    public function descricaoElemento() {
+        switch ($this->idTipoElemento) {
+            case ELEMENTO_LINK:
+                return $this->oElemento->descricaoLink;
+                break;
+            case ELEMENTO_FORM:
+                return $this->oElemento->descricaoForm;;
+                break;
+            case ELEMENTO_SEPARADOR:
+                return $this->oElemento->descricaoSeparador;
+                break;
+            case ELEMENTO_IMAGEM:
+                return $this->oElemento->descricaoImagem;
+                break;
+            case ELEMENTO_TEMPLATE:
+                $this->oElemento->descricaoTemplate;
+                break;
+            default:
+                return null;
+        }
+    }
+}
+
 class grupo extends elementoAgrupado
 {#    
     var $descricaoGrupo;
@@ -1225,7 +1293,7 @@ class grupo extends elementoAgrupado
         
     function lerElementos()
     {
-        // lê tudo: links, forms e separadores
+        // lê tudo: links, forms e separadores e devolve como array de objetos
         $_sql = $this->hpDB->prepare("select * from hp_elementos where idGrupo = ? order by posGrupo");
         $_sql->bind_param("i", $this->idGrupo);
         if (!$_sql->execute()) 
@@ -1267,6 +1335,54 @@ class grupo extends elementoAgrupado
                     throw new Exception ('tipo errado de elemento. socorro!');
             }
         }
+    }
+
+    function lerArrayElementos()
+    {
+        // lê tudo: links, forms e separadores e devolve como array de arrays
+        $_sql = $this->hpDB->prepare("select * from hp_elementos where idGrupo = ? order by posGrupo");
+        $_sql->bind_param("i", $this->idGrupo);
+        if (!$_sql->execute()) 
+        {
+            return array();
+        }
+        
+        $_elementos = $_sql->get_result();
+        $elementos = [];
+
+        while ($_el = $_elementos->fetch_assoc())
+        {
+            switch ($_el['idTipoElemento'])
+            {
+                case ELEMENTO_LINK: 
+                    $elementos[] = wLink::newFromArray($_el)->getArray();
+                    break;
+                    
+                case ELEMENTO_FORM: 
+                    $elementos[] = wForm::newFromArray($_el)->getArray();
+                    break;
+                    
+                case ELEMENTO_SEPARADOR:
+                    $elementos[] = wSeparador::newFromArray($_el)->getArray();
+                    break;
+
+                case ELEMENTO_IMAGEM:
+                    $elementos[] = wImagem::newFromArray($_el)->getArray();
+                    break;
+
+                case ELEMENTO_RSSFEED:
+                    $elementos[] = wRssFeed::newFromArray($_el)->getArray();
+                    break;
+
+                case ELEMENTO_TEMPLATE:
+                    $elementos[] = wTemplate::newFromArray($_el)->getArray();
+                    break;
+
+                default:
+                    throw new Exception ('tipo errado de elemento. socorro!');
+            }
+        }
+        return $elementos;
     }
 
     public function elementoNaPosicao($_posElemento)

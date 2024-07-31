@@ -1,38 +1,35 @@
 {assign var="edicaoPagina" value="1"}
 {include file="page_header.tpl"}
-
 <script type="text/javascript">
-<!--
-	function doAction(pressed) {ldelim}
-		mode = document.getElementById('mode').value;
-		if (mode != 'crPag') {ldelim}
-			switch (pressed) {ldelim}
-				case '{$LANG.gravar}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=svPag&id=' + document.getElementById('id').value; 
-					break;
-				case '{$LANG.excluir}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=cfExPag&id=' + document.getElementById('id').value; 
-					break;
-				case '{$LANG.novaPagina}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=nwPag';
-					break;
-				case '{$LANG.cancelar}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
-					break;
-			{rdelim}
-		{rdelim} else {ldelim}
-			switch (pressed) {ldelim}
-				case '{$LANG.gravar}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=crPag';
-					break;
-				case '{$LANG.cancelar}':
-					document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
-					break;
-			{rdelim}
-		{rdelim}
-		document.edPag.submit();
-	{rdelim}
--->
+function doAction(pressed) {
+    mode = document.getElementById('mode').value;
+    if (mode != 'crPag') {
+        switch (pressed) {
+            case '{$LANG.gravar}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=svPag&id=' + document.getElementById('id').value; 
+                break;
+            case '{$LANG.excluir}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=cfExPag&id=' + document.getElementById('id').value; 
+                break;
+            case '{$LANG.novaPagina}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=nwPag';
+                break;
+            case '{$LANG.cancelar}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
+                break;
+        }
+    } else {
+        switch (pressed) {
+            case '{$LANG.gravar}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=crPag';
+                break;
+            case '{$LANG.cancelar}':
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=slPag';
+                break;
+        }
+    }
+    document.edPag.submit();
+}
 </script>
 
 <form id="edPag" name="edPag" method="POST">

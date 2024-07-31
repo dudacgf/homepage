@@ -10,19 +10,10 @@ $criarGrupo = false;
 // garante que vão aparecer todos os grupos
 $_REQUEST['gr'] = 'all';
 
-// verifica se passou página. se houver, vai apresentá-la no form
-if (isset($requests['id']) && $requests['id'] != '') 
-    $_idPagina = $requests['id'];
-
-// verifica se passou categoria. se houver, vai apresentá-la no form
-if (isset($requests['idCat']) && $requests['idCat'] != '') 
-    $_idCategoria = $requests['idCat'];
-
 // verifica se passou grupo
 if (isset($requests['idGrp']))
     $_idGrupo = $requests['idGrp'];
 
-//
 // se não passou nenhum mode, entra em modo de seleção de grupos
 if (!isset($requests['mode']))
     $requests['mode'] = 'slGrp';
@@ -40,33 +31,6 @@ switch ($requests['mode'])
         $template = 'admin/grupo_edit.tpl';
     break;
         
-    // deslocar elemento para cima
-    case 'upElm':
-        $grupo = new grupo($_idGrupo);
-        $grupo->deslocarElementoParaCima($requests['idElm']);
-        $homepage->assign('script2reload', 'admin/grupo_edit.php');
-        $homepage->assign('scriptMode', 'edGrp');
-        $template = 'admin/script_reload.tpl';
-    break;
-    
-    // deslocar elemento para baixo
-    case 'downElm':
-        $grupo = new grupo($_idGrupo);
-        $grupo->deslocarElementoParaBaixo($requests['idElm']);
-        $homepage->assign('script2reload', 'admin/grupo_edit.php');
-        $homepage->assign('scriptMode', 'edGrp');
-        $template = 'admin/script_reload.tpl';
-    break;
-
-    // excluir um elemento do grupo
-    case 'rmElm':
-        $grupo = new grupo($_idGrupo);
-        $grupo->excluirElemento($requests['idGrp'], $requests['posGrp']);
-        $homepage->assign('script2reload', 'admin/grupo_edit.php');
-        $homepage->assign('scriptMode', 'edGrp');
-        $template = 'admin/script_reload.tpl';
-    break;
-
     // Atualiza o grupo atualmente em edição
     case 'svGrp':
         $grupo = new grupo($_idGrupo);
@@ -117,32 +81,18 @@ switch ($requests['mode'])
         $template = 'admin/script_reload.tpl';
     break;
 
-    // excluir esta grupo da base - exibe o form de confirmação para voltar mais tarde no modo ExGrp
-    case 'cfExGrp':
-        $template = 'admin/delete_confirm.tpl';
-    break;
-
     // excluir um grupo (já foi exibido o form de confirmação).
     case 'exGrp':
-        switch ($requests['go'])
+        $grupo = new grupo($_idGrupo);
+        if ($grupo->excluir())
         {
-            case $lang['sim']:
-                $grupo = new grupo($_idGrupo);
-                if ($grupo->excluir())
-                {
-                    prepare_msgAlerta('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
-                    $homepage->assign('scriptMode', 'slGrp');
-                }
-                else
-                {
-                    prepare_msgAlerta('warning', "Não foi possível excluir o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
-                    $homepage->assign('scriptMode', 'edGrp');
-                }
-            break;
-
-            case $lang['nao']:
-                $homepage->assign('scriptMode', 'edGrp');
-            break;
+            prepare_msgAlerta('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
+            $homepage->assign('scriptMode', 'slGrp');
+        }
+        else
+        {
+            prepare_msgAlerta('warning', "Não foi possível excluir o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
+            $homepage->assign('scriptMode', 'edGrp');
         }
         $homepage->assign('script2reload', 'admin/grupo_edit.php');
         $template = 'admin/script_reload.tpl';
@@ -154,17 +104,6 @@ switch ($requests['mode'])
     break;
 }
     
-// le os cookies e passa para a página a ser carregada.
-$cookedStyles = '';
-$colorCookies = cookedStyle::getArray(5);
-if ($colorCookies) 
-{
-    foreach ($colorCookies as $selector => $colorCookie) {
-        $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
-    }
-}
-$homepage->assign('cookedStyles', $cookedStyles);
-
 // obtém a página administrativa
 $admPag = new pagina(ID_ADM_PAG);
 
@@ -233,19 +172,6 @@ switch ($template)
         $homepage->assign('classPagina', $admPag->classPagina);
     break;
 
-    case 'admin/delete_confirm.tpl':
-        $grupo = new grupo($_idGrupo);
-        $homepage->assign('idGrupo', $_idGrupo);
-        $homepage->assign('descricaoGrupo', $grupo->descricaoGrupo);
-        $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaConfirmarExclusaoGrupo']);
-        $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaConfirmarExclusao']);
-        $homepage->assign('scriptMode', 'exGrp');
-        $homepage->assign('script2call', 'admin/grupo_edit.php');
-        $homepage->assign('deleteConfirmTituloTabela', $lang['confirmarExclusaoGrupo']);
-        $homepage->assign('deleteConfirmDescricao', $grupo->descricaoGrupo);
-        $homepage->assign('classPagina', $admPag->classPagina);
-    break;
-
     case 'admin/script_reload.tpl':
         if (isset($_idPagina))
         {
@@ -263,11 +189,19 @@ switch ($template)
 
 }
 
+// le os cookies e passa para a página a ser carregada.
+$cookedStyles = '';
+$colorCookies = cookedStyle::getArray(5);
+if ($colorCookies) 
+{
+    foreach ($colorCookies as $selector => $colorCookie) {
+        $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
+    }
+}
+$homepage->assign('cookedStyles', $cookedStyles);
+
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarGrupo', $criarGrupo);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-
 ?>

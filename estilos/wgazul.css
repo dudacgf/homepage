@@ -1,3 +1,8 @@
+:root {
+  --theme-dark: #43609C;
+  --theme-light: whitesmoke;
+  --theme-medium: #C0C0C0;
+}
 body.wgazul
   {
   background-color: white;
@@ -138,3 +143,9 @@ body.wgazul a:hover { background-color: #B0B0B0; }
 body.wgazul div.expanded a:hover { background-color: #B0B0B0; }
 body.wgazul div.expandable:hover a:hover { background-color: #B0B0B0; }
 body.wgazul div.interior:hover a:hover { background-color: #B0B0B0; }
+
+body.wgazul #form_div {
+ border-color: var(--theme-medium);
+ background-color: var(--theme-light);
+ box-shadow: 3px 3px var(--theme-dark);
+} 
