@@ -9,7 +9,8 @@
 </div>
 
 <div style="float: left; padding: 15px;">
-<button class="submit" onclick="window.location = '{$includePATH}/homepage.php';">HOMEPAGE</button>
+{assign var=path value=$includePATH|cat:"homepage.php"}
+<button class="submit" onclick="window.location = '{$path|replace:'//':'/'}'">HOMEPAGE</button>
 </div>
 {include file="page_footer.tpl"}
 
