@@ -10,6 +10,7 @@
 /admin/templates_c/*
 /admin/pictures/templates_c/*
 /admin/.htaccess
+/api/.htaccess
 /backup/*.sql
 /vendor/*
 /webfonts/*

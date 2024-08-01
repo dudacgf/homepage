@@ -36,11 +36,11 @@ $homepage->assign('imagesPATH', $images_path);
 $homepage->display('admin/post_install.tpl');
 
 function check_admin_htaccess() {
-    $htaccessFilePath = HOMEPAGE_PATH . '/admin/.htaccess';
-    $htaccessFileContents = file_get_contents($htaccessFilePath);
+    $ADMINhtaccessFilePath = HOMEPAGE_PATH . '/admin/.htaccess';
+    $htaccessFileContents = file_get_contents($ADMINhtaccessFilePath);
     $newAuthFileLine = 'authuserfile ' . HOMEPAGE_PATH . 'admin/.htpasswd.ghtpasswd';
     if (!$htaccessFileContents) {
-        $F = fopen($htaccessFilePath, 'w');
+        $F = fopen($ADMINhtaccessFilePath, 'w');
         fwrite($F, 'authtype basic' . PHP_EOL);
         fwrite($F, $newAuthFileLine . PHP_EOL);
         fwrite($F, 'authname "Secure Area"' . PHP_EOL);
@@ -53,6 +53,8 @@ function check_admin_htaccess() {
             file_put_contents($htaccessFilePath, $newFileContents);
         }
     }
+    $APIhtaccessFilePath = HOMEPAGE_PATH . 'api/.htaccess';
+    copy($ADMINhtaccessFilePath, $APIhtaccessFilePath);
 }
 
 function check_root_htaccess() {
