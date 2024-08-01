@@ -54,13 +54,6 @@ if (isset($requests['idGrp'])) {
                 $template = 'admin/imagem_edit.tpl';
             break;
 
-            case ELEMENTO_RSSFEED:
-                $homepage->assign('mode', 'edRss');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarRssFeed']);
-                $homepage->assign('tituloTabelaAlternativo', ':: Editar Rss Feed ::');
-                $template = 'admin/rssfeed_edit.tpl';
-            break;
-
             case ELEMENTO_TEMPLATE:
                 $homepage->assign('mode', 'edTpt');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarTemplate']);

@@ -30,13 +30,6 @@
   {elseif $elemento.tipoElemento == 4}
       <a href="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}"><img src="{if !$elemento.localLink}http://{/if}{$elemento.urlImagem}" alt="{$elemento.descricaoImagem}" width="90%" />
     <br />{$elemento.descricaoImagem}</a><p />
-{*---- {elseif $elemento.tipoElemento == 5}
-  {assign var="rssURL" value=$elemento.rssURL}
-  {assign var="is" value=$elemento.rssItemNum}
-    {rssload source="$rssURL" items="5" cachelt="900"}
-    <a href="{$rss[$is].link}" style="white-space: normal;">{$rss[$is].title|truncate:30:"..."}<span class="popup">
-    <span style="text-align: left; font-weight: bold; ">{$rss[$is].title}</span><br />
-    {$rss[$is].decoded_description|truncate:300:"[...]"}<br /></span></a> --*}
 {elseif $elemento.tipoElemento == 6}
   {include file=$elemento.nomeTemplate}
 {else}

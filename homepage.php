@@ -136,8 +136,6 @@ foreach ($elementosLidos as $elemento) {
                    'tamanhoCampo' => $elemento['formTamanhoCampo'], 
                    'breakBefore' => $elemento['separadorBreakBefore'], 
                    'descricaoSeparador' => $elemento['descricaoElemento'],
-                   'rssURL' => $elemento['urlElemento'],
-                   'rssItemNum' => $elemento['rssItemNum'], 
                    'urlImagem' => $elemento['urlElemento'],
                    'descricaoImagem' => $elemento['descricaoElemento'],
                    'nomeTemplate' => $elemento['templateFileName'],

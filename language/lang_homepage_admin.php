@@ -71,10 +71,6 @@ $lang['hp_imagens_descricaoImagem'] = 'Descricao da Imagem';
 $lang['hp_imagens_urlImagem'] = 'url da Imagem';
 $lang['hp_imagens_localLink'] = 'link local';
 
-// atributos de um elemento tipo RssFeed
-$lang['hp_rssfeeds_rssURL'] = 'Url para o Rss';
-$lang['hp_rssfeeds_rssItemNum'] = 'Número de ordem do item a resgatar';
-
 // atributos de um elemento tipo Template
 $lang['hp_templates_descricaoTemplate'] = 'Descricao do template';
 $lang['hp_templates_nomeTemplate'] = 'Nome do arquivo template';
@@ -94,7 +90,6 @@ $lang['novoLink'] = 'Novo link';
 $lang['novoForm'] = 'Novo formulário';
 $lang['novaImagem'] = 'Nova imagem';
 $lang['novoSeparador'] = 'Novo separador';
-$lang['novoRssFeed'] = 'Novo Rss Feed';
 $lang['novoTemplate'] = 'Novo template';
 
 // Utilizado em diálogos de confirmação
@@ -159,14 +154,6 @@ $lang['tituloPaginaCriarImagem'] = ':: Criação de Imagem ::';
 $lang['confirmarExclusaoImagem'] = 'Tem certeza que deseja excluir a Imagem ';
 $lang['tituloPaginaConfirmarExclusaoImagem'] = ':: Exclusão de Imagem ::';
 
-// para o diálogo de edição e criação de rssfeeds
-$lang['tituloPaginaEditarRssFeed'] = ':: Edição de Rss Feed ::'; 
-$lang['tituloPaginaCriarRssFeed'] = ':: Criação de Rss Feed ::';
-
-// para o diálogo de confirmação de exclusão de separador
-$lang['confirmarExclusaoRssFeed'] = 'Tem certeza que deseja excluir o Rss Feed ';
-$lang['tituloPaginaConfirmarExclusaoRssFeed'] = ':: Exclusão de Rss Feed ::';
-
 // para o diálogo de edição e criação de templates
 $lang['tituloPaginaEditarTemplate'] = ':: Edição de Template ::'; 
 $lang['tituloPaginaCriarTemplate'] = ':: Criação de Template ::';
@@ -202,8 +189,6 @@ $lang['config_new_imagem'] = 'Nova Imagem';
 $lang['config_edit_imagem'] = 'Editar Imagem';
 $lang['config_new_template'] = 'Novo Template';
 $lang['config_edit_template'] = 'Editar Template';
-$lang['config_new_rss'] = 'Novo RSS';
-$lang['config_edit_rss'] = 'Editar RSS';
 
 $lang['paginas'] = 'Páginas';
 $lang['categorias'] = 'Categorias da Página';
@@ -225,7 +210,6 @@ $lang['NumLinks'] = 'Número de links cadastrados';
 $lang['NumSeparadores'] = 'Número de separadores de links';
 $lang['NumImagens'] = 'Número de imagens armazenadas';
 $lang['NumForms'] = 'Número de forms cadastrados';
-$lang['NumRssFeeds'] = 'Número de feeds';
 $lang['NumTemplates'] = 'Número de Templates';
 $lang['NumFortunes'] = 'Número de biscoitinhos da sorte';
 

@@ -9,7 +9,6 @@ define('ELEMENTO_LINK', 1);
 define('ELEMENTO_FORM', 2);
 define('ELEMENTO_SEPARADOR', 3);
 define('ELEMENTO_IMAGEM', 4);
-define('ELEMENTO_RSSFEED', 5);
 define('ELEMENTO_TEMPLATE', 6);
 
 class tiposElementos 
@@ -780,132 +779,6 @@ class wImagem extends elemento
 
 }#  wImagem */
 
-class wRssFeed extends elemento
-{#
-    var $idRssFeed;
-    var $rssURL;
-    var $rssItemNum;
-    
-    public function __construct($_idRssFeed)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
-    {
-        parent::__construct();
-        $this->tipoElemento = ELEMENTO_RSSFEED;
-
-        if (isset($_idRssFeed) && $_idRssFeed != NULL)
-        {
-            $_sql = $this->hpDB->prepare("SELECT * from hp_elementos where idElemento = ?");
-            $_sql->bind_param("i", $_idRssFeed);
-
-            if (!$_sql->execute()) 
-                throw new Exception("idRssFeed incorreto: $_idRssFeed");
-            
-            $line = $_sql->get_result()->fetch_assoc();
-
-            $this->idRssFeed = $line['idElemento'];
-            $this->idGrupo = $line['idGrupo'];
-            $this->posGrupo = $line['posGrupo'];
-            $this->rssURL = $line['urlElemento'];
-            $this->rssItemNum = $line['rssItemNum'];
-            $this->idElemento = $this->idRssFeed;
-            $this->descricaoElemento = $this->rssURL;
-        }
-    }
-
-    function inserir()
-    {
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos 
-                    (idTipoElemento, idGrupo, posGrupo, urlElemento, rssItemNum)
-                 VALUES (?, ?, ?, ?, ?)");
-        $_sql->bind_param("iiisi", $this->tipoElemento, $this->idGrupo, $this->posGrupo , $this->rssURL, $this->rssItemNum);
-        // executa o query e resgata o id criado.
-        if (!$_sql->execute())
-            throw new Exception ("erro ao criar o rss feed: [$this->rssURL]!");
-
-        $this->idRssFeed = $this->hpDB->getLastInsertId();
-        return $this->idRssFeed;
-    }
-    
-    function atualizar ()
-    {
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos SET urlElemento = ?, rssItemNum = ?
-                 WHERE idElemento = ?");
-        $_sql->bind_param("sii", $this->rssURL, $this->rssItemNum, $this->idRssFeed);
-        
-        // executa o query
-        if (!$_sql->execute())
-            throw new Exception ("erro ao gravar rss feed: '$this->rssURL'!");
-
-        return $this->hpDB->getAffectedRows();
-    }
-    
-    public function excluir()
-    {
-        if (!isset($this->idRssFeed))
-            return NULL;
-
-        $_sql = $this->hpDB->prepare("DELETE FROM hp_elementos where idElemento = ?");
-        $_sql->bind_param("i", $this->idRssFeed);
-
-        if (!$_sql->execute())
-            throw new Exception ("erro ao excluir o Rss Feed: '$this->rssURL'!");
-
-        return $this->hpDB->getAffectedRows();
-    }
-
-    public function getArray()
-    {
-        if (isset($this->idRssFeed))
-        {
-            return array(
-                    'idElemento' => $this->idRssFeed,
-                    'descricaoElemento' => $this->rssURL,
-                    'idGrupo' => $this->idGrupo,
-                    'posGrupo' => $this->posGrupo,
-                    'tipoElemento' => ELEMENTO_RSSFEED,
-                    'rssURL' => $this->rssURL,
-                    'rssItemNum' => $this->rssItemNum );
-        }
-        else
-        {
-            throw new Exception('erro em wRssFeed::getArray(). Não inicializado!');
-        }
-    }
-
-    static function newFromArray($_array)
-    {
-        $newRssFeed = new wRssFeed(NULL);
-
-        $newRssFeed->idRssFeed = $_array['idElemento'];
-        $newRssFeed->idGrupo = $_array['idGrupo'];
-        $newRssFeed->posGrupo = $_array['posGrupo'];
-        $newRssFeed->rssURL = $_array['urlElemento'];
-        $newRssFeed->rssItemNum = $_array['rssItemNum'];
-        $newRssFeed->idElemento = $newRssFeed->idRssFeed;
-        $newRssFeed->descricaoElemento = $newRssFeed->rssURL;
-
-        return $newRssFeed;
-    }
-        
-    static function getCount()
-    {
-        global $global_hpDB;
-
-        $_sql = $global_hpDB->prepare("SELECT COUNT(*) as numElementos FROM hp_elementos where idTipoElemento = ?");
-        $_sql->bind_param("i", ...array(ELEMENTO_RSSFEED));
-
-        if (!$_sql->execute())
-            throw new Exception("Erro ao contar elementos RSS");
-
-        $_row = $_sql->get_result()->fetch_assoc();
-        if (!$_row) 
-            return 0;
-
-        return $_row['numElementos'];
-    }
-    
-
-}#  wRssFeed */
-
 class wTemplate extends elemento
 {#
     var $idTemplate;
@@ -1062,9 +935,6 @@ class elementoFactory {
                 break;
             case ELEMENTO_IMAGEM:
                 $this->oElemento = new wImagem($_idElm);
-                break;
-            case ELEMENTO_RSSFEED:
-                $this->oElemento = new wRssFeed($_idElm);
                 break;
             case ELEMENTO_TEMPLATE:
                 $this->oElemento = new wTemplate($_idElm);
@@ -1323,10 +1193,6 @@ class grupo extends elementoAgrupado
                     $this->elementos[] = wImagem::newFromArray($_el);
                     break;
 
-                case ELEMENTO_RSSFEED:
-                    $this->elementos[] = wRssFeed::newFromArray($_el);
-                    break;
-
                 case ELEMENTO_TEMPLATE:
                     $this->elementos[] = wTemplate::newFromArray($_el);
                     break;
@@ -1368,10 +1234,6 @@ class grupo extends elementoAgrupado
 
                 case ELEMENTO_IMAGEM:
                     $elementos[] = wImagem::newFromArray($_el)->getArray();
-                    break;
-
-                case ELEMENTO_RSSFEED:
-                    $elementos[] = wRssFeed::newFromArray($_el)->getArray();
                     break;
 
                 case ELEMENTO_TEMPLATE:
@@ -1421,10 +1283,6 @@ class grupo extends elementoAgrupado
                 $elemento = wImagem::newFromArray($_el);
             break;
 
-            case ELEMENTO_RSSFEED:
-                $elemento = wRssFeed::newFromArray($_el);
-            break;
-
             case ELEMENTO_TEMPLATE:
                 $elemento = wTemplate::newFromArray($_el);
             break;
@@ -1469,10 +1327,6 @@ class grupo extends elementoAgrupado
 
             case ELEMENTO_IMAGEM:
                 $elemento = wImagem::newFromArray($_el);
-            break;
-
-            case ELEMENTO_RSSFEED:
-                $elemento = wRssFeed::newFromArray($_el);
             break;
 
             case ELEMENTO_TEMPLATE:
@@ -2136,7 +1990,7 @@ class pagina extends elementoAgrupado
                       g.idGrupo, g.idTipoGrupo, g.descricaoGrupo, g.grupoRestrito, g.restricaoGrupo, gc.posCategoria,
                       e.idElemento, e.descricaoElemento, e.idTipoElemento, e.posGrupo, e.urlElemento,
                       e.urlElementoLocal, e.dicaElemento, e.urlElementoTarget, e.formNome, e.formNomeCampo,
-                      e.formTamanhoCampo, e.separadorBreakBefore, e.rssItemNum, e.templateFileName,
+                      e.formTamanhoCampo, e.separadorBreakBefore, e.templateFileName,
                       e.urlElementoSSL, e.urlElementoSVN
                  from hp_paginas p, hp_categoriasxpaginas cp, hp_categorias c,
                       hp_gruposxcategorias gc, hp_grupos g, hp_elementos e
@@ -2186,7 +2040,6 @@ class pagina extends elementoAgrupado
                    'formNomeCampo' => $_el['formNomeCampo'],
                    'formTamanhoCampo' => $_el['formTamanhoCampo'], 
                    'separadorBreakBefore' => $_el['separadorBreakBefore'], 
-                   'rssItemNum' => $_el['rssItemNum'], 
                    'templateFileName' => $_el['templateFileName'],
                    'urlElementoSSL' => $_el['urlElementoSSL'], 
                    'urlElementoSVN' => $_el['urlElementoSVN']

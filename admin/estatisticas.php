@@ -13,7 +13,6 @@ $homepage->assign('numLinks', wLink::getCount());
 $homepage->assign('numForms', wForm::getCount());
 $homepage->assign('numSeparadores', wSeparador::getCount());
 $homepage->assign('numImagens', wImagem::getCount());
-$homepage->assign('numRssFeeds', wRssFeed::getCount());
 $homepage->assign('numTemplates', wTemplate::getCount());
 $homepage->assign('numFortunes', Fortune::getCount());
 

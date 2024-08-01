@@ -92,12 +92,21 @@ function doAction(pressed) {
 </div>
 <div class="subTitulo">{$LANG.novosElementos}:</div>
 <div class="fortune" style="text-align: center; padding: 0; margin: 0; height: 30px;">
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwLnk', 0, {$grupo.idGrupo});">:: {$LANG.novoLink} ::</div></div>
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwFrm', 0, {$grupo.idGrupo});">:: {$LANG.novoForm} ::</div></div> 
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwSrp', 0, {$grupo.idGrupo});">:: {$LANG.novoSeparador} ::</div></div> 
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwImg', 0, {$grupo.idGrupo});">:: {$LANG.novaImagem} ::</div></div>
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwRss', 0, {$grupo.idGrupo});">:: {$LANG.novoRssFeed} ::</div></div>
-    <div class="newItem_div" style="background: var(--theme-dark); margin: 0; padding: 0;"><div class="click_div" style="font-weight: bold; float: left; padding-left: 15px; padding-top: 5px; text-align: center;" onClick="editarElemento('nwTpt', 0, {$grupo.idGrupo});">:: {$LANG.novoTemplate} ::</div></div>
+    <div class="newItem_div" onClick="editarElemento('nwLnk', 0, {$grupo.idGrupo});">
+        :: {$LANG.novoLink} ::
+    </div>
+    <div class="newItem_div" onClick="editarElemento('nwFrm', 0, {$grupo.idGrupo});">
+        :: {$LANG.novoForm} ::
+    </div> 
+    <div class="newItem_div" onClick="editarElemento('nwSrp', 0, {$grupo.idGrupo});">
+        :: {$LANG.novoSeparador} ::
+    </div> 
+    <div class="newItem_div" onClick="editarElemento('nwImg', 0, {$grupo.idGrupo});">
+        :: {$LANG.novaImagem} ::
+    </div>
+    <div class="newItem_div" onClick="editarElemento('nwTpt', 0, {$grupo.idGrupo});">
+        :: {$LANG.novoTemplate} ::
+    </div>
 </div>
 {/if}
 {include file="page_footer.tpl"}

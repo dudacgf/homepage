@@ -32,7 +32,6 @@ const editarElemento = async (apiCall, idElm, idGrp) => {
                 case 'nwSrp':
                 case 'nwImg':
                 case 'nwTpt':
-                case 'nwRss':
                     exibirFormDiv(r.message);
                     break;
                 case 'upElm':

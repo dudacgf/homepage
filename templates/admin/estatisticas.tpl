@@ -11,8 +11,6 @@
 	<div class="item">{$numForms}</div>
 	<div class="itemLateral">{$LANG.NumImagens}</div>
 	<div class="item">{$numImagens}</div>
-	<div class="itemLateral">{$LANG.NumRssFeeds}</div>
-	<div class="item">{$numRssFeeds}</div>
 	<div class="itemLateral">{$LANG.NumTemplates}</div>
 	<div class="item">{$numTemplates}</div>
 	<div class="itemLateral">{$LANG.NumFortunes}</div>
