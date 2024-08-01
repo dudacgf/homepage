@@ -188,8 +188,9 @@ padding: 0.3em 0.3em 0.3em 0.3em;
 }
 
 #form_div {
- border-style: solid;
- border: 2px;
+ border-style: solid !important;
+ border-bottom-right-radius: 3%;
+ border-width: 2px;
  display: none;
  margin: 3px;
  padding: 3px;
@@ -198,6 +199,7 @@ padding: 0.3em 0.3em 0.3em 0.3em;
  left: calc((100% - 600px)/2);
  width: 600px;
  justify-content: center;
+ box-shadow: 10px 10px 10px rgba(207, 207, 207, 0.5);
 } 
 
 .newItem_div {

@@ -9,6 +9,11 @@
 /*------------------------------------------------------------
   Estilo Admin - fundo branco, destaques em abobora
 ------------------------------------------------------------*/
+:root {
+  --theme-dark: darkorange;
+  --theme-light: #FFFFFF;
+  --theme-medium: salmon;
+}
 body.admin
   {
   background-color: #FFFFFF;
@@ -112,3 +117,8 @@ body.admin div.item {
 body.admin div.colunaTransparente {
 	border-bottom: 1pt darkorange solid;
 }
+
+body.admin #form_div {
+ border-color: var(--theme-medium);
+ background-color: var(--theme-light);
+} 

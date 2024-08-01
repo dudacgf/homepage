@@ -7,7 +7,7 @@ body.wgazul
   {
   background-color: white;
   color: #333333; 
-  background-image: url("/homepage//drawing/background.php?r=240&g=240&b=240");
+  background-image: url("../drawing/background.php?r=240&g=240&b=240");
   }
 body.wgazul a
   { 
@@ -147,5 +147,4 @@ body.wgazul div.interior:hover a:hover { background-color: #B0B0B0; }
 body.wgazul #form_div {
  border-color: var(--theme-medium);
  background-color: var(--theme-light);
- box-shadow: 3px 3px var(--theme-dark);
 } 
