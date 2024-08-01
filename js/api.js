@@ -55,6 +55,8 @@ const editarElemento = async (apiCall, idElm, idGrp) => {
  *
 *****/
 function exibirFormDiv(formHTML) {
+    document.getElementById('invisivel_div').style.display = 'block';
+    document.getElementById('invisivel_div').style.visibility = 'visible';
     document.getElementById('form_div').innerHTML = formHTML;
     document.getElementById('form_div').style.display = 'block';
 };
@@ -65,6 +67,8 @@ function exibirFormDiv(formHTML) {
  * oculta o form carregado em exibirFormDiv
 *****/
 function ocultarFormDiv() {
+    document.getElementById('invisivel_div').style.display = 'none';
+    document.getElementById('invisivel_div').style.visibility = 'hidden';
     document.getElementById('form_div').innerHTML = '';
     document.getElementById('form_div').style.display = 'none';
 }
