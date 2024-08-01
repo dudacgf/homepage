@@ -28,35 +28,35 @@ if (isset($requests['idGrp'])) {
         {
             case ELEMENTO_LINK:
                 $homepage->assign('mode', 'edLnk');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarLink']);
+                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarLink']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoLink . ' ::');
                 $template = 'admin/link_edit.tpl';
             break;
 
             case ELEMENTO_FORM:
                 $homepage->assign('mode', 'edFrm');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarForm']);
+                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarForm']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoForm . ' ::');
                 $template = 'admin/form_edit.tpl';
             break;
 
             case ELEMENTO_SEPARADOR:
                 $homepage->assign('mode', 'edSrp');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarSeparador']);
+                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarSeparador']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoSeparador. ' ::');
                 $template = 'admin/separador_edit.tpl';
             break;
 
             case ELEMENTO_IMAGEM:
                 $homepage->assign('mode', 'edImg');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarImagem']);
+                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarImagem']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoImagem . ' ::');
                 $template = 'admin/imagem_edit.tpl';
             break;
 
             case ELEMENTO_TEMPLATE:
                 $homepage->assign('mode', 'edTpt');
-                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarTemplate']);
+                $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarTemplate']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoElemento . '::');
                 $template = 'admin/template_edit.tpl';
             break;

@@ -26,7 +26,7 @@ $homepage->assign('elemento', array(
     'urlImagem' => '',
     'localLink' => $lang['hp_imagens_localLink']));
 $template = 'admin/imagem_edit.tpl';
-$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarImagem']);
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarImagem']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novaImagem'] . ' ::');
 
 // le os cookies e passa para a página a ser carregada.

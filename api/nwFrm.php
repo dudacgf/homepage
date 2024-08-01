@@ -28,7 +28,7 @@ $homepage->assign('elemento', array(
     'tamanhoCampo' => '',
     'descricaoForm' => ''));
 $template = 'admin/form_edit.tpl';
-$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarForm']);
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarForm']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoForm'] . ' ::');
 
 // le os cookies e passa para a página a ser carregada.

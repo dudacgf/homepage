@@ -25,7 +25,7 @@ $homepage->assign('elemento', array(
     'descricaoSeparador' => '',
     'breakBefore' => $lang['hp_separadores_breakBefore']));
 $template = 'admin/separador_edit.tpl';
-$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarSeparador']);
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarSeparador']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoSeparador'] . ' ::');
 
 // le os cookies e passa para a página a ser carregada.

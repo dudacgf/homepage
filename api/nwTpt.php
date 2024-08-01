@@ -25,7 +25,7 @@ $homepage->assign('elemento', array(
     'descricaoTemplate' => '',
     'nomeTemplate' => ''));
 $template = 'admin/template_edit.tpl';
-$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarTemplate']);
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarTemplate']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoTemplate'] . ' ::');
 
 // le os cookies e passa para a página a ser carregada.

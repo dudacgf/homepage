@@ -31,7 +31,7 @@ $homepage->assign('elemento', array(
     'targetLink' => ''));
 $template = 'admin/link_edit.tpl';
 $homepage->assign('displayImagemTitulo', '0');
-$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarLink']);
+$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaCriarLink']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoLink'] . ' ::');
 
 // le os cookies e passa para a página a ser carregada.
