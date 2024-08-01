@@ -22,11 +22,11 @@ $admPag = new pagina(ID_ADM_PAG);
 $criarElemento = true;
 $homepage->assign('elemento', array(
     'idGrupo' => $grupo->idGrupo,
-    'nomeForm' => $lang['hp_forms_nomeForm'],
-    'acao' => $lang['hp_forms_acao'],
-    'nomeCampo' => $lang['hp_forms_nomeCampo'],
-    'tamanhoCampo' => $lang['hp_forms_tamanhoCampo'],
-    'descricaoForm' => $lang['hp_forms_descricaoForm']));
+    'nomeForm' => '',
+    'acao' => '',
+    'nomeCampo' => '',
+    'tamanhoCampo' => '',
+    'descricaoForm' => ''));
 $template = 'admin/form_edit.tpl';
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarForm']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoForm'] . ' ::');

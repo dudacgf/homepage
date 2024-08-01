@@ -22,9 +22,9 @@ $admPag = new pagina(ID_ADM_PAG);
 $criarElemento = true;
 $homepage->assign('elemento', array(
     'idGrupo' => $grupo->idGrupo,
-    'descricaoLink' => $lang['hp_links_descricaoLink'],
-    'linkURL' => $lang['hp_links_linkURL'],
-    'dicaLink' => $lang['hp_links_dicaLink'],
+    'descricaoLink' => '', 
+    'linkURL' => '',
+    'dicaLink' => '',
     'localLink' => 0,
     'urlElementoSSL' => 0,
     'urlElementoSVN' => 0,

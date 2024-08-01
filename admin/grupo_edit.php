@@ -153,7 +153,7 @@ switch ($template)
         {
         // inicializa os campos para criação de uma nova página
             $homepage->assign('grupo', array(
-                    'descricaoGrupo' => $lang['hp_grupos_DescricaoGrupo'],
+                    'descricaoGrupo' => '',
                     'idTipoGrupo' => 0,
                     'grupoRestrito' => 0,
                     'restricaoGrupo' => ''));

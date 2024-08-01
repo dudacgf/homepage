@@ -2,9 +2,9 @@
     <input type="hidden" name="idGrp" value="{$grupo.idGrupo}" />
     <div class="subTitulo">{$tituloPaginaAlternativo}{$tituloTabelaAlternativo}</div><p />
     <div class="itemLateral">{$LANG.hp_imagens_descricaoImagem}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoImagem" value="{$elemento.descricaoImagem}" tabindex="1" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoImagem" placeholder="{$LANG.hp_imagens_Placeholder_descricaoImagem}" value="{$elemento.descricaoImagem}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_imagens_urlImagem}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="urlImagem" value="{$elemento.urlImagem}" tabindex="2" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="urlImagem" placeholder="{$LANG.hp_imagens_Placeholder_urlImagem}" value="{$elemento.urlImagem}" tabindex="2" /></div>
     <div class="itemLateral" style="width: 99%; Text-Align: center;">
         <input id="localLink" type="checkbox" name="localLink" {if $elemento.localLink == '1'}checked{/if} tabindex="3"/>
         <label for="localLink">{$LANG.hp_imagens_localLink}</label>

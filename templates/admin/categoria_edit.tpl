@@ -41,7 +41,7 @@
 {/if}
 	<div class="subTitulo">{$LANG.configuracao}</div><p />
 	<div class="itemLateral">{$LANG.hp_categorias_DescricaoCategoria}</div>
-	<div class="item"><input type="text" class="FormExtra" size=30 name="descricaoCategoria" value="{$descricaoCategoria}" tabindex="1" /></div>
+	<div class="item"><input type="text" class="FormExtra" size=30 name="descricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_DescricaoCategoria}" value="{$descricaoCategoria}" tabindex="1" /></div>
 	<div class="itemLateral">{$LANG.hp_categorias_Label_Restricao}</div>
 	<div class="item">
 		<input id="categoriaRestrita" type="checkbox" name="categoriaRestrita" {if $categoriaRestrita == '1'}checked{/if} 
@@ -50,7 +50,7 @@
 	</div>
 	<div class="itemLateral">{$LANG.hp_categorias_RestricaoCategoria}</div>
 	<div class="item">
-		<input type="text" class="FormExtra" size=30 name="restricaoCategoria" id="restricaoCategoria" value="{$restricaoCategoria}" tabindex="1" />
+		<input type="text" class="FormExtra" size=30 name="restricaoCategoria" id="restricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_RestricaoCategoria}" value="{$restricaoCategoria}" tabindex="1" />
   		<script type="text/javascript">document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);</script> 
 	</div>
 	<div class="interior" style=" text-align: center; padding-top: 4pt;">

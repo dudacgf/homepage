@@ -22,8 +22,8 @@ $admPag = new pagina(ID_ADM_PAG);
 $criarElemento = true;
 $homepage->assign('elemento', array(
     'idGrupo' => $grupo->idGrupo,
-    'descricaoImagem' => $lang['hp_imagens_descricaoImagem'],
-    'urlImagem' => $lang['hp_imagens_urlImagem'],
+    'descricaoImagem' => '',
+    'urlImagem' => '',
     'localLink' => $lang['hp_imagens_localLink']));
 $template = 'admin/imagem_edit.tpl';
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarImagem']);

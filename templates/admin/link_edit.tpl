@@ -2,11 +2,11 @@
     <input type="hidden" name="idGrp" id="idGrp" value="{$grupo.idGrupo}" />
     <div class="subTitulo">{$tituloPaginaAlternativo}{$tituloTabelaAlternativo}</div><p />
     <div class="itemLateral">{$LANG.hp_links_descricaoLink}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoLink" id="descricaoLink" value="{$elemento.descricaoLink}" tabindex="1" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoLink" id="descricaoLink" placeholder="{$LANG.hp_links_Placeholder_descricaoLink}" value="{$elemento.descricaoLink}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_links_linkURL}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="linkURL" id="linkURL" value="{$elemento.linkURL}" tabindex="2" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="linkURL" id="linkURL" placeholder="{$LANG.hp_links_Placeholder_linkURL}" value="{$elemento.linkURL}" tabindex="2" /></div>
     <div class="itemLateral">{$LANG.hp_links_dicaLink}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="dicaLink" id="dicaLink" value="{$elemento.dicaLink}" tabindex="3" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="dicaLink" id="dicaLink" placeholder="{$LANG.hp_links_Placeholder_dicaLink}" value="{$elemento.dicaLink}" tabindex="3" /></div>
     <div class="itemLateral" style="width: 99%; text-align: center;">
         <input id="urlElementoSSL" type="checkbox" name="urlElementoSSL" {if $elemento.urlElementoSSL == '1'}checked{/if} tabindex="4"/>
         <label for="urlElementoSSL">{$LANG.hp_links_urlElementoSSL}</label>

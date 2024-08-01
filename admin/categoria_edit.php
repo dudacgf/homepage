@@ -225,7 +225,7 @@ switch ($template)
 			$homepage->assign('$id_Pagina', 0);
 			$homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Categoria');
 			$homepage->assign('tituloTabelaAlternativo', ' :: Nova Categoria :: ');
-			$homepage->assign('descricaoCategoria', $lang['hp_categorias_DescricaoCategoria']);
+			$homepage->assign('descricaoCategoria', '');
 			$homepage->assign('categoriaRestrita', 0);
 			$homepage->assign('restricaoCategoria', '');
 			$homepage->assign('classPagina', $admPag->classPagina);

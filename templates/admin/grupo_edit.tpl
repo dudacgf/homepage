@@ -44,7 +44,7 @@ function doAction(pressed) {
 <form id="edGrp" action="{$includePATH}admin/grupo_edit.php" name="edGrp" method="POST">
     <div class="subTitulo">{$LANG.configuracao}</div><p />
     <div class="itemLateral">{$LANG.hp_grupos_DescricaoGrupo}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoGrupo" value="{$grupo.descricaoGrupo}" tabindex="1" /></div>
+    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_DescricaoGrupo}" value="{$grupo.descricaoGrupo}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_grupos_TipoGrupo}</div>
     <div class="item">
         <select style=" width: 122pt;" name="idTipoGrupo" id="idTipoGrupo" >
@@ -61,7 +61,7 @@ function doAction(pressed) {
     </div>
     <div class="itemLateral">{$LANG.hp_grupos_RestricaoGrupo}</div>
     <div class="item">
-        <input type="text" class="FormExtra" size=30 name="restricaoGrupo" id="restricaoGrupo" value="{$grupo.restricaoGrupo}" tabindex="1" />
+        <input type="text" class="FormExtra" size=30 name="restricaoGrupo" id="restricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_RestricaoGrupo}" value="{$grupo.restricaoGrupo}" tabindex="1" />
         <script type="text/javascript">document.getElementById('restricaoGrupo').disabled = !(document.getElementById('grupoRestrito').checked);</script> 
     </div>
     <div class="interior" style=" text-align: center; padding-top: 4pt;">

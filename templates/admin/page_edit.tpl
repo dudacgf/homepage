@@ -41,9 +41,9 @@ function doAction(pressed) {
 {/if}
 	<div class="subTitulo">{$LANG.configuracao}</div><p />
 	<div class="itemLateral">{$LANG.hp_paginas_TituloPagina}</div>
-	<div class="item"><input type="text" class="FormExtra" size=30 name="tituloPagina" value="{$tituloPagina}" tabindex="1" /></div>
+	<div class="item"><input type="text" class="FormExtra" size=30 name="tituloPagina" placeholder="{$LANG.hp_paginas_Placeholder_TituloPagina}" value="{$tituloPagina}" tabindex="1" /></div>
 	<div class="itemLateral">{$LANG.hp_paginas_TituloTabela}</div>
-	<div class="item"><input type="text" class="FormExtra" size=30 name="tituloTabela" value="{$tituloTabela}" tabindex="1" /></div>
+	<div class="item"><input type="text" class="FormExtra" size=30 name="tituloTabela" placeholder="{$LANG.hp_paginas_Placeholder_TituloTabela}" value="{$tituloTabela}" tabindex="1" /></div>
 	<div class="itemLateral">{$LANG.hp_paginas_classPagina}</div>
 	<div class="item">
 		<select style=" width: 122pt;" name="classPagina" id="classPagina" >

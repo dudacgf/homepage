@@ -22,7 +22,7 @@ $admPag = new pagina(ID_ADM_PAG);
 $criarElemento = true;
 $homepage->assign('elemento', array(
     'idGrupo' => $grupo->idGrupo,
-    'descricaoSeparador' => $lang['hp_separadores_descricaoSeparador'],
+    'descricaoSeparador' => '',
     'breakBefore' => $lang['hp_separadores_breakBefore']));
 $template = 'admin/separador_edit.tpl';
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarSeparador']);

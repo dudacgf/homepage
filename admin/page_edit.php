@@ -215,8 +215,8 @@ switch ($template)
 			// inicializa os campos para criação de uma nova página
 			$homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de p&aacute;gina');
 			$homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
-			$homepage->assign('tituloPagina', $lang['hp_paginas_TituloPagina']);
-			$homepage->assign('tituloTabela', $lang['hp_paginas_TituloTabela']);
+			$homepage->assign('tituloPagina', '');
+			$homepage->assign('tituloTabela', '');
 			$homepage->assign('classPagina', $admPag->classPagina);
 			$homepage->assign('displayGoogle', 1);
 			$homepage->assign('displayFindaMap', 1);

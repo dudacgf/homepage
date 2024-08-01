@@ -22,8 +22,8 @@ $admPag = new pagina(ID_ADM_PAG);
 $criarElemento = true;
 $homepage->assign('elemento', array(
     'idGrupo' => $grupo->idGrupo,
-    'descricaoTemplate' => $lang['hp_templates_descricaoTemplate'],
-    'nomeTemplate' => $lang['hp_templates_nomeTemplate']));
+    'descricaoTemplate' => '',
+    'nomeTemplate' => ''));
 $template = 'admin/template_edit.tpl';
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarTemplate']);
 $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoTemplate'] . ' ::');
