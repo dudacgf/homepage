@@ -1,3 +1,12 @@
+/*---------------------------------------------------------------------
+
+  wgazul.css
+  (c) ecgf - 2024
+
+  ver base.css, que determina a estrutura da página.
+
+  Estilo wgazul - fundo branco, detalhes em azul facebook (#43609C)
+---------------------------------------------------------------------*/
 :root {
   --theme-dark: #43609C;
   --theme-light: whitesmoke;

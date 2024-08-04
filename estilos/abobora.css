@@ -9,6 +9,11 @@
 /*------------------------------------------------------------
   Estilo abobora - fundo salmão, destaques em abobora.
 ------------------------------------------------------------*/
+:root {
+    --theme-dark: #FF8C00;
+    --theme-medium: #FFCC66;
+    --theme-light: #FFFF99;
+}
 body.abobora
   {
   background-color: #FFCC66; 
@@ -112,3 +117,8 @@ body.abobora div.item {
 body.abobora div.colunaTransparente {
 	border-bottom: 1pt darkorange solid;
 }
+
+body.abobora #form_div {
+ border-color: var(--theme-medium);
+ background-color: var(--theme-light);
+} 
