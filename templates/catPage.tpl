@@ -1,13 +1,10 @@
 {include file="page_header.tpl"}
-
 <script type="text/javascript">
-<!--
-	function doAction(pressed) {ldelim}
-		var idCat = document.getElementById('idCat').value;
-		var getCategURL = '/dyn/getCategoria.php?idCat=' + idCat;
-		xhttpInnerHtml(getCategURL, 'divCategoria');
-	{rdelim}
--->
+function doAction(pressed) {
+    var idCat = document.getElementById('idCat').value;
+    var getCategURL = '/dyn/getCategoria.php?idCat=' + idCat;
+    xhttpInnerHtml(getCategURL, 'divCategoria');
+}
 </script>
 
 
