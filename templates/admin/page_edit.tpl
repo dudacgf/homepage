@@ -91,13 +91,19 @@ function doAction(pressed) {
 		<a href="{$includePATH}admin/categoria_edit.php?mode=edCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">{$categoriasPresentes[dc].descricaoCategoria}</a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/page_edit.php?mode=upCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/up_arrow.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=upCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">
+            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
+        </a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/page_edit.php?mode=downCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/down_arrow.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=downCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">
+            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
+        </a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/page_edit.php?mode=rmCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/delete.gif"></a>
+		<a href="{$includePATH}admin/page_edit.php?mode=rmCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">
+            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
+        </a>
 	</div>
 	<div class="coluna" >
 			{if $categoriasPresentes[dc].categoriaRestrita == 1}Sim [{$categoriasPresentes[dc].restricaoCategoria}]{else}N&atilde;o{/if}

@@ -78,13 +78,19 @@
 		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=upGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/up_arrow.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=upGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
+            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
+        </a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=downGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/down_arrow.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=downGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
+            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
+        </a>
 	</div>
 	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=rmGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}"><img style="border: 0pt; width: 12px; height: 12px;" src="{$includePATH}imagens/delete.gif"></a>
+		<a href="{$includePATH}admin/categoria_edit.php?mode=rmGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
+            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
+        </a>
   	</div>
 	<div class="coluna" >
 		{assign var="idTipoGrupo" value=$gruposPresentes[gp].idTipoGrupo}

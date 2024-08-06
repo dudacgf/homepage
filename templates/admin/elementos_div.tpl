@@ -4,17 +4,17 @@
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarElemento('upElm', {$elementos[el].idElemento}, {$grupo.idGrupo});">
-            <i class="fa-solid fa-circle-arrow-up fa-sm" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarElemento('dwElm', {$elementos[el].idElemento}, {$grupo.idGrupo});">
-            <i class="fa-solid fa-circle-arrow-down fa-sm" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarElemento('exElm', {$elementos[el].idElemento}, {$grupo.idGrupo});">
-            <i class="fa-solid fa-circle-xmark fa-sm" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
         </div>
     </div>
     <div class="coluna" >
