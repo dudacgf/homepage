@@ -8,16 +8,18 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Type" content="image/jpeg" />
-<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" title="default" />
-<link rel="stylesheet" href="{$includePATH}estilos/fawsome.css" />
-<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" title="default" />
-{if !isset($edicaoPagina)}
-  <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" title="default" />
-{else}
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
+{if isset($edicaoPagina)}
   {section name=cp loop=$classNames}
-  <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" {if $classNames[cp] == $classPagina}title="default"{/if} />
+  {if $classNames[cp] != $classPagina}
+  <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />
+  {/if}
   {/section}
 {/if}
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
 <script type="text/javascript">
     window.includePATH = "{$includePATH}";
 </script>
