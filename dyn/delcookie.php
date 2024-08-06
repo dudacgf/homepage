@@ -8,12 +8,6 @@
 // Carregar apenas uma vez.
 require_once('../common.php');
 
-require_once($include_path . 'class_database.php');
-require_once($include_path . 'class_estilos.php');
-
-// localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = $config_path . 'connections.xml';
-
 // obtém as chaves da página e do elementocolorido a partir da request url
 if (!isset($_REQUEST['id']) || !isset($_REQUEST['el'])) 
 {
@@ -25,9 +19,6 @@ else
 	$idPagina = urldecode($_REQUEST['id']);
 	$idElementoColorido = urldecode($_REQUEST['el']);
 }
-
-// global que manterá a conexão à base de dados única para todos os objetos instanciados.
-$global_hpDB = new database($connection_info_xml_path, 1);
 
 // elimina o cookie e, em caso de sucesso, envia de volta a informação necessária para restaurar a cor na página
 $cookie = new cookedStyle();

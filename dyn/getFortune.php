@@ -13,19 +13,6 @@ if (isset($_REQUEST['idFortune']) && !empty($_REQUEST['idFortune'])) {
 }
 
 
-require_once($include_path . 'class_database.php');
-// localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = $config_path . 'connections.xml';
-
-// global que manterá a conexão à base de dados única para todos os objetos instanciados.
-try {
-	$global_hpDB = new database($connection_info_xml_path, 1);
-}
-catch (Exception $e) {
-	echo 'NOK';
-	exit;
-}
-
 // Lê um fortune e devolve
 require($include_path . "class_fortune.php");
 $f = new fortune;
