@@ -149,6 +149,24 @@ div.headclickable, div.headexpandable {
 border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-left-style: solid;
 height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
 }
+div.headclickable:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f0fe";
+    display: inline-block;
+    padding-right: 3px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 900;
+}
+div.headexpandable:before {
+    font-family: "Font Awesome 5 Free";
+    content: "\f055";
+    display: inline-block;
+    padding-right: 3px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+}
 /* 
  * páginas administrativas. 
  *

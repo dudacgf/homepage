@@ -17,14 +17,14 @@
   {elseif $grupo.idtipoGrupo == '2'}
     <div class="clickable" id="{$grupo.grupo|replace:' ':'_'}">
       <div class="headclickable" style="cursor: pointer;" onclick="toggleClass('{$grupo.grupo|replace:' ':'_'}', 'clickable', 'expanded')"> 
-        [+] {$grupo.grupo}
+        {$grupo.grupo}
       </div>
       {include file="page_body_detail.tpl"}
     </div>
   {elseif $grupo.idtipoGrupo == '3'}
     <div class="expandable">
       <div class="headexpandable"> 
-        (+) {$grupo.grupo} 
+        {$grupo.grupo} 
       </div>
       {include file="page_body_detail.tpl"}
     </div>
