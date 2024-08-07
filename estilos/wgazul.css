@@ -1,159 +1,60 @@
-/*---------------------------------------------------------------------
+/*----------------------------------------------------------
 
   wgazul.css
-  (c) ecgf - 2024
+  (c) ecgf - 2006
 
-  ver base.css, que determina a estrutura da página.
+  ver colorbase.css, que determina as cores da página
 
-  Estilo wgazul - fundo branco, detalhes em azul facebook (#43609C)
----------------------------------------------------------------------*/
+  Estilo wgazul - fundo branco, destaques em azul facebook
+------------------------------------------------------------*/
 :root {
-  --theme-dark: #43609C;
-  --theme-light: whitesmoke;
-  --theme-medium: #C0C0C0;
+    --theme-dark: #43609C;
+    --theme-medium: whitesmoke;
+    --theme-light: #C0C0C0;
+    /* Página (body): background-color, color, background-image */
+    --theme-bodyBG: white;
+    --theme-bodyC: #333333;
+    --theme-picColor: url("../drawing/background.php?r=240&g=240&b=240"); /* silver; */
+    /* Título da página (div.titulo): background-color, color */
+    --theme-tituloBG: #43609C;
+    --theme-tituloC: whitesmoke;
+    /* fortune (div.fortune): background-color, color */
+    --theme-fortuneBG: #43609C;
+    --theme-fortuneC: white;
+    /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
+    --theme-tituloCategBG: #43609C;
+    --theme-tituloCategC: #fffff0;
+    --theme-categBTL: lightblue;
+    --theme-categBBR: darkblue;
+    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-expandedBG: white;
+    --theme-expandedC: #333333;
+    --theme-expandedBTL: lightblue;
+    --theme-expandedBBR: darkblue;
+    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
+    --theme-expandBG: #43609C;
+    --theme-expandC: white;
+    --theme-expandBTL: lightblue;
+    --theme-expandBBR: darkblue;
+    /* input type=text and select: background-color, color */
+    --theme-inputBG: whitesmoke;
+    --theme-inputC: darkslategray;
+    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
+    --theme-buttonC: white;
+    --theme-buttonBG: #43609C;
+    --theme-buttonBTL: lightblue;
+    --theme-buttonBBR: darkblue;
+    /* Separadores (span.separador): background-color, color */
+    --theme-sepC: #333333;
+    --theme-expandedSepC: #333333;
+    /* Links (a): color */
+    --theme-linkC: #404040;
+    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
+    --theme-expandedColor: white;
+    --theme-linkH: #B0B0B0;
+    --theme-fontS: 1.2em;
+    /* Grupos (div.interior): background-color */
+    --theme-interiorBG: darkgray;
+    /* div.item: color */
+    --theme-itemC: #43609C;
 }
-body.wgazul
-  {
-  background-color: white;
-  color: #333333; 
-  background-image: url("../drawing/background.php?r=240&g=240&b=240");
-  }
-body.wgazul a
-  { 
-  color: darkblue; 
-  }
-body.wgazul a:hover span.popup 
-  {
-  background-color: white;
-  color: #43609C;
-  border-right-color: DarkBlue;
-  border-bottom-color: DarkBlue;
-  }
-body.wgazul span.separador
-  {
-  color: white;
-  }
-body.wgazul div.tituloCategoria, body.wgazul div.tituloLateral
-  {
-  background-color: #43609C; 
-  border-Top-color: lightblue; 
-  border-Left-color: lightblue;
-  border-Bottom-color: DarkBlue; 
-  border-Right-color: DarkBlue;
-  }
-body.wgazul div.titulo, body.wgazul div.wtitulo
-  {
-  background-color: #43609C;
-  }
-body.wgazul div.wtitulo a
-  {
-  	color: white;
-	font-weight: bold;
-  }
-body.wgazul div.headexpandable
-  {
-  background-color: #43609C;
-  border-top-color: lightblue;
-  border-left-color: lightblue;
-  }
-body.wgazul div.headclickable 
-  {
-  background-color: #43609C;
-  border-top-color: lightblue;
-  border-left-color: lightblue;
-  }
-body.wgazul div.expanded, body.wgazul div.expandable:hover, body.wgazul div.interior:hover
-  {
-  background-color: #43609C;
-  border-Top-color: lightblue; 
-  border-Left-color: lightblue;
-  border-Bottom-color: DarkBlue; 
-  border-Right-color: DarkBlue;
-  }
-body.wgazul div.expanded a, body.wgazul div.expandable:hover a, body.wgazul div.interior:hover a
-  {
-  color: white;
-  }
-body.wgazul a:hover, body.wgazul div.expanded a:hover, body.wgazul div.expandable:hover a:hover, body.wgazul div.interior:hover a:hover
-  {
-  background-color: white;
-  color: #43609C; 
-  }
-body.wgazul div.fortune
-  {
-  background-color: #43609C;
-  color: white;
-  }
-body.wgazul input, body.wgazul select
-  {
-  background-color: lightgrey;
-  color: DarkBlue;
-  border-Top-color: #43609C; 
-  border-Left-color: #43609C;
-  border-Bottom-color: grey;
-  border-Right-color: grey;
-  }
-body.wgazul input.submit, body.wgazul button
-  {
-  border-Top-color: lightblue; 
-  border-Left-color: lightblue;
-  border-Bottom-color: DarkBlue; 
-  border-Right-color: DarkBlue;
-  background-color: #43609C;
-  color: white;
-  }
-body.wgazul div.footer
-  {
-  color: #43609C;
-  }
-/* 
- * páginas administrativas. 
- *
- */
-body.wgazul div.subTitulo, body.wgazul div.itemLateral, body.wgazul div.coluna, body.wgazul div.tituloColuna {
-  border-Top-color: lightblue; 
-  border-Left-color: lightblue;
-  border-Bottom-color: DarkBlue; 
-  border-Right-color: DarkBlue;
-  background-color: #43609C;
-  color: white;
-}
-body.wgazul div.item {
-  border-color: #43609C; color: steelblue;
-}
-body.wgazul div.colunaTransparente {
-	border-bottom: 1pt #43609C solid;
-}
-body.wgazul div.titulo { color: #fffff0; }
-body.wgazul div.fortune { color: #f5f5f5; }
-body.wgazul div.tituloCategoria { color: #fffff0; }
-body.wgazul div.tituloLateral { color: #fffff0; }
-body.wgazul div.itemLateral { color: #fffff0; }
-body.wgazul div.subTitulo { color: #fffff0; }
-body.wgazul div.fortune a { color: #fffff0; }
-body.wgazul div.coluna { color: #fffff0; }
-body.wgazul div.tituloColuna { color: #fffff0; }
-body.wgazul div.tituloColuna a { color: #fffff0; }
-body.wgazul div.expanded { background-color: #f5f5f5; }
-body.wgazul div.interior:hover { background-color: #f5f5f5; }
-body.wgazul div.expandable:hover { background-color: #f5f5f5; }
-body.wgazul div.headexpandable { color: #fffff0; }
-body.wgazul div.headclickable { color: #fffff0; }
-body.wgazul input.submit { color: #f5f5f5; }
-body.wgazul span.separador { color: #333333; }
-body.wgazul a { color: #666666; }
-body.wgazul div.expanded a { color: #666666; }
-body.wgazul div.expandable:hover a { color: #666666; }
-body.wgazul div.interior:hover a { color: #666666; }
-body.wgazul div.expanded a:hover { color: #F5F5F5; }
-body.wgazul div.expandable:hover a:hover { color: #F5F5F5; }
-body.wgazul div.interior:hover a:hover{ color: #F5F5F5; }
-body.wgazul a:hover { background-color: #B0B0B0; }
-body.wgazul div.expanded a:hover { background-color: #B0B0B0; }
-body.wgazul div.expandable:hover a:hover { background-color: #B0B0B0; }
-body.wgazul div.interior:hover a:hover { background-color: #B0B0B0; }
-
-body.wgazul #form_div {
- border-color: var(--theme-medium);
- background-color: var(--theme-light);
-} 

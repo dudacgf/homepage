@@ -3,34 +3,62 @@
   gAbobora.css
   (c) ecgf - 2006
 
-  ver base.css, que determina a estrutura da página.
+  ver colorbase.css, que define uso de cores nas páginas
 
   Estilo gAbobora - fundo em cinza, detalhes em abobora sobre grafite
 ---------------------------------------------------------------------*/
+:root {
+    --theme-dark: #FF8C00;
+    --theme-medium: #FFCC66;
+    --theme-light: white;
+    /* Página (body): background-color, color, background-image */
+    --theme-bodyBG: #708090;
+    --theme-bodyC: #202020;
+    --theme-picColor: url("../drawing/background.php?r=119&g=136&b=153");
+    /* Título da página (div.titulo): background-color, color */
+    --theme-tituloBG: #404040;
+    --theme-tituloC: #ffa500;
+    /* fortune (div.fortune): background-color, color */
+    --theme-fortuneBG: #404040;
+    --theme-fortuneC: #ffa500;
+    /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
+    --theme-tituloCategBG: #404040;
+    --theme-tituloCategC: #ffa500;
+    --theme-categBTL: #999999;
+    --theme-categBBR: #000000;
+    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-expandedC: black;
+    --theme-expandedBG: #666666;
+    --theme-expandedBTL: #999999;
+    --theme-expandedBBR: #000000;
+    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
+    --theme-expandBG: #404040;
+    --theme-expandC: #ffa500;
+    --theme-expandBTL: #999999;
+    --theme-expandBBR: #000000;
+    /* input type=text and select: background-color, color */
+    --theme-inputBG: lightgray;
+    --theme-inputC: black;
+    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
+    --theme-buttonC: #ffa500;
+    --theme-buttonBG: #404040;
+    --theme-buttonBTL: #999999;
+    --theme-buttonBBR: #000000;
+    /* Separadores (span.separador): background-color, color */
+    --theme-sepC: #202020;
+    /* Links (a): color */
+    --theme-linkC: #101010;
+    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
+    --theme-linkH: #990000;
+    --theme-expandedColor: white;
+    --theme-fontS: 1.2em;
+}
+/* extras */
+div.interior:hover a, div.expandable:hover a, div.expanded:hover a {
+    color: var(--theme-light);
+}
+div.tituloColuna a, div.tituloColuna:hover a {
+    background-color: var(--theme-buttonBG);
+    color: var(--theme-buttonC);
+}
 
-
-body.gAbobora { background-color: #708090; color: #202020; background-image: url("../drawing/background.php?r=119&g=136&b=153"); } 
-body.gAbobora a { color: #101010; } 
-body.gAbobora a:hover span.popup { background-color: #990000; border-top-color: #FFFFFF; border-left-color: #FFFFFF; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.coluna {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.expandable:hover a {  color: #ffffff; } 
-body.gAbobora div.expandable:hover a:hover { background-color: #990000; } 
-body.gAbobora div.expandable:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.expanded a {  color: #ffffff; } 
-body.gAbobora div.expanded a:hover { background-color: #990000; } 
-body.gAbobora div.expanded {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.fortune { background-color: #404040; color: #ffa500; } 
-body.gAbobora div.headclickable { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; } 
-body.gAbobora div.headexpandable {  color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; } 
-body.gAbobora div.interior:hover a {  color: #ffffff; } 
-body.gAbobora div.interior:hover a:hover { background-color: #990000; } 
-body.gAbobora div.interior:hover {  background-color: #666666; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.itemLateral { color: #ffa500; background-color: #404040; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.subTitulo { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.titulo, body.gAbobora div.wtitulo { color: #ffa500; background-color: #404040; } 
-body.gAbobora div.wtitulo a { color: $ffffff; font-weight: bold; }
-body.gAbobora div.tituloCategoria { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.tituloColuna { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora div.tituloLateral { background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora input.submit {  background-color: #404040; color: #ffa500; border-top-color: #999999; border-left-color: #999999; border-bottom-color: #000000; border-right-color: #000000; } 
-body.gAbobora span.separador { color: #202020; } 

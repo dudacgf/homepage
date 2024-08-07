@@ -1,124 +1,62 @@
 /*----------------------------------------------------------
 
-  Styles.css
+  admin.css
   (c) ecgf - 2006
 
-  ver base.css, que determina a estrutura da página.
-----------------------------------------------------------*/
+  ver colorbase.css, que determina as cores da página
 
-/*------------------------------------------------------------
   Estilo Admin - fundo branco, destaques em abobora
 ------------------------------------------------------------*/
 :root {
-  --theme-dark: darkorange;
-  --theme-light: #FFFFFF;
-  --theme-medium: salmon;
+    --theme-dark: darkorange;
+    --theme-light: #FFFFFF;
+    --theme-medium: salmon;
+    /* Página (body): background-color, color, background-image */
+    --theme-bodyBG: white;
+    --theme-bodyC: black;
+    --theme-picColor: url(../imagens/wazul_bkg.gif);
+    /* Título da página (div.titulo): background-color, color */
+    --theme-tituloBG: darkorange;
+    --theme-tituloC: black;
+    /* fortune (div.fortune): background-color, color */
+    --theme-fortuneBG: #FFCC66;
+    --theme-fortuneC: firebrick;
+    /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
+    --theme-tituloCategBG: darkorange;
+    --theme-tituloCategC: black;
+    --theme-categBTL: gold;
+    --theme-categBBR: Chocolate;
+    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-expandedBG: darkorange;
+    --theme-expandedBTL: gold;
+    --theme-expandedBBR: Chocolate;
+    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
+    --theme-expandBG: darkorange;
+    --theme-expandC: black;
+    --theme-expandBTL: #FFFF00;
+    --theme-expandBBR: darkorange;
+    /* input type=text and select: background-color, color */
+    --theme-inputBG: #FFCC66;
+    --theme-inputC: firebrick;
+    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
+    --theme-buttonC: black;
+    --theme-buttonBG: darkorange;
+    --theme-buttonBTL: gold;
+    --theme-buttonBBR: Chocolate;
+    /* Separadores (span.separador): background-color, color */
+    --theme-sepC: black;
+    /* Links (a): color */
+    --theme-linkC: black;
+    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
+    --theme-linkH: black;
+    --theme-expandedColor: white;
+    --theme-fontS: 1.2em;
+    /* Grupos (div.interior): background-color */
+    --theme-interiorBG: white;
+    /* item (páginas admnistrativas): color */
+    --theme-itemC: firebrick;
 }
-body.admin
-  {
-  background-color: #FFFFFF;
-  color: black;
-  background-image: url("../imagens/wazul_bkg.gif");
-  }
-body.admin a
-  { 
-  color: black; 
-  }
-body.admin a:hover span.popup 
-  {
-  background-color: #FFCC66;
-  color: firebrick;
-  border-right-color: Chocolate;
-  border-bottom-color: Chocolate;
-  }
-body.admin a:hover, body.admin div.expanded a:hover, body.admin div.expandable:hover a:hover, body.admin div.interior:hover a:hover
-  {
-  background-color: #373737;
-  color: white; 
-  }
-body.admin span.separador
-  {
-  color: black;
-  }
-body.admin div.tituloCategoria, body.admin div.tituloLateral
-  { 
-  background-color: darkorange;
-  border-Top-color: gold; 
-  border-Left-color: gold;
-  border-Bottom-color: Chocolate; 
-  border-Right-color: Chocolate;
-  }
-body.admin div.titulo, body.admin div.wtitulo, body.admin div.wcategoria, body.admin div.wgrupo, body.admin div.wlink
-  {
-  background-color: darkorange;
-  }
-body.admin div.wtitulo a, body.admin div.wcategoria a, body.admin div.wgrupo a, body.admin div.wlink a
-  {
-  	color: white;
-	font-weight: bold;
-  }
-body.admin div.headexpandable
-  {
-  background-color: darkorange;
-  border-Top-color: #FFFF00; 
-  border-Left-color: #FFFF00;
-  }
-body.admin div.headclickable
-  {
-  background-color: darkorange;
-  border-Top-color: #FFFF00; 
-  border-Left-color: #FFFF00;
-  }
-body.admin div.expanded, body.admin div.expandable:hover, body.admin div.interior:hover
-  {
-  BackGround-color: darkorange;
-  border-Top-color: gold; 
-  border-Left-color: gold;
-  border-Bottom-color: Chocolate; 
-  border-Right-color: Chocolate;
-  }
-body.admin div.expanded a, body.admin div.expandable:hover a, body.admin div.interior:hover a
-  { 
-  color: white;
-  }
-body.admin div.fortune
-  {
-  background-color: #FFCC66;
-  color: firebrick;
-  }
-body.admin input, body.admin select
-  {
-  background-color: #DFDFDF;
-  }
-body.admin input.submit
-  {
-  background-color: darkorange;
-  border-Top-color: Gold; 
-  border-Left-color: Gold;
-  border-Bottom-color: Chocolate; 
-  border-Right-color: Chocolate;
-  color: black;
-  }
-/* 
- * páginas administrativas. 
- *
- */
-body.admin div.subTitulo, body.admin div.itemLateral, body.admin div.coluna, body.admin div.tituloColuna {
-  background-color: darkorange;	
-  border-Top-color: Gold; 
-  border-Left-color: Gold;
-  border-Bottom-color: Chocolate; 
-  border-Right-color: Chocolate;
-  color: black;
+/* ajuste para a edição de elementos */
+div.tituloColuna a, div.tituloColuna:hover a {
+    color: white;
 }
-body.admin div.item {
-  border-color: darkorange;
-}
-body.admin div.colunaTransparente {
-	border-bottom: 1pt darkorange solid;
-}
-
-body.admin #form_div {
- border-color: var(--theme-medium);
- background-color: var(--theme-light);
-} 

@@ -3,8 +3,6 @@
   colorbase.css
   (c) ecgf - 2024
 
-  Estilos utilizados em minha página pessoal.
-
   colorbase.css - define cores para os elementos definidos em base.css
 
   a partir daqui, os estilos de cor só precisam mexer no elemento :root
@@ -13,66 +11,48 @@
     --theme-dark: black;
     --theme-medium: gray;
     --theme-light: white;
-    /* "Página: cor do fundo","bcolor","id","theBody */
-    --theme-bodyBG: orange;
-    /* "Página: cor do texto","color","id","theBody" */
+    /* Página (body): background-color, color, background-image */
+    --theme-bodyBG: lightgray;
     --theme-bodyC: dimgray;
-    /* "Página: cor dos círculos","bimg","id","theBody" */
     --theme-picColor: url("../drawing/background.php?r=192&g=192&b=192"); /* silver; */
-    /* "Título: cor do fundo","bcolor","class","div.titulo" */
+    /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: darkslategray;
-    /* "Título: cor do texto","color","class","div.titulo" */
     --theme-tituloC: whitesmoke;
-    /* "Frase do dia: cor do fundo","bcolor","class","div.fortune" */
+    /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: darkslategray;
-    /* "Frase do dia: cor do texto","color","class","div.fortune" */
     --theme-fortuneC: whitesmoke;
-    /* "Categorias: cor do fundo","bcolor","class","div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna" */
+    /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
     --theme-tituloCategBG: darkslategray;
-    /* "Categorias: cor do texto","color","class","div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna" */
     --theme-tituloCategC: whitesmoke;
-    /* "Categorias: cor das bordas s-e","tborder;lborder","class","div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna" */
     --theme-categBTL: slategray;
-    /* "Categorias: cor das bordas i-d","bborder;rborder","class","div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna" */
     --theme-categBBR: black;
-    /* "Grupos: cor do fundo ao passar o mouse","bcolor","class","div.expanded;div.interior:hover;div.expandable:hover" */
+    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
     --theme-expandedBG: gray;
-    /* "Grupos: cor da borda s-e ao passar o mouse","tborder;lborder","class","div.expanded;div.interior:hover;div.expandable:hover" */
     --theme-expandedBTL: lightgray;
-    /* "Grupos: cor da borda i-d ao passar o mouse","bborder;rborder","class","div.expanded;div.interior:hover;div.expandable:hover" */
     --theme-expandedBBR: dimgray;
-    /* "Grupos: cor do fundo dos cabeçalhos","bcolor","class","div.headexpandable;div.headclickable" */
+    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
     --theme-expandBG: darkslategray;
-    /* "Grupos: cor do texto dos cabeçalhos","color","class","div.headexpandable;div.headclickable" */
     --theme-expandC: whitesmoke;
-    /* "Grupos: cor da borda s-e dos cabeçalhos","tborder;lborder","class","div.headexpandable;div.headclickable" */
     --theme-expandBTL: slategray;
-    /* "Grupos: cor da borda i-d dos cabeçalhos","tborder;lborder","class","div.headexpandable;div.headclickable" */
     --theme-expandBBR: darkslategray;
-    /* "input type=text and select: cor do fundo",,"class", "input;submit" */
+    /* input type=text and select: background-color, color */
     --theme-inputBG: lightgray;
-    /* "input type=text and select: cor do texto",,"class", "input;submit" */
     --theme-inputC: black;
-    /* "Botão: cor do texto","color","class","input.submit" *//*{*/
+    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
     --theme-buttonC: whitesmoke;
-    /* "Botão: cor do fundo","bcolor","class","input.submit" */
     --theme-buttonBG: darkslategray;
-    /* "Botão: cor das bordas s-e","tborder;lborder","class","input.submit" */
     --theme-buttonBTL: slategray;
-    /* "Botão: cor das bordas i-d","bborder;rborder","class","input.submit" */
     --theme-buttonBBR: black;
-    /* "Separadores: cor do texto","color","class","span.separador" */
+    /* Separadores (span.separador): background-color, color */
     --theme-sepC: dimgray;
-    /* "Links: cor do texto","color","class","a" */
+    /* Links (a): color */
     --theme-linkC: dimgray;
-    /* "Links: cor do texto ao passar o mouse","color","class","div.expanded a;div.expandable:hover a;div.interior:hover a" */
+    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
     --theme-expandedColor: #333333;
-    /* "links: cor do fundo ao passar o mouse","bcolor","class","a:hover;div.expanded a:hover;div.expandable:hover a:hover;div.interior:hover a:hover" */
     --theme-linkH: whitesmoke;
-    /* "Grupos: cor do fundo","bcolor","class","div.interior","interiorBG" */
-    --theme-interiorBG: darkgray;
-    /* "Links: tamanho do texto ao passar o mouse","fsize","class","a:hover;div.expanded a:hover;div.expandable:hover a:hover;div.interior:hover a:hover" */
     --theme-fontS: 1.2em;
+    /* Grupos (div.interior): background-color */
+    --theme-interiorBG: darkgray;
 }
 body {
     background-color: var(--theme-bodyBG);
@@ -111,7 +91,7 @@ div.headexpandable, div.headclickable {
     border-Left-color: var(--theme-expandBTL);
     border-Bottom-color: var(--theme-expandBBR); 
     border-Right-color: var(--theme-expandBBR);
-    color: var(--theme-expandedC);
+    color: var(--theme-expandC);
 }
 div.expanded a, div.expandable:hover a, div.interior:hover a {
   color: var(--theme-linkH);
@@ -132,12 +112,18 @@ span.separador {
 div.expanded span.separador, div.interior:hover span.separador {
     color: var(--theme-expandedSepC);
 }
+div.tituloColuna a {
+    color: var(--theme-linkH);
+}
+div.tituloColuna:hover a {
+    color: var(--theme-linkC);
+}
 /* inputs, selects, buttons etc */
 input, select {
     background-color: var(--theme-inputBG);
     color: var(--theme-inputC);
     border-Top-color: var(--theme-expandBBR); 
-    border-Left-color: var(--theme-expandBBR);#43609C;
+    border-Left-color: var(--theme-expandBBR);
     border-Bottom-color: var(--theme-expandBTL);
     border-Right-color: var(--theme-expandBTL);
 }
@@ -156,11 +142,11 @@ div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna {
   border-Bottom-color: var(--theme-buttonBBR); 
   border-Right-color: var(--theme-buttonBBR);
   background-color: var(--theme-buttonBG);
-  color: white;
+  color: var(--theme-tituloCategC);
 }
 div.item {
   border-color: var(--theme-bodyC); 
-  color: var(--theme-dark);
+  color: var(--theme-itemC);
 }
 div.colunaTransparente {
 	border-bottom: 1pt var(--theme-dark) solid;
