@@ -16,11 +16,11 @@
 // atributos da página
 $lang['hp_paginas_FormTitulo'] = 'Páginas';
 $lang['hp_paginas_idPagina'] = 'Id desta página';
-$lang['hp_paginas_TituloPagina'] = 'Título';
+$lang['hp_paginas_TituloPagina'] = 'Título (html)';
 $lang['hp_paginas_Placeholder_TituloPagina'] = 'Título da página';
-$lang['hp_paginas_TituloTabela'] = 'Título';
+$lang['hp_paginas_TituloTabela'] = 'Título (tabela)';
 $lang['hp_paginas_Placeholder_TituloTabela'] = 'Título da tabela';
-$lang['hp_paginas_classPagina'] = 'Classe da Página';
+$lang['hp_paginas_classPagina'] = 'Classe';
 $lang['hp_paginas_exibirdotdot'] = 'Exibir: ';
 $lang['hp_paginas_displayGoogle'] = 'form do Google';
 $lang['hp_paginas_displayFindaMap'] = 'form do Find a Map';
