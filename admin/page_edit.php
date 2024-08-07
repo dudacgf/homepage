@@ -178,8 +178,8 @@ switch ($template)
 		$homepage->assign('descricoesGrupos', $descricoesGrupos);
 		$homepage->assign('criarPagina', $criarPagina);
 		
-                /* obtém a lista */
-                $homepage->assign( 'classNames', cssEstilos::getClassNames( ) );
+        /* obtém a lista */
+        $homepage->assign( 'classNames', cssEstilos::getClassNames( ) );
 
 		if (!$criarPagina) 
 		{
