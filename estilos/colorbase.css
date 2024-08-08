@@ -151,4 +151,9 @@ div.item {
 div.colunaTransparente {
 	border-bottom: 1pt var(--theme-dark) solid;
 }
-
+#form_div {
+    background-color: var(--theme-bodyBG);
+}
+#invisivel_div {
+    background-color: var(--theme-light);
+}
