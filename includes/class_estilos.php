@@ -240,9 +240,10 @@ class cookedStyle
 	{
 
 		global $global_hpDB;
-		
+		/*
 		// caceta! olha o tamanho deste query! acho que normalizei demais! ;D
-		$_sql = "SELECT ec.idElementoColorido, p.classPagina, p.idPagina, cs.descricaoSelector as termoBuscaElemento, ec.criterioBuscaElemento, ca.termoBuscaAtributo as atributoCorElemento, pc.valorCor
+        $_sql = "SELECT ec.idElementoColorido, p.classPagina, p.idPagina, cs.descricaoSelector as termoBuscaElemento, 
+                        ec.criterioBuscaElemento, ca.termoBuscaAtributo as atributoCorElemento, pc.valorCor, ec.cookieElemento as root_var
 				   FROM hp_elementoscoloridos ec, hp_cookedatributos cka, hp_cookedselectors cks,
 				 		hp_cssselectors cs, hp_cssatributos ca, hp_paginas p, hp_parescores pc, hp_cookedstyles cky
 				  WHERE ec.idElementoColorido = cks.idElementoColorido
@@ -254,74 +255,27 @@ class cookedStyle
 					AND cky.idPagina = p.idPagina
 					AND p.idPagina = $_idPagina
 				  ORDER BY cs.idSelector";
-		$_cookies = $global_hpDB->query($_sql);
-		if (!isset($_cookies))
-		{
-			die('não consegui ler o array de cookies coloridos!');
-		}
-		else
-		{
-			if ($_cookies) {
-				foreach ($_cookies as $elementoColorido) {
-					$classPagina = $elementoColorido['classPagina'];
-					$color = $elementoColorido['valorCor'];
-					$selectors = explode(';', $elementoColorido['termoBuscaElemento']);
-					foreach ($selectors as $selector) {
-						if (!isset($colorCookies[$selector])) {
-							$colorCookies[$selector] = Array();
-							if ($elementoColorido['criterioBuscaElemento'] == 'id') 
-							{
-								$colorCookies[$selector][] = "#$selector {\n";
-							}
-							else
-							{
-								$colorCookies[$selector][] = "body.$classPagina $selector {\n ";
-							}
-						}
-						$atributes = explode(';', $elementoColorido['atributoCorElemento']);
-						foreach($atributes as $atribute) 
-						{
-							switch ($atribute)
-							{
-							  case 'color':
-								$colorCookies[$selector][] = "color: $color;\n";
-								break;
-							  case 'bcolor':
-								$colorCookies[$selector][] = "background-color: $color;\n";
-								break;
-							  case 'tborder':
-								$colorCookies[$selector][] = "border-top-color: $color;\n";
-								break;
-							  case 'lborder':
-								$colorCookies[$selector][] = "border-left-color: $color;\n";
-								break;
-							  case 'bborder':
-								$colorCookies[$selector][] = "border-bottom-color: $color;\n";
-								break;
-							  case 'rborder':
-								$colorCookies[$selector][] = "border-right-color: $color;\n";
-								break;
-							  case 'bimg':
-								$rgbcolor = new RGBColor($color);
-								if ($rgbcolor->ok) { // 'ok' is true when the parsing was a success
-									$colorCookies[$selector][] = "background-image: url(\"" . INCLUDE_PATH . "/drawing/background.php?r=" . 
-										$rgbcolor->r . "&g=" . $rgbcolor->g . "&b=" . $rgbcolor->b . "\");\n" ; 
-								}
-								break;
-							  case 'fsize': // este foi feito para a cacau
-								$colorCookies[$selector][] = "font-size: 1.5em;\n";
-								break;
-							}
-						}
-					}
-				}
-			}
-		}
+        $_cookies = $global_hpDB->query($_sql);
+         */
+        $_sql = $global_hpDB->prepare('SELECT ec.cookieElemento as root_var, pc.valorCor as color
+                                       FROM hp_elementoscoloridos ec, hp_paginas p, hp_cookedstyles cs, hp_parescores pc
+                                       WHERE cs.idPagina = p.idPagina
+                                         AND cs.idElementoColorido = ec.idElementoColorido
+                                         AND cs.idPar = pc.idPar
+                                         AND p.idPagina = ?');
+        $_sql->bind_param('i', $_idPagina);
+        if (!$_sql->execute()) 
+           throw new Exception("Não consegui ler cookies da página $_idPagina");
+
+        try {
+            $cookies = $_sql->get_result();
+            while ($cookie = $cookies->fetch_assoc()) {
+                $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $cookie['color']);
+            }
+        } catch (Exception $e) {
+            throw new Exception("Erro ao obter cores dinâmicas para essa página: $e->getMessage()");
+        }
 		return isset($colorCookies) ? $colorCookies : false ;
 	}
-
 }
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-	
 ?>
