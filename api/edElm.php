@@ -67,16 +67,6 @@ if (isset($requests['idGrp'])) {
             break;
         }
 
-        // le os cookies e passa para a página a ser carregada.
-        $cookedStyles = '';
-        $colorCookies = cookedStyle::getArray(5);
-        if ($colorCookies) 
-        {
-            foreach ($colorCookies as $selector => $colorCookie) {
-                $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
-            }
-        }
-        $homepage->assign('cookedStyles', $cookedStyles);
         $homepage->assign('includePATH', INCLUDE_PATH);
         $homepage->assign('criarElemento', false);
         $homepage->assign('imagesPATH', $images_path);
