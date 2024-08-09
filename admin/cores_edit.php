@@ -22,14 +22,15 @@ $homepage->assign('elementosColoridos', elementoColorido::getArray());
 $homepage->assign('paresCores', RGBColor::getArray());
 
 // le os cookies e passa para a página a ser carregada.
-$cookedStyles = '';
+$cookedStyles = ':root {';
 $colorCookies = cookedStyle::getArray(ID_COR_PAG);
 if ($colorCookies) 
 {
-	foreach ($colorCookies as $selector => $colorCookie) {
-		$cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
-	}
+    foreach ($colorCookies as $elementoColorido) {
+        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
+    }
 }
+$cookedStyles .= '}';
 $homepage->assign('cookedStyles', $cookedStyles);
 
 // Pego a pagina de exemplo para ter todos os tipos de elemento.

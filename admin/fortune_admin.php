@@ -8,13 +8,15 @@ require_once('../common.php');
 require($include_path . "class_fortune.php");
 
 // verifica se há cookies e, neste caso, cria os estilos adicionais.
-$cookedStyles = '';
-$colorCookies = cookedStyle::getArray(5);
-if ($colorCookies) {
-	foreach ($colorCookies as $colorCookie) {
-		$cookedStyles .= implode("", $colorCookie) . "}\n";
-	}
+$cookedStyles = ':root {';
+$colorCookies = cookedStyle::getArray($_idPagina);
+if ($colorCookies) 
+{
+    foreach ($colorCookies as $elementoColorido) {
+        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
+    }
 }
+$cookedStyles .= '}';
 $homepage->assign('cookedStyles', $cookedStyles);
 
 // Obtém a página administrativa

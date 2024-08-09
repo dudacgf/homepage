@@ -17,14 +17,15 @@ $homepage->assign('numTemplates', wTemplate::getCount());
 $homepage->assign('numFortunes', Fortune::getCount());
 
 // le os cookies e passa para a página a ser carregada.
-$cookedStyles = '';
-$colorCookies = cookedStyle::getArray(5);
+$cookedStyles = ':root {';
+$colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
-	foreach ($colorCookies as $selector => $colorCookie) {
-		$cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
-	}
+    foreach ($colorCookies as $elementoColorido) {
+        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
+    }
 }
+$cookedStyles .= '}';
 $homepage->assign('cookedStyles', $cookedStyles);
 
 // propriedades gerais da página
