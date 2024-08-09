@@ -189,50 +189,66 @@ class cookedStyle
 		$this->hpDB = $global_hpDB;
 	}
 
-	function inserirCookedStyle($idPagina, $idElementoColorido, $idPar) {
+	function inserirCookedStyle($idPagina, $root_var, $color) {
 		global $global_hpDB;
 
-		$_sql = "insert into hp_cookedstyles values ($idPagina, $idElementoColorido, $idPar)
-					on duplicate key update idPar = $idPar";
-		$result = $global_hpDB->query($_sql);
-		if (!$result) {
-			return false;
-		} else {
-			$this->idPagina = $idPagina;
-			$this->idElementoColorido = $idElementoColorido;
-			$this->idPar = $this->idPar;
-			return true;
-		}
+        $_sql = $global_hpDB->prepare("insert into hp_cookedstyles values (?, ?, ?)");
+        $_sql->bind_param("iss", $idPagina, $root_var, $color);
+
+        try {
+            if (!$_sql->execute()) 
+                throw new Exception("Não consegui gravar o cookedStyle");
+            else
+                return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao gravar o cookedStyle: " . $e->getMessage());
+        }
+	}
+	function atualizarCookedStyle($idPagina, $root_var, $color) {
+		global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare("update hp_cookedstyles set color = ? where idPagina = ? and root_var = ?");
+        $_sql->bind_param("sis", $color, $idPagina, $root_var);
+
+        try {
+            if (!$_sql->execute()) 
+                throw new Exception("Não consegui atualizar o cookedStyle");
+            else
+                return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao atualizar o cookedStyle: " . $e->getMessage());
+        }
 	}
 
-	function eliminarCookedStyle($idPagina, $idElementoColorido) {
+	function eliminarCookedStyle($idPagina, $root_var) {
 		global $global_hpDB;
 
-		$_sql = "delete from hp_cookedstyles where idPagina = $idPagina and idElementoColorido = $idElementoColorido";
-		$result = $global_hpDB->query($_sql);
-		if (!$result) {
-			return false;
-		} else {
-			unset($this->idPagina);
-			unset($this->idElementoColorido);
-			unset($this->idPar);
-			return true;
-		}
+        $_sql = $global_hpDB->prepare("delete from hp_cookedstyles where idPagina = ? and root_var = ?");
+        $_sql->bind_param("is", $idPagina, $root_var);
+        try {
+            if (!$_sql->execute())
+                throw new Exception("Não consegui remover o cookedStyle");
+            else
+                return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao remove o cookedStyle: " . $e_>getMessage());
+        }
 	}
 
 	function restaurarPagina($idPagina) {
 		global $global_hpDB;
 
-		$_sql = "delete from hp_cookedstyles where idPagina = $idPagina";
-		$result = $global_hpDB->query($_sql);
-		if (!$result) {
-			return false;
-		} else {
-			unset($this->idPagina);
-			unset($this->idElementoColorido);
-			unset($this->idPar);
-			return true;
-		}
+		$_sql = $global_hpDB->prepare("delete from hp_cookedstyles where idPagina = ?");
+        $_sql->bind_param("i", $idPagina);
+        try {
+            if (!$_sql->execute())
+                throw new Exception("Não consegui remover os cookedStyles");
+            else
+                return true;
+        } catch (Exception $e) {
+            throw new Exception("Erro ao remove os cookedStyles: " . $e_>getMessage());
+        }
+		return true;
 	}
 
 	// verifica se há cookies e, neste caso, cria os estilos adicionais.
@@ -240,29 +256,9 @@ class cookedStyle
 	{
 
 		global $global_hpDB;
-		/*
-		// caceta! olha o tamanho deste query! acho que normalizei demais! ;D
-        $_sql = "SELECT ec.idElementoColorido, p.classPagina, p.idPagina, cs.descricaoSelector as termoBuscaElemento, 
-                        ec.criterioBuscaElemento, ca.termoBuscaAtributo as atributoCorElemento, pc.valorCor, ec.cookieElemento as root_var
-				   FROM hp_elementoscoloridos ec, hp_cookedatributos cka, hp_cookedselectors cks,
-				 		hp_cssselectors cs, hp_cssatributos ca, hp_paginas p, hp_parescores pc, hp_cookedstyles cky
-				  WHERE ec.idElementoColorido = cks.idElementoColorido
-				 	AND cks.idSelector = cs.idSelector
-					AND cks.idCooked = cka.idCooked
-					AND cka.idAtributo = ca.idAtributo
-					AND ec.idElementoColorido = cky.idElementoColorido
-					AND cky.idPar = pc.idPar
-					AND cky.idPagina = p.idPagina
-					AND p.idPagina = $_idPagina
-				  ORDER BY cs.idSelector";
-        $_cookies = $global_hpDB->query($_sql);
-         */
-        $_sql = $global_hpDB->prepare('SELECT ec.cookieElemento as root_var, pc.valorCor as color
-                                       FROM hp_elementoscoloridos ec, hp_paginas p, hp_cookedstyles cs, hp_parescores pc
-                                       WHERE cs.idPagina = p.idPagina
-                                         AND cs.idElementoColorido = ec.idElementoColorido
-                                         AND cs.idPar = pc.idPar
-                                         AND p.idPagina = ?');
+        $_sql = $global_hpDB->prepare('SELECT root_var, color
+                                       FROM hp_cookedstyles 
+                                       WHERE idPagina = ?');
         $_sql->bind_param('i', $_idPagina);
         if (!$_sql->execute()) 
            throw new Exception("Não consegui ler cookies da página $_idPagina");
@@ -270,7 +266,13 @@ class cookedStyle
         try {
             $cookies = $_sql->get_result();
             while ($cookie = $cookies->fetch_assoc()) {
-                $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $cookie['color']);
+                if ($cookie['root_var'] != 'picColor')
+                    $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $cookie['color']);
+                else {
+                    $rgb = new RGBColor($cookie['color']);
+                    $drawUrl = "url('../drawing/background.php?r=" . $rgb->r . "&g=" . $rgb->g . "&b=" . $rgb->b . "')";
+                    $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $drawUrl);
+                }
             }
         } catch (Exception $e) {
             throw new Exception("Erro ao obter cores dinâmicas para essa página: $e->getMessage()");

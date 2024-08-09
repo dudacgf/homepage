@@ -10,274 +10,141 @@
 
 ----------------------------------------------------------*/
 
-var elTitulo = 0;
-var elColorStyle = 1;
-var elSearchCriteria = 2;
-var elSearchTerm = 3;
-var elCookie = 4;
-var elValorCor = 5;
-
-function hexdec(f1) {
+/*
+ * hex2i - transforma uma string contendo um hexadecimal em um inteiro
+ *
+ * recebe:
+ * f1 - um string contendo uma representação hexadecimal de um número inteiro
+ *
+ * retorna:
+ * f1 convertido para inteiro
+ */
+function hex2i(f1) {
     f1 = f1.toUpperCase();
     rval = parseInt(f1,16);
     return rval;
 }
 
-function RGBColor(valorCor)
-{
-    this.ok = false;
-    if (valorCor.substr(0, 1) == '#') {
-        try {
-            this.r = hexdec(valorCor.substr(1, 2));
-            this.g = hexdec(valorCor.substr(3, 2));
-            this.b = hexdec(valorCor.substr(5, 2));
-            this.ok = true;
-        } catch (err) {
-            this.ok = false;
-        }
-    }
+/*
+ * pixColrUrl - retorna uma url para a rotina que desenha e colore os 
+ *               círculos concêntricos utilizados como background-image
+ *
+ * recebe:
+ * aColor - uma cor html válida em quaquer format ('#rrggbb', 'violet', 'rgb(255, 255, 255)', 'hsl(250, 80%, 35%)' etc)
+ *
+ * retorna:
+ * a url para a rotina de colorir os círculos concêntricos
+ */
+function picColorUrl(aColor) {
+    var ctx = document.createElement("canvas").getContext("2d");
+    ctx.fillStyle = aColor;
+    color = ctx.fillStyle;
+    return 'url("../drawing/background.php?r=' + hex2i(color.substr(1, 2)) + '&g=' + hex2i(color.substr(3, 2)) + '&b=' + hex2i(color.substr(5, 2)) + '")';
 }
 
 /*
- ** esta função é a que realmente realiza as trocas de cores dos elementos...
- **
-*/
-function alterarCorAtributo(theObj, aColorAtribute, aColor) {
-  var acType, acs = aColorAtribute.split(";"), k;
-  for (k = 0; k < acs.length; k++) {
-    acType = acs[k];
-    switch (acType.toLowerCase()) {
-      case 'color':
-        theObj.style.color = aColor;
-        break;
-      case 'bcolor':
-        theObj.style.backgroundColor = aColor;
-        break;
-      case 'tborder':
-        theObj.style.borderTopColor = aColor ; 
-        break;
-      case 'lborder':
-        theObj.style.borderLeftColor = aColor ; 
-        break;
-      case 'bborder':
-        theObj.style.borderBottomColor = aColor ; 
-        break;
-      case 'rborder':
-        theObj.style.borderRightColor = aColor ; 
-        break;
-      case 'bimg':
-        if (aColor.substr(0, 1) == '#') {
-            var color = new RGBColor(aColor);
-            if (color.ok) { // 'ok' is true when the parsing was a success
-                var path = new URL("drawing", document.URL);
-                theObj.style.backgroundImage = 'url(path + "/background.php?r=' + color.r + '&g=' + color.g + '&b=' + color.b + '")'
+ * colorAction - 
+ *
+ * recebe:
+ * action - o metodo api a ser executado
+ * options - dict json com opções para submissão (body, method etc)
+ *
+ * retorna:
+ * o json retornado pela execução do método action
+ */
+async function colorAction(action, options = {}) {
+    const url = window.includePATH + 'api/' + action + '.php';
+
+    try {
+        const response = await fetch(url, options);
+        
+        let responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        return r;
+
+    } catch(err) {
+        return JSON.parse('{"status": "error", "message": "' + err.message + '"}');
+    };
+};
+
+/*
+ * alterarRootVar - altera propriedade (cor) de uma variável definida em :root
+ *
+ * recebe:
+ * não recebe nada mas utiliza os campos de id idPagina, elementoSelector, zzSelectColorForm no formulário
+ *
+ * retorna:
+ * nada, mas um toast com o resultado será exibido
+ */
+const alterarRootVar = async () => {
+    const aPagina = document.getElementById('idPagina').value;
+    const root_var = document.getElementById('elementoSelector').value;
+    const color = document.getElementById('zzSelectColorForm').value;
+
+    let formData = new FormData();
+    formData.append('idPagina', aPagina);
+    formData.append('root_var', root_var);
+    formData.append('color', color);
+    let r = await colorAction('addColorCookie', {body: formData, method: 'POST'});
+    if (r.status == 'success') {
+        const root_css = document.querySelector(':root');
+        root_css.style.setProperty("--theme-" + root_var, (root_var == 'picColor'?picColorUrl(color):color));
+    } 
+    createToast(r.status, r.message);
+}
+
+/*
+ * restaurarRootVar - restaurar propriedade (cor) de uma variável definida em :root
+ *
+ * recebe:
+ * não recebe nada mas utiliza os campos de id idPagina, elementoSelector no formulário
+ *
+ * retorna:
+ * nada, mas um toast com o resultado será exibido
+ */
+const restaurarRootVar = async () => {
+    const aPagina = document.getElementById('idPagina').value;
+    const root_var = document.getElementById('elementoSelector').value;
+
+    let formData = new FormData();
+    formData.append('idPagina', aPagina);
+    formData.append('root_var', root_var);
+    let r = await colorAction('delColorCookie', {body: formData, method: 'POST'});
+    if (r.status == 'success') {
+        const root_css = document.querySelector(':root');
+        root_css.style.setProperty("--theme-" + root_var, '');
+    } 
+    createToast(r.status, r.message);
+}
+
+/*
+ * restaurarRootcssPagina - restaurar propriedade (cor) de todas as variáveis definidas em :root
+ *      que foram alteradas anteriormente
+ *
+ * recebe:
+ * não recebe nada mas utiliza o campo de id idPagina no formulário
+ *
+ * retorna:
+ * nada, mas um toast com o resultado será exibido
+ */
+const restaurarRootcssPagina = async () => {
+    const aPagina = document.getElementById('idPagina').value;
+
+    let formData = new FormData();
+    formData.append('idPagina', aPagina);
+    let r = await colorAction('resetPagina', {body: formData, method: 'POST'});
+    if (r.status == 'success') {
+        const root_css = document.querySelector(':root');
+        var all_vars = [];
+        for (var i = 0; i < root_css.style.length; i++) {
+            if (root_css.style.item(i).startsWith('--theme-')) {
+                all_vars.push(root_css.style.item(i));
             }
-        } else {
-            theObj.style.backgroundImage = aColor;
         }
-    }
-  }
-}
-
-/*
- **
- ** Esta função altera a cor de um elemento dado seu id
- **
-*/
-function alteraCorElementoPorId(theId, aColorAtribute, aColor) {
-  var obj = document.getElementById(theId);
-  alterarCorAtributo(obj, aColorAtribute, aColor);
-}
-
-/*
- **
- **  Esta função executa a troca de cores de uma classe dado seu selectorText
- **
- **  Aqui, theSelectorText é o seletor de uma classe, p.ex "div.fortune".
- **
-*/
-function alterarCorElementoPorClasse(theSelectorText, aColorAtribute, aCor) {
-  var ua = window.navigator.userAgent;
-  if ( ua.search(/MSIE/) > 0) {
-    bodyclass = document.body.getAttribute("className");
-   } else {
-    bodyclass = document.body.getAttribute("class");
-  }
-  for (i = 0; i < document.styleSheets.length; i++) {
-    var ss = document.styleSheets[i];
-    var j, sr, sslength, bodyclass, srtext, srSelectors = new Array();
-    if ( ua.search(/MSIE/) > 0) {
-      sslength = ss.rules.length; 
-     } else {
-      sslength = ss.cssRules.length;
-    }
-    var st = (bodyclass != "" ? "body." + bodyclass + " " : "") +  theSelectorText.toLowerCase();
-    for (j = 0; j < sslength; j++) {
-      if ( ua.search(/MSIE/) > 0) {
-        sr = ss.rules.item(j);
-      } else {
-        sr = ss.cssRules[j];
-      }
-      srtext = sr.selectorText.toLowerCase();
-      srSelectors = srtext.split(",");
-      for (k = 0; k < srSelectors.length; k++) {
-        if ( srSelectors[k] == st ) {
-          alterarCorAtributo(sr, aColorAtribute, aCor);
-          break;
+        for (var i = 0; i < all_vars.length; i++) {
+            root_css.style.setProperty(all_vars[i], ''); 
         }
-      }
-    }
-  }
+    } 
+    createToast(r.status, r.message); 
 }
-
-/*
-**
-**  esta função executa a troca de cores de um ou mais elementos
-**  identificados por um ou mais atributos Id.  Os Ids devem estar
-**  separados por ';' (ponto-e-vírgula).
-**
-*/
-function alterarCorElementosPorId(theId, aColorAtribute, aColor) {
-  var theIds = new Array(), i;
-  theIds = theId.split(';');
-  for (i = 0 ; i < theIds.length; i++) {
-    alteraCorElementoPorId(theIds[i], aColorAtribute, aColor);
-  }
-}
-
-/*
-**
-** esta função executa a troca de cores de um ou mais elementos coloridos
-** identificados por um ou mais 'class selectors' (div.x etc).  Os elementos devem
-** estar separados por ';' 
-**
-*/
-function alterarCorElementosPorClasse(theSelector, aColorAtribute, aColor) {
-  var theSelectors = new Array(), i;
-  theSelectors = theSelector.split(';');
-  for (i = 0 ; i < theSelectors.length; i++) {
-    alterarCorElementoPorClasse(theSelectors[i], aColorAtribute, aColor);
-  }
-}
-
-function alterarCorElemento(oElemento, aCor) {
-    switch (oElemento[elSearchCriteria]) {
-        case 'id':
-            alterarCorElementosPorId(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
-            break;
-        case 'class':
-            alterarCorElementosPorClasse(oElemento[elSearchTerm], oElemento[elColorStyle], aCor);
-            break;
-    }
-}
-
-//
-// chamada com um pequeno delay pelas ações do form de seleção de cores.
-// testa o valor do elemento de retorno de xHttpInnerHtml.
-// 'wait ...' - valor inicializado no innerHTML do elemento por xHttpInnerHtml. 
-//              significa que o handler ainda não recebeu status 4.
-//                A rotina chama a si própria novamente com outro delay
-// 'NOK'      - retornou com erro. recarrega a página (é mais fácil que tratar o erro).
-// outro      - aparentemente deu certo, tenta alterar a cor do elemento a partir do valor retornado.
-//
-function delayed_AlterarCorElemento() {
-    var ua = window.navigator.userAgent;
-    var xhr = document.getElementById('xHttpResponse').innerHTML + '';
-
-    if (xhr == 'wait ...') 
-      setTimeout('delayed_AlterarCorElemento()', 50);
-    else if (xhr == 'NOK') 
-        window.location.reload();
-    else {                   
-        var oElemento = xhr.split('|');
-        var aCor = unescape(oElemento[elValorCor]);
-        alterarCorElemento(oElemento, aCor);
-    }
-}
-
-/*
- **
- ** Executa a 1ª ação do form colorForm - adicionar uma cor a um par Pagina x elementoColorido
- **
-*/
-function adicionarCookedStyle(argPath = '') {
-
-  var path;
-    
-  if (argPath == '') 
-    path = new URL("dyn", document.URL);
-  else
-    path = argPath;
-
-  // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
-  var obj = document.getElementById('elementSelector');
-  var idElementoColorido = obj.value;
-
-  // obtém a cor pela opção selecionada no <select> com as cores...
-  obj = document.getElementById('zzSelectColorForm');
-  var valorCor = obj.options[obj.selectedIndex].value;
-
-  // obtém, no form, o id da página que está sendo editada.
-  obj = document.getElementById('id');
-  var id = obj.value;
-
-  // inclui o cookie na base de dados e a seguir altera a cor no form.
-  insertRequest = path + "dyn/addcookie.php?id=" + id + "&el=" + idElementoColorido + "&c=" + escape(valorCor);
-  xhttpInnerHtml(insertRequest, 'xHttpResponse');
-  setTimeout('delayed_AlterarCorElemento()', 50);
-
-}
-
-/*
- **
- ** Executa a 2ª ação do form colorForm - deletar a associação de uma cor a um par Pagina x elementoColorido e restaurar
- **                                          o padrão da classe.
- **
-*/
-function deletarCookedStyle(argPath = '') { 
-
-  var path;
-    
-  if (argPath == '') 
-    path = new URL("dyn", document.URL);
-  else
-    path = argPath;
-
-  // obtém o elemento cuja cor será alterada pela opção selecionada no <select> com elementos...
-  var obj = document.getElementById('elementSelector');
-  var idElementoColorido = obj.value;
-
-  // obtém, no form, o id da página que está sendo editada.
-  obj = document.getElementById('id');
-  var id = obj.value;
-
-  // deleta o cookie na base de dados e a seguir restaura a cor da classe.
-  deleteRequest = path + "dyn/delcookie.php?id=" + id + "&el=" + idElementoColorido;
-  xhttpInnerHtml(deleteRequest, 'xHttpResponse');
-  setTimeout('delayed_AlterarCorElemento()', 50);
-}
-
-/*
- **
- ** Executa a 3ª ação do form colorForm - restaurar o padrão da classe, eliminando todos as associações entre uma cor
- **                                          e um par Pagina x elementoColorido
- **
-*/
-function restaurarPagina(argPath = '') { 
-
-  var path;
-    
-  if (argPath == '') 
-    path = new URL("dyn", document.URL);
-  else
-    path = argPath;
-
-  // obtém, no form, o id da página que está sendo editada.
-  var id = document.getElementById('id').value;
-
-  // remove os cookies da base de dados e recarrega a página
-  resetRequest = path + "dyn/resetpage.php?id=" + id;
-  xhttpInnerHtml(resetRequest, 'xHttpResponse');
-  setTimeout('window.location.reload()', 500);
-}
-

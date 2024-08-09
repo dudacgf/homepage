@@ -5,11 +5,11 @@
 	<div class="formLateral">
 		<span id="xHttpResponse" style="display: none;"></span>
 		<form id="colorForm" action="javascript: wColorFormAction()"><div>
-			<input type="hidden" name="id" id="id" value="{$idPagina}">
-			<select id="elementSelector" size="5">
+			<input type="hidden" name="idPagina" id="idPagina" value="{$idPagina}">
+			<select id="elementoSelector" size="5">
 {section name=opt loop=$elementosColoridos}
 {if $elementosColoridos[opt].descricaoElemento != ''}
-				<option value="{$elementosColoridos[opt].idElementoColorido}">{$elementosColoridos[opt].descricaoElemento}</option>
+				<option value="{$elementosColoridos[opt].cookieElemento}">{$elementosColoridos[opt].descricaoElemento}</option>
 {/if}
 {/section}
 			</select>
@@ -18,9 +18,9 @@
 				<option value="{$paresCores[opt].valorCor}" style="background-color: {$paresCores[opt].valorCor}">{$paresCores[opt].nomeCor}</option>
 {/section}				
 			</select>
-			<a href="javascript: adicionarCookedStyle('{$includePATH}');" name="Alterar!">Alterar!</a>&nbsp;&nbsp;
-			<a href="javascript: deletarCookedStyle('{$includePATH}');" name="Alterar!">Restaurar!</a>&nbsp;&nbsp;
-			<a href="javascript: restaurarPagina('{$includePATH}')" name="link">Restaura Página!</a>
+            <input type="button" class="submit" onClick="alterarRootVar();" value="Alterar!" />
+            <input type="button" class="submit" onClick="restaurarRootVar();" value="Restaurar!" />
+            <input type="button" class="submit" onClick="restaurarRootcssPagina();" value="Restaurar Página!" />
 		</div></form>
 	</div>
 </div>
