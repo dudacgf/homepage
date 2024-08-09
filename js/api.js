@@ -49,6 +49,44 @@ const editarElemento = async (apiCall, idElm, idGrp) => {
 };
 
 /*****
+ * editarCategoria - realiza ações sobre uma categoria (editar, deslocar para cima ou para baixo, excluir)
+ *
+ * recebe:
+ * apiCall - método a ser executado
+ * idPagina - id da Página sendo editada
+ * idCat - id da categoria afetada 
+ *
+ * retorna:
+ * nada. uma mensagem será exibida via toast e a lista de categorias será atualizada
+ *
+*****/
+const editarCategoria = async (apiCall, idPagina, idCat) => {
+    event.preventDefault();
+
+    const url = window.includePATH + 'api/' + apiCall + '.php';
+    const fakeForm = new FormData();
+    fakeForm.append('id', idPagina);
+    fakeForm.append('idCat', idCat);
+
+    try {
+        const response = await fetch(url, {method: 'POST', body: fakeForm});
+
+        const responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        if (r.status == 'success') {
+            reloadCategorias(idPagina);
+            createToast(r.status, r.message);
+        }
+        else 
+            createToast(r.status, r.message);
+
+    } catch (err) {
+        createToast('error', err.message);
+    };
+}
+
+/*****
  * exibirFormDiv - chamada por editarElemento. 
  *
  * exibe o form carregado para criação/edição de um elemento (link, form, separador, imagem, template)
@@ -95,6 +133,30 @@ async function reloadElementos() {
     }
 
     document.getElementById('elementos_div').innerHTML = r.message;
+    return r;
+}
+
+/*****
+ * reloadCategorias - recarrega a divisão que exibe os elementos de um grupo
+ *
+*****/
+async function reloadCategorias(idPagina) {
+    var r;
+    const url = window.includePATH + 'api/getCtg.php?id=' + idPagina;
+
+    try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        if (r.status != 'success') 
+            return r;
+
+    } catch (err) {
+        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
+    }
+
+    document.getElementById('categorias_div').innerHTML = r.message;
     return r;
 }
 

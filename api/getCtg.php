@@ -1,0 +1,28 @@
+<?php
+require_once('../common.php');
+
+// verifica se passou a página e a categoria
+if (isset($requests['id'])) 
+    $_idPagina = $requests['id'];
+
+// lê a página
+$pagina = new pagina($_idPagina);
+$homepage->assign('idPagina', $_idPagina);
+
+// garante que vão aparecer todas as categorias.
+$_REQUEST['gr'] = 'all';
+
+// lê as categorias desta página
+$pagina->lerElementos();
+$descricoesCategorias[] = '';
+foreach ($pagina->elementos as $categoria)
+{
+    $descricoesCategorias[] = $categoria->getArray();
+}
+array_shift($descricoesCategorias);
+$homepage->assign('categoriasPresentes', $descricoesCategorias);
+$homepage->assign('categoriasAusentes', $pagina->lerNaoElementos());
+$categorias_html = $homepage->fetch('admin/categorias_div.tpl');
+$homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($categorias_html) . '"}');
+$homepage->display('response.tpl');
+?>

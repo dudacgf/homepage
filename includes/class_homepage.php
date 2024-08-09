@@ -2228,7 +2228,7 @@ class pagina extends elementoAgrupado
         if (!$_sql->execute()) 
             throw new Exception('erro ao inserir elemento na página: ' . $this->idPagina . ' : ' . $_idElemento);
 
-        return $this->hpDB->getLastInsertId();
+        return True;
     }
     
     public function excluirElemento($_idElemento) 
