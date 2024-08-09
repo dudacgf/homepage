@@ -38,22 +38,6 @@ $connection_info_xml_id = 1;
 $pictures_info_xml_path = $config_path . 'pictures.xml';
 $pictures_info_xml_id = 1;
 
-// pediu debug?
-if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'sim') 
-{
-	include($include_path . 'debug.php');
-}
-else
-{
-	// pequena echo local
-	function localEcho($_theVar, $_theLabel)
-	{
-		echo "<b>$_theLabel</b><br />";
-		echo str_replace(array("\n", "  "), array("<br />", "&nbsp;&nbsp;"), print_r($_theVar, true));
-		echo "<br />";
-	}
-}
-
 //
 // resolve qual grupo de variáveis super-globais que trazem os parâmetros da url-query 
 // (o que vai depois do ? em http://.../...?x=y)
@@ -73,6 +57,10 @@ include_once($include_path . 'class_hp_smarty.php');
 
 // Crio a homepage
 $homepage = new hp_smarty();
+
+// pediu debug?
+if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'sim')
+    $homepage->assign('debugging', TRUE);
 
 // se for página administrativa, le o arquivo de linguagem
 if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME'])) 
