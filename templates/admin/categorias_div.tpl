@@ -25,12 +25,12 @@
 {/section}
 <div class="subTitulo">{$LANG.novaCategoria}:</div>
 <div class="fortune">
-<form id="nwCat" action="{$includePATH}admin/page_edit.php?mode=inCat&id={$idPagina}" method="POST">
+<form id="nwCat" method="POST">
     <select id="categoriaSelector" name="categoriaSelector">
     {section name=dnc loop=$categoriasAusentes}
         <option value="{$categoriasAusentes[dnc].idCategoria}">{$categoriasAusentes[dnc].descricaoCategoria}</option>
     {/section}
     </select>
-    <input type="button" class="submit" onClick="editarCategoria('inCtg', {$idPagina}, document.getElementById('categoriaSelector').value);" name="go" value="{$LANG.incluir}">
+    <input type="button" class="submit" onClick="editarCategoria('inCtg', {$idPagina}, document.getElementById('categoriaSelector').value);" value="{$LANG.incluir}">
 </form>
 </div>
