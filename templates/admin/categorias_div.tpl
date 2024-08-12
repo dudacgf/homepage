@@ -21,7 +21,7 @@
     <div class="coluna" >
             {if $categoriasPresentes[dc].categoriaRestrita == 1}Sim [{$categoriasPresentes[dc].restricaoCategoria}]{else}N&atilde;o{/if}
     </div>
-</p>
+<p>
 {/section}
 <div class="subTitulo">{$LANG.novaCategoria}:</div>
 <div class="fortune">

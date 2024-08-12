@@ -85,6 +85,43 @@ const editarCategoria = async (apiCall, idPagina, idCat) => {
         createToast('error', err.message);
     };
 }
+/*****
+ * editarGrupo - realiza ações sobre uma grupo (editar, deslocar para cima ou para baixo, excluir)
+ *
+ * recebe:
+ * apiCall - método a ser executado
+ * idCat - id da categoria sendo editada
+ * idGrp - id do grupo afetada 
+ *
+ * retorna:
+ * nada. uma mensagem será exibida via toast e a lista de categorias será atualizada
+ *
+*****/
+const editarGrupo = async (apiCall, idCat, idGrp) => {
+    event.preventDefault();
+
+    const url = window.includePATH + 'api/' + apiCall + '.php';
+    const fakeForm = new FormData();
+    fakeForm.append('idCat', idCat);
+    fakeForm.append('idGrp', idGrp);
+
+    try {
+        const response = await fetch(url, {method: 'POST', body: fakeForm});
+
+        const responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        if (r.status == 'success') {
+            reloadGrupos(idCat);
+            createToast(r.status, r.message);
+        }
+        else 
+            createToast(r.status, r.message);
+
+    } catch (err) {
+        createToast('error', err.message);
+    };
+}
 
 /*****
  * exibirFormDiv - chamada por editarElemento. 
@@ -118,7 +155,7 @@ function ocultarFormDiv() {
 async function reloadElementos() {
     var r;
     const idGrp = document.getElementById('idGrp').value;
-    const url = window.includePATH + 'api/getGrp.php?idGrp=' + idGrp;
+    const url = window.includePATH + 'api/getElms.php?idGrp=' + idGrp;
 
     try {
         const response = await fetch(url);
@@ -137,12 +174,12 @@ async function reloadElementos() {
 }
 
 /*****
- * reloadCategorias - recarrega a divisão que exibe os elementos de um grupo
+ * reloadCategorias - recarrega a divisão que exibe as categorias de uma página
  *
 *****/
 async function reloadCategorias(idPagina) {
     var r;
-    const url = window.includePATH + 'api/getCtg.php?id=' + idPagina;
+    const url = window.includePATH + 'api/getCtgs.php?id=' + idPagina;
 
     try {
         const response = await fetch(url);
@@ -157,6 +194,30 @@ async function reloadCategorias(idPagina) {
     }
 
     document.getElementById('categorias_div').innerHTML = r.message;
+    return r;
+}
+
+/*****
+ * reloadGrupos - recarrega a divisão que exibe os grupos de uma categoria
+ *
+*****/
+async function reloadGrupos(idCat) {
+    var r;
+    const url = window.includePATH + 'api/getGrps.php?idCat=' + idCat;
+
+    try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        if (r.status != 'success') 
+            return r;
+
+    } catch (err) {
+        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
+    }
+
+    document.getElementById('grupos_div').innerHTML = r.message;
     return r;
 }
 

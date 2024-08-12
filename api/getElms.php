@@ -19,6 +19,8 @@ foreach ($grupo->elementos as $elemento)
 array_shift($elementos);
 $homepage->assign('elementos', $elementos);
 $homepage->assign('tiposElementos', tiposElementos::getArray());
+$homepage->assign('includePATH', INCLUDE_PATH);
+$homepage->assign('imagesPATH', $images_path);
 $elementos_html = $homepage->fetch('admin/elementos_div.tpl');
 $homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($elementos_html) . '"}');
 $homepage->display('response.tpl');

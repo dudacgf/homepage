@@ -1689,7 +1689,6 @@ class categoria extends elementoAgrupado
         // calcula a posição do grupo anterior.
         $_sql = $this->hpDB->prepare("SELECT posCategoria FROM hp_gruposxcategorias  WHERE idCategoria = ? AND idGrupo = ?");
         $_sql->bind_param("ii", $this->idCategoria, $_idElemento);
-
         if (!$_sql->execute())
             throw new Exception("Não consegui ler a posição do elemento na categoria");
 
@@ -1702,14 +1701,12 @@ class categoria extends elementoAgrupado
             // desloca o grupo anterior para baixo (se ele não existir, não tem problema).
             $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = posCategoria + 1 WHERE idCategoria = ? AND posCategoria = ?");
             $_sql->bind_param("ii", $this->idCategoria, $_ProxPosCategoria);
-
             if (!$_sql->execute())
                 throw new Exception("Erro ao deslocar elemento anterior para baixo");
 
             // desloca para cima o grupo solicitado...
             $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = ? WHERE idCategoria = ? AND idGrupo = ?");
             $_sql->bind_param("iii", $_ProxPosCategoria, $this->idCategoria, $_idElemento);
-
             if (!$_sql->execute())
                 throw new Exception("Erro ao deslocar elemento para cima");
         }
@@ -1721,10 +1718,8 @@ class categoria extends elementoAgrupado
         // calcula a posição do elemento posterior.
         $_sql = $this->hpDB->prepare("SELECT posCategoria FROM hp_gruposxcategorias WHERE idCategoria = ? AND idGrupo = ?");
         $_sql->bind_param("ii", $this->idCategoria, $_idElemento);
-
         if (!$_sql->execute())
             throw new Exception ("Não há qualquer grupo na categoria : $this->idCategoria :  " . $this->hpDB->real_escape_string($this->descricaoCategoria) . " com chave $_idElemento");
-
         $_result = $_sql->get_result()->fetch_assoc();
         $_ProxPosCategoria = $_result['posCategoria']+1;
 
@@ -1733,24 +1728,20 @@ class categoria extends elementoAgrupado
         $_sql->bind_param("i", $this->idCategoria);
         if (!$_sql->execute())
             throw new Exception ("Não há qualquer grupo na categoria : $this->idCategoria :  " . $this->hpDB->real_escape_string($this->descricaoCategoria) . "!");
-
         $_result = $_sql->get_result()->fetch_assoc();
+        $_numGrupos = $_result['numGrupos'];
 
-        if ($_result['numGrupos'] >= $_ProxPosCategoria) {
-            // desloca o elemento posterior para cima. (se ele não existir não tem problema)
-            $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = posCategoria - 1 WHERE idCategoria = ? AND posCategoria = ?");
-            $_sql->bind_param("ii", $this->idCategoria, $_ProxPosCategoria);
+        // desloca o elemento posterior para cima. (se ele não existir não tem problema)
+        $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = posCategoria - 1 WHERE idCategoria = ? AND posCategoria = ?");
+        $_sql->bind_param("ii", $this->idCategoria, $_ProxPosCategoria);
+        if (!$_sql->execute())
+            throw new Exception("Erro ao deslocar elemento seguinte para cima");
 
-            if (!$_sql->execute())
-                throw new Exception("Erro ao deslocar elemento seguinte para cima");
-
-            // desloca para baixo o elemento solicitado.
-            $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = ? WHERE idCategoria = ? AND idGrupo = ?");
-            $_sql->bind_param("iii", $_ProxPosCategoria, $this->idCategoria, $_idElemento);
-
-            if (!$_sql->execute())
-                throw new Exception("Erro ao deslocar elemento para baixo");
-        }
+        // desloca para baixo o elemento solicitado.
+        $_sql = $this->hpDB->prepare("UPDATE hp_gruposxcategorias set posCategoria = ? WHERE idCategoria = ? AND idGrupo = ?");
+        $_sql->bind_param("iii", $_ProxPosCategoria, $this->idCategoria, $_idElemento);
+        if (!$_sql->execute())
+            throw new Exception("Erro ao deslocar elemento para baixo");
 
         return $this->hpDB->getAffectedRows();
     }
@@ -1778,7 +1769,7 @@ class categoria extends elementoAgrupado
         if (!$_sql->execute()) 
             throw new Exception('erro ao inserir um grupo na categoria: ' . $this->idCategoria . ' : ' . $_idElemento);
 
-        return $this->hpDB->getLastInsertId();
+        return true;
     }
     
     function excluirElemento($_idElemento) 

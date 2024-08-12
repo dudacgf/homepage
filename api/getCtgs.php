@@ -1,7 +1,7 @@
 <?php
 require_once('../common.php');
 
-// verifica se passou a página e a categoria
+// verifica se passou a página
 if (isset($requests['id'])) 
     $_idPagina = $requests['id'];
 
@@ -22,6 +22,8 @@ foreach ($pagina->elementos as $categoria)
 array_shift($descricoesCategorias);
 $homepage->assign('categoriasPresentes', $descricoesCategorias);
 $homepage->assign('categoriasAusentes', $pagina->lerNaoElementos());
+$homepage->assign('includePATH', INCLUDE_PATH);
+$homepage->assign('imagesPATH', $images_path);
 $categorias_html = $homepage->fetch('admin/categorias_div.tpl');
 $homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($categorias_html) . '"}');
 $homepage->display('response.tpl');

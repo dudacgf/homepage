@@ -39,7 +39,7 @@
 	<input type="hidden" id="id" name="id" value="{$idPagina}" />
 	<input type="hidden" id="idCat" name="idCat" value="{$idCategoria}" />
 {/if}
-	<div class="subTitulo">{$LANG.configuracao}</div><p />
+	<div class="subTitulo">{$LANG.configuracao}</div>
 	<div class="itemLateral">{$LANG.hp_categorias_DescricaoCategoria}</div>
 	<div class="item"><input type="text" class="FormExtra" size=30 name="descricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_DescricaoCategoria}" value="{$descricaoCategoria}" tabindex="1" /></div>
 	<div class="itemLateral">{$LANG.hp_categorias_Label_Restricao}</div>
@@ -63,7 +63,6 @@
 	</div>
 </form>
 {if !$criarCategoria}
-<p>
 <div class="subTitulo">{$LANG.grupos}</div>
 <div class="tituloColuna">{$LANG.hp_grupos_DescricaoGrupo}</div>
 <div class="tituloColuna">{$LANG.subir}</div>
@@ -71,50 +70,8 @@
 <div class="tituloColuna">{$LANG.excluir}</div>
 <div class="tituloColuna">{$LANG.tipoGrupo}</div>
 <div class="tituloColuna">{$LANG.grupoRestrito}</div>
-</p>
-{section name=gp loop=$gruposPresentes}
-<p>
-	<div class="tituloColuna" style="clear: left;">
-		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
-	</div>
-	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=upGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
-            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
-        </a>
-	</div>
-	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=downGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
-            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
-        </a>
-	</div>
-	<div class="colunaTransparente" >
-		<a href="{$includePATH}admin/categoria_edit.php?mode=rmGrp&idCat={$idCategoria}&idGrp={$gruposPresentes[gp].idGrupo}">
-            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
-        </a>
-  	</div>
-	<div class="coluna" >
-		{assign var="idTipoGrupo" value=$gruposPresentes[gp].idTipoGrupo}
-		{$tiposGrupos[$idTipoGrupo]}
-	</div>
-	<div class="coluna" >
-		{if $gruposPresentes[gp].grupoRestrito == 1}Sim [{$gruposPresentes[gp].restricaoGrupo}]{else}N&atilde;o{/if}
-	</div>
-</p>
-{sectionelse}
-<p>
-	<div class="subTitulo">{$LANG.categoriavazia}</div>
-</p>
-{/section}
-<div class="subTitulo">{$LANG.novoGrupo}:</div>
-<div class="fortune">
-<form id="nwCat" action="{$includePATH}admin/categoria_edit.php?mode=inGrp&idCat={$idCategoria}" method="POST">
-	<select id="grupoSelector" name="grupoSelector">
-	{section name=ne loop=$gruposAusentes}
-		<option value="{$gruposAusentes[ne].idGrupo}">{$gruposAusentes[ne].descricaoGrupo|default:$LANG.semTitulo}</option>
-	{/section}
-	</select>
-	<input type="submit" class="submit" name="go" value="{$LANG.incluir}">
-</form>
+<div id="grupos_div">
+{include file="admin/grupos_div.tpl"}
 </div>
 {/if}
 
