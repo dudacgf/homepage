@@ -7,9 +7,9 @@
     <div class="item"><input type="text" class="FormExtra" size=30 name="nomeTemplate" placeholder="{$LANG.hp_templates_Placeholder_nomeTemplate}" value="{$elemento.nomeTemplate}" tabindex="2" /></div>
     <div class="itemLateral" style="width: 99%; Text-Align: center;">
 {if $criarElemento}
-        <input type="hidden" name="mode" id="mode" value="crTpt" />
+        <input type="hidden" name="mode" id="mode" value="criarTemplate" />
 {else}
-        <input type="hidden" name="mode" id="mode" value="svTpt" />
+        <input type="hidden" name="mode" id="mode" value="salvarTemplate" />
         <input type="hidden" name="idElm" value="{$elemento.idElemento}" />
 {/if}
         <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="3" /> :: 

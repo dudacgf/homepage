@@ -1,6 +1,6 @@
 <?php
 /*****
-  crImg.php - salva um novo elemento-imagem
+  criarImagem.php - salva um novo elemento-imagem
 
   recebe: dados para o novo registro através do array $requests (um merge de $_GET + $_POST + $_REQUEST)
   devolve: json resposta dizendo resultado da operação (status) e uma mensagem informativa (message)

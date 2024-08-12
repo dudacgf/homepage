@@ -19,9 +19,9 @@
     <div class="item"><input type="text" class="FormExtra" size=30 name="targetLink" id="targetLink" value="{$elemento.targetLink}" tabindex="5" /></div>
     <div class="itemLateral" style="width: 99%; text-align: center;">
 {if $criarElemento}
-        <input type="hidden" name="mode" id="mode" value="crLnk" />
+        <input type="hidden" name="mode" id="mode" value="criarLink" />
 {else}
-        <input type="hidden" name="mode" id="mode" value="svLnk" />
+        <input type="hidden" name="mode" id="mode" value="salvarLink" />
         <input type="hidden" name="idElm" id="idElm" value="{$elemento.idElemento}" />
 {/if}
         <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="6" /> :: 

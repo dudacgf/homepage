@@ -12,7 +12,7 @@ function doAction(pressed) {
                 response = confirm('Confirma exclusão do grupo?');
                 if (!response) 
                     return;
-                document.getElementById('mode').value = 'exGrp';
+                document.getElementById('mode').value = 'excluirGrupo';
                 break;
             case '{$LANG.novoGrupo}':
                 document.getElementById('mode').value = 'nwGrp';
@@ -30,7 +30,7 @@ function doAction(pressed) {
                 response = confirm('Confirma exclusão do grupo?');
                 if (!response) 
                     return;
-                document.getElementById('mode').value = 'exGrp';
+                document.getElementById('mode').value = 'excluirGrupo';
                 break;
             case '{$LANG.cancelar}':
                 document.getElementById('mode').value = 'slGrp';
@@ -92,19 +92,19 @@ function doAction(pressed) {
 </div>
 <div class="subTitulo">{$LANG.novosElementos}:</div>
 <div class="fortune" style="text-align: center; padding: 0; margin: 0; height: 30px;">
-    <div class="newItem_div" onClick="editarElemento('nwLnk', 0, {$grupo.idGrupo});">
+    <div class="newItem_div" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
         :: {$LANG.novoLink} ::
     </div>
-    <div class="newItem_div" onClick="editarElemento('nwFrm', 0, {$grupo.idGrupo});">
+    <div class="newItem_div" onClick="editarElemento('novoForm', 0, {$grupo.idGrupo});">
         :: {$LANG.novoForm} ::
     </div> 
-    <div class="newItem_div" onClick="editarElemento('nwSrp', 0, {$grupo.idGrupo});">
+    <div class="newItem_div" onClick="editarElemento('novoSeparador', 0, {$grupo.idGrupo});">
         :: {$LANG.novoSeparador} ::
     </div> 
-    <div class="newItem_div" onClick="editarElemento('nwImg', 0, {$grupo.idGrupo});">
+    <div class="newItem_div" onClick="editarElemento('novaImagem', 0, {$grupo.idGrupo});">
         :: {$LANG.novaImagem} ::
     </div>
-    <div class="newItem_div" onClick="editarElemento('nwTpt', 0, {$grupo.idGrupo});">
+    <div class="newItem_div" onClick="editarElemento('novoTemplate', 0, {$grupo.idGrupo});">
         :: {$LANG.novoTemplate} ::
     </div>
 </div>

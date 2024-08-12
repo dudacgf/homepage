@@ -7,7 +7,7 @@
 const editarElemento = async (apiCall, idElm, idGrp) => {
     event.preventDefault();
 
-    if (apiCall == 'exElm') {
+    if (apiCall == 'excluirElemento') {
         response = confirm('Confirma exclusão do elemento?');
         if (!response) 
             return;
@@ -26,17 +26,17 @@ const editarElemento = async (apiCall, idElm, idGrp) => {
 
         if (r.status == 'success')
             switch (apiCall) {
-                case 'edElm':
-                case 'nwLnk':
-                case 'nwFrm':
-                case 'nwSrp':
-                case 'nwImg':
-                case 'nwTpt':
+                case 'editarElemento':
+                case 'novoLink':
+                case 'novoForm':
+                case 'novoSeparador':
+                case 'novaImagem':
+                case 'novoTemplate':
                     exibirFormDiv(r.message);
                     break;
-                case 'upElm':
-                case 'dwElm':
-                case 'exElm':
+                case 'ascenderElemento':
+                case 'descenderElemento':
+                case 'excluirElemento':
                     reloadElementos();
                     createToast(r.status, r.message);
             }
@@ -155,7 +155,7 @@ function ocultarFormDiv() {
 async function reloadElementos() {
     var r;
     const idGrp = document.getElementById('idGrp').value;
-    const url = window.includePATH + 'api/getElms.php?idGrp=' + idGrp;
+    const url = window.includePATH + 'api/obterElementos.php?idGrp=' + idGrp;
 
     try {
         const response = await fetch(url);
@@ -179,7 +179,7 @@ async function reloadElementos() {
 *****/
 async function reloadCategorias(idPagina) {
     var r;
-    const url = window.includePATH + 'api/getCtgs.php?id=' + idPagina;
+    const url = window.includePATH + 'api/obterCategorias.php?id=' + idPagina;
 
     try {
         const response = await fetch(url);
@@ -203,7 +203,7 @@ async function reloadCategorias(idPagina) {
 *****/
 async function reloadGrupos(idCat) {
     var r;
-    const url = window.includePATH + 'api/getGrps.php?idCat=' + idCat;
+    const url = window.includePATH + 'api/obterGrupos.php?idCat=' + idCat;
 
     try {
         const response = await fetch(url);

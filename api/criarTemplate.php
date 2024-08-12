@@ -1,6 +1,6 @@
 <?php
 /*****
-  crTpt.php - salva um novo elemento-template
+  criarTemplate.php - salva um novo elemento-template
 
   recebe: dados para o novo registro através do array $requests (um merge de $_GET + $_POST + $_REQUEST)
   devolve: json resposta dizendo resultado da operação (status) e uma mensagem informativa (message)

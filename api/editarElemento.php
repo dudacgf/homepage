@@ -1,6 +1,6 @@
 <?php
 /******
-    edElm.php - chamada quando for solicitada a edição de um elemento na página de edição de um grupo
+    editarElemento.php - chamada quando for solicitada a edição de um elemento na página de edição de um grupo
 
     recebe - idElemento e idGrp via $requests
     devolve - json response contendo status e, se bem sucedido, message com html de um form

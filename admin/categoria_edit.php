@@ -42,7 +42,7 @@ switch ($requests['mode'])
 	break;
 		
 	// deslocar grupo para cima
-	case 'upGrp':
+	case 'descenderGrupo':
 		$categoria = new categoria($_idCategoria);
 		$categoria->deslocarElementoParaCima($requests['idGrp']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
@@ -69,7 +69,7 @@ switch ($requests['mode'])
 	break;
 
 	// incluir nova categoria na página
-	case 'inGrp':
+	case 'incluirGrupo':
 		$categoria = new categoria($_idCategoria);
 		$categoria->incluirElemento($requests['grupoSelector']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');

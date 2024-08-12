@@ -3,17 +3,17 @@
 		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
 	</div>
 	<div class="colunaTransparente" >
-        <div class="click_div" onclick="editarGrupo('upGrp', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
+        <div class="click_div" onclick="editarGrupo('descenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
             <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
         </div>
 	</div>
 	<div class="colunaTransparente" >
-        <div class="click_div" onclick="editarGrupo('dwGrp', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
+        <div class="click_div" onclick="editarGrupo('descenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
             <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
         </div>
 	</div>
 	<div class="colunaTransparente" >
-        <div class="click_div" onclick="editarGrupo('exGrp', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
+        <div class="click_div" onclick="editarGrupo('excluirGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
             <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
         </div>
   	</div>
@@ -35,6 +35,6 @@
 		<option value="{$gruposAusentes[ne].idGrupo}">{$gruposAusentes[ne].descricaoGrupo|default:$LANG.semTitulo}</option>
 	{/section}
 	</select>
-	<input type="button" class="submit" onclick="editarGrupo('inGrp', {$idCategoria}, document.getElementById('grupoSelector').value)" value="{$LANG.incluir}">
+	<input type="button" class="submit" onclick="editarGrupo('incluirGrupo', {$idCategoria}, document.getElementById('grupoSelector').value)" value="{$LANG.incluir}">
 </form>
 </div>

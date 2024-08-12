@@ -4,17 +4,17 @@
         <a href="{$includePATH}admin/categoria_edit.php?mode=edCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">{$categoriasPresentes[dc].descricaoCategoria}</a>
     </div>
     <div class="colunaTransparente" >
-        <div class="click_div" onClick="editarCategoria('upCtg', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+        <div class="click_div" onClick="editarCategoria('ascenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
             <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
-        <div class="click_div" onClick="editarCategoria('dwCtg', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+        <div class="click_div" onClick="editarCategoria('descenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
             <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
-        <div class="click_div" onClick="editarCategoria('exCtg', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+        <div class="click_div" onClick="editarCategoria('excluirCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
             <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
         </div>
     </div>
@@ -31,6 +31,6 @@
         <option value="{$categoriasAusentes[dnc].idCategoria}">{$categoriasAusentes[dnc].descricaoCategoria}</option>
     {/section}
     </select>
-    <input type="button" class="submit" onClick="editarCategoria('inCtg', {$idPagina}, document.getElementById('categoriaSelector').value);" value="{$LANG.incluir}">
+    <input type="button" class="submit" onClick="editarCategoria('incluirCategoria', {$idPagina}, document.getElementById('categoriaSelector').value);" value="{$LANG.incluir}">
 </form>
 </div>

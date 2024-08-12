@@ -9,9 +9,9 @@
     </div>
     <div class="itemLateral" style="width: 99%; Text-Align: center;">
 {if $criarElemento}
-        <input type="hidden" name="mode" id="mode" value="crSrp" />
+        <input type="hidden" name="mode" id="mode" value="criarSeparador" />
 {else}
-        <input type="hidden" name="mode" id="mode" value="svSrp" />
+        <input type="hidden" name="mode" id="mode" value="salvarSeparador" />
         <input type="hidden" name="idElm" value="{$elemento.idElemento}" />
 {/if}
         <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="3" /> :: 

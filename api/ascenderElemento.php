@@ -1,6 +1,6 @@
 <?php
 /******
-    upElm.php - desloca um elemento de um grupo uma posição para cima
+    ascenderElemento.php - desloca um elemento de um grupo uma posição para cima
 
     recebe - id do grupo e do elemento a ser deslocado
     devolve - json response contendo status e mensagem informativa

@@ -21,7 +21,7 @@
 	<td class="categoria">
 		Clique, por enquanto, no botão. para sair. daqui.
 	</td><td>
-	 	<form name="exElm" id="exElm" action="javascript: doForm()">
+	 	<form name="excluirElemento" id="exElm" action="javascript: doForm()">
 			<input type="hidden" name="mode" value="dlElm">
 			<input type="hidden" name="idGrp" value="{$grupo.idGrupo}" />
 			<input type="hidden" name="posGrupo" value="{$elemento.posGrupo}" />

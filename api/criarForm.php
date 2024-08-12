@@ -1,6 +1,6 @@
 <?php
 /*****
-  crFrm.php - salva um novo elemento-form 
+  criarForm.php - salva um novo elemento-form 
 
   recebe: dados para o novo registro através do array $requests (um merge de $_GET + $_POST + $_REQUEST)
   devolve: json resposta dizendo resultado da operação (status) e uma mensagem informativa (message)

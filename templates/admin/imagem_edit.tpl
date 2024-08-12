@@ -11,9 +11,9 @@
     </div>
     <div class="itemLateral" colspan="10" style="width: 99%; margin-top: 5px; Text-Align: center;">
 {if $criarElemento}
-       <input type="hidden" name="mode" id="mode" value="crImg" />
+       <input type="hidden" name="mode" id="mode" value="criarImagem" />
 {else}
-       <input type="hidden" name="mode" id="mode" value="svImg" />
+       <input type="hidden" name="mode" id="mode" value="salvarImagem" />
        <input type="hidden" name="idElm" value="{$elemento.idElemento}" />
 {/if}
         <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="4" /> :: 

@@ -1,6 +1,6 @@
 <?php
 /******
-    dwElm.php - desloca um elemento de um grupo uma posição para baixo
+    descenderElemento.php - desloca um elemento de um grupo uma posição para baixo
 
     recebe - id do grupo e do elemento a ser deslocado
     devolve - json response contendo status e mensagem informativa

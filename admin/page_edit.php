@@ -52,6 +52,7 @@ switch ($requests['mode'])
             prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] atualizada com sucesso!");
         else
             prepare_msgAlerta('warning', "Não foi possível atualizar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
+        $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('script2reload', 'admin/page_edit.php');
         $homepage->assign('scriptMode', 'edPag');
         $template = 'admin/script_reload.tpl';
@@ -86,6 +87,7 @@ switch ($requests['mode'])
             $homepage->assign('scriptMode', 'edPag');
             prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] criada com sucesso!");
         }
+        $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('script2reload', 'admin/page_edit.php');
         $template = 'admin/script_reload.tpl';
     break;

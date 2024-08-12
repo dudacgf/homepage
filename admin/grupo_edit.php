@@ -82,7 +82,7 @@ switch ($requests['mode'])
     break;
 
     // excluir um grupo (já foi exibido o form de confirmação).
-    case 'exGrp':
+    case 'excluirGrupo':
         $grupo = new grupo($_idGrupo);
         if ($grupo->excluir())
         {
