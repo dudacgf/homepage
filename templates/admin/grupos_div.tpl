@@ -3,7 +3,7 @@
 		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
 	</div>
 	<div class="colunaTransparente" >
-        <div class="click_div" onclick="editarGrupo('descenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
+        <div class="click_div" onclick="editarGrupo('ascenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
             <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
         </div>
 	</div>
