@@ -166,16 +166,7 @@ switch ($requests['mode'])
 }
 
 // le os cookies e passa para a página a ser carregada.
-$cookedStyles = ':root {';
-$colorCookies = cookedStyle::getArray($_idPagina);
-if ($colorCookies) 
-{
-    foreach ($colorCookies as $elementoColorido) {
-        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
-    }
-}
-$cookedStyles .= '}';
-$homepage->assign('cookedStyles', $cookedStyles);
+$homepage->assign('cookedStyles', '');
 
 $homepage->assign('displayImagemTitulo', '1');
 
