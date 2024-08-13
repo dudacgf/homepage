@@ -65,6 +65,40 @@ class tiposGrupos
 
 class cssEstilos 
 {#
+    var $hpDB;
+    var $idEstilo;
+    var $nomeEstilo;
+    var $comentarioEstilo;
+
+    public function __construct($_idEstilo = null) {
+        global $global_hpDB;
+        $this->hpDB = $global_hpDB;
+
+        if ($_idEstilo == null)
+            return;
+
+        $_sql = $this->hpDB->prepare('select * from hp_cssestilos where idEstilo = ?');
+        $_sql->bind_param('i', $_idEstilo);
+        if (!$_sql->execute())
+            return;
+
+        $_result = $_sql->get_result()->fetch_assoc();
+        $this->idEstilo = $_result['idEstilo'];
+        $this->nomeEstilo = $_result['nomeEstilo'];
+        $this->comentarioEstilo = $_result['comentarioEstilo'];
+
+        return;
+    }
+
+    public function inserir() {
+        $_sql = $this->hpDB->prepare('insert into hp_cssestilos (nomeEstilo, comentarioEstilo) values (?, ?)');
+        $_sql->bind_param('ss', $this->nomeEstilo, $this->comentarioEstilo);
+        if (!$_sql->execute())
+            throw new Exception('erro ao inserir estilo: ' . $this->hpDB->real_escape_string($_sql->getMessage()));
+
+        return $this->hpDB->getLastInsertId();
+    }
+
     static function getArray()
     {
         global $global_hpDB;
@@ -1406,17 +1440,16 @@ class grupo extends elementoAgrupado
             throw new Exception ("erro executando a query numElementos em deslocarElementoParaBaixo");
         }
 
-        if ($_numElementos >= $_ProxPosGrupo) {
-            // desloca o elemento posterior para cima. (se ele não existir não tem problema)
-            $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = posGrupo - 1 WHERE idGrupo = ? AND posGrupo = ?");
-            $_sql->bind_param("ii", $this->idGrupo, $_ProxPosGrupo);
-            $_return = $_sql->execute();
+        // desloca o elemento posterior para cima. (se ele não existir não tem problema)
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = posGrupo - 1 WHERE idGrupo = ? AND posGrupo = ?");
+        $_sql->bind_param("ii", $this->idGrupo, $_ProxPosGrupo);
+        $_return = $_sql->execute();
 
-            // desloca para baixo o elemento solicitado.
-            $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = ? WHERE idGrupo = ? AND idElemento = ?");
-            $_sql->bind_param("iii", $_ProxPosGrupo, $this->idGrupo, $_idElemento);
-            $_return = $_return and $_sql->execute();
-        }
+        // desloca para baixo o elemento solicitado.
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = ? WHERE idGrupo = ? AND idElemento = ?");
+        $_sql->bind_param("iii", $_ProxPosGrupo, $this->idGrupo, $_idElemento);
+        $_return = $_return and $_sql->execute();
+
         return $_return;
     }
     

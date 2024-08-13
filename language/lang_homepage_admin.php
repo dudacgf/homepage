@@ -48,6 +48,12 @@ $lang['hp_grupos_Label_Restricao'] = 'Restrito';
 // 
 $lang['hp_elementos_Descricao'] = 'nome do Elemento';
 
+// atributos de um estilo
+$lang['hp_estilos_nomeEstilo'] = 'Nome';
+$lang['hp_estilos_Placeholder_nomeEstilo'] = 'Nome do estilo css';
+$lang['hp_estilos_comentarioEstilo'] = 'Comentario';
+$lang['hp_estilos_Placeholder_comentarioEstilo'] = 'Comentario sobre o estilo';
+
 // atributos de um elemento tipo link
 $lang['hp_links_FormTitulo'] = 'Links';
 $lang['hp_links_idLink'] = 'Id deste link';
@@ -118,6 +124,10 @@ $lang['tituloTabelaConfirmarExclusao'] = ':: Leia com atenção ::';
 $lang['tituloPaginaSelecionarPagina'] = 'Edição de página';
 $lang['tituloTabelaSelecionarPagina'] = ':: Lista de páginas';
 $lang['selecionarPagina'] = 'Por favor, selecione a página a editar:';
+
+// para o diálogo de salvamento de um estilo
+$lang['tituloPaginaSalvarEstilo'] = 'Salvar Estilo';
+$lang['tituloTabelaSalvarEstilo'] = 'Novo Estilo';
 
 // para o diálogo de confirmação exclusão de página
 $lang['confirmarExclusaoPagina'] = 'Tem certeza que deseja excluir a página ';

@@ -1,14 +1,68 @@
-/*----------------------------------------------------------
+/*--------------------------------------------------------------------------------
 
   cores.js
-  (c) ecgf - 2005
+  (c) ecgf - 2005-2024
 
   Rotinas para definição de cor de um ou mais elementos dado seu id ou sua classe.
 
-  note que este script depende fortemente dos estilos 
-  definidos em $hp_homepage_path . estilos.css
+  depende fortemente dos estilos definidos em estilos/colorbase.css
 
-----------------------------------------------------------*/
+--------------------------------------------------------------------------------*/
+
+/*
+ * rootColors - array com nomes de todas as variáveis de cor definidas no :root de um estilo css
+ *              (as variáveis são na verdade definidas como '--theme-varName')
+ */
+const rootColors = ['dark', 'medium', 'light', 'bodyBG', 'bodyC', 'tituloBG', 
+                    'tituloC', 'fortuneBG', 'fortuneC', 'tituloCategBG', 
+                    'tituloCategC', 'categBTL', 'categBBR', 'expandedBG', 
+                    'expandedBTL', 'expandedBBR', 'expandBG', 'expandC', 'expandBTL',
+                    'expandBBR', 'inputBG', 'inputC', 'buttonC', 'buttonBG', 
+                    'buttonBTL', 'buttonBBR', 'sepC',  'linkC', 'expandedColor',
+                    'linkH', 'interiorBG'];
+
+/*
+ * getThemeColor - obtém a cor de uma das variáveis de cor para o estilo css atual
+ *
+ * recebe: 
+ * umaCor - o nome de uma variável de cor
+ *
+ * retorna:
+ * a cor definida para essa variável em formato #RRGGBB
+ */
+const getThemeColor = (umaCor) => {
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    const root = document.querySelector(':root');
+
+    aCorHex = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
+    c.remove();
+
+    return aCorHex;
+}
+
+/*
+ * getAllThemeColors - obtém as cores das variáveis de cor para o estilo css atual
+ *
+ * retorna:
+ * array com as cores das variáveis de cor no format #RRGGBB
+ */
+const getAllThemeColors = () => {
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    const root = document.querySelector(':root');
+    var cores = [];
+
+    for (i=0;i<rootColors.length-1;i++) {
+        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColors[i]);
+        ctx.fillStyle = umaCor;
+        if (!cores.includes(ctx.fillStyle))
+            cores[cores.length] = ctx.fillStyle; 
+    }
+
+    c.remove();
+    return cores.sort();
+}
 
 /*
  * hex2i - transforma uma string contendo um hexadecimal em um inteiro
@@ -59,7 +113,7 @@ async function colorAction(action, options = {}) {
         const response = await fetch(url, options);
         
         let responseData = await response.json();
-        r = eval("(" + responseData + ")");
+        let r = eval("(" + responseData + ")");
 
         return r;
 
@@ -81,6 +135,11 @@ const alterarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
     const root_var = document.getElementById('elementoSelector').value;
     const color = document.getElementById('zzSelectColorForm').value;
+
+    if (root_var == "" | color == "") {
+        createToast('warning', 'Elemento a ser alterado ou nova cor não selecionados');
+        return;
+    }
 
     let formData = new FormData();
     formData.append('idPagina', aPagina);
@@ -107,6 +166,11 @@ const restaurarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
     const root_var = document.getElementById('elementoSelector').value;
 
+    if (root_var == "") {
+        createToast('warning', 'Elemento a ser restaurado não selecionado');
+        return;
+    }
+
     let formData = new FormData();
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
@@ -120,7 +184,7 @@ const restaurarRootVar = async () => {
 
 /*
  * restaurarRootcssPagina - restaurar propriedade (cor) de todas as variáveis definidas em :root
- *      que foram alteradas anteriormente
+ *                          que foram alteradas anteriormente
  *
  * recebe:
  * não recebe nada mas utiliza o campo de id idPagina no formulário
@@ -147,4 +211,45 @@ const restaurarRootcssPagina = async () => {
         }
     } 
     createToast(r.status, r.message); 
+}
+
+/*
+ * novoEstilo - chamada para preparar e exibir form de salvamento de estilo
+ */
+const novoEstilo = async () => {
+    const idPagina = document.getElementById('idPagina').value;
+
+    const formData = new FormData();
+    formData.append('idPagina', idPagina);
+
+    let r = await colorAction('novoEstilo', {method: 'POST', body: formData});
+
+    if (r.status == 'success')
+        exibirFormDiv(r.message);
+    else
+        createToast(r.status, r.message);
+}
+
+/*
+ * salvarEstilo - chamada após exibição do form de salvamento de estilos
+ */
+const salvarEstilo = async () => {
+    const idPagina = document.getElementById('idPagina').value;
+    const nomeEstilo = document.getElementById('nomeEstilo').value;
+    const comentarioEstilo = document.getElementById('comentarioEstilo').value;
+
+    if (nomeEstilo == '' | comentarioEstilo == '') {
+        createToast('warning', 'Nome do Estilo ou comentário não definidos');
+        return ;
+    }
+
+    const formData = new FormData();
+    formData.append('idPagina', idPagina);
+    formData.append('nomeEstilo', nomeEstilo);
+    formData.append('comentarioEstilo', comentarioEstilo);
+
+    let r = await colorAction('salvarEstilo', {method: 'POST', body: formData});
+    ocultarFormDiv();
+
+    createToast(r.status, r.message);
 }
