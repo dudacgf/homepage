@@ -1,6 +1,7 @@
 # testes em geral
 ?.php
 ?.js
+?.html
 
 # own dirs
 /.htaccess
