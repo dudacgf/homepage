@@ -26,9 +26,6 @@
 <script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
-{if $displaySelectColor == 1}
-<script type="text/javascript" src="{$includePATH}js/cores.js"></script>
-{/if}
 <title>
   {if !isset($tituloPaginaAlternativo)}
     {$tituloPagina}
