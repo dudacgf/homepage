@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pt-BR" lang="pt-BR">
+<html>
 <head>
 <link rel="shortcut icon" href="{$includePATH}favicon.ico" type="image/x-icon" />
 {if isset($refresh)}
@@ -39,10 +39,10 @@
 {if isset($smarty.cookies.showAlerta)}
 <script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;Path={$includePATH};Domain=' + location.hostname + ';Secure=true;SameSite=Strict;'</script>
 </head>
-<body class="{$classPagina}" style=" overflow: auto;" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">
+<body class="{$classPagina}" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">
 {else}
 </head>
-<body class="{$classPagina}" style=" overflow: auto;" id="theBody">
+<body class="{$classPagina}" id="theBody">
 {/if}
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
