@@ -13,13 +13,13 @@
  * rootColors - array com nomes de todas as variáveis de cor definidas no :root de um estilo css
  *              (as variáveis são na verdade definidas como '--theme-varName')
  */
-const rootColors = ['dark', 'medium', 'light', 'bodyBG', 'bodyC', 'tituloBG', 
+const rootColors = new Set (['dark', 'medium', 'light', 'bodyBG', 'bodyC', 'tituloBG', 
                     'tituloC', 'fortuneBG', 'fortuneC', 'tituloCategBG', 
                     'tituloCategC', 'categBTL', 'categBBR', 'expandedBG', 
                     'expandedBTL', 'expandedBBR', 'expandBG', 'expandC', 'expandBTL',
                     'expandBBR', 'inputBG', 'inputC', 'buttonC', 'buttonBG', 
                     'buttonBTL', 'buttonBBR', 'sepC',  'linkC', 'expandedColor',
-                    'linkH', 'interiorBG'];
+                    'linkH', 'interiorBG', 'inputBG', 'inputC']);
 
 /*
  * getThemeColor - obtém a cor de uma das variáveis de cor para o estilo css atual
@@ -35,9 +35,10 @@ const getThemeColor = (umaCor) => {
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
 
-    aCorHex = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
-    c.remove();
+    ctx.fillStyle = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
+    aCorHex = ctx.fillStyle;
 
+    c.remove();
     return aCorHex;
 }
 
@@ -53,8 +54,8 @@ const getAllThemeColors = () => {
     const root = document.querySelector(':root');
     var cores = [];
 
-    for (i=0;i<rootColors.length-1;i++) {
-        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColors[i]);
+    for (const rootColor of rootColors) {
+        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColor);
         ctx.fillStyle = umaCor;
         if (!cores.includes(ctx.fillStyle))
             cores[cores.length] = ctx.fillStyle; 
@@ -62,6 +63,28 @@ const getAllThemeColors = () => {
 
     c.remove();
     return cores.sort();
+}
+
+/*
+ * getAllThemeColorPairs - obtem todos os pares de cores em uso
+ *
+ * retorna:
+ * dictionary com as cores das variáveis de cor no format #RRGGBB
+ */
+const getAllThemeColorPairs = () => {
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    const root = document.querySelector(':root');
+    var cores = {};
+
+    for (const rootColor of rootColors) {
+        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColor);
+        ctx.fillStyle = umaCor;
+        cores[rootColor] = ctx.fillStyle; 
+    }
+
+    c.remove();
+    return cores;
 }
 
 /*
@@ -247,6 +270,7 @@ const salvarEstilo = async () => {
     formData.append('idPagina', idPagina);
     formData.append('nomeEstilo', nomeEstilo);
     formData.append('comentarioEstilo', comentarioEstilo);
+    formData.append('paresDeCores', JSON.stringify(getAllThemeColorPairs()));
 
     let r = await colorAction('salvarEstilo', {method: 'POST', body: formData});
     ocultarFormDiv();

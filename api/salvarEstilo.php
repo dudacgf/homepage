@@ -6,18 +6,14 @@ if (isset($requests['idPagina']) and isset($requests['nomeEstilo']) and isset($r
 	$_idPagina = $requests['idPagina'];
     $_nomeEstilo = $requests['nomeEstilo'];
     $_comentarioEstilo = $requests['comentarioEstilo'];
+    $_paresDeCores = json_decode($requests['paresDeCores']);
 
     // le os cookies e monta o conteúdo to arquivo .css
     $cookedStyles = ':root {' . PHP_EOL;
-    $colorCookies = cookedStyle::getArray($_idPagina);
-    if ($colorCookies) 
-    {
-        foreach ($colorCookies as $elementoColorido) {
-            $cookedStyles .= '    ' . $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ' . PHP_EOL;
-        }
-    }
+    foreach ($_paresDeCores as $root_var => $cor)
+        $cookedStyles .= '    --theme-' . $root_var . ': ' . $cor . '; ' . PHP_EOL;
     $cookedStyles .= '}' . PHP_EOL;
-
+    
     try {
         $_cssEstilo = new cssEstilos(null);
         $_cssEstilo->nomeEstilo = $_nomeEstilo;
