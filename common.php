@@ -34,10 +34,6 @@ $admin_path = HOMEPAGE_PATH . 'admin/';
 $connection_info_xml_path = $config_path . 'connections.xml';
 $connection_info_xml_id = 1;
 
-// localização do xml com detalhes de folders especiais para a aplicação
-$pictures_info_xml_path = $config_path . 'pictures.xml';
-$pictures_info_xml_id = 1;
-
 //
 // resolve qual grupo de variáveis super-globais que trazem os parâmetros da url-query 
 // (o que vai depois do ? em http://.../...?x=y)
