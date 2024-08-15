@@ -18,7 +18,7 @@ $homepage->assign('numFortunes', Fortune::getCount());
 
 // le os cookies e passa para a página a ser carregada.
 $cookedStyles = ':root {';
-$colorCookies = cookedStyle::getArray($_idPagina);
+$colorCookies = cookedStyle::getArray(ID_ADM_PAG);
 if ($colorCookies) 
 {
     foreach ($colorCookies as $elementoColorido) {
