@@ -67,6 +67,9 @@ input.submit, button {
 border-width: 1pt; border-style: solid; vertical-align: top; text-align: center; 
 font-size: 1em; font-weight: bold;
 }
+.colorButton {
+width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; padding-top: 3px; text-align: left;
+}
 /*----------------------------------------
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
@@ -153,7 +156,7 @@ border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-l
 height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
 }
 div.headclickable:before {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free";
     content: "\f0fe";
     display: inline-block;
     padding-right: 3px;
@@ -162,10 +165,46 @@ div.headclickable:before {
     font-weight: 900;
 }
 div.headexpandable:before {
-    font-family: "Font Awesome 5 Free";
+    font-family: "Font Awesome 6 Free";
     content: "\f055";
     display: inline-block;
     padding-right: 3px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.check:before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f058";
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.xmark:before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f057";
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.trash:before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f1f8";
+    display: inline-block;
+    padding-right: 10px;
+    padding-left: 3px;
+    vertical-align: middle;
+    font-weight: 600;
+}
+.floppy:before {
+    font-family: "Font Awesome 6 Free";
+    content: "\f0c7";
+    display: inline-block;
+    padding-right: 10px;
     padding-left: 3px;
     vertical-align: middle;
     font-weight: 600;
