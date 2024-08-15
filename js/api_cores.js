@@ -149,15 +149,15 @@ async function colorAction(action, options = {}) {
  * alterarRootVar - altera propriedade (cor) de uma variável definida em :root
  *
  * recebe:
- * não recebe nada mas utiliza os campos de id idPagina, elementoSelector, zzSelectColorForm no formulário
+ * não recebe nada mas utiliza os campos de id idPagina, selectElemento, selectedColor no formulário
  *
  * retorna:
  * nada, mas um toast com o resultado será exibido
  */
 const alterarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
-    const root_var = document.getElementById('elementoSelector').value;
-    const color = document.getElementById('zzSelectColorForm').value;
+    const root_var = document.getElementById('selectElemento').value;
+    const color = document.getElementById('selectedColor').value;
 
     if (root_var == "" | color == "") {
         createToast('warning', 'Elemento a ser alterado ou nova cor não selecionados');
@@ -180,14 +180,14 @@ const alterarRootVar = async () => {
  * restaurarRootVar - restaurar propriedade (cor) de uma variável definida em :root
  *
  * recebe:
- * não recebe nada mas utiliza os campos de id idPagina, elementoSelector no formulário
+ * não recebe nada mas utiliza os campos de id idPagina, selectElemento no formulário
  *
  * retorna:
  * nada, mas um toast com o resultado será exibido
  */
 const restaurarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
-    const root_var = document.getElementById('elementoSelector').value;
+    const root_var = document.getElementById('selectElemento').value;
 
     if (root_var == "") {
         createToast('warning', 'Elemento a ser restaurado não selecionado');

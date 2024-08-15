@@ -6,13 +6,13 @@
     <div class="lineForm">
         <div class="formLateral" style="width: 100%;">
             <form id="colorForm" action="javascript: void(0);">
-                <input type="hidden" id="zzSelectColorForm" value="" />
+                <input type="hidden" id="selectedColor" value="" />
                 <input type="hidden" name="idPagina" id="idPagina" value="{$idPagina}">
                 <div style="width: 100%;">
                     <div style="float: left;">
                         <div class="tituloCategoria">Elementos</div>
                         <div class="interior">
-                            <select id="elementoSelector" size="6">
+                            <select id="selectElemento" size="6">
                                 {section name=opt loop=$elementosColoridos}
                                 <option value="{$elementosColoridos[opt].cookieElemento}">{$elementosColoridos[opt].descricaoElemento}</option>
                                 {/section}
@@ -24,7 +24,7 @@
                         <div class="interior">
                             <button id="rainbowButton" onClick="document.querySelector('#colorPicker').jscolor.show();" style="width: 200px; margin-left: 1px; padding-left: 15px; padding-right: 15px; padding-top: 3px; background-image: url('{$includePATH}imagens/ColorPicker.png'); background-size: auto; color: var(--theme-dark);">Pick a Color</button>
                             <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
-                            <select id="SelectColorForm" onChange="onChangeSelectColorForm();" size="6" style="clear: both; width: 200px;">
+                            <select id="selectColor" onChange="onChangeselectColor();" size="6" style="clear: both; width: 200px;">
                                 {section name=opt loop=$paresCores}
                                 <option value="{$paresCores[opt].valorCor}" style="color: {$paresCores[opt].hspCor}; background-color: {$paresCores[opt].valorCor}">{$paresCores[opt].nomeCor}</option>
                                 {/section}                
@@ -46,7 +46,7 @@
 <script>
 jscolor.presets.default = {
     format: 'hex', 
-    valueElement: '#zzSelectColorForm',
+    valueElement: '#selectedColor',
     required: false, 
     palette: getAllThemeColors(), 
     backgroundColor: getThemeColor('dark'), 

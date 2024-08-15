@@ -1,7 +1,7 @@
-function onChangeSelectColorForm() {
+function onChangeselectColor() {
   const preview = document.querySelector('#previewColorPicked');
-  const zzselect = document.querySelector('#zzSelectColorForm');
-  const selectCF = document.querySelector('#SelectColorForm');
+  const zzselect = document.querySelector('#selectedColor');
+  const selectCF = document.querySelector('#selectColor');
 
   preview.style.backgroundColor = selectCF.value;
   zzselect.value = selectCF.value;
@@ -9,7 +9,7 @@ function onChangeSelectColorForm() {
 
 function onChangeColorPicker() {
   const preview = document.querySelector('#previewColorPicked');
-  const zzselect = document.querySelector('#zzSelectColorForm');
+  const zzselect = document.querySelector('#selectedColor');
   const colorPicker = document.querySelector('#colorPicker');
 
   preview.style.backgroundColor = colorPicker.jscolor.valueElement.value;
