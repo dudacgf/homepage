@@ -68,7 +68,7 @@ border-width: 1pt; border-style: solid; vertical-align: top; text-align: center;
 font-size: 1em; font-weight: bold;
 }
 .colorButton {
-width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; padding-top: 3px; text-align: left;
+width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; padding-top: 3px; text-align: left; font-size: smaller;
 }
 /*----------------------------------------
  *------- Estrutura da tabela de links ---
@@ -155,60 +155,16 @@ div.headclickable, div.headexpandable {
 border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-left-style: solid;
 height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
 }
-div.headclickable:before {
+
+/* ajustes nas font awsome */
+[class^="fa-"]::before, [class*="fa-"]::before {
     font-family: "Font Awesome 6 Free";
-    content: "\f0fe";
-    display: inline-block;
-    padding-right: 3px;
-    padding-left: 3px;
-    vertical-align: middle;
-    font-weight: 900;
-}
-div.headexpandable:before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f055";
-    display: inline-block;
-    padding-right: 3px;
-    padding-left: 3px;
-    vertical-align: middle;
-    font-weight: 600;
-}
-.check:before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f058";
-    display: inline-block;
     padding-right: 10px;
     padding-left: 3px;
-    vertical-align: middle;
+    padding-bottom: 2px;
     font-weight: 600;
 }
-.xmark:before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f057";
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 3px;
-    vertical-align: middle;
-    font-weight: 600;
-}
-.trash:before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f1f8";
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 3px;
-    vertical-align: middle;
-    font-weight: 600;
-}
-.floppy:before {
-    font-family: "Font Awesome 6 Free";
-    content: "\f0c7";
-    display: inline-block;
-    padding-right: 10px;
-    padding-left: 3px;
-    vertical-align: middle;
-    font-weight: 600;
-}
+
 /* 
  * páginas administrativas. 
  *
@@ -288,3 +244,4 @@ padding: 0.3em 0.3em 0.3em 0.3em;
     background: none;
     opacity: 0.7;
 }
+

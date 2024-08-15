@@ -1,22 +1,6 @@
 <script type="text/javascript" src="{$includePATH}js/api_cores.js"></script>
 <script type="text/javascript" src="{$includePATH}js/jscolor.min.js"></script>
 <script type="text/javascript" src="{$includePATH}js/api_cores_aux.js"></script>
-<script>
-jscolor.presets.default = {
-    format: 'hex', 
-    valueElement: '#zzSelectColorForm',
-    required: false, 
-    palette: getAllThemeColors(), 
-    backgroundColor: getThemeColor('dark'), 
-    previewPosition: 'right',
-    closeButton: true,
-    closeText: 'Fechar',
-    buttonColor: getThemeColor('light'),
-    container: '#rainbowButton', 
-    position: 'bottom',
-    onChange: onChangeColorPicker,
-}
-</script>
 <div class="content" style="text-align: left; height: auto;">
     <div class="tituloLateral" style="width: inherit; float: none; font-size: larger; margin: 0;">Seleção de Cores</div>
     <div class="lineForm">
@@ -49,13 +33,29 @@ jscolor.presets.default = {
                     </div>
                     <div style="display: inline-grid; float: left;">
                         <div id="previewColorPicked" style="border: 1px solid var(--theme-medium); width: 180px; height: 28px; margin-left: 3px; margin-bottom: 6px;"></div>
-                        <button class="submit colorButton check" onClick="alterarRootVar();">Alterar</button>
-                        <button class="submit colorButton xmark" onClick="restaurarRootVar();">Restaurar</button>
-                        <button class="submit colorButton trash" onClick="restaurarRootcssPagina();">Restaurar Página</button>
-                        <button class="submit colorButton floppy" onClick="novoEstilo();">Salvar Estilo</button>
+                        <button class="submit colorButton fa-check-circle" onClick="alterarRootVar();">Alterar</button>
+                        <button class="submit colorButton fa-arrow-rotate-left" onClick="restaurarRootVar();">Restaurar</button>
+                        <button class="submit colorButton fa-circle-xmark" onClick="restaurarRootcssPagina();">Restaurar Página</button>
+                        <button class="submit colorButton fa-floppy-disk" onClick="novoEstilo();">Salvar Estilo</button>
                     </div>
                 </div>
             </form>
         </div><!-- class=formLateral" -->
     </div><!-- class=lineForm-->
 </div><!-- class=content -->
+<script>
+jscolor.presets.default = {
+    format: 'hex', 
+    valueElement: '#zzSelectColorForm',
+    required: false, 
+    palette: getAllThemeColors(), 
+    backgroundColor: getThemeColor('dark'), 
+    previewPosition: 'right',
+    closeButton: true,
+    closeText: 'Fechar',
+    buttonColor: getThemeColor('light'),
+    container: '#rainbowButton', 
+    position: 'bottom',
+    onChange: onChangeColorPicker,
+}
+</script>
