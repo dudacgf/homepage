@@ -149,31 +149,6 @@ function ocultarFormDiv() {
 }
 
 /*****
- * reloadElementos - recarrega a divisão que exibe os elementos de um grupo
- *
-*****/
-async function reloadElementos() {
-    var r;
-    const idGrp = document.getElementById('idGrp').value;
-    const url = window.includePATH + 'api/obterElementos.php?idGrp=' + idGrp;
-
-    try {
-        const response = await fetch(url);
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
-
-        if (r.status != 'success') 
-            return r;
-
-    } catch (err) {
-        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
-    }
-
-    document.getElementById('elementos_div').innerHTML = r.message;
-    return r;
-}
-
-/*****
  * reloadCategorias - recarrega a divisão que exibe as categorias de uma página
  *
 *****/
@@ -193,7 +168,10 @@ async function reloadCategorias(idPagina) {
         return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
     }
 
+    const catDiv = document.querySelector('#categorias_div');
+    catDiv.classList.toggle('fadeinout');
     document.getElementById('categorias_div').innerHTML = r.message;
+    setTimeout( () => { catDiv.classList.toggle('fadeinout'); }, 2000);
     return r;
 }
 
@@ -217,7 +195,38 @@ async function reloadGrupos(idCat) {
         return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
     }
 
-    document.getElementById('grupos_div').innerHTML = r.message;
+    const grpDiv = document.querySelector('#grupos_div');
+    grpDiv.classList.toggle('fadeinout');
+    grpDiv.innerHTML = r.message;
+    setTimeout( () => { grpDiv.classList.toggle('fadeinout'); }, 2000);
+    return r;
+}
+
+/*****
+ * reloadElementos - recarrega a divisão que exibe os elementos de um grupo
+ *
+*****/
+async function reloadElementos() {
+    var r;
+    const idGrp = document.getElementById('idGrp').value;
+    const url = window.includePATH + 'api/obterElementos.php?idGrp=' + idGrp;
+
+    try {
+        const response = await fetch(url);
+        const responseData = await response.json();
+        r = eval("(" + responseData + ")");
+
+        if (r.status != 'success') 
+            return r;
+
+    } catch (err) {
+        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
+    }
+
+    const elDiv = document.querySelector('#elementos_div');
+    elDiv.classList.toggle('fadeinout');
+    elDiv.innerHTML = r.message;
+    setTimeout( () => { elDiv.classList.toggle('fadeinout'); }, 2000);
     return r;
 }
 
