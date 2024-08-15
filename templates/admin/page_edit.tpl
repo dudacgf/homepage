@@ -52,7 +52,7 @@ function doAction(pressed) {
         {/section}
         </select>
     </div>
-    <div class="item" style="clear: left; width: 70%; align: right;">
+    <div class="item" style="clear: left; width: 70%; align: right; color: var(--theme-dark);">
         <input id="displayGoogle" type="checkbox" name="displayGoogle" {if $displayGoogle == '1'}checked{/if} />
         <label for="displayGoogle">{$LANG.hp_paginas_displayGoogle}</label>
         <input id="displayFortune" type="checkbox" name="displayFortune" {if $displayFortune == '1'}checked{/if} />
