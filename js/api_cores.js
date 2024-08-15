@@ -220,7 +220,7 @@ const restaurarRootcssPagina = async () => {
 
     let formData = new FormData();
     formData.append('idPagina', aPagina);
-    let r = await colorAction('resetPagina', {body: formData, method: 'POST'});
+    let r = await colorAction('delAllColorCookies', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
         var all_vars = [];
