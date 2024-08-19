@@ -70,9 +70,6 @@ function doAction(pressed) {
 {/if}
         <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> 
     </div>
-    <div class="exemploCategoria">
-{include file="page_body.tpl"}
-    </div>
 </form>
 {if !$criarPagina}
 <p>
