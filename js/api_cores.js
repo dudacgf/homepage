@@ -43,6 +43,41 @@ const getThemeColor = (umaCor) => {
 }
 
 /*
+ * getThemeColorHSP - obtém o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
+ *                    de uma das variáveis de cor para o estilo css atual
+ *
+ * recebe:
+ * umaCor - o nome de uma variável de cor
+ *
+ * retorna:
+ * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
+ */
+const getThemeColorHSP = (umaCor) => {
+    var c = document.createElement("canvas");
+    var ctx = c.getContext("2d");
+    const root = document.querySelector(':root');
+
+    if (umaCor.startsWith('var(--theme-'))
+        umaCor = umaCor.slice(12, -1);
+
+    ctx.fillStyle = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
+    const aCorHex = ctx.fillStyle;
+
+    let r = parseInt(aCorHex.substr(1,2), 16);
+    let g = parseInt(aCorHex.substr(3,2), 16);
+    let b = parseInt(aCorHex.substr(5,2), 16);
+
+    let hsp = Math.sqrt((0.299 * r * r) + (0.587 * g * g) + (0.114 * b * b));
+
+    if (hsp > 128)
+        hspColor = '#000000';
+    else
+        hspColor = '#ffffff';
+    c.remove();
+    return hspColor;
+}
+
+/*
  * getAllThemeColors - obtém as cores das variáveis de cor para o estilo css atual
  *
  * retorna:
