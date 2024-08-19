@@ -28,7 +28,7 @@
 	<div class="subTitulo">{$LANG.categoriavazia}</div>
 {/section}
 <div class="subTitulo">{$LANG.novoGrupo}:</div>
-<div class="fortune">
+<div class="novoFilho">
 <form id="nwCat">
 	<select id="grupoSelector" name="grupoSelector">
 	{section name=ne loop=$gruposAusentes}

@@ -91,7 +91,7 @@ function doAction(pressed) {
 {include file="admin/elementos_div.tpl"}
 </div>
 <div class="subTitulo">{$LANG.novosElementos}:</div>
-<div class="fortune" style="text-align: center; padding: 0; margin: 0; height: 30px;">
+<div class="novoFilho" style="text-align: center; padding: 0; margin: 0; height: 30px;">
     <div class="newItem_div" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
         :: {$LANG.novoLink} ::
     </div>

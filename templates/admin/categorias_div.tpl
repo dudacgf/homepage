@@ -24,7 +24,7 @@
 <p>
 {/section}
 <div class="subTitulo">{$LANG.novaCategoria}:</div>
-<div class="fortune">
+<div class="novoFilho">
 <form id="nwCat" method="POST">
     <select id="categoriaSelector" name="categoriaSelector">
     {section name=dnc loop=$categoriasAusentes}
