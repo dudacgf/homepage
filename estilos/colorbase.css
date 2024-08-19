@@ -18,6 +18,7 @@
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: darkslategray;
     --theme-tituloC: whitesmoke;
+    --theme-tituloBB: lightslategray;
     /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: darkslategray;
     --theme-fortuneC: whitesmoke;
@@ -56,19 +57,22 @@
 }
 body {
     background-color: var(--theme-bodyBG);
-    color: var(--theme-bodyC); 
     background-image: var(--theme-picColor);
 }
 /* fortunes */
-div.fortune {
+div.fortune,
+div.novoFilho {
     background-color: var(--theme-fortuneBG);
     color: var(--theme-fortuneC);
 }
-
+.copyright {
+    color: var(--theme-fortuneC);
+}
 /* categorias (colunas) */
 div.titulo {
     background-color: var(--theme-tituloBG);
     color: var(--theme-tituloC);
+    border-bottom-color: var(--theme-tituloBB);
 }
 div.tituloCategoria, div.tituloLateral {
     background-color: var(--theme-tituloCategBG);
@@ -148,7 +152,7 @@ div.item {
   border-color: var(--theme-bodyC); 
   color: var(--theme-itemC);
 }
-div.colunaTransparente {
+div.colunaTransparente, div.colunaTransparente div.item {
 	border-bottom: 1pt var(--theme-dark) solid;
 }
 #form_div {

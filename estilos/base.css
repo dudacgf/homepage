@@ -9,13 +9,21 @@
 
   nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
-* { 
-font-size: 1em; font-family: georgia, roboto, verdana, tahoma, sans-serif;
+:root {
+    font-family: roboto, verdana, arial, helvetica;
+    font-size: 12px;
+    --theme-picColor: unset;
+    --theme-bodyBG: #f0f0f0;
+    color: var(--theme-bodyC);
 }
 body {
-overflow-y: auto; overflow-x: hidden; text-align: left; vertical-align: bottom; text-decoration: none;
-margin: 0pt; padding: 0pt; border: 0pt none;
-background-repeat: no-repeat; background-position: top right;  
+    border: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+    background-repeat: no-repeat;
+    background-position: top right;  
 }
 a { 
 display: block; text-decoration: none; font-weight: normal; white-space: nowrap;
@@ -30,22 +38,6 @@ display: none;
 a:hover span.popup {
 display: block; position: absolute; width: 200px; padding: 5px; margin: 5px; 
 border-right: 1px solid; border-bottom: 1px solid;
-}
-span.separador {
-font-weight: bold;
-}
-.texto {
-vertical-align: bottom;
-}
-.copyright {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    font-size: xx-small;
-    font-weight: normal;
-}
-.copyright:hover {
-    font-size: larger;
 }
 form {
 margin-top: 0pt; margin-bottom: 0pt;
@@ -73,8 +65,19 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
 /*----------------------------------------
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
-div.titulo, div.titulo a {
-clear: both; font-size: 2.0em; font-weight: bold; height: 30px; vertical-align: middle; padding-top: 15px; padding-bottom: 20px; padding-left: 5px;
+.titulo {
+    font-size: 4em;
+    font-weight: bolder;
+    background-color: var(--theme-light);
+    color: var(--theme-tituloBG);
+    width: 100%;
+    min-height: 15%;
+    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    border-bottom: 20px solid;
+    display: flex;
 }
 div.content {
 clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center;
@@ -101,26 +104,17 @@ div.formLateral {
 border-width: 0pt; padding: 0pt; margin-top: 2pt; float: left;
 }
 div.fortune {
-font-size: 0.9em; clear: both; padding: 2pt; border: 1pt;
+font-size: 0.9em; clear: both; 
+margin: 0; padding: 10px; border: 0;
+position: fixed; bottom: 0px; left: 0px; width: 100%;
 }
 
+div.novoFilho {
+font-size: 0.9em; clear: both; 
+width: 100%; margin: 0; padding: 10px; border: 0;
+}
 div.fortune a {
-font-weight: bold; display: inline; font-size: 1em;
-}
-/* 
- * Específico das páginas wap.
- */
-div.wtitulo {
-clear: both; font-size: 2.0em; font-weight: bold; height: 35px; vertical-align: middle; padding-left: 5px; padding-bottom: 5px; margin-bottom: 3px;
-}
-div.wcategoria {
-clear: both; font-size: 1.7em; font-weight: bold; height: 30px; vertical-align: middle; padding-left: 15px; padding-bottom: 5px; margin-bottom: 2px;
-}
-div.wgrupo {
-clear: both; font-size: 1.5em; font-weight: bold; height: 20px; vertical-align: middle; padding-left: 25px; padding-bottom: 5px; margin-bottom: 1px;
-}
-div.wlink {
-clear: both; font-size: 1.3em; font-weight: bold; height: 15px; vertical-align: middle; padding-left: 40px; padding-bottom: 5px;
+font-weight: bold; display: inline; font-size: 1em; width: 100%;
 }
 /*
  * as classes a seguir fazem a magica dos menus expansiveis. São de dois tipos:
@@ -155,6 +149,22 @@ div.headclickable, div.headexpandable {
 border-top-width: 1pt; border-left-width: 1pt; border-top-style: solid; border-left-style: solid;
 height: 18pt; font-size: 0.9em; cursor: pointer; margin-top: 2pt; white-space: nowrap;
 }
+span.separador {
+font-weight: bold;
+}
+.texto {
+vertical-align: bottom;
+}
+.copyright {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    font-size: xx-small;
+    font-weight: normal;
+}
+.copyright:hover {
+    font-size: larger;
+}
 
 /* ajustes nas font awsome */
 [class^="fa-"]::before, [class*="fa-"]::before {
@@ -178,8 +188,10 @@ text-align: right; font-size: 0.9em; font-weight: bold; border: 0pt; float: left
 div.item {
 font-size: 0.9em; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;
 }
-div.exemploCategoria {
-position: absolute; float: right; right: 5px; top: 70px; width: 30%; text-align: left;
+iframe.exemploCategoria {
+position: absolute; left: 70%; top: 0px; z-index: 10;
+width: 50vw; height: 40vw; transform: translate(-10%, -20%) scale(0.30);
+-webkit-transform-origin: 0.0;
 }
 div.exemploCategoria a {
 display: block;
