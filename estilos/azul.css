@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: lightsteelblue;
     --theme-bodyC: white;
-    --theme-picColor: url("../imagens/azul_bkg.gif");
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: steelblue;
     --theme-tituloC: white;

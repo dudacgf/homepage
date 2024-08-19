@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: white;
     --theme-bodyC: #333333;
-    --theme-picColor: url("../drawing/background.php?r=240&g=240&b=240"); /* silver; */
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #43609C;
     --theme-tituloC: whitesmoke;

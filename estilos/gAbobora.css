@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: #708090;
     --theme-bodyC: #202020;
-    --theme-picColor: url("../drawing/background.php?r=119&g=136&b=153");
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #404040;
     --theme-tituloC: #ffa500;

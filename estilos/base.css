@@ -12,7 +12,6 @@
 :root {
     font-family: roboto, verdana, arial, helvetica;
     font-size: 12px;
-    --theme-picColor: unset;
     --theme-bodyBG: #f0f0f0;
     color: var(--theme-bodyC);
 }
@@ -22,8 +21,6 @@ body {
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
-    background-repeat: no-repeat;
-    background-position: top right;  
 }
 a { 
 display: block; text-decoration: none; font-weight: normal; white-space: nowrap;

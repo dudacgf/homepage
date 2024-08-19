@@ -138,23 +138,6 @@ function hex2i(f1) {
 }
 
 /*
- * pixColrUrl - retorna uma url para a rotina que desenha e colore os 
- *               círculos concêntricos utilizados como background-image
- *
- * recebe:
- * aColor - uma cor html válida em quaquer format ('#rrggbb', 'violet', 'rgb(255, 255, 255)', 'hsl(250, 80%, 35%)' etc)
- *
- * retorna:
- * a url para a rotina de colorir os círculos concêntricos
- */
-function picColorUrl(aColor) {
-    var ctx = document.createElement("canvas").getContext("2d");
-    ctx.fillStyle = aColor;
-    color = ctx.fillStyle;
-    return 'url("../drawing/background.php?r=' + hex2i(color.substr(1, 2)) + '&g=' + hex2i(color.substr(3, 2)) + '&b=' + hex2i(color.substr(5, 2)) + '")';
-}
-
-/*
  * colorAction - 
  *
  * recebe:
@@ -206,7 +189,7 @@ const alterarRootVar = async () => {
     let r = await colorAction('addColorCookie', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
-        root_css.style.setProperty("--theme-" + root_var, (root_var == 'picColor'?picColorUrl(color):color));
+        root_css.style.setProperty("--theme-" + root_var, color);
     } 
     createToast(r.status, r.message);
 }

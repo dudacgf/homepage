@@ -13,7 +13,6 @@
 body.grey {
 background-color: #708090;
 color: #ffffff;
-background-image: url("../drawing/background.php?r=119&g=136&b=153");
 }
 body.grey a:hover span.popup {
 background-color: #666666;

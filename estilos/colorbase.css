@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: lightgray;
     --theme-bodyC: dimgray;
-    --theme-picColor: url("../drawing/background.php?r=192&g=192&b=192"); /* silver; */
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: darkslategray;
     --theme-tituloC: whitesmoke;
@@ -57,7 +56,6 @@
 }
 body {
     background-color: var(--theme-bodyBG);
-    background-image: var(--theme-picColor);
 }
 /* fortunes */
 div.fortune,

@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: white;
     --theme-bodyC: white;
-    --theme-picColor: url("../imagens/wazul_bkg.gif");
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: steelblue;
     --theme-tituloC: white;

@@ -14,7 +14,6 @@
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: #FFCC66;
     --theme-bodyC: white;
-    --theme-picColor: url("../imagens/abobora_bkg.gif");
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #FF8C00;
     --theme-tituloC: whitesmoke;
