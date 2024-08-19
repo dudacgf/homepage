@@ -14,9 +14,17 @@
                         <div class="interior">
                             <select id="selectElemento" size="6">
                                 {section name=opt loop=$elementosColoridos}
-                                <option value="{$elementosColoridos[opt].cookieElemento}">{$elementosColoridos[opt].descricaoElemento}</option>
+                                <option value="{$elementosColoridos[opt].cookieElemento}" style="background-color: var(--theme-{$elementosColoridos[opt].cookieElemento});">{$elementosColoridos[opt].descricaoElemento}</option>
                                 {/section}
                             </select>
+                            <script>
+                            function setColor(item, index) {
+                                let aCor = getThemeColorHSP(item.style.backgroundColor);
+                                item.style.color = aCor;
+                            }
+                            var select = document.getElementById('selectElemento');
+                            Array.from(select.options).forEach(setColor);
+                            </script>
                         </div>
                     </div>
                     <div style="float: left;">
