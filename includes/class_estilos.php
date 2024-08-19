@@ -278,13 +278,7 @@ class cookedStyle
         try {
             $cookies = $_sql->get_result();
             while ($cookie = $cookies->fetch_assoc()) {
-                if ($cookie['root_var'] != 'picColor')
-                    $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $cookie['color']);
-                else {
-                    $rgb = new RGBColor($cookie['color']);
-                    $drawUrl = "url('../drawing/background.php?r=" . $rgb->r . "&g=" . $rgb->g . "&b=" . $rgb->b . "')";
-                    $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $drawUrl);
-                }
+                $colorCookies[] = array('root_var' => '--theme-' . $cookie['root_var'], 'color' => $cookie['color']);
             }
         } catch (Exception $e) {
             throw new Exception("Erro ao obter cores dinâmicas para essa página: $e->getMessage()");
