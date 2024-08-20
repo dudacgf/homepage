@@ -11,8 +11,10 @@
 /admin/templates_c/*
 /admin/pictures/templates_c/*
 /admin/.htaccess
+/admin/.htpasswd.ghtpasswd
 /api/.htaccess
 /backup/*.sql
+/configs/*
 /vendor/*
 /webfonts/*
 
