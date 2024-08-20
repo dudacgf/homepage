@@ -12,47 +12,48 @@
     --theme-medium: gray;
     --theme-light: white;
     /* Página (body): background-color, color, background-image */
-    --theme-bodyBG: lightgray;
-    --theme-bodyC: dimgray;
+    --theme-bodyBG: #D3D3D3;
+    --theme-bodyC: #696969;
     /* Título da página (div.titulo): background-color, color */
-    --theme-tituloBG: darkslategray;
-    --theme-tituloC: whitesmoke;
-    --theme-tituloBB: lightslategray;
+    --theme-tituloBG: #2F4F4F;
+    --theme-tituloC: #F5F5F5;
+    --theme-tituloBB: #778899;
     /* fortune (div.fortune): background-color, color */
-    --theme-fortuneBG: darkslategray;
-    --theme-fortuneC: whitesmoke;
+    --theme-fortuneBG: #2F4F4F;
+    --theme-fortuneC: #F5F5F5;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
-    --theme-tituloCategBG: darkslategray;
-    --theme-tituloCategC: whitesmoke;
-    --theme-categBTL: slategray;
+    --theme-tituloCategBG: #2F4F4F;
+    --theme-tituloCategC: #F5F5F5;
+    --theme-categBTL: #708090;
     --theme-categBBR: black;
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
     --theme-expandedBG: gray;
-    --theme-expandedBTL: lightgray;
-    --theme-expandedBBR: dimgray;
+    --theme-expandedBTL: #D3D3D3;
+    --theme-expandedBBR: #696969;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
-    --theme-expandBG: darkslategray;
-    --theme-expandC: whitesmoke;
-    --theme-expandBTL: slategray;
-    --theme-expandBBR: darkslategray;
+    --theme-expandBG: #2F4F4F;
+    --theme-expandC: #F5F5F5;
+    --theme-expandBTL: #708090;
+    --theme-expandBBR: #2F4F4F;
     /* input type=text and select: background-color, color */
-    --theme-inputBG: lightgray;
+    --theme-inputBG: #D3D3D3;
     --theme-inputC: black;
+    --theme-inputBTL: black;
+    --theme-inputBBR: #C0C0C0;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
-    --theme-buttonC: whitesmoke;
-    --theme-buttonBG: darkslategray;
-    --theme-buttonBTL: slategray;
+    --theme-buttonC: #F5F5F5;
+    --theme-buttonBG: #2F4F4F;
+    --theme-buttonBTL: #708090;
     --theme-buttonBBR: black;
     /* Separadores (span.separador): background-color, color */
-    --theme-sepC: dimgray;
+    --theme-sepC: #696969;
     /* Links (a): color */
-    --theme-linkC: dimgray;
+    --theme-linkC: #696969;
     /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
     --theme-expandedColor: #333333;
-    --theme-linkH: whitesmoke;
-    --theme-fontS: 1.2em;
+    --theme-linkH: #F5F5F5;
     /* Grupos (div.interior): background-color */
-    --theme-interiorBG: darkgray;
+    --theme-interiorBG: #A9A9A9;
 }
 body {
     background-color: var(--theme-bodyBG);
@@ -121,13 +122,13 @@ div.tituloColuna:hover a {
     color: var(--theme-linkC);
 }
 /* inputs, selects, buttons etc */
-input, select {
+input[type=text], select {
     background-color: var(--theme-inputBG);
     color: var(--theme-inputC);
-    border-Top-color: var(--theme-expandBBR); 
-    border-Left-color: var(--theme-expandBBR);
-    border-Bottom-color: var(--theme-expandBTL);
-    border-Right-color: var(--theme-expandBTL);
+    border-Top-color: var(--theme-inputBTL); 
+    border-Left-color: var(--theme-inputBTL);
+    border-Bottom-color: var(--theme-inputBBR);
+    border-Right-color: var(--theme-inputBBR);
 }
 input.submit, button {
   border-Top-color: var(--theme-buttonBTL); 

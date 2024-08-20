@@ -1,59 +1,63 @@
-/*----------------------------------------------------------
+/*---------------------------------------------------------------------
 
-  gGrey.css
+  gAbobora.css
   (c) ecgf - 2006
 
-  ver colorbase.css, que determina as cores da página
+  ver colorbase.css, que define uso de cores nas páginas
 
-  Estilo gGrey - fundo grafiti, destaques em preto
-------------------------------------------------------------*/
+  Estilo gAbobora - fundo em cinza, detalhes em abobora sobre grafite
+---------------------------------------------------------------------*/
 :root {
     --theme-dark: #404040;
-    --theme-medium: #709090;
-    --theme-light: #e4dcbb;
+    --theme-medium: #909090;
+    --theme-light: white;
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: #708090;
     --theme-bodyC: #202020;
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #404040;
-    --theme-tituloC: #c6b9a6;
+    --theme-tituloC: #FFFFFF;
+    --theme-tituloBB: #C0C0C0;
     /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: #404040;
-    --theme-fortuneC: #e4dcbb;
+    --theme-fortuneC: #FFFFFF;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
     --theme-tituloCategBG: #404040;
-    --theme-tituloCategC: #e4dcbb;
-    --theme-categBTL: #ADD8E6;
-    --theme-categBBR: #00008B;
+    --theme-tituloCategC: #FFFFFF;
+    --theme-categBTL: #999999;
+    --theme-categBBR: #000000;
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-expandedC: black;
     --theme-expandedBG: #666666;
-    --theme-expandedC: #e4dcbb;
     --theme-expandedBTL: #999999;
     --theme-expandedBBR: #000000;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
     --theme-expandBG: #404040;
-    --theme-expandC: #e4dcbb;
+    --theme-expandC: #FFFFFF;
     --theme-expandBTL: #999999;
     --theme-expandBBR: #000000;
     /* input type=text and select: background-color, color */
-    --theme-inputBG: #F5F5F5;
-    --theme-inputC: #2F4F4F;
+    --theme-inputBG: #D3D3D3;
+    --theme-inputC: black;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
-    --theme-buttonC: #e4dcbb;
+    --theme-buttonC: #FFFFFF;
     --theme-buttonBG: #404040;
     --theme-buttonBTL: #999999;
     --theme-buttonBBR: #000000;
     /* Separadores (span.separador): background-color, color */
-    --theme-sepC: #404040;
-    --theme-expandedSepC: #e4dcbb;
+    --theme-sepC: #202020;
     /* Links (a): color */
     --theme-linkC: #101010;
     /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
-    --theme-linkExpandedColor: #101010;
-    --theme-linkH: #e4dcbb;
-    --theme-fontS: 1.2em;
-    /* Grupos (div.interior): background-color */
-    --theme-interiorBG: #999999;
-    /* div.item: color */
-    --theme-itemC: #404040;
+    --theme-linkH: #404040;
+    --theme-expandedColor: white;
 }
+/* extras */
+div.interior:hover a, div.expandable:hover a, div.expanded:hover a {
+    color: var(--theme-light);
+}
+div.tituloColuna a, div.tituloColuna:hover a {
+    background-color: var(--theme-buttonBG);
+    color: var(--theme-buttonC);
+}
+

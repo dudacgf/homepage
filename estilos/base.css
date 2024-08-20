@@ -9,10 +9,16 @@
 
   nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
+@font-face {
+  font-family: "Ubuntu Medium 500";
+  src:
+    url("../webfonts/Ubuntu-Medium.ttf") format("truetype");
+}
+
 :root {
-    font-family: roboto, verdana, arial, helvetica;
+    font-family: Ubuntu Medium 500, Roboto Medium 500, roboto flex, Verdana, Arial, sans-serif;
     font-size: 12px;
-    --theme-bodyBG: #f0f0f0;
+    --theme-bodyBG: #F7F7F7;
     color: var(--theme-bodyC);
 }
 body {
@@ -43,7 +49,6 @@ form a {
 display: inline;
 }
 input, select {
-font-family: verdana, arial, helvetica, sans-serif;  font-size: 0.9em;
 border-Top: 1pt solid; border-Left: 1pt solid; Margin: 1pt;
 }
 select {

@@ -9,40 +9,40 @@
 ------------------------------------------------------------*/
 :root {
     --theme-dark: #43609C;
-    --theme-medium: whitesmoke;
+    --theme-medium: #F5F5F5;
     --theme-light: #C0C0C0;
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: white;
     --theme-bodyC: #333333;
     /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #43609C;
-    --theme-tituloC: whitesmoke;
+    --theme-tituloC: #F5F5F5;
     /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: #43609C;
     --theme-fortuneC: white;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
     --theme-tituloCategBG: #43609C;
     --theme-tituloCategC: #fffff0;
-    --theme-categBTL: lightblue;
-    --theme-categBBR: darkblue;
+    --theme-categBTL: #ADD8E6;
+    --theme-categBBR: #00008B;
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
     --theme-expandedBG: white;
     --theme-expandedC: #333333;
-    --theme-expandedBTL: lightblue;
-    --theme-expandedBBR: darkblue;
+    --theme-expandedBTL: #ADD8E6;
+    --theme-expandedBBR: #00008B;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
     --theme-expandBG: #43609C;
     --theme-expandC: white;
-    --theme-expandBTL: lightblue;
-    --theme-expandBBR: darkblue;
+    --theme-expandBTL: #ADD8E6;
+    --theme-expandBBR: #00008B;
     /* input type=text and select: background-color, color */
-    --theme-inputBG: whitesmoke;
-    --theme-inputC: darkslategray;
+    --theme-inputBG: #F5F5F5;
+    --theme-inputC: #2F4F4F;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
     --theme-buttonC: white;
     --theme-buttonBG: #43609C;
-    --theme-buttonBTL: lightblue;
-    --theme-buttonBBR: darkblue;
+    --theme-buttonBTL: #ADD8E6;
+    --theme-buttonBBR: #00008B;
     /* Separadores (span.separador): background-color, color */
     --theme-sepC: #333333;
     --theme-expandedSepC: #333333;
@@ -53,7 +53,7 @@
     --theme-linkH: #B0B0B0;
     --theme-fontS: 1.2em;
     /* Grupos (div.interior): background-color */
-    --theme-interiorBG: darkgray;
+    --theme-interiorBG: #A9A9A9;
     /* div.item: color */
     --theme-itemC: #43609C;
 }

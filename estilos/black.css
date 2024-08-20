@@ -8,40 +8,40 @@
   Estilo black - fundo grafite escuro, destaques em abobora
 ------------------------------------------------------------*/
 :root {
-    --theme-dark: darkorange;
-    --theme-light: #FFFFFF;
-    --theme-medium: salmon;
+    --theme-dark: #202020;
+    --theme-light: #C0C0C0;
+    --theme-medium: #F7F7F7;
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: #373737;
     --theme-bodyC: white;
     /* Título da página (div.titulo): background-color, color */
-    --theme-tituloBG: #FF8C00;
-    --theme-tituloC: white;
+    --theme-tituloBG: white;
+    --theme-tituloC: #202020;
     /* fortune (div.fortune): background-color, color */
-    --theme-fortuneBG: #FFCC66;
-    --theme-fortuneC: #B22222;
+    --theme-fortuneBG: #202020; 
+    --theme-fortuneC: #FFFFFF;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
-    --theme-tituloCategBG: #FF8C00;
+    --theme-tituloCategBG: #202020; 
     --theme-tituloCategC: white;
-    --theme-categBTL: #FFD700;
-    --theme-categBBR: #D2691E;
+    --theme-categBBR: #202020; 
+    --theme-categBTL: #7F7F7F; 
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
     --theme-expandedBG: #C0C0C0;
     --theme-expandedBTL: #7F7F7F;
     --theme-expandedBBR: #202020;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
-    --theme-expandBG: #FF8C00;
-    --theme-expandC: white;
-    --theme-expandBTL: #FFFF00;
-    --theme-expandBBR: darkorange;
+    --theme-expandBBR: #202020; 
+    --theme-expandBG: #373737; 
+    --theme-expandBTL: #7F7F7F; 
+    --theme-tituloBB: #C0C0C0;
     /* input type=text and select: background-color, color */
     --theme-inputBG: #DFDFDF;
     --theme-inputC: black;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
-    --theme-buttonC: black;
-    --theme-buttonBG: #FF8C00;
-    --theme-buttonBTL: #FFD700;
-    --theme-buttonBBR: #D2691E;
+    --theme-buttonBBR: #000000; 
+    --theme-buttonBG: #373737; 
+    --theme-buttonBTL: #7F7F7F; 
+    --theme-buttonC: #FFFFFF; 
     /* Separadores (span.separador): background-color, color */
     --theme-sepC: black;
     /* Links (a): color */

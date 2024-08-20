@@ -8,40 +8,40 @@
   Estilo Admin - fundo branco, destaques em abobora
 ------------------------------------------------------------*/
 :root {
-    --theme-dark: darkorange;
+    --theme-dark: #FF8C00;
     --theme-light: #FFFFFF;
-    --theme-medium: salmon;
+    --theme-medium: #FA8072;
     /* Página (body): background-color, color, background-image */
     --theme-bodyBG: white;
     --theme-bodyC: black;
     /* Título da página (div.titulo): background-color, color */
-    --theme-tituloBG: darkorange;
+    --theme-tituloBG: #FF8C00;
     --theme-tituloC: black;
     /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: #FFCC66;
-    --theme-fortuneC: firebrick;
+    --theme-fortuneC: #B22222;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
-    --theme-tituloCategBG: darkorange;
+    --theme-tituloCategBG: #FF8C00;
     --theme-tituloCategC: black;
-    --theme-categBTL: gold;
-    --theme-categBBR: Chocolate;
+    --theme-categBTL: #FFD700;
+    --theme-categBBR: #D2691E;
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
-    --theme-expandedBG: darkorange;
-    --theme-expandedBTL: gold;
-    --theme-expandedBBR: Chocolate;
+    --theme-expandedBG: #FF8C00;
+    --theme-expandedBTL: #FFD700;
+    --theme-expandedBBR: #D2691E;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
-    --theme-expandBG: darkorange;
+    --theme-expandBG: #FF8C00;
     --theme-expandC: black;
     --theme-expandBTL: #FFFF00;
-    --theme-expandBBR: darkorange;
+    --theme-expandBBR: #FF8C00;
     /* input type=text and select: background-color, color */
     --theme-inputBG: #FFCC66;
-    --theme-inputC: firebrick;
+    --theme-inputC: #B22222;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
     --theme-buttonC: black;
-    --theme-buttonBG: darkorange;
-    --theme-buttonBTL: gold;
-    --theme-buttonBBR: Chocolate;
+    --theme-buttonBG: #FF8C00;
+    --theme-buttonBTL: #FFD700;
+    --theme-buttonBBR: #D2691E;
     /* Separadores (span.separador): background-color, color */
     --theme-sepC: black;
     /* Links (a): color */
@@ -53,7 +53,7 @@
     /* Grupos (div.interior): background-color */
     --theme-interiorBG: white;
     /* item (páginas admnistrativas): color */
-    --theme-itemC: firebrick;
+    --theme-itemC: #B22222;
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {

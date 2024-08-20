@@ -8,51 +8,52 @@
   Estilo azul - fundo azul claro, destaques em azul escuro
 ------------------------------------------------------------*/
 :root {
-    --theme-dark: darkblue;
-    --theme-medium: steelblue;
-    --theme-light: lightsteelblue;
+    --theme-dark: #00008B;
+    --theme-medium: #4682B4;
+    --theme-light: #B0C4DE;
     /* Página (body): background-color, color, background-image */
-    --theme-bodyBG: lightsteelblue;
+    --theme-bodyBG: #B0C4DE;
     --theme-bodyC: white;
     /* Título da página (div.titulo): background-color, color */
-    --theme-tituloBG: steelblue;
+    --theme-tituloBG: #4682B4;
     --theme-tituloC: white;
+    --theme-tituloBB: #43609C;
     /* fortune (div.fortune): background-color, color */
-    --theme-fortuneBG: steelblue;
+    --theme-fortuneBG: #4682B4;
     --theme-fortuneC: white;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
-    --theme-tituloCategBG: steelblue;
+    --theme-tituloCategBG: #4682B4;
     --theme-tituloCategC: white;
-    --theme-categBTL: lightblue;
-    --theme-categBBR: darkblue;
+    --theme-categBTL: #ADD8E6;
+    --theme-categBBR: #00008B;
     /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
-    --theme-expandedBG: steelblue;
-    --theme-expandedBTL: lightblue;
-    --theme-expandedBBR: darkblue;
+    --theme-expandedBG: #4682B4;
+    --theme-expandedBTL: #ADD8E6;
+    --theme-expandedBBR: #00008B;
     /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
-    --theme-expandBG: steelblue;
+    --theme-expandBG: #4682B4;
     --theme-expandC: white;
-    --theme-expandBTL: lightblue;
-    --theme-expandBBR: darkblue;
+    --theme-expandBTL: #ADD8E6;
+    --theme-expandBBR: #00008B;
     /* input type=text and select: background-color, color */
-    --theme-inputBG: lightgray;
-    --theme-inputC: darkblue;
+    --theme-inputBG: #D3D3D3;
+    --theme-inputC: #00008B;
     /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
     --theme-buttonC: white;
-    --theme-buttonBG: steelblue;
-    --theme-buttonBTL: lightsteelblue;
-    --theme-buttonBBR: darkblue;
+    --theme-buttonBG: #4682B4;
+    --theme-buttonBTL: #B0C4DE;
+    --theme-buttonBBR: #00008B;
     /* Separadores (span.separador): background-color, color */
     --theme-sepC: white;
     /* Links (a): color */
-    --theme-linkC: darkblue;
+    --theme-linkC: #00008B;
     /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
     --theme-linkH: white;
-    --theme-expandedColor: steelblue;
+    --theme-expandedColor: #4682B4;
     --theme-fontS: 1.2em;
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
-    background-color: steelblue;
+    background-color: #4682B4;
     color: white;
 }
