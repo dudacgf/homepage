@@ -14,6 +14,7 @@
 	<div id="fortune" style="width: 100%; height: 120px; clear: both; float: left; padding=10px; margin=10px;">
 		<div class="fortune">
 			<br />{$fortuneCookie}
+        </div>
 	</div>
 </body>
 </html>
