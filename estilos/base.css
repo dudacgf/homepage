@@ -274,3 +274,13 @@ padding: 0.3em 0.3em 0.3em 0.3em;
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
 }
+
+.rainbow {
+text-align: left; width: 200px; margin-left: 1px; padding-left: 15px; padding-right: 15px; padding-top: 3px;
+}
+.interior .colorWheel::before {
+    content: url('../imagens/colorWheel.png');
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-bottom: 2px;
+}
