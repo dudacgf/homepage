@@ -6,12 +6,12 @@ function write_config_files() {
     // grava os arquivos .htaccess nos diretórios a serem protegidos
 
     // admin: restrição de autenticação e desvio do 404
-    write_htaccess('admin', array('error_404'=>'404/404.php', 'auth_needed'=>true, 'auth_user'=>'admin', 'auth_pw'=>'brbcre.64'));
+    write_htaccess('admin', array('error_404'=>'404/404.php', 'auth_needed'=>true, 'auth_user'=>'admin', 'auth_pw'=>''));
     //write_htaccess('admin', '404/404.php', [], true, $requests['admin_name'], $requests['admin_pw']);
 
     // api: restrição de autenticação, desvio do 401 e do 404, exceções para acesso a alguns scripts
     write_htaccess('api', array('error_401'=>'api/401.php', 'error_404'=>'api/404.php', 
-                                'auth_needed'=>true, 'auth_user'=>'admin', 'auth_pw'=>'brbcre.64',
+                                'auth_needed'=>true, 'auth_user'=>'admin', 'auth_pw'=>'',
                                 'allowed_files'=>['addColorCookie.php','delColorCookie.php','delAllColorCookies.php','401.php','404.php']));
     //write_htaccess('api', 'api/404.php', [], true, $requests['admin_name'], $requests['admin_pw']);
 
