@@ -24,7 +24,7 @@
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarCategoria}</th></tr>
 	<tr><td>
 		<br />
-		<select name="idCat" id="idCat" size="5">
+		<select name="idCat" id="idCat" size="15">
 		{section name=cat loop=$categorias}
 			<option value="{$categorias[cat].idCategoria}">
 				{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restri&ccedil;&atilde;o - {$categorias[cat].restricaoCategoria} ]{else}[ sem restri&ccedil;&atilde;o ]{/if}

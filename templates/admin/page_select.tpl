@@ -24,7 +24,7 @@
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarPagina}</th></tr>
 	<tr><td>
 		<br />
-		<select name="id" id="id" size="5">
+		<select name="id" id="id" size="15">
 		{section name=pag loop=$paginas}
 			<option value="{$paginas[pag].idPagina}">
 				{$paginas[pag].tituloPagina} :: {$paginas[pag].tituloTabela}

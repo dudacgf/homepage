@@ -25,7 +25,7 @@
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarGrupo}</th></tr>
 	<tr><td>
 		<br />
-		<select name="idGrp" id="idGrp" size="5">
+		<select name="idGrp" id="idGrp" size="15">
 		{section name=g loop=$grupos}
 			<option value="{$grupos[g].idGrupo}">
 				{$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restri&ccedil;&atilde;o - {$grupos[g].restricaoGrupo} ]{else}[ sem restri&ccedil;&atilde;o ]{/if}
