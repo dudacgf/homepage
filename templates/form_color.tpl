@@ -30,12 +30,12 @@
                     <div style="float: left;">
                         <div class="tituloCategoria">Cores</div>
                         <div class="interior">
-                            <button id="rainbowButton" onClick="document.querySelector('#colorPicker').jscolor.show();" style="width: 200px; margin-left: 1px; padding-left: 15px; padding-right: 15px; padding-top: 3px; background-image: url('{$includePATH}imagens/ColorPicker.png'); background-size: auto; color: var(--theme-dark);">Pick a Color</button>
+                            <button id="rainbowButton" class="submit rainbow colorWheel" onClick="document.querySelector('#colorPicker').jscolor.show();" >Pick a Color</button>
                             <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
                             <select id="selectColor" onChange="onChangeselectColor();" size="6" style="clear: both; width: 200px;">
                                 {section name=opt loop=$paresCores}
                                 <option value="{$paresCores[opt].valorCor}" style="color: {$paresCores[opt].hspCor}; background-color: {$paresCores[opt].valorCor}">{$paresCores[opt].nomeCor}</option>
-                                {/section}                
+                                {/section}
                             </select>
                         </div>
                     </div>
@@ -53,16 +53,16 @@
 </div><!-- class=content -->
 <script>
 jscolor.presets.default = {
-    format: 'hex', 
+    format: 'hex',
     valueElement: '#selectedColor',
-    required: false, 
-    palette: getAllThemeColors(), 
-    backgroundColor: getThemeColor('dark'), 
+    required: false,
+    palette: getThemePalette(),
+    backgroundColor: getThemeColor('dark'),
     previewPosition: 'right',
     closeButton: true,
     closeText: 'Fechar',
     buttonColor: getThemeColor('light'),
-    container: '#rainbowButton', 
+    container: '#rainbowButton',
     position: 'bottom',
     onChange: onChangeColorPicker,
 }
