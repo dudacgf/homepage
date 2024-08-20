@@ -8,52 +8,52 @@
   a partir daqui, os estilos de cor só precisam mexer no elemento :root
 ---------------------------------------------------------------------------*/
 :root {
-    --theme-dark: black;
-    --theme-medium: gray;
-    --theme-light: white;
+    --theme-dark: #101820;
+    --theme-medium: #a7a8aa;
+    --theme-light: #d9d9d6;
     /* Página (body): background-color, color, background-image */
-    --theme-bodyBG: #D3D3D3;
+    --theme-bodyBG: #ffffff;
     --theme-bodyC: #696969;
     /* Título da página (div.titulo): background-color, color */
-    --theme-tituloBG: #2F4F4F;
-    --theme-tituloC: #F5F5F5;
-    --theme-tituloBB: #778899;
+    --theme-tituloBG: #a9a9a9;
+    --theme-tituloC: #101820;
+    --theme-tituloBB: #53565a;
     /* fortune (div.fortune): background-color, color */
-    --theme-fortuneBG: #2F4F4F;
-    --theme-fortuneC: #F5F5F5;
+    --theme-fortuneBG: #101820;
+    --theme-fortuneC: #ffffff;
     /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
-    --theme-tituloCategBG: #2F4F4F;
-    --theme-tituloCategC: #F5F5F5;
-    --theme-categBTL: #708090;
-    --theme-categBBR: black;
-    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
-    --theme-expandedBG: gray;
-    --theme-expandedBTL: #D3D3D3;
-    --theme-expandedBBR: #696969;
-    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
-    --theme-expandBG: #2F4F4F;
-    --theme-expandC: #F5F5F5;
-    --theme-expandBTL: #708090;
-    --theme-expandBBR: #2F4F4F;
-    /* input type=text and select: background-color, color */
-    --theme-inputBG: #D3D3D3;
-    --theme-inputC: black;
-    --theme-inputBTL: black;
-    --theme-inputBBR: #C0C0C0;
-    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
-    --theme-buttonC: #F5F5F5;
-    --theme-buttonBG: #2F4F4F;
-    --theme-buttonBTL: #708090;
-    --theme-buttonBBR: black;
-    /* Separadores (span.separador): background-color, color */
-    --theme-sepC: #696969;
-    /* Links (a): color */
-    --theme-linkC: #696969;
-    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
-    --theme-expandedColor: #333333;
-    --theme-linkH: #F5F5F5;
+    --theme-tituloCategBG: #212721;
+    --theme-tituloCategC: #ffffff;
+    --theme-categBTL: #d0d0ce;
+    --theme-categBBR: #000000;
     /* Grupos (div.interior): background-color */
     --theme-interiorBG: #A9A9A9;
+    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-expandedBG: #808080;
+    --theme-expandedBTL: #d3d3d3;
+    --theme-expandedBBR: #696969;
+    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
+    --theme-expandBG: #212721;
+    --theme-expandC: #ffffff;
+    --theme-expandBTL: #c8c9c7;
+    --theme-expandBBR: #2d2926;
+    /* input type=text and select: background-color, color */
+    --theme-inputBG: #d3d3d3;
+    --theme-inputC: #000000;
+    --theme-inputBTL: #000000;
+    --theme-inputBBR: #c0c0c0;
+    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
+    --theme-buttonC: #ffffff;
+    --theme-buttonBG: #212721;
+    --theme-buttonBTL: #d0d0ce;
+    --theme-buttonBBR: #000000;
+    /* Separadores (span.separador): background-color, color */
+    --theme-sepC: #101820;
+    /* Links (a): color */
+    --theme-linkC: #101820;
+    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
+    --theme-expandedColor: #101820;
+    --theme-linkH: #f5f5f5;
 }
 body {
     background-color: var(--theme-bodyBG);
