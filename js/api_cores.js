@@ -10,18 +10,6 @@
 --------------------------------------------------------------------------------*/
 
 /*
- * rootColors - array com nomes de todas as variáveis de cor definidas no :root de um estilo css
- *              (as variáveis são na verdade definidas como '--theme-varName')
- */
-const rootColors = new Set (['dark', 'medium', 'light', 'bodyBG', 'bodyC', 'tituloBG', 
-                    'tituloC', 'fortuneBG', 'fortuneC', 'tituloCategBG', 
-                    'tituloCategC', 'categBTL', 'categBBR', 'expandedBG', 
-                    'expandedBTL', 'expandedBBR', 'expandBG', 'expandC', 'expandBTL',
-                    'expandBBR', 'inputBG', 'inputC', 'buttonC', 'buttonBG', 
-                    'buttonBTL', 'buttonBBR', 'sepC',  'linkC', 'expandedColor',
-                    'linkH', 'interiorBG', 'inputBG', 'inputC']);
-
-/*
  * getThemeColor - obtém a cor de uma das variáveis de cor para o estilo css atual
  *
  * recebe: 
@@ -78,20 +66,21 @@ const getThemeColorHSP = (umaCor) => {
 }
 
 /*
- * getAllThemeColors - obtém as cores das variáveis de cor para o estilo css atual
+ * getThemePalette - obtém as cores das variáveis de cor para o estilo css atual
  *
  * retorna:
  * array com as cores das variáveis de cor no format #RRGGBB
  */
-const getAllThemeColors = () => {
+const getThemePalette = () => {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
+    const cookieStyles = document.getElementById('selectElemento').options;
     var cores = [];
 
-    for (const rootColor of rootColors) {
-        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColor);
-        ctx.fillStyle = umaCor;
+    for (const cookieStyle of cookieStyles) {
+        umaCor = '--theme-' + cookieStyle.value;
+        ctx.fillStyle = getComputedStyle(root).getPropertyValue(umaCor);
         if (!cores.includes(ctx.fillStyle))
             cores[cores.length] = ctx.fillStyle; 
     }
@@ -110,12 +99,13 @@ const getAllThemeColorPairs = () => {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
+    const cookieStyles = document.getElementById('selectElemento').options;
     var cores = {};
 
-    for (const rootColor of rootColors) {
-        umaCor = getComputedStyle(root).getPropertyValue('--theme-' + rootColor);
-        ctx.fillStyle = umaCor;
-        cores[rootColor] = ctx.fillStyle; 
+    for (const cookieStyle of cookieStyles) {
+        umaCor = '--theme-' + cookieStyle.value;
+        ctx.fillStyle = getComputedStyle(root).getPropertyValue(umaCor);
+        cores[cookieStyle.value] = ctx.fillStyle; 
     }
 
     c.remove();
@@ -275,6 +265,12 @@ const novoEstilo = async () => {
  * salvarEstilo - chamada após exibição do form de salvamento de estilos
  */
 const salvarEstilo = async () => {
+
+    function replacer (key, value) {
+       return (!!value || value === false || value === '' || typeof value === 'number') ? value : undefined;
+    }
+
+
     const idPagina = document.getElementById('idPagina').value;
     const nomeEstilo = document.getElementById('nomeEstilo').value;
     const comentarioEstilo = document.getElementById('comentarioEstilo').value;
