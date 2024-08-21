@@ -11,46 +11,46 @@
     --theme-dark: #00008B;
     --theme-medium: #4682B4;
     --theme-light: #B0C4DE;
-    /* Página (body): background-color, color, background-image */
     --theme-bodyBG: #B0C4DE;
     --theme-bodyC: white;
-    /* Título da página (div.titulo): background-color, color */
     --theme-tituloBG: #4682B4;
     --theme-tituloC: white;
     --theme-tituloBB: #43609C;
-    /* fortune (div.fortune): background-color, color */
     --theme-fortuneBG: #4682B4;
     --theme-fortuneC: white;
-    /* Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d */
     --theme-tituloCategBG: #4682B4;
     --theme-tituloCategC: white;
     --theme-categBTL: #ADD8E6;
     --theme-categBBR: #00008B;
-    /* Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d */
+    --theme-interiorBG: #A9A9A9;
     --theme-expandedBG: #4682B4;
     --theme-expandedBTL: #ADD8E6;
     --theme-expandedBBR: #00008B;
-    /* Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d */
     --theme-expandBG: #4682B4;
     --theme-expandC: white;
     --theme-expandBTL: #ADD8E6;
     --theme-expandBBR: #00008B;
-    /* input type=text and select: background-color, color */
     --theme-inputBG: #D3D3D3;
     --theme-inputC: #00008B;
-    /* Botão (input.submit, button): background-color, color, border s-e, border i-d */
+    --theme-inputBTL: #000000;
+    --theme-inputBBR: #c0c0c0;
     --theme-buttonC: white;
     --theme-buttonBG: #4682B4;
     --theme-buttonBTL: #B0C4DE;
     --theme-buttonBBR: #00008B;
-    /* Separadores (span.separador): background-color, color */
     --theme-sepC: white;
-    /* Links (a): color */
+    --theme-sepH: white;
     --theme-linkC: #00008B;
-    /* Links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size */
     --theme-linkH: white;
     --theme-expandedColor: #4682B4;
-    --theme-fontS: 1.2em;
+    --theme-mButtonBG: #404040;
+    --theme-mButtonHBG: #909090;
+    --theme-mDropdownBG: #f7f7f7;
+    --theme-mDropdownC: #111111;
+    --theme-mDropdownBTL: #404040;
+    --theme-mDropdownBBR: #000000;
+    --theme-opcoesC: #404040;
+
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
