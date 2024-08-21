@@ -11,11 +11,6 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
-{if isset($edicaoPagina)}
-{section name=cp loop=$classNames}
-{if $classNames[cp] != $classPagina}<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />{/if}
-{/section}
-{/if}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
