@@ -1,9 +1,6 @@
 {assign var="edicaoPagina" value="1"}
 {include file="page_header.tpl"}
 <body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast({$smarty.cookies.iconAlerta|default:'info'}, '{$smarty.cookies.msgAlerta}');"{/if}>
-{if isset($edicaoPagina)}
-<iframe id="exemploPagina" class="exemploCategoria" src="{$includePATH}/homepage.php?id={$idPagina}&gr=all"></iframe>
-{/if}
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
 </div>
@@ -39,6 +36,8 @@ function doAction(pressed) {
 }
 </script>
 
+<div>
+<iframe id="exemploPagina" class="exemploPagina" src="{$includePATH}/homepage.php?id={$idPagina}&gr=all"></iframe>
 <form id="edPag" name="edPag" method="POST">
 {if $criarPagina}
     <input type="hidden" id="mode" name="mode" value="crPag" />
@@ -76,6 +75,7 @@ function doAction(pressed) {
         <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> 
     </div>
 </form>
+</div>
 {if !$criarPagina}
 <p>
 <div class="subTitulo">{$LANG.categorias}</div>

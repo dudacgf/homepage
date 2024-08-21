@@ -189,10 +189,22 @@ text-align: right; font-size: 0.9rem; font-weight: bold; border: 0pt; float: lef
 div.item {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;
 }
-iframe.exemploCategoria {
-position: absolute; left: 70%; top: 0px; z-index: 10;
-width: 50vw; height: 40vw; transform: translate(-10%, -20%) scale(0.30);
--webkit-transform-origin: 0.0;
+iframe.exemploPagina {
+box-shadow: 12px 15px var(--theme-dark); z-index: 10;
+position: absolute; right: 1%; top: +160px;
+transform: scale(0.40); transform-origin: top right;
+}
+/* Portrait */
+@media screen and (orientation:portrait) {
+iframe.exemploPagina {
+width: 60vw; height: 40vw;        /* Portrait styles here */
+}
+}
+/* Landscape */
+@media screen and (orientation:landscape) {
+iframe.exemploPagina {
+width: 42vw; height: 28vw;        /* Landscape styles here */
+}
 }
 div.exemploCategoria a {
 display: block;
