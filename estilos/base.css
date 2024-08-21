@@ -198,17 +198,15 @@ box-shadow: 12px 15px var(--theme-dark); z-index: 10;
 position: absolute; right: 1%; top: +160px;
 transform: scale(0.40); transform-origin: top right;
 }
-/* Portrait */
 @media screen and (orientation:portrait) {
-iframe.exemploPagina {
-width: 60vw; height: 40vw;        /* Portrait styles here */
+    iframe.exemploPagina {
+        width: 60vw; height: 40vw; 
+    }
 }
-}
-/* Landscape */
 @media screen and (orientation:landscape) {
-iframe.exemploPagina {
-width: 42vw; height: 28vw;        /* Landscape styles here */
-}
+    iframe.exemploPagina {
+        width: 42vw; height: 28vw;
+    }
 }
 div.exemploCategoria a {
 display: block;
@@ -273,6 +271,39 @@ padding: 0.3em 0.3em 0.3em 0.3em;
     background: none;
     opacity: 0.7;
 }
+/* menu */
+/*  
+ <div class="dropdownContainer">
+  <button class="menuButtom">Dropdown</button>
+  <div class="dropdown">
+    << UMA CATEGORIA COMO MENU >>
+  </div>
+ </div> 
+*/
+.menuDropdownContainer {
+  position: fixed;
+  right: 15px;
+  top: 50px;
+  display: inline-block;
+  z-index: 15;
+}
+.menuButton {
+  padding: 4px;
+  font-size: 16px;
+  border: none;
+}
+.menuDropDown {
+  display: none;
+  position: absolute;
+  width: 160px;
+  right: 0;
+  padding-left: 5px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 15;
+}
+.menuDropdownContainer:hover .menuDropDown {display: block;}
 
 /* para simular fade nos reloads de categorias, grupos e elementos */
 .fadeinout {

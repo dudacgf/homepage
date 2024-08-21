@@ -20,7 +20,7 @@ if (isset($requests['id']))
 }
 
 // Obtém a página administrativa
-$admPag = new pagina(ID_ADM_PAG);
+$pagina = new pagina(ID_ADM_PAG);
 
 //
 // se tem alguma coisa estranha, cai no default (slPag)
@@ -135,12 +135,7 @@ $pagina = new pagina(5);
 switch ($template)
 {
     case 'admin/page_edit.tpl':
-        include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');
-        $homepage->assign('descricoesCategorias', $categoriaExemplo);
-        $homepage->assign('descricoesGrupos', $descricoesGrupos);
-        $homepage->assign('criarPagina', $criarPagina);
-        
-        /* obtém a lista */
+        /* obtém a lista de estilos de cor disponiveis */
         $homepage->assign( 'classNames', cssEstilos::getClassNames( ) );
 
         if (!$criarPagina) 
@@ -177,7 +172,7 @@ switch ($template)
             $homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
             $homepage->assign('tituloPagina', '');
             $homepage->assign('tituloTabela', '');
-            $homepage->assign('classPagina', $admPag->classPagina);
+            $homepage->assign('classPagina', $pagina->classPagina);
             $homepage->assign('displayFortune', 1);
             $homepage->assign('displayImagemTitulo', 1);
             $homepage->assign('displaySelectColor', 1);
@@ -187,11 +182,10 @@ switch ($template)
     case 'admin/page_select.tpl':
         // le os cookies e passa para a página a ser carregada.
         $homepage->assign('cookedStyles', '');
-
         $homepage->assign('paginas', pagina::getPaginas());
         $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarPagina']);
         $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarPagina']);
-        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('classPagina', $pagina->classPagina);
         $homepage->assign('displaySelectColor', 0);
     break;
 
@@ -210,6 +204,9 @@ switch ($template)
     break;
 
 }
+
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
 
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);

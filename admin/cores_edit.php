@@ -76,6 +76,9 @@ $homepage->assign('displayImagemTitulo', '1');
 // adiciona o exemplo ao grupo dos que vão para a página.
 $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
+
 $homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
 $homepage->assign('includePATH', INCLUDE_PATH);

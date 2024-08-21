@@ -265,6 +265,9 @@ switch ($template)
 
 }
 
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
+
 $homepage->assign('criarCategoria', $criarCategoria);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);

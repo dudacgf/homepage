@@ -22,6 +22,9 @@ if ($colorCookies)
 // Obtém a página administrativa
 $admPag = new pagina(ID_ADM_PAG);
 
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
+
 $homepage->assign('displayImagemTitulo', '1');
 $homepage->assign('tituloPagina', ':: Administra&ccedil;&atilde;o de Fortunes');
 $homepage->assign('tituloTabela', ' :: Biscoitinhos da sorte :: administra&ccedil;&atilde;o ::');

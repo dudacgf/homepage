@@ -189,6 +189,9 @@ switch ($template)
 
 }
 
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
+
 // le os cookies e passa para a página a ser carregada.
 $homepage->assign('cookedStyles', '');
 

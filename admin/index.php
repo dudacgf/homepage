@@ -32,16 +32,17 @@ if ($colorCookies)
 $homepage->assign('displayImagemTitulo', '1');
 
 // obtém a página administrativa
-$admPag = new pagina(ID_ADM_PAG);
+$pagina = new pagina(ID_ADM_PAG);
 
-$homepage->assign('classPagina', $admPag->classPagina);
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
+
+// elementos enviados ao template
+$homepage->assign('classPagina', $pagina->classPagina);
 $homepage->assign('tituloPaginaAlternativo', $lang['paginaEstatisticasTituloPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['paginaEstatisticasTituloTabela']);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('displaySelectColor', 0);
-$homepage->display('admin/estatisticas.tpl');
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-
+$homepage->display('admin/index.tpl');
 ?>
