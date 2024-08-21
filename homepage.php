@@ -74,17 +74,17 @@ else
     $homepage->assign('displayDicionario', 0);
 }
 
-// le os cookies e passa para a página a ser carregada.
-$cookedStyles = ':root {';
+// verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
+    $cookedStyles = ':root {';
     foreach ($colorCookies as $elementoColorido) {
         $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
     }
+    $cookedStyles .= '}';
+    $homepage->assign('cookedStyles', $cookedStyles);
 }
-$cookedStyles .= '}';
-$homepage->assign('cookedStyles', $cookedStyles);
 
 // Leio todos os elementos da página e percorro-os, quebrando por categoria e grupo e os vou incluindo no template
 $elementosLidos = $pagina->getBigArray();

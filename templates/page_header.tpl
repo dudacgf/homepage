@@ -25,9 +25,11 @@
 <script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
+{if isset($cookedStyles)}
 <style type="text/css">
 {$cookedStyles|strip}
 </style>
+{/if}
 {if isset($smarty.cookies.showAlerta)}
 <script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;Path={$includePATH};Domain=' + location.hostname + ';Secure=true;SameSite=Strict;'</script>
 {/if}

@@ -7,17 +7,17 @@ require_once('../common.php');
 // insere a classe de fortunes.
 require($include_path . "class_fortune.php");
 
-// verifica se há cookies e, neste caso, cria os estilos adicionais.
-$cookedStyles = ':root {';
+// verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
+    $cookedStyles = ':root {';
     foreach ($colorCookies as $elementoColorido) {
         $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
     }
+    $cookedStyles .= '}';
+    $homepage->assign('cookedStyles', $cookedStyles);
 }
-$cookedStyles .= '}';
-$homepage->assign('cookedStyles', $cookedStyles);
 
 // Obtém a página administrativa
 $admPag = new pagina(ID_ADM_PAG);

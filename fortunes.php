@@ -13,17 +13,17 @@ $_REQUEST['gr'] = 'all';
 // id_Pagina é sempre 1.
 $_idPagina = 1;
 
-// le os cookies e passa para a página a ser carregada.
-$cookedStyles = ':root {';
+// verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
+    $cookedStyles = ':root {';
     foreach ($colorCookies as $elementoColorido) {
         $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
     }
+    $cookedStyles .= '}';
+    $homepage->assign('cookedStyles', $cookedStyles);
 }
-$cookedStyles .= '}';
-$homepage->assign('cookedStyles', $cookedStyles);
 
 // lê o biscoitinho da sorte
 require($include_path . "class_fortune.php");

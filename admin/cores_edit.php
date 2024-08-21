@@ -21,17 +21,17 @@ $homepage->assign('displaySelectColor', 1);
 $homepage->assign('elementosColoridos', elementoColorido::getArray());
 $homepage->assign('paresCores', RGBColor::getArray());
 
-// le os cookies e passa para a página a ser carregada.
-$cookedStyles = ':root {';
-$colorCookies = cookedStyle::getArray(ID_COR_PAG);
+// verifica se há cookies de estilo configurados para essa página
+$colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
+    $cookedStyles = ':root {';
     foreach ($colorCookies as $elementoColorido) {
         $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
     }
+    $cookedStyles .= '}';
+    $homepage->assign('cookedStyles', $cookedStyles);
 }
-$cookedStyles .= '}';
-$homepage->assign('cookedStyles', $cookedStyles);
 
 // Pego a pagina de exemplo para ter todos os tipos de elemento.
 include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');

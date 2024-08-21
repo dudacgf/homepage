@@ -125,16 +125,17 @@ switch($passo) {
 }
 
 
-// le os cookies e passa para a página a ser carregada.
-$cookedStyles = '';
-$colorCookies = cookedStyle::getArray(ID_ADM_PAG);
+// verifica se há cookies de estilo configurados para essa página
+$colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
 {
-    foreach ($colorCookies as $selector => $colorCookie) {
-        $cookedStyles .= implode("\n", $colorCookie) . "\n}\n";
+    $cookedStyles = ':root {';
+    foreach ($colorCookies as $elementoColorido) {
+        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
     }
+    $cookedStyles .= '}';
+    $homepage->assign('cookedStyles', $cookedStyles);
 }
-$homepage->assign('cookedStyles', $cookedStyles);
 
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
