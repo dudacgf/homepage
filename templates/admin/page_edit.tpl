@@ -1,6 +1,6 @@
 {assign var="edicaoPagina" value="1"}
 {include file="page_header.tpl"}
-<body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast({$smarty.cookies.iconAlerta|default:'info'}, '{$smarty.cookies.msgAlerta}');"{/if}>
+<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:"info"}', '{$smarty.cookies.msgAlerta}');"{/if}>
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
 </div>
@@ -34,6 +34,26 @@ function doAction(pressed) {
     }
     document.edPag.submit();
 }
+
+const exemploPaginaSrc = "{$includePATH}/homepage.php?id={$idPagina}&gr=all";
+function carregaEstilo(nomeEstilo) {
+    const classURL = window.includePATH + 'estilos/' + nomeEstilo + '.css';
+    const headRef = document.createElement('link');
+    headRef.rel = "stylesheet";
+    headRef.type = "text/css";
+    headRef.href = classURL;
+    document.getElementsByTagName("head")[0].appendChild(headRef);
+    setTimeout(
+        function () {
+            for (i = 0; i < document.styleSheets.length-1; i++) { 
+                if (document.styleSheets[i].href && document.styleSheets[i].href.includes(document.body.className)) { 
+                    document.styleSheets[i].disabled = true; 
+                }
+            }
+            document.body.className = nomeEstilo;
+            document.getElementById('exemploPagina').src = exemploPaginaSrc + '&class=' + nomeEstilo;
+        }, 200);
+}
 </script>
 
 <div>
@@ -54,11 +74,11 @@ function doAction(pressed) {
     <div class="item">
         <select style=" width: 122pt;" name="classPagina" id="classPagina" >
         {section name=cp loop=$classNames}
-            <option value="{$classNames[cp]}" {if $classNames[cp] == $classPagina}selected="selected"{/if} onclick="javascript: document.getElementById('theBody').setAttribute('{$classAttribute}', this.value)" >{$classNames[cp]}</option>
+            <option value="{$classNames[cp]}" {if $classNames[cp] == $classPagina}selected="selected"{/if} onclick="carregaEstilo(this.value);" >{$classNames[cp]}</option>
         {/section}
         </select>
     </div>
-    <div class="item" style="clear: left; width: 70%; align: right; color: var(--theme-dark);">
+    <div class="opcoes">
         <input id="displayFortune" type="checkbox" name="displayFortune" {if $displayFortune == '1'}checked{/if} />
         <label for="displayFortune">{$LANG.hp_paginas_displayFortune}</label>
         <input id="displayImagemTitulo" type="checkbox" name="displayImagemTitulo" {if $displayImagemTitulo == '1'}checked{/if} />
