@@ -28,7 +28,6 @@ $homepage->assign('idPagina', $_idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);
 $homepage->assign('classPagina', $pagina->classPagina);
-$homepage->assign('displayFindaMap', $pagina->displayFindaMap);
 $homepage->assign('displayFortune', $pagina->displayFortune);
 $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
 $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
