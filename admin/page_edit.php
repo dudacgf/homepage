@@ -43,7 +43,6 @@ switch ($requests['mode'])
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
-        $pagina->displayFindaMap = ( isset($_REQUEST['displayFindaMap']) ) ? 1 : 0;
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
         $pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
@@ -70,7 +69,6 @@ switch ($requests['mode'])
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
-        $pagina->displayFindaMap = ( isset($_REQUEST['displayFindaMap']) ) ? 1 : 0;
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
         $pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
@@ -157,7 +155,6 @@ switch ($template)
             $homepage->assign('tituloPagina', $pagina->tituloPagina);
             $homepage->assign('tituloTabela', $pagina->tituloTabela);
             $homepage->assign('classPagina', $pagina->classPagina);
-            $homepage->assign('displayFindaMap', $pagina->displayFindaMap);
             $homepage->assign('displayFortune', $pagina->displayFortune);
             $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
             $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
@@ -181,7 +178,6 @@ switch ($template)
             $homepage->assign('tituloPagina', '');
             $homepage->assign('tituloTabela', '');
             $homepage->assign('classPagina', $admPag->classPagina);
-            $homepage->assign('displayFindaMap', 1);
             $homepage->assign('displayFortune', 1);
             $homepage->assign('displayImagemTitulo', 1);
             $homepage->assign('displaySelectColor', 1);
