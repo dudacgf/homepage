@@ -5,21 +5,21 @@
   {assign var="grupo" value=$descricoesGrupos[dc].grupos[dg]}
   {if $grupo.idtipoGrupo == '1'}
   <div class="interior">
-        {include file="page_body_detail.tpl"}
+        {include file="page_grupo_detalhe.tpl"}
   </div>
   {elseif $grupo.idtipoGrupo == '2'}
   <div class="clickable" id="{$grupo.grupo|replace:' ':'_'}">
-      <div class="headclickable fa-square-plus" style="cursor: pointer;" onclick="toggleClass('{$grupo.grupo|replace:' ':'_'}', 'clickable', 'expanded')"> 
-        {$grupo.grupo}
+      <div class="headclickable fa-square-plus" style="cursor: pointer;" onclick="this.parentElement.classList.toggle('expanded');">
+         {$grupo.grupo}
       </div>
-      {include file="page_body_detail.tpl"}
+      {include file="page_grupo_detalhe.tpl"}
   </div>
   {elseif $grupo.idtipoGrupo == '3'}
     <div class="expandable">
-      <div class="headexpandable fa-circle-plus"> 
-        {$grupo.grupo} 
+      <div class="headexpandable fa-circle-plus">
+        {$grupo.grupo}
       </div>
-      {include file="page_body_detail.tpl"}
+      {include file="page_grupo_detalhe.tpl"}
     </div>
   {/if}
   {/section}
