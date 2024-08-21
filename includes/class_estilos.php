@@ -4,9 +4,6 @@ class elementoColorido
 {
     var $idElementoColorido;
     var $descricaoElementoColorido;
-    var $atributoCorElemento;
-    var $criterioBuscaElemento;
-    var $termoBuscaElemento;
     var $cookieElemento;
     var $hpDB;
 
@@ -27,9 +24,6 @@ class elementoColorido
             {
                     $this->idElementoColorido = $elemento[0]['idElementoColorido'];
                     $this->descricaoElemento = $elemento[0]['descricaoElemento'];
-                    $this->atributoCorElemento = $elemento[0]['atributoCorElemento'];
-                    $this->criterioBuscaElemento = $elemento[0]['criterioBuscaElemento'];
-                    $this->termoBuscaElemento = $elemento[0]['termoBuscaElemento'];
                     $this->cookieElemento = $elemento[0]['cookieElemento'];
             }
         }
@@ -51,9 +45,6 @@ class elementoColorido
             $elementoColorido = array (
                 'idElementoColorido' => $elemento[0]['idElementoColorido'],
                 'descricaoElemento' => $elemento[0]['descricaoElemento'],
-                'atributoCorElemento' => $elemento[0]['atributoCorElemento'],
-                'criterioBuscaElemento' => $elemento[0]['criterioBuscaElemento'],
-                'termoBuscaElemento' => $elemento[0]['termoBuscaElemento'],
                 'cookieElemento' => $elemento[0]['cookieElemento']
             );
         }
@@ -79,9 +70,6 @@ class elementoColorido
                 $elementosColoridos[] = array (
                         'idElementoColorido' => $elemento['idElementoColorido'],
                         'descricaoElemento' => $elemento['descricaoElemento'],
-                        'atributoCorElemento' => $elemento['atributoCorElemento'],
-                        'criterioBuscaElemento' => $elemento['criterioBuscaElemento'],
-                        'termoBuscaElemento' => $elemento['termoBuscaElemento'],
                         'cookieElemento' => $elemento['cookieElemento']
                 );
             }
