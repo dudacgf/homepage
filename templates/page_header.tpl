@@ -12,15 +12,11 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
 {if isset($edicaoPagina)}
-  {section name=cp loop=$classNames}
-  {if $classNames[cp] != $classPagina}
-<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />
-  {/if}
-  {/section}
+{section name=cp loop=$classNames}
+{if $classNames[cp] != $classPagina}<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />{/if}
+{/section}
 {/if}
-{if $classPagina != 'colorbase'}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
-{/if}
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
