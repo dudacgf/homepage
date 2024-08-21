@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<title>{if !isset($tituloPaginaAlternativo)}{$tituloPagina}{else}{$tituloPaginaAlternativo}{/if}</title>
 <link rel="shortcut icon" href="{$includePATH}favicon.ico" type="image/x-icon" />
-{if isset($refresh)}
-  <meta http-equiv="refresh" content="{$refresh}">
-{/if}
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'/>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
 <meta http-equiv="Content-Type" content="image/jpeg" />
@@ -15,35 +14,25 @@
 {if isset($edicaoPagina)}
   {section name=cp loop=$classNames}
   {if $classNames[cp] != $classPagina}
-  <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classNames[cp]}.css" />
   {/if}
   {/section}
 {/if}
+{if $classPagina != 'colorbase'}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
-<script type="text/javascript">
-    window.includePATH = "{$includePATH}";
-</script>
+{/if}
+<script type="text/javascript">window.includePATH = "{$includePATH}";</script>
 <script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
-<title>
-  {if !isset($tituloPaginaAlternativo)}
-    {$tituloPagina}
-  {else}
-    {$tituloPaginaAlternativo}
-  {/if}
-</title>
 <style type="text/css">
 {$cookedStyles|strip}
 </style>
 {if isset($smarty.cookies.showAlerta)}
 <script type="text/javascript">document.cookie = 'showAlerta=; Max-Age=-99999999;Path={$includePATH};Domain=' + location.hostname + ';Secure=true;SameSite=Strict;'</script>
-</head>
-<body class="{$classPagina}" id="theBody" onload="createToast({if isset($smarty.cookies.iconAlerta)} '{$smarty.cookies.iconAlerta}' {else} 'info' {/if}, '{$smarty.cookies.msgAlerta}');">
-{else}
-</head>
-<body class="{$classPagina}" id="theBody">
 {/if}
+</head>
+<body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast({$smarty.cookies.iconAlerta|default:'info'}, '{$smarty.cookies.msgAlerta}');"{/if}>
 {if isset($edicaoPagina)}
 <iframe id="exemploPagina" class="exemploCategoria" src="{$includePATH}/homepage.php?id={$idPagina}&gr=all"></iframe>
 {/if}
