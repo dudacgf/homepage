@@ -17,7 +17,7 @@ $homepage->assign('numTemplates', wTemplate::getCount());
 $homepage->assign('numFortunes', Fortune::getCount());
 
 // verifica se há cookies de estilo configurados para essa página
-$colorCookies = cookedStyle::getArray($_idPagina);
+$colorCookies = cookedStyle::getArray(ID_ADM_PAG);
 if ($colorCookies) 
 {
     $cookedStyles = ':root {';
