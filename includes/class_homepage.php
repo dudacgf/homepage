@@ -1862,7 +1862,6 @@ class pagina extends elementoAgrupado
     var $tituloPagina;
     var $classPagina;
     var $tituloTabela;
-    var $displayFindaMap;
     var $displayFortune;
     var $displayImagemTitulo;
     var $displaySelectColor;
@@ -1891,7 +1890,6 @@ class pagina extends elementoAgrupado
             }
             $this->tituloTabela = $line['TituloTabela'];
             $this->idPagina = $line['idPagina'];
-            $this->displayFindaMap = $line['displayFindaMap'];
             $this->displayFortune = $line['displayFortune'];
             $this->displayImagemTitulo = $line['displayImagemTitulo'];
             $this->displaySelectColor = $line['displaySelectColor'];
@@ -1902,8 +1900,8 @@ class pagina extends elementoAgrupado
     {
         $_sql = $this->hpDB->prepare("INSERT INTO hp_paginas 
                                       (tituloPagina, tituloTabela, classPagina, displayFortune, displayImagemTitulo, displaySelectColor)
-                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $_sql->bind_param("sssiiiii", $this->tituloPagina, $this->tituloTabela , $this->classPagina, $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor);
+                                      VALUES (?, ?, ?, ?, ?, ?)");
+        $_sql->bind_param("sssiii", $this->tituloPagina, $this->tituloTabela , $this->classPagina, $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor);
 
 
         // executa o query e resgata o id criado.
@@ -1918,7 +1916,7 @@ class pagina extends elementoAgrupado
         $_sql = $this->hpDB->prepare("UPDATE hp_paginas SET tituloPagina = ?, tituloTabela = ?, classPagina = ?, 
                                                             displayFortune = ?, displayImagemTitulo = ?, displaySelectColor = ?
                                       WHERE idPagina = ?");
-        $_sql->bind_param("sssiiiiii", $this->tituloPagina, $this->tituloTabela, $this->classPagina,
+        $_sql->bind_param("sssiiii", $this->tituloPagina, $this->tituloTabela, $this->classPagina,
             $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor, $this->idPagina);
         
         // executa o query e retorna o número de linhas afetadas (uma, se tudo der certo)
@@ -1964,8 +1962,6 @@ class pagina extends elementoAgrupado
                 'tituloPagina' => $this->tituloPagina,
                 'tituloTabela' => $this->tituloTabela,
                 'classPagina' => $this->classPagina,
-                'displayFindaMap' => $this->displayFindaMap,
-                'displayFortune' => $this->displayFortune,
                 'displayImagemTitulo' => $this->displayImagemTitulo,
                 'displaySelectColor' => $this->displaySelectColor                );
         }
@@ -2262,8 +2258,6 @@ class pagina extends elementoAgrupado
 
     static function getPaginas()
     {
-        // como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
-        // desta forma, tenho que usar uma nova conexão para a base de dados, ainda que já haja uma aberta.
         global $global_hpDB;
 
         $_sql = "SELECT idPagina FROM hp_paginas";
@@ -2300,8 +2294,5 @@ class pagina extends elementoAgrupado
     }
     
 }#  pagina */
-
-//-- vi: set tabstop=4  shiftwidth=4 showmatch nowrap:
-
 ?>
 
