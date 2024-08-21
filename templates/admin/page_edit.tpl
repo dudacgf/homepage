@@ -53,8 +53,6 @@ function doAction(pressed) {
         </select>
     </div>
     <div class="item" style="clear: left; width: 70%; align: right; color: var(--theme-dark);">
-        <input id="displayGoogle" type="checkbox" name="displayGoogle" {if $displayGoogle == '1'}checked{/if} />
-        <label for="displayGoogle">{$LANG.hp_paginas_displayGoogle}</label>
         <input id="displayFortune" type="checkbox" name="displayFortune" {if $displayFortune == '1'}checked{/if} />
         <label for="displayFortune">{$LANG.hp_paginas_displayFortune}</label>
         <input id="displayImagemTitulo" type="checkbox" name="displayImagemTitulo" {if $displayImagemTitulo == '1'}checked{/if} />

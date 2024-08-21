@@ -5,7 +5,6 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/estilos.css" title="default" />
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <meta http-equiv="Content-Script-Type" content="text/javascript" />
-<script type="text/javascript" src="{$includePATH}js/rotinas.js"></script>
 <title>{$tituloPagina}</title>
 </head>
 

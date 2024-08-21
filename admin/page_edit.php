@@ -43,7 +43,6 @@ switch ($requests['mode'])
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
-        $pagina->displayGoogle = ( isset($_REQUEST['displayGoogle']) ) ? 1 : 0;
         $pagina->displayFindaMap = ( isset($_REQUEST['displayFindaMap']) ) ? 1 : 0;
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
@@ -71,7 +70,6 @@ switch ($requests['mode'])
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
-        $pagina->displayGoogle = ( isset($_REQUEST['displayGoogle']) ) ? 1 : 0;
         $pagina->displayFindaMap = ( isset($_REQUEST['displayFindaMap']) ) ? 1 : 0;
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
@@ -159,7 +157,6 @@ switch ($template)
             $homepage->assign('tituloPagina', $pagina->tituloPagina);
             $homepage->assign('tituloTabela', $pagina->tituloTabela);
             $homepage->assign('classPagina', $pagina->classPagina);
-            $homepage->assign('displayGoogle', $pagina->displayGoogle);
             $homepage->assign('displayFindaMap', $pagina->displayFindaMap);
             $homepage->assign('displayFortune', $pagina->displayFortune);
             $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
@@ -184,7 +181,6 @@ switch ($template)
             $homepage->assign('tituloPagina', '');
             $homepage->assign('tituloTabela', '');
             $homepage->assign('classPagina', $admPag->classPagina);
-            $homepage->assign('displayGoogle', 1);
             $homepage->assign('displayFindaMap', 1);
             $homepage->assign('displayFortune', 1);
             $homepage->assign('displayImagemTitulo', 1);

@@ -2,9 +2,6 @@
 <div class="content" style="display: flex;">
 {include file="page_body.tpl"}
 </div>
-{if $displayGoogle == 1}
-{include file="form_google.tpl"}
-{/if}
 {if $displaySelectColor == 1}
 {include file="form_color.tpl"}
 {/if}
