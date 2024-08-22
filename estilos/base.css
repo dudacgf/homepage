@@ -113,11 +113,6 @@ font-size: 0.9rem; clear: both;
 margin: 0; padding: 10px; border: 0;
 position: fixed; bottom: 0px; left: 0px; width: 100%;
 }
-
-div.novoFilho {
-font-size: 0.9rem; clear: both; 
-width: 100%; margin: 0; padding: 10px; border: 0;
-}
 div.fortune a {
 font-weight: bold; display: inline; font-size: 1rem; width: 100%;
 }
@@ -198,6 +193,10 @@ font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21
 div.opcoes {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
 clear: left; width: 70%; text-align: left; 
+}
+div.novoFilho {
+font-size: 0.9rem; clear: both; 
+width: 100%; margin: 0; padding: 10px; border: 0;
 }
 iframe.exemploPagina {
 box-shadow: 12px 15px var(--theme-dark); z-index: 10;
@@ -340,3 +339,12 @@ text-align: left; width: 200px; margin-left: 1px; padding-left: 15px; padding-ri
 #selectElemento option {
     width: 300px;
 }
+
+#previewColorPicked {
+border: 1px solid var(--theme-medium); 
+width: 180px; height: 21px; margin-left: 3px; 
+margin-bottom: 6px; padding-top: 7px; 
+text-align: center;
+}
+
+

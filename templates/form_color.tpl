@@ -40,7 +40,7 @@
                         </div>
                     </div>
                     <div style="display: inline-grid; float: left;">
-                        <div id="previewColorPicked" style="border: 1px solid var(--theme-medium); width: 180px; height: 28px; margin-left: 3px; margin-bottom: 6px;"></div>
+                        <div id="previewColorPicked"></div>
                         <button class="submit colorButton fa-check-circle" onClick="alterarRootVar();">Alterar</button>
                         <button class="submit colorButton fa-arrow-rotate-left" onClick="restaurarRootVar();">Restaurar</button>
                         <button class="submit colorButton fa-circle-xmark" onClick="restaurarRootcssPagina();">Restaurar Página</button>
