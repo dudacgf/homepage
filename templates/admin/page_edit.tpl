@@ -58,7 +58,9 @@ function carregaEstilo(nomeEstilo) {
 </script>
 
 <div>
+{if !$criarPagina}
 <iframe id="exemploPagina" class="exemploPagina" src="{$includePATH}homepage.php?id={$idPagina}&gr=all"></iframe>
+{/if}
 <form id="edPag" name="edPag" method="POST">
 {if $criarPagina}
     <input type="hidden" id="mode" name="mode" value="crPag" />

@@ -136,7 +136,8 @@ switch ($template)
 {
     case 'admin/page_edit.tpl':
         /* obtém a lista de estilos de cor disponiveis */
-        $homepage->assign( 'classNames', cssEstilos::getClassNames( ) );
+        $homepage->assign('classNames', cssEstilos::getClassNames( ) );
+        $homepage->assign('criarPagina', $criarPagina);
 
         if (!$criarPagina) 
         {
