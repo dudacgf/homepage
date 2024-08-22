@@ -4,7 +4,6 @@
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
 </div>
-
 <script type="text/javascript">
 <!--
 	function doAction(pressed) {ldelim}
@@ -21,22 +20,19 @@
 	{rdelim}
 -->
 </script>
-
-
-<td>
 <form name="cdel" method="POST">
 	<table width="600px" style="text-align: center;">
 	<tr><th class="categoria" colspan="3">{$LANG.selecionarCategoria}</th></tr>
 	<tr><td>
-		<br />
+		<p>
 		<select name="idCat" id="idCat" size="15">
 		{section name=cat loop=$categorias}
 			<option value="{$categorias[cat].idCategoria}">
-				{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restri&ccedil;&atilde;o - {$categorias[cat].restricaoCategoria} ]{else}[ sem restri&ccedil;&atilde;o ]{/if}
+				{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
 			</option>
 		{/section}
 		</select>
-		<p />
+		</p>
 	</td></tr>
 	<tr><th class="categoria" colspan="3" style="text-align: center;">
 		<input type="submit" class="submit" name="go" value="{$LANG.confirmar}" onclick="javascript: doAction(this.value);"> ::
@@ -45,8 +41,4 @@
 	</th></tr>
 	</table>
 </form>
-</td>
-
 {include file="page_footer.tpl"}
-
-{* // vi: set tabstop=4 shiftwidth=4 showmatch nowrap: *}
