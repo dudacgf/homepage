@@ -10,13 +10,17 @@
   nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
 @font-face {
-  font-family: "Ubuntu Medium 500";
-  src:
-    url("../webfonts/Ubuntu-Medium.ttf") format("truetype");
+  font-family: "Ubuntu";
+  src: url("../webfonts/Ubuntu-Medium.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
 }
-
+@font-face {
+    font-family: "Roboto Bold";
+    src: url("../webfonts/Roboto-Bold.ttf") format("truetype");
+}
 :root {
-    font-family: 'Ubuntu Medium 500', 'Roboto Medium 500', 'roboto flex', 'Verdana', 'Arial', 'sans-serif';
+    font-family: 'Ubuntu', 'Roboto Bold', 'Verdana', 'Arial', 'sans-serif';
     font-size: 12px;
 }
 body {
@@ -67,8 +71,8 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
 .titulo {
+    font-family: 'Roboto Bold';
     font-size: 4rem;
-    font-weight: bolder;
     background-color: var(--theme-light);
     color: var(--theme-tituloBG);
     width: 100%;
@@ -222,8 +226,7 @@ float: left; padding: 2px; margin: 3px; font-size: 1rem; width: 15%;
 div.tituloColuna { 
 border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: bold; font-size: 1rem; width: 15%;
 }
-body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body div.interior:hover a:hover, body div.exemploCategoria a:hover
-{
+body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body div.interior:hover a:hover, body div.exemploCategoria a:hover {
 padding: 0.3em 0.3em 0.3em 0.3em;
 }
 .click_div:hover {
