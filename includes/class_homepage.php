@@ -94,7 +94,7 @@ class cssEstilos
         $_sql = $this->hpDB->prepare('insert into hp_cssestilos (nomeEstilo, comentarioEstilo) values (?, ?)');
         $_sql->bind_param('ss', $this->nomeEstilo, $this->comentarioEstilo);
         if (!$_sql->execute())
-            throw new Exception('erro ao inserir estilo: ' . $this->hpDB->real_escape_string($_sql->getMessage()));
+            throw new Exception('erro ao inserir estilo: ' . $this->hpDB->real_escape_string($_sql->error));
 
         return $this->hpDB->getLastInsertId();
     }
@@ -383,6 +383,27 @@ class wLink extends elemento
     }
     
 }#  wLink */
+
+class Visita
+{#
+    var $idGo;
+    var $idElemento;
+    var $dataVisita;
+
+    public function inserir() {
+        global $global_hpDB;
+        if (!$this->idElemento) 
+            throw new Exception("Não posso inserir sem saber qual Link foi visitado!");
+
+        $_sql = $global_hpDB->prepare("INSERT INTO hp_visitas (idElemento) VALUES (?)");
+        $_sql->bind_param("i", $this->idElemento);
+
+        if (!$_sql->execute()) 
+            throw new Exception("Erro ao gravar visita: $_sql->error");
+
+        return true;
+    }
+}
 
 class wForm extends elemento
 {#

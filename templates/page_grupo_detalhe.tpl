@@ -2,18 +2,18 @@
 {section name=el loop=$grupo.elementos}
 {assign var="elemento" value=$grupo.elementos[el]}
 {if $elemento.tipoElemento == 1}  
-      <a href="
-      {if $elemento.urlElementoSSL}
-        https://
-      {elseif $elemento.urlElementoSVN}
-	  	svn+ssh://
-   	  {else}
-        http://
-      {/if}
-      {if $elemento.localLink}
-        {$smarty.server.SERVER_NAME}/{$includePATH}
-      {/if}
-      {$elemento.linkURL}" {if $elemento.targetLink != ''} target="{$elemento.targetLink}"{/if} title="{$elemento.dicaLink} [ {$elemento.linkURL} ]">
+      <a href="javascript: go('
+              {if $elemento.urlElementoSSL}
+                https://
+              {elseif $elemento.urlElementoSVN}
+                svn+ssh://
+              {else}
+                http://
+              {/if}
+              {if $elemento.localLink}
+                {$smarty.server.SERVER_NAME}/{$includePATH}
+              {/if}
+              {$elemento.linkURL}', {$elemento.idElemento})" {if $elemento.targetLink != ''}target="{$elemento.targetLink}"{/if} title="{$elemento.dicaLink} [ {$elemento.linkURL} ]">
     {$elemento.descricaoLink}</a>
   {elseif $elemento.tipoElemento == 2}
     <form method="get" id="{$elemento.nomeForm}" action="{$elemento.acao}"><div>

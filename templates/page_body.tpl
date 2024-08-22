@@ -1,4 +1,14 @@
 <body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast({$smarty.cookies.iconAlerta|default:'info'}, '{$smarty.cookies.msgAlerta}');"{/if}>
+<script type="text/javascript">
+const go = (goUrl, idElemento) => {
+    const url = window.includePATH + 'api/addVisita.php?idElm=' + idElemento;
+
+    setTimeout(() => {
+        fetch(url);
+        }, 10);
+    document.location = goUrl;
+}
+</script>
 <div  class="titulo" {if $displayImagemTitulo == '1'}style="background-image: url('{$includePATH}imagens/duda_logo.gif');background-repeat: no-repeat; background-position: top right;"{/if}>
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
 </div>
