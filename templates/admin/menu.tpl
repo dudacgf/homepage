@@ -1,5 +1,5 @@
 <div class="menuDropdownContainer" style="float: right;">
-  <button class="menuButton"><i class="fa-solid fa-bars"></i></button>
+  <button class="menuButton fa-solid fa-bars"></button>
   <div class="menuDropDown">
 {section name=dc loop=$menuCategorias}
 <div class="containerCategoria">

@@ -189,9 +189,13 @@ div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna {
 div.opcoes {
     color: var(--theme-opcoesC);
 }
-div.menuButton {
+.menuButton {
     background-color: var(--theme-mButtonBG);
     color: var(--theme-mButtonHBG);
+}
+.menuButton:hover {
+    color: var(--theme-mButtonBG);
+    background-color: var(--theme-mButtonHBG);
 }
 div.menuDropDown {
     background-color: var(--theme-mDropdownBG);
