@@ -15,6 +15,16 @@
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
 <script type="text/javascript" src="{$includePATH}js/api.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
+<script type="text/javascript">
+const go = (goUrl, idElemento) => {
+    const url = window.includePATH + 'api/addVisita.php?idElm=' + idElemento;
+
+    setTimeout(() => {
+        fetch(url);
+        }, 10);
+    document.location = goUrl;
+}
+</script>
 {if isset($cookedStyles)}
 <style type="text/css">
 {$cookedStyles|strip}
