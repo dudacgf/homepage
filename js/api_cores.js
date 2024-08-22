@@ -30,6 +30,21 @@ const getThemeColor = (umaCor) => {
     return aCorHex;
 }
 
+function HSP(aCorHex) {
+    let r = parseInt(aCorHex.substr(1,2), 16);
+    let g = parseInt(aCorHex.substr(3,2), 16);
+    let b = parseInt(aCorHex.substr(5,2), 16);
+
+    let hsp = Math.sqrt((0.299 * r * r) + (0.587 * g * g) + (0.114 * b * b));
+
+    if (hsp > 128)
+        hspColor = '#000000';
+    else
+        hspColor = '#ffffff';
+
+    return hspColor;
+}
+
 /*
  * getThemeColorHSP - obtém o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
  *                    de uma das variáveis de cor para o estilo css atual
@@ -51,18 +66,8 @@ const getThemeColorHSP = (umaCor) => {
     ctx.fillStyle = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
     const aCorHex = ctx.fillStyle;
 
-    let r = parseInt(aCorHex.substr(1,2), 16);
-    let g = parseInt(aCorHex.substr(3,2), 16);
-    let b = parseInt(aCorHex.substr(5,2), 16);
-
-    let hsp = Math.sqrt((0.299 * r * r) + (0.587 * g * g) + (0.114 * b * b));
-
-    if (hsp > 128)
-        hspColor = '#000000';
-    else
-        hspColor = '#ffffff';
     c.remove();
-    return hspColor;
+    return HSP(aCorHex);
 }
 
 /*
