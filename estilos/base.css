@@ -42,22 +42,22 @@ display: block; position: absolute; width: 200px; padding: 5px; margin: 5px;
 border-right: 1px solid; border-bottom: 1px solid;
 }
 form {
-margin-top: 0pt; margin-bottom: 0pt;
+margin-top: 0px; margin-bottom: 0px;
 }
 form a {
 display: inline;
 }
 input, select {
-border-Top: 1pt solid; border-Left: 1pt solid; Margin: 1pt;
+border-Top: 1pt solid; border-Left: 1pt solid; Margin: 1px;
 }
 select {
-margin-left: 2pt;
+margin-left: 2px;
 }
 input.FormExtra {
-Margin-Left: 2pt;
+Margin-Left: 2px;
 }
 input.submit, button {
-border-width: 1pt; border-style: solid; vertical-align: top; text-align: center; 
+border-width: 1px; border-style: solid; vertical-align: top; text-align: center; 
 font-size: 1rem; font-weight: bold;
 }
 .colorButton {
@@ -96,13 +96,13 @@ table {
 clear: both; margin: 0 auto; 
 }
 div.lineForm {
-clear: both; border-style: solid none; border-width: 0pt; height: 30px; padding-top: 2px; padding-bottom: 4px;
+clear: both; border-style: solid none; border-width: 0px; height: 30px; padding-top: 2px; padding-bottom: 4px;
   }
 div.tituloLateral { 
-border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: x-small; width: 90px;
+border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: bold; font-size: x-small; width: 90px;
 }
 div.formLateral {
-border-width: 0pt; padding: 0pt; margin-top: 2pt; float: left;
+border-width: 0px; padding: 0px; margin-top: 2px; float: left;
 }
 div.fortune {
 font-size: 0.9rem; clear: both; 
@@ -137,21 +137,23 @@ font-weight: bold; display: inline; font-size: 1rem; width: 100%;
  * </div>
 */
 div.interior {
-clear: both; border-width: 0pt; padding: 2pt;
+clear: both; border-width: 0px; padding: 2px;
 }
 div.expandable, div.clickable {
-overflow: hidden; height: 18pt; border-width: 0pt; 
+overflow: hidden; height: 28px; border-width: 0px; 
 }
 div.expanded, div.interior:hover, div.expandable:hover {
 padding: 2px; margin-bottom: 5px; margin-top: 3px; border: 1px solid;
 overflow: visible; height: auto; 
 }
 div.headclickable, div.headexpandable {
-border: 1px solid; padding: 5px 5px;
-font-size: 0.9rem; cursor: pointer; margin-top: 2pt; white-space: nowrap;
+border: 1px solid; padding: 5px 5px; height: 14px;
+font-size: 0.9rem; cursor: pointer; margin-top: 2px; white-space: nowrap;
 }
 span.separador {
-font-weight: bold;
+font-weight: 900;
+padding-bottom: 5px;
+font-size: 1.1rem;
 }
 .texto {
 vertical-align: bottom;
@@ -184,13 +186,13 @@ div.subTitulo {
 font-size: 1.1rem; font-weight: bold; border-bottom: 1pt solid; clear: both; padding: 5px;
 }
 div.itemLateral {
-text-align: right; font-size: 0.9rem; font-weight: bold; border: 0pt; float: left; width: 25%; height: 21pt; clear: left; margin: 2pt; padding: 3px 6px 0px 0px;
+text-align: right; font-size: 0.9rem; font-weight: bold; border: 0px; float: left; width: 25%; height: 21px; clear: left; margin: 2px; padding: 3px 6px 0px 0px;
 }
 div.item {
-font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;
+font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
 }
 div.opcoes {
-font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21pt; vertical-align: text-bottom; padding: 3px 0 0 3px;
+font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
 clear: left; width: 70%; text-align: left; 
 }
 iframe.exemploPagina {
@@ -215,10 +217,10 @@ div.exemploCategoria span.separador {
 text-align: left;
 }
 div.coluna, div.colunaTransparente {
-float: left; padding: 2pt; margin: 3pt; font-size: 1rem; width: 15%;
+float: left; padding: 2px; margin: 3px; font-size: 1rem; width: 15%;
 }
 div.tituloColuna { 
-border-width: 1pt; border-style: solid; padding: 2pt; margin: 2pt; float: left; font-weight: bold; font-size: 1rem; width: 15%;
+border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: bold; font-size: 1rem; width: 15%;
 }
 body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body div.interior:hover a:hover, body div.exemploCategoria a:hover
 {
@@ -329,4 +331,9 @@ text-align: left; width: 200px; margin-left: 1px; padding-left: 15px; padding-ri
     padding-right: 10px;
     padding-left: 3px;
     padding-bottom: 2px;
+}
+
+#selectElemento,
+#selectElemento option {
+    width: 300px;
 }
