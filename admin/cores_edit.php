@@ -22,7 +22,7 @@ $homepage->assign('elementosColoridos', elementoColorido::getArray());
 $homepage->assign('paresCores', RGBColor::getArray());
 
 // verifica se há cookies de estilo configurados para essa página
-$colorCookies = cookedStyle::getArray($_idPagina);
+$colorCookies = cookedStyle::getArray(ID_COR_PAG);
 if ($colorCookies) 
 {
     $cookedStyles = ':root {';
