@@ -33,6 +33,12 @@
   font-weight: 800;
   font-style: normal;
 }
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../webfonts/RobotoMono-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
 :root {
     font-family: 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
     font-size: 12px;
@@ -48,8 +54,8 @@ body {
 }
 .logo {
 position: fixed;
-top: 5px; right: -30px;
-height: 80px; width: 80px;
+top: 7px; right: 6px;
+height: 40px; width: 40px;
 z-index: 20;
 }
 .logo:hover {
@@ -58,9 +64,9 @@ z-index: 20;
 }
 .logo img {
     background-color: var(--theme-tituloBG);
-    border-radius: 15px;
-    max-width: 50%;
-    max-height: 50%;
+    border-radius: 50%;
+    max-width: 75%;
+    max-height: 75%;
 }
 a { 
 display: block; text-decoration: none; white-space: nowrap;
@@ -119,7 +125,7 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     display: flex;
 }
 div.content {
-clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center;
+clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center; height: auto; display: table;
 }
 div.containerCategoria {
 float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%; margin-left: 3px; margin-right: 3px; text-align: left;
@@ -220,11 +226,28 @@ vertical-align: bottom;
 div.subTitulo {
 font-size: 1.1rem; font-weight: 600; border-bottom: 1pt solid; clear: both; padding: 5px;
 }
+div.tituloSecao {
+font-size: 1.1rem; font-weight: 600; border-bottom: 1pt solid; clear: both; padding: 5px; width: 100%; margin-top: 20px; margin-bottom: 10px; display: block;
+}
 div.itemLateral {
 text-align: right; font-size: 0.9rem; font-weight: 600; border: 0px; float: left; width: 25%; height: 21px; clear: left; margin: 2px; padding: 3px 6px 0px 0px;
 }
 div.item {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
+}
+div.contentstats {
+margin-left: 3px; margin-top: 10px; display: flex; clear: left; min-height: 40px; margin-bottom: 10px;
+}
+div.itemstats {
+float: left; 
+font-family: 'Roboto Mono'; font-weight: 600; font-size: 0.8rem;
+border-bottom: 1pt solid; width: 16.8%; text-align: left; margin-left: 8px; padding: 0; height: 18px; padding-top: 2px; 
+}
+div.left {
+text-align: left;
+}
+div.right {
+text-align: right;
 }
 div.opcoes {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;

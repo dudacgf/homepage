@@ -178,7 +178,7 @@ input.submit, button {
   color: var(--theme-buttonC);
 }
 /* páginas administrativas. */
-div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna {
+div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {
   border-Top-color: var(--theme-buttonBTL); 
   border-Left-color: var(--theme-buttonBTL);
   border-Bottom-color: var(--theme-buttonBBR); 
@@ -205,7 +205,7 @@ div.menuDropDown {
     border-right-color: var(--theme-mDropdownBBR);
     border-bottom-color: var(--theme-mDropdownBBR);
 }
-div.item {
+div.item, div.itemstats {
   border-color: var(--theme-bodyC); 
   color: var(--theme-itemC);
 }

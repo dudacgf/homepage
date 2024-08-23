@@ -16,6 +16,12 @@ $homepage->assign('numImagens', wImagem::getCount());
 $homepage->assign('numTemplates', wTemplate::getCount());
 $homepage->assign('numFortunes', Fortune::getCount());
 
+// estatísticas de visita
+$homepage->assign('totalLinks7dias', Visita::totalLinks(7));
+$homepage->assign('listaLinks7dias', Visita::lerContagem(7, 6));
+$homepage->assign('totalLinks1mes', Visita::totalLinks(30));
+$homepage->assign('listaLinks1mes', Visita::lerContagem(30, 6));
+
 // verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray(ID_ADM_PAG);
 if ($colorCookies) 
