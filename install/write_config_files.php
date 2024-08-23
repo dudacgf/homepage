@@ -16,7 +16,7 @@ function write_config_files() {
     //write_htaccess('api', 'api/404.php', [], true, $requests['admin_name'], $requests['admin_pw']);
 
     // main folder: restricted folders e desvio do 404
-    write_htaccess('', array('error_404'=>'404/404.php', 'restricted_folders'=>['backup','configs','download','language']));
+    write_htaccess('', array('error_404'=>'404/404.php', 'restricted_folders'=>['/templates','/configs','/download','/language']));
     //write_htaccess('', '404/404.php', ['backup', 'configs', 'download', 'language'], false);
     
     //write_connections($requests['db_name'], $requests['db_host'], $requests['db_user'], $requests['db_pw']);
