@@ -137,39 +137,44 @@ class RGBColor
         }
     }
 
-    static function getArray()
-    {
-        function hspCor ($valorCor) {
-            $r = hexdec(substr($valorCor, 1, 2));
-            $g = hexdec(substr($valorCor, 3, 2));
-            $b = hexdec(substr($valorCor, 5, 2));
-            $hsp = sqrt(0.299 * ($r * $r) + 0.587 * ($g * $g) + 0.114 * ($b * $b));
-            if ($hsp > 127.5) 
-                return '#000000';
-            else
-                return '#ffffff';
-        }
+    static function hspCor ($valorCor) {
+        $r = hexdec(substr($valorCor, 1, 2));
+        $g = hexdec(substr($valorCor, 3, 2));
+        $b = hexdec(substr($valorCor, 5, 2));
+        $hsp = sqrt(0.299 * ($r * $r) + 0.587 * ($g * $g) + 0.114 * ($b * $b));
+        if ($hsp > 127.5) 
+            return '#000000';
+        else
+            return '#ffffff';
+    }
 
+    static function getArray($_nomePaleta = 'Pantone')
+    {
         global $global_hpDB;
 
-        $_sql = "select * from hp_parescores";
-        $pares = $global_hpDB->query($_sql);
-        if (!$pares)
-        {
-            die('não consegui ler a tabela de pares de cores!');
-        }
-        else
-        {
-            foreach ($pares as $parCor)
+        $_sql = $global_hpDB->prepare("select * from hp_parescores WHERE nomePaleta = ?");
+        $_sql->bind_param('s', $_nomePaleta);
+
+        try {
+            if (!$_sql->execute())
+                throw new Exception('não consegui ler a tabela de pares de cores!');
+            else
             {
-                $paresCores[] = array (
-                        'idPar' => $parCor['idPar'],
-                        'nomeCor' => $parCor['nomeCor'],
-                        'valorCor' => $parCor['valorCor'],
-                        'hspCor' => hspCor($parCor['valorCor']),
-                );
+                $pares = $_sql->get_result();
+                while ($parCor = $pares->fetch_assoc())
+                {
+                    $paresCores[] = array (
+                            'idPar' => $parCor['idPar'],
+                            'nomeCor' => $parCor['nomeCor'],
+                            'valorCor' => $parCor['valorCor'],
+                            'hspCor' => RGBColor::hspCor($parCor['valorCor']),
+                    );
+                }
             }
+        } catch (Exception $e) {
+            throw new Exception ("erro na consulta à tabela de pares de cores: $_sql->error");
         }
+
 
         return isset($paresCores) ? $paresCores : FALSE;
 

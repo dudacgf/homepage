@@ -22,9 +22,15 @@ function onChangeColorPicker() {
 function toggleColorMode(idBotaoOpcaoModo) {
     if (idBotaoOpcaoModo.id == 'rainbowButton') {
        document.getElementById('boxCores').style.display = 'none';
+       document.getElementById('boxCoresMD').style.display = 'none';
        document.querySelector('#colorPicker').jscolor.show(); 
     } else if (idBotaoOpcaoModo.id == 'pantone') {
        document.getElementById('boxCores').style.display = 'block';
+       document.getElementById('boxCoresMD').style.display = 'none';
+       document.querySelector('#colorPicker').jscolor.hide(); 
+    } else if (idBotaoOpcaoModo.id == 'material') {
+       document.getElementById('boxCores').style.display = 'none';
+       document.getElementById('boxCoresMD').style.display = 'block';
        document.querySelector('#colorPicker').jscolor.hide(); 
     }
 }

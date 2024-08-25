@@ -55,6 +55,13 @@ if ( (isset($requests['selectcolor']) && $requests['selectcolor'] == 'sim') || (
     // lê os elementos coloridos e os pares de cores
     $homepage->assign('elementosColoridos', elementoColorido::getArray());
     $homepage->assign('paresCores', RGBColor::getArray());
+    $homepage->assign('pcMaterial', RGBColor::getArray('Material'));
+    // le icones 
+    $svg_rainbow = file_get_contents($images_path . 'colorWheel.svg');
+    $homepage->assign('svg_rainbow', $svg_rainbow);
+    $svg_google = file_get_contents($images_path . 'google.svg');
+    $homepage->assign('svg_google', $svg_google);
+
 }
 else
 {

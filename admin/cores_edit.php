@@ -20,6 +20,7 @@ $homepage->assign('displaySelectColor', 1);
 // lê os elementos coloridos e os pares de cores
 $homepage->assign('elementosColoridos', elementoColorido::getArray());
 $homepage->assign('paresCores', RGBColor::getArray());
+$homepage->assign('pcMaterial', RGBColor::getArray('Material'));
 
 // verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray(ID_COR_PAG);
@@ -79,10 +80,13 @@ $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 // obtém os items do menu
 include($admin_path . 'ler_menu.php');
 
-$svg_img = file_get_contents($images_path . 'colorWheel.svg');
-$homepage->assign('svg_img', $svg_img);
+// le icones 
+$svg_rainbow = file_get_contents($images_path . 'colorWheel.svg');
+$homepage->assign('svg_rainbow', $svg_rainbow);
+$svg_google = file_get_contents($images_path . 'google.svg');
+$homepage->assign('svg_google', $svg_google);
 
-    $homepage->assign('descricoesCategorias', $descricoesCategorias);
+$homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
 $homepage->assign('includePATH', INCLUDE_PATH);
 

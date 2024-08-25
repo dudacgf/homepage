@@ -28,12 +28,13 @@
                         </div>
                     </div>
                     <div style="float: left;">
-                        <div class="tituloCategoria">Cores</div>
+                        <div class="tituloCategoria" style="width: 100%; display: block;">Cores</div>
                         <div style="display:flex; background-color: transparent;">
                             <div id="options" style="display:flex">
                                 <div style="display: block">
-                                <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);" >{$svg_img} Pick a Color</button>
-                                <button id="pantone" class="submit reverseButton fa-swatchbook" onClick="toggleColorMode(this);" >Pantone</button>
+                                <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_rainbow} Pick a Color</button>
+                                <button id="pantone" class="submit reverseButton fa-swatchbook" onClick="toggleColorMode(this);">Pantone</button>
+                                <button id="material" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_google}</svg>Material Design</button>
                                 </div>
                             </div>
                             <div id="pickercontainer" style="display:flex">
@@ -43,6 +44,15 @@
                                     <div class="contentCor" id="boxContent">
                                         {section name=pc loop=$paresCores}
                                         <div class="cor" style="background-color: {$paresCores[pc].valorCor}" onClick="boxCorClick('{$paresCores[pc].nomeCor}', '{$paresCores[pc].valorCor}','{$paresCores[pc].hspCor}')"></div>
+                                        {/section}
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="boxContorno" id="boxCoresMD" style="width: 210px; display: none;">
+                                    <div class="blockCor" style="width: 210px;">
+                                    <div class="contentCor" id="boxContentMD" style="width: 210px;">
+                                        {section name=pc loop=$pcMaterial}
+                                        <div class="cor" style="background-color: {$pcMaterial[pc].valorCor}" onClick="boxCorClick('{$pcMaterial[pc].nomeCor}', '{$pcMaterial[pc].valorCor}','{$pcMaterial[pc].hspCor}')"></div>
                                         {/section}
                                     </div>
                                     </div>
