@@ -94,10 +94,16 @@ body {
     background-color: var(--theme-bodyBG);
 }
 /* fortunes */
-div.fortune,
-div.novoFilho {
+div.fortune {
     background-color: var(--theme-fortuneBG);
     color: var(--theme-fortuneC);
+}
+div.menuBarra {
+    background-color: var(--theme-fortuneBG);
+    color: var(--theme-fortuneC);
+}
+div.menuBarraItem {
+    background-color: transparent;
 }
 .copyright {
     color: var(--theme-fortuneC);
@@ -176,6 +182,15 @@ input.submit, button {
   border-Right-color: var(--theme-buttonBBR);
   background-color: var(--theme-buttonBG);
   color: var(--theme-buttonC);
+}
+.reverseButton {
+  background-color: transparent;
+  color: var(--theme-buttonBG);
+  border-color: transparent;
+  border-bottom-color: var(--theme-buttonBG) 1px solid;
+}
+.colorWheel {
+  fill: var(--theme-buttonBG);
 }
 /* páginas administrativas. */
 div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {

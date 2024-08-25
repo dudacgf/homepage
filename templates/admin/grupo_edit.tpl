@@ -97,20 +97,20 @@ function doAction(pressed) {
 {include file="admin/elementos_div.tpl"}
 </div>
 <div class="subTitulo">{$LANG.novosElementos}:</div>
-<div class="novoFilho" style="text-align: center; padding: 0; margin: 0; height: 30px;">
-    <div class="newItem_div" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
+<div class="menuBarra" style="">
+    <div class="menuBarraItem" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
         :: {$LANG.novoLink} ::
     </div>
-    <div class="newItem_div" onClick="editarElemento('novoForm', 0, {$grupo.idGrupo});">
+    <div class="menuBarraItem" onClick="editarElemento('novoForm', 0, {$grupo.idGrupo});">
         :: {$LANG.novoForm} ::
     </div> 
-    <div class="newItem_div" onClick="editarElemento('novoSeparador', 0, {$grupo.idGrupo});">
+    <div class="menuBarraItem" onClick="editarElemento('novoSeparador', 0, {$grupo.idGrupo});">
         :: {$LANG.novoSeparador} ::
     </div> 
-    <div class="newItem_div" onClick="editarElemento('novaImagem', 0, {$grupo.idGrupo});">
+    <div class="menuBarraItem" onClick="editarElemento('novaImagem', 0, {$grupo.idGrupo});">
         :: {$LANG.novaImagem} ::
     </div>
-    <div class="newItem_div" onClick="editarElemento('novoTemplate', 0, {$grupo.idGrupo});">
+    <div class="menuBarraItem" onClick="editarElemento('novoTemplate', 0, {$grupo.idGrupo});">
         :: {$LANG.novoTemplate} ::
     </div>
 </div>

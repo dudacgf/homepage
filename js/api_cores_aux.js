@@ -16,7 +16,25 @@ function onChangeColorPicker() {
 
   preview.style.backgroundColor = colorPicker.jscolor.valueElement.value;
   preview.style.color = HSP(colorPicker.jscolor.valueElement.value);
-  preview.innerHTML = colorPicker.jscolor.valueElement.value;
+  preview.innerHTML = '<div class="textMiddle">Custom Color<br/>' + colorPicker.jscolor.valueElement.value + '</div>';
   zzselect.value = colorPicker.jscolor.valueElement.value;
+}
+function toggleColorMode(idBotaoOpcaoModo) {
+    if (idBotaoOpcaoModo.id == 'rainbowButton') {
+       document.getElementById('boxCores').style.display = 'none';
+       document.querySelector('#colorPicker').jscolor.show(); 
+    } else if (idBotaoOpcaoModo.id == 'pantone') {
+       document.getElementById('boxCores').style.display = 'block';
+       document.querySelector('#colorPicker').jscolor.hide(); 
+    }
+}
+function boxCorClick(nomeCor, valorCor, hspCor) {
+    const bp = document.getElementById('previewColorPicked');
+    const sc = document.getElementById('selectedColor');
+    
+    sc.value = valorCor;
+    bp.style.backgroundColor = valorCor;
+    bp.style.color = hspCor;
+    bp.innerHTML = '<div class="textMiddle">' + nomeCor + '<br/>' + valorCor.toUpperCase() + '</div>';
 }
 

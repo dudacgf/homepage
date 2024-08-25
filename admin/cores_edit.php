@@ -79,7 +79,10 @@ $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 // obtém os items do menu
 include($admin_path . 'ler_menu.php');
 
-$homepage->assign('descricoesCategorias', $descricoesCategorias);
+$svg_img = file_get_contents($images_path . 'colorWheel.svg');
+$homepage->assign('svg_img', $svg_img);
+
+    $homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
 $homepage->assign('includePATH', INCLUDE_PATH);
 

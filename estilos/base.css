@@ -49,6 +49,9 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    scroll-margin-top: 70px;
+    scroll-margin-bottom: 40px;
+    scroll-snap-type: y mandatory;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -116,7 +119,7 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     background-color: var(--theme-light);
     color: var(--theme-tituloBG);
     width: 100%;
-    min-height: 15%;
+    height: 70px;
     margin-bottom: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
@@ -253,9 +256,32 @@ div.opcoes {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
 clear: left; width: 70%; text-align: left; 
 }
-div.novoFilho {
+div.menuBarra {
 font-size: 0.9rem; clear: both; 
-width: 100%; margin: 0; padding: 10px; border: 0;
+width: 100%; margin: 0; padding: 0; border: 0;
+text-align: center; height: 40px;
+}
+div.menuBarra:has(> :nth-child(4)) {
+    --filho-width: calc(100% / 4);
+}
+div.menuBarra:has(> :nth-child(5)) {
+    --filho-width: calc(100% / 5);
+}
+.menuBarraItem {
+  width: var(--filho-width);
+  text-align: center;
+  background: var(--theme-dark); 
+  margin: 0; 
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 0;
+  padding-right: 0;
+  font-weight: 600; 
+  float: left; 
+}
+
+.menuBarraItem:hover {
+    cursor: pointer;
 }
 iframe.exemploPagina {
 box-shadow: 12px 15px var(--theme-dark); z-index: 10;
@@ -306,22 +332,6 @@ padding: 0.3em 0.3em 0.3em 0.3em;
  box-shadow: 10px 10px 10px rgba(207, 207, 207, 0.5);
 } 
 
-.newItem_div {
-  width: calc(100%/5);
-  text-align: center;
-  background: var(--theme-dark); 
-  margin: 0; 
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 0;
-  padding-right: 0;
-  font-weight: 600; 
-  float: left; 
-}
-
-.newItem_div:hover {
-    cursor: pointer;
-}
 
 #invisivel_div {
     display: none;
@@ -384,14 +394,22 @@ padding: 0.3em 0.3em 0.3em 0.3em;
   50% { opacity: 1; }
 }
 
-.rainbow {
-text-align: left; width: 200px; margin-left: 1px; padding-left: 15px; padding-right: 15px; padding-top: 3px;
+.reverseButton {
+    text-align: left;
+    display: block;
+    width: 200px;
+    height: 20px;
+    margin-bottom: 8px;
+    margin-left: 1px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
 }
-.interior .colorWheel::before {
-    content: url('../imagens/colorWheel.png');
+.colorWheel {
+    width: 14px;
+    height:14px;
     padding-right: 10px;
-    padding-left: 3px;
-    padding-bottom: 2px;
+    padding-bottom: 0;
 }
 
 #selectElemento,
@@ -401,9 +419,53 @@ text-align: left; width: 200px; margin-left: 1px; padding-left: 15px; padding-ri
 
 #previewColorPicked {
 border: 1px solid var(--theme-medium); 
-width: 180px; height: 21px; margin-left: 3px; 
+border-radius: 8px;
+width: 180px; height: 146px; margin-left: 8px; 
 margin-bottom: 6px; padding-top: 7px; 
-text-align: center;
+text-align: center; vertical-align: middle; align-items: center;
+}
+.textMiddle {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-
+/* boxCores */
+div.boxContorno {
+    display: flex;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    border: 1px solid #d0d0d0;
+    border-radius: 8px;
+    width: 180px;
+    height: 146px;
+    padding: 4px 4px 4px 4px;
+}
+div.blockCor {
+    background-color: transparent;
+    display: flex;
+    float: left;
+    width: 180px;
+    height: 146px;
+    margin: 0;
+    border:0;
+    padding: 0;
+}
+div.contentCor {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    width: 180px;
+    height: 146px;
+    margin: 0;
+    margin-bottom: 4px;
+    border: 0;
+    border-radius: 8px;
+    padding: 0;
+}
+div.cor {
+    display: block;
+    float: left;
+    width: 15px;
+    height: 15px;
+}

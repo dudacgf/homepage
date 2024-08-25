@@ -29,22 +29,41 @@
                     </div>
                     <div style="float: left;">
                         <div class="tituloCategoria">Cores</div>
-                        <div class="interior">
-                            <button id="rainbowButton" class="submit rainbow colorWheel" onClick="document.querySelector('#colorPicker').jscolor.show();" >Pick a Color</button>
-                            <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
-                            <select id="selectColor" onChange="onChangeselectColor();" size="6" style="clear: both; width: 200px;">
-                                {section name=opt loop=$paresCores}
-                                <option value="{$paresCores[opt].valorCor}" style="color: {$paresCores[opt].hspCor}; background-color: {$paresCores[opt].valorCor}">{$paresCores[opt].nomeCor}</option>
-                                {/section}
-                            </select>
+                        <div style="display:flex; background-color: transparent;">
+                            <div id="options" style="display:flex">
+                                <div style="display: block">
+                                <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);" >{$svg_img} Pick a Color</button>
+                                <button id="pantone" class="submit reverseButton fa-swatchbook" onClick="toggleColorMode(this);" >Pantone</button>
+                                </div>
+                            </div>
+                            <div id="pickercontainer" style="display:flex">
+                                <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
+                                <div class="boxContorno" id="boxCores">
+                                    <div class="blockCor">
+                                    <div class="contentCor" id="boxContent">
+                                        {section name=pc loop=$paresCores}
+                                        <div class="cor" style="background-color: {$paresCores[pc].valorCor}" onClick="boxCorClick('{$paresCores[pc].nomeCor}', '{$paresCores[pc].valorCor}','{$paresCores[pc].hspCor}')"></div>
+                                        {/section}
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div id="previewColorPicked"></div>
                         </div>
                     </div>
-                    <div style="display: inline-grid; float: left;">
-                        <div id="previewColorPicked"></div>
-                        <button class="submit colorButton fa-check-circle" onClick="alterarRootVar();">Alterar</button>
-                        <button class="submit colorButton fa-arrow-rotate-left" onClick="restaurarRootVar();">Restaurar</button>
-                        <button class="submit colorButton fa-circle-xmark" onClick="restaurarRootcssPagina();">Restaurar Página</button>
-                        <button class="submit colorButton fa-floppy-disk" onClick="novoEstilo();">Salvar Estilo</button>
+                    <div class="menuBarra">
+                        <div class="menuBarraItem" onClick="alterarRootVar();">
+                            :: Alterar ::
+                        </div>
+                        <div class="menuBarraItem" onClick="restaurarRootVar();">
+                            :: Restaurar ::
+                        </div> 
+                        <div class="menuBarraItem" onClick="restaurarRootcssPagina();">
+                            :: Restaurar Página ::
+                        </div> 
+                        <div class="menuBarraItem" onClick="novoEstilo();">
+                            :: Salvar Estilo ::
+                        </div>
                     </div>
                 </div>
             </form>
@@ -54,16 +73,17 @@
 <script>
 jscolor.presets.default = {
     format: 'hex',
+    mode: 'HVS', 
     valueElement: '#selectedColor',
     required: false,
-    palette: getThemePalette(),
-    backgroundColor: getThemeColor('dark'),
+    backgroundColor: 'transparent',
     previewPosition: 'right',
-    closeButton: true,
-    closeText: 'Fechar',
-    buttonColor: getThemeColor('light'),
-    container: '#rainbowButton',
+    container: '#pickercontainer',
     position: 'bottom',
     onChange: onChangeColorPicker,
+    hideOnLeave: false,
+    shadow: false,
+    height: 127,
+    width:131,
 }
 </script>

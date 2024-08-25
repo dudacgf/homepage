@@ -6,6 +6,7 @@
 	
 // cria o primeiro grupo, flat e o chama de aberto.
 $elementos[] = array( 
+	'idElemento' => 100000,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'link em grupo aberto',
@@ -15,6 +16,7 @@ $elementos[] = array(
 	'localLink' => 0,
 	'targetLink' => '');
 $elementos[] = array( 
+	'idElemento' => 100001,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'outro link em grupo aberto',
@@ -31,6 +33,7 @@ $grupos[] = array(
 // cria o segundo grupo, clickable e o chama de clicável
 unset($elementos);
 $elementos[] = array( 
+	'idElemento' => 100002,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'link em grupo clicável',
@@ -40,6 +43,7 @@ $elementos[] = array(
 	'localLink' => 0,
 	'targetLink' => '');
 $elementos[] = array( 
+	'idElemento' => 100003,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'outro link em grupo clicável',
@@ -56,6 +60,7 @@ $grupos[] = array(
 // cria o terceiro grupo, expandable e o chama de expansível
 unset($elementos); 
 $elementos[] = array( 
+	'idElemento' => 100004,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'link em grupo expansível',
@@ -65,6 +70,7 @@ $elementos[] = array(
 	'localLink' => 0,
 	'targetLink' => '');
 $elementos[] = array( 
+	'idElemento' => 100005,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
 	'descricaoLink' => 'outro link em grupo expansível',
@@ -81,6 +87,7 @@ $grupos[] = array(
 // cria o quarto grupo, flat. inclui nele o template de um botão.
 unset($elementos); 
 $elementos[] = array( 
+	'idElemento' => 100006,
 	'tipoElemento' => 6,
 	'descricaoTemplate' => 'botão',
 	'nomeTemplate' => 'admin/sample_button.tpl');
