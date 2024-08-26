@@ -1,4 +1,6 @@
 <?php
+header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
+header( 'Cache-Control: max-age: 10' );
 /******
     editarElemento.php - chamada quando for solicitada a edição de um elemento na página de edição de um grupo
 

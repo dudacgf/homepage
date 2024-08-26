@@ -1,4 +1,6 @@
 <?php
+header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
+header( 'Cache-Control: max-age: 10' );
 // add cookie 
 // - cria um cookie de cor para a página atual
 //

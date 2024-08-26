@@ -1,4 +1,6 @@
 <?php
+header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
+header( 'Cache-Control: max-age: 10' );
 include_once('../common.php');
 
 // se não tenho o id do elemento a excluir, retorna erro
