@@ -39,11 +39,11 @@ $connection_info_xml_id = 1;
 // (o que vai depois do ? em http://.../...?x=y)
 if (isset($_GET)) 
 {
-	$requests = $_GET;
+    $requests = $_GET;
 } 
 elseif (isset($_POST)) 
 {
-	$requests = $_POST;
+    $requests = $_POST;
 } 
 $requests = array_merge($_REQUEST, $requests);
 
@@ -61,9 +61,9 @@ if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'sim')
 // se for página administrativa, le o arquivo de linguagem
 if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME'])) 
 {
-	include($language_path . "lang_homepage_admin.php");
-	global $lang;
-	$homepage->assign('LANG', $lang);
+    include($language_path . "lang_homepage_admin.php");
+    global $lang;
+    $homepage->assign('LANG', $lang);
 }
 
 // classes específicas da homepage
@@ -84,6 +84,11 @@ function prepare_msgAlerta($iconAlerta, $msgAlerta) {
     setcookie('iconAlerta', $iconAlerta, $options);
     setcookie('msgAlerta', $msgAlerta, $options);
     setcookie('showAlerta', 1, $options);
+}
+
+function insert_GetSVG($name) {
+    $svg = file_get_contents($images_path . $name);
+    return $svg);
 }
 
 //-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
