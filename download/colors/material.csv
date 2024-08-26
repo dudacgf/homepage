@@ -1,0 +1,268 @@
+Material,Red 50,#FFEBEE
+Material,Red 100,#FFCDD2
+Material,Red 200,#EF9A9A
+Material,Red 300,#E57373
+Material,Red 400,#EF5350
+Material,Red 500,#F44336
+Material,Red 600,#E53935
+Material,Red 700,#D32F2F
+Material,Red 800,#C62828
+Material,Red 900,#B71C1C
+Material,Red A100,#FF8A80
+Material,Red A200,#FF5252
+Material,Red A400,#FF1744
+Material,Red A700,#D50000
+Material,Pink 50,#FCE4EC
+Material,Pink 100,#F8BBD0
+Material,Pink 200,#F48FB1
+Material,Pink 300,#F06292
+Material,Pink 400,#EC407A
+Material,Pink 500,#E91E63
+Material,Pink 600,#D81B60
+Material,Pink 700,#C2185B
+Material,Pink 800,#AD1457
+Material,Pink 900,#880E4F
+Material,Pink A100,#FF80AB
+Material,Pink A200,#FF4081
+Material,Pink A400,#F50057
+Material,Pink A700,#C51162
+Material,Purple 50,#F3E5F5
+Material,Purple 100,#E1BEE7
+Material,Purple 200,#CE93D8
+Material,Purple 300,#BA68C8
+Material,Purple 400,#AB47BC
+Material,Purple 500,#9C27B0
+Material,Purple 600,#8E24AA
+Material,Purple 700,#7B1FA2
+Material,Purple 800,#6A1B9A
+Material,Purple 900,#4A148C
+Material,Purple A100,#EA80FC
+Material,Purple A200,#E040FB
+Material,Purple A400,#D500F9
+Material,Purple A700,#AA00FF
+Material,Deep Purple 50,#EDE7F6
+Material,Deep Purple 100,#D1C4E9
+Material,Deep Purple 200,#B39DDB
+Material,Deep Purple 300,#9575CD
+Material,Deep Purple 400,#7E57C2
+Material,Deep Purple 500,#673AB7
+Material,Deep Purple 600,#5E35B1
+Material,Deep Purple 700,#512DA8
+Material,Deep Purple 800,#4527A0
+Material,Deep Purple 900,#311B92
+Material,Deep Purple A100,#B388FF
+Material,Deep Purple A200,#7C4DFF
+Material,Deep Purple A400,#651FFF
+Material,Deep Purple A700,#6200EA
+Material,Indigo 50,#E8EAF6
+Material,Indigo 100,#C5CAE9
+Material,Indigo 200,#9FA8DA
+Material,Indigo 300,#7986CB
+Material,Indigo 400,#5C6BC0
+Material,Indigo 500,#3F51B5
+Material,Indigo 600,#3949AB
+Material,Indigo 700,#303F9F
+Material,Indigo 800,#283593
+Material,Indigo 900,#1A237E
+Material,Indigo A100,#8C9EFF
+Material,Indigo A200,#536DFE
+Material,Indigo A400,#3D5AFE
+Material,Indigo A700,#304FFE
+Material,Blue Blue 50,#E3F2FD
+Material,Blue 100,#BBDEFB
+Material,Blue 200,#90CAF9
+Material,Blue 300,#64B5F6
+Material,Blue 400,#42A5F5
+Material,Blue 500,#2196F3
+Material,Blue 600,#1E88E5
+Material,Blue 700,#1976D2
+Material,Blue 800,#1565C0
+Material,Blue 900,#0D47A1
+Material,Blue A100,#82B1FF
+Material,Blue A200,#448AFF
+Material,Blue A400,#2979FF
+Material,Blue A700,#2962FF
+Material,Light Blue 50,#E1F5FE
+Material,Light Blue 100,#B3E5FC
+Material,Light Blue 200,#81D4FA
+Material,Light Blue 300,#4FC3F7
+Material,Light Blue 400,#29B6F6
+Material,Light Blue 500,#03A9F4
+Material,Light Blue 600,#039BE5
+Material,Light Blue 700,#0288D1
+Material,Light Blue 800,#0277BD
+Material,Light Blue 900,#01579B
+Material,Light Blue A100,#80D8FF
+Material,Light Blue A200,#40C4FF
+Material,Light Blue A400,#00B0FF
+Material,Light Blue A700,#0091EA
+Material,Cyan 50,#E0F7FA
+Material,Cyan 100,#B2EBF2
+Material,Cyan 200,#80DEEA
+Material,Cyan 300,#4DD0E1
+Material,Cyan 400,#26C6DA
+Material,Cyan 500,#00BCD4
+Material,Cyan 600,#00ACC1
+Material,Cyan 700,#0097A7
+Material,Cyan 800,#00838F
+Material,Cyan 900,#006064
+Material,Cyan A100,#84FFFF
+Material,Cyan A200,#18FFFF
+Material,Cyan A400,#00E5FF
+Material,Cyan A700,#00B8D4
+Material,Teal 50,#E0F2F1
+Material,Teal 100,#B2DFDB
+Material,Teal 200,#80CBC4
+Material,Teal 300,#4DB6AC
+Material,Teal 400,#26A69A
+Material,Teal 500,#009688
+Material,Teal 600,#00897B
+Material,Teal 700,#00796B
+Material,Teal 800,#00695C
+Material,Teal 900,#004D40
+Material,Teal A100,#A7FFEB
+Material,Teal A200,#64FFDA
+Material,Teal A400,#1DE9B6
+Material,Teal A700,#00BFA5
+Material,Green 50,#E8F5E9
+Material,Green 100,#C8E6C9
+Material,Green 200,#A5D6A7
+Material,Green 300,#81C784
+Material,Green 400,#66BB6A
+Material,Green 500,#4CAF50
+Material,Green 600,#43A047
+Material,Green 700,#388E3C
+Material,Green 800,#2E7D32
+Material,Green 900,#1B5E20
+Material,Green A100,#B9F6CA
+Material,Green A200,#69F0AE
+Material,Green A400,#00E676
+Material,Green A700,#00C853
+Material,Light Green 50,#F1F8E9
+Material,Light Green 100,#DCEDC8
+Material,Light Green 200,#C5E1A5
+Material,Light Green 300,#AED581
+Material,Light Green 400,#9CCC65
+Material,Light Green 500,#8BC34A
+Material,Light Green 600,#7CB342
+Material,Light Green 700,#689F38
+Material,Light Green 800,#558B2F
+Material,Light Green 900,#33691E
+Material,Light Green A100,#CCFF90
+Material,Light Green A200,#B2FF59
+Material,Light Green A400,#76FF03
+Material,Light Green A700,#64DD17
+Material,Lime Lime 50,#F9FBE7
+Material,Lime 100,#F0F4C3
+Material,Lime 200,#E6EE9C
+Material,Lime 300,#DCE775
+Material,Lime 400,#D4E157
+Material,Lime 500,#CDDC39
+Material,Lime 600,#C0CA33
+Material,Lime 700,#AFB42B
+Material,Lime 800,#9E9D24
+Material,Lime 900,#827717
+Material,Lime A100,#F4FF81
+Material,Lime A200,#EEFF41
+Material,Lime A400,#C6FF00
+Material,Lime A700,#AEEA00
+Material,Yellow 50,#FFFDE7
+Material,Yellow 100,#FFF9C4
+Material,Yellow 200,#FFF59D
+Material,Yellow 300,#FFF176
+Material,Yellow 400,#FFEE58
+Material,Yellow 500,#FFEB3B
+Material,Yellow 600,#FDD835
+Material,Yellow 700,#FBC02D
+Material,Yellow 800,#F9A825
+Material,Yellow 900,#F57F17
+Material,Yellow A100,#FFFF8D
+Material,Yellow A200,#FFFF00
+Material,Yellow A400,#FFEA00
+Material,Yellow A700,#FFD600
+Material,Amber 50,#FFF8E1
+Material,Amber 100,#FFECB3
+Material,Amber 200,#FFE082
+Material,Amber 300,#FFD54F
+Material,Amber 400,#FFCA28
+Material,Amber 500,#FFC107
+Material,Amber 600,#FFB300
+Material,Amber 700,#FFA000
+Material,Amber 800,#FF8F00
+Material,Amber 900,#FF6F00
+Material,Amber A100,#FFE57F
+Material,Amber A200,#FFD740
+Material,Amber A400,#FFC400
+Material,Amber A700,#FFAB00
+Material,Orange 50,#FFF3E0
+Material,Orange 100,#FFE0B2
+Material,Orange 200,#FFCC80
+Material,Orange 300,#FFB74D
+Material,Orange 400,#FFA726
+Material,Orange 500,#FF9800
+Material,Orange 600,#FB8C00
+Material,Orange 700,#F57C00
+Material,Orange 800,#EF6C00
+Material,Orange 900,#E65100
+Material,Orange A100,#FFD180
+Material,Orange A200,#FFAB40
+Material,Orange A400,#FF9100
+Material,Orange A700,#FF6D00
+Material,Deep Orange 50,#FBE9E7
+Material,Deep Orange 100,#FFCCBC
+Material,Deep Orange 200,#FFAB91
+Material,Deep Orange 300,#FF8A65
+Material,Deep Orange 400,#FF7043
+Material,Deep Orange 500,#FF5722
+Material,Deep Orange 600,#F4511E
+Material,Deep Orange 700,#E64A19
+Material,Deep Orange 800,#D84315
+Material,Deep Orange 900,#BF360C
+Material,Deep Orange A100,#FF9E80
+Material,Deep Orange A200,#FF6E40
+Material,Deep Orange A400,#FF3D00
+Material,Deep Orange A700,#DD2C00
+Material,Brown 50,#EFEBE9
+Material,Brown 100,#D7CCC8
+Material,Brown 200,#BCAAA4
+Material,Brown 300,#A1887F
+Material,Brown 400,#8D6E63
+Material,Brown 500,#795548
+Material,Brown 600,#6D4C41
+Material,Brown 700,#5D4037
+Material,Brown 800,#4E342E
+Material,Brown 900,#3E2723
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,Gray 50,#FAFAFA
+Material,Gray 100,#F5F5F5
+Material,Gray 200,#EEEEEE
+Material,Gray 300,#E0E0E0
+Material,Gray 400,#BDBDBD
+Material,Gray 500,#9E9E9E
+Material,Gray 600,#757575
+Material,Gray 700,#616161
+Material,Gray 800,#424242
+Material,Gray 900,#212121
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,Blue Gray 50,#ECEFF1
+Material,Blue Gray 100,#CFD8DC
+Material,Blue Gray 200,#B0BEC5
+Material,Blue Gray 300,#90A4AE
+Material,Blue Gray 400,#78909C
+Material,Blue Gray 500,#607D8B
+Material,Blue Gray 600,#546E7A
+Material,Blue Gray 700,#455A64
+Material,Blue Gray 800,#37474F
+Material,Blue Gray 900,#263238
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,gap,nouse
+Material,Black,#000000
+Material,White,#FFFFFF
