@@ -85,11 +85,4 @@ function prepare_msgAlerta($iconAlerta, $msgAlerta) {
     setcookie('msgAlerta', $msgAlerta, $options);
     setcookie('showAlerta', 1, $options);
 }
-
-function insert_GetSVG($name) {
-    $svg = file_get_contents($images_path . $name);
-    return $svg);
-}
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
 ?>
