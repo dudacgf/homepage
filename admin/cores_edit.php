@@ -81,10 +81,14 @@ $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
 include($admin_path . 'ler_menu.php');
 
 // le icones 
-$svg_rainbow = file_get_contents($images_path . 'colorWheel.svg');
-$homepage->assign('svg_rainbow', $svg_rainbow);
+$svg_hue = file_get_contents($images_path . 'hue.svg');
+$homepage->assign('svg_hue', $svg_hue);
 $svg_google = file_get_contents($images_path . 'google.svg');
 $homepage->assign('svg_google', $svg_google);
+$svg_pantone = file_get_contents($images_path . 'pantone.svg');
+$homepage->assign('svg_pantone', $svg_pantone);
+$svg_palette = file_get_contents($images_path . 'palette.svg');
+$homepage->assign('svg_palette', $svg_palette);
 
 $homepage->assign('descricoesCategorias', $descricoesCategorias);
 $homepage->assign('descricoesGrupos', $descricoesGrupos);
