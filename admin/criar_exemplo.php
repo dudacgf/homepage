@@ -6,6 +6,11 @@
 	
 // cria o primeiro grupo, flat e o chama de aberto.
 $elementos[] = array( 
+	'idElemento' => 110000,
+	'tipoElemento' => 3,
+	'descricaoSeparador' => 'separador em grupo aberto',
+    'breakBefore' => 0);
+$elementos[] = array( 
 	'idElemento' => 100000,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
@@ -33,6 +38,11 @@ $grupos[] = array(
 // cria o segundo grupo, clickable e o chama de clicável
 unset($elementos);
 $elementos[] = array( 
+	'idElemento' => 110001,
+	'tipoElemento' => 3,
+	'descricaoSeparador' => '',
+    'breakBefore' => 1);
+$elementos[] = array( 
 	'idElemento' => 100002,
 	'tipoElemento' => 1,
 	'linkURL' => htmlentities("javascript: return false;"),
@@ -42,6 +52,11 @@ $elementos[] = array(
 	'urlElementoSVN' => 0,
 	'localLink' => 0,
 	'targetLink' => '');
+$elementos[] = array( 
+	'idElemento' => 110001,
+	'tipoElemento' => 3,
+	'descricaoSeparador' => 'separador em grupo clicável',
+    'breakBefore' => 1);
 $elementos[] = array( 
 	'idElemento' => 100003,
 	'tipoElemento' => 1,
@@ -59,6 +74,11 @@ $grupos[] = array(
 
 // cria o terceiro grupo, expandable e o chama de expansível
 unset($elementos); 
+$elementos[] = array( 
+	'idElemento' => 110001,
+	'tipoElemento' => 3,
+	'descricaoSeparador' => 'separador em grupo expansível',
+    'breakBefore' => 1);
 $elementos[] = array( 
 	'idElemento' => 100004,
 	'tipoElemento' => 1,
