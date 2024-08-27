@@ -2,83 +2,106 @@
 <script type="text/javascript" src="{$includePATH}js/jscolor.min.js"></script>
 <script type="text/javascript" src="{$includePATH}js/api_cores_aux.js"></script>
 <div class="content" style="text-align: left; height: auto;">
-    <div class="tituloLateral" style="width: inherit; float: none; font-size: larger; margin: 0;">Seleção de Cores</div>
-    <div class="lineForm">
-        <div class="formLateral" style="width: 100%;">
-            <form id="colorForm" action="javascript: void(0);">
-                <input type="hidden" id="selectedColor" value="" />
-                <input type="hidden" name="idPagina" id="idPagina" value="{$idPagina}">
-                <div style="width: 100%;">
-                    <div style="float: left;">
-                        <div class="tituloCategoria">Elementos</div>
-                        <div class="interior">
-                            <select id="selectElemento" size="6">
-                                {section name=opt loop=$elementosColoridos}
-                                <option value="{$elementosColoridos[opt].cookieElemento}" style="background-color: var(--theme-{$elementosColoridos[opt].cookieElemento});">{$elementosColoridos[opt].descricaoElemento}</option>
+    <div class="tituloCores">Seleção de Cores</div>
+        <input type="hidden" id="selectedColor" value="" />
+        <input type="hidden" name="idPagina" id="idPagina" value="{$idPagina}">
+        <div class="flex100">
+            <div class="boxContent">
+                <div class="tituloCategoria">
+                Elementos
+                </div>
+                <div class="blockElemento">
+                    <div class="contentElemento" id="boxElementos">
+                    <div id="selectElemento">
+                        {section name=opt loop=$elementosColoridos}
+                        <div class=boxElementoCor">
+                        <div class="elementoCorDescricao" id="{$elementosColoridos[opt].cookieElemento}" value="{$elementosColoridos[opt].cookieElemento}" onClick="onChangeElementoBoxElementoCor(this)">
+                                <span class="up">{$elementosColoridos[opt].descricaoElemento}
+                                </span>
+                            </div>
+                        </div>
+                        {/section}
+                    </div>
+                    <script>
+                    const elementos = document.getElementsByClassName('elementoCorDescricao');
+                    for (var i = 0;  i < elementos.length; i++) 
+                        elementos[i].style.setProperty('--elemento-cor', 'var(--theme-' + (elementos[i].id) + ')');
+                    </script>
+                    </div>
+                </div>
+            </div>
+            <div class="boxContent">
+                <div class="tituloCategoria" style="width: 100%; display: block; text-align: center;">
+                Preview
+                </div>
+                <div style="display: flex; width: 100%">
+                    <div id="previewElementoPicked"></div>
+                    <div id="previewColorPicked"></div>
+                </div>
+            </div>
+            <div class="boxContent">
+                <div class="tituloCategoria" style="width: 100%; display: block; text-align: left; padding-left: 10px;">
+                Cores
+                </div>
+                <div style="display:flex; background-color: transparent;">
+                    <div id="options" style="display:flex">
+                        <div style="display: block">
+                        <button id="paletaAtual" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_palette} Paleta Atual</button>
+                        <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_hue} Personalizada</button>
+                        <button id="pantone" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_pantone} Pantone</button>
+                        <button id="material" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_google} Material Design</button>
+                        {literal}
+                        <label for"inputHEX" class="reverseButton fa-pencil" style="font-weight: 800; font-size: 1.1rem; padding-left: 3px;";>Defina:<br />
+                        <input type="text" id="inputHEX" pattern="^#(?:[0-9a-fA-F]{6})}$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
+                        </label>
+                        {/literal}
+                        </div>
+                    </div>
+                    <div id="pickercontainer" style="display:flex">
+                        <div class="boxContorno" id="boxCoresPaleta">
+                            <div class="blockCor">
+                            <div class="contentCor" id="boxContentPaleta">
+                                <script>carregarPaletaAtual();</script>
+                            </div>
+                            </div>
+                        </div>
+                        <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
+                        <div class="boxContorno" id="boxCores" style="display: none;">
+                            <div class="blockCor">
+                            <div class="contentCor" id="boxContent">
+                                {section name=pc loop=$paresCores}
+                                <div class="cor" style="background-color: {$paresCores[pc].valorCor}" onClick="boxCorClick('{$paresCores[pc].nomeCor}', '{$paresCores[pc].valorCor}','{$paresCores[pc].hspCor}')"></div>
                                 {/section}
-                            </select>
-                            <script>
-                            function setColor(item, index) {
-                                let aCor = getThemeColorHSP(item.style.backgroundColor);
-                                item.style.color = aCor;
-                            }
-                            var select = document.getElementById('selectElemento');
-                            Array.from(select.options).forEach(setColor);
-                            </script>
-                        </div>
-                    </div>
-                    <div style="float: left;">
-                        <div class="tituloCategoria" style="width: 100%; display: block;">Cores</div>
-                        <div style="display:flex; background-color: transparent;">
-                            <div id="options" style="display:flex">
-                                <div style="display: block">
-                                <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_rainbow} Pick a Color</button>
-                                <button id="pantone" class="submit reverseButton fa-swatchbook" onClick="toggleColorMode(this);">Pantone</button>
-                                <button id="material" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_google}</svg>Material Design</button>
-                                </div>
                             </div>
-                            <div id="pickercontainer" style="display:flex">
-                                <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
-                                <div class="boxContorno" id="boxCores">
-                                    <div class="blockCor">
-                                    <div class="contentCor" id="boxContent">
-                                        {section name=pc loop=$paresCores}
-                                        <div class="cor" style="background-color: {$paresCores[pc].valorCor}" onClick="boxCorClick('{$paresCores[pc].nomeCor}', '{$paresCores[pc].valorCor}','{$paresCores[pc].hspCor}')"></div>
-                                        {/section}
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="boxContorno" id="boxCoresMD" style="width: 210px; display: none;">
-                                    <div class="blockCor" style="width: 210px;">
-                                    <div class="contentCor" id="boxContentMD" style="width: 210px;">
-                                        {section name=pc loop=$pcMaterial}
-                                        <div class="cor" style="background-color: {$pcMaterial[pc].valorCor}" onClick="boxCorClick('{$pcMaterial[pc].nomeCor}', '{$pcMaterial[pc].valorCor}','{$pcMaterial[pc].hspCor}')"></div>
-                                        {/section}
-                                    </div>
-                                    </div>
-                                </div>
                             </div>
-                        <div id="previewColorPicked"></div>
                         </div>
-                    </div>
-                    <div class="menuBarra">
-                        <div class="menuBarraItem" onClick="alterarRootVar();">
-                            :: Alterar ::
-                        </div>
-                        <div class="menuBarraItem" onClick="restaurarRootVar();">
-                            :: Restaurar ::
-                        </div> 
-                        <div class="menuBarraItem" onClick="restaurarRootcssPagina();">
-                            :: Restaurar Página ::
-                        </div> 
-                        <div class="menuBarraItem" onClick="novoEstilo();">
-                            :: Salvar Estilo ::
+                        <div class="boxContorno" id="boxCoresMD" style="width: 210px; display: none;">
+                            <div class="blockCor" style="width: 210px;">
+                            <div class="contentCor" id="boxContentMD" style="width: 210px;">
+                                {section name=pc loop=$pcMaterial}
+                                <div class="cor" style="background-color: {$pcMaterial[pc].valorCor}" onClick="boxCorClick('{$pcMaterial[pc].nomeCor}', '{$pcMaterial[pc].valorCor}','{$pcMaterial[pc].hspCor}')"></div>
+                                {/section}
+                            </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div><!-- class=formLateral" -->
-    </div><!-- class=lineForm-->
+            </div>
+        </div>
+        <div class="menuBarra">
+            <div class="menuBarraItem" onClick="alterarRootVar();">
+                :: Alterar ::
+            </div>
+            <div class="menuBarraItem" onClick="restaurarRootVar();">
+                :: Restaurar ::
+            </div> 
+            <div class="menuBarraItem" onClick="restaurarRootcssPagina();">
+                :: Restaurar Página ::
+            </div> 
+            <div class="menuBarraItem" onClick="novoEstilo();">
+                :: Salvar Estilo ::
+            </div>
+        </div>
 </div><!-- class=content -->
 <script>
 jscolor.presets.default = {
@@ -95,5 +118,6 @@ jscolor.presets.default = {
     shadow: false,
     height: 127,
     width:131,
+    zIndex: 1,
 }
 </script>

@@ -9,14 +9,12 @@
 
 --------------------------------------------------------------------------------*/
 
-/*
- * getThemeColor - obtém a cor de uma das variáveis de cor para o estilo css atual
+/**
+ * Obtém a cor de uma das variáveis de cor para o estilo css atual
  *
- * recebe: 
- * umaCor - o nome de uma variável de cor
+ * @param {string} umaCor - o nome de uma root-var de cor
  *
- * retorna:
- * a cor definida para essa variável em formato #RRGGBB
+ * @returns {string) - a cor definida para essa variável em formato #RRGGBB
  */
 const getThemeColor = (umaCor) => {
     var c = document.createElement("canvas");
@@ -30,6 +28,13 @@ const getThemeColor = (umaCor) => {
     return aCorHex;
 }
 
+/**
+ * calcula o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
+ *
+ * @param {string} aCorHex - cor em formato hex [#RRGGBB]
+ *
+ * @returns {string }  * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
+ */
 function HSP(aCorHex) {
     let r = parseInt(aCorHex.substr(1,2), 16);
     let g = parseInt(aCorHex.substr(3,2), 16);
@@ -45,15 +50,13 @@ function HSP(aCorHex) {
     return hspColor;
 }
 
-/*
- * getThemeColorHSP - obtém o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
- *                    de uma das variáveis de cor para o estilo css atual
+/**
+ * obtém o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
+ * de uma das root-vars de cor para o estilo css atual
  *
- * recebe:
- * umaCor - o nome de uma variável de cor
+ * @param {string} umaCor - o nome de uma variável de cor
  *
- * retorna:
- * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
+ * @returns {string }  * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
  */
 const getThemeColorHSP = (umaCor) => {
     var c = document.createElement("canvas");
@@ -70,21 +73,20 @@ const getThemeColorHSP = (umaCor) => {
     return HSP(aCorHex);
 }
 
-/*
- * getThemePalette - obtém as cores das variáveis de cor para o estilo css atual
+/**
+ * obtém as cores das variáveis de cor para o estilo css atual
  *
- * retorna:
- * array com as cores das variáveis de cor no format #RRGGBB
+ * @returns {string[]} - cores das variáveis de cor no format #RRGGBB
  */
 const getThemePalette = () => {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
-    const cookieStyles = document.getElementById('selectElemento').options;
+    const cookieStyles = document.getElementsByClassName('elementoCorDescricao');
     var cores = [];
 
-    for (const cookieStyle of cookieStyles) {
-        umaCor = '--theme-' + cookieStyle.value;
+    for (var i = 0; i < cookieStyles.length; i++) {
+        var umaCor = '--theme-' + cookieStyles[i].id;
         ctx.fillStyle = getComputedStyle(root).getPropertyValue(umaCor);
         if (!cores.includes(ctx.fillStyle))
             cores[cores.length] = ctx.fillStyle; 
@@ -94,11 +96,10 @@ const getThemePalette = () => {
     return cores.sort();
 }
 
-/*
- * getAllThemeColorPairs - obtem todos os pares de cores em uso
+/**
+ * Obtém todos os pares [cor root-var, cor definida] para a página atual
  *
- * retorna:
- * dictionary com as cores das variáveis de cor no format #RRGGBB
+ * @returns {Array} - dictionary com as cores das variáveis de cor no format #RRGGBB
  */
 const getAllThemeColorPairs = () => {
     var c = document.createElement("canvas");
@@ -117,30 +118,13 @@ const getAllThemeColorPairs = () => {
     return cores;
 }
 
-/*
- * hex2i - transforma uma string contendo um hexadecimal em um inteiro
+/**
+ * Executa uma ação no form de alteração de cores
  *
- * recebe:
- * f1 - um string contendo uma representação hexadecimal de um número inteiro
+ * @param {string} action - o metodo api a ser executado
+ * @param {json} options - dict json com opções para submissão (body, method etc)
  *
- * retorna:
- * f1 convertido para inteiro
- */
-function hex2i(f1) {
-    f1 = f1.toUpperCase();
-    rval = parseInt(f1,16);
-    return rval;
-}
-
-/*
- * colorAction - 
- *
- * recebe:
- * action - o metodo api a ser executado
- * options - dict json com opções para submissão (body, method etc)
- *
- * retorna:
- * o json retornado pela execução do método action
+ * @returns {json} - o json retornado pela execução do método action
  */
 async function colorAction(action, options = {}) {
     const url = window.includePATH + 'api/' + action + '.php';
@@ -158,18 +142,15 @@ async function colorAction(action, options = {}) {
     };
 };
 
-/*
- * alterarRootVar - altera propriedade (cor) de uma variável definida em :root
+/**
+ * altera propriedade (cor) de uma variável definida em :root
  *
- * recebe:
- * não recebe nada mas utiliza os campos de id idPagina, selectElemento, selectedColor no formulário
+ * @param {} não recebe nada mas utiliza os campos de id idPagina, selectElemento, selectedColor no formulário
  *
- * retorna:
- * nada, mas um toast com o resultado será exibido
  */
 const alterarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
-    const root_var = document.getElementById('selectElemento').value;
+    const root_var = document.getElementById('selectElemento').getAttribute('value');
     const color = document.getElementById('selectedColor').value;
 
     if (root_var == "" | color == "") {
@@ -189,18 +170,16 @@ const alterarRootVar = async () => {
     createToast(r.status, r.message);
 }
 
-/*
- * restaurarRootVar - restaurar propriedade (cor) de uma variável definida em :root
+/**
+ * restaura propriedade (cor) de uma variável definida em :root
  *
- * recebe:
- * não recebe nada mas utiliza os campos de id idPagina, selectElemento no formulário
+ * @param {} - não recebe nada mas utiliza os campos de id idPagina, selectElemento no formulário
  *
- * retorna:
- * nada, mas um toast com o resultado será exibido
+ * @returns {} - nada, mas um toast com o resultado será exibido
  */
 const restaurarRootVar = async () => {
     const aPagina = document.getElementById('idPagina').value;
-    const root_var = document.getElementById('selectElemento').value;
+    const root_var = document.getElementById('selectElemento').getAttribute('value');
 
     if (root_var == "") {
         createToast('warning', 'Elemento a ser restaurado não selecionado');
@@ -218,15 +197,13 @@ const restaurarRootVar = async () => {
     createToast(r.status, r.message);
 }
 
-/*
- * restaurarRootcssPagina - restaurar propriedade (cor) de todas as variáveis definidas em :root
- *                          que foram alteradas anteriormente
+/**
+ * restaurar propriedade (cor) de todas as variáveis definidas em :root
+ * que foram alteradas anteriormente
  *
- * recebe:
- * não recebe nada mas utiliza o campo de id idPagina no formulário
+ * @param {} - não recebe nada mas utiliza o campo de id idPagina no formulário
  *
- * retorna:
- * nada, mas um toast com o resultado será exibido
+ * @returns {} - nada, mas um toast com o resultado será exibido
  */
 const restaurarRootcssPagina = async () => {
     const aPagina = document.getElementById('idPagina').value;
@@ -249,8 +226,8 @@ const restaurarRootcssPagina = async () => {
     createToast(r.status, r.message); 
 }
 
-/*
- * novoEstilo - chamada para preparar e exibir form de salvamento de estilo
+/**
+ * chamada para preparar e exibir form de salvamento de estilo
  */
 const novoEstilo = async () => {
     const idPagina = document.getElementById('idPagina').value;
@@ -266,16 +243,10 @@ const novoEstilo = async () => {
         createToast(r.status, r.message);
 }
 
-/*
+/**
  * salvarEstilo - chamada após exibição do form de salvamento de estilos
  */
 const salvarEstilo = async () => {
-
-    function replacer (key, value) {
-       return (!!value || value === false || value === '' || typeof value === 'number') ? value : undefined;
-    }
-
-
     const idPagina = document.getElementById('idPagina').value;
     const nomeEstilo = document.getElementById('nomeEstilo').value;
     const comentarioEstilo = document.getElementById('comentarioEstilo').value;

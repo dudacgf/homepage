@@ -41,7 +41,7 @@
 }
 :root {
     font-family: 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 500;
 }
 body {
@@ -49,9 +49,6 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
-    scroll-margin-top: 70px;
-    scroll-margin-bottom: 40px;
-    scroll-snap-type: y mandatory;
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -107,6 +104,12 @@ input.submit, button {
 border-width: 1px; border-style: solid; vertical-align: top; text-align: center; 
 font-size: 1rem; font-weight: 600;
 }
+input[pattern]:invalid{
+  filter: invert(100%);
+}
+input[type=text]:focus {
+  outline: 0 none currentColor;
+}
 .colorButton {
 width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; padding-top: 3px; text-align: left; font-size: smaller;
 }
@@ -116,16 +119,19 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
 .titulo {
     font-size: 4rem;
     font-weight: 800;
+    text-align: left;
     background-color: var(--theme-light);
     color: var(--theme-tituloBG);
     width: 100%;
     height: 70px;
+    border: 0px;
+    margin: 0px;
     margin-bottom: 20px;
     padding-top: 20px;
     padding-bottom: 10px;
     padding-left: 10px;
     border-bottom: 20px solid;
-    display: flex;
+    float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
 }
 div.content {
 clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center; height: auto; display: table;
@@ -221,7 +227,6 @@ vertical-align: bottom;
     padding-top: 2px;
     font-weight: 600;
 }
-
 /* 
  * páginas administrativas. 
  *
@@ -259,27 +264,21 @@ clear: left; width: 70%; text-align: left;
 div.menuBarra {
 font-size: 0.9rem; clear: both; 
 width: 100%; margin: 0; padding: 0; border: 0;
-text-align: center; height: 40px;
-}
-div.menuBarra:has(> :nth-child(4)) {
-    --filho-width: calc(100% / 4);
-}
-div.menuBarra:has(> :nth-child(5)) {
-    --filho-width: calc(100% / 5);
+text-align: center; height: 40px; align-items: center;
+display: flex; 
 }
 .menuBarraItem {
-  width: var(--filho-width);
   text-align: center;
-  background: var(--theme-dark); 
+  background: inherit; 
   margin: 0; 
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 0;
   padding-right: 0;
   font-weight: 600; 
+  flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
   float: left; 
 }
-
 .menuBarraItem:hover {
     cursor: pointer;
 }
@@ -406,33 +405,101 @@ padding: 0.3em 0.3em 0.3em 0.3em;
     padding-top: 2px;
 }
 .colorWheel {
-    width: 14px;
-    height:14px;
+    width: 1rem;
+    height: 1rem;
     padding-right: 10px;
     padding-bottom: 0;
 }
-
+/*
+input[type=radio].selectElemento {
+    -webkit-appearance: none;
+    appearance: none;
+}
+input[type=radio].selectElemento::marker {
+    -webkit-appearance: none;
+    appearance: none;
+}
+*/
+label.labelElemento {
+    font-family: 'Libre Franklin';
+    font-size: 1rem;
+    font-weight: 500;
+    display: grid;
+    grid-template-columns: 1em auto;
+    gap: 0.5em;
+    width: 300px;
+    line-height: 1.2rem;
+    background-color: var(--theme-bodyBG);
+    border: 0;
+    border-bottom: 1px solid;
+    margin: 0;
+    padding: 3px 2px 2px 3px;
+}
+label.labelElemento::before {
+    content: '_';
+    display: inline;
+    background-color: currentcolor;
+    width: 10%;
+    border: 0.3px solid #d0d0d0;
+}
+input[type="radio"] {
+    /* Add if not using autoprefixer */
+    -webkit-appearance: none;
+    appearance: none;
+    /* For iOS < 15 to remove gradient background */
+    background-color: #fff;
+    /* Not removed via appearance */
+    margin: 0;
+}
+input[type=radio]:checked label.labelElemento {
+    font-weight: 800;
+}
+/*
 #selectElemento,
 #selectElemento option {
     width: 300px;
 }
-
-#previewColorPicked {
+*/
+#previewColorPicked, #previewElementoPicked {
 border: 1px solid var(--theme-medium); 
 border-radius: 8px;
-width: 180px; height: 146px; margin-left: 8px; 
-margin-bottom: 6px; padding-top: 7px; 
-text-align: center; vertical-align: middle; align-items: center;
+height: 146px; margin-left: 8px; 
+margin-right: 6px; margin-bottom: 6px; padding-top: 7px; 
+text-align: center; align-items: center;
+display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
 }
 .textMiddle {
-    position: relative;
-    top: 50%;
-    transform: translateY(-50%);
+    place-content: center;
+    flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
 }
-
+.flex100 {
+    width: 100%;
+    display: flex;
+}
+/* area de edição de cores no form_cores */
+div.tituloCores {
+    font: 1.3rem;
+    width: 100%;
+    float: left;
+    font-size: larger;
+    border: 0;
+    border-top: 5px solid;
+    border-bottom: 5px solid;
+    margin: 0;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    padding: 6px 0 6px 4px;
+}
+div.boxContent {
+    float: left;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: 100%;
+}
 /* boxCores */
 div.boxContorno {
-    display: flex;
+    display: block;
+    float: left;
     overflow-y: hidden;
     overflow-x: hidden;
     border: 1px solid #d0d0d0;
@@ -468,4 +535,76 @@ div.cor {
     float: left;
     width: 15px;
     height: 15px;
+}
+
+/* boxElementos */
+div.blockElemento {
+    background-color: transparent;
+    display: flex;
+    float: left;
+    width: 350px;
+    height: 146px;
+    margin: 0;
+    margin-left: 10px;
+    border:0;
+    border: 0.2px solid #404040;
+    padding: 0;
+}
+div.contentElemento {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    width: 350px;
+    height: 146px;
+    margin: 0;
+    margin-bottom: 4px;
+    border: 0;
+    padding: 0;
+}
+div.boxElementoCor {
+    place-content: center;
+    flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
+    align-items: center;
+    clear: both;
+    display: block;
+    width: 353px;
+    height: 25px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+div.elementoCorDescricao {
+    --elemento-cor: #ffff00;
+    font-size: 1rem;
+    line-height: 100%;
+    font-weight: normal;
+    border: 0.1px solid #404040;
+    margin: 0;
+    padding: 0px;
+    padding-right: 3px;
+    width: 99%; 
+    height: 32px;
+    white-space: nowrap;
+    overflow: clip;
+    -webkit-user-select: none;
+    user-select: none;
+}
+div.elementoCorDescricao::before {
+    content: url('../imagens/rectangle.svg'); 
+    display: inline-block;
+    width: 45px;
+    height: 100%;
+    background-color: var(--elemento-cor);
+    color: var(--elemento-cor);
+}
+.rectangle {
+    fill: #404040;
+    stroke: #404040;
+    width: 45px;
+    height: 100%;
+}
+span.up {
+    transform: translate(0, -14px);
+    height: fit-content;
+    display: inline-block;
 }

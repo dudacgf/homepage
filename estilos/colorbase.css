@@ -161,10 +161,7 @@ div.interior:hover span.separador {
     color: var(--theme-sepH);
 }
 div.tituloColuna a {
-    color: var(--theme-linkH);
-}
-div.tituloColuna:hover a {
-    color: var(--theme-linkC);
+    color: var(--theme-categC);
 }
 /* inputs, selects, buttons etc */
 input[type=text], select {
@@ -182,6 +179,9 @@ input.submit, button {
   border-Right-color: var(--theme-buttonBBR);
   background-color: var(--theme-buttonBG);
   color: var(--theme-buttonC);
+}
+input[type=radio].selectElemento::after {
+  color: var(--theme-tituloBB);
 }
 .reverseButton {
   background-color: transparent;
@@ -232,4 +232,11 @@ div.colunaTransparente, div.colunaTransparente div.item {
 }
 #invisivel_div {
     background-color: var(--theme-light);
+}
+div.tituloCores {
+    color: var(--theme-tituloCategC);
+    background-color: var(--theme-tituloCategBG);
+    border-top-color: var(--theme-tituloBB);
+    border-bottom-color: var(--theme-tituloBB);
+
 }
