@@ -16,8 +16,9 @@
 /configs/*
 /vendor/*
 /webfonts/*
+/tests/*
 
-
+/composer.lock
 
 
 # CakePHP 3
