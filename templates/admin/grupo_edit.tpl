@@ -87,7 +87,7 @@ function doAction(pressed) {
 {if !$criarGrupo}
 <p>
 <div class="subTitulo">{$LANG.elementos}</div>
-<div class="tituloColuna">{$LANG.hp_elementos_Descricao}</div>
+<div class="tituloColuna">{$LANG.hp_elementos_Descricao}<div class="fa-arrow-down-short-wide" style="cursor: pointer; display: flex; float: right; width: 12px; height: 12px; padding-right: 8px;" onClick="editarElemento('redefinirPosicoesElementos', 0, {$grupo.idGrupo});" title="redefinir posições de elementos"></div></div>
 <div class="tituloColuna">{$LANG.subir}</div>
 <div class="tituloColuna">{$LANG.descer}</div>
 <div class="tituloColuna">{$LANG.excluir}</div>
