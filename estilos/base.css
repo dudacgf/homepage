@@ -5,7 +5,7 @@
 
   Estilos utilizados em minha página pessoal.
 
-  Base.css - o básico dos estilos - tamanho, estrutura, borda, etc.  
+  Base.css - o básico dos estilos - tamanho, estrutura, borda, etc. 
 
   nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
@@ -68,21 +68,21 @@ z-index: 20;
     max-width: 75%;
     max-height: 75%;
 }
-a { 
+a {
 display: block; text-decoration: none; white-space: nowrap;
 font-size: 0.9rem;
 }
 a:first-letter {
     font-weight: 500;
 }
-a:hover { 
+a:hover {
 text-decoration: underline;
 }
 a span.popup {
 display: none;
 }
 a:hover span.popup {
-display: block; position: absolute; width: 200px; padding: 5px; margin: 5px; 
+display: block; position: absolute; width: 200px; padding: 5px; margin: 5px;
 border-right: 1px solid; border-bottom: 1px solid;
 }
 form {
@@ -101,7 +101,7 @@ input.FormExtra {
 Margin-Left: 2px;
 }
 input.submit, button {
-border-width: 1px; border-style: solid; vertical-align: top; text-align: center; 
+border-width: 1px; border-style: solid; vertical-align: top; text-align: center;
 font-size: 1rem; font-weight: 600;
 }
 input[pattern]:invalid{
@@ -131,10 +131,16 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     padding-bottom: 10px;
     padding-left: 10px;
     border-bottom: 20px solid;
-    float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
 }
 div.content {
-clear: both; white-space: nowrap; padding: 0px; margin: 5px auto; width: 100%; text-align: center; height: auto; display: table;
+    clear: both;
+    white-space: nowrap;
+    padding: 0px;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    display: table;
 }
 div.containerCategoria {
 float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%; margin-left: 3px; margin-right: 3px; text-align: left;
@@ -143,22 +149,22 @@ div.footer {
 clear: both; position: relative; bottom: 0px;
 }
 div.tituloCategoria {
-clear: both; font-size: 1.1rem; font-weight: 600; border-style: solid; border-width: 1px; margin-bottom: 5px; padding: 3px; 
+clear: both; font-size: 1.1rem; font-weight: 600; border-style: solid; border-width: 1px; margin-bottom: 5px; padding: 3px;
 }
 table {
-clear: both; margin: 0 auto; 
+clear: both; margin: 0 auto;
 }
 div.lineForm {
 clear: both; border-style: solid none; border-width: 0px; height: 30px; padding-top: 2px; padding-bottom: 4px;
   }
-div.tituloLateral { 
+div.tituloLateral {
 border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: 600; font-size: x-small; width: 90px;
 }
 div.formLateral {
 border-width: 0px; padding: 0px; margin-top: 2px; float: left;
 }
 div.fortune {
-font-size: 0.9rem; clear: both; 
+font-size: 0.9rem; clear: both;
 margin: 0; padding: 10px; border: 0;
 position: fixed; bottom: 0px; left: 0px; width: 100%;
 font-weight: 500;
@@ -168,7 +174,7 @@ font-weight: 600; display: inline; font-size: 1rem; width: 100%;
 }
 /*
  * as classes a seguir fazem a magica dos menus expansiveis. São de dois tipos:
- * no primeiro, que se expande quando se passa o mouse por  cima, uso a 
+ * no primeiro, que se expande quando se passa o mouse por  cima, uso a
  * seguinte estrutura:
  * <div class="interior">
  * <div class="expandable" onMouse[over<->out] => class="[expandable<->interior]">
@@ -189,11 +195,11 @@ div.interior {
 clear: both; border-width: 0px; padding: 2px;
 }
 div.expandable, div.clickable {
-overflow: hidden; height: 28px; border-width: 0px; 
+overflow: hidden; height: 28px; border-width: 0px;
 }
 div.expanded, div.interior:hover, div.expandable:hover {
 padding: 2px; margin-bottom: 5px; margin-top: 3px; border: 1px solid;
-overflow: visible; height: auto; 
+overflow: visible; height: auto;
 }
 div.headclickable, div.headexpandable {
 border: 1px solid; padding: 5px 5px; height: 14px;
@@ -204,6 +210,13 @@ span.separador {
 font-weight: 800;
 padding-bottom: 5px;
 font-size: 1.1rem;
+}
+label.separador {
+font-weight: 600;
+padding-top: 5px;
+padding-bottom: 5px;
+margin-bottom: 5px;
+font-size: 1rem;
 }
 .texto {
 vertical-align: bottom;
@@ -227,8 +240,8 @@ vertical-align: bottom;
     padding-top: 2px;
     font-weight: 600;
 }
-/* 
- * páginas administrativas. 
+/*
+ * páginas administrativas.
  *
  */
 div.subTitulo {
@@ -247,9 +260,9 @@ div.contentstats {
 margin-left: 3px; margin-top: 10px; display: flex; clear: left; min-height: 40px; margin-bottom: 10px;
 }
 div.itemstats {
-float: left; 
+float: left;
 font-family: 'Roboto Mono'; font-weight: 600; font-size: 0.8rem;
-border-bottom: 1pt solid; width: 16.8%; text-align: left; margin-left: 8px; padding: 0; height: 18px; padding-top: 2px; 
+border-bottom: 1pt solid; width: 16.8%; text-align: left; margin-left: 8px; padding: 0; height: 18px; padding-top: 2px;
 }
 div.left {
 text-align: left;
@@ -259,25 +272,25 @@ text-align: right;
 }
 div.opcoes {
 font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
-clear: left; width: 70%; text-align: left; 
+clear: left; width: 70%; text-align: left;
 }
 div.menuBarra {
-font-size: 0.9rem; clear: both; 
+font-size: 0.9rem; clear: both;
 width: 100%; margin: 0; padding: 0; border: 0;
 text-align: center; height: 40px; align-items: center;
-display: flex; 
+display: flex;
 }
 .menuBarraItem {
   text-align: center;
-  background: inherit; 
-  margin: 0; 
+  background: inherit;
+  margin: 0;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 0;
   padding-right: 0;
-  font-weight: 600; 
+  font-weight: 600;
   flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
-  float: left; 
+  float: left;
 }
 .menuBarraItem:hover {
     cursor: pointer;
@@ -289,7 +302,7 @@ transform: scale(0.40); transform-origin: top right;
 }
 @media screen and (orientation:portrait) {
     iframe.exemploPagina {
-        width: 60vw; height: 40vw; 
+        width: 60vw; height: 40vw;
     }
 }
 @media screen and (orientation:landscape) {
@@ -306,7 +319,7 @@ text-align: left;
 div.coluna, div.colunaTransparente {
 float: left; padding: 2px; margin: 3px; font-size: 1rem; width: 15%;
 }
-div.tituloColuna { 
+div.tituloColuna {
 border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: 600; font-size: 1rem; width: 15%;
 }
 body a:hover, body div.expanded a:hover, body div.expandable:hover a:hover, body div.interior:hover a:hover, body div.exemploCategoria a:hover {
@@ -329,7 +342,7 @@ padding: 0.3em 0.3em 0.3em 0.3em;
  width: 600px;
  justify-content: center;
  box-shadow: 10px 10px 10px rgba(207, 207, 207, 0.5);
-} 
+}
 
 
 #invisivel_div {
@@ -344,13 +357,13 @@ padding: 0.3em 0.3em 0.3em 0.3em;
     opacity: 0.7;
 }
 /* menu */
-/*  
+/* 
  <div class="dropdownContainer">
   <button class="menuButtom">Dropdown</button>
   <div class="dropdown">
     << UMA CATEGORIA COMO MENU >>
   </div>
- </div> 
+ </div>
 */
 .menuDropdownContainer {
   position: fixed;
@@ -461,10 +474,10 @@ input[type=radio]:checked label.labelElemento {
 }
 */
 #previewColorPicked, #previewElementoPicked {
-border: 1px solid var(--theme-medium); 
+border: 1px solid var(--theme-medium);
 border-radius: 8px;
-height: 146px; margin-left: 8px; 
-margin-right: 6px; margin-bottom: 6px; padding-top: 7px; 
+height: 146px; margin-left: 8px;
+margin-right: 6px; margin-bottom: 6px; padding-top: 7px;
 text-align: center; align-items: center;
 display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
 }
@@ -582,7 +595,7 @@ div.elementoCorDescricao {
     margin: 0;
     padding: 0px;
     padding-right: 3px;
-    width: 99%; 
+    width: 99%;
     height: 32px;
     white-space: nowrap;
     overflow: clip;
@@ -590,7 +603,7 @@ div.elementoCorDescricao {
     user-select: none;
 }
 div.elementoCorDescricao::before {
-    content: url('../imagens/rectangle.svg'); 
+    content: url('../imagens/rectangle.svg');
     display: inline-block;
     width: 45px;
     height: 100%;

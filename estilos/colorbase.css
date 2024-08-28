@@ -152,12 +152,15 @@ a:hover, span.popup, div.expanded a:hover, div.expandable:hover a:hover, div.int
     border-right-color: var(--theme-expandBBR);
     border-bottom-color: var(--theme-expandBBR);
 }
-span.separador {
+span.separador, label.separador {
     color: var(--theme-sepC);
 }
 div.expanded span.separador,
 div.expandable span.separador,
-div.interior:hover span.separador {
+div.interior:hover span.separador,
+div.expanded label.separador,
+div.expandable label.separador,
+div.interior:hover label.separador {
     color: var(--theme-sepH);
 }
 div.tituloColuna a {
