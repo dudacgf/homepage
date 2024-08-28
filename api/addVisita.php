@@ -1,6 +1,6 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
-header( 'Cache-Control: max-age: 10' );
+header( 'Cache-Control: no-cache' );
 // addVisita
 // - recebe um idElemento e grava uma nova visita
 //
