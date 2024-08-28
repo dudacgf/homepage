@@ -283,10 +283,10 @@ class wLink extends elemento
     {
 
         $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
-                                      SET urlElemento = ?, descricaoElemento = ?, dicaElemento = ?, urlElementoLocal = ?,
+                                      SET posGrupo = ?, urlElemento = ?, descricaoElemento = ?, dicaElemento = ?, urlElementoLocal = ?,
                                           urlElementoTarget = ?, urlElementoSSL = ?, urlElementoSVN = ?
                                       WHERE idElemento = ?");
-        $_sql->bind_param("sssisiii", $this->linkURL, $this->descricaoLink,
+        $_sql->bind_param("isssisiii", $this->posGrupo, $this->linkURL, $this->descricaoLink,
                           $this->dicaLink, $this->localLink, $this->targetLink,
                           $this->urlElementoSSL, $this->urlElementoSVN, $this->idLink);
         
@@ -513,13 +513,14 @@ class wForm extends elemento
     {
 
         $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
-                    SET urlElemento = ?,
+                    SET posGrupo = ?,
+                        urlElemento = ?,
                         descricaoElemento = ?,
                         formNome = ?,
                         formNomeCampo = ?,
                         formTamanhoCampo = ?
                   WHERE idElemento = ?");
-        $_sql->bind_param("ssssii", $this->acao, $this->descricaoForm, $this->nomeForm, $this->nomeCampo, $this->tamanhoCampo, $this->idForm);
+        $_sql->bind_param("issssii", $this->posGrupo, $this->acao, $this->descricaoForm, $this->nomeForm, $this->nomeCampo, $this->tamanhoCampo, $this->idForm);
         
         // executa o query e retorna o número de linhas afetadas
         if (!$_sql->execute())
@@ -662,10 +663,11 @@ class wSeparador extends elemento
     function atualizar()
     {
         $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
-                    SET descricaoElemento = ?,
+                    SET posGrupo = ?,
+                        descricaoElemento = ?,
                         separadorBreakBefore = ?
                   WHERE idElemento = ?");
-        $_sql->bind_param("sii", $this->descricaoSeparador, $this->breakBefore, $this->idSeparador);
+        $_sql->bind_param("isii", $this->posGrupo, $this->descricaoSeparador, $this->breakBefore, $this->idSeparador);
         
         // executa o query
         if (!$_sql->execute())
@@ -795,11 +797,12 @@ class wImagem extends elemento
     function atualizar ()
     {
         $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
-                    SET descricaoElemento = ?,
+                    SET posGrupo = ?,
+                        descricaoElemento = ?,
                         urlElemento = ?,
                         urlElementoLocal = ?
                   WHERE idElemento = ?");
-        $_sql->bind_param("ssii", $this->descricaoImagem, $this->urlImagem, $this->localLink, $this->idImagem);
+        $_sql->bind_param("issii", $this->posGrupo, $this->descricaoImagem, $this->urlImagem, $this->localLink, $this->idImagem);
         
         // executa o query e retorna o número de linhas afetadas (uma, se tudo der certo)
         if (!$_sql->execute())
@@ -925,9 +928,12 @@ class wTemplate extends elemento
     
     function atualizar ()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos SET descricaoElemento = ?, templateFileName = ?
-                  WHERE idElemento = ?");
-        $_sql->bind_param("ssi", $this->descricaoTemplate, $this->nomeTemplate, $this->idTemplate);
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
+                                         SET posGrupo = ?, 
+                                             descricaoElemento = ?, 
+                                             templateFileName = ?
+                                       WHERE idElemento = ?");
+        $_sql->bind_param("issi", $this->posGrupo, $this->descricaoTemplate, $this->nomeTemplate, $this->idTemplate);
         
         // executa o query
         if (!$_sql->execute())
@@ -1053,7 +1059,7 @@ class elementoFactory {
                 return $this->oElemento->descricaoLink;
                 break;
             case ELEMENTO_FORM:
-                return $this->oElemento->descricaoForm;;
+                return $this->oElemento->descricaoForm;
                 break;
             case ELEMENTO_SEPARADOR:
                 return $this->oElemento->descricaoSeparador;
@@ -1067,6 +1073,32 @@ class elementoFactory {
             default:
                 return null;
         }
+    }
+    
+    public function atualizar() {
+        switch ($this->idTipoElemento) {
+            case ELEMENTO_LINK:
+                return $this->oElemento->atualizar();
+                break;
+            case ELEMENTO_FORM:
+                return $this->oElemento->atualizar();
+                break;
+            case ELEMENTO_SEPARADOR:
+                return $this->oElemento->atualizar();
+                break;
+            case ELEMENTO_IMAGEM:
+                return $this->oElemento->atualizar();
+                break;
+            case ELEMENTO_TEMPLATE:
+                $this->oElemento->atualizar();
+                break;
+            default:
+                return null;
+        }
+    }
+
+    public function setPosGrupo($_posGrupo) {
+        $this->oElemento->posGrupo = $_posGrupo;
     }
 }
 
