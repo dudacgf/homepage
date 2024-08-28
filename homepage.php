@@ -72,18 +72,6 @@ else
     $homepage->assign('displaySelectColor', 0);
 }
 
-// exibe o form do dicionário se:
-// - foi requisitado na url
-// - a página está configurada para exibí-lo (ainda não está implementado).
-if ( (isset($requests['dicionario']) && $requests['dicionario'] == 'sim') ) // || ($pagina->displayDicionario == 1))
-{
-    $homepage->assign('displayDicionario', 1);
-}
-else
-{
-    $homepage->assign('displayDicionario', 0);
-}
-
 // verifica se há cookies de estilo configurados para essa página
 $colorCookies = cookedStyle::getArray($_idPagina);
 if ($colorCookies) 
