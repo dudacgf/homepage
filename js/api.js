@@ -34,6 +34,7 @@ const editarElemento = async (apiCall, idElm, idGrp) => {
                 case 'novoTemplate':
                     exibirFormDiv(r.message);
                     break;
+                case 'redefinirPosicoesElementos':
                 case 'ascenderElemento':
                 case 'descenderElemento':
                 case 'excluirElemento':
