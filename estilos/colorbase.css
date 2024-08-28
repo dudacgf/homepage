@@ -195,6 +195,10 @@ input[type=radio].selectElemento::after {
 .colorWheel {
   fill: var(--theme-buttonBG);
 }
+svg.svg_after {
+  fill: yellow;
+  stroke: yellow;
+}
 /* páginas administrativas. */
 div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {
   border-Top-color: var(--theme-buttonBTL); 

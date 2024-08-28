@@ -621,3 +621,22 @@ label.boxRadioLabel::before {
 label.boxRadioLabel:focus-within {
     font-weight: 900;
 }
+label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked ) {
+    font-weight: 900;
+}
+label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked )::after {
+    content: url('../imagens/caret.svg');
+    font-weight: 900;
+    width: 15px;
+    height: 15px;
+    float: right;
+    padding-right: 10px;
+    padding-top: 2px;
+}
+svg.svg_after {
+    width: 15px;
+    height: 15px;
+    padding-left: 10px;
+    padding-bottom: 0;
+    color: currentColor;
+}
