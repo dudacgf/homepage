@@ -82,7 +82,7 @@ const getThemePalette = () => {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
-    const cookieStyles = document.getElementsByClassName('elementoCorDescricao');
+    const cookieStyles = document.getElementsByClassName('boxRadio');
     var cores = [];
 
     for (var i = 0; i < cookieStyles.length; i++) {

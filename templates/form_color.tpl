@@ -11,21 +11,17 @@
                 Elementos
                 </div>
                 <div class="blockElemento">
-                    <div class="contentElemento" id="boxElementos">
-                    <div id="selectElemento">
+                    <div class="contentElemento" id="selectElemento">
                         {section name=opt loop=$elementosColoridos}
-                        <div class=boxElementoCor">
-                        <div class="elementoCorDescricao" id="{$elementosColoridos[opt].cookieElemento}" value="{$elementosColoridos[opt].cookieElemento}" onClick="onChangeElementoBoxElementoCor(this)">
-                                <span class="up">{$elementosColoridos[opt].descricaoElemento}
-                                </span>
-                            </div>
-                        </div>
+                        <label class="boxRadioLabel"id="lbl_{$elementosColoridos[opt].cookieElemento}" >
+                        <input class="boxRadio" type="radio" id="{$elementosColoridos[opt].cookieElemento}" name="selectElemento" value="{$elementosColoridos[opt].cookieElemento}" onClick="onChangeElementoBoxElementoCor(this);" />
+                        {$elementosColoridos[opt].descricaoElemento}
+                        </label> 
                         {/section}
-                    </div>
                     <script>
-                    const elementos = document.getElementsByClassName('elementoCorDescricao');
+                    const elementos = document.getElementsByClassName('boxRadioLabel');
                     for (var i = 0;  i < elementos.length; i++) 
-                        elementos[i].style.setProperty('--elemento-cor', 'var(--theme-' + (elementos[i].id) + ')');
+                        elementos[i].style.setProperty('--elemento-cor', 'var(--theme-' + (elementos[i].id.replace('lbl_', '')) + ')');
                     </script>
                     </div>
                 </div>

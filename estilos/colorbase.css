@@ -243,3 +243,6 @@ div.tituloCores {
     border-bottom-color: var(--theme-tituloBB);
 
 }
+label.boxRadioLabel {
+    color: var(--theme-bodyC);
+}
