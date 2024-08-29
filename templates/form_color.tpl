@@ -41,14 +41,14 @@
                 </div>
                 <div style="display:flex; background-color: transparent;">
                     <div style="display:flex">
-                        <div id="options" style="display: block" onClick="toggleCM2(this);">
+                        <div id="options" style="display: block">
                         <button id="paletaAtualPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_palette} Paleta Atual</button>
                         <button id="jscolorPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_hue} Personalizada</button>
                         <button id="pantonePicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_pantone} Pantone</button>
                         <button id="materialPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_google} Material Design</button>
                         {literal}
                         <label id="hexPicker" for"inputHEX" class="reverseButton fa-pencil" style="font-weight: 800; font-size: 1.1rem; padding-left: 15px;"; onClick="toggleColorMode(this);">Defina:<br />
-                        <input type="text" id="inputHEX" style="width: 90%;" pattern="^#(?:[0-9a-fA-F]{6})}$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
+                        <input type="text" id="inputHEX" style="width: 90%;" pattern="^#(?:[0-9a-fA-F]{6})$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
                         </label>
                         {/literal}
                         </div>
