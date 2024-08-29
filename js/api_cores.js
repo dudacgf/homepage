@@ -9,24 +9,25 @@
 
 --------------------------------------------------------------------------------*/
 
-/**
- * Obtém a cor de uma das variáveis de cor para o estilo css atual
+/** 
+ * usa um fillStyle de uma canvas para obter uma cor em formato #RRGGBB
  *
- * @param {string} umaCor - o nome de uma root-var de cor
+ * @param {string} umaCor - uma cor em qualquer formato válido html/css
  *
- * @returns {string) - a cor definida para essa variável em formato #RRGGBB
+ * @returns {string} a cor em formato #RRGGBB. se *umaCor* não estiver num formato válido, retorna #000000
+ *
  */
-const getThemeColor = (umaCor) => {
-    var c = document.createElement("canvas");
-    var ctx = c.getContext("2d");
-    const root = document.querySelector(':root');
+function colorToHex(umaCor) {
+    const c = document.createElement("canvas");
+    const ctx = c.getContext("2d");
 
-    ctx.fillStyle = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
+    ctx.fillStyle = umaCor;
     aCorHex = ctx.fillStyle;
 
     c.remove();
     return aCorHex;
 }
+
 
 /**
  * calcula o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
@@ -50,6 +51,21 @@ function HSP(aCorHex) {
     return hspColor;
 }
 
+
+/**
+ * Obtém a cor de uma das variáveis de cor para o estilo css atual
+ *
+ * @param {string} umaCor - o nome de uma root-var de cor
+ *
+ * @returns {string) - a cor definida para essa variável em formato #RRGGBB
+ */
+const getThemeColor = (umaCor) => {
+    const root = document.querySelector(':root');
+
+    return colorToHex(getComputedStyle(root).getPropertyValue('--theme-' + umaCor));
+}
+
+
 /**
  * obtém o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
  * de uma das root-vars de cor para o estilo css atual
@@ -59,17 +75,13 @@ function HSP(aCorHex) {
  * @returns {string }  * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
  */
 const getThemeColorHSP = (umaCor) => {
-    var c = document.createElement("canvas");
-    var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
 
     if (umaCor.startsWith('var(--theme-'))
         umaCor = umaCor.slice(12, -1);
 
-    ctx.fillStyle = getComputedStyle(root).getPropertyValue('--theme-' + umaCor);
-    const aCorHex = ctx.fillStyle;
+    const aCorHex = colortoHex(getComputedStyle(root).getPropertyValue('--theme-' + umaCor));
 
-    c.remove();
     return HSP(aCorHex);
 }
 
@@ -105,7 +117,7 @@ const getAllThemeColorPairs = () => {
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
     const root = document.querySelector(':root');
-    const cookieStyles = document.getElementById('selectElemento').options;
+    const cookieStyles = document.getElementById('selectElemento').getElementsByClassName('boxRadio');
     var cores = {};
 
     for (const cookieStyle of cookieStyles) {
@@ -254,6 +266,26 @@ const novoEstilo = async () => {
         createToast(r.status, r.message);
 }
 
+/** 
+ * verifica se um estilo já existe
+ *
+ * @param {string} nomeEstilo - o nome do estilo a se verificar se existe
+ *
+ * @returns {boolean} - true se o estilo já existe, false em contrário
+ *
+ */
+const existeEstilo = async(nomeEstilo) => {
+    const formData = new FormData();
+    formData.append('nomeEstilo', nomeEstilo);
+
+    let r = await colorAction('existeEstilo', {method: 'POST', body: formData});
+
+    if (r.status = 'info' && r.message == 'existente') 
+        return true;
+    else
+        return false;
+}
+
 /**
  * salvarEstilo - chamada após exibição do form de salvamento de estilos
  */
@@ -262,8 +294,18 @@ const salvarEstilo = async () => {
     const nomeEstilo = document.getElementById('nomeEstilo').value;
     const comentarioEstilo = document.getElementById('comentarioEstilo').value;
 
+    // não preciso mais do form. pode ocultar independente do resultado
+    ocultarFormDiv();
+
     if (nomeEstilo == '' | comentarioEstilo == '') {
         createToast('warning', 'Nome do Estilo ou comentário não definidos');
+        return ;
+    }
+
+    let existe = await existeEstilo(nomeEstilo);
+
+    if (existeEstilo(nomeEstilo) && (!confirm('Já existe um estilo com esse nome. Sobrepõe?'))) {
+        createToast('info', 'Estilo não foi salvo');
         return ;
     }
 
@@ -272,9 +314,7 @@ const salvarEstilo = async () => {
     formData.append('nomeEstilo', nomeEstilo);
     formData.append('comentarioEstilo', comentarioEstilo);
     formData.append('paresDeCores', JSON.stringify(getAllThemeColorPairs()));
-
     let r = await colorAction('salvarEstilo', {method: 'POST', body: formData});
-    ocultarFormDiv();
 
     createToast(r.status, r.message);
 }
