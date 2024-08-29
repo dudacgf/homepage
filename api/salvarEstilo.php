@@ -20,12 +20,18 @@ if (isset($requests['idPagina']) and isset($requests['nomeEstilo']) and isset($r
         $_cssEstilo = new cssEstilos(null);
         $_cssEstilo->nomeEstilo = $_nomeEstilo;
         $_cssEstilo->comentarioEstilo = $_comentarioEstilo;
-        if ($_cssEstilo->inserir()) {
+
+        if (cssEstilos::estiloExiste($_nomeEstilo)) 
+            $result = $_cssEstilo->atualizar();
+        else 
+            $result = $_cssEstilo->inserir();
+
+        if ($result) {
             $_estiloPath = HOMEPAGE_PATH . 'estilos/' . $_nomeEstilo . '.css';
             file_put_contents($_estiloPath, $cookedStyles);
-            $homepage->assign('response', '{"status": "success", "message": "Estilo [' . $global_hpDB->real_escape_string($_nomeEstilo) . '] criado."}');
+            $homepage->assign('response', '{"status": "success", "message": "Estilo [' . $global_hpDB->real_escape_string($_nomeEstilo) . '] salvo."}');
         } else
-            $homepage->assign('response', '{"status": "error", "message": "Não foi possível criar o novo estilo"}');
+            $homepage->assign('response', '{"status": "warning", "message": "Não foi possível salvar o estilo"}');
     } catch (Exception $e) {
         $homepage->assign('response', '{"status": "error", "message": "Erro: ' . $e->getMessage() . '"}');
     }
