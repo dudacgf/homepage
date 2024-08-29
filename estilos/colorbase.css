@@ -188,16 +188,12 @@ input[type=radio].selectElemento::after {
 }
 .reverseButton {
   background-color: transparent;
-  color: var(--theme-buttonBG);
+  color: var(--theme-bodyC);
   border-color: transparent;
   border-bottom-color: var(--theme-buttonBG) 1px solid;
 }
 .colorWheel {
-  fill: var(--theme-buttonBG);
-}
-svg.svg_after {
-  fill: yellow;
-  stroke: yellow;
+  fill: var(--theme-bodyC);
 }
 /* páginas administrativas. */
 div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {

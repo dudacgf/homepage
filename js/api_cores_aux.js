@@ -1,4 +1,4 @@
-/*
+/**
  * api_cores_aux.js - funções para a interface do formulário de cores
  *
  * (c) ecgf@theshiresco.com - 2003-2024
@@ -6,23 +6,29 @@
  * [quem tem medo de nomes grandes de função?]
  */
 
-/*
+/**
  * Exibe cor selecionada no jscolors preview de cores e guarda a cor para posterior uso
+ *
+ * @listens evento de clique em uma cor do quadro do jscolor
+ *
  */
 function onChangeColorPicker() {
   const preview = document.querySelector('#previewColorPicked');
-  const zzselect = document.querySelector('#selectedColor');
+  const select = document.querySelector('#selectedColor');
   const colorPicker = document.querySelector('#colorPicker');
 
   preview.style.backgroundColor = colorPicker.jscolor.valueElement.value;
   preview.style.color = HSP(colorPicker.jscolor.valueElement.value);
   preview.innerHTML = '<div class="textMiddle">Custom Color<br/>' + colorPicker.jscolor.valueElement.value + '</div>';
-  zzselect.value = colorPicker.jscolor.valueElement.value;
+  select.value = colorPicker.jscolor.valueElement.value;
 }
 
-/*
+/**
  * Exibe cor selecionada em um dos boxes de cores (menos o jscolors acima) 
  * e guarda a cor para posterior uso
+ *
+ * @listens evento de clique em um dos boxCores (paleta atual, pantone, material)
+ *
  */ 
 function boxCorClick(nomeCor, valorCor, hspCor) {
     const bp = document.getElementById('previewColorPicked');
@@ -34,9 +40,12 @@ function boxCorClick(nomeCor, valorCor, hspCor) {
     bp.innerHTML = '<div class="textMiddle">' + nomeCor + '<br/>' + valorCor.toUpperCase() + '</div>';
 }
 
-/* 
+/**
  * Exibe root-var e cor selecionada na lista de elementos coloridos e guarda
  * a root-var para posterior uso
+ *
+ * @listens evento de clique no #boxElementos
+ *
  */
 function onChangeElementoBoxElementoCor(oboxCor) {
     const preview = document.querySelector('#previewElementoPicked');
@@ -44,14 +53,17 @@ function onChangeElementoBoxElementoCor(oboxCor) {
     const sElemento = document.getElementById('selectElemento');
 
     sElemento.setAttribute('value', oboxCor.id);
-    preview.style.backgroundColor = aCor;
+    preview.style.backgroundColor = 'var(--theme-' + oboxCor.id + ')';
     preview.style.color = HSP(aCor);
     preview.innerHTML = '<div class="textMiddle">--theme-' + oboxCor.id + '<br />' + aCor.toUpperCase() + '</div>';
 }
 
-/* 
+/** 
  * critica o input do campo inputHEX e, quando ok, exibe a cor definida 
  * e guarda a cor para posterior uso
+ *
+ * @listens evento de clique no boxElementos
+ *
  */
 function onChangeInputHEX() {
   const inputHex = document.getElementById('inputHEX');
@@ -61,55 +73,65 @@ function onChangeInputHEX() {
     return;
 
   const preview = document.querySelector('#previewColorPicked');
-  const zzselect = document.querySelector('#selectedColor');
+  const select = document.querySelector('#selectedColor');
 
   preview.style.backgroundColor = aCor;
   preview.style.color = HSP(aCor);
   preview.innerHTML = '<div class="textMiddle">Definida<br/>' + aCor + '</div>';
-  zzselect.value = aCor;
+  select.value = aCor;
 }
 
-/*
+/**
  * reage ao clique em uma das opções de definição de cor
+ *
+ * @listen evento de clique nos buttons ou label da coluna de opções
  */
 function toggleColorMode(idBotaoOpcaoModo) {
-    if (idBotaoOpcaoModo.id == 'paletaAtual') {
+    if (idBotaoOpcaoModo.id == 'paletaAtualPicker') {
        document.getElementById('boxCoresPaleta').style.display = 'block';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'none';
-       document.querySelector('#colorPicker').jscolor.hide(); 
-    } else if (idBotaoOpcaoModo.id == 'rainbowButton') {
+       document.getElementById('colorPicker').jscolor.hide(); 
+    } else if (idBotaoOpcaoModo.id == 'jscolorPicker') {
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'none';
-       document.querySelector('#colorPicker').jscolor.show(); 
-    } else if (idBotaoOpcaoModo.id == 'pantone') {
+       document.getElementById('colorPicker').jscolor.show(); 
+    } else if (idBotaoOpcaoModo.id == 'pantonePicker') {
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'block';
        document.getElementById('boxCoresMD').style.display = 'none';
-       document.querySelector('#colorPicker').jscolor.hide(); 
-    } else if (idBotaoOpcaoModo.id == 'material') {
+       document.getElementById('colorPicker').jscolor.hide(); 
+    } else if (idBotaoOpcaoModo.id == 'materialPicker') {
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'block';
-       document.querySelector('#colorPicker').jscolor.hide(); 
+       document.getElementById('colorPicker').jscolor.hide(); 
+    } else if (idBotaoOpcaoModo.id == 'hexPicker') {
+       document.getElementById('boxCoresPaleta').style.display = 'none';
+       document.getElementById('boxCores').style.display = 'none';
+       document.getElementById('boxCoresMD').style.display = 'none';
+       document.getElementById('colorPicker').jscolor.hide(); 
     }
 }
 
-/*
+/**
  * carrega todas as cores (únicas) das cores root-var da página atual e
  * as dispões no boxContentPaleta
+ *
+ * chamada durante a carga da página
  */
 function carregarPaletaAtual() {
     const bcp = document.getElementById('boxContentPaleta');
     const themeColors = getThemePalette();
 
     for (const cor of themeColors) {
-        newOption = '<div class="cor" style="background-color: ' + cor + '; margin: 2px; border: 0.5px solid #d0d0d0;" ' +
+        newOption = '<div class="cor" style="background-color: ' + cor + '; margin: 1px; border: 0.5px solid #d0d0d0;" ' +
             'onClick="boxCorClick(\'Paleta Atual\', \'' + cor + '\',\'' + HSP(cor) + '\')"></div>';
         bcp.insertAdjacentHTML("beforeend", newOption);
     }
 }
+
 /**
  * @param {number} red - Red component 0..1
  * @param {number} green - Green component 0..1

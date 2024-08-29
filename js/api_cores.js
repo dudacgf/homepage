@@ -165,7 +165,12 @@ const alterarRootVar = async () => {
     let r = await colorAction('addColorCookie', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
+        const preview = document.getElementById('previewElementoPicked');
+        
         root_css.style.setProperty("--theme-" + root_var, color);
+        preview.style.backgroundColor = 'var(--theme' + color + ')';
+        preview.style.color = HSP(color);
+        preview.innerHTML = '<div class="textMiddle">--theme-' + root_var + '<br />' + color.toUpperCase() + '</div>';
     } 
     createToast(r.status, r.message);
 }
@@ -191,8 +196,14 @@ const restaurarRootVar = async () => {
     formData.append('root_var', root_var);
     let r = await colorAction('delColorCookie', {body: formData, method: 'POST'});
     if (r.status == 'success') {
-        const root_css = document.querySelector(':root');
-        root_css.style.setProperty("--theme-" + root_var, '');
+        const root = document.querySelector(':root');
+        root.style.setProperty("--theme-" + root_var, '');
+
+        const color = window.getComputedStyle(root).getPropertyValue('--theme-' + root_var);
+        const preview = document.getElementById('previewElementoPicked');
+        preview.style.backgroundColor = color;
+        preview.style.color = HSP(color);
+        preview.innerHTML = '<div class="textMiddle">--theme-' + root_var + '<br />' + color.toUpperCase() + '</div>';
     } 
     createToast(r.status, r.message);
 }

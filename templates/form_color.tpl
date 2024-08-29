@@ -30,7 +30,7 @@
                 <div class="tituloCategoria" style="width: 100%; display: block; text-align: center;">
                 Preview
                 </div>
-                <div style="display: flex; width: 100%">
+                <div style="display: block; width: 100%">
                     <div id="previewElementoPicked"></div>
                     <div id="previewColorPicked"></div>
                 </div>
@@ -40,15 +40,15 @@
                 Cores
                 </div>
                 <div style="display:flex; background-color: transparent;">
-                    <div id="options" style="display:flex">
-                        <div style="display: block">
-                        <button id="paletaAtual" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_palette} Paleta Atual</button>
-                        <button id="rainbowButton" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_hue} Personalizada</button>
-                        <button id="pantone" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_pantone} Pantone</button>
-                        <button id="material" class="submit reverseButton" onClick="toggleColorMode(this);">{$svg_google} Material Design</button>
+                    <div style="display:flex">
+                        <div id="options" style="display: block" onClick="toggleCM2(this);">
+                        <button id="paletaAtualPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_palette} Paleta Atual</button>
+                        <button id="jscolorPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_hue} Personalizada</button>
+                        <button id="pantonePicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_pantone} Pantone</button>
+                        <button id="materialPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_google} Material Design</button>
                         {literal}
-                        <label for"inputHEX" class="reverseButton fa-pencil" style="font-weight: 800; font-size: 1.1rem; padding-left: 3px;";>Defina:<br />
-                        <input type="text" id="inputHEX" pattern="^#(?:[0-9a-fA-F]{6})}$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
+                        <label id="hexPicker" for"inputHEX" class="reverseButton fa-pencil" style="font-weight: 800; font-size: 1.1rem; padding-left: 15px;"; onClick="toggleColorMode(this);">Defina:<br />
+                        <input type="text" id="inputHEX" style="width: 90%;" pattern="^#(?:[0-9a-fA-F]{6})}$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
                         </label>
                         {/literal}
                         </div>
@@ -114,6 +114,6 @@ jscolor.presets.default = {
     shadow: false,
     height: 127,
     width:131,
-    zIndex: 1,
+    zIndex: 0,
 }
 </script>

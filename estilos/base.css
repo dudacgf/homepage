@@ -43,6 +43,8 @@
     font-family: 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
     font-size: 0.75rem;
     font-weight: 500;
+    touch-action: pan-x pan-y;
+    height: 100% 
 }
 body {
     border: 0;
@@ -397,106 +399,21 @@ padding: 0.3em 0.3em 0.3em 0.3em;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 15;
 }
-.menuDropdownContainer:hover .menuDropDown {display: block;}
-
+.menuDropdownContainer:hover .menuDropDown {
+    display: block;
+}
 /* para simular fade nos reloads de categorias, grupos e elementos */
 .fadeinout {
     -webkit-animation: fadeinout 4s linear forwards;
     animation: fadeinout 4s linear forwards;
 }
-
 @-webkit-keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
 }
-
 @keyframes fadeinout {
   0%,100% { opacity: 0; }
   50% { opacity: 1; }
-}
-
-.reverseButton {
-    text-align: left;
-    display: block;
-    width: 200px;
-    height: 20px;
-    margin-bottom: 8px;
-    margin-left: 1px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 2px;
-}
-.colorWheel {
-    width: 1rem;
-    height: 1rem;
-    padding-right: 10px;
-    padding-bottom: 0;
-}
-/*
-input[type=radio].selectElemento {
-    -webkit-appearance: none;
-    appearance: none;
-}
-input[type=radio].selectElemento::marker {
-    -webkit-appearance: none;
-    appearance: none;
-}
-*/
-label.labelElemento {
-    font-family: 'Libre Franklin';
-    font-size: 1rem;
-    font-weight: 500;
-    display: grid;
-    grid-template-columns: 1em auto;
-    gap: 0.5em;
-    width: 300px;
-    line-height: 1.2rem;
-    background-color: var(--theme-bodyBG);
-    border: 0;
-    border-bottom: 1px solid;
-    margin: 0;
-    padding: 3px 2px 2px 3px;
-}
-label.labelElemento::before {
-    content: '_';
-    display: inline;
-    background-color: currentcolor;
-    width: 10%;
-    border: 0.3px solid #d0d0d0;
-}
-input[type="radio"] {
-    /* Add if not using autoprefixer */
-    -webkit-appearance: none;
-    appearance: none;
-    /* For iOS < 15 to remove gradient background */
-    background-color: #fff;
-    /* Not removed via appearance */
-    margin: 0;
-}
-input[type=radio]:checked label.labelElemento {
-    font-weight: 800;
-}
-/*
-#selectElemento,
-#selectElemento option {
-    width: 300px;
-}
-*/
-#previewColorPicked, #previewElementoPicked {
-border: 1px solid var(--theme-medium);
-border-radius: 8px;
-height: 146px; margin-left: 8px;
-margin-right: 6px; margin-bottom: 6px; padding-top: 7px;
-text-align: center; align-items: center;
-display: flex; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
-}
-.textMiddle {
-    place-content: center;
-    flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
-}
-.flex100 {
-    width: 100%;
-    display: flex;
 }
 /* area de edição de cores no form_cores */
 div.tituloCores {
@@ -518,7 +435,118 @@ div.boxContent {
     flex-shrink: 1;
     flex-basis: 100%;
 }
+/* boxElementos */
+div.blockElemento {
+    background-color: transparent;
+    display: flex;
+    float: left;
+    min-width: 35vw;
+    max-width: 40vw;
+    height: 146px;
+    margin: 0;
+    margin-left: 10px;
+    border:0;
+    border: 0.2px solid #404040;
+    padding: 0;
+}
+div.contentElemento {
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: block;
+    width: 100%;
+    height: 146px;
+    margin: 0;
+    margin-bottom: 4px;
+    border: 0;
+    padding: 0;
+}
+input[type=radio].boxRadio {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    height: 0;
+    width: 0;
+    display: inline-block;
+    border-radius: 100%;
+    vertical-align: text-bottom;
+    position: relative;
+    padding: 0;
+    margin: 0;
+}
+label.boxRadioLabel {
+    --elemento-cor: #FFFF99;
+    font-size: 1rem;
+    line-height: 20px;
+    font-weight: :00;
+    display: block;
+    width: 100%;
+    height: 20px;
+    border: 0.1px solid #d0d0d0;
+    border-collapse: collapse;
+    margin: 0;
+    padding: 0;
+}
+label.boxRadioLabel::before {
+    content: 'x';
+    width: 20%;
+    display: inline-block;
+    background-color: var(--elemento-cor);
+    color: var(--elemento-cor);
+    border-right: 0.2px solid #d0d0d0;
+}
+label.boxRadioLabel:focus-within {
+    font-weight: 900;
+}
+label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked ) {
+    font-weight: 900;
+}
+label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked )::after {
+    font-family: "Font Awesome 6 Free";
+    content: '\f14a';
+    font-weight: 900;
+    width: 1rem;
+    height: 1rem;
+    float: right;
+    padding-right: 5px;
+}
+/* área do preview */
+#previewColorPicked, #previewElementoPicked {
+border: 1px solid var(--theme-medium);
+border-radius: 1rem;
+width:  100%;
+height: 5.2rem; margin-left: 8px;
+margin-right: 6px; margin-bottom: 6px; padding-top: 7px;
+text-align: center; align-items: center;
+display: grid; float: left: clear: both; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
+}
+.textMiddle {
+    place-content: center;
+    flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
+}
+.flex100 {
+    width: 100%;
+    display: flex;
+}
 /* boxCores */
+.reverseButton {
+    text-align: left;
+    display: block;
+    min-width: 15vw;
+    max-width: 25vw;
+    height: 20px;
+    margin-bottom: 0.5rem;
+    margin-left: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 2px;
+}
+.colorWheel {
+    width: 1rem;
+    height: 1rem;
+    padding-right: 10px;
+    padding-bottom: 0;
+}
 div.boxContorno {
     display: block;
     float: left;
@@ -557,86 +585,4 @@ div.cor {
     float: left;
     width: 15px;
     height: 15px;
-}
-
-/* boxElementos */
-div.blockElemento {
-    background-color: transparent;
-    display: flex;
-    float: left;
-    width: 350px;
-    height: 146px;
-    margin: 0;
-    margin-left: 10px;
-    border:0;
-    border: 0.2px solid #404040;
-    padding: 0;
-}
-div.contentElemento {
-    overflow-y: auto;
-    overflow-x: hidden;
-    display: block;
-    width: 350px;
-    height: 146px;
-    margin: 0;
-    margin-bottom: 4px;
-    border: 0;
-    padding: 0;
-}
-input[type=radio].boxRadio {
-    -webkit-appearance: none;
-    appearance: none;
-    background: transparent;
-    border: none;
-    height: 0;
-    width: 0;
-    display: inline-block;
-    border-radius: 100%;
-    vertical-align: text-bottom;
-    position: relative;
-    padding: 0;
-    margin: 0;
-}
-label.boxRadioLabel {
-    --elemento-cor: #FFFF99;
-    font-size: 0.9rem;
-    line-height: 20px;
-    font-weight: 500;
-    display: block;
-    width: 100%;
-    height: 20px;
-    border: 0.1px solid #d0d0d0;
-    border-collapse: collapse;
-    margin: 0;
-    padding: 0;
-}
-label.boxRadioLabel::before {
-    content: 'x';
-    width: 45px;
-    display: inline-block;
-    background-color: var(--elemento-cor);
-    color: var(--elemento-cor);
-    border-right: 0.2px solid #d0d0d0;
-}
-label.boxRadioLabel:focus-within {
-    font-weight: 900;
-}
-label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked ) {
-    font-weight: 900;
-}
-label.boxRadioLabel:has( .boxRadio:active, .boxRadio:checked )::after {
-    content: url('../imagens/caret.svg');
-    font-weight: 900;
-    width: 15px;
-    height: 15px;
-    float: right;
-    padding-right: 10px;
-    padding-top: 2px;
-}
-svg.svg_after {
-    width: 15px;
-    height: 15px;
-    padding-left: 10px;
-    padding-bottom: 0;
-    color: currentColor;
 }
