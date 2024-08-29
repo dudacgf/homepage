@@ -11,8 +11,8 @@ define('ELEMENTO_SEPARADOR', 3);
 define('ELEMENTO_IMAGEM', 4);
 define('ELEMENTO_TEMPLATE', 6);
 
-class tiposElementos 
-{# 
+class tiposElementos
+{#
     static function getArray()
     {
         global $global_hpDB;
@@ -63,7 +63,7 @@ class tiposGrupos
 
 }#  tiposGrupos*/
 
-class cssEstilos 
+class cssEstilos
 {#
     var $hpDB;
     var $idEstilo;
@@ -97,6 +97,15 @@ class cssEstilos
             throw new Exception('erro ao inserir estilo: ' . $this->hpDB->real_escape_string($_sql->error));
 
         return $this->hpDB->getLastInsertId();
+    }
+
+    public function atualizar() {
+        $_sql = $this->hpDB->prepare('update hp_cssestilos set comentarioEstilo = ? where nomeEstilo = ?');
+        $_sql->bind_param('ss', $this->comentarioEstilo, $this->nomeEstilo);
+        if (!$_sql->execute())
+            throw new Exception('erro ao atualizar estilo: ' . $this->hpDB->real_escape_string($_sql->error));
+
+        return $this->hpDB->getAffectedRows();
     }
 
     static function getArray()
@@ -133,7 +142,7 @@ class cssEstilos
         $cssestilos = $global_hpDB->query($_sql);
         if (!$cssestilos)
         {
-            throw new Exception('não consegui ler a tabela de tipos de grupos!');
+            throw new Exception('não consegui ler a tabela de nomes de estilos!');
         }
         else
         {
@@ -146,6 +155,26 @@ class cssEstilos
         return isset($estilos) ? $estilos : FALSE;
 
     }
+
+    static function estiloExiste($_nomeEstilo = null) {
+        if (!$_nomeEstilo)
+            throw new Exception('Não posso verificar se um estilo existe se não me passarem seu nome');
+
+        global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare('SELECT * FROM hp_cssestilos WHERE nomeEstilo = ?');
+        $_sql->bind_param('s', $_nomeEstilo);
+
+        try {
+            if (!$_sql->execute())
+                throw new Exception('Erro na consulta ao banco de dados');
+        } catch (Exception $e) {
+            throw new Exception('Erro de banco de dados: ' . $e->getMessage());
+        }
+
+        return $_sql->get_result()->num_rows;
+    }
+
 }#  cssEstilos */
 
 abstract class elemento
@@ -167,15 +196,15 @@ abstract class elemento
     }
 
     abstract function inserir();
-    
+
     abstract function atualizar();
-    
+
     abstract function excluir();
 
     abstract function getArray();
 
     #abstract static function newFromArray($_array);
-    
+
     #abstract static function getCount();
 
 }#  elemento*/
@@ -197,11 +226,11 @@ abstract class elementoAgrupado extends elemento
     abstract function elementoNaPosicao($_posElemento);
 
     abstract function elementoDeCodigo($_idElemento);
-    
+
     abstract function lerNaoElementos();
-    
+
     abstract function incluirElemento($_idElemento, $_posElemento = 0);
-    
+
     abstract function excluirElemento($_idElemento);
 
     abstract function deslocarElementoParaCima($_idElemento);
@@ -221,7 +250,7 @@ class wLink extends elemento
     var $targetLink;
     var $urlElementoSVN;
     var $tipoElemento;
-    
+
     public function __construct($_idLink) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê{#
     {
 
@@ -243,7 +272,7 @@ class wLink extends elemento
             } catch(Exception $e) {
                 throw new Exception("Código do link provavelmente incorreto: $_idLink");
             }
-            
+
             $this->idLink = $line['idElemento'];
             $this->idGrupo = $line['idGrupo'];
             $this->posGrupo = $line['posGrupo'];
@@ -257,18 +286,18 @@ class wLink extends elemento
             $this->idElemento = $this->idLink;
             $this->descricaoElemento = $this->descricaoLink;
         }
-        
+
     }
-    
+
     function inserir ()
     {
 
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos (idTipoElemento, idGrupo, posGrupo, 
-                                      urlELemento, descricaoElemento, dicaElemento, 
+        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos (idTipoElemento, idGrupo, posGrupo,
+                                      urlELemento, descricaoElemento, dicaElemento,
                                       urlElementoLocal, urlElementoSSL, urlElementoSVN, urlElementoTarget)
                                       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $_sql->bind_param("iiisssiiis", $this->tipoElemento, $this->idGrupo, $this->posGrupo, 
-                          $this->linkURL, $this->descricaoLink, $this->dicaLink, $this->localLink, $this->urlElementoSSL, 
+        $_sql->bind_param("iiisssiiis", $this->tipoElemento, $this->idGrupo, $this->posGrupo,
+                          $this->linkURL, $this->descricaoLink, $this->dicaLink, $this->localLink, $this->urlElementoSSL,
                           $this->urlElementoSVN, $this->targetLink);
         // executa o query e resgata o id criado.
         if (!$_sql->execute())
@@ -278,18 +307,18 @@ class wLink extends elemento
         $this->idLink = $this->hpDB->getLastInsertId();
         return $this->idLink;
     }
-    
+
     function atualizar ()
     {
 
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos
                                       SET posGrupo = ?, urlElemento = ?, descricaoElemento = ?, dicaElemento = ?, urlElementoLocal = ?,
                                           urlElementoTarget = ?, urlElementoSSL = ?, urlElementoSVN = ?
                                       WHERE idElemento = ?");
         $_sql->bind_param("isssisiii", $this->posGrupo, $this->linkURL, $this->descricaoLink,
                           $this->dicaLink, $this->localLink, $this->targetLink,
                           $this->urlElementoSSL, $this->urlElementoSVN, $this->idLink);
-        
+
         // executa o query
         if (!$_sql->execute())
         {
@@ -301,7 +330,7 @@ class wLink extends elemento
         }
 
     }
-    
+
     public function excluir()
     {
 
@@ -348,7 +377,7 @@ class wLink extends elemento
     {
 
         $newLink = new wLink(NULL);
-        
+
         $newLink->idLink = $_array['idElemento'];
         $newLink->idGrupo = $_array['idGrupo'];
         $newLink->posGrupo = $_array['posGrupo'];
@@ -364,7 +393,7 @@ class wLink extends elemento
 
         return $newLink;
     }/*}#*/
-        
+
     static function getCount()
     {
         global $global_hpDB;
@@ -376,12 +405,12 @@ class wLink extends elemento
             throw new Exception("Erro ao contar número de links");
 
         $_row = $_sql->get_result()->fetch_assoc();
-        if (!$_row) 
+        if (!$_row)
             return 0;
 
         return $_row['numElementos'];
     }
-    
+
 }#  wLink */
 
 class Visita
@@ -392,13 +421,13 @@ class Visita
 
     public function inserir() {
         global $global_hpDB;
-        if (!$this->idElemento) 
+        if (!$this->idElemento)
             throw new Exception("Não posso inserir sem saber qual Link foi visitado!");
 
         $_sql = $global_hpDB->prepare("INSERT INTO hp_visitas (idElemento) VALUES (?)");
         $_sql->bind_param("i", $this->idElemento);
 
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
             throw new Exception("Erro ao gravar visita: $_sql->error");
 
         return true;
@@ -417,7 +446,7 @@ class Visita
 
         if (!$_sql->execute())
             throw new Exception("Erro ao ler contagem de visitas: $_sql->error");
-    
+
         return $_sql->get_result()->fetch_assoc()['totalLinks'];
     }
 
@@ -426,7 +455,7 @@ class Visita
 
         // le a contagem agrupada por link visitado
         $_sql = $global_hpDB->prepare('
-          SELECT e.descricaoElemento, count(*) as NumVisitas, 
+          SELECT e.descricaoElemento, count(*) as NumVisitas,
                  Max(V.dataVisita) as ultimaVisita, Min(V.dataVisita) as primeiraVisita
             FROM hp_visitas V, hp_elementos e
            WHERE V.idElemento = e.idElemento
@@ -438,9 +467,9 @@ class Visita
 
         if (!$_sql->execute())
             throw new Exception("Erro ao ler contagem de visitas: $_sql->error");
-    
+
         $result = $_sql->get_result();
-        while ($_line = $result->fetch_assoc()) 
+        while ($_line = $result->fetch_assoc())
             $_lines[] = $_line;
 
         return $_lines;
@@ -456,14 +485,14 @@ class wForm extends elemento
     var $nomeCampo;
     var $tamanhoCampo;
     var $descricaoForm;
-    
+
     public function __construct($_idForm) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
     {
 
         parent::__construct();
         $this->tipoElemento = ELEMENTO_FORM;
 
-        if (isset($_idForm) && $_idForm != NULL) 
+        if (isset($_idForm) && $_idForm != NULL)
         {
             $_sql = $this->hpDB->prepare("SELECT * from hp_elementos where idElemento = ?");
             $_sql->bind_param("i", $_idForm);
@@ -473,11 +502,11 @@ class wForm extends elemento
 
             $line = $_sql->get_result()->fetch_assoc();
 
-            if (!$line) 
+            if (!$line)
             {
                 throw new Exception("idForm incorreto: $_idForm");
             }
-            
+
             $this->idForm = $line['idElemento'];
             $this->idGrupo = $line['idGrupo'];
             $this->posGrupo = $line['posGrupo'];
@@ -493,13 +522,13 @@ class wForm extends elemento
 
     function inserir()
     {
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos (idTipoElemento, idGrupo, posGrupo, formNome, 
-                                                               urlElemento, formNomeCampo, formTamanhoCampo, 
+        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos (idTipoElemento, idGrupo, posGrupo, formNome,
+                                                               urlElemento, formNomeCampo, formTamanhoCampo,
                                                                descricaoElemento)
-                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)"); 
-        $_sql->bind_param("iiisssis", $this->tipoElemento, $this->idGrupo, $this->posGrupo , $this->nomeForm, 
+                                      VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $_sql->bind_param("iiisssis", $this->tipoElemento, $this->idGrupo, $this->posGrupo , $this->nomeForm,
                  $this->acao, $this->nomeCampo, $this->tamanhoCampo, $this->descricaoForm);
-        
+
         // executa o query e resgata o id criado.
         if (!$_sql->execute())
         {
@@ -508,11 +537,11 @@ class wForm extends elemento
         $this->idForm = $this->hpDB->getLastInsertId();
         return $this->idForm;
     }
-    
+
     function atualizar()
     {
 
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos
                     SET posGrupo = ?,
                         urlElemento = ?,
                         descricaoElemento = ?,
@@ -521,7 +550,7 @@ class wForm extends elemento
                         formTamanhoCampo = ?
                   WHERE idElemento = ?");
         $_sql->bind_param("issssii", $this->posGrupo, $this->acao, $this->descricaoForm, $this->nomeForm, $this->nomeCampo, $this->tamanhoCampo, $this->idForm);
-        
+
         // executa o query e retorna o número de linhas afetadas
         if (!$_sql->execute())
         {
@@ -529,7 +558,7 @@ class wForm extends elemento
         }
         return $this->hpDB->getAffectedRows();
     }
-    
+
     public function excluir()
     {
 
@@ -584,7 +613,7 @@ class wForm extends elemento
 
         return $newForm;
     }
-        
+
     static function getCount()
     {
         global $global_hpDB;
@@ -596,7 +625,7 @@ class wForm extends elemento
         }
 
         $_count = $_sql->get_result()->fetch_assoc();
-        if (!$_count) 
+        if (!$_count)
         {
             return 0;
         }
@@ -605,7 +634,7 @@ class wForm extends elemento
             return $_count['numElementos'];
         }
     }
-    
+
 }#  wForm */
 
 class wSeparador extends elemento
@@ -613,7 +642,7 @@ class wSeparador extends elemento
     var $idSeparador;
     var $descricaoSeparador;
     var $breakBefore;
-    
+
     public function __construct($_idSeparador) // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
     {
         parent::__construct();
@@ -629,7 +658,7 @@ class wSeparador extends elemento
             }
 
             $line = $_sql->get_result()->fetch_assoc();
-            if (!$line) 
+            if (!$line)
             {
                 throw new Exception("idSeparador incorreto: $_idSeparador");
             }
@@ -646,11 +675,11 @@ class wSeparador extends elemento
 
     function inserir()
     {
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos 
+        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos
                     (idTipoElemento, idGrupo, posGrupo, descricaoElemento, separadorBreakBefore)
                  VALUES (?, ?, ?, ?, ?)");
         $_sql->bind_param("iiisi", $this->tipoElemento, $this->idGrupo, $this->posGrupo , $this->descricaoSeparador, $this->breakBefore);
-        
+
         // executa o query e resgata o id criado.
         if (!$_sql->execute())
         {
@@ -659,16 +688,16 @@ class wSeparador extends elemento
         $this->idSeparador = $this->hpDB->getLastInsertId();
         return $this->idSeparador;
     }
-    
+
     function atualizar()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos
                     SET posGrupo = ?,
                         descricaoElemento = ?,
                         separadorBreakBefore = ?
                   WHERE idElemento = ?");
         $_sql->bind_param("isii", $this->posGrupo, $this->descricaoSeparador, $this->breakBefore, $this->idSeparador);
-        
+
         // executa o query
         if (!$_sql->execute())
         {
@@ -676,13 +705,13 @@ class wSeparador extends elemento
         }
         return $this->hpDB->getAffectedRows();
     }
-    
+
     public function excluir()
     {
         if (isset($this->idSeparador)) {
             $_sql = $this->hpDB->prepare("DELETE FROM hp_elementos where idElemento = ?");
             $_sql->bind_param("i", $this->idSeparador);
-            
+
             if (!$_sql->execute())
             {
                 throw new Exception("erro ao excluir o separador: $this->descricaoSeparador");
@@ -725,7 +754,7 @@ class wSeparador extends elemento
 
         return $newSeparador;
     }
-        
+
     static function getCount()
     {
         global $global_hpDB;
@@ -737,11 +766,11 @@ class wSeparador extends elemento
             throw new Exception("Não consegui ler o número de separadores.");
 
         $_count = $_sql->get_result()->fetch_assoc();
-        if (!$_count) 
+        if (!$_count)
             return 0;
         return $_count['numElementos'];
     }
-    
+
 
 }#  wSeparador */
 
@@ -751,7 +780,7 @@ class wImagem extends elemento
     var $descricaoImagem;
     var $ImagemURL;
     var $tipoElemento;
-    
+
     public function __construct($_idImagem)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
     {
 
@@ -781,7 +810,7 @@ class wImagem extends elemento
 
     function inserir()
     {
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos 
+        $_sql = $this->hpDB->prepare("INSERT INTO hp_elementos
                     (idTipoElemento, idGrupo, posGrupo, descricaoElemento, urlElemento, urlElementoLocal)
                  VALUES (?, ?, ?, ?, ?, ?)");
         $_sql->bind_param("iiissi", $this->tipoElemento, $this->idGrupo, $this->posGrupo , $this->descricaoImagem, $this->urlImagem, $this->localLink);
@@ -793,27 +822,27 @@ class wImagem extends elemento
         $this->idImagem = $this->hpDB->getLastInsertId();
         return $this->idImagem;
     }
-    
+
     function atualizar ()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos
                     SET posGrupo = ?,
                         descricaoElemento = ?,
                         urlElemento = ?,
                         urlElementoLocal = ?
                   WHERE idElemento = ?");
         $_sql->bind_param("issii", $this->posGrupo, $this->descricaoImagem, $this->urlImagem, $this->localLink, $this->idImagem);
-        
+
         // executa o query e retorna o número de linhas afetadas (uma, se tudo der certo)
         if (!$_sql->execute())
             throw new Exception ("erro ao gravar a imagem: '$this->descricaoImagem'!");
 
         return $this->hpDB->getAffectedRows();
     }
-    
+
     public function excluir()
     {
-        if (!isset($this->idImagem)) 
+        if (!isset($this->idImagem))
             return NULL;
 
         $_sql = $this->hpDB->prepare("DELETE FROM hp_elementos where idElemento = ?");
@@ -859,7 +888,7 @@ class wImagem extends elemento
 
         return $newImagem;
     }
-        
+
     static function getCount()
     {
         global $global_hpDB;
@@ -871,12 +900,12 @@ class wImagem extends elemento
             throw new Exception("Erro ao contar número de imagens");
 
         $_count = $_sql->get_result()->fetch_assoc();
-        if (!$_count) 
+        if (!$_count)
             return 0;
 
         return $_count['numElementos'];
     }
-    
+
 
 }#  wImagem */
 
@@ -885,7 +914,7 @@ class wTemplate extends elemento
     var $idTemplate;
     var $descricaoTemplate;
     var $nomeTemplate;
-    
+
     public function __construct($_idTemplate)  // < 0 -> só cria e volta. NULL -> cria, conecta ao bd e volta. > 0 -> lê
     {
 
@@ -897,9 +926,9 @@ class wTemplate extends elemento
             $_sql = $this->hpDB->prepare("SELECT * from hp_elementos where idElemento = ?");
             $_sql->bind_param("i", $_idTemplate);
 
-            if (!$_sql->execute()) 
+            if (!$_sql->execute())
                 throw new Exception("idTemplate incorreto: $_idTemplate");
-            
+
             $line = $_sql->get_result()->fetch_assoc();
 
             $this->idTemplate = $line['idElemento'];
@@ -925,23 +954,23 @@ class wTemplate extends elemento
         $this->idTemplate = $this->hpDB->getLastInsertId();
         return $this->idTemplate;
     }
-    
+
     function atualizar ()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_elementos 
-                                         SET posGrupo = ?, 
-                                             descricaoElemento = ?, 
+        $_sql = $this->hpDB->prepare("UPDATE hp_elementos
+                                         SET posGrupo = ?,
+                                             descricaoElemento = ?,
                                              templateFileName = ?
                                        WHERE idElemento = ?");
         $_sql->bind_param("issi", $this->posGrupo, $this->descricaoTemplate, $this->nomeTemplate, $this->idTemplate);
-        
+
         // executa o query
         if (!$_sql->execute())
             throw new Exception ("erro ao atualizar o template: '$this->descricaoTemplate'!");
 
         return $this->hpDB->getAffectedRows();
     }
-    
+
     public function excluir()
     {
         if (!isset($this->idTemplate))
@@ -949,7 +978,7 @@ class wTemplate extends elemento
 
         $_sql = $this->hpDB->prepare("DELETE FROM hp_elementos where idElemento = ?");
         $_sql->bind_param("i", $this->idTemplate);
-        
+
         // executa o query
         if (!$_sql->execute())
             throw new Exception ("erro ao excluir o template: '$this->descricaoTemplate'!");
@@ -990,7 +1019,7 @@ class wTemplate extends elemento
 
         return $newTemplate;
     }
-        
+
     static function getCount()
     {
         global $global_hpDB;
@@ -1002,12 +1031,12 @@ class wTemplate extends elemento
             throw new Exception("Erro ao contar templates");
 
         $_row = $_sql->get_result()->fetch_assoc();
-        if (!$_row) 
+        if (!$_row)
             return 0;
 
         return $_row['numElementos'];
     }
-    
+
 
 }#  wTemplate */
 
@@ -1015,7 +1044,7 @@ class elementoFactory {
     private $oElemento;
     private $idTipoElemento;
 
-    public function __construct($_idElm) { 
+    public function __construct($_idElm) {
         global $global_hpDB;
 
         $_sql = $global_hpDB->prepare('select idTipoElemento from hp_elementos where idElemento = ?');
@@ -1023,7 +1052,7 @@ class elementoFactory {
         if (!$_sql->execute())
             die("{'status': 'error', 'message': 'Não pude ler o elemento solicitado.'}");
         $results = $_sql->get_result();
-        if (mysqli_num_rows($results) == 0) 
+        if (mysqli_num_rows($results) == 0)
             return NULL;
 
         $this->idTipoElemento = $results->fetch_assoc()['idTipoElemento'];
@@ -1074,7 +1103,7 @@ class elementoFactory {
                 return null;
         }
     }
-    
+
     public function atualizar() {
         switch ($this->idTipoElemento) {
             case ELEMENTO_LINK:
@@ -1103,7 +1132,7 @@ class elementoFactory {
 }
 
 class grupo extends elementoAgrupado
-{#    
+{#
     var $descricaoGrupo;
     var $idTipoGrupo;
     var $descricaoTipoGrupo;
@@ -1112,10 +1141,10 @@ class grupo extends elementoAgrupado
     var $idCategoria;
     var $posCategoria;
 
-    public function __construct($_idGrupo, $_idCategoria = NULL) 
+    public function __construct($_idGrupo, $_idCategoria = NULL)
     {
         parent::__construct();
-        
+
         if ($_idGrupo != NULL)
         {
             if ($_idCategoria != NULL)
@@ -1139,12 +1168,12 @@ class grupo extends elementoAgrupado
             $_sql->execute();
             $result = $_sql->get_result();
             $line = $result->fetch_assoc();
-            
-            if (!$line) 
+
+            if (!$line)
             {
                 throw new Exception("idGrupo incorreto: $_idGrupo");
             }
-                
+
             $this->idGrupo = $line['idGrupo'];
             $this->descricaoGrupo = $line['descricaoGrupo'];
             $this->idTipoGrupo = $line['idTipoGrupo'];
@@ -1160,9 +1189,9 @@ class grupo extends elementoAgrupado
         }
 
     }
-    
-    function inserir() 
-    { 
+
+    function inserir()
+    {
         $_sql = $this->hpDB->prepare("INSERT INTO hp_grupos (descricaoGrupo, idTipoGrupo, grupoRestrito, restricaoGrupo) VALUES (?, ?, ?, ?)");
         $_sql->bind_param("siis", $this->descricaoGrupo, $this->idTipoGrupo, $this->grupoRestrito, $this->restricaoGrupo);
 
@@ -1178,9 +1207,9 @@ class grupo extends elementoAgrupado
             return $this->idGrupo;
         }
     }
-    
-    function atualizar() 
-    { 
+
+    function atualizar()
+    {
         $_sql = $this->hpDB->prepare("UPDATE hp_grupos SET descricaoGrupo = ?,
                                      idTipoGrupo = ?,
                                      grupoRestrito = ?,
@@ -1199,13 +1228,13 @@ class grupo extends elementoAgrupado
             return $this->hpDB->getAffectedRows();
         }
     }
-    
-    function excluir() 
-    { 
+
+    function excluir()
+    {
         $result = true;
 
         $this->lerElementos();
-        
+
         $result = $result and $this->hpDB->begin();
 
         foreach ($this->elementos as $elemento) {
@@ -1221,7 +1250,7 @@ class grupo extends elementoAgrupado
         $_sql = $this->hpDB->prepare("delete from hp_gruposxcategorias where idGrupo = ?");
         $_sql->bind_param("i", $this->idGrupo);
         $result = $result and $_sql->execute();
-        
+
         if ($result) {
             $result = $result and $this->hpDB->commit();
         }
@@ -1233,8 +1262,8 @@ class grupo extends elementoAgrupado
         return $result;
     }
 
-    function getArray() 
-    { 
+    function getArray()
+    {
         if (isset($this->idGrupo))
         {
             return array(
@@ -1250,9 +1279,9 @@ class grupo extends elementoAgrupado
         else
         {
             throw new Exception('erro em grupo::getArray(). Não inicializado!');
-        }    
+        }
     }
-    
+
     static function newFromArray($_array)
     {
         $newGrupo = new grupo(NULL);
@@ -1268,7 +1297,7 @@ class grupo extends elementoAgrupado
 
         return $newGrupo;
     }
-        
+
     function numeroElementos()
     {
         if (!isset($this->idGrupo))
@@ -1290,31 +1319,31 @@ class grupo extends elementoAgrupado
         }
         return $_count->fetch_assoc()['numElementos'];
     }
-        
+
     function lerElementos()
     {
         // lê tudo: links, forms e separadores e devolve como array de objetos
         $_sql = $this->hpDB->prepare("select * from hp_elementos where idGrupo = ? order by posGrupo");
         $_sql->bind_param("i", $this->idGrupo);
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
         {
             return array();
         }
-        
+
         $_elementos = $_sql->get_result();
 
         while ($_el = $_elementos->fetch_assoc())
         {
             switch ($_el['idTipoElemento'])
             {
-                case ELEMENTO_LINK: 
+                case ELEMENTO_LINK:
                     $this->elementos[] = wLink::newFromArray($_el);
                     break;
-                    
-                case ELEMENTO_FORM: 
+
+                case ELEMENTO_FORM:
                     $this->elementos[] = wForm::newFromArray($_el);
                     break;
-                    
+
                 case ELEMENTO_SEPARADOR:
                     $this->elementos[] = wSeparador::newFromArray($_el);
                     break;
@@ -1338,11 +1367,11 @@ class grupo extends elementoAgrupado
         // lê tudo: links, forms e separadores e devolve como array de arrays
         $_sql = $this->hpDB->prepare("select * from hp_elementos where idGrupo = ? order by posGrupo");
         $_sql->bind_param("i", $this->idGrupo);
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
         {
             return array();
         }
-        
+
         $_elementos = $_sql->get_result();
         $elementos = [];
 
@@ -1350,14 +1379,14 @@ class grupo extends elementoAgrupado
         {
             switch ($_el['idTipoElemento'])
             {
-                case ELEMENTO_LINK: 
+                case ELEMENTO_LINK:
                     $elementos[] = wLink::newFromArray($_el)->getArray();
                     break;
-                    
-                case ELEMENTO_FORM: 
+
+                case ELEMENTO_FORM:
                     $elementos[] = wForm::newFromArray($_el)->getArray();
                     break;
-                    
+
                 case ELEMENTO_SEPARADOR:
                     $elementos[] = wSeparador::newFromArray($_el)->getArray();
                     break;
@@ -1388,23 +1417,23 @@ class grupo extends elementoAgrupado
 
         $_elemento = $_sql->get_result();
 
-        if (!$_elemento) 
+        if (!$_elemento)
         {
             throw new Exception ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo na posição $_posElemento");
         }
 
-        
+
         $_el = $_elemento->fetch_assoc();
         switch ($_el['idTipoElemento'])
         {
-            case ELEMENTO_LINK: 
+            case ELEMENTO_LINK:
                 $elemento = wLink::newFromArray($_el);
             break;
-                
-            case ELEMENTO_FORM: 
+
+            case ELEMENTO_FORM:
                 $elemento = wForm::newFromArray($_el);
             break;
-                
+
             case ELEMENTO_SEPARADOR:
                   $elemento = wSeparador::newFromArray($_el);
             break;
@@ -1435,22 +1464,22 @@ class grupo extends elementoAgrupado
 
         $_elemento = $_sql->get_result();
 
-        if (!$_elemento) 
+        if (!$_elemento)
         {
             throw new Exception ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
         }
-        
+
         $_el = $_elemento->fetch_assoc();
         switch ($_el['idTipoElemento'])
         {
-            case ELEMENTO_LINK: 
+            case ELEMENTO_LINK:
                 $elemento = wLink::newFromArray($_el);
             break;
-                
-            case ELEMENTO_FORM: 
+
+            case ELEMENTO_FORM:
                 $elemento = wForm::newFromArray($_el);
             break;
-                
+
             case ELEMENTO_SEPARADOR:
                   $elemento = wSeparador::newFromArray($_el);
             break;
@@ -1469,11 +1498,11 @@ class grupo extends elementoAgrupado
 
         return $elemento;
     }
-    
-    function lerNaoElementos() { } 
+
+    function lerNaoElementos() { }
 
     function deslocarElementoParaCima($_idElemento)
-    { 
+    {
         // calcula a posição do elemento anterior.
         $_sql = $this->hpDB->prepare("SELECT posGrupo FROM hp_elementos WHERE idGrupo = ? AND idElemento = ?");
         $_sql->bind_param("ii", $this->idGrupo, $_idElemento);
@@ -1481,7 +1510,7 @@ class grupo extends elementoAgrupado
             throw new Exception ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
         }
 
-        try 
+        try
         {
             $_posGrupo = $_sql->get_result()->fetch_assoc()['posGrupo'];
         } catch (Exception $e) {
@@ -1494,7 +1523,7 @@ class grupo extends elementoAgrupado
             $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = posGrupo + 1 WHERE idGrupo = ? AND posGrupo = ?");
             $_sql->bind_param("ii", $this->idGrupo, $_ProxPosGrupo);
             $_sql->execute();
-        
+
             // desloca para cima o elemento solicitado
             $_sql = $this->hpDB->prepare("UPDATE hp_elementos set posGrupo = ? WHERE idGrupo = ? AND idElemento = ?");
             $_sql->bind_param("iii", $_ProxPosGrupo, $this->idGrupo, $_idElemento);
@@ -1504,7 +1533,7 @@ class grupo extends elementoAgrupado
     }
 
     function deslocarElementoParaBaixo($_idElemento)
-    { 
+    {
 
         // calcula a posição do elemento anterior.
         $_sql = $this->hpDB->prepare("SELECT posGrupo FROM hp_elementos WHERE idGrupo = ? AND idElemento = ?");
@@ -1514,7 +1543,7 @@ class grupo extends elementoAgrupado
         }
 
         try
-        { 
+        {
             $_posGrupo = $_sql->get_result()->fetch_assoc()['posGrupo'];
         } catch (Exception $e) {
             throw new Exception ("Não há qualquer elemento do grupo : $this->idGrupo :  $this->descricaoGrupo com chave $_idElemento");
@@ -1530,7 +1559,7 @@ class grupo extends elementoAgrupado
         }
 
         try
-        { 
+        {
             $_numElementos = $_sql->get_result()->fetch_assoc()['numElementos'];
         } catch (Exception $e) {
             throw new Exception ("erro executando a query numElementos em deslocarElementoParaBaixo");
@@ -1548,11 +1577,11 @@ class grupo extends elementoAgrupado
 
         return $_return;
     }
-    
+
     function incluirElemento($_idElemento, $_posElemento = 0) { }
-    
-    function excluirElemento($_idElemento) { } 
-    
+
+    function excluirElemento($_idElemento) { }
+
     static function getGrupos()
     {
         // como esta função é um método de classe, não posso usar nenhuma variável de instância, apenas locais e globais.
@@ -1561,7 +1590,7 @@ class grupo extends elementoAgrupado
 
         $_sql = "SELECT * FROM hp_grupos order by descricaoGrupo";
         $_grupos = $global_hpDB->query($_sql);
-        if (!$_grupos) 
+        if (!$_grupos)
         {
             throw new Exception('erro: não consegui ler nenhum grupo!');
         }
@@ -1586,7 +1615,7 @@ class grupo extends elementoAgrupado
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_grupos";
         $_count = $global_hpDB->query($_sql);
-        if (!$_count) 
+        if (!$_count)
         {
             return 0;
         }
@@ -1595,7 +1624,7 @@ class grupo extends elementoAgrupado
             return $_count[0]['numElementos'];
         }
     }
-    
+
 }#  grupo */
 
 class categoria extends elementoAgrupado
@@ -1613,13 +1642,13 @@ class categoria extends elementoAgrupado
         parent::__construct();
 
         // se não passou $_idCategoria, deve provavelmente estar criando uma categoria.
-        if ($_idCategoria == NULL) 
+        if ($_idCategoria == NULL)
             return true;
 
         if ($_idPagina != NULL)
         {
             $_sql = $this->hpDB->prepare("SELECT c.*, cp.posPagina
-                   from hp_categorias c, hp_categoriasxpaginas cp 
+                   from hp_categorias c, hp_categoriasxpaginas cp
                   where c.idCategoria = cp.idCategoria
                     and cp.idCategoria = ?
                     and cp.idPagina = ?");
@@ -1631,13 +1660,13 @@ class categoria extends elementoAgrupado
             $_sql->bind_param("i", $_idCategoria);
         }
 
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
             throw new Exception("Erro ao obter categoria: " . $_idCategoria);
 
         $line = $_sql->get_result()->fetch_assoc();
-        if (!$line) 
+        if (!$line)
             throw new Exception("idCategoria incorreto: $_idCategoria");
-        
+
         $this->idCategoria = $_idCategoria;
         $this->descricaoCategoria = $line['descricaoCategoria'];
         $this->categoriaRestrita = $line['categoriaRestrita'];
@@ -1649,8 +1678,8 @@ class categoria extends elementoAgrupado
         }
     }
 
-    function inserir() 
-    { 
+    function inserir()
+    {
         $_sql = $this->hpDB->prepare("INSERT INTO hp_categorias (descricaoCategoria, categoriaRestrita, restricaoCategoria) VALUE (?, ?, ?)");
         $_sql->bind_param("sis", $this->descricaoCategoria, $this->categoriaRestrita, $this->restricaoCategoria);
 
@@ -1661,26 +1690,26 @@ class categoria extends elementoAgrupado
         $this->idCategoria = $this->hpDB->getLastInsertId();
         return $this->idCategoria;
     }
-    
-    function atualizar() 
-    { 
+
+    function atualizar()
+    {
         $_sql = $this->hpDB->prepare("UPDATE hp_categorias SET descricaoCategoria = ?, categoriaRestrita = ?, restricaoCategoria = ?
                                       WHERE idCategoria = ?");
         $_sql->bind_param("sisi", $this->descricaoCategoria, $this->categoriaRestrita, $this->restricaoCategoria, $this->idCategoria);
-        
+
         // executa o query
         if (!$_sql->execute())
             throw new Exception ("erro ao atualizar a categoria: " . $this->idCategoria . ": " . $this->descricaoCategoria);
 
         return $this->hpDB->getAffectedRows();
     }
-    
-    function excluir() 
-    { 
+
+    function excluir()
+    {
         $result = true;
 
         $this->lerElementos();
-        
+
         $result = $result and $this->hpDB->begin();
 
         foreach ($this->elementos as $elemento) {
@@ -1703,8 +1732,8 @@ class categoria extends elementoAgrupado
         return $result;
     }
 
-    function getArray() 
-    { 
+    function getArray()
+    {
         if (isset($this->idCategoria))
         {
             return array(
@@ -1719,7 +1748,7 @@ class categoria extends elementoAgrupado
             throw new Exception('erro em categoria::getArray(). Não inicializado!');
         }
     }
-    
+
     static function newFromArray($_array)
     {
         $newCategoria = new Categoria(NULL);
@@ -1733,7 +1762,7 @@ class categoria extends elementoAgrupado
 
         return $newCategoria;
     }
-        
+
     function numeroElementos() { }
 
     function lerElementos()
@@ -1741,9 +1770,9 @@ class categoria extends elementoAgrupado
 
         // verifica se foi pedido algum grupo restrito
         // na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
-        if (isset($_REQUEST['gr'])) 
+        if (isset($_REQUEST['gr']))
         {
-            if (strpos($_REQUEST['gr'], 'all') !== false) 
+            if (strpos($_REQUEST['gr'], 'all') !== false)
             {
                 $_grParm = ".*";
             }
@@ -1772,7 +1801,7 @@ class categoria extends elementoAgrupado
            or (grupoRestrito = 1 and restricaoGrupo REGEXP ? ) )
      order by gc.posCategoria;");
         $_sql->bind_param("is", $this->idCategoria, $_grParm);
-        
+
         if (!$_sql->execute())
             throw new Exception("não consegui ler os elementos da categoria " . $this->descricaoCategoria);
 
@@ -1787,13 +1816,13 @@ class categoria extends elementoAgrupado
     function elementoNaPosicao($_posElemento) { }
 
     function elementoDeCodigo($_idElemento) { }
-    
-    // se $_idPagina foi informado quando categoria:: foi instanciada, 
+
+    // se $_idPagina foi informado quando categoria:: foi instanciada,
     //         lê todos os grupos que não pertencem a esta página
-    // senão, 
+    // senão,
     //        lê todos os grupos que não pertencem a esta categoria
-    function lerNaoElementos() 
-    { 
+    function lerNaoElementos()
+    {
         $_sql = $this->hpDB->prepare("SELECT DISTINCT g.*, 0 as idCategoria, 0 as idTipoGrupo, '' as descricaoTipoGrupo, 0 as posCategoria
                    FROM hp_grupos g, hp_gruposxcategorias gc
                   WHERE g.idGrupo not in (SELECT idGrupo FROM hp_gruposxcategorias where idCategoria = ?)
@@ -1811,10 +1840,10 @@ class categoria extends elementoAgrupado
         }
 
         return isset($naoElementos) ? $naoElementos : false ;
-    } 
+    }
 
-    function deslocarElementoParaCima($_idElemento) 
-    { 
+    function deslocarElementoParaCima($_idElemento)
+    {
         // calcula a posição do grupo anterior.
         $_sql = $this->hpDB->prepare("SELECT posCategoria FROM hp_gruposxcategorias  WHERE idCategoria = ? AND idGrupo = ?");
         $_sql->bind_param("ii", $this->idCategoria, $_idElemento);
@@ -1822,7 +1851,7 @@ class categoria extends elementoAgrupado
             throw new Exception("Não consegui ler a posição do elemento na categoria");
 
         $_result = $_sql->get_result()->fetch_assoc();
-        if (!$_result or $_result['posCategoria'] == 0) 
+        if (!$_result or $_result['posCategoria'] == 0)
             throw new Exception ("Não há qualquer grupo na categoria : $this->idCategoria :  " . $this->hpDB->real_escape_string($this->descricaoCategoria) . " com chave $_idElemento");
 
         $_ProxPosCategoria = $_result['posCategoria']-1;
@@ -1874,9 +1903,9 @@ class categoria extends elementoAgrupado
 
         return $this->hpDB->getAffectedRows();
     }
-        
-    function incluirElemento($_idElemento, $_posElemento = 0) 
-    { 
+
+    function incluirElemento($_idElemento, $_posElemento = 0)
+    {
         if ($_posElemento > 0)
         {
             $_sql = $this->hpDB->prepare("insert into hp_gruposxcategorias (idGrupo, idCategoria, posCategoria) VALUES (?, ?, ?)");
@@ -1886,7 +1915,7 @@ class categoria extends elementoAgrupado
         {
             $_sql = $this->hpDB->prepare("SELECT COALESCE(MAX(posCategoria), 0) as maxPos from hp_gruposxcategorias where idCategoria = ?");
             $_sql->bind_param("i", $this->idCategoria);
-            if (!$_sql->execute()) 
+            if (!$_sql->execute())
                 throw new Exception("Erro ao obter maior posição na categoria: " . $this->descricaoCategoria);
             $_row = $_sql->get_result()->fetch_assoc();
             $maxPos = $_row['maxPos']+1;
@@ -1895,19 +1924,19 @@ class categoria extends elementoAgrupado
             $_sql->bind_param("iii", $_idElemento, $this->idCategoria, $maxPos);
         }
 
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
             throw new Exception('erro ao inserir um grupo na categoria: ' . $this->idCategoria . ' : ' . $_idElemento);
 
         return true;
     }
-    
-    function excluirElemento($_idElemento) 
-    { 
+
+    function excluirElemento($_idElemento)
+    {
         $_sql = $this->hpDB->prepare("DELETE FROM hp_gruposxcategorias where idGrupo = ? and idCategoria = ?");
         $_sql->bind_param("ii", $_idElemento, $this->idCategoria);
-        
+
         return $_sql->execute();
-    } 
+    }
 
     static function getCategorias()
     {
@@ -1916,7 +1945,7 @@ class categoria extends elementoAgrupado
 
         $_sql = "SELECT * FROM hp_categorias ORDER BY descricaoCategoria";
         $_categorias = $global_hpDB->query($_sql);
-        if (!$_categorias) 
+        if (!$_categorias)
         {
             throw new Exception('erro: não consegui ler nenhuma categoria!');
         }
@@ -1940,7 +1969,7 @@ class categoria extends elementoAgrupado
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_categorias";
         $_count = $global_hpDB->query($_sql);
-        if (!$_count) 
+        if (!$_count)
         {
             return 0;
         }
@@ -1949,7 +1978,7 @@ class categoria extends elementoAgrupado
             return $_count[0]['numElementos'];
         }
     }
-    
+
 }# categoria */
 
 class pagina extends elementoAgrupado
@@ -1966,17 +1995,17 @@ class pagina extends elementoAgrupado
     {
         parent::__construct();
 
-        if (isset($_idPagina)) 
+        if (isset($_idPagina))
         {
             $_sql = $this->hpDB->prepare("SELECT * from hp_paginas where idPagina = ?");
             $_sql->bind_param("i", $_idPagina);
             if (!$_sql->execute())
                 throw new Exception("idPagina incorreto: $_idPagina");
-            
+
             $line = $_sql->get_result()->fetch_assoc();
 
             $this->tituloPagina = $line['TituloPagina'];
-            if (isset($_REQUEST['class']) && $_REQUEST['class'] != '') 
+            if (isset($_REQUEST['class']) && $_REQUEST['class'] != '')
             {
                 $this->classPagina = $_REQUEST['class'];
             }
@@ -1994,7 +2023,7 @@ class pagina extends elementoAgrupado
 
     public function inserir()
     {
-        $_sql = $this->hpDB->prepare("INSERT INTO hp_paginas 
+        $_sql = $this->hpDB->prepare("INSERT INTO hp_paginas
                                       (tituloPagina, tituloTabela, classPagina, displayFortune, displayImagemTitulo, displaySelectColor)
                                       VALUES (?, ?, ?, ?, ?, ?)");
         $_sql->bind_param("sssiii", $this->tituloPagina, $this->tituloTabela , $this->classPagina, $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor);
@@ -2006,15 +2035,15 @@ class pagina extends elementoAgrupado
 
         return $this->hpDB->getLastInsertId();
     }
-    
+
     public function atualizar ()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_paginas SET tituloPagina = ?, tituloTabela = ?, classPagina = ?, 
+        $_sql = $this->hpDB->prepare("UPDATE hp_paginas SET tituloPagina = ?, tituloTabela = ?, classPagina = ?,
                                                             displayFortune = ?, displayImagemTitulo = ?, displaySelectColor = ?
                                       WHERE idPagina = ?");
         $_sql->bind_param("sssiiii", $this->tituloPagina, $this->tituloTabela, $this->classPagina,
             $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor, $this->idPagina);
-        
+
         // executa o query e retorna o número de linhas afetadas (uma, se tudo der certo)
         if (!$_sql->execute())
             throw new Exception ("erro ao gravar a página: " . $this->idPagina . ": " . $this->tituloPagina);
@@ -2022,12 +2051,12 @@ class pagina extends elementoAgrupado
         return $this->hpDB->getAffectedRows();
     }
 
-    public function excluir() 
-    { 
+    public function excluir()
+    {
         $result = true;
 
         $this->lerElementos();
-        
+
         $result = $result and $this->hpDB->begin();
 
         foreach ($this->elementos as $elemento) {
@@ -2049,8 +2078,8 @@ class pagina extends elementoAgrupado
         return $result;
     }
 
-    public function getArray() 
-    { 
+    public function getArray()
+    {
         if (isset($this->idPagina))
         {
             return array(
@@ -2066,7 +2095,7 @@ class pagina extends elementoAgrupado
             throw new Exception('erro em pagina::getArray(). Não inicializado!');
         }
     }
-    
+
     public function getBigArray( )
     {
         if ( !isset( $this->idPagina ) )
@@ -2076,9 +2105,9 @@ class pagina extends elementoAgrupado
 
         // verifica se foi pedido algum grupo restrito
         // na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
-        if (isset($_REQUEST['gr'])) 
+        if (isset($_REQUEST['gr']))
         {
-            if (strpos($_REQUEST['gr'], 'all') !== false) 
+            if (strpos($_REQUEST['gr'], 'all') !== false)
             {
                 $_grParm = ".*";
             }
@@ -2129,10 +2158,10 @@ class pagina extends elementoAgrupado
         {
             return array();
         }
-        
+
         while ($_el = $_elementos->fetch_assoc())
         {
-            $elementos[] = array( 
+            $elementos[] = array(
                    'idPagina' => $_el['idPagina'],
                    'idElemento' => $_el['idElemento'],
                    'idGrupo' => $_el['idGrupo'],
@@ -2144,28 +2173,28 @@ class pagina extends elementoAgrupado
                    'posCategoria' => $_el['posCategoria'],
                    'descricaoElemento' => $_el['descricaoElemento'],
                    'idTipoElemento' => $_el['idTipoElemento'],
-                   'posGrupo' => $_el['posGrupo'], 
+                   'posGrupo' => $_el['posGrupo'],
                    'urlElemento' => $_el['urlElemento'],
-                   'urlElementoLocal' => $_el['urlElementoLocal'], 
-                   'dicaElemento' => $_el['dicaElemento'], 
-                   'urlElementoTarget' => $_el['urlElementoTarget'], 
-                   'formNome' => $_el['formNome'], 
+                   'urlElementoLocal' => $_el['urlElementoLocal'],
+                   'dicaElemento' => $_el['dicaElemento'],
+                   'urlElementoTarget' => $_el['urlElementoTarget'],
+                   'formNome' => $_el['formNome'],
                    'formNomeCampo' => $_el['formNomeCampo'],
-                   'formTamanhoCampo' => $_el['formTamanhoCampo'], 
-                   'separadorBreakBefore' => $_el['separadorBreakBefore'], 
+                   'formTamanhoCampo' => $_el['formTamanhoCampo'],
+                   'separadorBreakBefore' => $_el['separadorBreakBefore'],
                    'templateFileName' => $_el['templateFileName'],
-                   'urlElementoSSL' => $_el['urlElementoSSL'], 
+                   'urlElementoSSL' => $_el['urlElementoSSL'],
                    'urlElementoSVN' => $_el['urlElementoSVN']
                    );
         }
-        
+
         return isset( $elementos ) ? $elementos : array( ) ;
     }
-        
+
     static function newFromArray($_array)
     {
     }
-        
+
     function numeroElementos() { }
 
     public function lerElementos()
@@ -2173,9 +2202,9 @@ class pagina extends elementoAgrupado
 
         // verifica se foi pedido algum grupo restrito
         // na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
-        if (isset($_REQUEST['gr'])) 
+        if (isset($_REQUEST['gr']))
         {
-            if (strpos($_REQUEST['gr'], 'all') !== false) 
+            if (strpos($_REQUEST['gr'], 'all') !== false)
             {
                 $_grParm = ".*";
             }
@@ -2222,7 +2251,7 @@ class pagina extends elementoAgrupado
     function elementoNaPosicao($_posElemento) { }
 
     function elementoDeCodigo($_idElemento) { }
-    
+
     public function lerNaoElementos()
     {
         $_sql = $this->hpDB->prepare("SELECT DISTINCT c.idCategoria
@@ -2256,7 +2285,7 @@ class pagina extends elementoAgrupado
 
         $_return = $_sql->get_result()->fetch_assoc();
 
-        if (!$_return) 
+        if (!$_return)
             throw new Exception ("Não há qualquer categoria da página : $this->idPagina :  $this->tituloPagina com chave $_idElemento");
 
         $_ProxPosPagina = $_return['posPagina']-1;
@@ -2309,7 +2338,7 @@ class pagina extends elementoAgrupado
 
             // desloca para baixo o elemento solicitado.
             $_sql = $this->hpDB->prepare("UPDATE hp_categoriasxpaginas set posPagina = ? WHERE idPagina = ? AND idCategoria = ?");
-            $_sql->bind_param("iii", $_ProxPosPagina, $this->idPagina, $_idElemento); 
+            $_sql->bind_param("iii", $_ProxPosPagina, $this->idPagina, $_idElemento);
             if (!$_sql->execute())
                 throw new Exception("Não consegui deslocar o elemento para baixo");
         }
@@ -2317,8 +2346,8 @@ class pagina extends elementoAgrupado
         return $this->hpDB->getAffectedRows();
     }
 
-    public function incluirElemento($_idElemento, $_posElemento = 0) 
-    { 
+    public function incluirElemento($_idElemento, $_posElemento = 0)
+    {
         if ($_posElemento > 0)
         {
             $_sql = $this->hpDB->prepare("insert into hp_categoriasxpaginas (idCategoria, idPagina, posPagina) values (?, ?, ?)");
@@ -2328,7 +2357,7 @@ class pagina extends elementoAgrupado
         {
             $_sql = $this->hpDB->prepare("SELECT COALESCE(MAX(posPagina), 0) as maxPos from hp_categoriasxpaginas where idPagina = ?");
             $_sql->bind_param("i", $this->idPagina);
-            if (!$_sql->execute()) 
+            if (!$_sql->execute())
                 throw new Exception("Erro ao obter maior posição na páginas: " . $this->descricaoCategoria);
 
             $_row = $_sql->get_result()->fetch_assoc();
@@ -2338,19 +2367,19 @@ class pagina extends elementoAgrupado
             $_sql->bind_param("iii", $_idElemento, $this->idPagina, $maxPos);
         }
 
-        if (!$_sql->execute()) 
+        if (!$_sql->execute())
             throw new Exception('erro ao inserir elemento na página: ' . $this->idPagina . ' : ' . $_idElemento);
 
         return True;
     }
-    
-    public function excluirElemento($_idElemento) 
-    { 
+
+    public function excluirElemento($_idElemento)
+    {
         $_sql = $this->hpDB->prepare("DELETE FROM hp_categoriasxpaginas where idCategoria = ? and idPagina = ?");
         $_sql->bind_param("ii", $_idElemento, $this->idPagina);
-        
+
         return $_sql->execute();
-    } 
+    }
 
     static function getPaginas()
     {
@@ -2358,7 +2387,7 @@ class pagina extends elementoAgrupado
 
         $_sql = "SELECT idPagina FROM hp_paginas";
         $_paginas = $global_hpDB->query($_sql);
-        if (!$_paginas) 
+        if (!$_paginas)
         {
             throw new Exception('erro: não consegui ler nenhuma página!');
         }
@@ -2379,7 +2408,7 @@ class pagina extends elementoAgrupado
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_paginas";
         $_count = $global_hpDB->query($_sql);
-        if (!$_count) 
+        if (!$_count)
         {
             return 0;
         }
@@ -2388,7 +2417,7 @@ class pagina extends elementoAgrupado
             return $_count[0]['numElementos'];
         }
     }
-    
+
 }#  pagina */
 ?>
 
