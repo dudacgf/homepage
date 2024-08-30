@@ -1,7 +1,5 @@
 <?php
-//
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-// Carregar apenas uma vez.
+require_once('auth_force.php');
 require_once('../common.php');
 
 // este flag eu vou usar mais tarde (em grupo_edit_body.tpl para configurar a action do formulário).

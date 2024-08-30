@@ -1,7 +1,5 @@
 <?php
-//
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-// Carregar apenas uma vez.
+require_once('auth_force.php');
 require_once('../common.php');
 
 // insere a classe de fortunes.

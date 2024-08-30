@@ -1,5 +1,5 @@
 <?php
-
+require_once('auth_force.php');
 require_once('../common.php');
 
 // localização do xml com detalhes da conexão e o número da conexão a ser utilizada...

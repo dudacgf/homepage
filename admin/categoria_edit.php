@@ -1,9 +1,6 @@
 <?php
-
-//
-// Definições necessárias para todos os programas, principalmente paths e localizações de arquivos/classes.  
-// Carregar apenas uma vez.
-include_once('../common.php');
+require_once('auth_force.php');
+require_once('../common.php');
 
 // classes específicas da homepage
 include_once($include_path . 'class_homepage.php');
