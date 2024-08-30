@@ -175,7 +175,7 @@ input[type=text], select {
     border-Bottom-color: var(--theme-inputBBR);
     border-Right-color: var(--theme-inputBBR);
 }
-input.submit, button {
+input.submit, input[type=submit].submitEspacado, button {
   border-Top-color: var(--theme-buttonBTL); 
   border-Left-color: var(--theme-buttonBTL);
   border-Bottom-color: var(--theme-buttonBBR); 

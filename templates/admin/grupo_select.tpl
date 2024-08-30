@@ -5,42 +5,28 @@
 <div  class="titulo">
   {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
 </div>
-<script type="text/javascript">
-<!--
-	function doAction(pressed) {ldelim}
-		if (pressed == '{$LANG.confirmar}') {ldelim}
-			document.getElementById('mode').value = 'edGrp';
-		{rdelim} 
-		else if (pressed == '{$LANG.novoGrupo}') {ldelim}
-			document.getElementById('mode').value = 'nwGrp';
-		{rdelim} 
-		else if (pressed == '{$LANG.voltar}') {ldelim}
-			document.getElementById('mode').value = 'stats';
-		{rdelim}
-		document.cdel.submit();
-	{rdelim}
--->
-</script>
-<form name="cdel" action="{$includePATH}admin/grupo_edit.php" method="GET">
-<input type="hidden" id="mode" name="mode" value="edGrp">
-	<table width="600px" style="text-align: center;">
-	<tr><th class="categoria" colspan="3">{$LANG.selecionarGrupo}</th></tr>
-	<tr><td>
-		<p>
-		<select name="idGrp" id="idGrp" size="15">
+<input type="hidden" id="idGrp" value="" />
+<div class="contentSelecao">
+    <div class="tituloSelecao">
+        {$LANG.selecionarGrupo}
+    </div>
+    <div class="contornoSelecao">
+        <div class="boxSelecao" id="boxSelecao">
 		{section name=g loop=$grupos}
-			<option value="{$grupos[g].idGrupo}">
-				{$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restrição - {$grupos[g].restricaoGrupo} ]{else}[ sem restrição ]{/if}
-			</option>
+            <label class="boxSelecaoLabel">
+            <input class="boxRadio noselect" type="radio"  id="{$grupos[g].idGrupo}" name="selectgrupo" value="{$grupos[g].idGrupo}" onClick="document.getElementById('idGrp').value = this.value;" style="user-select: none;"/>
+            {$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restrição - {$grupos[g].restricaoGrupo} ]{else}[ sem restrição ]{/if}
+            </label> 
 		{/section}
-		</select>
-		</p>
-	</td></tr>
-	<tr><th class="categoria" colspan="3" style="text-align: center;">
-		<input type="submit" class="submit" name="go" value="{$LANG.confirmar}" onclick="javascript: doAction(this.value);"> ::
-		<input type="submit" class="submit" name="go" value="{$LANG.novoGrupo}" onclick="javascript: doAction(this.value);"> ::
-		<input type="submit" class="submit" name="go" value="{$LANG.voltar}" onclick="javascript: doAction(this.value);">
-	</th></tr>
-	</table>
-</form>
+        </div>
+    </div>
+    <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
+        <input type="submit" class="submitEspacado" value="{$LANG.confirmar}"
+               onclick="window.location = '{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp=' + document.getElementById('idGrp').value";/> 
+        <input type="submit" class="submitEspacado" value="{$LANG.novoGrupo}"
+               onclick="window.location = '{$includePATH}admin/grupo_edit.php?mode=nwGrp'";/>
+        <input type="submit" class="submitEspacado" value="{$LANG.voltar}"
+               onclick="window.location = '{$includePATH}admin/index.php'";/>
+    </div>
+</div>
 {include file="page_footer.tpl"}

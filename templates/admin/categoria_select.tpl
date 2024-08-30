@@ -2,44 +2,29 @@
 <body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast({$smarty.cookies.iconAlerta|default:'info'}, '{$smarty.cookies.msgAlerta}');"{/if}>
 {if $displayImagemTitulo == '1'}<div class="logo"><img src='{$includePATH}imagens/logo_shires.png'/ ></div>{/if}
 {include file="admin/menu.tpl"}
-<div  class="titulo">
-  {if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}
+<div  class="titulo">{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</div>
+<input type="hidden" id="idCat" value="" />
+<div class="contentSelecao">
+    <div class="tituloSelecao">
+        {$LANG.selecionarCategoria}
+    </div>
+    <div class="contornoSelecao">
+        <div class="boxSelecao" id="boxSelecao">
+        {section name=cat loop=$categorias}
+            <label class="boxSelecaoLabel">
+            <input class="boxRadio noselect" type="radio"  id="{$categorias[cat].idCategoria}" name="selectCategoria" value="{$categorias[cat].idCategoria}" onClick="document.getElementById('idCat').value = this.value;" style="user-select: none;"/>
+                        {$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
+            </label> 
+        {/section}
+        </div>
+    </div>
+    <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
+        <input type="submit" class="submitEspacado" value="{$LANG.confirmar}"
+               onclick="window.location = '{$includePATH}admin/categoria_edit.php?mode=edCat&idCat=' + document.getElementById('idCat').value";/> 
+        <input type="submit" class="submitEspacado" value="{$LANG.novaCategoria}"
+               onclick="window.location = '{$includePATH}admin/categoria_edit.php?mode=nwCat'";/>
+        <input type="submit" class="submitEspacado" value="{$LANG.voltar}"
+               onclick="window.location = '{$includePATH}admin/index.php'";/>
+    </div>
 </div>
-<script type="text/javascript">
-<!--
-	function doAction(pressed) {ldelim}
-		if (pressed == '{$LANG.confirmar}') {ldelim}
-			document.cdel.action = '{$includePATH}admin/categoria_edit.php?mode=edCat&idCat=' + document.getElementById('idCat').value;
-		{rdelim} 
-		else if (pressed == '{$LANG.novaCategoria}') {ldelim}
-			document.cdel.action = '{$includePATH}admin/categoria_edit.php?mode=nwCat';
-		{rdelim} 
-		else if (pressed == '{$LANG.voltar}') {ldelim}
-			document.cdel.action = '{$includePATH}admin/estatisticas.php';
-		{rdelim}
-		document.cdel.submit();
-	{rdelim}
--->
-</script>
-<form name="cdel" method="POST">
-	<table width="600px" style="text-align: center;">
-	<tr><th class="categoria" colspan="3">{$LANG.selecionarCategoria}</th></tr>
-	<tr><td>
-		<p>
-		<select name="idCat" id="idCat" size="15">
-		{section name=cat loop=$categorias}
-			<option value="{$categorias[cat].idCategoria}">
-				{$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
-			</option>
-		{/section}
-		</select>
-		</p>
-	</td></tr>
-	<tr><th class="categoria" colspan="3" style="text-align: center;">
-		<input type="submit" class="submit" name="go" value="{$LANG.confirmar}" onclick="javascript: doAction(this.value);"> ::
-		<input type="submit" class="submit" name="go" value="{$LANG.novaCategoria}" onclick="javascript: doAction(this.value);"> ::
-		<input type="submit" class="submit" name="go" value="{$LANG.voltar}" onclick="javascript: doAction(this.value);">
-	</th></tr>
-	</table>
-</form>
 {include file="page_footer.tpl"}
