@@ -22,7 +22,7 @@ const go = (goUrl, idElemento) => {
 
     setTimeout(() => {
         fetch(url);
-        }, 10);
+        }, 1);
     document.location = goUrl;
 }
 </script>
