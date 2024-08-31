@@ -1,7 +1,8 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
-include_once('../common.php');
+require_once('auth_force.php');
+require_once('../common.php');
 
 // verifica se foram passadas as informações necessárias
 if (isset($requests['idPagina']) and isset($requests['nomeEstilo']) and isset($requests['comentarioEstilo'])) {

@@ -17,7 +17,7 @@ if (!$usuario) {
 }
 
 if (password_verify($senha, $usuario->senha)) {
-    session_regenerate_id();
+//    session_regenerate_id();
     $_SESSION['loggedin'] = TRUE;
     $_SESSION['name'] = $usuario->usuario;
     $_SESSION['id'] = $usuario->idUsuario;

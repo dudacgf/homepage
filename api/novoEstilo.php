@@ -1,7 +1,8 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
-include_once('../common.php');
+require_once('auth_force.php');
+require_once('../common.php');
 
 if (isset($requests['idPagina'])) {
     $admPag = new pagina(ID_ADM_PAG);

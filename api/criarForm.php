@@ -8,6 +8,7 @@ header( 'Cache-Control: no-cache' );
   devolve: json resposta dizendo resultado da operação (status) e uma mensagem informativa (message)
 
 *****/
+require_once('auth_force.php');
 include_once('../common.php');
 
 // se não foi passado nenhum grupo, morre.

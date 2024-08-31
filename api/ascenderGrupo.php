@@ -1,6 +1,7 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
+require_once('auth_force.php');
 include_once('../common.php');
 
 if (isset($requests['idCat']) and isset($requests['idGrp']))
