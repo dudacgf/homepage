@@ -430,7 +430,7 @@ class Visita
         if (!$_sql->execute())
             throw new Exception("Erro ao gravar visita: $_sql->error");
 
-        return true;
+        return $global_hpDB->getLastInsertId();
     }
 
     static function totalLinks($intervalo = '7') {
