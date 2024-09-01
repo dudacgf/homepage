@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
-<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$classPagina}.css" />
 {if isset($admin_area) or (isset($displaySelectColor) and $displaySelectColor == '1')}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
 <script type="text/javascript" src="{$includePATH}js/chamadaAPI.js"></script>
