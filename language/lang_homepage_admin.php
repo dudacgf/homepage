@@ -22,7 +22,6 @@ $lang['hp_paginas_TituloTabela'] = 'Título (tabela)';
 $lang['hp_paginas_Placeholder_TituloTabela'] = 'Título da tabela';
 $lang['hp_paginas_classPagina'] = 'Classe';
 $lang['hp_paginas_exibirdotdot'] = 'Exibir: ';
-$lang['hp_paginas_displayGoogle'] = 'form do Google';
 $lang['hp_paginas_displayFindaMap'] = 'form do Find a Map';
 $lang['hp_paginas_displayFortune'] = 'biscoitinho da sorte';
 $lang['hp_paginas_displayImagemTitulo'] = 'Imagem no Título';
@@ -243,8 +242,29 @@ $lang['NumTemplates'] = 'Templates';
 $lang['NumFortunes'] = 'Biscoitinhos da sorte';
 
 // pagina install
-$lang['tituloPaginaInstall'] = 'Homepage post-install info';
-$lang['tituloTabelaInstall'] = 'root and admin .HTACCESSes';
+$lang['hp_botaoProximo'] = 'Próxima Estapa';
+$lang['hp_botaoAnterior'] = 'Etapa Anterior';
+
+$lang['hp_installTPagApresentacao'] = '';
+$lang['hp_installTTblApresentacao'] = '';
+$lang['hp_installTextoApresentacao'] = '';
+$lang['hp_installTPagConfig'] = '';
+$lang['hp_installTTblConfig'] = '';
+
+$lang['hp_installErrorDBNameFaltando'] = '';
+$lang['hp_installErrorDBHostFaltando'] = '';
+$lang['hp_installErrorDBUserFaltando'] = '';
+$lang['hp_installErrorDBPwFaltando'] = '';
+$lang['hp_installErrorAdminUserFaltando'] = '';
+$lang['hp_installErrorAdminPWFaltando'] = '';
+$lang['hp_installTPagConfig'] = '';
+$lang['hp_installTTblConfig'] = '';
+$lang['hp_installTPagShowConfig'] = '';
+$lang['hp_installTTblShowConfig'] = '';
+$lang['hp_installTPagDBLoad'] = '';
+$lang['hp_installTTblDBLoad'] = '';
+$lang['hp_installTPagDBLoad'] = '';
+$lang['hp_installTTblDBLoad'] = '';
 ?>
 
 
