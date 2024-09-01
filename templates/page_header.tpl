@@ -13,9 +13,10 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/{$classPagina}.css" />
 {if isset($admin_area) or (isset($displaySelectColor) and $displaySelectColor == '1')}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
-<script type="text/javascript" src="{$includePATH}js/api.js"></script>
+<script type="text/javascript" src="{$includePATH}js/chamadaAPI.js"></script>
+<script type="text/javascript" src="{$includePATH}js/adminAPI.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
-{else}
+{/if}
 <script type="text/javascript">
 const go = (goUrl, idElemento) => {
     const url = window.includePATH + 'api/addVisita.php?idElm=' + idElemento;
@@ -26,7 +27,6 @@ const go = (goUrl, idElemento) => {
     document.location = goUrl;
 }
 </script>
-{/if}
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
 {if isset($cookedStyles)}
 <style type="text/css">

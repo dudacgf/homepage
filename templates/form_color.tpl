@@ -1,6 +1,5 @@
-<script type="text/javascript" src="{$includePATH}js/api_cores.js"></script>
+<script type="text/javascript" src="{$includePATH}js/coresAPI.js"></script>
 <script type="text/javascript" src="{$includePATH}js/jscolor.min.js"></script>
-<script type="text/javascript" src="{$includePATH}js/api_cores_aux.js"></script>
 <div class="content" style="text-align: left; height: auto;">
     <div class="tituloCores">Seleção de Cores</div>
         <input type="hidden" id="selectedColor" value="" />
