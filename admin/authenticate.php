@@ -33,7 +33,7 @@ if (password_verify($senha, $usuario->senha)) {
 function retornaLoginComErro($errMsg) {
     global $homepage;
 
-    prepare_MsgAlerta('error', $errMsg);
+    prepararToast('error', $errMsg);
     $admPag = new pagina(ID_ADM_PAG);
     $homepage->assign('target_url', (empty($_SERVER['HTTPS']) ? 'http' : 'https').'//:'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
     $homepage->assign('admin_area', true);

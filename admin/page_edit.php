@@ -45,9 +45,9 @@ switch ($requests['mode'])
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
         $pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
         if ($pagina->atualizar()) 
-            prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] atualizada com sucesso!");
+            prepararToast('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] atualizada com sucesso!");
         else
-            prepare_msgAlerta('warning', "Não foi possível atualizar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
+            prepararToast('warning', "Não foi possível atualizar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
         $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('script2reload', 'admin/page_edit.php');
         $homepage->assign('scriptMode', 'edPag');
@@ -74,12 +74,12 @@ switch ($requests['mode'])
         if (!$_idPagina) 
         {
             $homepage->assign('scriptMode', 'slPag');
-            prepare_msgAlerta('warning', "Não foi possível criar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]");
+            prepararToast('warning', "Não foi possível criar a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]");
         }
         else
         {
             $homepage->assign('scriptMode', 'edPag');
-            prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] criada com sucesso!");
+            prepararToast('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] criada com sucesso!");
         }
         $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('script2reload', 'admin/page_edit.php');
@@ -99,12 +99,12 @@ switch ($requests['mode'])
                 $pagina = new pagina($_idPagina);
                 if ($pagina->excluir())
                 {
-                    prepare_msgAlerta('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] excluída com sucesso!");
+                    prepararToast('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] excluída com sucesso!");
                     $homepage->assign('scriptMode', 'slPag');
                 }
                 else
                 {
-                    prepare_msgAlerta('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
+                    prepararToast('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
                     $homepage->assign('scriptMode', 'edPag');
                 }
             break;

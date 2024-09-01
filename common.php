@@ -79,7 +79,7 @@ include($include_path . "class_database.php");
 $global_hpDB = new database($connection_info_xml_path, $connection_info_xml_id);
 
 // função para enviar alertas no reload de páginas (script2reload ou window_close)
-function prepare_msgAlerta($iconAlerta, $msgAlerta) {
+function prepararToast($iconAlerta, $msgAlerta) {
     $options = array('expires'=>time()+5, 'path'=>INCLUDE_PATH, 'domain'=>$_SERVER['SERVER_NAME'], 'secure'=>true, 'httponly'=>false, 'SameSite'=>'Strict');
     setcookie('iconAlerta', $iconAlerta, $options);
     setcookie('msgAlerta', $msgAlerta, $options);

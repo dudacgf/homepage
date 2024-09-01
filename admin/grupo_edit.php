@@ -38,11 +38,11 @@ switch ($requests['mode'])
         $grupo->restricaoGrupo = ( isset($requests['restricaoGrupo']) ) ? (string) $requests['restricaoGrupo'] : '';
         try {
             if ($grupo->atualizar()) 
-                prepare_msgAlerta("success", "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] atualizado!");
+                prepararToast("success", "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] atualizado!");
             else
-                prepare_msgAlerta('warning', "Não foi possível atualizar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
+                prepararToast('warning', "Não foi possível atualizar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
         } catch (Exception $e) {
-            prepare_msgAlerta('error', "Error ao atualizar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]! "  . $e->message);
+            prepararToast('error', "Error ao atualizar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]! "  . $e->message);
         }
         $homepage->assign('script2reload', 'admin/grupo_edit.php');
         $homepage->assign('scriptMode', 'edGrp');
@@ -67,12 +67,12 @@ switch ($requests['mode'])
         $_idGrupo = $grupo->inserir();
         if (!$_idGrupo) 
         {
-            prepare_msgAlerta('warning', "Não foi possível criar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
+            prepararToast('warning', "Não foi possível criar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
             $homepage->assign('scriptMode', 'slGrp');
         }
         else
         {
-            prepare_msgAlerta('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] criado!");
+            prepararToast('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] criado!");
             $homepage->assign('scriptMode', 'edGrp');
         }
         $homepage->assign('script2reload', 'admin/grupo_edit.php');
@@ -84,12 +84,12 @@ switch ($requests['mode'])
         $grupo = new grupo($_idGrupo);
         if ($grupo->excluir())
         {
-            prepare_msgAlerta('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
+            prepararToast('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
             $homepage->assign('scriptMode', 'slGrp');
         }
         else
         {
-            prepare_msgAlerta('warning', "Não foi possível excluir o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
+            prepararToast('warning', "Não foi possível excluir o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
             $homepage->assign('scriptMode', 'edGrp');
         }
         $homepage->assign('script2reload', 'admin/grupo_edit.php');

@@ -9,9 +9,9 @@ if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '')
 {
     $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
     if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-        prepare_msgAlerta('success', "Arquivo $uploadfile carregado com sucesso");
+        prepararToast('success', "Arquivo $uploadfile carregado com sucesso");
     else 
-        prepare_msgAlerta('warning', "Erro ao carregar arquivo $uploadfile");
+        prepararToast('warning', "Erro ao carregar arquivo $uploadfile");
 }
 
 // instancia a página informada a partir do id e coloca o título na página...
