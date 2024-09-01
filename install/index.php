@@ -48,7 +48,7 @@ switch($passo) {
             assert(isset($requests['admin_pw'], $lang['hp_installErrorAdminPWFaltando']));
         } catch (Exception $e) {
             // usuário não preencheu todos os campos do form
-            prepare_msgAlerta('warning', $lang['hp_installErrorConfiguracao: ' + $e->getMessage());
+            prepararToast('warning', $lang['hp_installErrorConfiguracao: ' + $e->getMessage());
 
             // volta ao mesmo passo
             $homepage->assign('tituloPaginaAlternativo', $lang['hp_installTPagConfig']);
