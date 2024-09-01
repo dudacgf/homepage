@@ -1,127 +1,128 @@
-/*****
- * editarElemento - realiza ações sobre um elemento (editar, deslocar para cima ou para baixo, excluir)
+/**
+ * realiza ações sobre categorias durante a edição de uma pagina 
+ * (editar, deslocar para cima ou para baixo, excluir)
  *
- * utilizada quando se clica no nome de um dos elementos de um grupo. chama exibirFormDiv e sai
+ * @param {string} metodo - método a ser executado
+ * @param {number} idPagina - id da Página sendo editada
+ * @param {number} idCat - id da categoria afetada 
  *
-*****/
-const editarElemento = async (apiCall, idElm, idGrp) => {
+ * @returns {void} nada. uma mensagem será exibida via toast e a lista de categorias será atualizada
+ *
+ */
+const editarCategoria = async (metodo, idPagina, idCat) => {
     event.preventDefault();
 
-    if (apiCall == 'excluirElemento') {
+    const fakeForm = new FormData();
+    fakeForm.append('id', idPagina);
+    fakeForm.append('idCat', idCat);
+
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
+
+    if (r.status == 'success')
+        reloadCategorias(idPagina);
+
+    createToast(r.status, r.message);
+}
+
+/**
+ * realiza ações sobre grupos durante a edição  de uma categoria 
+ * (deslocar para cima ou para baixo, excluir, incluir)
+ *
+ * @param {string} metodo - método a ser executado
+ * @param {number} idCat - id da categoria afetada 
+ * @param {number} idGrp - id do grupo afetada 
+ *
+ * @returns {void} nada. uma mensagem será exibida via toast e a lista de grupos será atualizada
+ *
+ */
+const editarGrupo = async (metodo, idCat, idGrp) => {
+    event.preventDefault();
+
+    const fakeForm = new FormData();
+    fakeForm.append('idCat', idCat);
+    fakeForm.append('idGrp', idGrp);
+
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
+
+    if (r.status == 'success')
+        reloadGrupos(idCat);
+
+    createToast(r.status, r.message);
+}
+
+/**
+ * realiza ações sobre elementos durante a edição de um grupo
+ * (editar, deslocar para cima ou para baixo, excluir)
+ *
+ * @param {string} metodo - método a ser executado
+ * @param {number} idElm - id do elemento afetadao
+ * @param {number} idGrp - id do grupo afetada 
+ *
+ * @returns {void} nada. uma mensagem será exibida via toast e a lista de elementos será atualizada
+ *
+ * 
+ *
+ */
+const editarElemento = async (metodo, idElm, idGrp) => {
+    event.preventDefault();
+
+    if (metodo == 'excluirElemento') {
         response = confirm('Confirma exclusão do elemento?');
         if (!response) 
             return;
     }
 
-    const url = window.includePATH + 'api/' + apiCall + '.php';
     const fakeForm = new FormData();
     fakeForm.append('idElm', idElm);
     fakeForm.append('idGrp', idGrp);
 
-    try {
-        const response = await fetch(url, {method: 'POST', body: fakeForm});
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
 
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
-
-        if (r.status == 'success')
-            switch (apiCall) {
-                case 'editarElemento':
-                case 'novoLink':
-                case 'novoForm':
-                case 'novoSeparador':
-                case 'novaImagem':
-                case 'novoTemplate':
-                    exibirFormDiv(r.message);
-                    break;
-                case 'redefinirPosicoesElementos':
-                case 'ascenderElemento':
-                case 'descenderElemento':
-                case 'excluirElemento':
-                    reloadElementos();
-                    createToast(r.status, r.message);
-            }
-        else 
-            createToast(r.status, r.message);
-
-    } catch (err) {
-        createToast('error', err.message);
-    };
+    if (r.status == 'success')
+        switch (metodo) {
+            case 'editarElemento':
+            case 'novoLink':
+            case 'novoForm':
+            case 'novoSeparador':
+            case 'novaImagem':
+            case 'novoTemplate':
+                exibirFormDiv(r.message);
+                break;
+            case 'redefinirPosicoesElementos':
+            case 'ascenderElemento':
+            case 'descenderElemento':
+            case 'excluirElemento':
+                reloadElementos();
+                createToast(r.status, r.message);
+        }
+    else
+        createToast(r.status, r.message);
 };
 
 /*****
- * editarCategoria - realiza ações sobre uma categoria (editar, deslocar para cima ou para baixo, excluir)
+ * gravarElemento - executa as ações dos forms dos elementos.
  *
- * recebe:
- * apiCall - método a ser executado
- * idPagina - id da Página sendo editada
- * idCat - id da categoria afetada 
- *
- * retorna:
- * nada. uma mensagem será exibida via toast e a lista de categorias será atualizada
- *
+ * chamada quando se clica em gravar em um dos formulários de criação/edição
+ * de elementos do grupo (link, form, separador, imagem, template)
 *****/
-const editarCategoria = async (apiCall, idPagina, idCat) => {
-    event.preventDefault();
+const gravarElemento  = async (aForm) => {
+    // hide the form
+    document.getElementById('form_div').style.display = 'none';
 
-    const url = window.includePATH + 'api/' + apiCall + '.php';
-    const fakeForm = new FormData();
-    fakeForm.append('id', idPagina);
-    fakeForm.append('idCat', idCat);
+    const form = document.getElementById(aForm);
+    const formData = new FormData(form);
+    const metodo = formData.get('mode');
 
-    try {
-        const response = await fetch(url, {method: 'POST', body: fakeForm});
-
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
-
-        if (r.status == 'success') {
-            reloadCategorias(idPagina);
+    let r = await chamadaAPI(metodo, {method: 'POST', body: formData});
+    createToast(r.status, r.message);
+    
+    if (r.status == 'success') {
+        r= await reloadElementos();
+        if (r.status != 'success')
             createToast(r.status, r.message);
-        }
-        else 
-            createToast(r.status, r.message);
+    }
 
-    } catch (err) {
-        createToast('error', err.message);
-    };
-}
-/*****
- * editarGrupo - realiza ações sobre uma grupo (editar, deslocar para cima ou para baixo, excluir)
- *
- * recebe:
- * apiCall - método a ser executado
- * idCat - id da categoria sendo editada
- * idGrp - id do grupo afetada 
- *
- * retorna:
- * nada. uma mensagem será exibida via toast e a lista de categorias será atualizada
- *
-*****/
-const editarGrupo = async (apiCall, idCat, idGrp) => {
-    event.preventDefault();
-
-    const url = window.includePATH + 'api/' + apiCall + '.php';
-    const fakeForm = new FormData();
-    fakeForm.append('idCat', idCat);
-    fakeForm.append('idGrp', idGrp);
-
-    try {
-        const response = await fetch(url, {method: 'POST', body: fakeForm});
-
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
-
-        if (r.status == 'success') {
-            reloadGrupos(idCat);
-            createToast(r.status, r.message);
-        }
-        else 
-            createToast(r.status, r.message);
-
-    } catch (err) {
-        createToast('error', err.message);
-    };
+    ocultarFormDiv();
 }
 
 /*****
@@ -154,25 +155,21 @@ function ocultarFormDiv() {
  *
 *****/
 async function reloadCategorias(idPagina) {
-    var r;
-    const url = window.includePATH + 'api/obterCategorias.php?id=' + idPagina;
+    const metodo = 'obterCategorias';
+    const fakeForm = new FormData();
 
-    try {
-        const response = await fetch(url);
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
+    fakeForm.append('idPagina', idPagina);
 
-        if (r.status != 'success') 
-            return r;
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
 
-    } catch (err) {
-        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
-    }
+    if (r.status != 'success') 
+        return r;
 
     const catDiv = document.querySelector('#categorias_div');
     catDiv.classList.toggle('fadeinout');
     document.getElementById('categorias_div').innerHTML = r.message;
     setTimeout( () => { catDiv.classList.toggle('fadeinout'); }, 2000);
+
     return r;
 }
 
@@ -181,25 +178,21 @@ async function reloadCategorias(idPagina) {
  *
 *****/
 async function reloadGrupos(idCat) {
-    var r;
-    const url = window.includePATH + 'api/obterGrupos.php?idCat=' + idCat;
+    const metodo = 'obterGrupos';
+    const fakeForm = new FormData();
 
-    try {
-        const response = await fetch(url);
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
+    fakeForm.append('idCat', idCat);
 
-        if (r.status != 'success') 
-            return r;
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
 
-    } catch (err) {
-        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
-    }
+    if (r.status != 'success') 
+        return r;
 
     const grpDiv = document.querySelector('#grupos_div');
     grpDiv.classList.toggle('fadeinout');
     grpDiv.innerHTML = r.message;
     setTimeout( () => { grpDiv.classList.toggle('fadeinout'); }, 2000);
+
     return r;
 }
 
@@ -208,77 +201,21 @@ async function reloadGrupos(idCat) {
  *
 *****/
 async function reloadElementos() {
-    var r;
+    const metodo = 'obterElementos';
     const idGrp = document.getElementById('idGrp').value;
-    const url = window.includePATH + 'api/obterElementos.php?idGrp=' + idGrp;
+    const fakeForm = new FormData();
 
-    try {
-        const response = await fetch(url);
-        const responseData = await response.json();
-        r = eval("(" + responseData + ")");
+    fakeForm.append('idGrp', idGrp);
 
-        if (r.status != 'success') 
-            return r;
+    let r = await chamadaAPI(metodo, {method: 'POST', body: fakeForm});
 
-    } catch (err) {
-        return JSON.stringify('{"status": "error", "message": "' + err.message + '"}');
-    }
+    if (r.status != 'success') 
+        return r;
 
     const elDiv = document.querySelector('#elementos_div');
     elDiv.classList.toggle('fadeinout');
     elDiv.innerHTML = r.message;
     setTimeout( () => { elDiv.classList.toggle('fadeinout'); }, 2000);
+
     return r;
 }
-
-/*****
- * groupAction - executa as ações dos forms dos elementos.
- *
-*****/
-const groupAction = async (aForm) => {
-    r = await formAction(aForm);
-    createToast(r.status, r.message);
-
-    if (r.status == 'success') {
-        r = await reloadElementos();
-        if (r.status != 'success') 
-            createToast(r.status, r.message);
-    }
-}
-
-/*****
- * formAction - submete um formulário popup e devolve a resposta
- *
- * chamada por grupoAction quando se clica em gravar em um dos formulários de criação/edição
- * de elementos do grupo (link, form, separador, imagem, template)
-*****/ 
-async function formAction(aform) {
-    //event.preventDefault();
-
-    // hide the form
-    document.getElementById('form_div').style.display = 'none';
-
-    const form = document.getElementById(aform);
-    const formData = new FormData(form);
-    const url = window.includePATH + 'api/' + formData.get('mode') + '.php';
-
-    try {
-        const response = await fetch(
-            url,
-            {
-                method: 'POST',
-                body: formData,
-            },
-        );
-        
-        let responseData = await response.json();
-        r = eval("(" + responseData + ")");
-
-        ocultarFormDiv();
-        return r;
-
-    } catch(err) {
-        return JSON.parse('{"status": "error", "message": "' + err.message + '"}');
-    };
-};
-
