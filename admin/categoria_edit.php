@@ -30,6 +30,11 @@ if (!isset($requests['mode']))
 	$requests['mode'] = 'slCat';
 }
 
+// se tem alguma coisa estranha, cai no default (slCat)
+if ( !isset($requests['mode']) || (isset($_idCategoria) && $_idCategoria == '') )
+{
+    $requests['mode'] = 'slCat';
+}
 switch ($requests['mode'])
 {
 

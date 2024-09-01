@@ -16,6 +16,12 @@ if (isset($requests['idGrp']))
 if (!isset($requests['mode']))
     $requests['mode'] = 'slGrp';
 
+// se tem alguma coisa estranha, cai no default (slGrp)
+if ( !isset($requests['mode']) || (isset($_idGrupo) && $_idGrupo == '') )
+{
+    $requests['mode'] = 'slGrp';
+}
+
 switch ($requests['mode'])
 {
     // pediu para voltar - apresenta a página de estatísticas
