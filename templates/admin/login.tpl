@@ -1,9 +1,9 @@
 {include file="page_header.tpl"}
 <body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 <div class="login">
-    <input type="hidden" id="target_url" value="{$target_url}" />
     <h1>Login</h1>
     <form action="authenticate.php" method="post">
+    <input type="hidden"  name="target_url" id="target_url" value="{$target_url}" />
     <label for="username">
         <i class="fas fa-user"></i>
     </label>
