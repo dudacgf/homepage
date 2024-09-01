@@ -2,6 +2,7 @@
 require_once('../common.php');
 include_once($include_path . 'class_login.php');
 
+// entra em sessão
 session_start();
 
 if ( !isset($requests['username'], $requests['password']) ) 
@@ -22,11 +23,10 @@ if (password_verify($senha, $usuario->senha)) {
     $_SESSION['name'] = $usuario->usuario;
     $_SESSION['id'] = $usuario->idUsuario;
 
-    if (isset($requests['target_url'])) {
-        header('Location: ' . target_url);
-    } else {
+    if (isset($requests['target_url']))
+        header('Location: ' . $requests['target_url']);
+    else
         header('Location: ' . INCLUDE_PATH . 'admin/index.php');
-    }
 } else 
     retornaLoginComErro('Usuário ou senha incorretos');
 
@@ -34,6 +34,12 @@ function retornaLoginComErro($errMsg) {
     global $homepage;
 
     prepare_MsgAlerta('error', $errMsg);
-    header('location: ' . INCLUDE_PATH . 'admin/login.php');
+    $admPag = new pagina(ID_ADM_PAG);
+    $homepage->assign('target_url', (empty($_SERVER['HTTPS']) ? 'http' : 'https').'//:'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
+    $homepage->assign('admin_area', true);
+    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('includePATH', INCLUDE_PATH);
+    $homepage->display('admin/login.tpl');
+    exit;
 }
 ?>
