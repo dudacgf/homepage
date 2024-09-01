@@ -1,4 +1,4 @@
-<form name="edSrp" id="edSrp" action="javascript: groupAction('edSrp')">
+<form name="edSrp" id="edSrp" action="javascript: gravarElemento('edSrp')">
     <input type="hidden" name="idGrp" value="{$grupo.idGrupo}" />
     <div class="subTitulo">{$tituloPaginaAlternativo}{$tituloTabelaAlternativo}</div><p />
     <div class="itemLateral">{$LANG.hp_separadores_descricaoSeparador}</div>

@@ -1,4 +1,4 @@
-<form name="edImg" id="edImg" action="javascript: groupAction('edImg')">
+<form name="edImg" id="edImg" action="javascript: gravarElemento('edImg')">
     <input type="hidden" name="idGrp" value="{$grupo.idGrupo}" />
     <div class="subTitulo">{$tituloPaginaAlternativo}{$tituloTabelaAlternativo}</div><p />
     <div class="itemLateral">{$LANG.hp_imagens_descricaoImagem}</div>
