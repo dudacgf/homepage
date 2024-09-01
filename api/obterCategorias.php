@@ -7,6 +7,8 @@ require_once('../common.php');
 // verifica se passou a página
 if (isset($requests['id'])) 
     $_idPagina = $requests['id'];
+if (isset($requests['idPagina'])) 
+    $_idPagina = $requests['idPagina'];
 
 // lê a página
 $pagina = new pagina($_idPagina);

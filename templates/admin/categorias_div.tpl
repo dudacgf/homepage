@@ -1,3 +1,4 @@
+<input type="hidden" id="idPagina" name="idPagina" value="{$idPagina}" />
 {section name=dc loop=$categoriasPresentes}
 <p>
     <div class="tituloColuna" style="clear: left;">
