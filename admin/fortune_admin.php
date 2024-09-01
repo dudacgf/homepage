@@ -6,7 +6,7 @@ require_once('../common.php');
 require($include_path . "class_fortune.php");
 
 // verifica se há cookies de estilo configurados para essa página
-$colorCookies = cookedStyle::getArray($_idPagina);
+$colorCookies = cookedStyle::getArray(ID_ADM_PAG);
 if ($colorCookies) 
 {
     $cookedStyles = ':root {';
