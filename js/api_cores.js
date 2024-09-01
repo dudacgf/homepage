@@ -131,30 +131,6 @@ const getAllThemeColorPairs = () => {
 }
 
 /**
- * Executa uma ação no form de alteração de cores
- *
- * @param {string} action - o metodo api a ser executado
- * @param {json} options - dict json com opções para submissão (body, method etc)
- *
- * @returns {json} - o json retornado pela execução do método action
- */
-async function colorAction(action, options = {}) {
-    const url = window.includePATH + 'api/' + action + '.php';
-
-    try {
-        const response = await fetch(url, options);
-        
-        let responseData = await response.json();
-        let r = eval("(" + responseData + ")");
-
-        return r;
-
-    } catch(err) {
-        return JSON.parse('{"status": "error", "message": "' + err.message + '"}');
-    };
-};
-
-/**
  * altera propriedade (cor) de uma variável definida em :root
  *
  * @param {} não recebe nada mas utiliza os campos de id idPagina, selectElemento, selectedColor no formulário
@@ -174,7 +150,7 @@ const alterarRootVar = async () => {
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
     formData.append('color', color);
-    let r = await colorAction('addColorCookie', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('addColorCookie', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
         const preview = document.getElementById('previewElementoPicked');
@@ -206,7 +182,7 @@ const restaurarRootVar = async () => {
     let formData = new FormData();
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
-    let r = await colorAction('delColorCookie', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('delColorCookie', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root = document.querySelector(':root');
         root.style.setProperty("--theme-" + root_var, '');
@@ -233,7 +209,7 @@ const restaurarRootcssPagina = async () => {
 
     let formData = new FormData();
     formData.append('idPagina', aPagina);
-    let r = await colorAction('delAllColorCookies', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('delAllColorCookies', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
         var all_vars = [];
@@ -258,7 +234,7 @@ const novoEstilo = async () => {
     const formData = new FormData();
     formData.append('idPagina', idPagina);
 
-    let r = await colorAction('novoEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('novoEstilo', {method: 'POST', body: formData});
 
     if (r.status == 'success')
         exibirFormDiv(r.message);
@@ -278,7 +254,7 @@ const existeEstilo = async(nomeEstilo) => {
     const formData = new FormData();
     formData.append('nomeEstilo', nomeEstilo);
 
-    let r = await colorAction('existeEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('existeEstilo', {method: 'POST', body: formData});
 
     if (r.status = 'info' && r.message == 'existente') 
         return true;
@@ -314,7 +290,7 @@ const salvarEstilo = async () => {
     formData.append('nomeEstilo', nomeEstilo);
     formData.append('comentarioEstilo', comentarioEstilo);
     formData.append('paresDeCores', JSON.stringify(getAllThemeColorPairs()));
-    let r = await colorAction('salvarEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('salvarEstilo', {method: 'POST', body: formData});
 
     createToast(r.status, r.message);
 }
