@@ -1,6 +1,7 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
+header( 'Content-Type: application/json');
 // add cookie 
 // - cria um cookie de cor para a página atual
 //

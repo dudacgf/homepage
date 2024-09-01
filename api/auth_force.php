@@ -1,4 +1,5 @@
 <?php
+header( 'Content-Type: application/json');
 require_once('../common.php');
 
 // entra em sessão

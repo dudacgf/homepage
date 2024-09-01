@@ -1,6 +1,7 @@
 <?php
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
+header( 'Content-Type: application/json');
 /******
     descenderElemento.php - desloca um elemento de um grupo uma posição para baixo
 
