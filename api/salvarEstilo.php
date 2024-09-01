@@ -29,7 +29,7 @@ if (isset($requests['idPagina']) and isset($requests['nomeEstilo']) and isset($r
             $result = $_cssEstilo->inserir();
 
         if ($result) {
-            $_estiloPath = HOMEPAGE_PATH . 'estilos/' . $_nomeEstilo . '.css';
+            $_estiloPath = HOMEPAGE_PATH . 'temas/' . $_nomeEstilo . '.css';
             file_put_contents($_estiloPath, $cookedStyles);
             $homepage->assign('response', '{"status": "success", "message": "Estilo [' . $global_hpDB->real_escape_string($_nomeEstilo) . '] salvo."}');
         } else
