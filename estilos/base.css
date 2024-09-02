@@ -40,8 +40,9 @@
   font-style: normal;
 }
 :root {
+    --font-rootFS: 16px;
     font-family: 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
-    font-size: 0.75rem;
+    font-size: var(--font-rootFS);
     font-weight: 500;
     touch-action: pan-x pan-y;
     height: 100% 
@@ -328,7 +329,7 @@ display: flex;
 iframe.exemploPagina {
 box-shadow: 12px 15px var(--theme-dark); z-index: 10;
 position: absolute; right: 1%; top: +160px;
-transform: scale(0.40); transform-origin: top right;
+transform: scale(0.40); transform-origin: top right; pointer-events: none;
 }
 @media screen and (orientation:portrait) {
     iframe.exemploPagina {
