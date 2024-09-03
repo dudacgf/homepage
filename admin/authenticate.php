@@ -1,6 +1,7 @@
 <?php
 require_once('../common.php');
-include_once($include_path . 'class_login.php');
+
+use Shiresco\Homepage\Login as Login;
 
 // entra em sessão
 session_cache_limiter('private_no_expires');
@@ -11,7 +12,7 @@ if ( !isset($requests['username'], $requests['password']) )
     retornaLoginComErro('Preencha os campos Usuário e Senha');
 
 $senha = $requests['password'];
-$usuario = usuario::comNome($requests['username']) ;
+$usuario = Login\Usuario::comNome($requests['username']) ;
 
 if (!$usuario) {
     // não achei o usuário

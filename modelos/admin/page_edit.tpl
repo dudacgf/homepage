@@ -39,7 +39,7 @@ function doAction(pressed) {
 
 const exemploPaginaSrc = "{$includePATH}homepage.php?id={$idPagina}&gr=all";
 function carregaEstilo(nomeEstilo) {
-    const classURL = window.includePATH + 'estilos/' + nomeEstilo + '.css';
+    const classURL = window.includePATH + 'temas/' + nomeEstilo + '.css';
     const headRef = document.createElement('link');
     headRef.rel = "stylesheet";
     headRef.type = "text/css";
@@ -76,9 +76,9 @@ function carregaEstilo(nomeEstilo) {
     <div class="item"><input type="text" class="FormExtra" size=30 name="tituloTabela" placeholder="{$LANG.hp_paginas_Placeholder_TituloTabela}" value="{$tituloTabela}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_paginas_classPagina}</div>
     <div class="item">
-        <select style=" width: 122pt;" name="classPagina" id="classPagina" >
+        <select style=" width: 122pt;" name="classPagina" id="classPagina" onChange="carregaEstilo(this.value);" >
         {section name=cp loop=$classNames}
-            <option value="{$classNames[cp]}" {if $classNames[cp] == $classPagina}selected="selected"{/if} onclick="carregaEstilo(this.value);" >{$classNames[cp]}</option>
+            <option value="{$classNames[cp]}" {if $classNames[cp] == $classPagina}selected="selected"{/if} >{$classNames[cp]}</option>
         {/section}
         </select>
     </div>

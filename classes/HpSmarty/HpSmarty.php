@@ -1,20 +1,20 @@
 <?php
 //
 // Classe smarty para manipulação de templates
-require HOMEPAGE_PATH . '/vendor/autoload.php';
+Namespace Shiresco\Homepage\HpSmarty; 
+
 use Smarty\Smarty;
 
 // localização dos templates
 //
 // wrapper around Smarty class with my own parameters...
-class hp_smarty extends Smarty
-{
+class HpSmarty extends Smarty {
 	function __construct()
 	{
 
 		parent::__construct();
 
-        $this->setTemplateDir(HOMEPAGE_PATH . '/templates');
+        $this->setTemplateDir(HOMEPAGE_PATH . '/modelos');
         $this->setCompileDir(HOMEPAGE_PATH . '/smarty_c');
 
 		// pediu debug?
@@ -42,8 +42,4 @@ class hp_smarty extends Smarty
 
 	}
 }	
-
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-	
 ?>

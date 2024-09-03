@@ -1,6 +1,7 @@
 <?php
 require_once('auth_force.php');
 require_once('../common.php');
+use Shiresco\Homepage\Temas as Temas;
 
 // abro e inicializo minha página
 $pagina = new pagina(ID_COR_PAG);
@@ -10,27 +11,27 @@ $homepage->assign('tituloTabela', $pagina->tituloTabela);
 $homepage->assign('classPagina', $pagina->classPagina);
 
 // manda um biscoitinho da sorte para lá, para poder ver as cores.
-$homepage->assign('fortuneCookie', 'Não tem nada aqui. passe para a próxima.<br /><b>-- autor anônimo</b>');
+$homepage->assign('fortune', array('textoFortune' => 'Não tem nada aqui. passe para a próxima.',
+                                   'autorFortune' => 'autor anônimo'));
 $homepage->assign('displayFortune', 1);
 
 // indica a inclusão do form de cores
 $homepage->assign('displaySelectColor', 1);
 
 // lê os elementos coloridos e os pares de cores
-$homepage->assign('elementosColoridos', elementoColorido::getArray());
-$homepage->assign('paresCores', RGBColor::getArray());
-$homepage->assign('pcMaterial', RGBColor::getArray('Material'));
+$homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
+$homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
+$homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
 
-// verifica se há cookies de estilo configurados para essa página
-$colorCookies = cookedStyle::getArray(ID_COR_PAG);
-if ($colorCookies) 
-{
-    $cookedStyles = ':root {';
-    foreach ($colorCookies as $elementoColorido) {
-        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
+// verifica se há cookies de tema configurados para essa página
+$RVPs = Temas\RootVarsPagina::getArray(ID_COR_PAG);
+if ($RVPs) {
+    $rootVars = ':root {';
+    foreach ($RVPs as $rvp) {
+        $rootVars .= $rvp['rootvar'] . ': ' . $rvp['cor'] . '; ';
     }
-    $cookedStyles .= '}';
-    $homepage->assign('cookedStyles', $cookedStyles);
+    $rootVars .= '}';
+    $homepage->assign('rootVars', $rootVars);
 }
 
 // Pego a pagina de exemplo para ter todos os tipos de elemento.

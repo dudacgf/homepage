@@ -7,20 +7,20 @@
         <div class="flex100">
             <div class="boxContent">
                 <div class="tituloCategoria">
-                Elementos
+                Item a alterar
                 </div>
                 <div class="blockElemento">
                     <div class="contentElemento" id="selectElemento">
-                        {section name=opt loop=$elementosColoridos}
-                        <label class="boxRadioLabel"id="lbl_{$elementosColoridos[opt].cookieElemento}" >
-                        <input class="boxRadio" type="radio" id="{$elementosColoridos[opt].cookieElemento}" name="selectElemento" value="{$elementosColoridos[opt].cookieElemento}" onClick="onChangeElementoBoxElementoCor(this);" />
-                        {$elementosColoridos[opt].descricaoElemento}
+                        {section name=vr loop=$variaveisRoot}
+                        <label class="boxRadioLabel"id="lbl_{$variaveisRoot[vr].rootvar}" >
+                        <input class="boxRadio" type="radio" id="{$variaveisRoot[vr].rootvar}" name="selectElemento" value="{$variaveisRoot[vr].rootvar}" onClick="onChangeElementoBoxElementoCor(this);" />
+                        {$variaveisRoot[vr].descricao}
                         </label> 
                         {/section}
                     <script>
-                    const elementos = document.getElementsByClassName('boxRadioLabel');
-                    for (var i = 0;  i < elementos.length; i++) 
-                        elementos[i].style.setProperty('--elemento-cor', 'var(--theme-' + (elementos[i].id.replace('lbl_', '')) + ')');
+                    const bxrLabels = document.getElementsByClassName('boxRadio');
+                    for (var i = 0;  i < bxrLabels.length; i++) 
+                        bxrLabels[i].parentElement.style.setProperty('--elemento-cor', 'var(--theme-' + bxrLabels[i].id + ')');
                     </script>
                     </div>
                 </div>
@@ -36,7 +36,7 @@
             </div>
             <div class="boxContent">
                 <div class="tituloCategoria" style="width: 100%; display: block; text-align: left; padding-left: 10px;">
-                Cores
+                Cor a atribuir
                 </div>
                 <div style="display:flex; background-color: transparent;">
                     <div style="display:flex">
@@ -64,8 +64,8 @@
                         <div class="boxContorno" id="boxCores" style="display: none;">
                             <div class="blockCor">
                             <div class="contentCor" id="boxContent">
-                                {section name=pc loop=$paresCores}
-                                <div class="cor" style="background-color: {$paresCores[pc].valorCor}" onClick="boxCorClick('{$paresCores[pc].nomeCor}', '{$paresCores[pc].valorCor}','{$paresCores[pc].hspCor}')"></div>
+                                {section name=pc loop=$pcPantone}
+                                <div class="cor" style="background-color: {$pcPantone[pc].cor}" onClick="boxCorClick('{$pcPantone[pc].nome}', '{$pcPantone[pc].cor}','{$pcPantone[pc].hspCor}')"></div>
                                 {/section}
                             </div>
                             </div>
@@ -74,7 +74,7 @@
                             <div class="blockCor" style="width: 210px;">
                             <div class="contentCor" id="boxContentMD" style="width: 210px;">
                                 {section name=pc loop=$pcMaterial}
-                                <div class="cor" style="background-color: {$pcMaterial[pc].valorCor}" onClick="boxCorClick('{$pcMaterial[pc].nomeCor}', '{$pcMaterial[pc].valorCor}','{$pcMaterial[pc].hspCor}')"></div>
+                                <div class="cor" style="background-color: {$pcMaterial[pc].cor}" onClick="boxCorClick('{$pcMaterial[pc].nome}', '{$pcMaterial[pc].cor}','{$pcMaterial[pc].hspCor}')"></div>
                                 {/section}
                             </div>
                             </div>
@@ -93,7 +93,7 @@
             <div class="menuBarraItem" onClick="restaurarRootcssPagina();">
                 :: Restaurar Página ::
             </div> 
-            <div class="menuBarraItem" onClick="novoEstilo();">
+            <div class="menuBarraItem" onClick="novoTema();">
                 :: Salvar Estilo ::
             </div>
         </div>

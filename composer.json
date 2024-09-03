@@ -1,5 +1,21 @@
 {
+    "name": "shiresco/homepage",
+    "description": "A page with links",
+    "type": "library",
     "require": {
-        "smarty/smarty": "^5.3"
-    }
+        "smarty/smarty": "^5.4"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Shiresco\\Homepage\\": "classes/"
+        }
+    },
+    "authors": [
+        {
+            "name": "dudacgf",
+            "email": "dudacgf.cadastro@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev"
 }

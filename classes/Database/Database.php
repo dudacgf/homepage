@@ -1,53 +1,46 @@
 <?php
 
-class database extends mysqli
+Namespace Shiresco\Homepage\Database;
+
+
+class Database extends \mysqli
 {
    var $dbHost, $dbUser, $dbPassword, $dbSchema;
 
-   public function __construct($XMLFilePath, $connectionID)
-   {
-       $this->_getDBParameters($XMLFilePath, $connectionID);
+   public function __construct() {
+       if (! $this->_getDBParameters()) 
+           throw new \Exception('Não consegui obter os parâmetros de conexão ao database');
+
        parent::__construct($this->dbHost, $this->dbUser, $this->dbPassword, $this->dbSchema);
 
        if (mysqli_connect_errno())
-       {
            throw new Exception(sprintf("Can't connect to database. Error: %s", mysqli_connect_error()));
-       }
-	   else
-	   {
+	   else {
 		   unset($this->dbPassword);
 		   unset($this->dbUser);
 		   unset($this->dbSchema);
 	   }
    }
 
-   public function __destruct()
-   {
+   public function __destruct() {
        if (!mysqli_connect_errno())
        {
            $this->close();
        }
    }
 
-   private function _getDBParameters($XMLFilePath, $connectionID)
+   private function _getDBParameters()
    {
-       if (!(file_exists($XMLFilePath)))
-       {
-           return FALSE;
-       }
+       require_once(\HOMEPAGE_PATH . 'configs/connection.php');
+       if (!isset($connectionInfo))
+           return false;
 
-       $connections = simplexml_load_file($XMLFilePath);
+       $this->dbHost    = $connectionInfo['dbHost'];
+       $this->dbUser    = $connectionInfo['dbUser'];
+       $this->dbPassword = $connectionInfo['dbPassword'];
+       $this->dbSchema  = $connectionInfo['dbSchema'];
 
-       foreach ($connections as $connection)
-       {
-           if ($connection['ID'] == $connectionID)
-           {
-               $this->dbHost    = (string) $connection->dbHost;
-               $this->dbUser    = (string) $connection->dbUser;
-               $this->dbPassword = (string) $connection->dbPassword;
-               $this->dbSchema  = (string) $connection->dbSchema;
-           }
-       }
+       return true;
    }
 
    public function query($sql, $resultmode = NULL )

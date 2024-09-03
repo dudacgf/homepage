@@ -4,7 +4,10 @@
 // Carregar apenas uma vez.
 require_once('auth_force.php');
 require_once('../common.php');
-include_once($include_path  . 'class_fortune.php');
+
+use Shiresco\Homepage\Temas as Temas;
+use Shiresco\Homepage\Visita as Visita;
+use Shiresco\Homepage\Fortunes as Fortunes;
 
 // obtém as estatísticas na base e as repassa ao template
 $homepage->assign('numPaginas', pagina::getCount());
@@ -15,24 +18,23 @@ $homepage->assign('numForms', wForm::getCount());
 $homepage->assign('numSeparadores', wSeparador::getCount());
 $homepage->assign('numImagens', wImagem::getCount());
 $homepage->assign('numTemplates', wTemplate::getCount());
-$homepage->assign('numFortunes', Fortune::getCount());
+$homepage->assign('numFortunes', Fortunes\Fortune::getCount());
 
 // estatísticas de visita
-$homepage->assign('totalLinks7dias', Visita::totalLinks(7));
-$homepage->assign('listaLinks7dias', Visita::lerContagem(7, 6));
-$homepage->assign('totalLinks1mes', Visita::totalLinks(30));
-$homepage->assign('listaLinks1mes', Visita::lerContagem(30, 6));
+$homepage->assign('totalLinks7dias', Visita\Visita::totalLinks(7));
+$homepage->assign('listaLinks7dias', Visita\Visita::lerContagem(7, 6));
+$homepage->assign('totalLinks1mes', Visita\Visita::totalLinks(30));
+$homepage->assign('listaLinks1mes', Visita\Visita::lerContagem(30, 6));
 
-// verifica se há cookies de estilo configurados para essa página
-$colorCookies = cookedStyle::getArray(ID_ADM_PAG);
-if ($colorCookies) 
-{
-    $cookedStyles = ':root {';
-    foreach ($colorCookies as $elementoColorido) {
-        $cookedStyles .= $elementoColorido['root_var'] . ': ' . $elementoColorido['color'] . '; ';
+// verifica se há cookies de tema configurados para essa página
+$RVPs = Temas\RootVarsPagina::getArray(ID_ADM_PAG);
+if ($RVPs) {
+    $rootVars = ':root {';
+    foreach ($RVPs as $rvp) {
+        $rootVars .= $rvp['root_var'] . ': ' . $rvp['color'] . '; ';
     }
-    $cookedStyles .= '}';
-    $homepage->assign('cookedStyles', $cookedStyles);
+    $rootVars .= '}';
+    $homepage->assign('rootVars', $rootVars);
 }
 
 // propriedades gerais da página

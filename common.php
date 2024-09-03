@@ -1,4 +1,8 @@
 <?php
+require_once('vendor/autoload.php');
+use Shiresco\Homepage\Database as DB;
+use Shiresco\Homepage\HpSmarty as HPS;
+
 // constantes
 define('HOMEPAGE_PATH', __dir__ . '/');
 define('INCLUDE_PATH', str_replace($_SERVER['DOCUMENT_ROOT'], '', HOMEPAGE_PATH));
@@ -20,43 +24,17 @@ $images_path = HOMEPAGE_PATH . 'imagens/';
 // localização dos arquivos de language
 $language_path = HOMEPAGE_PATH . 'language/';
 
-// localização da página de estilos
-$estilos_path = HOMEPAGE_PATH . 'estilos/';
-$estilos_sheet = $estilos_path . 'estilos.css';
-
 // localização do diretório de configuração
 $config_path = HOMEPAGE_PATH . 'configs/';
 
 // localização do diretório de páginas administrativas
 $admin_path = HOMEPAGE_PATH . 'admin/';
 
-// localização do xml com detalhes da conexão e o número da conexão a ser utilizada...
-$connection_info_xml_path = $config_path . 'connections.xml';
-$connection_info_xml_id = 1;
-
-//
 // resolve qual grupo de variáveis super-globais que trazem os parâmetros da url-query 
-// (o que vai depois do ? em http://.../...?x=y)
-if (isset($_GET)) 
-{
-    $requests = $_GET;
-} 
-elseif (isset($_POST)) 
-{
-    $requests = $_POST;
-} 
-$requests = array_merge($_REQUEST, $requests);
-
-//
-// Classe smarty adaptada.
-include_once($include_path . 'class_hp_smarty.php');
+$requests = array_merge($_REQUEST, (isset($_GET)? $_GET : (isset($_POST)? $_POST: [])));
 
 // Crio a homepage
-$homepage = new hp_smarty();
-
-// pediu debug?
-if (isset($_REQUEST['debug']) && $_REQUEST['debug'] == 'sim')
-    $homepage->assign('debugging', TRUE);
+$homepage = new HPS\HpSmarty();
 
 // se for página administrativa, le o arquivo de linguagem
 if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME'])) 
@@ -69,20 +47,16 @@ if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME']))
 // classes específicas da homepage
 include_once($include_path . 'class_homepage.php');
 
-// classes para trabalho com estilos e cookedstyles
-include_once($include_path . 'class_estilos.php');
-
-// classe para acesso ao database mysql
-include($include_path . "class_database.php");
-
-// global que manterá a conexão à base de dados única para todos os objetos instanciados.
-$global_hpDB = new database($connection_info_xml_path, $connection_info_xml_id);
+// abre a conexao ao DB. A conexão será unica e global
+$global_hpDB = new DB\Database();
 
 // função para enviar alertas no reload de páginas (script2reload ou window_close)
-function prepararToast($iconAlerta, $msgAlerta) {
-    $options = array('expires'=>time()+5, 'path'=>INCLUDE_PATH, 'domain'=>$_SERVER['SERVER_NAME'], 'secure'=>true, 'httponly'=>false, 'SameSite'=>'Strict');
-    setcookie('iconAlerta', $iconAlerta, $options);
-    setcookie('msgAlerta', $msgAlerta, $options);
-    setcookie('showAlerta', 1, $options);
+if (! function_exists('prepararToast')) {
+    function prepararToast($iconAlerta, $msgAlerta) {
+        $options = array('expires'=>time()+5, 'path'=>INCLUDE_PATH, 'domain'=>$_SERVER['SERVER_NAME'], 'secure'=>true, 'httponly'=>false, 'SameSite'=>'Strict');
+        setcookie('iconAlerta', $iconAlerta, $options);
+        setcookie('msgAlerta', $msgAlerta, $options);
+        setcookie('showAlerta', 1, $options);
+    }
 }
 ?>

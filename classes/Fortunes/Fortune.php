@@ -1,39 +1,30 @@
 <?php
 
+Namespace Shiresco\Homepage\Fortunes;
+
 DEFINE('OKCREATE', 0);
 DEFINE('FAILSIZE', 1);
 DEFINE('FAILEXISTS', 2);
 
 class Fortune {
-	var $fortune = '';
+    var $autorFortune;
+    var $textoFortune;
 
-	public function __construct($_maxLen = NULL) {
+	static function obterFortune($_maxLen = null) {
 		global $global_hpDB;
 
-		if ($_maxLen != NULL) {
+		if ($_maxLen != NULL)
 			$_sql = "SELECT *  FROM hp_fortunes WHERE LENGTH(textoFortune) < $_maxLen ORDER BY RAND() LIMIT 1";
-		}
 		else
-		{
-			$_sql = "SELECT MAX(idFortune) FROM hp_fortunes WHERE 1=1";
-			$result = $global_hpDB->query($_sql);
-			if ($result) {
-				$max_id = $result[0][0];
-				$rand_id = rand(1, $max_id);
-				$_sql = "SELECT *  FROM hp_fortunes WHERE idFortune >= $rand_id LIMIT 1";
-				$result = $global_hpDB->query($_sql);
-			}
-		}
+			$_sql = "SELECT *  FROM hp_fortunes ORDER BY RAND() LIMIT 1";
+
 		$result = $global_hpDB->query($_sql);
-		if (!$result) {
-			$fortune = "sem fortunes. erro na leitura do banco de dados<br><b>-- o administrador</b>";
-		}
-		else {
-			$fortune = $result[0]['textoFortune'];
-			if (trim($result[0]['autorFortune']) != '') 
-				$fortune .= "<br /><b>--" . $result[0]['autorFortune'];
-		}
-		$this->fortune = $fortune;
+		if (!$result)
+            return array('autorFortune' => 'o administrador',
+                         'textoFortune' => 'sem fortunes. erro na leitura do banco de dados');
+		else
+            return array('textoFortune' => $result[0]['textoFortune'],
+                         'autorFortune' => $result[0]['autorFortune']);
 	}
 
 	/* 

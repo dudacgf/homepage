@@ -1,6 +1,8 @@
 <?php
 
-class usuario {
+Namespace ShiresCo\Homepage\Login;
+
+class Usuario {
     var $idUsuario;
     var $usuario;
     var $senha;

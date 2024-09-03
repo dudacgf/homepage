@@ -22,8 +22,7 @@ $lang['hp_paginas_TituloTabela'] = 'Título (tabela)';
 $lang['hp_paginas_Placeholder_TituloTabela'] = 'Título da tabela';
 $lang['hp_paginas_classPagina'] = 'Classe';
 $lang['hp_paginas_exibirdotdot'] = 'Exibir: ';
-$lang['hp_paginas_displayFindaMap'] = 'form do Find a Map';
-$lang['hp_paginas_displayFortune'] = 'biscoitinho da sorte';
+$lang['hp_paginas_displayFortune'] = 'Exibir Fortunes';
 $lang['hp_paginas_displayImagemTitulo'] = 'Imagem no Título';
 $lang['hp_paginas_displaySelectColor'] = 'Formulário de cores';
 

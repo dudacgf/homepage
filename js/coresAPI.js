@@ -150,7 +150,7 @@ const alterarRootVar = async () => {
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
     formData.append('color', color);
-    let r = await chamadaAPI('addColorCookie', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('adicionarTemaRootVar', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
         const preview = document.getElementById('previewElementoPicked');
@@ -182,7 +182,7 @@ const restaurarRootVar = async () => {
     let formData = new FormData();
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
-    let r = await chamadaAPI('delColorCookie', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('removerTemaRootVar', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root = document.querySelector(':root');
         root.style.setProperty("--theme-" + root_var, '');
@@ -209,7 +209,7 @@ const restaurarRootcssPagina = async () => {
 
     let formData = new FormData();
     formData.append('idPagina', aPagina);
-    let r = await chamadaAPI('delAllColorCookies', {body: formData, method: 'POST'});
+    let r = await chamadaAPI('restaurarTemaPagina', {body: formData, method: 'POST'});
     if (r.status == 'success') {
         const root_css = document.querySelector(':root');
         var all_vars = [];
@@ -226,15 +226,15 @@ const restaurarRootcssPagina = async () => {
 }
 
 /**
- * chamada para preparar e exibir form de salvamento de estilo
+ * chamada para preparar e exibir form de salvamento de temas
  */
-const novoEstilo = async () => {
+const novoTema = async () => {
     const idPagina = document.getElementById('idPagina').value;
 
     const formData = new FormData();
     formData.append('idPagina', idPagina);
 
-    let r = await chamadaAPI('novoEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('novoTema', {method: 'POST', body: formData});
 
     if (r.status == 'success')
         exibirFormDiv(r.message);
@@ -243,18 +243,18 @@ const novoEstilo = async () => {
 }
 
 /** 
- * verifica se um estilo já existe
+ * verifica se um tema já existe
  *
- * @param {string} nomeEstilo - o nome do estilo a se verificar se existe
+ * @param {string} nomeTema - o nome do tema a se verificar se existe
  *
- * @returns {boolean} - true se o estilo já existe, false em contrário
+ * @returns {boolean} - true se o tema já existe, false em contrário
  *
  */
-const existeEstilo = async(nomeEstilo) => {
+const existeTema = async(nomeTema) => {
     const formData = new FormData();
-    formData.append('nomeEstilo', nomeEstilo);
+    formData.append('nomeTema', nomeTema);
 
-    let r = await chamadaAPI('existeEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('existeTema', {method: 'POST', body: formData});
 
     if (r.status = 'info' && r.message == 'existente') 
         return true;
@@ -263,34 +263,34 @@ const existeEstilo = async(nomeEstilo) => {
 }
 
 /**
- * salvarEstilo - chamada após exibição do form de salvamento de estilos
+ * salvarTema - chamada após exibição do form de salvamento de temas
  */
-const salvarEstilo = async () => {
+const salvarTema = async () => {
     const idPagina = document.getElementById('idPagina').value;
-    const nomeEstilo = document.getElementById('nomeEstilo').value;
-    const comentarioEstilo = document.getElementById('comentarioEstilo').value;
+    const nomeTema = document.getElementById('nomeTema').value;
+    const comentarioTema = document.getElementById('comentarioTema').value;
 
     // não preciso mais do form. pode ocultar independente do resultado
     ocultarFormDiv();
 
-    if (nomeEstilo == '' | comentarioEstilo == '') {
-        createToast('warning', 'Nome do Estilo ou comentário não definidos');
+    if (nomeTema == '' | comentarioTema == '') {
+        createToast('warning', 'Nome do Tema ou comentário não definidos');
         return ;
     }
 
-    let existe = await existeEstilo(nomeEstilo);
+    let existe = await existeTema(nomeTema);
 
-    if (existeEstilo(nomeEstilo) && (!confirm('Já existe um estilo com esse nome. Sobrepõe?'))) {
-        createToast('info', 'Estilo não foi salvo');
+    if (existe && (!confirm('Já existe um Tema com esse nome. Sobrepõe?'))) {
+        createToast('info', 'Tema não foi salvo');
         return ;
     }
 
     const formData = new FormData();
     formData.append('idPagina', idPagina);
-    formData.append('nomeEstilo', nomeEstilo);
-    formData.append('comentarioEstilo', comentarioEstilo);
+    formData.append('nomeTema', nomeTema);
+    formData.append('comentarioTema', comentarioTema);
     formData.append('paresDeCores', JSON.stringify(getAllThemeColorPairs()));
-    let r = await chamadaAPI('salvarEstilo', {method: 'POST', body: formData});
+    let r = await chamadaAPI('salvarTema', {method: 'POST', body: formData});
 
     createToast(r.status, r.message);
 }
