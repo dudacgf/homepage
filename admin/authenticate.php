@@ -3,6 +3,7 @@ require_once('../common.php');
 include_once($include_path . 'class_login.php');
 
 // entra em sessão
+session_cache_limiter('private_no_expires');
 session_start();
 
 if ( !isset($requests['username'], $requests['password']) ) 

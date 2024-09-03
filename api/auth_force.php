@@ -3,6 +3,7 @@ header( 'Content-Type: application/json');
 require_once('../common.php');
 
 // entra em sessão
+session_cache_limiter('private_no_expire');
 session_start();
 
 // se o usuário não está logado, volta pra fazer o login
