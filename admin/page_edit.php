@@ -99,13 +99,14 @@ switch ($requests['mode'])
                 prepararToast('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
                 $homepage->assign('scriptMode', 'edPag');
             }
-        $homepage->assign('script2reload', 'admin/page_edit.php');
+        $homepage->assign('script2reload', 'admin/page_select.php');
         $template = 'admin/script_reload.tpl';
     break;
 
     case 'slPag':
     default:
-        $template = 'admin/page_select.tpl';
+        $homepage->assign('script2reload', 'admin/page_select.php');
+        $template = 'admin/script_reload.tpl';
     break;
 }
 
@@ -113,86 +114,48 @@ switch ($requests['mode'])
 // Inicializo variáveis e passo, dependendo do template que vou carregar...
 $homepage->assign('displayImagemTitulo', '0');
 
-// A página de administração tem idPagina = 5. vou usar para pegar a classe de estilos da página 
-$pagina = new Pagina\Pagina(5);
+if ($template == 'admin/page_edit.tpl') {
+    // obtém a lista de temas disponiveis
+    $homepage->assign('classNames', Temas\Temas::obterNomes() );
+    $homepage->assign('criarPagina', $criarPagina);
+    $homepage->assign('rootVars', '');
 
-switch ($template)
-{
-    case 'admin/page_edit.tpl':
-        /* obtém a lista de estilos de cor disponiveis */
-        $homepage->assign('classNames', Temas\Temas::obterNomes() );
-        $homepage->assign('criarPagina', $criarPagina);
-
-        if (!$criarPagina) 
-        {
-            $homepage->assign('rootVars', '');
-
-            // se a página já existir, carrega e exibe
-            $pagina = new Pagina\Pagina($_idPagina);
-            $homepage->assign('tituloPaginaAlternativo', $pagina->tituloPagina . ' :: Edi&ccedil;&atilde;o');
-            $homepage->assign('tituloTabelaAlternativo', $pagina->tituloTabela . ' :: Edi&ccedil;&atilde;o');
-            $homepage->assign('idPagina', $_idPagina);
-            $homepage->assign('tituloPagina', $pagina->tituloPagina);
-            $homepage->assign('tituloTabela', $pagina->tituloTabela);
-            $homepage->assign('classPagina', $pagina->classPagina);
-            $homepage->assign('displayFortune', $pagina->displayFortune);
-            $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
-            $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
-            $pagina->lerElementos();
-            $descricoesCategorias[] = '';
-            foreach ($pagina->elementos as $categoria)
-            {
-                $descricoesCategorias[] = $categoria->getArray();
-            }
-            array_shift($descricoesCategorias);
-            $homepage->assign('categoriasPresentes', $descricoesCategorias);
-            $homepage->assign('categoriasAusentes', $pagina->lerNaoElementos());
-        }
-        else
-        {
-            $homepage->assign('rootVars', '');
-
-            // inicializa os campos para criação de uma nova página
-            $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de p&aacute;gina');
-            $homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
-            $homepage->assign('tituloPagina', '');
-            $homepage->assign('tituloTabela', '');
-            $homepage->assign('classPagina', $pagina->classPagina);
-            $homepage->assign('displayFortune', 1);
-            $homepage->assign('displayImagemTitulo', 1);
-            $homepage->assign('displaySelectColor', 1);
-        }
-    break;
-
-    case 'admin/page_select.tpl':
-        $homepage->assign('rootVars', '');
-        $homepage->assign('paginas', Pagina\Pagina::getPaginas());
-        $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarPagina']);
-        $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarPagina']);
+    if ($criarPagina) {
+        // inicializa os campos para criação de uma nova página
+        $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de p&aacute;gina');
+        $homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
+        $homepage->assign('tituloPagina', '');
+        $homepage->assign('tituloTabela', '');
         $homepage->assign('classPagina', $pagina->classPagina);
-        $homepage->assign('displaySelectColor', 0);
-    break;
-
-    case 'admin/delete_confirm.tpl':
+        $homepage->assign('displayFortune', 1);
+        $homepage->assign('displayImagemTitulo', 1);
+        $homepage->assign('displaySelectColor', 1);
+    }
+    else {
+        // inicializa os campos para a edição de uma página já existente
         $pagina = new Pagina\Pagina($_idPagina);
-        $homepage->assign('rootVars', '');
+        $homepage->assign('tituloPaginaAlternativo', $pagina->tituloPagina . ' :: Edi&ccedil;&atilde;o');
+        $homepage->assign('tituloTabelaAlternativo', $pagina->tituloTabela . ' :: Edi&ccedil;&atilde;o');
         $homepage->assign('idPagina', $_idPagina);
-        $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaConfirmarExclusao']);
-        $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaConfirmarExclusao']);
-        $homepage->assign('scriptMode', 'exPag');
-        $homepage->assign('script2call', 'admin/page_edit.php');
-        $homepage->assign('deleteConfirmTituloTabela', $lang['confirmarExclusaoPagina']);
-        $homepage->assign('deleteConfirmDescricao', $pagina->tituloPagina . ' :: ' . $pagina->tituloTabela);
+        $homepage->assign('tituloPagina', $pagina->tituloPagina);
+        $homepage->assign('tituloTabela', $pagina->tituloTabela);
         $homepage->assign('classPagina', $pagina->classPagina);
-        $homepage->assign('displaySelectColor', 0);
-    break;
+        $homepage->assign('displayFortune', $pagina->displayFortune);
+        $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
+        $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
+        $pagina->lerElementos();
+        $descricoesCategorias[] = '';
+        foreach ($pagina->elementos as $categoria)
+            $descricoesCategorias[] = $categoria->getArray();
+        array_shift($descricoesCategorias);
+        $homepage->assign('categoriasPresentes', $descricoesCategorias);
+        $homepage->assign('categoriasAusentes', $pagina->lerNaoElementos());
+    }
 
+    // obtém os items do menu
+    include($admin_path . 'ler_menu.php');
 }
 
-// obtém os items do menu
-include($admin_path . 'ler_menu.php');
-
 $homepage->assign('includePATH', INCLUDE_PATH);
-$homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
 ?>

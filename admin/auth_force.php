@@ -12,7 +12,7 @@ session_set_cookie_params([
     'httponly' => true,
     'samesite' => 'strict',
 ]);
-session_cache_limiter('private_no_expire');
+//session_cache_limiter('private_no_expire');
 session_start();
 
 // se o usuário não está logado, volta pra fazer o login

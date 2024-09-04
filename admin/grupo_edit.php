@@ -14,24 +14,8 @@ $_REQUEST['gr'] = 'all';
 if (isset($requests['idGrp']))
     $_idGrupo = $requests['idGrp'];
 
-// se não passou nenhum mode, entra em modo de seleção de grupos
-if (!isset($requests['mode']))
-    $requests['mode'] = 'slGrp';
-
-// se tem alguma coisa estranha, cai no default (slGrp)
-if ( !isset($requests['mode']) || (isset($_idGrupo) && $_idGrupo == '') )
-{
-    $requests['mode'] = 'slGrp';
-}
-
 switch ($requests['mode'])
 {
-    // pediu para voltar - apresenta a página de estatísticas
-    case 'stats':
-        $homepage->assign('script2reload', 'admin/index.php');
-        $template = 'admin/script_reload.tpl';
-    break;
-
     // edição do grupo
     case 'edGrp': 
         $template = 'admin/grupo_edit.tpl';
@@ -52,6 +36,7 @@ switch ($requests['mode'])
         } catch (Exception $e) {
             prepararToast('error', "Error ao atualizar o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]! "  . $e->message);
         }
+        $homepage->assign('idGrupo', $_idGrupo);
         $homepage->assign('script2reload', 'admin/grupo_edit.php');
         $homepage->assign('scriptMode', 'edGrp');
         $template = 'admin/script_reload.tpl';
@@ -83,126 +68,79 @@ switch ($requests['mode'])
             prepararToast('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] criado!");
             $homepage->assign('scriptMode', 'edGrp');
         }
+        $homepage->assign('idGrupo', $_idGrupo);
         $homepage->assign('script2reload', 'admin/grupo_edit.php');
         $template = 'admin/script_reload.tpl';
     break;
 
-    // excluir um grupo (já foi exibido o form de confirmação).
+    // excluir um grupo
     case 'excluirGrupo':
         $grupo = new Pagina\Grupo($_idGrupo);
         if ($grupo->excluir())
         {
             prepararToast('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
-            $homepage->assign('scriptMode', 'slGrp');
+            $homepage->assign('script2reload', 'admin/grupo_select.php');
         }
         else
         {
             prepararToast('warning', "Não foi possível excluir o grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "]!");
+            $homepage->assign('script2reload', 'admin/grupo_edit.php');
             $homepage->assign('scriptMode', 'edGrp');
         }
-        $homepage->assign('script2reload', 'admin/grupo_edit.php');
         $template = 'admin/script_reload.tpl';
     break;
 
     case 'slGrp':
     default:
-        $template = 'admin/grupo_select.tpl';
+        $homepage->assign('script2reload', 'admin/grupo_select.php');
+        $template = 'admin/script_reload.tpl';
     break;
 }
     
 // obtém a página administrativa
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
 
-switch ($template)
-{
-    case 'admin/grupo_edit.tpl':
-        if (!$criarGrupo) 
+if ($template == 'admin/grupo_edit.tpl') {
+    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
+
+    if (!$criarGrupo) {
+        // lê o grupo
+        $grupo = new Pagina\Grupo($_idGrupo);
+        $homepage->assign('grupo', $grupo->getArray());
+
+        $homepage->assign('tituloPaginaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
+        $homepage->assign('tituloTabelaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
+
+        // lê os elementos deste grupo
+        $grupo->lerElementos();
+        $elementos[] = '';
+        foreach ($grupo->elementos as $elemento)
         {
-            // lê a página deste grupo.
-            if (isset($_idPagina)) 
-            {
-                $pagina = new Pagina\Pagina($_idPagina);
-                $homepage->assign('pagina', $pagina->getArray());
-            } 
-            else 
-            {
-                $homepage->assign('classPagina', $admPag->classPagina);
-            }
-
-            // lê a categoria deste grupo.
-            if (isset($_idCategoria)) 
-            {
-                $categoria = new Pagina\Categoria($_idCategoria);
-                $homepage->assign('categoria', $categoria->getArray());
-            }
-
-            // lê o grupo
-            $grupo = new Pagina\Grupo($_idGrupo);
-            $homepage->assign('grupo', $grupo->getArray());
-
-            $homepage->assign('tituloPaginaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
-            $homepage->assign('tituloTabelaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
-
-            // lê os elementos deste grupo
-            $grupo->lerElementos();
-            $elementos[] = '';
-            foreach ($grupo->elementos as $elemento)
-            {
-                $elementos[] = $elemento->getArray();
-            }
-            array_shift($elementos);
-            $homepage->assign('elementos', $elementos);
-            $homepage->assign('tiposElementos', Pagina\TiposElementos::getArray());
-            $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
+            $elementos[] = $elemento->getArray();
         }
-        else
-        {
+        array_shift($elementos);
+        $homepage->assign('elementos', $elementos);
+        $homepage->assign('tiposElementos', Pagina\TiposElementos::getArray());
+    } else {
         // inicializa os campos para criação de uma nova página
-            $homepage->assign('grupo', array(
-                    'descricaoGrupo' => '',
-                    'idTipoGrupo' => 0,
-                    'grupoRestrito' => 0,
-                    'restricaoGrupo' => ''));
-                    
-            $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Grupo');
-            $homepage->assign('tituloTabelaAlternativo', ' :: Novo Grupo :: ');
-            $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
-            $homepage->assign('classPagina', $admPag->classPagina);
-        }
-    break;
-
-    case 'admin/grupo_select.tpl':
-        $homepage->assign('grupos', Pagina\Grupo::getGrupos());
-        $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarGrupo']);
-        $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarGrupo']);
-        $homepage->assign('classPagina', $admPag->classPagina);
-    break;
-
-    case 'admin/script_reload.tpl':
-        if (isset($_idPagina))
-        {
-            $homepage->assign('id', $_idCategoria);
-        }
-        if (isset($_idCategoria))
-        {
-            $homepage->assign('idCategoria', $_idCategoria);
-        }
-        if (isset($_idGrupo))
-        {
-            $homepage->assign('idGrupo', $_idGrupo);
-        }
-    break;
-
+        $homepage->assign('grupo', array(
+                'descricaoGrupo' => '',
+                'idTipoGrupo' => 0,
+                'grupoRestrito' => 0,
+                'restricaoGrupo' => ''));
+                
+        $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Grupo');
+        $homepage->assign('tituloTabelaAlternativo', ' :: Novo Grupo :: ');
+    }
 }
 
 // obtém os items do menu
 include($admin_path . 'ler_menu.php');
 
 // le os cookies e passa para a página a ser carregada.
-$homepage->assign('cookedStyles', '');
-
+$homepage->assign('rootVars', '');
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarGrupo', $criarGrupo);
-$homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
 ?>

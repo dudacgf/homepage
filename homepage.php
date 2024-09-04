@@ -7,17 +7,6 @@ use Shiresco\Homepage\Temas as Temas;
 use Shiresco\Homepage\Fortunes as Fortunes;
 use Shiresco\Homepage\Pagina as Pagina;
 
-// 
-// verifica se houve pedido de upload...
-if (isset($_FILES['userfile']['name']) && $_FILES['userfile']['name'] != '') 
-{
-    $uploadfile = $uploaddir . basename($_FILES['userfile']['name']);
-    if (move_uploaded_file($_FILES['userfile']['tmp_name'], $uploadfile))
-        prepararToast('success', "Arquivo $uploadfile carregado com sucesso");
-    else 
-        prepararToast('warning', "Erro ao carregar arquivo $uploadfile");
-}
-
 // instancia a página informada a partir do id e coloca o título na página...
 if (isset($requests['idPagina']))
     $_idPagina = $requests['idPagina'];
@@ -102,8 +91,8 @@ foreach ($pagina->elementos as $categ) {
 							);
 
 }
-$homepage->assign('descricoesCategorias', $descricoesCategorias);
-$homepage->assign('descricoesGrupos', $descricoesGrupos);
+$homepage->assign('descricoesCategorias', (isset($descricoesCategorias) ? $descricoesCategorias: []));
+$homepage->assign('descricoesGrupos', (isset($descricoesGrupos)? $descricoesGrupos: []));
 
 // elementos enviados ao template
 $homepage->assign('includePATH', INCLUDE_PATH);

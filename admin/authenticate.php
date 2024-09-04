@@ -4,7 +4,7 @@ require_once('../common.php');
 use Shiresco\Homepage\Login as Login;
 
 // entra em sessão
-session_cache_limiter('private_no_expires');
+//session_cache_limiter('private_no_expires');
 session_start();
 
 if ( !isset($requests['username'], $requests['password']) ) 
