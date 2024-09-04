@@ -2,9 +2,10 @@
 require_once('auth_force.php');
 require_once('../common.php');
 use Shiresco\Homepage\Temas as Temas;
+use Shiresco\Homepage\Pagina as Pagina;
 
 // abro e inicializo minha página
-$pagina = new pagina(ID_COR_PAG);
+$pagina = new Pagina\Pagina(ID_COR_PAG);
 $homepage->assign('idPagina', $pagina->idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);
@@ -95,8 +96,5 @@ $homepage->assign('descricoesGrupos', $descricoesGrupos);
 $homepage->assign('includePATH', INCLUDE_PATH);
 
 $homepage->display('admin/cores_edit.tpl');
-
-//-- vim: set shiftwidth=4 tabstop=4: 
-
 ?>
 

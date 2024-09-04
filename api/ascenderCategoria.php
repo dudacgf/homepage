@@ -5,10 +5,12 @@ header( 'Content-Type: application/json');
 require_once('auth_force.php');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 if (isset($requests['id']) and isset($requests['idCat'])) 
     try {
-        $pagina = new pagina($requests['id']);
-        $categoria = new categoria($requests['idCat']);
+        $pagina = new Pagina\Pagina($requests['id']);
+        $categoria = new Pagina\Categoria($requests['idCat']);
         if ($pagina->deslocarElementoParaCima($_REQUEST['idCat']))
              $homepage->assign('response', '{"status": "success", "message": "Categoria [' . $categoria->descricaoCategoria . '] deslocada para cima"}');
         else

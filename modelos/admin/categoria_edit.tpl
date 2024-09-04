@@ -1,5 +1,5 @@
 {include file="page_header.tpl"}
-<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:"info"}', '{$smarty.cookies.msgAlerta}');"{/if}>
+<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 {include file="admin/menu.tpl"}
 {if $displayImagemTitulo == '1'}<div class="logo"><img src='{$includePATH}imagens/logo_shires.png'/ ></div>{/if}
 <div  class="titulo">
@@ -14,7 +14,10 @@
                     document.getElementById('mode').value = 'svCat';
                     break;
                 case '{$LANG.excluir}':
-                    document.getElementById('mode').value = 'cfExCat';
+                    response = confirm('Confirma exclusão da categoria?');
+                    if (!response) 
+                        return;
+                    document.getElementById('mode').value = 'exCat';
                     break;
                 case '{$LANG.novaCategoria}':
                     document.getElementById('mode').value = 'nwCat';

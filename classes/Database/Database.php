@@ -2,6 +2,7 @@
 
 Namespace Shiresco\Homepage\Database;
 
+define('DATABASE_CLASS', 1);
 
 class Database extends \mysqli
 {

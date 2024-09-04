@@ -2,8 +2,8 @@
 require_once('auth_force.php');
 require_once('../common.php');
 
-// classes específicas da homepage
-include_once($include_path . 'class_homepage.php');
+use Shiresco\Homepage\Temas as Temas;
+use Shiresco\Homepage\Pagina as Pagina;
 
 // este flag eu vou usar mais tarde (em page_edit_body.tpl para configurar a action do formulário).
 $criarPagina = false;
@@ -12,13 +12,13 @@ $criarPagina = false;
 $_REQUEST['gr'] = 'all';
 
 // se não foi passado nenhuma página, entre em modo de seleção de página
-if (isset($requests['id'])) 
-{
+if (isset($requests['idPagina'])) 
+    $_idPagina = $requests['idPagina'];
+elseif (isset($requests['id'])) 
     $_idPagina = $requests['id'];
-}
 
 // Obtém a página administrativa
-$pagina = new pagina(ID_ADM_PAG);
+$pagina = new Pagina\Pagina(ID_ADM_PAG);
 
 //
 // se tem alguma coisa estranha, cai no default (slPag)
@@ -37,7 +37,7 @@ switch ($requests['mode'])
         
     // salvar a página (um dos botões do form foi clicado)
     case 'svPag':
-        $pagina = new pagina($_idPagina);
+        $pagina = new Pagina\Pagina($_idPagina);
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
@@ -63,7 +63,7 @@ switch ($requests['mode'])
 
     // criar uma nova página (chamado a partir do form de edição com tag <form> alterada quando $criarPagina = true) 
     case 'crPag':
-        $pagina = new pagina(NULL);
+        $pagina = new Pagina\Pagina(NULL);
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
         $pagina->classPagina = (string) $_REQUEST['classPagina'];
@@ -86,33 +86,19 @@ switch ($requests['mode'])
         $template = 'admin/script_reload.tpl';
     break;
 
-    // excluir esta página da base - exibe o form de confirmação para voltar mais tarde no modo ExPag
-    case 'cfExPag':
-        $template = 'admin/delete_confirm.tpl';
-    break;
-
     // excluir uma página (já foi exibido o form de confirmação).
     case 'exPag':
-        switch ($requests['go'])
-        {
-            case $lang['sim']:
-                $pagina = new pagina($_idPagina);
-                if ($pagina->excluir())
-                {
-                    prepararToast('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] excluída com sucesso!");
-                    $homepage->assign('scriptMode', 'slPag');
-                }
-                else
-                {
-                    prepararToast('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
-                    $homepage->assign('scriptMode', 'edPag');
-                }
-            break;
-
-            case $lang['nao']:
+            $pagina = new Pagina\Pagina($_idPagina);
+            if ($pagina->excluir())
+            {
+                prepararToast('success', "Página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "] excluída com sucesso!");
+                $homepage->assign('scriptMode', 'slPag');
+            }
+            else
+            {
+                prepararToast('warning', "Não foi possível excluir a página [" . $global_hpDB->real_escape_string($pagina->tituloPagina) . "]!");
                 $homepage->assign('scriptMode', 'edPag');
-            break;
-        }
+            }
         $homepage->assign('script2reload', 'admin/page_edit.php');
         $template = 'admin/script_reload.tpl';
     break;
@@ -128,21 +114,21 @@ switch ($requests['mode'])
 $homepage->assign('displayImagemTitulo', '0');
 
 // A página de administração tem idPagina = 5. vou usar para pegar a classe de estilos da página 
-$pagina = new pagina(5);
+$pagina = new Pagina\Pagina(5);
 
 switch ($template)
 {
     case 'admin/page_edit.tpl':
         /* obtém a lista de estilos de cor disponiveis */
-        $homepage->assign('classNames', cssEstilos::getClassNames( ) );
+        $homepage->assign('classNames', Temas\Temas::obterNomes() );
         $homepage->assign('criarPagina', $criarPagina);
 
         if (!$criarPagina) 
         {
-            $homepage->assign('cookedStyles', '');
+            $homepage->assign('rootVars', '');
 
             // se a página já existir, carrega e exibe
-            $pagina = new pagina($_idPagina);
+            $pagina = new Pagina\Pagina($_idPagina);
             $homepage->assign('tituloPaginaAlternativo', $pagina->tituloPagina . ' :: Edi&ccedil;&atilde;o');
             $homepage->assign('tituloTabelaAlternativo', $pagina->tituloTabela . ' :: Edi&ccedil;&atilde;o');
             $homepage->assign('idPagina', $_idPagina);
@@ -164,7 +150,7 @@ switch ($template)
         }
         else
         {
-            $homepage->assign('cookedStyles', '');
+            $homepage->assign('rootVars', '');
 
             // inicializa os campos para criação de uma nova página
             $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de p&aacute;gina');
@@ -179,9 +165,8 @@ switch ($template)
     break;
 
     case 'admin/page_select.tpl':
-        // le os cookies e passa para a página a ser carregada.
-        $homepage->assign('cookedStyles', '');
-        $homepage->assign('paginas', pagina::getPaginas());
+        $homepage->assign('rootVars', '');
+        $homepage->assign('paginas', Pagina\Pagina::getPaginas());
         $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarPagina']);
         $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarPagina']);
         $homepage->assign('classPagina', $pagina->classPagina);
@@ -189,8 +174,8 @@ switch ($template)
     break;
 
     case 'admin/delete_confirm.tpl':
-        $pagina = new pagina($_idPagina);
-        $homepage->assign('cookedStyles', '');
+        $pagina = new Pagina\Pagina($_idPagina);
+        $homepage->assign('rootVars', '');
         $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaConfirmarExclusao']);
         $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaConfirmarExclusao']);
@@ -210,7 +195,4 @@ include($admin_path . 'ler_menu.php');
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->display($template);
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-
 ?>

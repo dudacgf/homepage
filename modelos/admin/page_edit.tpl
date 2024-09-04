@@ -1,6 +1,6 @@
 {assign var="edicaoPagina" value="1"}
 {include file="page_header.tpl"}
-<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:"info"}', '{$smarty.cookies.msgAlerta}');"{/if}>
+<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 {include file="admin/menu.tpl"}
 {if $displayImagemTitulo == '1'}<div class="logo"><img src='{$includePATH}imagens/logo_shires.png'/ ></div>{/if}
 <div  class="titulo">
@@ -15,7 +15,10 @@ function doAction(pressed) {
                 document.edPag.action = '{$includePATH}admin/page_edit.php?mode=svPag&id=' + document.getElementById('id').value; 
                 break;
             case '{$LANG.excluir}':
-                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=cfExPag&id=' + document.getElementById('id').value; 
+                response = confirm('Confirma exclusão da página?');
+                if (!response) 
+                    return;
+                document.edPag.action = '{$includePATH}admin/page_edit.php?mode=exPag&id=' + document.getElementById('id').value; 
                 break;
             case '{$LANG.novaPagina}':
                 document.edPag.action = '{$includePATH}admin/page_edit.php?mode=nwPag';

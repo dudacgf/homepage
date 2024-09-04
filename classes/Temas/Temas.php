@@ -73,7 +73,7 @@ class Temas
 
     }
 
-    static function getClassNames()
+    static function ObterNomes()
     {
         global $global_hpDB;
 
@@ -87,11 +87,11 @@ class Temas
         {
             foreach ($temas as $tema)
             {
-                $estilos[] = $tema['nome'];
+                $nomes[] = $tema['nome'];
             }
         }
 
-        return isset($estilos) ? $estilos : FALSE;
+        return isset($nomes) ? $nomes : FALSE;
 
     }
 

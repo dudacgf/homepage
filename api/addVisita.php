@@ -15,7 +15,8 @@ use Shiresco\Homepage\Visita as Visita;
 // verifica se recebeu o idElemento
 if (!isset($_REQUEST['idElm'])) 
 	throw new Exception("Faltou informação na chamada a addVisita. Preciso: idElm");
-else {
+
+if ($requests['idElm'] != 0) {
     $visita = new Visita\Visita();
     try {
         $visita->idElemento = $requests['idElm'];

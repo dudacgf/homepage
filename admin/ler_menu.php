@@ -1,6 +1,8 @@
 <?php
+use Shiresco\Homepage\Pagina as Pagina;
+
 require_once('../common.php');
-$admPag = new pagina(ID_ADM_PAG);
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 //
 // Leio todos os elementos da página e percorro-os, quebrando por categoria e grupo e os vou incluindo no template

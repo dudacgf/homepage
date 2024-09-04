@@ -1,25 +1,27 @@
 <?php
+/*
+ * editarElemento.php 
+ * chamada quando for solicitada a edição de um elemento na página de edição de um grupo
+ * 
+ * recebe - idElemento e idGrp via $requests
+ * devolve - json response contendo status e, se bem sucedido, message com html de um form
+ *           que será exibido via pop na página de edição de grupo (via templates)
+ */
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
 header( 'Content-Type: application/json');
-/******
-    editarElemento.php - chamada quando for solicitada a edição de um elemento na página de edição de um grupo
-
-    recebe - idElemento e idGrp via $requests
-    devolve - json response contendo status e, se bem sucedido, message com html de um form
-              que será exibido via pop na página de edição de grupo (via templates)
-
-******/
 include_once('../common.php');
+
+use Shiresco\Homepage\Pagina as Pagina;
 
 // se não foi passado nenhum grupo, morre.
 if (isset($requests['idGrp'])) {
 	$_idGrupo = $requests['idGrp'];
-    $grupo = new grupo($_idGrupo);
+    $grupo = new Pagina\Grupo($_idGrupo);
     $homepage->assign('grupo', $grupo->getArray());
 
     // obtém a página administrativa
-    $admPag = new pagina(ID_ADM_PAG);
+    $admPag = new Pagina\Pagina(ID_ADM_PAG);
 
     // se tenho o id do elemento a editar/excluir/salvar, lê e passa para o template
     if (isset($requests['idElm']) && $requests['idElm'] != '0') {
@@ -29,35 +31,35 @@ if (isset($requests['idGrp'])) {
 
         switch ($elemento->tipoElemento)
         {
-            case ELEMENTO_LINK:
+            case Pagina\Constantes::ELEMENTO_LINK:
                 $homepage->assign('mode', 'edLnk');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarLink']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoLink . ' ::');
                 $template = 'admin/link_edit.tpl';
             break;
 
-            case ELEMENTO_FORM:
+            case Pagina\Constantes::ELEMENTO_FORM:
                 $homepage->assign('mode', 'edFrm');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarForm']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoForm . ' ::');
                 $template = 'admin/form_edit.tpl';
             break;
 
-            case ELEMENTO_SEPARADOR:
+            case Pagina\Constantes::ELEMENTO_SEPARADOR:
                 $homepage->assign('mode', 'edSrp');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarSeparador']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoSeparador. ' ::');
                 $template = 'admin/separador_edit.tpl';
             break;
 
-            case ELEMENTO_IMAGEM:
+            case Pagina\Constantes::ELEMENTO_IMAGEM:
                 $homepage->assign('mode', 'edImg');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarImagem']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoImagem . ' ::');
                 $template = 'admin/imagem_edit.tpl';
             break;
 
-            case ELEMENTO_TEMPLATE:
+            case Pagina\Constantes::ELEMENTO_TEMPLATE:
                 $homepage->assign('mode', 'edTpt');
                 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaEditarTemplate']);
                 $homepage->assign('tituloTabelaAlternativo', ':: ' . $elemento->descricaoElemento . '::');

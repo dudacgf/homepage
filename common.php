@@ -12,12 +12,6 @@ define('ID_COR_PAG', 7);
 // diretório para uploads...
 $uploaddir = HOMEPAGE_PATH . 'download/';
 
-// localização dos includes
-$include_path = HOMEPAGE_PATH . 'includes/';
-
-// localização dos fortunes
-$fortune_path = HOMEPAGE_PATH . 'fortunes/';
-
 // localização das imagens
 $images_path = HOMEPAGE_PATH . 'imagens/';
 
@@ -43,9 +37,6 @@ if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME']))
     global $lang;
     $homepage->assign('LANG', $lang);
 }
-
-// classes específicas da homepage
-include_once($include_path . 'class_homepage.php');
 
 // abre a conexao ao DB. A conexão será unica e global
 $global_hpDB = new DB\Database();

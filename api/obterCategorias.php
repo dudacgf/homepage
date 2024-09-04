@@ -4,6 +4,8 @@ header( 'Cache-Control: no-cache' );
 header( 'Content-Type: application/json');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 // verifica se passou a página
 if (isset($requests['id'])) 
     $_idPagina = $requests['id'];
@@ -11,7 +13,7 @@ if (isset($requests['idPagina']))
     $_idPagina = $requests['idPagina'];
 
 // lê a página
-$pagina = new pagina($_idPagina);
+$pagina = new Pagina\Pagina($_idPagina);
 $homepage->assign('idPagina', $_idPagina);
 
 // garante que vão aparecer todas as categorias.

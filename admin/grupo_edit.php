@@ -2,6 +2,8 @@
 require_once('auth_force.php');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 // este flag eu vou usar mais tarde (em grupo_edit_body.tpl para configurar a action do formulário).
 $criarGrupo = false;
 
@@ -26,7 +28,7 @@ switch ($requests['mode'])
 {
     // pediu para voltar - apresenta a página de estatísticas
     case 'stats':
-        $homepage->assign('script2reload', 'admin/estatisticas.php');
+        $homepage->assign('script2reload', 'admin/index.php');
         $template = 'admin/script_reload.tpl';
     break;
 
@@ -37,7 +39,7 @@ switch ($requests['mode'])
         
     // Atualiza o grupo atualmente em edição
     case 'svGrp':
-        $grupo = new grupo($_idGrupo);
+        $grupo = new Pagina\Grupo($_idGrupo);
         $grupo->descricaoGrupo = (string) $requests['descricaoGrupo'];
         $grupo->idTipoGrupo = (string) $requests['idTipoGrupo'];
         $grupo->grupoRestrito = ( isset($requests['grupoRestrito']) ) ? 1 : 0;
@@ -65,7 +67,7 @@ switch ($requests['mode'])
     // criar uma nova Grupo (chamado a partir do form de edição com tag <form> alterada quando $criarGrupo = true) 
     case 'crGrp':
         $homepage->assign('requests', $requests);
-        $grupo = new grupo(NULL);
+        $grupo = new Pagina\Grupo(NULL);
         $grupo->descricaoGrupo = (string) $requests['descricaoGrupo'];
         $grupo->idTipoGrupo = (string) $requests['idTipoGrupo'];
         $grupo->grupoRestrito = ( isset($requests['grupoRestrita']) ) ? 1 : 0;
@@ -87,7 +89,7 @@ switch ($requests['mode'])
 
     // excluir um grupo (já foi exibido o form de confirmação).
     case 'excluirGrupo':
-        $grupo = new grupo($_idGrupo);
+        $grupo = new Pagina\Grupo($_idGrupo);
         if ($grupo->excluir())
         {
             prepararToast('success', "Grupo [" . $global_hpDB->real_escape_string($grupo->descricaoGrupo) . "] excluído!");
@@ -109,7 +111,7 @@ switch ($requests['mode'])
 }
     
 // obtém a página administrativa
-$admPag = new pagina(ID_ADM_PAG);
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 switch ($template)
 {
@@ -119,7 +121,7 @@ switch ($template)
             // lê a página deste grupo.
             if (isset($_idPagina)) 
             {
-                $pagina = new pagina($_idPagina);
+                $pagina = new Pagina\Pagina($_idPagina);
                 $homepage->assign('pagina', $pagina->getArray());
             } 
             else 
@@ -130,12 +132,12 @@ switch ($template)
             // lê a categoria deste grupo.
             if (isset($_idCategoria)) 
             {
-                $categoria = new categoria($_idCategoria);
+                $categoria = new Pagina\Categoria($_idCategoria);
                 $homepage->assign('categoria', $categoria->getArray());
             }
 
             // lê o grupo
-            $grupo = new grupo($_idGrupo);
+            $grupo = new Pagina\Grupo($_idGrupo);
             $homepage->assign('grupo', $grupo->getArray());
 
             $homepage->assign('tituloPaginaAlternativo', $grupo->descricaoGrupo . ' :: Edi&ccedil;&atilde;o');
@@ -150,8 +152,8 @@ switch ($template)
             }
             array_shift($elementos);
             $homepage->assign('elementos', $elementos);
-            $homepage->assign('tiposElementos', tiposElementos::getArray());
-            $homepage->assign('tiposGrupos', tiposGrupos::getArray());
+            $homepage->assign('tiposElementos', Pagina\TiposElementos::getArray());
+            $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
         }
         else
         {
@@ -164,13 +166,13 @@ switch ($template)
                     
             $homepage->assign('tituloPaginaAlternativo', ' :: Cria&ccedil;&atilde;o de Grupo');
             $homepage->assign('tituloTabelaAlternativo', ' :: Novo Grupo :: ');
-            $homepage->assign('tiposGrupos', tiposGrupos::getArray());
+            $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
             $homepage->assign('classPagina', $admPag->classPagina);
         }
     break;
 
     case 'admin/grupo_select.tpl':
-        $homepage->assign('grupos', grupo::getGrupos());
+        $homepage->assign('grupos', Pagina\Grupo::getGrupos());
         $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarGrupo']);
         $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarGrupo']);
         $homepage->assign('classPagina', $admPag->classPagina);

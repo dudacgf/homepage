@@ -5,6 +5,7 @@ require_once('common.php');
 
 use Shiresco\Homepage\Temas as Temas;
 use Shiresco\Homepage\Fortunes as Fortunes;
+use Shiresco\Homepage\Pagina as Pagina;
 
 // 
 // verifica se houve pedido de upload...
@@ -26,7 +27,7 @@ else
     $_idPagina = 1;
 
 // abro e inicializo minha página
-$pagina = new pagina($_idPagina);
+$pagina = new Pagina\Pagina($_idPagina);
 $homepage->assign('idPagina', $_idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);

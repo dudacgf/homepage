@@ -5,8 +5,10 @@ header( 'Content-Type: application/json');
 require_once('auth_force.php');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 if (isset($requests['idPagina'])) {
-    $admPag = new pagina(ID_ADM_PAG);
+    $admPag = new Pagina\Pagina(ID_ADM_PAG);
 
     $template = 'admin/save_estilo.tpl';
     $homepage->assign('displayImagemTitulo', '0');

@@ -4,12 +4,14 @@ header( 'Cache-Control: no-cache' );
 header( 'Content-Type: application/json');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 // verifica se passou grupo
 if (isset($requests['idGrp']))
     $_idGrupo = $requests['idGrp'];
 
 // lê o grupo
-$grupo = new grupo($_idGrupo);
+$grupo = new Pagina\Grupo($_idGrupo);
 $homepage->assign('grupo', $grupo->getArray());
 
 // lê os elementos deste grupo
@@ -17,7 +19,7 @@ $grupo->lerElementos();
 $i = 1;
 foreach ($grupo->elementos as $elemento)
 {
-    $tempElemento = new elementoFactory($elemento->idElemento);
+    $tempElemento = new Pagina\ElementoFactory($elemento->idElemento);
     $tempElemento->setPosGrupo($i);
     $tempElemento->atualizar();
     $i++;

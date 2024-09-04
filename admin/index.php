@@ -8,16 +8,17 @@ require_once('../common.php');
 use Shiresco\Homepage\Temas as Temas;
 use Shiresco\Homepage\Visita as Visita;
 use Shiresco\Homepage\Fortunes as Fortunes;
+use Shiresco\Homepage\Pagina as Pagina;
 
 // obtém as estatísticas na base e as repassa ao template
-$homepage->assign('numPaginas', pagina::getCount());
-$homepage->assign('numCategorias', categoria::getCount());
-$homepage->assign('numGrupos', grupo::getCount());
-$homepage->assign('numLinks', wLink::getCount());
-$homepage->assign('numForms', wForm::getCount());
-$homepage->assign('numSeparadores', wSeparador::getCount());
-$homepage->assign('numImagens', wImagem::getCount());
-$homepage->assign('numTemplates', wTemplate::getCount());
+$homepage->assign('numPaginas', Pagina\Pagina::getCount());
+$homepage->assign('numCategorias', Pagina\Categoria::getCount());
+$homepage->assign('numGrupos', Pagina\Grupo::getCount());
+$homepage->assign('numLinks', Pagina\Link::getCount());
+$homepage->assign('numForms', Pagina\Form::getCount());
+$homepage->assign('numSeparadores', Pagina\Separador::getCount());
+$homepage->assign('numImagens', Pagina\Imagem::getCount());
+$homepage->assign('numTemplates', Pagina\Template::getCount());
 $homepage->assign('numFortunes', Fortunes\Fortune::getCount());
 
 // estatísticas de visita
@@ -41,7 +42,7 @@ if ($RVPs) {
 $homepage->assign('displayImagemTitulo', '1');
 
 // obtém a página administrativa
-$pagina = new pagina(ID_ADM_PAG);
+$pagina = new Pagina\Pagina(ID_ADM_PAG);
 
 // obtém os items do menu
 include($admin_path . 'ler_menu.php');

@@ -4,6 +4,8 @@ header( 'Cache-Control: no-cache' );
 header( 'Content-Type: application/json');
 include_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 // se não foi passado nenhum grupo, morre.
 if (isset($requests['idGrp']))
 {
@@ -15,14 +17,14 @@ else
 }
 
 // lê o grupo deste elemento
-$grupo = new grupo($_idGrupo);
+$grupo = new Pagina\Grupo($_idGrupo);
 $homepage->assign('grupo', $grupo->getArray());
 
 // obtém a página administrativa
-$admPag = new pagina(ID_ADM_PAG);
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 // organiza o que vai passar para o template
-$imagem = new wImagem($requests['idElm']);	
+$imagem = new Pagina\Imagem($requests['idElm']);	
 $imagem->idGrupo = $requests['idGrp'];
 $imagem->descricaoImagem = $requests['descricaoImagem'];
 $imagem->urlImagem = $requests['urlImagem'];

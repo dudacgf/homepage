@@ -2,8 +2,7 @@
 require_once('auth_force.php');
 require_once('../common.php');
 
-// classes específicas da homepage
-include_once($include_path . 'class_homepage.php');
+use Shiresco\Homepage\Pagina as Pagina;
 
 // este flag eu vou usar mais tarde (em categoria_edit_body.tpl para configurar a action do formulário).
 $criarCategoria = false;
@@ -45,7 +44,7 @@ switch ($requests['mode'])
 		
 	// deslocar grupo para cima
 	case 'descenderGrupo':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$categoria->deslocarElementoParaCima($requests['idGrp']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
@@ -54,7 +53,7 @@ switch ($requests['mode'])
 	
 	// deslocar grupo para baixo
 	case 'downGrp':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$categoria->deslocarElementoParaBaixo($requests['idGrp']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
@@ -63,7 +62,7 @@ switch ($requests['mode'])
 
 	// excluir uma categoria da página
 	case 'rmGrp':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$categoria->excluirElemento($requests['idGrp']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
@@ -72,7 +71,7 @@ switch ($requests['mode'])
 
 	// incluir nova categoria na página
 	case 'incluirGrupo':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$categoria->incluirElemento($requests['grupoSelector']);
 		$homepage->assign('script2reload', 'admin/categoria_edit.php');
 		$homepage->assign('scriptMode', 'edCat');
@@ -81,7 +80,7 @@ switch ($requests['mode'])
 				
 	// Atualiza a categoria atualmente em edição
 	case 'svCat':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$categoria->descricaoCategoria = (string) $requests['descricaoCategoria'];
 		$categoria->categoriaRestrita = ( isset($requests['categoriaRestrita']) ) ? 1 : 0;
 		$categoria->restricaoCategoria = ( isset($requests['restricaoCategoria']) ) ? (string) $requests['restricaoCategoria'] : '' ;
@@ -108,7 +107,7 @@ switch ($requests['mode'])
 	// criar uma nova Categoria (chamado a partir do form de edição com tag <form> alterada quando $criarCategoria = true) 
 	case 'crCat':
 		$homepage->assign('requests', $requests);
-		$categoria = new categoria(NULL);
+		$categoria = new Pagina\Categoria(NULL);
 		$categoria->descricaoCategoria = (string) $requests['descricaoCategoria'];
 		$categoria->categoriaRestrita = ( isset($requests['categoriaRestrita']) ) ? 1 : 0;
 		$categoria->restricaoCategoria = ( isset($requests['restricaoCategoria']) ) ? (string) $requests['restricaoCategoria'] : '';
@@ -127,38 +126,22 @@ switch ($requests['mode'])
 		$template = 'admin/script_reload.tpl';
 	break;
 
-	// excluir esta categoria da base - exibe o form de confirmação para voltar mais tarde no modo ExCat
-	case 'cfExCat':
-		$template = 'admin/delete_confirm.tpl';
-	break;
-
-	// excluir uma categoria (já foi exibido o form de confirmação).
+	// excluir uma categoria
 	case 'exCat':
-		switch ($requests['go'])
-		{
-			case $lang['sim']:
-				$categoria = new categoria($_idCategoria);
-				if ($categoria->excluir())
-				{
-					prepararToast('success', "Categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "] excluída!");
-					$homepage->assign('script2reload', 'admin/categoria_edit.php');
-					$homepage->assign('scriptMode', 'slCat');
-				}
-				else
-				{
-					prepararToast('warning', "Não foi possível excluir a categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "]!");
-					$homepage->assign('script2reload', 'admin/categoria_edit.php');
-					$homepage->assign('scriptMode', 'edCat');
-				}
-				$template = 'admin/script_reload.tpl';
-			break;
-
-			case $lang['nao']:
-				$homepage->assign('script2reload', 'admin/categoria_edit.php');
-				$homepage->assign('scriptMode', 'edCat');
-				$template = 'admin/script_reload.tpl';
-			break;
-		}
+        $categoria = new Pagina\Categoria($_idCategoria);
+        if ($categoria->excluir())
+        {
+            prepararToast('success', "Categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "] excluída!");
+            $homepage->assign('script2reload', 'admin/categoria_edit.php');
+            $homepage->assign('scriptMode', 'slCat');
+        }
+        else
+        {
+            prepararToast('warning', "Não foi possível excluir a categoria [" . $global_hpDB->real_escape_string($categoria->descricaoCategoria) . "]!");
+            $homepage->assign('script2reload', 'admin/categoria_edit.php');
+            $homepage->assign('scriptMode', 'edCat');
+        }
+        $template = 'admin/script_reload.tpl';
 	break;
 
 	case 'slCat':
@@ -173,7 +156,7 @@ $homepage->assign('cookedStyles', '');
 $homepage->assign('displayImagemTitulo', '1');
 
 // obtém a página administrativa
-$admPag = new pagina(ID_ADM_PAG);
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 switch ($template)
 {
@@ -182,7 +165,7 @@ switch ($template)
 		{
 			// lê a página desta categoria.
 			if (isset($_idPagina)) {
-				$pagina = new pagina($_idPagina);
+				$pagina = new Pagina\Pagina($_idPagina);
 				$homepage->assign('idPagina', $_idPagina);
 				$homepage->assign('tituloPagina', $pagina->tituloPagina);
 				$homepage->assign('classPagina', $pagina->classPagina);
@@ -191,7 +174,7 @@ switch ($template)
 				$homepage->assign('classPagina', $admPag->classPagina);
 
 			// lê a categoria
-			$categoria = new categoria($_idCategoria);
+			$categoria = new Pagina\Categoria($_idCategoria);
 			$homepage->assign('idCategoria', $_idCategoria);
 			$homepage->assign('descricaoCategoria', $categoria->descricaoCategoria);
 			$homepage->assign('categoriaRestrita', $categoria->categoriaRestrita);
@@ -211,7 +194,7 @@ switch ($template)
 			array_shift($descricoesGrupos);
 			$homepage->assign('gruposPresentes', $descricoesGrupos);
 			$homepage->assign('gruposAusentes', $categoria->lerNaoElementos());
-			$homepage->assign('tiposGrupos', tiposGrupos::getArray());
+			$homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
 		}
 		else
 		{
@@ -229,12 +212,12 @@ switch ($template)
 
 	case 'admin/categoria_select.tpl':
 		if (isset($_idPagina)) {
-			$pagina = new pagina($_idPagina);
+			$pagina = new Pagina\Pagina($_idPagina);
 			$homepage->assign('idPagina', $_idPagina);
 			$homepage->assign('tituloPagina', $pagina->tituloPagina);
 		}
 		$homepage->assign('idPagina', 0);
-		$homepage->assign('categorias', categoria::getCategorias());
+		$homepage->assign('categorias', Pagina\Categoria::getCategorias());
 		$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarCategoria']);
 		$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarCategoria']);
 		$homepage->assign('classPagina', $admPag->classPagina);
@@ -242,7 +225,7 @@ switch ($template)
 	break;
 
 	case 'admin/delete_confirm.tpl':
-		$categoria = new categoria($_idCategoria);
+		$categoria = new Pagina\Categoria($_idCategoria);
 		$homepage->assign('idCategoria', $_idCategoria);
 		$homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaConfirmarExclusaoCategoria']);
 		$homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaConfirmarExclusao']);

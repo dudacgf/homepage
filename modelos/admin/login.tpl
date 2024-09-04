@@ -1,5 +1,5 @@
 {include file="page_header.tpl"}
-<body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)}onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
+<body class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 <div class="login">
     <h1>Login</h1>
     <form action="authenticate.php" method="post">

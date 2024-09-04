@@ -4,10 +4,12 @@ header( 'Cache-Control: no-cache' );
 header( 'Content-Type: application/json');
 require_once('../common.php');
 
+use Shiresco\Homepage\Pagina as Pagina;
+
 if (isset($requests['id']) and isset($requests['idCat'])) 
     try {
-        $pagina = new pagina($requests['id']);
-        $categoria = new categoria($requests['idCat']);
+        $pagina = new Pagina\Pagina($requests['id']);
+        $categoria = new Pagina\Categoria($requests['idCat']);
         if ($pagina->incluirElemento($_REQUEST['idCat']))
             $homepage->assign('response', '{"status": "success", "message": "Categoria [' . $categoria->descricaoCategoria . '] incluída na página"}');
         else
