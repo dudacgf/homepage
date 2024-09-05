@@ -140,6 +140,7 @@ include($admin_path . 'ler_menu.php');
 
 // le os cookies e passa para a página a ser carregada.
 $homepage->assign('rootVars', '');
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarGrupo', $criarGrupo);
 $homepage->display($template);

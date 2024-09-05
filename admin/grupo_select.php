@@ -16,6 +16,7 @@ $homepage->assign('grupos', Pagina\Grupo::getGrupos());
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarGrupo']);
 $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarGrupo']);
 $homepage->assign('rootVars', '');
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->display('admin/grupo_select.tpl');
 ?>

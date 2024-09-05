@@ -72,14 +72,10 @@ foreach ($pagina->elementos as $categ) {
 							);
 
 }
-
-$homepage->assign('displayImagemTitulo', '1');
-
 // adiciona o exemplo ao grupo dos que vão para a página.
 $descricoesCategorias = array_merge($categoriaExemplo, $descricoesCategorias);
-
-// obtém os items do menu
-include($admin_path . 'ler_menu.php');
+$homepage->assign('descricoesCategorias', $descricoesCategorias);
+$homepage->assign('descricoesGrupos', $descricoesGrupos);
 
 // le icones 
 $svg_hue = file_get_contents($images_path . 'hue.svg');
@@ -91,10 +87,11 @@ $homepage->assign('svg_pantone', $svg_pantone);
 $svg_palette = file_get_contents($images_path . 'palette.svg');
 $homepage->assign('svg_palette', $svg_palette);
 
-$homepage->assign('descricoesCategorias', $descricoesCategorias);
-$homepage->assign('descricoesGrupos', $descricoesGrupos);
-$homepage->assign('includePATH', INCLUDE_PATH);
+// obtém os items do menu
+include($admin_path . 'ler_menu.php');
 
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
+$homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->display('admin/cores_edit.tpl');
 ?>
 

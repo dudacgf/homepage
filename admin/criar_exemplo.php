@@ -99,18 +99,39 @@ $elementos[] = array(
 	'urlElementoSVN' => 0,
 	'localLink' => 0,
 	'targetLink' => '');
+$elementos[] = array( 
+	'idElemento' => 110002,
+	'tipoElemento' => 3,
+	'descricaoSeparador' => '',
+    'breakBefore' => 1);
+$elementos[] = array(
+    'idElemento' => 100006,
+    'tipoElemento' => 2,
+    'nomeForm' => 'idSample',
+    'descricaoForm' => 'Formulário em grupo expansível',
+    'acao' => 'javascript: void(0);',
+    'nomeCampo' => 'campoSample',
+    'tamanhoCampo' => '20');
 $grupos[] = array(
 	'grupo' => 'Grupo expans&iacute;vel',
 	'idtipoGrupo' => 3,
 	'elementos' => $elementos);
 
-// cria o quarto grupo, flat. inclui nele o template de um botão.
+// cria o quarto grupo, flat. inclui nele o template de um botão e um form
 unset($elementos); 
 $elementos[] = array( 
-	'idElemento' => 100006,
+	'idElemento' => 100007,
 	'tipoElemento' => 6,
 	'descricaoTemplate' => 'botão',
 	'nomeTemplate' => 'admin/sample_button.tpl');
+$elementos[] = array(
+    'idElemento' => 100008,
+    'tipoElemento' => 2,
+    'nomeForm' => 'idSample',
+    'descricaoForm' => 'Formulário em grupo aberto',
+    'acao' => 'javascript: void(0);',
+    'nomeCampo' => 'campoSample',
+    'tamanhoCampo' => '20');
 $grupos[] = array(
 	'grupo' => 'Grupo Com template',
 	'idtipoGrupo' => 1,

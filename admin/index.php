@@ -38,9 +38,6 @@ if ($RVPs) {
     $homepage->assign('rootVars', $rootVars);
 }
 
-// propriedades gerais da página
-$homepage->assign('displayImagemTitulo', '1');
-
 // obtém a página administrativa
 $pagina = new Pagina\Pagina(ID_ADM_PAG);
 
@@ -51,6 +48,7 @@ include($admin_path . 'ler_menu.php');
 $homepage->assign('classPagina', $pagina->classPagina);
 $homepage->assign('tituloPaginaAlternativo', $lang['paginaEstatisticasTituloPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['paginaEstatisticasTituloTabela']);
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('displaySelectColor', 0);

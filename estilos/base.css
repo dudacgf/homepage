@@ -71,20 +71,17 @@ body {
     transform-origin: 0 0;
 }
 .logo {
-position: fixed;
-top: 7px; right: 6px;
-height: 40px; width: 40px;
-z-index: 20;
-}
-.logo:hover {
-    transform: scale(2.5);
-    transform-origin: top;
+display: flex; 
+float: left; 
+clear: both; 
+position: relative;
+width: 80px;
+height: 80px;
+margin-right: 20px;
 }
 .logo img {
     background-color: var(--theme-tituloBG);
     border-radius: 50%;
-    max-width: 75%;
-    max-height: 75%;
 }
 a {
 display: block; text-decoration: none; white-space: nowrap;
@@ -150,12 +147,14 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     text-align: left;
     background-color: var(--theme-light);
     color: var(--theme-tituloBG);
+    display: flex;
+    align-items: center;
     width: 100%;
     height: 70px;
     border: 0px;
     margin: 0px;
     margin-bottom: 20px;
-    padding-top: 20px;
+    padding-top: 10px;
     padding-bottom: 10px;
     padding-left: 10px;
     border-bottom: 20px solid;
@@ -403,7 +402,7 @@ padding: 0.3em 0.3em 0.3em 0.3em;
 .menuDropdownContainer {
   position: fixed;
   right: 15px;
-  top: 50px;
+  top: 15px;
   display: inline-block;
   z-index: 15;
 }

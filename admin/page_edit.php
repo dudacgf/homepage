@@ -18,7 +18,7 @@ elseif (isset($requests['id']))
     $_idPagina = $requests['id'];
 
 // Obtém a página administrativa
-$pagina = new Pagina\Pagina(ID_ADM_PAG);
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 //
 // se tem alguma coisa estranha, cai no default (slPag)
@@ -110,10 +110,6 @@ switch ($requests['mode'])
     break;
 }
 
-//
-// Inicializo variáveis e passo, dependendo do template que vou carregar...
-$homepage->assign('displayImagemTitulo', '0');
-
 if ($template == 'admin/page_edit.tpl') {
     // obtém a lista de temas disponiveis
     $homepage->assign('classNames', Temas\Temas::obterNomes() );
@@ -126,9 +122,9 @@ if ($template == 'admin/page_edit.tpl') {
         $homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
         $homepage->assign('tituloPagina', '');
         $homepage->assign('tituloTabela', '');
-        $homepage->assign('classPagina', $pagina->classPagina);
+        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
         $homepage->assign('displayFortune', 1);
-        $homepage->assign('displayImagemTitulo', 1);
         $homepage->assign('displaySelectColor', 1);
     }
     else {

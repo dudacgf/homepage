@@ -7,7 +7,7 @@ use Shiresco\Homepage\Pagina as Pagina;
 // obtém a página administrativa
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
 $homepage->assign('rootVars', '');
-$homepage->assign('displayImagemTitulo', '1');
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('idPagina', 0);
 $homepage->assign('categorias', Pagina\Categoria::getCategorias());
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarCategoria']);

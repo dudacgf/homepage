@@ -142,7 +142,7 @@ if ($template == 'admin/categoria_edit.tpl') {
 // obtém os items do menu
 include($admin_path . 'ler_menu.php');
 $homepage->assign('rootVars', '');
-$homepage->assign('displayImagemTitulo', '1');
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('criarCategoria', $criarCategoria);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->display($template);

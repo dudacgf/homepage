@@ -6,13 +6,13 @@ use Shiresco\Homepage\Temas as Temas;
 use Shiresco\Homepage\Pagina as Pagina;
 
 // Obtém a página administrativa
-$pagina = new Pagina\Pagina(ID_ADM_PAG);
-$homepage->assign('displayImagemTitulo', '0');
+$admPag = new Pagina\Pagina(ID_ADM_PAG);
+$homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 $homepage->assign('rootVars', '');
 $homepage->assign('paginas', Pagina\Pagina::getPaginas());
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarPagina']);
-$homepage->assign('classPagina', $pagina->classPagina);
+$homepage->assign('classPagina', $admPag->classPagina);
 $homepage->assign('displaySelectColor', 0);
 
 // obtém os items do menu
