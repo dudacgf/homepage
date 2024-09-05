@@ -11,7 +11,7 @@
         http://
       {/if}
       {if $elemento.localLink}
-        {$smarty.server.SERVER_NAME}/{$includePATH}
+        {$smarty.server.SERVER_NAME}{$includePATH}
       {/if}
       {$elemento.linkURL}', {$elemento.idElemento})" {if $elemento.targetLink != ''}target="{$elemento.targetLink}"{/if} title="{$elemento.dicaLink} [ {$elemento.linkURL} ]">
     {$elemento.descricaoLink}</a>
