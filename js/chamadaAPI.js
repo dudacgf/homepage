@@ -16,12 +16,10 @@ async function chamadaAPI(metodo, options = {}) {
             return JSON.parse(`{"status": "error", "message": "${response.status}"}`);
 
         let responseData = await response.json();
-        let r = eval("(" + responseData + ")");
-        /*let r = JSON.parse(responseData);*/
-        return r;
+        return JSON.parse(responseData);
 
     } catch(err) {
-        return JSON.parse(`{"status": "error", "message": "${err.message}"}`);
+        return JSON.parse(`{"status": "error", "message": "${err.message}. que tal usar base64?"}`);
     };
 };
 
