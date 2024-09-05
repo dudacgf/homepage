@@ -31,7 +31,7 @@ $f = new Fortune;
 $biscoitinho = $f->fortune;
 if (strpos($biscoitinho, "--") > 0) 
 {
-	$biscoitinho = str_replace("--", "<b>--", $biscoitinho) . "</b>";
+    $biscoitinho = str_replace("--", "<b>--", $biscoitinho) . "</b>";
 }
 $homepage->assign("fortuneCookie", $biscoitinho);
 

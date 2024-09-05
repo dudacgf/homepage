@@ -61,34 +61,34 @@ if ($RVPs) {
 $pagina->lerElementos();
 foreach ($pagina->elementos as $categ) {
 
-	$descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
-	
-	// Leio os grupos desta categoria e percorro-os, incluíndo-os no template
-	$categ->lerElementos();
-	unset($grupos);
-	foreach ($categ->elementos as $grupo) 
-	{
+    $descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
+    
+    // Leio os grupos desta categoria e percorro-os, incluíndo-os no template
+    $categ->lerElementos();
+    unset($grupos);
+    foreach ($categ->elementos as $grupo) 
+    {
 
-		// Leio os elementos deste grupo e percorro-os, incluíndo-os no template
-		$grupo->lerElementos();
-		unset($elementos);
-		foreach($grupo->elementos as $elemento) 
-		{
-			$elementos[] = $elemento->getArray();
-		}		
+    	// Leio os elementos deste grupo e percorro-os, incluíndo-os no template
+    	$grupo->lerElementos();
+    	unset($elementos);
+    	foreach($grupo->elementos as $elemento) 
+    	{
+    		$elementos[] = $elemento->getArray();
+    	}		
 
-		$grupos[] = array(
-						'grupo' => $grupo->descricaoGrupo,
-						'idtipoGrupo' => $grupo->idTipoGrupo,
-						'elementos' => $elementos);
+    	$grupos[] = array(
+    					'grupo' => $grupo->descricaoGrupo,
+    					'idtipoGrupo' => $grupo->idTipoGrupo,
+    					'elementos' => $elementos);
 
-	}
-	
-	$descricoesGrupos[] = array(
-							'index' => $grupo->posCategoria, 
-							'idGrupo' => $grupo->idGrupo,
-							'grupos' => $grupos 
-							);
+    }
+    
+    $descricoesGrupos[] = array(
+    						'index' => $grupo->posCategoria, 
+    						'idGrupo' => $grupo->idGrupo,
+    						'grupos' => $grupos 
+    						);
 
 }
 $homepage->assign('descricoesCategorias', (isset($descricoesCategorias) ? $descricoesCategorias: []));
