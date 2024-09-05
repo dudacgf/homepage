@@ -183,7 +183,7 @@ async function reloadCategorias(idPagina) {
 
     const catDiv = document.querySelector('#categorias_div');
     catDiv.classList.toggle('fadeinout');
-    document.getElementById('categorias_div').innerHTML = r.message;
+    catDiv.innerHTML = btoutf8(r.message);
     setTimeout( () => { catDiv.classList.toggle('fadeinout'); }, 2000);
 
     return r;
@@ -206,7 +206,7 @@ async function reloadGrupos(idCat) {
 
     const grpDiv = document.querySelector('#grupos_div');
     grpDiv.classList.toggle('fadeinout');
-    grpDiv.innerHTML = r.message;
+    grpDiv.innerHTML = btoutf8(r.message);
     setTimeout( () => { grpDiv.classList.toggle('fadeinout'); }, 2000);
 
     return r;
@@ -230,7 +230,7 @@ async function reloadElementos() {
 
     const elDiv = document.querySelector('#elementos_div');
     elDiv.classList.toggle('fadeinout');
-    elDiv.innerHTML = r.message;
+    elDiv.innerHTML = btoutf8(r.message);
     setTimeout( () => { elDiv.classList.toggle('fadeinout'); }, 2000);
 
     return r;
