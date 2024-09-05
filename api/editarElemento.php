@@ -77,8 +77,8 @@ if (isset($requests['idGrp'])) {
         $homepage->assign('imagesPATH', $images_path);
         $homepage->assign('displayImagemTitulo', '0');
         $homepage->assign('classPagina', $admPag->classPagina);
-        $html_template = $homepage->fetch($template);
-        $homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($html_template) . '"}');/*}#*/
+        $html_template = base64_encode($homepage->fetch($template));
+        $homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
     } else 
         $homepage->assign('response', '{"status": "error", "message": "Não foi informado o id do elemento a editar!"}');
 } else

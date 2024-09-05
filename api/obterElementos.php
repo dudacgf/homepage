@@ -26,7 +26,8 @@ $homepage->assign('elementos', $elementos);
 $homepage->assign('tiposElementos', Pagina\TiposElementos::getArray());
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
-$elementos_html = $homepage->fetch('admin/elementos_div.tpl');
-$homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($elementos_html) . '"}');
+$template = 'admin/elementos_div.tpl';
+$html_template = base64_encode($homepage->fetch($template));
+$homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');
 ?>

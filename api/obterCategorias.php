@@ -31,7 +31,8 @@ $homepage->assign('categoriasPresentes', $descricoesCategorias);
 $homepage->assign('categoriasAusentes', $pagina->lerNaoElementos());
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
-$categorias_html = $homepage->fetch('admin/categorias_div.tpl');
-$homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($categorias_html) . '"}');
+$template = 'admin/categorias_div.tpl';
+$html_template = base64_encode($homepage->fetch($template));
+$homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');
 ?>

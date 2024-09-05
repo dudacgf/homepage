@@ -30,7 +30,8 @@ $homepage->assign('gruposAusentes', $categoria->lerNaoElementos());
 $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('imagesPATH', $images_path);
-$grupos_html = $homepage->fetch('admin/grupos_div.tpl');
-$homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($grupos_html) . '"}');
+$template = 'admin/grupos_div.tpl';
+$html_template = base64_encode($homepage->fetch($template));
+$homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');
 ?>

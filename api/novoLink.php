@@ -39,7 +39,7 @@ $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarElemento', $criarElemento);
 $homepage->assign('imagesPATH', $images_path);
 $homepage->assign('classPagina', $admPag->classPagina);
-$html_template = $homepage->fetch($template);
-$homepage->assign('response', '{"status": "success", "message": "' . $global_hpDB->real_escape_string($html_template) . '"}');
+$html_template = base64_encode($homepage->fetch($template));
+$homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');
 ?>

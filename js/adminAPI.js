@@ -125,6 +125,22 @@ const gravarElemento  = async (aForm) => {
     ocultarFormDiv();
 }
 
+/**
+ * convert a base64 encoded string to utf8 unicode string
+ *
+ * @param {string} str - the base64 encoded string
+ *
+ * @returns {string} str decoded to utf8 unicode
+ *
+ * from: https://stackoverflow.com/questions/30106476/using-javascripts-atob-to-decode-base64-doesnt-properly-decode-utf-8-strings#30106551
+ */
+function btoutf8(str) {
+    // Going backwards: from bytestream, to percent-encoding, to original string.
+    return decodeURIComponent(atob(str).split('').map(function(c) {
+                 return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+    }).join(''));
+}
+
 /*****
  * exibirFormDiv - chamada por editarElemento. 
  *
@@ -134,7 +150,7 @@ const gravarElemento  = async (aForm) => {
 function exibirFormDiv(formHTML) {
     document.getElementById('invisivel_div').style.display = 'block';
     document.getElementById('invisivel_div').style.visibility = 'visible';
-    document.getElementById('form_div').innerHTML = formHTML;
+    document.getElementById('form_div').innerHTML = btoutf8(formHTML);
     document.getElementById('form_div').style.display = 'block';
 };
 
