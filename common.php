@@ -8,6 +8,7 @@ define('HOMEPAGE_PATH', __dir__ . '/');
 define('INCLUDE_PATH', str_replace($_SERVER['DOCUMENT_ROOT'], '', HOMEPAGE_PATH));
 define('ID_ADM_PAG', 5);
 define('ID_COR_PAG', 7);
+define('ID_TEMA_PAG', 40);
 
 // diretório para uploads...
 $uploaddir = HOMEPAGE_PATH . 'download/';
