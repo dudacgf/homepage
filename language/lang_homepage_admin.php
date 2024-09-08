@@ -26,6 +26,15 @@ $lang['hp_paginas_displayFortune'] = 'Exibir Fortunes';
 $lang['hp_paginas_displayImagemTitulo'] = 'Imagem no Título';
 $lang['hp_paginas_displaySelectColor'] = 'Formulário de cores';
 
+// atributos do Tema
+$lang['hp_temas_FormTitulo'] = 'Temas';
+$lang['hp_temas_idTema'] = 'Id deste tema';
+$lang['hp_temas_nome'] = 'Nome';
+$lang['hp_temas_Placeholder_nome'] = 'Nome do tema (string)';
+$lang['hp_temas_comentario'] = 'Comentario';
+$lang['hp_temas_Placeholder_comentario'] = 'Breve comentário sobre o tema';
+$lang['hp_temas_derivarTema'] = 'Derivar tema de';
+
 // atributos de uma categoria (coluna)
 $lang['hp_categorias_DescricaoCategoria'] = 'Título';
 $lang['hp_categorias_Placeholder_DescricaoCategoria'] = 'Título da categoria';
@@ -105,6 +114,7 @@ $lang['hp_templates_Placeholder_nomeTemplate'] = 'Nome do arquivo template (rela
 //
 
 // Utilizados nos botões e links para criação de objetos
+$lang['novoTema'] = 'Novo tema';
 $lang['novaPagina'] = 'Nova página';
 $lang['novaCategoria'] = 'Nova categoria';
 $lang['novoGrupo'] = 'Novo grupo';
@@ -122,6 +132,11 @@ $lang['tituloTabelaConfirmarExclusao'] = ':: Leia com atenção ::';
 $lang['tituloPaginaSelecionarPagina'] = 'Edição de página';
 $lang['tituloTabelaSelecionarPagina'] = ':: Lista de páginas';
 $lang['selecionarPagina'] = 'Por favor, selecione a página a editar:';
+
+// para o diálogo de seleção de tema
+$lang['tituloPaginaSelecionarTema'] = 'Edição de tema';
+$lang['tituloTabelaSelecionarTema'] = ':: Lista de temas';
+$lang['selecionarTema'] = 'Por favor, selecione o tema a editar:';
 
 // para o diálogo de salvamento de um estilo
 $lang['tituloPaginaSalvarEstilo'] = 'Salvar Estilo';
