@@ -1,7 +1,7 @@
 <body class="{$classPagina}" {if isset($smarty.cookies.showAlerta)}onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 <div class="titulo">
-{if $displayImagemTitulo == '1'}<div class="logo" style="display: flex; float: left; clear: both; position: auto;"><img src='{$includePATH}imagens/logo_shires.svg'/></div>{/if}
-<span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
+  {if $displayImagemTitulo == '1'}<div class="logo" style="display: flex; float: left; clear: both; position: auto;">{strip}{$logo_shires}{/strip}</div>{/if}
+  <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
 </div>
 <div class="content" style="display: flex;">
 {section name=dc loop=$descricoesCategorias}
@@ -33,5 +33,5 @@
 {/section}
 </div>
 {if !$displaySelectColor}
-<div style="width: 100%; height: 20px; margin: 0; padding: 0; border: 0; background-color: var(--theme-tituloBB);"></div>
+<div style="width: 100%; height: 20px; margin: 0; padding: 0; border: 0; background-color: var(--cor-tituloBB);"></div>
 {/if}
