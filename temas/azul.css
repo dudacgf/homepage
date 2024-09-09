@@ -52,6 +52,11 @@
     --theme-opcoesC: #404040;
 
 }
+
+body.azul #temaClass {
+    --nome-tema: 'azul';
+}
+
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
     background-color: #4682B4;

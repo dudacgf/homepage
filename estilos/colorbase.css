@@ -243,6 +243,12 @@ div.tituloCores {
     border-bottom-color: var(--theme-tituloBB);
 
 }
+div.tituloClaro {
+    color: var(--theme-bodyC);
+    background-color: var(--theme-bodyBG);
+    border-bottom-color: transparent;
+    border-top-color: var(--theme-tituloBB);
+}
 label.boxRadioLabel {
     color: var(--theme-bodyC);
 }

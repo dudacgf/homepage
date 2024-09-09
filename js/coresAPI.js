@@ -30,11 +30,12 @@ function colorToHex(umaCor) {
 
 
 /**
- * calcula o HSP [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
+ * calcula o HSP de uma cor em formato #RRGGBB
+ * [Highly Sensitive Poo equation from http://alienryderflex.com/hsp.html]
  *
  * @param {string} aCorHex - cor em formato hex [#RRGGBB]
  *
- * @returns {string }  * #000000 para cores mais claras ou #FFFFFF para cores mais escuras
+ * @returns {string } #000000 para cores mais claras ou #FFFFFF para cores mais escuras
  */
 function HSP(aCorHex) {
     let r = parseInt(aCorHex.substr(1,2), 16);
@@ -56,13 +57,15 @@ function HSP(aCorHex) {
  * Obtém a cor de uma das variáveis de cor para o estilo css atual
  *
  * @param {string} umaCor - o nome de uma root-var de cor
- *
+ * @param {string} rt - o root selector de um documento. o default é o proprio documento
+ * 
  * @returns {string) - a cor definida para essa variável em formato #RRGGBB
  */
-const getThemeColor = (umaCor) => {
-    const root = document.querySelector(':root');
+const getThemeColor = (umaCor, rt = null) => {
+    if (!rt)
+        rt = document.querySelector(':root');
 
-    return colorToHex(getComputedStyle(root).getPropertyValue('--theme-' + umaCor));
+    return colorToHex(getComputedStyle(rt).getPropertyValue('--theme-' + umaCor));
 }
 
 
@@ -90,16 +93,18 @@ const getThemeColorHSP = (umaCor) => {
  *
  * @returns {string[]} - cores das variáveis de cor no format #RRGGBB
  */
-const getThemePalette = () => {
+const getThemePalette = (rt = null) => {
+    if (!rt) 
+        rt = document.querySelector(':root');
+
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
-    const root = document.querySelector(':root');
-    const cookieStyles = document.getElementsByClassName('boxRadio');
+    const rootVars = document.getElementsByClassName('boxRadio');
     var cores = [];
 
-    for (var i = 0; i < cookieStyles.length; i++) {
-        var umaCor = '--theme-' + cookieStyles[i].id;
-        ctx.fillStyle = getComputedStyle(root).getPropertyValue(umaCor);
+    for (var i = 0; i < rootVars.length; i++) {
+        var umaCor = '--theme-' + rootVars[i].id;
+        ctx.fillStyle = getComputedStyle(rt).getPropertyValue(umaCor);
         if (!cores.includes(ctx.fillStyle))
             cores[cores.length] = ctx.fillStyle; 
     }
@@ -113,17 +118,18 @@ const getThemePalette = () => {
  *
  * @returns {Array} - dictionary com as cores das variáveis de cor no format #RRGGBB
  */
-const getAllThemeColorPairs = () => {
+const getAllThemeColorPairs = (rt = null) => {
+    if (!rt)
+        rt = document.querySelector(':root');
     var c = document.createElement("canvas");
     var ctx = c.getContext("2d");
-    const root = document.querySelector(':root');
-    const cookieStyles = document.getElementById('selectElemento').getElementsByClassName('boxRadio');
+    const rootVars = document.getElementById('selectElemento').getElementsByClassName('boxRadio');
     var cores = {};
 
-    for (const cookieStyle of cookieStyles) {
-        umaCor = '--theme-' + cookieStyle.value;
-        ctx.fillStyle = getComputedStyle(root).getPropertyValue(umaCor);
-        cores[cookieStyle.value] = ctx.fillStyle; 
+    for (const rootVar of rootVars) {
+        umaCor = '--theme-' + rootVar.value;
+        ctx.fillStyle = getComputedStyle(rt).getPropertyValue(umaCor);
+        cores[rootVar.value] = ctx.fillStyle; 
     }
 
     c.remove();
@@ -136,7 +142,7 @@ const getAllThemeColorPairs = () => {
  * @param {} não recebe nada mas utiliza os campos de id idPagina, selectElemento, selectedColor no formulário
  *
  */
-const alterarRootVar = async () => {
+const alterarRootVar = async (rt = null) => {
     const aPagina = document.getElementById('idPagina').value;
     const root_var = document.getElementById('selectElemento').getAttribute('value');
     const color = document.getElementById('selectedColor').value;
@@ -152,30 +158,42 @@ const alterarRootVar = async () => {
     formData.append('color', color);
     let r = await chamadaAPI('adicionarTemaRootVar', {body: formData, method: 'POST'});
     if (r.status == 'success') {
-        const root_css = document.querySelector(':root');
+        if (!rt)
+            rt = document.querySelector(':root');
         const preview = document.getElementById('previewElementoPicked');
+        const oboxCor = document.querySelector('input[name="selectElemento"]:checked');
         
-        root_css.style.setProperty("--theme-" + root_var, color);
-        preview.style.backgroundColor = 'var(--theme' + color + ')';
+        rt.style.setProperty("--theme-" + root_var, color);
+        oboxCor.parentElement.style.setProperty('--elemento-cor', color);
+
+        preview.style.backgroundColor = color;
         preview.style.color = HSP(color);
         preview.innerHTML = '<div class="textMiddle">--theme-' + root_var + '<br />' + color.toUpperCase() + '</div>';
     } 
     createToast(r.status, r.message);
 }
 
+const getThemeStyleSheetCssRule0 = (rt, temaNome) => {
+    ssheets = rt.parentNode.styleSheets;
+    for (i = 0; i < ssheets.length-1; i++) 
+        if (ssheets[i].href && ssheets[i].href.includes(temaNome))
+            return ssheets[i].cssRules[0];
+    return null;
+}
 /**
  * restaura propriedade (cor) de uma variável definida em :root
  *
- * @param {} - não recebe nada mas utiliza os campos de id idPagina, selectElemento no formulário
+ * @param {object} rt - elemento apontando para o contentDocument de uma frame.
+ *     O default é o documento principal da janela
  *
  * @returns {} - nada, mas um toast com o resultado será exibido
  */
-const restaurarRootVar = async () => {
+const restaurarRootVar = async (rt = null, temaNome = null) => {
     const aPagina = document.getElementById('idPagina').value;
     const root_var = document.getElementById('selectElemento').getAttribute('value');
 
-    if (root_var == "") {
-        createToast('warning', 'Elemento a ser restaurado não selecionado');
+    if (!root_var) {
+        createToast('info', 'Elemento a ser restaurado não selecionado');
         return;
     }
 
@@ -183,16 +201,29 @@ const restaurarRootVar = async () => {
     formData.append('idPagina', aPagina);
     formData.append('root_var', root_var);
     let r = await chamadaAPI('removerTemaRootVar', {body: formData, method: 'POST'});
-    if (r.status == 'success') {
-        const root = document.querySelector(':root');
-        root.style.setProperty("--theme-" + root_var, '');
 
-        const color = window.getComputedStyle(root).getPropertyValue('--theme-' + root_var);
+    if (r.status == 'success') {
+        if (!rt)
+            rt = document.querySelector(':root');
+
+        const temaRules = getThemeStyleSheetCssRule0(rt, temaNome);
+        if (!temaRules) {
+            createToast('info', 'Esse elemento não havia sido alterado anteriormente');
+            return;
+        }
+
+        const color = temaRules.style.getPropertyValue('--theme-' + root_var);
+        const oboxCor = document.getElementById(root_var);
         const preview = document.getElementById('previewElementoPicked');
+        
+        rt.style.setProperty("--theme-" + root_var, '');
+        oboxCor.parentElement.style.setProperty("--elemento-cor", color);
         preview.style.backgroundColor = color;
         preview.style.color = HSP(color);
         preview.innerHTML = '<div class="textMiddle">--theme-' + root_var + '<br />' + color.toUpperCase() + '</div>';
+        r.message += ' para ' + color;
     } 
+
     createToast(r.status, r.message);
 }
 
@@ -336,13 +367,15 @@ function boxCorClick(nomeCor, valorCor, hspCor) {
  * @listens evento de clique no #boxElementos
  *
  */
-function onChangeElementoBoxElementoCor(oboxCor) {
+function onChangeElementoBoxElementoCor() {
+    const oboxCor = document.querySelector('input[name="selectElemento"]:checked')
     const preview = document.querySelector('#previewElementoPicked');
-    const aCor = getThemeColor(oboxCor.id);
+    /*const aCor = getThemeColor(oboxCor.id);*/
+    const aCor = getComputedStyle(oboxCor).getPropertyValue('--elemento-cor');
     const sElemento = document.getElementById('selectElemento');
-
+    
     sElemento.setAttribute('value', oboxCor.id);
-    preview.style.backgroundColor = 'var(--theme-' + oboxCor.id + ')';
+    preview.style.backgroundColor = aCor;
     preview.style.color = HSP(aCor);
     preview.innerHTML = '<div class="textMiddle">--theme-' + oboxCor.id + '<br />' + aCor.toUpperCase() + '</div>';
 }
@@ -377,26 +410,31 @@ function onChangeInputHEX() {
  */
 function toggleColorMode(idBotaoOpcaoModo) {
     if (idBotaoOpcaoModo.id == 'paletaAtualPicker') {
+       document.getElementById('boxInputHEX').style.display = 'none';
        document.getElementById('boxCoresPaleta').style.display = 'block';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'none';
        document.getElementById('colorPicker').jscolor.hide(); 
     } else if (idBotaoOpcaoModo.id == 'jscolorPicker') {
+       document.getElementById('boxInputHEX').style.display = 'none';
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'none';
        document.getElementById('colorPicker').jscolor.show(); 
     } else if (idBotaoOpcaoModo.id == 'pantonePicker') {
+       document.getElementById('boxInputHEX').style.display = 'none';
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'block';
        document.getElementById('boxCoresMD').style.display = 'none';
        document.getElementById('colorPicker').jscolor.hide(); 
     } else if (idBotaoOpcaoModo.id == 'materialPicker') {
+       document.getElementById('boxInputHEX').style.display = 'none';
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'block';
        document.getElementById('colorPicker').jscolor.hide(); 
     } else if (idBotaoOpcaoModo.id == 'hexPicker') {
+       document.getElementById('boxInputHEX').style.display = 'block';
        document.getElementById('boxCoresPaleta').style.display = 'none';
        document.getElementById('boxCores').style.display = 'none';
        document.getElementById('boxCoresMD').style.display = 'none';
@@ -410,9 +448,9 @@ function toggleColorMode(idBotaoOpcaoModo) {
  *
  * chamada durante a carga da página
  */
-function carregarPaletaAtual() {
+function carregarPaletaAtual(rt = null) {
     const bcp = document.getElementById('boxContentPaleta');
-    const themeColors = getThemePalette();
+    const themeColors = getThemePalette(rt);
 
     for (const cor of themeColors) {
         newOption = '<div class="cor" style="background-color: ' + cor + '; margin: 1px; border: 0.5px solid #d0d0d0;" ' +
@@ -421,6 +459,16 @@ function carregarPaletaAtual() {
     }
 }
 
+const populaElementoCor = (rt = null) => {
+    if (!rt)
+        rt = document.querySelector(':root');
+
+    var bxrLabels = document.getElementsByClassName('boxRadio');
+    for (var i = 0;  i < bxrLabels.length; i++) {
+        var color = getThemeColor(bxrLabels[i].id, rt);
+        bxrLabels[i].parentElement.style.setProperty('--elemento-cor', color);
+    }
+}
 /**
  * @param {number} red - Red component 0..1
  * @param {number} green - Green component 0..1

@@ -10,8 +10,12 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
+{if isset($tema)}
+<link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$tema.nome}.css" />
+{/if}
 <link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$classPagina}.css" />
 {if isset($admin_area) or (isset($displaySelectColor) and $displaySelectColor == '1')}
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/material_symbols.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
 <script type="text/javascript" src="{$includePATH}js/chamadaAPI.js"></script>
 <script type="text/javascript" src="{$includePATH}js/adminAPI.js"></script>
@@ -28,7 +32,7 @@ const go = (goUrl, idElemento) => {
 }
 </script>
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
-{if isset($rootVars)}
+{if isset($rootVars) and !empty($rootVars)}
 <style type="text/css">
 {$rootVars|strip}
 </style>
