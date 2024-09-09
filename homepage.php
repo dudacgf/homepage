@@ -3,7 +3,6 @@ header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: max-age: 10' );
 require_once('common.php');
 
-use Shiresco\Homepage\Temas as Temas;
 use Shiresco\Homepage\Fortunes as Fortunes;
 use Shiresco\Homepage\Pagina as Pagina;
 
@@ -28,34 +27,6 @@ $homepage->assign('displaySelectColor', $pagina->displaySelectColor);
 // se esta página apresentar fortune, obtém uma...
 if ($pagina->displayFortune != 0)
     $homepage->assign("fortune", Fortunes\Fortune::obterFortune());
-
-// exibe o form de seleção de cores se foi requisitado na url ou se a página está configurada para exibí-lo
-if ( (isset($requests['selectcolor']) && $requests['selectcolor'] == 'sim') || ($pagina->displaySelectColor == 1)) {
-    $homepage->assign('displaySelectColor', 1);
-    $homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
-    $homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
-    $homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
-    $svg_hue = file_get_contents($images_path . 'hue.svg');
-    $homepage->assign('svg_hue', $svg_hue);
-    $svg_google = file_get_contents($images_path . 'google.svg');
-    $homepage->assign('svg_google', $svg_google);
-    $svg_pantone = file_get_contents($images_path . 'pantone.svg');
-    $homepage->assign('svg_pantone', $svg_pantone);
-    $svg_palette = file_get_contents($images_path . 'palette.svg');
-    $homepage->assign('svg_palette', $svg_palette);
-} else
-    $homepage->assign('displaySelectColor', 0);
-
-// verifica se há cookies de tema configurados para essa página
-$RVPs = Temas\RootVarsPagina::getArray($_idPagina);
-if ($RVPs) {
-    $rootVars = ':root {';
-    foreach ($RVPs as $rvp) {
-        $rootVars .= $rvp['rootvar'] . ': ' . $rvp['cor'] . '; ';
-    }
-    $rootVars .= '}';
-    $homepage->assign('rootVars', $rootVars);
-}
 
 // Leio as categorias da página e percorro-as, incluíndo-as no template
 $pagina->lerElementos();
