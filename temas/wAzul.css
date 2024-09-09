@@ -8,43 +8,43 @@
   Estilo wAzul - fundo branco, detalhes em azul escuro
 ------------------------------------------------------------*/
 :root {
-    --theme-dark: #00008B;
-    --theme-medium: #4682B4;
-    --theme-light: #B0C4DE;
-    --theme-bodyBG: white;
-    --theme-bodyC: white;
-    --theme-tituloBG: #4682B4;
-    --theme-tituloC: white;
-    --theme-fortuneBG: #4682B4;
-    --theme-fortuneC: white;
-    --theme-tituloCategBG: #4682B4;
-    --theme-tituloCategC: white;
-    --theme-categBTL: #ADD8E6;
-    --theme-categBBR: #00008B;
-    --theme-expandedBG: #4682B4;
-    --theme-expandedC: white;
-    --theme-expandedBTL: #B0C4DE;
-    --theme-expandedBBR: #00008B;
-    --theme-expandBG: #4682B4;
-    --theme-expandC: white;
-    --theme-expandBTL: #B0C4DE;
-    --theme-expandBBR: #00008B;
-    --theme-inputBG: #D3D3D3;
-    --theme-inputC: black;
-    --theme-buttonC: white;
-    --theme-buttonBG: #4682B4;
-    --theme-buttonBTL: #B0C4DE;
-    --theme-buttonBBR: #00008B;
-    --theme-sepC: navy;
-    --theme-expandedSecC: white;
-    --theme-linkC: #00008B;
-    --theme-linkH: white;
-    --theme-expandedColor: #4682B4;
-    --theme-interiorBG: #4682B4;
-    --theme-fontS: 1.2em;
+    --cor-dark: #00008B;
+    --cor-medium: #4682B4;
+    --cor-light: #B0C4DE;
+    --cor-bodyBG: white;
+    --cor-bodyC: white;
+    --cor-tituloBG: #4682B4;
+    --cor-tituloC: white;
+    --cor-fortuneBG: #4682B4;
+    --cor-fortuneC: white;
+    --cor-tituloCategBG: #4682B4;
+    --cor-tituloCategC: white;
+    --cor-categBTL: #ADD8E6;
+    --cor-categBBR: #00008B;
+    --cor-expandedBG: #4682B4;
+    --cor-expandedC: white;
+    --cor-expandedBTL: #B0C4DE;
+    --cor-expandedBBR: #00008B;
+    --cor-expandBG: #4682B4;
+    --cor-expandC: white;
+    --cor-expandBTL: #B0C4DE;
+    --cor-expandBBR: #00008B;
+    --cor-inputBG: #D3D3D3;
+    --cor-inputC: black;
+    --cor-buttonC: white;
+    --cor-buttonBG: #4682B4;
+    --cor-buttonBTL: #B0C4DE;
+    --cor-buttonBBR: #00008B;
+    --cor-sepC: navy;
+    --cor-expandedSecC: white;
+    --cor-linkC: #00008B;
+    --cor-linkH: white;
+    --cor-expandedColor: #4682B4;
+    --cor-interiorBG: #4682B4;
+    --cor-fontS: 1.2em;
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
     color: white;
-    background-color: var(--theme-buttonBG);
+    background-color: var(--cor-buttonBG);
 }

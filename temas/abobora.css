@@ -8,50 +8,54 @@
   Estilo abobora - fundo salmão, destaques em abobora.
 ------------------------------------------------------------*/
 :root {
-    --theme-dark: #B22222;
-    --theme-medium: #FFCC66;
-    --theme-light: #FFFF99;
-    --theme-bodyBG: #FFCC66;
-    --theme-bodyC: white;
-    --theme-tituloBG: #FF8C00;
-    --theme-tituloC: #F5F5F5;
-    --theme-tituloBB: #B24645;
-    --theme-fortuneBG: #FFFF99;
-    --theme-fortuneC: #B22222;
-    --theme-tituloCategBG: #FF8C00;
-    --theme-tituloCategC: white;
-    --theme-categBTL: #FFD700;
-    --theme-categBBR: #D2691E;
-    --theme-interiorBG: #FFFF99;
-    --theme-expandedBG: #FF8C00;
-    --theme-expandedBTL: #FFFF00;
-    --theme-expandedBBR: #B22222;
-    --theme-expandBG: #FF8C00;
-    --theme-expandC: white;
-    --theme-expandBTL: #FFFF00;
-    --theme-expandBBR: #B22222;
-    --theme-inputBG: #FFFDB8; 
-    --theme-inputC: #B22222;
-    --theme-inputBBR: #FFFF99;
-    --theme-inputBTL: #B22222;
-    --theme-buttonC: #B22222;
-    --theme-buttonBG: #FF8C00;
-    --theme-buttonBTL: #FFFF00;
-    --theme-buttonBBR: #FFA500;
-    --theme-sepC: white;
-    --theme-sepH: white;
-    --theme-linkC: #B22222;
-    --theme-linkH: #B22222;
-    --theme-expandedColor: white;
-    --theme-mButtonBG: #404040;
-    --theme-mButtonHBG: #909090;
-    --theme-mDropdownBG: #f7f7f7;
-    --theme-mDropdownC: #111111;
-    --theme-mDropdownBTL: #404040;
-    --theme-mDropdownBBR: #000000;
-    --theme-opcoesC: #B22222;
+    --cor-dark: #B22222;
+    --cor-medium: #FFCC66;
+    --cor-light: #FFFF99;
+    --cor-bodyBG: #FFCC66;
+    --cor-bodyC: white;
+    --cor-tituloBG: #FF8C00;
+    --cor-tituloC: #F5F5F5;
+    --cor-tituloBB: #B24645;
+    --cor-fortuneBG: #FFFF99;
+    --cor-fortuneC: #B22222;
+    --cor-tituloCategBG: #FF8C00;
+    --cor-tituloCategC: white;
+    --cor-categBTL: #FFD700;
+    --cor-categBBR: #D2691E;
+    --cor-interiorBG: #FFFF99;
+    --cor-expandedBG: #FF8C00;
+    --cor-expandedBTL: #FFFF00;
+    --cor-expandedBBR: #B22222;
+    --cor-expandBG: #FF8C00;
+    --cor-expandC: white;
+    --cor-expandBTL: #FFFF00;
+    --cor-expandBBR: #B22222;
+    --cor-inputBG: #FFFDB8; 
+    --cor-inputC: #B22222;
+    --cor-inputBBR: #FFFF99;
+    --cor-inputBTL: #B22222;
+    --cor-buttonC: #B22222;
+    --cor-buttonBG: #FF8C00;
+    --cor-buttonBTL: #FFFF00;
+    --cor-buttonBBR: #FFA500;
+    --cor-sepC: white;
+    --cor-sepH: white;
+    --cor-linkC: #B22222;
+    --cor-linkH: #B22222;
+    --cor-expandedColor: white;
+    --cor-mButtonBG: #404040;
+    --cor-mButtonHBG: #909090;
+    --cor-mDropdownBG: #f7f7f7;
+    --cor-mDropdownC: #111111;
+    --cor-mDropdownBTL: #404040;
+    --cor-mDropdownBBR: #000000;
+    --cor-opcoesC: #B22222;
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
     color: white;
+}
+.logo_star {
+    fill: var(--cor-fortuneBG);
+    stroke: var(--cor-fortuneBG);
 }
