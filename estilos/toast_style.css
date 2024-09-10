@@ -10,7 +10,7 @@
   top: 30px;
   right: 20px;
   z-index: 999;
-  color: var(--theme-dark);
+  color: var(--cor-dark);
 }
 .notifications :where(.toast, .column) {
   display: flex;
@@ -24,7 +24,7 @@
   border-radius: 4px;
   padding: 16px 17px;
   margin-bottom: 10px;
-  background-color: var(--theme-bodyBG);
+  background-color: var(--cor-bodyBG);
   justify-content: space-between;
   animation: show_toast 0.3s ease forwards;
   z-index: 999;
@@ -128,7 +128,7 @@
   outline: none;
   cursor: pointer;
   margin: 0 5px;
-  color: var(--theme-light);
+  color: var(--cor-light);
   font-size: 1.2rem;
   padding: 10px 20px;
   border-radius: 4px;
