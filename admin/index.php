@@ -27,16 +27,7 @@ $homepage->assign('listaLinks7dias', Visita\Visita::lerContagem(7, 6));
 $homepage->assign('totalLinks1mes', Visita\Visita::totalLinks(30));
 $homepage->assign('listaLinks1mes', Visita\Visita::lerContagem(30, 6));
 
-// verifica se há cookies de tema configurados para essa página
-$RVPs = Temas\RootVarsPagina::getArray(ID_ADM_PAG);
-if ($RVPs) {
-    $rootVars = ':root {';
-    foreach ($RVPs as $rvp) {
-        $rootVars .= $rvp['root_var'] . ': ' . $rvp['color'] . '; ';
-    }
-    $rootVars .= '}';
-    $homepage->assign('rootVars', $rootVars);
-}
+$homepage->assign('rootVars', '');
 
 // obtém a página administrativa
 $pagina = new Pagina\Pagina(ID_ADM_PAG);
