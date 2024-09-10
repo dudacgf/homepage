@@ -3,7 +3,7 @@
  * restauraPagina
  * elimina todas as alterações de tema da página atual
  *
- * recebe, via $_REQUEST: idPagina
+ * recebe, via $_REQUEST: idTema
  */
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
@@ -13,14 +13,14 @@ require_once('../common.php');
 use Shiresco\Homepage\Temas as Temas;
 
 // obtém a chave da página a partir da request url
-if (!isset($_REQUEST['idPagina'])) 
-	$homepage->assign('response', '{"status": "error", "message": "Faltou informação na chamada a restauraPagina. Preciso: idPagina"}');
+if (!isset($_REQUEST['idTema'])) 
+	$homepage->assign('response', '{"status": "error", "message": "Faltou informação na chamada a restauraPagina. Preciso: idTema"}');
 else {
-	$idPagina = urldecode($_REQUEST['idPagina']);
+	$idTema = urldecode($_REQUEST['idTema']);
 
-    $rvp = new Temas\RootVarsPagina();
+    $trv = new Temas\TemaRootVars();
     try {
-        if ($rvp->restaurarPagina($idPagina))
+        if ($trv->restaurarPagina($idTema))
             $homepage->assign('response', '{"status": "success", "message": "Cores da página restauradas"}');
         else
             $homepage->assign('response', '{"status": "error", "message": "Não foi possível restaurar as cores da página"}');

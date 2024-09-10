@@ -16,8 +16,8 @@ require_once('../common.php');
 use Shiresco\Homepage\Temas as Temas;
 
 // verifica se foram passadas as informações necessárias
-if (isset($requests['idPagina']) and isset($requests['nomeTema']) and isset($requests['comentarioTema'])) {
-	$_idPagina = $requests['idPagina'];
+if (isset($requests['idTema']) and isset($requests['nomeTema']) and isset($requests['comentarioTema'])) {
+	$_idTema = $requests['idTema'];
     $_nomeTema = $requests['nomeTema'];
     $_comentarioTema = $requests['comentarioTema'];
     $_paresDeCores = json_decode($requests['paresDeCores']);
@@ -25,7 +25,7 @@ if (isset($requests['idPagina']) and isset($requests['nomeTema']) and isset($req
     // le os cookies e monta o conteúdo to arquivo .css
     $rootVars = ':root {' . PHP_EOL;
     foreach ($_paresDeCores as $root_var => $cor)
-        $rootVars .= '    --theme-' . $root_var . ': ' . $cor . '; ' . PHP_EOL;
+        $rootVars .= '    --cor-' . $root_var . ': ' . $cor . '; ' . PHP_EOL;
     $rootVars .= '}' . PHP_EOL;
     
     try {
@@ -49,7 +49,7 @@ if (isset($requests['idPagina']) and isset($requests['nomeTema']) and isset($req
     }
 }
 else
-	$homepage->assign('response', '{"status": "error", "message": "Faltam informações para salvar o tema. Preciso de idPagina, nomeTema e comentarioTema"}');
+	$homepage->assign('response', '{"status": "error", "message": "Faltam informações para salvar o tema. Preciso de idTema, nomeTema e comentarioTema"}');
 
 $homepage->display('response.tpl');
 ?>

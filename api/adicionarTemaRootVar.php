@@ -3,7 +3,7 @@
  * adicionarRootVarAPagina 
  * insere uma alteração de tema na página atual
  *
- * recebe, via $_REQUEST: idPagina, root_var e color
+ * recebe, via $_REQUEST: idTema, root_var e color
  */
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
@@ -12,23 +12,23 @@ require_once('../common.php');
 
 use Shiresco\Homepage\Temas as Temas;
 
-if (!isset($_REQUEST['idPagina']) || !isset($_REQUEST['root_var']) || !isset($_REQUEST['color'])) 
-	$homepage->assign('response', '{"status": "error", "message": "Faltou informação na chamada a adicionarRootVarPagina. Preciso: idPagina, root_var e color"}');
+if (!isset($_REQUEST['idTema']) || !isset($_REQUEST['root_var']) || !isset($_REQUEST['color'])) 
+	$homepage->assign('response', '{"status": "error", "message": "Faltou informação na chamada a adicionarTemaRootVar. Preciso: idTema, root_var e color"}');
 else {
-	$idPagina = urldecode($_REQUEST['idPagina']);
+	$idTema = urldecode($_REQUEST['idTema']);
 	$root_var = urldecode($_REQUEST['root_var']);
 	$color = urldecode($_REQUEST['color']);
 
-    $rvp = new Temas\RootVarsPagina();
+    $trv = new Temas\TemaRootVars();
     try {
         $rv = Temas\VariaveisRoot::obterPorNome($root_var);
-        if ($rvp->inserir($idPagina, $root_var, $color))
+        if ($trv ->inserir($idTema, $root_var, $color))
             $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] alterada para ' . $color . '"}');
         else
             $homepage->assign('response', '{"status": "error", "message": "Não foi possível alterar a cor de [' . $rv['descricao'] . ']"}');
     } catch (Exception) {
         try {
-            if ($rvp->atualizar($idPagina, $root_var, $color))
+            if ($trv->atualizar($idTema, $root_var, $color))
                 $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] alterada para ' . $color . '"}');
             else
                 $homepage->assign('response', '{"status": "error", "message": "Não foi possível alterar a cor de [' . $rv['descricao'] . ']"}');
