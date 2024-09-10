@@ -6,7 +6,7 @@ require_once('common.php');
 use Shiresco\Homepage\Fortunes as Fortunes;
 use Shiresco\Homepage\Pagina as Pagina;
 
-// instancia a página informada a partir do id e coloca o título na página...
+// instancia a página informada a partir do id
 if (isset($requests['idPagina']))
     $_idPagina = $requests['idPagina'];
 elseif (isset($requests['id']))
@@ -14,7 +14,6 @@ elseif (isset($requests['id']))
 else
     $_idPagina = 1;
 
-// abro e inicializo minha página
 $pagina = new Pagina\Pagina($_idPagina);
 $homepage->assign('idPagina', $_idPagina);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
