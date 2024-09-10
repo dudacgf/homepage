@@ -24,16 +24,7 @@ $homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'
 $homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
 $homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
 
-// verifica se há cookies de tema configurados para essa página
-$RVPs = Temas\RootVarsPagina::getArray(ID_COR_PAG);
-if ($RVPs) {
-    $rootVars = ':root {';
-    foreach ($RVPs as $rvp) {
-        $rootVars .= $rvp['rootvar'] . ': ' . $rvp['cor'] . '; ';
-    }
-    $rootVars .= '}';
-    $homepage->assign('rootVars', $rootVars);
-}
+$homepage->assign('rootVars', '');
 
 // Pego a pagina de exemplo para ter todos os tipos de elemento.
 include(HOMEPAGE_PATH . 'admin/criar_exemplo.php');
