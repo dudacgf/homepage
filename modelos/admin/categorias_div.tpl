@@ -6,17 +6,17 @@
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarCategoria('ascenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
-            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-up" style="color: var(--cor-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarCategoria('descenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
-            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-down" style="color: var(--cor-dark);"></i>
         </div>
     </div>
     <div class="colunaTransparente" >
         <div class="click_div" onClick="editarCategoria('excluirCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
-            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-xmark" style="color: var(--cor-dark);"></i>
         </div>
     </div>
     <div class="coluna" >

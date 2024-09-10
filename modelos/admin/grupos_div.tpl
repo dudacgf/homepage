@@ -4,17 +4,17 @@
 	</div>
 	<div class="colunaTransparente" >
         <div class="click_div" onclick="editarGrupo('ascenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
-            <i class="fa-solid fa-circle-arrow-up" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-up" style="color: var(--cor-dark);"></i>
         </div>
 	</div>
 	<div class="colunaTransparente" >
         <div class="click_div" onclick="editarGrupo('descenderGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
-            <i class="fa-solid fa-circle-arrow-down" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-arrow-down" style="color: var(--cor-dark);"></i>
         </div>
 	</div>
 	<div class="colunaTransparente" >
         <div class="click_div" onclick="editarGrupo('excluirGrupo', {$idCategoria}, {$gruposPresentes[gp].idGrupo});">
-            <i class="fa-solid fa-circle-xmark" style="color: var(--theme-dark);"></i>
+            <i class="fa-solid fa-circle-xmark" style="color: var(--cor-dark);"></i>
         </div>
   	</div>
 	<div class="coluna" >
