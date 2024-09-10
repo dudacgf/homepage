@@ -125,8 +125,8 @@ div.titulo {
     stroke: var(--cor-tituloC);
 }
 .logo_star {
-    fill:#ff6600;
-    stroke:#ff6600;
+    fill: var(--cor-logostarBG);
+    stroke: var(--cor-logostarBG);
 }
 div.tituloCategoria, div.tituloLateral {
     background-color: var(--cor-tituloCategBG);
@@ -181,7 +181,7 @@ div.tituloColuna a {
     color: var(--cor-categC);
 }
 /* inputs, selects, buttons etc */
-input[type=text], select {
+input[type=text], input[type=select ]{
     background-color: var(--cor-inputBG);
     color: var(--cor-inputC);
     border-Top-color: var(--cor-inputBTL); 
@@ -189,7 +189,7 @@ input[type=text], select {
     border-Bottom-color: var(--cor-inputBBR);
     border-Right-color: var(--cor-inputBBR);
 }
-input.submit, input[type=submit].submitEspacado, button {
+input[type=submit], input[type=submit].submitEspacado, input[type=button] {
   border-Top-color: var(--cor-buttonBTL); 
   border-Left-color: var(--cor-buttonBTL);
   border-Bottom-color: var(--cor-buttonBBR); 
