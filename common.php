@@ -42,6 +42,10 @@ if (preg_match('/\/admin\/|\/api\//', $_SERVER['SCRIPT_NAME']))
 // abre a conexao ao DB. A conexão será unica e global
 $global_hpDB = new DB\Database();
 
+// carrega o logo no formato svg
+$svg_logo = file_get_contents($images_path . 'logo_shires.svg');
+$homepage->assign('logo_shires', $svg_logo);
+
 // função para enviar alertas no reload de páginas (script2reload ou window_close)
 if (! function_exists('prepararToast')) {
     function prepararToast($iconAlerta, $msgAlerta) {
