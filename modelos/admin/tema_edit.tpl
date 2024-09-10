@@ -18,8 +18,12 @@ function doAction(action) {
 }
 
 const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
-    var fdoc = window.frames['paginaTema'].contentDocument;
-    var rt = fdoc.querySelector(':root');
+    try {
+        var fdoc = window.frames['paginaTema'].contentDocument;
+        var rt = fdoc.querySelector(':root');
+    } catch (e) {
+        return;
+    }
 
     for (i = 0; i < callFunctions.length; i++)
         callFunctions[i](rt, '{$tema.nome}');
@@ -37,13 +41,17 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
 <form id="edTema" name="edTema" method="POST">
     <div class="subTitulo">{$LANG.configuracao}</div><p />
     <div class="itemLateral">{$LANG.hp_temas_nome}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="nome" placeholder="{$LANG.hp_temas_Placeholder_nome}" value="{$tema.nome}" tabindex="1" /></div>
+    <div class="item">
+        <input type="text" class="FormExtra" size=30 id="nome" name="nome" placeholder="{$LANG.hp_temas_Placeholder_nome}" value="{$tema.nome}" tabindex="1" {if !$criarTema}disabled{/if}/>
+    </div>
     <div class="itemLateral">{$LANG.hp_temas_comentario}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="comentario" placeholder="{$LANG.hp_temas_Placeholder_comentario}" value="{$tema.comentario}" tabindex="1" /></div>
+    <div class="item">
+        <input type="text" class="FormExtra" size=30 id="comentario" name="comentario" placeholder="{$LANG.hp_temas_Placeholder_comentario}" value="{$tema.comentario}" tabindex="1" />
+    </div>
 {if $criarTema}
     <div class="itemLateral">{$LANG.hp_temas_derivarTema}</div>
     <div class="item">
-        <select style=" width: 122pt;" name="temaBase" id="temaBase" onChange="carregaEstilo(this.value);" >
+        <select style=" width: 122pt;" name="temaBase" id="temaBase">
         {section name=t loop=$temas}
             <option value="{$temas[t].nome}" id="{$temas[t].id}" name="temaBase">{$temas[t].nome}</option>
         {/section}
@@ -51,13 +59,12 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
     </div>
 {/if}
     <div class="interior" style=" text-align: center; padding-top: 4pt; align-items: center;">
-        <input type="button" class="submit" id="{$LANG.gravar}" onclick="doAction('{$LANG.gravar}');" value="{$LANG.gravar}">
 {if !$criarTema}
         <input type="hidden" id="idTema" name="idTema" value="{$idTema}" />
         <input type="hidden" id="mode" name="mode" value="svTema" />
         <input type="button" id="{$LANG.excluir}" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>
-        <input type="button" id="{$LANG.novoTema}" value="{$LANG.novoTema}" class="submit" onclick="window.location = '{$includePATH}admin/tema_edit.php?mode=nwTema';"/>
 {else}
+        <input type="button" id="{$LANG.gravar}" onclick="doAction('{$LANG.gravar}');" value="{$LANG.gravar}">
         <input type="hidden" id="mode" name="mode" value="crTema" />
 {/if}
         <input type="button" id="{$LANG.cancelar}" value="{$LANG.cancelar}" class="submit" onclick="window.location = '{$includePATH}admin/tema_select.php?';"/> 
@@ -80,7 +87,7 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
                 <span class="material-symbols-sharp">restore_page</span>
                 Restaurar Tema
                 </div> 
-                <div class="menuBarraItem" onClick="executarNoFrameTema([novoTema]);">
+                <div class="menuBarraItem" onClick="executarNoFrameTema([salvarTema]);">
                 <span class="material-symbols-sharp">save</span>
                 Salvar Tema
                 </div>

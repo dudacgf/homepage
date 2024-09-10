@@ -47,6 +47,16 @@ class Temas
         return true;
     }
 
+
+    public function excluir() {
+        $_sql = $this->hpDB->prepare('delete from hp_temas where id = ?');
+        $_sql->bind_param('i', $this->id);
+        if (!$_sql->execute())
+            throw new Exception('erro ao excluir tema.');
+
+        return $this->hpDB->getAffectedRows();
+    }
+
     static function getArray()
     {
         global $global_hpDB;

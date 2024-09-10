@@ -26,15 +26,8 @@ else {
             $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] alterada para ' . $color . '"}');
         else
             $homepage->assign('response', '{"status": "error", "message": "Não foi possível alterar a cor de [' . $rv['descricao'] . ']"}');
-    } catch (Exception) {
-        try {
-            if ($trv->atualizar($idTema, $root_var, $color))
-                $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] alterada para ' . $color . '"}');
-            else
-                $homepage->assign('response', '{"status": "error", "message": "Não foi possível alterar a cor de [' . $rv['descricao'] . ']"}');
-        } catch (Exception $e) {
-            $homepage->assign('response', '{"status": "error", "message": "Erro ao alterar a cor de [' . $rv['descricao'] . ']: ' . $e->getMessage() . '"}');
-        }
+    } catch (Exception $e) {
+        $homepage->assign('response', '{"status": "error", "message": "Erro ao alterar a cor de [' . $rv['descricao'] . ']: ' . $e->getMessage() . '"}');
     }
 }
 $homepage->display('response.tpl');

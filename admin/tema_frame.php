@@ -28,7 +28,8 @@ $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
 
 // se esta página apresentar fortune, obtém uma...
 if ($pagina->displayFortune != 0)
-    $homepage->assign("fortune", Fortunes\Fortune::obterFortune());
+    $homepage->assign("fortune", array('autorFortune' => 'o administrador',
+                         'textoFortune' => 'sem fortunes. uma pausa para seus próprios augúrios.'));
 
 // dados para popular o form de cores
 $homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
@@ -43,7 +44,17 @@ $homepage->assign('svg_pantone', $svg_pantone);
 $svg_palette = file_get_contents($images_path . 'palette.svg');
 $homepage->assign('svg_palette', $svg_palette);
 
-$homepage->assign('rootVars', '');
+// alterações de cor ainda não salvas
+$temaRootVars = Temas\TemaRootVars::getArray($_idTema);
+if ($temaRootVars) {
+    $homepage->assign('AAtrv', $temaRootVars);
+    $rv = ':root { ';
+    foreach ($temaRootVars as $rootvar)
+        $rv .= $rootvar['rootvar'] . ': ' . $rootvar['cor'] . ';';
+    $rv .= '}';
+    $homepage->assign('rootVars', $rv); 
+} else
+    $homepage->assign('rootVars', '');
 
 // Leio as categorias da página e percorro-as, incluíndo-as no template
 $pagina->lerElementos();
@@ -85,6 +96,6 @@ $homepage->assign('descricoesGrupos', (isset($descricoesGrupos)? $descricoesGrup
 // elementos enviados ao template
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('displayFortune', '1');
-$homepage->display('admin/frame_index.tpl');
+$homepage->display('admin/tema_frame.tpl');
 ?>
 

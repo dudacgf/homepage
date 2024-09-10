@@ -23,8 +23,8 @@ class TemaRootVars {
     function inserir($idTema, $rootvar, $cor) {
         global $global_hpDB;
 
-        $_sql = $global_hpDB->prepare("insert into hp_temasxrootvars values (?, ?, ?)");
-        $_sql->bind_param("iss", $idTema, $rootvar, $cor);
+        $_sql = $global_hpDB->prepare("insert into hp_temasxrootvars (idTema, rootvar, cor) values (?, ?, ?) on duplicate key update cor = ?");
+        $_sql->bind_param("isss", $idTema, $rootvar, $cor, $cor);
 
         try {
             if (!$_sql->execute()) 
@@ -35,6 +35,7 @@ class TemaRootVars {
             throw new Exception("Erro ao gravar a alteração no tema: " . $e->getMessage());
         }
     }
+
     function atualizar($idTema, $rootvar, $cor) {
         global $global_hpDB;
 

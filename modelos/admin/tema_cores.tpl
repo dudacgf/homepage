@@ -21,7 +21,7 @@
             </div>
         </div>
     </div>
-    <div style="width: 100%; height: 5px; margin: 0; margin-top: 10px; padding: 0; border: 0; background-color: var(--theme-tituloBB);"></div>
+    <div style="width: 100%; height: 5px; margin: 0; margin-top: 10px; padding: 0; border: 0; background-color: var(--cor-tituloBB);"></div>
     <div class="boxContent">
         <div style="display: flex; width: 100%; margin-top: 1rem;">
             <div id="previewElementoPicked" style="float: left; min-width: 150px; display: block"></div>
@@ -58,7 +58,7 @@
                     </div>
                     </div>
                 </div>
-                <button id="colorPicker" data-jscolor="{}" style="display: none;"></button>
+                <input id="colorPicker" data-jscolor="{literal}{format: 'hex', mode: 'HVS', valueElement: '#selectedColor', required: false, backgroundColor: 'transparent', previewPosition: 'right', container: '#pickercontainer', position: 'bottom', onChange: onChangeColorPicker, hideOnLeave: false, shadow: false, height: 127, width:131, zIndex: 0}{/literal}" style="display: none;"></button>
                 <div class="boxContorno" id="boxCores" style="display: none;">
                     <div class="blockCor">
                     <div class="contentCor" id="boxContent">

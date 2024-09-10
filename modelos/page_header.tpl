@@ -10,17 +10,18 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
-{if isset($tema)}
-<link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$tema.nome}.css" />
-{/if}
 <link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$classPagina}.css" />
-{if isset($admin_area) or (isset($displaySelectColor) and $displaySelectColor == '1')}
+{if isset($admin_area)}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/material_symbols.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
+{if isset($tema)}
+<script type="text/javascript" src="{$includePATH}js/temasAPI.js"></script>
+<script type="text/javascript" src="{$includePATH}js/jscolor.min.js"></script>
+{/if}
 <script type="text/javascript" src="{$includePATH}js/chamadaAPI.js"></script>
 <script type="text/javascript" src="{$includePATH}js/adminAPI.js"></script>
 <script type="text/javascript" src="{$includePATH}js/toast.js"></script>
-{/if}
+{else}
 <script type="text/javascript">
 const go = (goUrl, idElemento) => {
     const url = window.includePATH + 'api/addVisita.php?idElm=' + idElemento;
@@ -31,8 +32,9 @@ const go = (goUrl, idElemento) => {
     document.location = goUrl;
 }
 </script>
+{/if}
 <script type="text/javascript">window.includePATH = "{$includePATH}";</script>
-{if isset($rootVars) and !empty($rootVars)}
+{if isset($rootVars)}
 <style type="text/css">
 {$rootVars|strip}
 </style>

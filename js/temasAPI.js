@@ -283,11 +283,10 @@ const existeTema = async(nomeTema) => {
 }
 
 /**
- * salvarTema - chamada após exibição do form de salvamento de temas
+ * salvarTema - chamada para salvar as alterações do tema no arquivo .css
+ *
  */
-const salvarTema = async (rt = null) => {
-    if (!rt)
-        rt = document.querySelector(':root');
+const salvarTema = async () => {
     const idTema = document.getElementById('idTema').value;
     const nomeTema = document.getElementById('nome').value;
     const comentarioTema = document.getElementById('comentario').value;
@@ -300,18 +299,10 @@ const salvarTema = async (rt = null) => {
         return ;
     }
 
-    let existe = await existeTema(nomeTema);
-
-    if (existe && (!confirm('Já existe um Tema com esse nome. Sobrepõe?'))) {
-        createToast('info', 'Tema não foi salvo');
-        return ;
-    }
-
     const formData = new FormData();
     formData.append('idTema', idTema);
     formData.append('nomeTema', nomeTema);
     formData.append('comentarioTema', comentarioTema);
-    formData.append('paresDeCores', JSON.stringify(getAllThemeColorPairs(rt)));
     let r = await chamadaAPI('salvarTema', {method: 'POST', body: formData});
 
     createToast(r.status, r.message);
