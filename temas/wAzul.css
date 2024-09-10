@@ -42,9 +42,5 @@
     --cor-expandedColor: #4682B4;
     --cor-interiorBG: #4682B4;
     --cor-fontS: 1.2em;
-}
-/* ajuste para a edição de elementos */
-div.tituloColuna a, div.tituloColuna:hover a {
-    color: white;
-    background-color: var(--cor-buttonBG);
+    --cor-logostarBG: #ff6600;
 }

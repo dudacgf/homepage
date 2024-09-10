@@ -50,12 +50,9 @@
     --cor-mDropdownBTL: #404040;
     --cor-mDropdownBBR: #000000;
     --cor-opcoesC: #B22222;
+    --cor-logostarBG: #FFFF99;
 }
 /* ajuste para a edição de elementos */
 div.tituloColuna a, div.tituloColuna:hover a {
     color: white;
-}
-.logo_star {
-    fill: var(--cor-fortuneBG);
-    stroke: var(--cor-fortuneBG);
 }
