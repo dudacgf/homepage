@@ -1,78 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
-   width="120mm"
-   height="95mm"
-   viewBox="0 0 120 95"
-   version="1.1"
-   id="svg5"
-   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
-   sodipodi:docname="logo_shires.svg"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <sodipodi:namedview
-     id="namedview7"
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1.0"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:document-units="mm"
-     showgrid="false"
-     inkscape:zoom="0.61468855"
-     inkscape:cx="745.9062"
-     inkscape:cy="560.44642"
-     inkscape:window-width="1238"
-     inkscape:window-height="963"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="1"
-     inkscape:current-layer="layer1" />
-  <defs
-     id="defs2">
-    <rect
-       x="147.81367"
-       y="363.28738"
-       width="482.49155"
-       height="70.818382"
-       id="rect7937" />
-  </defs>
-  <g
-     inkscape:label="Camada 1"
-     inkscape:groupmode="layer"
-     id="layer1">
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:2.64583;stroke-miterlimit:4;stroke-dasharray:none"
-       id="path846"
-       sodipodi:type="arc"
-       sodipodi:cx="47.844257"
-       sodipodi:cy="47.840744"
-       sodipodi:rx="46.51638"
-       sodipodi:ry="46.51638"
-       sodipodi:start="0.38741372"
-       sodipodi:end="6.2527874"
-       sodipodi:arc-type="arc"
-       sodipodi:open="true"
-       d="M 90.913273,65.414403 A 46.51638,46.51638 0 0 1 34.856887,92.507307 46.51638,46.51638 0 0 1 2.0670351,39.581231 46.51638,46.51638 0 0 1 51.28588,1.4518567 46.51638,46.51638 0 0 1 94.339148,46.426961" />
-    <text
-       xml:space="preserve"
-       transform="matrix(0.26458333,0,0,0.26458333,-34.414381,-47.187522)"
-       id="text7935"
-       style="font-size:52px;line-height:1.25;font-family:sans-serif;word-spacing:0px;white-space:pre;shape-inside:url(#rect7937)"><tspan
-         x="147.81445"
-         y="409.29492"
-         id="tspan4868"><tspan
-           style="font-weight:bold;-inkscape-font-specification:'sans-serif Bold'"
-           id="tspan4866">The Shire's Co</tspan></tspan></text>
-    <circle
-       style="fill:#f98b00;fill-opacity:1;fill-rule:evenodd"
-       id="path42215"
-       cx="47.830723"
-       cy="26.031221"
-       r="14.721099" />
+   viewBox="0 0 100 80" height="80px" width="100px"
+   xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+  <g>
+    <path id="path75"
+       d="M 64.890912,59.078155 A 34.944241,34.944241 0 0 1 20.67437,68.102796 34.944241,34.944241 0 0 1 4.4306571,25.999489 34.944241,34.944241 0 0 1 43.250986,2.9879976 34.944241,34.944241 0 0 1 72.390934,37.446815"
+       class="logo" />
+    <circle id="path1517" cx="37.445465" cy="20.567383" r="11.707489" class="logo_star" />
+    <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-39.164303,-26.643296)" id="text8227" class="logo_brand">
+       <tspan x="173.60742" y="301.60919" id="tspan1254"><tspan style="font-weight:900;font-size:64px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Heavy'" id="tspan1250">The Shires</tspan><tspan style="font-weight:900;font-size:18.6667px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Heavy'" id="tspan1252">Co</tspan></tspan>
+    </text>
   </g>
 </svg>
