@@ -70,19 +70,20 @@ body {
     transform: scale(0.8);
     transform-origin: 0 0;
 }
-.logo {
-display: flex; 
-float: left; 
-clear: both; 
-position: relative;
-width: 80px;
-height: 80px;
-margin-right: 20px;
+/* o logo no título é definido aqui */
+div.logo {
+    display: flex; 
+    float: left; 
+    clear: both; 
+    position: auto;
+    width: 80px; 
+    height: 80px; 
+    margin-right: 1rem;
 }
-.logo img {
-    background-color: var(--theme-tituloBG);
-    border-radius: 50%;
-}
+/* arco externo, marca e estrela (retirados do svg gerado pelo inkscapep */
+.logo { fill:none; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
+.logo_brand { font-family:sans-serif; font-size:40px; line-height:1.25; shape-inside:url(#rect8229); white-space:pre; word-spacing:0px; }
+.logo_star { fill:#ff6600; stroke:#ff6600; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
 a {
 display: block; text-decoration: none; white-space: nowrap;
 font-size: 0.9rem;
@@ -92,13 +93,6 @@ a:first-letter {
 }
 a:hover {
 text-decoration: underline;
-}
-a span.popup {
-display: none;
-}
-a:hover span.popup {
-display: block; position: absolute; width: 200px; padding: 5px; margin: 5px;
-border-right: 1px solid; border-bottom: 1px solid;
 }
 form {
 margin-top: 0px; margin-bottom: 0px;
@@ -145,8 +139,8 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     font-size: 4rem;
     font-weight: 800;
     text-align: left;
-    background-color: var(--theme-light);
-    color: var(--theme-tituloBG);
+    background-color: var(--cor-light);
+    color: var(--cor-tituloBG);
     display: flex;
     align-items: center;
     width: 100%;
@@ -158,6 +152,23 @@ width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; paddin
     padding-bottom: 10px;
     padding-left: 10px;
     border-bottom: 20px solid;
+}
+.barraFinal {
+    width: 100%;
+    height: 20px; 
+    margin: 0; 
+    padding: 0; 
+    border: 0;
+}
+div.content {
+    clear: both;
+    white-space: nowrap;
+    padding: 0px;
+    margin: 5px auto;
+    width: 100%;
+    text-align: center;
+    height: auto;
+    display: table;
 }
 div.contentColumn {
     flex-flow: column;
@@ -172,16 +183,6 @@ div.contentColumn {
     display: flex;
 }
 
-div.content {
-    clear: both;
-    white-space: nowrap;
-    padding: 0px;
-    margin: 5px auto;
-    width: 100%;
-    text-align: center;
-    height: auto;
-    display: table;
-}
 div.containerCategoria {
 float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%; margin-left: 3px; margin-right: 3px; text-align: left;
 }
@@ -245,6 +246,9 @@ div.headclickable, div.headexpandable {
 border: 2px solid; border-radius: 2px; padding: 5px 5px; height: 14px;
 font-size: 0.9rem; cursor: pointer; margin-top: 2px; white-space: nowrap;
 font-weight: 600;
+}
+div.headclickable {
+    cursor: pointer;
 }
 span.separador {
 font-weight: 800;
@@ -339,7 +343,7 @@ display: flex;
     cursor: pointer;
 }
 iframe.exemploPagina {
-box-shadow: 12px 15px var(--theme-dark); z-index: 10;
+box-shadow: 12px 15px var(--cor-dark); z-index: 10;
 position: absolute; right: 1%; top: +160px;
 transform: scale(0.40); transform-origin: top right; pointer-events: none;
 }
@@ -616,7 +620,7 @@ label.boxSelecaoLabel:has( .boxRadio:active, .boxRadio:checked )::after {
 }
 /* área do preview */
 #previewColorPicked, #previewElementoPicked {
-border: 1px solid var(--theme-medium);
+border: 1px solid var(--cor-medium);
 border-radius: 1rem;
 width:  100%;
 height: 5.2rem; margin-left: 8px;
@@ -693,15 +697,12 @@ div.cor {
 }
 /* admin login */
 .login {
-  	width: 400px;
-  	background-color: var(--theme-bodyBG);
+  	background-color: var(--cor-bodyBG);
   	box-shadow: 0 0 9px 0 rgba(0, 0, 0, 0.3);
   	margin: 100px auto;
 }
 .login h1 {
   	text-align: center;
-  	background-color: var(--theme-tituloBG);
-  	color: var(--theme-tituloC);
   	font-size: 24px;
   	padding: 20px 0 20px 0;
   	border-bottom: 1px solid #dee0e4;
@@ -718,18 +719,13 @@ div.cor {
   	align-items: center;
   	width: 50px;
   	height: 50px;
-  	background-color: var(--theme-buttonBG);
-  	color: var(--theme-buttonC);
 }
 .login form label:has(input:required) :after {
 	content: '*';
-	color: var(--theme-buttonC);
 }
 .login form input[type="password"], .login form input[type="text"] {
   	width: 310px;
   	height: 46px;
-	background: var(--theme-inputBG);
-	color: var(--theme-inputC);
   	margin-bottom: 20px;
   	padding: 0 15px;
 }
@@ -737,16 +733,12 @@ div.cor {
   	width: 100%;
   	padding: 15px;
  	margin-top: 20px;
-  	background-color: var(--theme-buttonBG);
   	border: 0;
   	cursor: pointer;
   	font-weight: bold;
-  	color: var(--theme-buttonC);
   	transition: background-color 0.2s;
 }
 .login form input[type="submit"]:hover {
-	background-color: var(--theme-buttonC);
-	color: var(--theme-buttonBG);
   	transition: background-color 0.2s;
 }
 

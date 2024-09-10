@@ -18,142 +18,156 @@
      *
     
     * cor escura, clara e média do tema
-    --theme-dark: #101820;
-    --theme-medium: #a7a8aa;
-    --theme-light: #d9d9d6;
+    --cor-dark: 
+    --cor-medium:
+    --cor-light:
     
-    * Página (body): background-color, color, background-image 
-    --theme-bodyBG: #ffffff;
-    --theme-bodyC: #696969;
+    * Página (body): background-color, color
+    --cor-bodyBG:
+    --cor-bodyC:
     
-    * Título da página (div.titulo): background-color, color 
-    --theme-tituloBG: #a9a9a9;
-    --theme-tituloC: #101820;
-    --theme-tituloBB: #53565a;
+    * Título da página (div.titulo): background-color, color, borda inferior 
+    --cor-tituloBG:
+    --cor-tituloC:
+    --cor-tituloBB:
 
     * fortune (div.fortune): background-color, color 
-    --theme-fortuneBG: #101820;
-    --theme-fortuneC: #ffffff;
+    --cor-fortuneBG:
+    --cor-fortuneC:
 
     * Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d 
-    --theme-tituloCategBG: #212721;
-    --theme-tituloCategC: #ffffff;
-    --theme-categBTL: #d0d0ce;
-    --theme-categBBR: #000000;
+    --cor-tituloCategBG:
+    --cor-tituloCategC:
+    --cor-categBTL:
+    --cor-categBBR:
 
     * Grupos (div.interior): background-color 
-    --theme-interiorBG: #A9A9A9;
+    --cor-interiorBG:
 
     * Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d 
-    --theme-expandedBG: #808080;
-    --theme-expandedC: #696969;
-    --theme-expandedBTL: #d3d3d3;
-    --theme-expandedBBR: #696969;
+    --cor-expandedBG:
+    --cor-expandedC:
+    --cor-expandedBTL:
+    --cor-expandedBBR:
 
     * Grupos (div.headexpandable;div.headclickable): background-color, color, border s-e, border i-d
-    --theme-expandBG: #212721;
-    --theme-expandC: #ffffff;
-    --theme-expandBTL: #c8c9c7;
-    --theme-expandBBR: #2d2926;
+    --cor-expandBG:
+    --cor-expandC:
+    --cor-expandBTL:
+    --cor-expandBBR:
 
     * input type=text and select: background-color, color
-    --theme-inputBG: #d3d3d3;
-    --theme-inputC: #000000;
-    --theme-inputBTL: #000000;
-    --theme-inputBBR: #c0c0c0;
+    --cor-inputBG:
+    --cor-inputC:
+    --cor-inputBTL:
+    --cor-inputBBR:
 
     * Botão (input.submit, button): background-color, color, border s-e, border i-d
-    --theme-buttonC: #ffffff;
-    --theme-buttonBG: #212721;
-    --theme-buttonBTL: #d0d0ce;
-    --theme-buttonBBR: #000000;
+    --cor-buttonC:
+    --cor-buttonBG:
+    --cor-buttonBTL:
+    --cor-buttonBBR:
 
     * Separadores (span.separador): background-color, color
-    --theme-sepC: #101820;
-    --theme-sepH: #101820;
+    --cor-sepC:
+    --cor-sepH:
 
     * Links (a): color, links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size
-    --theme-linkC: #101820;
-    --theme-expandedColor: #101820;
-    --theme-linkH: #f5f5f5;
+    --cor-linkC:
+    --cor-expandedColor:
+    --cor-linkH:
 
     * menus: botão: cor do botão 
-    --theme-mButtonBG: #404040;
-    --theme-mButtonHBG: #909090;
+    --cor-mButtonBG:
+    --cor-mButtonHBG:
     * menus: o próprio background color, color
-    --theme-mDropdownBG: #f7f7f7;
-    --theme-mDropdownC: #111111;
-    --theme-mDropdownBTL: #404040;
-    --theme-mDropdownBBR: #000000;
+    --cor-mDropdownBG:
+    --cor-mDropdownC:
+    --cor-mDropdownBTL:
+    --cor-mDropdownBBR:
 
     * opções da página em edição/criação. color
-    --theme-opcoesC: #404040;
+    --cor-opcoesC:
     */
 }
 body {
-    background-color: var(--theme-bodyBG);
+    background-color: var(--cor-bodyBG);
 }
 /* fortunes */
 div.fortune {
-    background-color: var(--theme-fortuneBG);
-    color: var(--theme-fortuneC);
+    background-color: var(--cor-fortuneBG);
+    color: var(--cor-fortuneC);
 }
 div.menuBarra {
-    background-color: var(--theme-fortuneBG);
-    color: var(--theme-fortuneC);
+    background-color: var(--cor-fortuneBG);
+    color: var(--cor-fortuneC);
 }
 div.menuBarraItem {
     background-color: transparent;
 }
 .copyright {
-    color: var(--theme-fortuneC);
+    color: var(--cor-fortuneC);
 }
 /* categorias (colunas) */
 div.titulo {
-    background-color: var(--theme-tituloBG);
-    color: var(--theme-tituloC);
-    border-bottom-color: var(--theme-tituloBB);
+    background-color: var(--cor-tituloBG);
+    color: var(--cor-tituloC);
+    border-bottom-color: var(--cor-tituloBB);
+}
+.barraFinal {
+    background-color: var(--cor-tituloBB);
+}
+.logo {
+    stroke: var(--cor-tituloC);
+}
+.logo_brand {
+    fill: var(--cor-tituloC);
+    stroke: var(--cor-tituloC);
+}
+.logo_star {
+    fill:#ff6600;
+    stroke:#ff6600;
 }
 div.tituloCategoria, div.tituloLateral {
-    background-color: var(--theme-tituloCategBG);
-    color: var(--theme-tituloCategC);
-    border-Top-color: var(--theme-categBTL); 
-    border-Left-color: var(--theme-categBTL);
-    border-Bottom-color: var(--theme-categBBR); 
-    border-Right-color: var(--theme-categBBR);
+    background-color: var(--cor-tituloCategBG);
+    color: var(--cor-tituloCategC);
+    border-Top-color: var(--cor-categBTL); 
+    border-Left-color: var(--cor-categBTL);
+    border-Bottom-color: var(--cor-categBBR); 
+    border-Right-color: var(--cor-categBBR);
 }
 /* grupos de links */
 div.expanded, div.expandable:hover, div.interior:hover {
-    background-color: var(--theme-expandedBG);
-    color: var(--theme-expandedC);
-    border-top-color: var(--theme-expandedBTL);
-    border-left-color: var(--theme-expandedBTL);
-    border-bottom-color: var(--theme-expandedBBR);
-    border-right-color: var(--theme-expandedBBR);
+    background-color: var(--cor-expandedBG);
+    color: var(--cor-expandedC);
+    border-top-color: var(--cor-expandedBTL);
+    border-left-color: var(--cor-expandedBTL);
+    border-bottom-color: var(--cor-expandedBBR);
+    border-right-color: var(--cor-expandedBBR);
 }
 div.headexpandable, div.headclickable {
-    background-color: var(--theme-expandBG);
-    color: var(--theme-expandC);
-    border-Top-color: var(--theme-expandBTL); 
-    border-Left-color: var(--theme-expandBTL);
-    border-Bottom-color: var(--theme-expandBBR); 
-    border-Right-color: var(--theme-expandBBR);
+    background-color: var(--cor-expandBG);
+    color: var(--cor-expandC);
+    border-Top-color: var(--cor-expandBTL); 
+    border-Left-color: var(--cor-expandBTL);
+    border-Bottom-color: var(--cor-expandBBR); 
+    border-Right-color: var(--cor-expandBBR);
 }
 div.expanded a, div.expandable:hover a, div.interior:hover a {
-  color: var(--theme-linkH);
+  color: var(--cor-linkH);
 }
 /* links */
 a {
-    color: var(--theme-linkC);
+    color: var(--cor-linkC);
 }
-a:hover, span.popup, div.expanded a:hover, div.expandable:hover a:hover, div.interior:hover a:hover {
-    background-color: var(--theme-linkH);
-    color: var(--theme-expandedColor);
-    border-right-color: var(--theme-expandBBR);
-    border-bottom-color: var(--theme-expandBBR);
+a:hover, div.expanded a:hover, div.expandable:hover a:hover, div.interior:hover a:hover {
+    background-color: var(--cor-linkH);
+    color: var(--cor-expandedColor);
+    border-right-color: var(--cor-expandBBR);
+    border-bottom-color: var(--cor-expandBBR);
 }
 span.separador, label.separador {
-    color: var(--theme-sepC);
+    color: var(--cor-sepC);
 }
 div.expanded span.separador,
 div.expandable span.separador,
@@ -161,94 +175,124 @@ div.interior:hover span.separador,
 div.expanded label.separador,
 div.expandable label.separador,
 div.interior:hover label.separador {
-    color: var(--theme-sepH);
+    color: var(--cor-sepH);
 }
 div.tituloColuna a {
-    color: var(--theme-categC);
+    color: var(--cor-categC);
 }
 /* inputs, selects, buttons etc */
 input[type=text], select {
-    background-color: var(--theme-inputBG);
-    color: var(--theme-inputC);
-    border-Top-color: var(--theme-inputBTL); 
-    border-Left-color: var(--theme-inputBTL);
-    border-Bottom-color: var(--theme-inputBBR);
-    border-Right-color: var(--theme-inputBBR);
+    background-color: var(--cor-inputBG);
+    color: var(--cor-inputC);
+    border-Top-color: var(--cor-inputBTL); 
+    border-Left-color: var(--cor-inputBTL);
+    border-Bottom-color: var(--cor-inputBBR);
+    border-Right-color: var(--cor-inputBBR);
 }
 input.submit, input[type=submit].submitEspacado, button {
-  border-Top-color: var(--theme-buttonBTL); 
-  border-Left-color: var(--theme-buttonBTL);
-  border-Bottom-color: var(--theme-buttonBBR); 
-  border-Right-color: var(--theme-buttonBBR);
-  background-color: var(--theme-buttonBG);
-  color: var(--theme-buttonC);
+  border-Top-color: var(--cor-buttonBTL); 
+  border-Left-color: var(--cor-buttonBTL);
+  border-Bottom-color: var(--cor-buttonBBR); 
+  border-Right-color: var(--cor-buttonBBR);
+  background-color: var(--cor-buttonBG);
+  color: var(--cor-buttonC);
 }
 input[type=radio].selectElemento::after {
-  color: var(--theme-tituloBB);
+  color: var(--cor-tituloBB);
 }
 .reverseButton {
   background-color: transparent;
-  color: var(--theme-bodyC);
+  color: var(--cor-bodyC);
   border-color: transparent;
-  border-bottom-color: var(--theme-buttonBG) 1px solid;
+  border-bottom-color: var(--cor-buttonBG) 1px solid;
 }
 .colorWheel {
-  fill: var(--theme-bodyC);
+  fill: var(--cor-bodyC);
 }
 /* páginas administrativas. */
 div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {
-  border-Top-color: var(--theme-buttonBTL); 
-  border-Left-color: var(--theme-buttonBTL);
-  border-Bottom-color: var(--theme-buttonBBR); 
-  border-Right-color: var(--theme-buttonBBR);
-  background-color: var(--theme-buttonBG);
-  color: var(--theme-tituloCategC);
+  border-Top-color: var(--cor-buttonBTL); 
+  border-Left-color: var(--cor-buttonBTL);
+  border-Bottom-color: var(--cor-buttonBBR); 
+  border-Right-color: var(--cor-buttonBBR);
+  background-color: var(--cor-buttonBG);
+  color: var(--cor-tituloCategC);
 }
 div.opcoes {
-    color: var(--theme-opcoesC);
+    color: var(--cor-opcoesC);
 }
 .menuButton {
-    background-color: var(--theme-mButtonBG);
-    color: var(--theme-mButtonHBG);
+    background-color: var(--cor-mButtonBG);
+    color: var(--cor-mButtonHBG);
 }
 .menuButton:hover {
-    color: var(--theme-mButtonBG);
-    background-color: var(--theme-mButtonHBG);
+    color: var(--cor-mButtonBG);
+    background-color: var(--cor-mButtonHBG);
 }
 div.menuDropDown {
-    background-color: var(--theme-mDropdownBG);
-    color: var(--theme-mDropdownC);
-    border-left-color: var(--theme-mDropdownBTL);
-    border-top-color: var(--theme-mDropdownBTL);
-    border-right-color: var(--theme-mDropdownBBR);
-    border-bottom-color: var(--theme-mDropdownBBR);
+    background-color: var(--cor-mDropdownBG);
+    color: var(--cor-mDropdownC);
+    border-left-color: var(--cor-mDropdownBTL);
+    border-top-color: var(--cor-mDropdownBTL);
+    border-right-color: var(--cor-mDropdownBBR);
+    border-bottom-color: var(--cor-mDropdownBBR);
 }
 div.item, div.itemstats {
-  border-color: var(--theme-bodyC); 
-  color: var(--theme-itemC);
+  border-color: var(--cor-bodyC); 
+  color: var(--cor-itemC);
 }
 div.colunaTransparente, div.colunaTransparente div.item {
-	border-bottom: 1pt var(--theme-dark) solid;
+	border-bottom: 1pt var(--cor-dark) solid;
 }
 #form_div {
-    background-color: var(--theme-bodyBG);
+    background-color: var(--cor-bodyBG);
 }
 #invisivel_div {
-    background-color: var(--theme-light);
+    background-color: var(--cor-light);
 }
 div.tituloCores {
-    color: var(--theme-tituloCategC);
-    background-color: var(--theme-tituloCategBG);
-    border-top-color: var(--theme-tituloBB);
-    border-bottom-color: var(--theme-tituloBB);
+    color: var(--cor-tituloCategC);
+    background-color: var(--cor-tituloCategBG);
+    border-top-color: var(--cor-tituloBB);
+    border-bottom-color: var(--cor-tituloBB);
 
 }
 div.tituloClaro {
-    color: var(--theme-bodyC);
-    background-color: var(--theme-bodyBG);
+    color: var(--cor-bodyC);
+    background-color: var(--cor-bodyBG);
     border-bottom-color: transparent;
-    border-top-color: var(--theme-tituloBB);
+    border-top-color: var(--cor-tituloBB);
 }
 label.boxRadioLabel {
-    color: var(--theme-bodyC);
+    color: var(--cor-bodyC);
 }
+
+/* admin login */
+.login {
+  	background-color: var(--cor-bodyBG);
+}
+.login h1 {
+  	background-color: var(--cor-tituloBG);
+  	color: var(--cor-tituloC);
+  	border-bottom: #dee0e4;
+}
+.login form label {
+  	background-color: var(--cor-buttonBG);
+  	color: var(--cor-buttonC);
+}
+.login form label:has(input:required) :after {
+	color: var(--cor-buttonC);
+}
+.login form input[type="password"], .login form input[type="text"] {
+	background: var(--cor-inputBG);
+	color: var(--cor-inputC);
+}
+.login form input[type="submit"] {
+  	background-color: var(--cor-buttonBG);
+  	color: var(--cor-buttonC);
+}
+.login form input[type="submit"]:hover {
+	background-color: var(--cor-buttonC);
+	color: var(--cor-buttonBG);
+}
+
