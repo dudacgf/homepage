@@ -88,6 +88,9 @@
 
     * opções da página em edição/criação. color
     --cor-opcoesC:
+
+    * logo: cor da estrela (o resto terá --cor-tituloBG)
+    --cor-logostartBG:
     */
 }
 body {
