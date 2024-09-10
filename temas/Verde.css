@@ -1,0 +1,47 @@
+:root {
+    --cor-opcoesC: #333333;
+    --cor-buttonBBR: #02631c;
+    --cor-buttonBTL: #02631c;
+    --cor-buttonBG: #f2f3f4;
+    --cor-buttonC: #02631c; 
+    --cor-categBBR: #02631c;
+    --cor-categBTL: #02631c;
+    --cor-tituloCategBG: #f2f3f4;
+    --cor-tituloCategC: #02631c;
+    --cor-fortuneBG: #02631c; 
+    --cor-fortuneC: #f2f3f4;
+    --cor-expandBBR: #02631c;
+    --cor-expandedBBR: #f2f3f4;
+    --cor-expandBTL: #02631c;
+    --cor-expandedBTL: #f2f3f4;
+    --cor-interiorBG: #f2f3f4;  
+    --cor-expandBG: #f2f3f4;
+    --cor-expandedBG: #e3e3e3;
+    --cor-expandC: #02631c;
+    --cor-expandedC: #333333;
+    --cor-inputBBR: #f2f3f4;
+    --cor-inputBTL: #333333;
+    --cor-inputBG: #c0c0c0;
+    --cor-inputC: #333333;
+    --cor-expandedColor: #f2f3f4;
+    --cor-linkC: #333333;
+    --cor-linkH: #333333;
+    --cor-mDropdownBBR: #333333;
+    --cor-mDropdownBTL: #333333;
+    --cor-mDropdownBG: #f2f3f4;
+    --cor-mButtonBG: #c0c0c0;
+    --cor-mButtonHBG: #f2f3f4;
+    --cor-mDropdownC: #333333;
+    --cor-bodyBG: #f2f3f4;
+    --cor-bodyC: #333333; 
+    --cor-sepC: #333333;
+    --cor-sepH: #333333;
+    --cor-light: #f2f3f4; 
+    --cor-dark: #333333;
+    --cor-medium: #c0c0c0;
+    --cor-tituloBB: #009421;
+    --cor-tituloBG: #02631c;
+    --cor-tituloC: #f2f3f4; 
+    --cor-logostarBG: #ff6600;
+}   
+

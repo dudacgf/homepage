@@ -1,0 +1,57 @@
+/*----------------------------------------------------------
+
+   FB_like.css
+
+  (c) ecgf - 2006
+
+  ver colorbase.css, que determina as cores da página
+
+  Estilo FB_like - cores parecidas com a do facebook
+
+------------------------------------------------------------*/
+:root {
+    --cor-opcoesC:   #333333;
+    --cor-buttonBBR:  #4267B2;
+    --cor-buttonBTL:  #4267B2;
+    --cor-buttonBG:  #4267B2;
+    --cor-buttonC:  #f2f3f4;
+    --cor-categBBR:  #4267B2;
+    --cor-categBTL:  #4267B2;
+    --cor-tituloCategBG:  #4267B2;
+    --cor-tituloCategC:  #f2f3f4;
+    --cor-fortuneBG:  #4267b2;
+    --cor-fortuneC:   #f2f3f4;
+    --cor-expandBBR:  #4267B2;
+    --cor-expandedBBR:   #f2f3f4;
+    --cor-expandBTL:  #4267B2;
+    --cor-expandedBTL:   #f2f3f4;
+    --cor-interiorBG:   #f2f3f4;
+    --cor-expandBG:  #4267B2;
+    --cor-expandedBG:  #E0F2F1;
+    --cor-expandC:  #f2f3f4;
+    --cor-expandedC:   #333333;
+    --cor-inputBBR:   #f2f3f4;
+    --cor-inputBTL:   #333333;
+    --cor-inputBG:   #c0c0c0;
+    --cor-inputC:   #333333;
+    --cor-expandedColor:   #f2f3f4;
+    --cor-linkC:   #333333;
+    --cor-linkH:   #333333;
+    --cor-mDropdownBBR:   #333333;
+    --cor-mDropdownBTL:   #333333;
+    --cor-mDropdownBG:   #f2f3f4;
+    --cor-mButtonBG:   #c0c0c0;
+    --cor-mButtonHBG:   #f2f3f4;
+    --cor-mDropdownC:   #333333;
+    --cor-bodyBG:   #f2f3f4;
+    --cor-bodyC:   #333333;
+    --cor-sepC:   #333333;
+    --cor-sepH:   #333333;
+    --cor-light:   #f2f3f4;
+    --cor-dark:   #333333;
+    --cor-medium:   #c0c0c0;
+    --cor-tituloBB:   #c0c0c0;
+    --cor-tituloBG:  #4267B2;
+    --cor-tituloC:  #f2f3f4;
+    --cor-logostarBG: #FFC20F;
+}
