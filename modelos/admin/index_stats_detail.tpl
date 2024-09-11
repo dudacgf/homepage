@@ -9,10 +9,10 @@
 </div>
 <div class="contentstats" style="display: block; margin: 0;">
     {section name=lv loop=$listaLinks}
-    <div class="itemstats" style="clear: both;">{$listaLinks7dias[lv].descricaoElemento}</div>
-    <div class="itemstats right">{$listaLinks7dias[lv].NumVisitas}</div>
-    <div class="itemstats right">{$listaLinks7dias[lv].ultimaVisita}</div>
-    <div class="itemstats right">{$listaLinks7dias[lv].primeiraVisita}</div>
+    <div class="itemstats" style="clear: both;">{$listaLinksdias[lv].descricaoElemento}</div>
+    <div class="itemstats right">{$listaLinksdias[lv].NumVisitas}</div>
+    <div class="itemstats right">{$listaLinksdias[lv].ultimaVisita}</div>
+    <div class="itemstats right">{$listaLinksdias[lv].primeiraVisita}</div>
     {/section}
 </div>
 </div>

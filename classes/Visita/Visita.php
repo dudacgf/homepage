@@ -21,7 +21,7 @@ class Visita {
         return $global_hpDB->getLastInsertId();
     }
 
-    static function totalLinks($intervalo = '7') {
+    static function totalLinks($intervalo = 7) {
         global $global_hpDB;
 
         // pega o total de links diferentes visitados
@@ -38,7 +38,7 @@ class Visita {
         return $_sql->get_result()->fetch_assoc()['totalLinks'];
     }
 
-    static function lerContagem($intervalo = '7', $numResultados = 5) {
+    static function lerContagem($intervalo = 7, $numResultados = 5) {
         global $global_hpDB;
 
         // le a contagem agrupada por link visitado
