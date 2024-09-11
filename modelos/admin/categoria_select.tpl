@@ -15,17 +15,17 @@
         {section name=cat loop=$categorias}
             <label class="boxSelecaoLabel">
             <input class="boxRadio noselect" type="radio"  id="{$categorias[cat].idCategoria}" name="selectCategoria" value="{$categorias[cat].idCategoria}" onClick="document.getElementById('idCat').value = this.value;" style="user-select: none;"/>
-                        {$categorias[cat].descricaoCategoria} :: {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
+                        {$categorias[cat].descricaoCategoria} {if $categorias[cat].categoriaRestrita == 1}[ restrição - {$categorias[cat].restricaoCategoria} ]{else}[ sem restrição ]{/if}
             </label> 
         {/section}
         </div>
     </div>
     <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
-        <input type="submit" class="submitEspacado" value="{$LANG.confirmar}"
+        <input type="submit" value="{$LANG.confirmar}"
                onclick="window.location = '{$includePATH}admin/categoria_edit.php?mode=edCat&idCat=' + document.getElementById('idCat').value";/> 
-        <input type="submit" class="submitEspacado" value="{$LANG.novaCategoria}"
+        <input type="submit" value="{$LANG.novaCategoria}"
                onclick="window.location = '{$includePATH}admin/categoria_edit.php?mode=nwCat'";/>
-        <input type="submit" class="submitEspacado" value="{$LANG.voltar}"
+        <input type="submit" value="{$LANG.voltar}"
                onclick="window.location = '{$includePATH}admin/index.php'";/>
     </div>
 </div>

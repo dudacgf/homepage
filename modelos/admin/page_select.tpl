@@ -22,11 +22,11 @@
         </div>
     </div>
     <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
-        <input type="submit" class="submitEspacado" value="{$LANG.confirmar}"
+        <input type="submit" value="{$LANG.confirmar}"
                onclick="window.location = '{$includePATH}admin/page_edit.php?mode=edPag&id=' + document.getElementById('id').value";/> 
-        <input type="submit" class="submitEspacado" value="{$LANG.novaPagina}"
+        <input type="submit" value="{$LANG.novaPagina}"
                onclick="window.location = '{$includePATH}admin/page_edit.php?mode=nwPag'";/>
-        <input type="submit" class="submitEspacado" value="{$LANG.voltar}"
+        <input type="submit" value="{$LANG.voltar}"
                onclick="window.location = '{$includePATH}admin/index.php'";/>
     </div>
 </div>

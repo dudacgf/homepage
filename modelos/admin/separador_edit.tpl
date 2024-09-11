@@ -14,7 +14,7 @@
         <input type="hidden" name="mode" id="mode" value="salvarSeparador" />
         <input type="hidden" name="idElm" value="{$elemento.idElemento}" />
 {/if}
-        <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="3" /> :: 
+        <input type="submit" class="submit" name="go" value="{$LANG.gravar}" tabindex="3" />
         <input type="button" class="submit" name="go" value="{$LANG.cancelar}" onclick="javascript: ocultarFormDiv();" tabindex="4" />
     </div>
 </form>

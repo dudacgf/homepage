@@ -24,7 +24,7 @@
 	<tr><th class="categoria" colspan="3">{$deleteConfirmTituloTabela}</td></tr>
 	<tr><td><span class="fortune">
 		<br />
-		<b>:: {$deleteConfirmDescricao} :: ?</b>
+		<b>{$deleteConfirmDescricao}?</b>
 		<p />
 	</span></td></tr>
 	<tr><td>

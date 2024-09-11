@@ -12,6 +12,7 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$classPagina}.css" />
 {if isset($admin_area)}
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/admin.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/material_symbols.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
 {if isset($tema)}

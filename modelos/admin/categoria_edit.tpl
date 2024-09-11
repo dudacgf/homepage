@@ -63,10 +63,10 @@
   		<script type="text/javascript">document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);</script> 
 	</div>
 	<div class="interior" style=" text-align: center; padding-top: 4pt;">
-		<input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/> ::
+		<input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
 {if !$criarCategoria}
-		<input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/> ::
-		<input type="submit" name="go" id="go" value="{$LANG.novaCategoria}" class="submit" onclick="doAction('{$LANG.novaCategoria}')"/> ::
+		<input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>
+		<input type="submit" name="go" id="go" value="{$LANG.novaCategoria}" class="submit" onclick="doAction('{$LANG.novaCategoria}')"/>
 {/if}
 		<input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> 
 	</div>

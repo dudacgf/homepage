@@ -90,14 +90,12 @@ function carregaEstilo(nomeEstilo) {
         <label for="displayFortune">{$LANG.hp_paginas_displayFortune}</label>
         <input id="displayImagemTitulo" type="checkbox" name="displayImagemTitulo" {if $displayImagemTitulo == '1'}checked{/if} />
         <label for="displayImagemTitulo">{$LANG.hp_paginas_displayImagemTitulo}</label>
-        <input id="displaySelectColor" type="checkbox" name="displaySelectColor" {if $displaySelectColor == '1'}checked{/if} />
-        <label for="displaySelectColor">{$LANG.hp_paginas_displaySelectColor}</label>
     </div>
     <div class="interior" style=" text-align: center; padding-top: 4pt;">
-        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/> ::
+        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
 {if !$criarPagina}
-        <input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/> ::
-        <input type="submit" name="go" id="go" value="{$LANG.novaPagina}" class="submit" onclick="doAction('{$LANG.novaPagina}')"/> ::
+        <input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>
+        <input type="submit" name="go" id="go" value="{$LANG.novaPagina}" class="submit" onclick="doAction('{$LANG.novaPagina}')"/>
 {/if}
         <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> 
     </div>

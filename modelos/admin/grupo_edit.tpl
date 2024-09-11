@@ -3,7 +3,7 @@
 {include file="admin/menu.tpl"}
 <div  class="titulo">
   {if $displayImagemTitulo == '1'}<div class="logo">{strip}{$logo_shires}{/strip}</div>{/if}
-  <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}<span>
+  <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
 </div>
 
 <script type="text/javascript">
@@ -72,15 +72,15 @@ function doAction(pressed) {
     </div>
     <div class="interior" style=" text-align: center; padding-top: 4pt;">
 {if $criarGrupo}
-        <input type="hidden" id="mode" name="mode" value="crGrp" /> :: 
-        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/> ::
-        <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> :: 
+        <input type="hidden" id="mode" name="mode" value="crGrp" />
+        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
+        <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/>
 {else}
         <input type="hidden" id="mode" name="mode" value="svGrp" />
-        <input type="hidden" id="idGrp" name="idGrp" value="{$grupo.idGrupo}" /> :: 
-        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/> ::
-        <input type="button" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/> ::
-        <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> :: 
+        <input type="hidden" id="idGrp" name="idGrp" value="{$grupo.idGrupo}" />
+        <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
+        <input type="button" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>
+        <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/>
 {/if}
     </div>
 </form>
@@ -98,20 +98,20 @@ function doAction(pressed) {
 </div>
 <div class="subTitulo">{$LANG.novosElementos}:</div>
 <div class="menuBarra" style="">
-    <div class="menuBarraItem" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
-        :: {$LANG.novoLink} ::
+    <div class="menuBarraItem fa-link" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
+        {$LANG.novoLink}
     </div>
-    <div class="menuBarraItem" onClick="editarElemento('novoForm', 0, {$grupo.idGrupo});">
-        :: {$LANG.novoForm} ::
+    <div class="menuBarraItem fa-table-cells-large" onClick="editarElemento('novoForm', 0, {$grupo.idGrupo});">
+        {$LANG.novoForm}
     </div> 
-    <div class="menuBarraItem" onClick="editarElemento('novoSeparador', 0, {$grupo.idGrupo});">
-        :: {$LANG.novoSeparador} ::
+    <div class="menuBarraItem fa-arrows-up-to-line" onClick="editarElemento('novoSeparador', 0, {$grupo.idGrupo});">
+        {$LANG.novoSeparador}
     </div> 
-    <div class="menuBarraItem" onClick="editarElemento('novaImagem', 0, {$grupo.idGrupo});">
-        :: {$LANG.novaImagem} ::
+    <div class="menuBarraItem fa-image" onClick="editarElemento('novaImagem', 0, {$grupo.idGrupo});">
+        {$LANG.novaImagem}
     </div>
-    <div class="menuBarraItem" onClick="editarElemento('novoTemplate', 0, {$grupo.idGrupo});">
-        :: {$LANG.novoTemplate} ::
+    <div class="menuBarraItem fa-rectangle-list" onClick="editarElemento('novoTemplate', 0, {$grupo.idGrupo});">
+        {$LANG.novoTemplate}
     </div>
 </div>
 {/if}

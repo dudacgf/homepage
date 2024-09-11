@@ -15,17 +15,17 @@
 		{section name=g loop=$grupos}
             <label class="boxSelecaoLabel">
             <input class="boxRadio noselect" type="radio"  id="{$grupos[g].idGrupo}" name="selectgrupo" value="{$grupos[g].idGrupo}" onClick="document.getElementById('idGrp').value = this.value;" style="user-select: none;"/>
-            {$grupos[g].descricaoGrupo} :: {if $grupos[g].grupoRestrito == 1}[ restrição - {$grupos[g].restricaoGrupo} ]{else}[ sem restrição ]{/if}
+            {$grupos[g].descricaoGrupo} {if $grupos[g].grupoRestrito == 1}[ restrição - {$grupos[g].restricaoGrupo} ]{else}[ sem restrição ]{/if}
             </label> 
 		{/section}
         </div>
     </div>
     <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
-        <input type="submit" class="submitEspacado" value="{$LANG.confirmar}"
+        <input type="submit" value="{$LANG.confirmar}"
                onclick="window.location = '{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp=' + document.getElementById('idGrp').value";/> 
-        <input type="submit" class="submitEspacado" value="{$LANG.novoGrupo}"
+        <input type="submit" value="{$LANG.novoGrupo}"
                onclick="window.location = '{$includePATH}admin/grupo_edit.php?mode=nwGrp'";/>
-        <input type="submit" class="submitEspacado" value="{$LANG.voltar}"
+        <input type="submit" value="{$LANG.voltar}"
                onclick="window.location = '{$includePATH}admin/index.php'";/>
     </div>
 </div>
