@@ -24,8 +24,6 @@
 <div class="item" style="text-align: left;">{$numFortunes}</div>
 </div>
 <div class="tituloSecao">Estatísticas de visitas</div>
-<br />
 {include 'admin/index_stats_detail.tpl' title='Últimos 7 dias' totalLinks=$totalLinks7dias listaLinks=$listaLinks7dias}
-<br />
 {include 'admin/index_stats_detail.tpl' title='Último mês' totalLinks=$totalLinks1mes listaLinks=$listaLinks1mes}
 {include file="page_footer.tpl"}

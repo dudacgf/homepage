@@ -297,7 +297,15 @@ div.subTitulo {
 font-size: 1.1rem; font-weight: 600; border-bottom: 1pt solid; clear: both; padding: 5px;
 }
 div.tituloSecao {
-font-size: 1.1rem; font-weight: 600; border-bottom: 1pt solid; clear: both; padding: 5px; width: 100%; margin-top: 20px; margin-bottom: 10px; display: block;
+    font-size: 1.1rem; 
+    font-weight: 600; 
+    border-bottom: 1pt solid; 
+    clear: both; 
+    padding: 5px; 
+    width: 100%; 
+    margin-top: 20px; 
+    /*margin-bottom: 10px; */
+    display: block;
 }
 div.itemLateral {
     font-size: 0.9rem; 
@@ -335,6 +343,7 @@ div.item {
     padding: 7.5px 5px;
 }
 div.contentstats {
+    margin-top: 10px;
     margin-left: 3px; 
     display: flex; 
     clear: left; 
