@@ -106,7 +106,12 @@ div.menuBarra {
     color: var(--cor-fortuneC);
 }
 div.menuBarraItem {
-    background-color: transparent;
+    background-color: var(--cor-fortuneBG);
+    color: var(--cor-fortuneC);
+}
+div.menuBarraItem:hover {
+    background-color: var(--cor-fortuneC);
+    color: var(--cor-fortuneBG);
 }
 .copyright {
     color: var(--cor-fortuneC);
