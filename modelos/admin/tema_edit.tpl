@@ -84,11 +84,11 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
         <div class="cabecalho" style="flex: 0 1 auto; width: 100%;">
             <div class="menuBarra">
                 <div class="menuBarraItem " onClick="executarNoFrameTema([restaurarTema]);">
-                <span class="material-symbols-sharp">restore_page</span>
+                <i class="fa-regular fa-trash-can"></i>
                 Restaurar Tema
                 </div> 
                 <div class="menuBarraItem" onClick="executarNoFrameTema([salvarTema]);">
-                <span class="material-symbols-sharp">save</span>
+                <i class="fa-regular fa-floppy-disk"></i>
                 Salvar Tema
                 </div>
             </div>

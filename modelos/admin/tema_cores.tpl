@@ -1,10 +1,10 @@
     <div class="menuBarra">
         <div class="menuBarraItem" onClick="executarNoFrameTema([alterarRootVar]);">
-        <span class="material-symbols-sharp">format_color_fill</span>
+        <i class="fa-solid fa-droplet"></i>
         Alterar
         </div>
         <div class="menuBarraItem" onClick="executarNoFrameTema([restaurarRootVar]);">
-        <span class="material-symbols-sharp">format_color_reset</span>
+        <i class="fa-solid fa-droplet-slash"></i>
         Restaurar
         </div> 
     </div>
