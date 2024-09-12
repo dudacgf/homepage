@@ -1,0 +1,57 @@
+/*----------------------------------------------------------
+
+   Teal900.css
+
+  (c) ecgf - 2006
+
+  ver colorbase.css, que determina as cores da página
+
+  Estilo Teal900 - Tema criado a partir da cor Teal 900
+
+------------------------------------------------------------*/
+:root {
+    --cor-opcoesC:        #333333;
+    --cor-buttonBBR:  #26a69a;
+    --cor-buttonBTL: #26a69a;
+    --cor-buttonBG: #26a69a;
+    --cor-buttonC: #f2f3f4;
+    --cor-categBBR: #004d40;
+    --cor-categBTL: #004d40;
+    --cor-tituloCategBG: #004d40;
+    --cor-tituloCategC: #f2f3f4;
+    --cor-fortuneBG: #004d40;
+    --cor-fortuneC:        #f2f3f4;
+    --cor-expandBBR: #004d40;
+    --cor-expandedBBR:        #f2f3f4;
+    --cor-expandBTL: #004d40;
+    --cor-expandedBTL:        #f2f3f4;
+    --cor-interiorBG:        #f2f3f4;
+    --cor-expandBG: #004d40;
+    --cor-expandedBG: #E8F5E9;
+    --cor-expandC: #f2f3f4;
+    --cor-expandedC:        #333333;
+    --cor-inputBBR:        #f2f3f4;
+    --cor-inputBTL:        #333333;
+    --cor-inputBG:        #c0c0c0;
+    --cor-inputC:        #333333;
+    --cor-expandedColor:        #f2f3f4;
+    --cor-linkC:        #333333;
+    --cor-linkH:        #333333;
+    --cor-mDropdownBBR:        #333333;
+    --cor-mDropdownBTL:        #333333;
+    --cor-mDropdownBG:        #f2f3f4;
+    --cor-mButtonBG: #26a69a;
+    --cor-mButtonHBG: #e8f5e9;
+    --cor-mDropdownC:        #333333;
+    --cor-bodyBG:        #f2f3f4;
+    --cor-bodyC:        #333333;
+    --cor-sepC:        #333333;
+    --cor-sepH:        #333333;
+    --cor-light:        #f2f3f4;
+    --cor-dark:        #333333;
+    --cor-medium:        #c0c0c0;
+    --cor-tituloBB: #26A69A;
+    --cor-tituloBG: #004D40;
+    --cor-tituloC: #f2f3f4;
+    --cor-logostarBG: #26A69A;
+}
