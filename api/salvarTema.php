@@ -26,7 +26,6 @@ if (isset($requests['idTema']) and isset($requests['nomeTema']) and isset($reque
 	$_idTema = $requests['idTema'];
     $_nomeTema = $requests['nomeTema'];
     $_comentarioTema = $requests['comentarioTema'];
-    $_paresDeCores = json_decode($requests['paresDeCores']);
 
     try {
         $_tema = new Temas\Temas($_idTema);
