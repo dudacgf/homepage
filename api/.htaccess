@@ -1,0 +1,3 @@
+ErrorDocument 404 /homepage/api/404.php
+ErrorDocument 401 /homepage/api/401.php
+ErrorDocument 500 '{"status": "error", "message": "Erro 500 ao executar api, verifique os logs"}'

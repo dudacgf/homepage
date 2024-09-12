@@ -1,0 +1,7 @@
+ErrorDocument 404 /homepage/404/404.php
+RedirectMatch 404 /classes
+RedirectMatch 404 /configs
+RedirectMatch 404 /download
+RedirectMatch 404 /language
+RedirectMatch 404 /modelos
+#
