@@ -22,61 +22,57 @@
         </div>
     </div>
     <div style="width: 100%; height: 5px; margin: 0; margin-top: 10px; padding: 0; border: 0; background-color: var(--cor-tituloBB);"></div>
-    <div class="boxContent">
+    <div class="boxContent" style="width: 100%";>
         <div style="display: flex; width: 100%; margin-top: 1rem;">
             <div id="previewElementoPicked" style="float: left; min-width: 150px; display: block"></div>
             <div id="previewColorPicked" style="float: right; min-width: 150px; display: block"></div>
         </div>
     </div>
-    <div class="boxContent">
+    <div class="boxContent" style="width: 100%;">
         <div class="tituloClaro">Cor a atribuir</div>
-        <div style="display:flex; background-color: transparent; margin-bottom: 1rem;">
-            <div style="display:flex: min-height: 60vmin;">
-                <div id="options" style="display: block; margin-right: 0px;">
-                <button id="paletaAtualPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_palette} Paleta Atual</button>
-                <button id="jscolorPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_hue} Personalizada</button>
-                <button id="pantonePicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_pantone} Pantone</button>
-                <button id="materialPicker" class="reverseButton" onClick="toggleColorMode(this);">{$svg_google} Material Design</button>
-                {literal}
-                <label id="hexPicker" for"inputHEX" class="reverseButton fa-pencil" style="font-weight: 800; font-size: 1.1rem; padding-left: 5px;"; onClick="toggleColorMode(this);">Defina:<br />
-                <input type="text" id="inputHEX" style="width: 90%;" pattern="^#(?:[0-9a-fA-F]{6})$" onInput="onChangeInputHEX();" title="Cor no format hex [#RRGGBB]"/>
-                </label>
-                {/literal}
-                </div>
-            </div>
-            <div id="pickercontainer" style="display:flex; float: right; margin-left: 2px;">
-                <div class="boxContorno" id="boxInputHEX" style="display: none;">
-                    <div class="blockCor">
-                    <div class="contentCor" id="boxContentInputHEX" style="display: flex; text-align: center; align-items: center;">
-                        <div style="flex: 0 1 auto; display: flex; min-width: 100%; text-align: center;">Digite uma cor #RRGGBB</div>
-                    </div>
-                    </div>
-                </div>
-                <div class="boxContorno" id="boxCoresPaleta">
-                    <div class="blockCor">
-                    <div class="contentCor" id="boxContentPaleta">
-                    </div>
-                    </div>
-                </div>
-                <input id="colorPicker" data-jscolor="{literal}{format: 'hex', mode: 'HVS', valueElement: '#selectedColor', required: false, backgroundColor: 'transparent', previewPosition: 'right', container: '#pickercontainer', position: 'bottom', onChange: onChangeColorPicker, hideOnLeave: false, shadow: false, height: 127, width:131, zIndex: 0}{/literal}" style="display: none;"></button>
-                <div class="boxContorno" id="boxCores" style="display: none;">
-                    <div class="blockCor">
-                    <div class="contentCor" id="boxContent">
-                        {section name=pc loop=$pcPantone}
-                        <div class="cor" style="background-color: {$pcPantone[pc].cor}" onClick="boxCorClick('{$pcPantone[pc].nome}', '{$pcPantone[pc].cor}','{$pcPantone[pc].hspCor}')"></div>
+        <div style="text-align: left; display: flex; width: 100%; height: 200px;">
+                <input type="text" id="selectedColor" style="display: none;">
+                <div class="wrapper">
+                    <div class="tabs">
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-paleta" class="tab-switch" checked>
+                            <label for="tab-paleta" class="tab-label fa-palette">Paleta</label>
+                            <div class="tab-content">
+                                <div style="width: 201px; border: 1px solid #c0c0c0; border-radius: 6px; padding: 6px;">
+                                        <div class="contentCor" id="boxContentPaleta" style="width: 181px; border: 1px solid #c0c0c0; border-radius: 0; margin: 10px;"></div>
+                                </div>    
+                            </div>
+                        </div>
+                        {section name=p loop=$paresCores}
+                        {include file='admin/box_cores_detail.tpl' nomePaleta=$paresCores[p].nomePaleta paresCores=$paresCores[p].paleta size=$paresCores[p].size fa_icon=$paresCores[p].fa_icon}
                         {/section}
-                    </div>
-                    </div>
-                </div>
-                <div class="boxContorno" id="boxCoresMD" style="width: 210px; display: none;">
-                    <div class="blockCor" style="width: 210px;">
-                    <div class="contentCor" id="boxContentMD" style="width: 210px;">
-                        {section name=pc loop=$pcMaterial}
-                        <div class="cor" style="background-color: {$pcMaterial[pc].cor}" onClick="boxCorClick('{$pcMaterial[pc].nome}', '{$pcMaterial[pc].cor}','{$pcMaterial[pc].hspCor}')"></div>
-                        {/section}
-                    </div>
+                        <div class="tab" onClick="document.getElementById('colorPicker').jscolor.show();">
+                            <input type="radio" name="css-tabs" id="tab-jscolor" class="tab-switch">
+                            <label for="tab-jscolor" class="tab-label fa-eye-dropper">Spectrum</label>
+                            <div class="tab-content" id="pickercontainer">
+                                <div id="colorPicker" data-jscolor="{}"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
+<script>
+jscolor.presets.default = {
+    format: 'hex',
+    valueElement: '#selectedColor',
+    previewElement: '#selectedColor',
+    required: false,
+    backgroundColor: 'transparent',
+    previewPosition: 'right',
+    container: '#pickercontainer',
+    position: 'bottom',
+    onChange: onChangeColorPicker,
+    hideOnLeave: false,
+    shadow: false,
+    height: 151,
+    width: 181,
+    palette: getThemePalette,
+    zIndex: 0,
+}
+</script>

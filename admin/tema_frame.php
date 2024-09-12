@@ -31,19 +31,6 @@ if ($pagina->displayFortune != 0)
     $homepage->assign("fortune", array('autorFortune' => 'o administrador',
                          'textoFortune' => 'sem fortunes. uma pausa para seus próprios augúrios.'));
 
-// dados para popular o form de cores
-$homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
-$homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
-$homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
-$svg_hue = file_get_contents($images_path . 'hue.svg');
-$homepage->assign('svg_hue', $svg_hue);
-$svg_google = file_get_contents($images_path . 'google.svg');
-$homepage->assign('svg_google', $svg_google);
-$svg_pantone = file_get_contents($images_path . 'pantone.svg');
-$homepage->assign('svg_pantone', $svg_pantone);
-$svg_palette = file_get_contents($images_path . 'palette.svg');
-$homepage->assign('svg_palette', $svg_palette);
-
 // alterações de cor ainda não salvas
 $temaRootVars = Temas\TemaRootVars::getArray($_idTema);
 if ($temaRootVars) {

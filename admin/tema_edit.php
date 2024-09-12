@@ -48,18 +48,10 @@ switch ($requests['mode'])
     case 'edTema': 
         // lê os elementos coloridos e os pares de cores
         $homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
-        $homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
-        $homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
-
-        // le icones da paleta de cores
-        $svg_hue = file_get_contents($images_path . 'hue.svg');
-        $homepage->assign('svg_hue', $svg_hue);
-        $svg_google = file_get_contents($images_path . 'google.svg');
-        $homepage->assign('svg_google', $svg_google);
-        $svg_pantone = file_get_contents($images_path . 'pantone.svg');
-        $homepage->assign('svg_pantone', $svg_pantone);
-        $svg_palette = file_get_contents($images_path . 'palette.svg');
-        $homepage->assign('svg_palette', $svg_palette);
+        $paresCores[] = array('nomePaleta' => 'Pantone', 'paleta' => Temas\PaletasdeCor::getArray('Pantone'), 'size' => '180', 'fa_icon' => 'fa-swatchbook');
+        $paresCores[] = array('nomePaleta' => 'Material', 'paleta' => Temas\PaletasdeCor::getArray('Material'), 'size' => '210', 'fa_icon' => 'fa-brands fa-google');
+        $paresCores[] = array('nomePaleta' => 'RAL', 'paleta' => Temas\PaletasdeCor::getArray('RAL'), 'size' => '210', 'fa_icon' => 'fa-r');
+        $homepage->assign('paresCores', $paresCores);
 
         $tema = new Temas\Temas($_idTema);
         $homepage->assign('rootVars', '');
@@ -150,46 +142,6 @@ switch ($requests['mode'])
         $template = 'admin/script_reload.tpl';
     break;
 }
-
-/*
-if ($template == 'admin/tema_edit.tpl') {
-    if ($criarTema) {
-        // inicializa os campos para criação de um novo tema
-        $homepage->assign('rootVars', '');
-        $homepage->assign('tituloPaginaAlternativo', ':: Criação de tema');
-        $homepage->assign('tituloTabelaAlternativo', ':: Novo tema :: ');
-        $homepage->assign('tema', array('nome' => '', 'comentario' => ''));
-        $homepage->assign('classPagina', $admPag->classPagina);
-        $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
-        $homepage->assign('temas', Temas\Temas::getArray());
-    }
-    else {
-        // lê os elementos coloridos e os pares de cores
-        $homepage->assign('variaveisRoot', Temas\VariaveisRoot::obterTodasDeTipo('color'));
-        $homepage->assign('pcPantone', Temas\PaletasdeCor::getArray('Pantone'));
-        $homepage->assign('pcMaterial', Temas\PaletasdeCor::getArray('Material'));
-
-        // le icones 
-        $svg_hue = file_get_contents($images_path . 'hue.svg');
-        $homepage->assign('svg_hue', $svg_hue);
-        $svg_google = file_get_contents($images_path . 'google.svg');
-        $homepage->assign('svg_google', $svg_google);
-        $svg_pantone = file_get_contents($images_path . 'pantone.svg');
-        $homepage->assign('svg_pantone', $svg_pantone);
-        $svg_palette = file_get_contents($images_path . 'palette.svg');
-        $homepage->assign('svg_palette', $svg_palette);
-
-        $tema = new Temas\Temas($_idTema);
-        $homepage->assign('rootVars', '');
-        $homepage->assign('tituloPaginaAlternativo', $tema->nome . ' :: Edição');
-        $homepage->assign('tituloTabelaAlternativo', $tema->nome . ' :: Edição');
-        $homepage->assign('tema', array('nome' => $tema->nome, 'comentario' => $tema->comentario));
-        $homepage->assign('classPagina', $admPag->classPagina);
-        $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
-    }
-
-}
-*/
 
 if (!$criarTema)
     $homepage->assign('idTema', $_idTema);

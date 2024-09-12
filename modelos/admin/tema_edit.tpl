@@ -81,7 +81,7 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
         </div>
     </div>
     <div class="columnBox" style="width: 57%; height: 100%; border: 0; border-left: 10px solid var(--cor-tituloBB); margin-top: 1rem; display: flex; flex-flow: column; clear: top; float: left; margin: 0; padding: 20px;" >
-        <div class"cabecalho" style="flex: 0 1 auto; width: 100%;">
+        <div class="cabecalho" style="flex: 0 1 auto; width: 100%;">
             <div class="menuBarra">
                 <div class="menuBarraItem " onClick="executarNoFrameTema([restaurarTema]);">
                 <span class="material-symbols-sharp">restore_page</span>
