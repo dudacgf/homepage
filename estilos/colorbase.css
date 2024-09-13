@@ -305,9 +305,6 @@ label.boxRadioLabel {
 	color: var(--cor-buttonBG);
 }
 /* animatted tabs. from: https://codepen.io/alvarotrigo/pen/QWqXYmG tks a lot */
-.wrapper {
-    border-color: #c0c0c0;
-}
 .tabs {
     background-color: transparent;
 }

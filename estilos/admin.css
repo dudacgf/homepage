@@ -236,22 +236,43 @@ div.tituloClaro {
 }
 div.boxContent {
     float: left;
+    clear: both;
     flex-grow: 0;
     flex-shrink: 1;
     flex-basis: 100%;
+    width: 100%;
+    border: 0;
+}
+div.faixaIntermediaria {
+    background-color: var(--cor-opcoesC);
+    width: 100%; 
+    height: 5px; 
+    border: 0; 
+    margin: 0; 
+    margin-top: 10px; 
+    padding: 0; 
 }
 /* boxElementos */
 div.blockElemento {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--cor-inputBG) var(--cor-inputC);
+    scrollbar-width: none;
     background-color: transparent;
     display: flex;
     float: left;
+    clear: both; 
     width: 100%;
     height: 146px;
     margin: 0;
-    border: 0.2px solid #404040;
-    padding: 1px;
+    border: 0.2px solid #c0c0c0;
+    padding: 0;
 }
 div.contentSelecao {
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-color: var(--cor-inputBG) var(--cor-inputC);
+    scrollbar-width: none;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -290,6 +311,8 @@ div.boxSelecao {
     align-items: center;
 }
 div.contentElemento {
+    float: left; 
+    clear: both;
     overflow-y: auto;
     overflow-x: hidden;
     width: 100%;
@@ -297,8 +320,6 @@ div.contentElemento {
     border: 0;
     padding: 0;
     margin: 0;
-    margin-top: 4px;
-    margin-bottom: 4px;
 }
 input[type=radio].boxRadio {
     -webkit-appearance: none;
@@ -373,14 +394,24 @@ label.boxSelecaoLabel:has( .boxRadio:active, .boxRadio:checked )::after {
     padding-right: 15px;
 }
 /* área do preview */
-#previewColorPicked, #previewElementoPicked {
-border: 1px solid var(--cor-medium);
-border-radius: 1rem;
-width:  100%;
-height: 5.2rem; margin-left: 8px;
-margin-right: 6px; margin-bottom: 6px; padding-top: 7px;
-text-align: center; align-items: center;
-display: grid; float: left: clear: both; flex-grow: 0; flex-shrink: 1; flex-basis: 100%;
+div.previewColor {
+    text-align: center; 
+    align-items: center;
+    justify-content: space-between;
+    display: block;
+    float: left;
+    clear: both; 
+    flex-grow: 0; 
+    flex-shrink: 1; 
+    flex-basis: 100%;
+    border: 1px solid #c0c0c0;
+    border-radius: 1rem;
+    width:  100%;
+    height: 5.2rem; 
+    margin-left: 8px;
+    margin-right: 6px; 
+    margin-bottom: 6px; 
+    padding-top: 7px;
 }
 .textMiddle {
     place-content: center;
@@ -431,16 +462,23 @@ div.blockCor {
     border:0;
     padding: 0;
 }
+div.boxPaleta {
+    border: 1px solid #c0c0c0; 
+    border-radius: 6px; 
+    padding: 6px;
+}
 div.contentCor {
     overflow-y: auto;
     overflow-x: hidden;
+    scrollbar-color: var(--cor-inputBG) var(--cor-inputC);
+    scrollbar-width: none;
     display: block;
     width: 180px;
     height: 146px;
-    margin: 0;
+    border: 1px solid #c0c0c0; 
+    border-radius: 0;
+    margin: 10px;
     margin-bottom: 4px;
-    border: 0;
-    border-radius: 8px;
     padding: 0;
 }
 div.cor {
@@ -497,19 +535,25 @@ div.cor {
   	transition: background-color 0.2s;
 }
 /* animatted tabs. from: https://codepen.io/alvarotrigo/pen/QWqXYmG tks a lot */
+.wrapperOnwrapper {
+    text-align: left; 
+    display: flex; 
+    width: 100%; 
+    height: 200px;
+}
 .wrapper {
     max-width: 50rem;
     width: 100%;
     height: 250px;
-    border: 1px solid;
-    border-radius: 5px;
+    border: 1px solid #c0c0c0;
+    border-radius: 10px;
     margin: 0;
 }
 .tabs {
     position: relative;
     margin: 0;
-    margin-top: 2px;
-    margin-left: 2px;
+    margin-top: 4px;
+    margin-left: 4px;
     height: 18vmin;
     width: calc(100% - 10px);
 }
@@ -532,7 +576,7 @@ div.cor {
     display: block;
     line-height: 2.75em;
     height: 3em;
-    padding: 0 1.618em;
+    padding: 0 0.618em;
     cursor: pointer;
     top: 0;
     transition: all 0.25s;
@@ -543,6 +587,7 @@ div.cor {
 }
 .tab-content {
     justify-content: center;
+    align-items: center;
     display: grid;
     width: calc(100% - 40px);
     height: 18vmin;
@@ -566,4 +611,42 @@ div.cor {
     opacity: 1;
     transition: all 0.35s;
 }
-
+/* box para input da cor em formato #RRGGBB */
+div.boxInput {
+    width: 180px; 
+    height: 1.5rem; 
+    text-align: left; 
+    outline: 1px solid #c0c0c0; 
+    margin: 5px; 
+    padding: 0;
+    border-collapse: collapse;
+}
+div.previewInput {
+    display: flex; 
+    float: left;
+    width: 30px;  
+    height: 100%; 
+    background-color: #c0c0c0; 
+    border: 1px solid #c0c0c0; 
+    margin: 0; 
+    padding: 0; 
+}
+#colorInput {
+    font-size: 1rem; 
+    width: 147px; 
+    margin: 0; 
+    border: 0;
+    padding: 0; 
+    outline: 0; 
+    line-height: 1rem; 
+    height: 1.59rem;
+}
+pre.colorOut {
+    font-size: small; 
+    color: var(--cor-bodyC);
+    width: 159px; 
+    height: 90px; 
+    border: 1px solid #c0c0c0; 
+    padding: 10px; 
+    margin: 5px; 
+}

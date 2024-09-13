@@ -8,29 +8,29 @@
         Restaurar
         </div> 
     </div>
-    <div class="boxContent" style="float: left; clear: both; width: 100%;">
+    <div class="boxContent">
         <div class="tituloClaro">Item a alterar</div>
-        <div class="blockElemento" style="float: left; clear: both; width: 100%; padding-top: 0;">
-            <div class="contentElemento" id="selectElemento" style="float: left; clear: both; margin: 0;">
+        <div class="blockElemento">
+            <div class="contentElemento" id="selectElemento">
                 {section name=vr loop=$variaveisRoot}
                 <label class="boxRadioLabel" id="lbl_{$variaveisRoot[vr].rootvar}" style="font-size: 1rem;">
-                <input class="boxRadio" type="radio" id="{$variaveisRoot[vr].rootvar}" name="selectElemento" value="{$variaveisRoot[vr].rootvar}" onClick="executarNoFrameTema([onChangeElementoBoxElementoCor], false);" style="font-size: 0.9rem; line-height: auto;"/>
+                <input class="boxRadio" type="radio" id="{$variaveisRoot[vr].rootvar}" name="selectElemento" value="{$variaveisRoot[vr].rootvar}" onClick="executarNoFrameTema([onChangeElementoBoxElementoCor], false);"/>
                 {$variaveisRoot[vr].descricao}
                 </label> 
                 {/section}
             </div>
         </div>
     </div>
-    <div style="width: 100%; height: 5px; margin: 0; margin-top: 10px; padding: 0; border: 0; background-color: var(--cor-tituloBB);"></div>
-    <div class="boxContent" style="width: 100%";>
+    <div class="boxContent faixaIntermediaria"></div>
+    <div class="boxContent">
         <div style="display: flex; width: 100%; margin-top: 1rem;">
-            <div id="previewElementoPicked" style="float: left; min-width: 150px; display: block"></div>
-            <div id="previewColorPicked" style="float: right; min-width: 150px; display: block"></div>
+            <div id="previewElementoPicked" class="previewColor"></div>
+            <div id="previewColorPicked" class="previewColor"></div>
         </div>
     </div>
-    <div class="boxContent" style="width: 100%;">
+    <div class="boxContent">
         <div class="tituloClaro">Cor a atribuir</div>
-        <div style="text-align: left; display: flex; width: 100%; height: 200px;">
+        <div class="wrapperOnwrapper">
                 <input type="text" id="selectedColor" style="display: none;">
                 <div class="wrapper">
                     <div class="tabs">
@@ -38,8 +38,8 @@
                             <input type="radio" name="css-tabs" id="tab-paleta" class="tab-switch" checked>
                             <label for="tab-paleta" class="tab-label fa-palette">Paleta</label>
                             <div class="tab-content">
-                                <div style="width: 201px; border: 1px solid #c0c0c0; border-radius: 6px; padding: 6px;">
-                                        <div class="contentCor" id="boxContentPaleta" style="width: 181px; border: 1px solid #c0c0c0; border-radius: 0; margin: 10px;"></div>
+                                <div class="boxPaleta" style="width: 201px;">
+                                        <div class="contentCor" id="boxContentPaleta" style="width: 181px;"></div>
                                 </div>    
                             </div>
                         </div>
@@ -53,11 +53,25 @@
                                 <div id="colorPicker" data-jscolor="{}"></div>
                             </div>
                         </div>
+                        <div class="tab">
+                            <input type="radio" name="css-tabs" id="tab-jsinput" class="tab-switch">
+                            <label for="tab-jsinput" class="tab-label fa-pencil"></label>
+                            <div class="tab-content" id="inputcontainer">
+                                <div class="boxPaleta">
+                                    <div class="boxInput">
+                                        <div id="previewInput" class="previewInput"></div>
+                                        <input type="input" class="colorInput" id="colorInput" name="colorInput" value="#FFFF00" {literal}pattern="#[0-9a-fA-F]{6}"{/literal} onInput="updateColorOut();">
+                                    </div>
+                                    <pre id="colorOut" class="colorOut"></prev>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
         </div>
     </div>
 <script>
+// Este aparece já aberto, sem o campo de input nem preview 
 jscolor.presets.default = {
     format: 'hex',
     valueElement: '#selectedColor',

@@ -369,20 +369,41 @@ function onChangeElementoBoxElementoCor() {
  * @listens evento de clique no boxElementos
  *
  */
-function onChangeInputHEX() {
-  const inputHex = document.getElementById('inputHEX');
-  const aCor = inputHex.value;
+function atualizaPreviewColorPicked() {
+  const colorInput= document.getElementById('colorInput');
 
-  if (! /^#[0-9A-F]{6}$/i.test(aCor)) 
-    return;
+}
 
-  const preview = document.querySelector('#previewColorPicked');
-  const select = document.querySelector('#selectedColor');
+function updateColorOut() {
+    const colorPicker = document.getElementById('colorPicker').jscolor;
+    const colorInput = document.getElementById('colorInput');
+    const previewInput = document.getElementById('previewInput').style;
+    const aCor = colorInput.value;
 
-  preview.style.backgroundColor = aCor;
-  preview.style.color = HSP(aCor);
-  preview.innerHTML = '<div class="textMiddle">Definida<br/>' + aCor + '</div>';
-  select.value = aCor;
+    previewInput.backgroundColor = aCor;
+    colorPicker.fromString(aCor);
+
+    document.getElementById('colorOut').innerHTML = [
+        'RGB = ' + colorPicker.toRGBString(),
+        'R = ' + colorPicker.channel('R'),
+        'G = ' + colorPicker.channel('G'),
+        'B = ' + colorPicker.channel('B'),
+        'H = ' + colorPicker.channel('H'),
+        'S = ' + colorPicker.channel('S'),
+        'V = ' + colorPicker.channel('V'),
+    ].join('\n');
+
+    /* se for cor válida, atualiza o preview */
+    if (! /^#[0-9A-F]{6}$/i.test(colorPicker.value)) {
+        const preview = document.querySelector('#previewColorPicked');
+        const select = document.querySelector('#selectedColor');
+
+        preview.style.backgroundColor = aCor;
+        preview.style.color = HSP(aCor);
+        preview.innerHTML = '<div class="textMiddle">Definida<br/>' + aCor + '</div>';
+        select.value = aCor;
+    }
+
 }
 
 /**
