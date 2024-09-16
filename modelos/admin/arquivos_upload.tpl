@@ -19,4 +19,16 @@ function formatarResultado_Fortunes(resultadoProcesso) {
             '<br/>Vazias: ' + resultadoProcesso.totalFailNull;
 }
 </script>
+<div class="subTitulo">Paletas de cor</div>
+{include file="admin/box_upload_file.tpl" fileField="Paletas"}
+</div>
+<script>
+function formatarResultado_Paletas(resultadoProcesso) {
+    return  '<p>Resultados do processamento</p>Processadas: ' + resultadoProcesso.totalCores +
+            '<br/>Criadas: ' + resultadoProcesso.totalCriadas +
+            '<br/>Repetidas: ' + resultadoProcesso.totalRepetidas +
+            '<br/>Falhas: ' + resultadoProcesso.totalFalhas;
+}
+</script>
+<div class="barraFinal"></div>
 {include file="page_footer.tpl"}

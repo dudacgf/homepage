@@ -101,6 +101,51 @@ class PaletasdeCor
 
     }
 
+    static function processarArquivoPaleta ($_uploadFile) {
+        if (!file_exists($_uploadFile))
+            throw new \Exception('Arquivo a ser processado não existe.');
+
+        if (!($fs = fopen($_uploadFile, 'r')))
+            throw new \Exception('Arquivo a ser processado não pôde ser aberto.');
+
+        $totalCores = $totalCriadas = $totalFalhas = $totalRepetidas = 0;
+        while ($linha = fgetcsv($fs)) {
+            $totalCores++;
+
+            $pc = new PaletaCor();
+            try {
+                $pc->paleta = $linha[0];
+                $pc->nome = $linha[1];
+                $pc->cor = $linha[2];
+            } catch (Exception $e) {
+                $totalFalhas++;
+                continue;
+            }
+
+            if ($pc->paleta == '' or $pc->nome == '' or $pc->cor == '') {
+                $totalFalhas++;
+                continue;
+            }
+
+            if ($pc->existe()) {
+                $totalRepetidas++;
+                continue;
+            }
+
+            try {
+                $pc->inserir();
+                $totalCriadas++;
+            } catch (Exception $e) {
+                $totalFalhas++;
+            }
+        }
+        fclose($fs);
+
+        return array('totalCores' => $totalCores,
+                     'totalCriadas' => $totalCriadas,
+                     'totalRepetidas' => $totalRepetidas,
+                     'totalFalhas' => $totalFalhas);
+    }
 }
 
 ?>
