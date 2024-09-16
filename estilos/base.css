@@ -98,10 +98,7 @@ div.logo {
 .logo_star { fill:#ff6600; stroke:#ff6600; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
 a {
 display: block; text-decoration: none; white-space: nowrap;
-font-size: 0.9rem;
-}
-a:first-letter {
-    font-weight: 500;
+font-size: 1cqw;
 }
 a:hover {
 text-decoration: underline;
@@ -237,7 +234,7 @@ div.footer {
 clear: both; position: relative; bottom: 0px;
 }
 div.tituloCategoria {
-clear: both; font-size: 1.1rem; font-weight: 600; border-style: solid; border-width: 2px; border-radius: 5px; margin-bottom: 5px; padding: 3px;
+clear: both; font-size: 1.2cqw; font-weight: 600; border-style: solid; border-width: 2px; border-radius: 5px; margin-bottom: 5px; padding: 3px;
 }
 table {
 clear: both; margin: 0 auto;
@@ -297,7 +294,7 @@ div.expanded, div.interior:hover, div.expandable:hover {
 }
 div.headclickable, div.headexpandable {
 border: 2px solid; border-radius: 5px; padding: 5px 5px; height: 14px;
-font-size: 0.9rem; cursor: pointer; margin-top: 2px; white-space: nowrap;
+font-size: 1.1cqw; cursor: pointer; margin-top: 2px; white-space: nowrap;
 font-weight: 600;
 }
 div.headclickable {
