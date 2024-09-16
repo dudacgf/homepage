@@ -113,6 +113,7 @@ input[type=text], input[type=select] {
     border: 1pt solid; 
     border-Left: 1pt solid; 
     margin: 0;
+    width: 12cqw;
 }
 select {
 margin-left: 2px;
@@ -126,7 +127,7 @@ input[type=submit], input[type=button], button {
     border-radius: 5px; 
     vertical-align: top; 
     text-align: center;
-    font-size: 1rem; 
+    font-size: 1cqw; 
     font-weight: 600; 
     padding: 8px 16px; 
     min-width: 50px; 
@@ -303,14 +304,14 @@ div.headclickable {
 span.separador {
 font-weight: 800;
 padding-bottom: 5px;
-font-size: 1.1rem;
+font-size: 1.1cqw;
 }
 label.separador {
 font-weight: 600;
 padding-top: 5px;
 padding-bottom: 5px;
 margin-bottom: 5px;
-font-size: 1rem;
+font-size: 1cqw;
 }
 .texto {
 vertical-align: bottom;
