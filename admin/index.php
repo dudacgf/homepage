@@ -19,7 +19,7 @@ $homepage->assign('numForms', Pagina\Form::getCount());
 $homepage->assign('numSeparadores', Pagina\Separador::getCount());
 $homepage->assign('numImagens', Pagina\Imagem::getCount());
 $homepage->assign('numTemplates', Pagina\Template::getCount());
-$homepage->assign('numFortunes', Fortunes\Fortune::getCount());
+$homepage->assign('numFortunes', Fortunes\Fortunes::getCount());
 
 // estatísticas de visita
 $homepage->assign('totalLinks7dias', Visita\Visita::totalLinks(7));

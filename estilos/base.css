@@ -123,7 +123,7 @@ margin-left: 2px;
 input.FormExtra {
 Margin-Left: 2px;
 }
-input[type=submit], input[type=button] {
+input[type=submit], input[type=button], button {
     border-width: 2px; 
     border-style: solid; 
     border-radius: 5px; 
@@ -141,8 +141,43 @@ input[pattern]:invalid{
 input[type=text]:focus {
   outline: 0 none currentColor;
 }
-.colorButton {
-width: 180px; margin-left: 3px; margin-bottom: 15px; padding-right: 15px; padding-top: 3px; text-align: left; font-size: smaller;
+input[type=file].inputFile {
+    position: absolute; 
+    width: 0.1px; 
+    height: 0.1px; 
+    z-index: -1;
+}
+label.botao, 
+label.resultadoProcesso {
+    font-weight: 600;
+    float: left;
+    overflow: hidden;
+    width: 40vmin; 
+    height: 100px; 
+    border: 1px solid #c0c0c0; 
+    border-radius: 10px;
+    margin: 10px; 
+    padding: 10px; 
+}
+label.botao {
+    font-size: 2cqw;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+label.resultadoProcesso {
+    font-size: 1cqw;
+    font-weight: 400;
+    text-align: left; 
+    display: block; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+label.resultadoProcesso p {
+    margin: 5px 0;
+    font-weight: 600;
 }
 /*----------------------------------------
  *------- Estrutura da tabela de links ---

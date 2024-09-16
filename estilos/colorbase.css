@@ -197,7 +197,7 @@ input[type=text], input[type=select ]{
     border-Bottom-color: var(--cor-inputBBR);
     border-Right-color: var(--cor-inputBBR);
 }
-input[type=submit], input[type=submit].submitEspacado, input[type=button] {
+input[type=submit], input[type=submit].submitEspacado, input[type=button], button {
   border-Top-color: var(--cor-buttonBTL); 
   border-Left-color: var(--cor-buttonBTL);
   border-Bottom-color: var(--cor-buttonBBR); 

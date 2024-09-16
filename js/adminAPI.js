@@ -235,3 +235,71 @@ async function reloadElementos() {
 
     return r;
 }
+
+/******** CARGA DE ARQUIVOS ***********/
+
+/*
+ * Diminui fontSize de um elemento até que o texto caiba ou até que se
+ * atinja um tamanho mínimo
+ *
+ * @param {object} el - elemento a ser manipulado
+ * @param {string} tamanhoInicial - fontSize inicial do elemento, em qualquer notação css válida
+ * @param {int} tamanhoMinimo - fontSize mínimo para o elemento (inteiro pois getComputedStyle devolve em px)
+ *
+ * não retorna nada mas o elemento terá sua fonte diminuída até caber ou até atingir tamanhoMinimo
+ */
+function makeItFit(el, tamanhoInicial, tamanhoMinimo) {
+    el.style.fontSize = tamanhoInicial;
+    while ((el.scrollHeight > el.clientHeight || el.scrollWidth > el.clientWidth) &&
+           (parseInt(getComputedStyle(el).fontSize) >= tamanhoMinimo))
+        el.style.fontSize = parseFloat(getComputedStyle(el).fontSize) * 0.9 + "px";
+}
+
+/*
+ * Atualiza o elemento 'Label form=' de um 'input type=file' com o nome do arquivo selecionado
+ *
+ * @param {string} fileField - sufixo do campo 'input type=file'
+ *
+ */
+function updateLabel(fileField) {
+    const label = document.getElementById('labelFile_' + fileField);
+    const uploadField = document.getElementById('uploadFile_' + fileField);
+
+    if (uploadField.files.length > 0) {
+        label.innerHTML= '<i class="fa-solid fa-file-import"></i>' + uploadField.files[0].name;
+        makeItFit(label, '2cqw', 12);
+    }
+}
+
+/*
+ * envia o arquivo para processamento
+ *
+ * @param {string} fileField - sufixo do campo 'input type=file' que armazena o arquivo selecionado
+ *
+ */
+async function carregarArquivo(fileField) {
+    const files = document.getElementById('uploadFile_' + fileField).files;
+    if (files.length == 0) {
+        createToast('info', 'Selecione um arquivo a ser carregado');
+        return false;
+    }
+
+    const file = files[0];
+    const formData = new FormData();
+    formData.append('inputFile[]', file, file.name);
+
+    let r = await chamadaAPI('carregar' + fileField, {
+           method: 'POST', body: formData,
+        });
+
+    if (r.status == 'success' && r.hasOwnProperty('resultadoProcesso')) {
+        var functionFormatarResultado = window['formatarResultado_' + fileField];
+        const resultadoProcesso = document.getElementById('resultadoProcesso_' + fileField);
+        resultadoProcesso.innerHTML = functionFormatarResultado(r.resultadoProcesso);
+        makeItFit(resultadoProcesso, '1cqw', 10);
+    }
+
+    createToast(r.status, r.message);
+}
+
+
