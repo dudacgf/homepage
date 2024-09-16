@@ -1,11 +1,11 @@
-
 <?php
 /**
- * carregarArquivoCitacao.php 
+ * carregarFortunes.php 
  * salva e processa um arquivo de citações recebido via post
  *
- * recebe: o arquivo em base64
- * devolve: json resposta dizendo resultado da operação (status) e uma mensagem informativa (message)
+ * recebe: o arquivo como uma entrada da special var $_FILES
+ * devolve: json resposta contendo status, mensagem informativa e, 
+ *          se status == 'success', um array com os resultados do processamento
  */
 header( 'Expires: ' .  date( DATE_RFC1123, strtotime( "+1 hour" ) ));
 header( 'Cache-Control: no-cache' );
