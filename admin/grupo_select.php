@@ -10,7 +10,7 @@ include($admin_path . 'ler_menu.php');
 
 // obtém a página administrativa
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 
 $homepage->assign('grupos', Pagina\Grupo::getGrupos());
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarGrupo']);

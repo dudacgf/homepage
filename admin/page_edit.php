@@ -40,7 +40,7 @@ switch ($requests['mode'])
         $pagina = new Pagina\Pagina($_idPagina);
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
-        $pagina->classPagina = (string) $_REQUEST['classPagina'];
+        $pagina->temaPagina = (string) $_REQUEST['temaPagina'];
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
         $pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
@@ -66,7 +66,7 @@ switch ($requests['mode'])
         $pagina = new Pagina\Pagina(NULL);
         $pagina->tituloPagina = (string) $_REQUEST['tituloPagina'];
         $pagina->tituloTabela = (string) $_REQUEST['tituloTabela'];
-        $pagina->classPagina = (string) $_REQUEST['classPagina'];
+        $pagina->temaPagina = (string) $_REQUEST['temaPagina'];
         $pagina->displayFortune = ( isset($_REQUEST['displayFortune']) ) ? 1 : 0;
         $pagina->displayImagemTitulo = ( isset($_REQUEST['displayImagemTitulo']) ) ? 1 : 0;
         $pagina->displaySelectColor = ( isset($_REQUEST['displaySelectColor']) ) ? 1 : 0;
@@ -122,7 +122,7 @@ if ($template == 'admin/page_edit.tpl') {
         $homepage->assign('tituloTabelaAlternativo', ' :: Nova p&aacute;gina :: ');
         $homepage->assign('tituloPagina', '');
         $homepage->assign('tituloTabela', '');
-        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('temaPagina', $admPag->temaPagina);
         $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
         $homepage->assign('displayFortune', 1);
         $homepage->assign('displaySelectColor', 1);
@@ -135,7 +135,7 @@ if ($template == 'admin/page_edit.tpl') {
         $homepage->assign('idPagina', $_idPagina);
         $homepage->assign('tituloPagina', $pagina->tituloPagina);
         $homepage->assign('tituloTabela', $pagina->tituloTabela);
-        $homepage->assign('classPagina', $pagina->classPagina);
+        $homepage->assign('temaPagina', $pagina->temaPagina);
         $homepage->assign('displayFortune', $pagina->displayFortune);
         $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
         $homepage->assign('displaySelectColor', $pagina->displaySelectColor);

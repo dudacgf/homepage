@@ -21,7 +21,7 @@ if (!isset($_SESSION['loggedin'])) {
     $admPag = new Pagina\Pagina(ID_ADM_PAG);
     $homepage->assign('target_url', $target_url);
     $homepage->assign('admin_area', true);
-    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('temaPagina', $admPag->temaPagina);
     $homepage->assign('includePATH', INCLUDE_PATH);
     $homepage->display('admin/login.tpl');
     exit;

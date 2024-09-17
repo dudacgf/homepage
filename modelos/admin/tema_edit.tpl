@@ -1,5 +1,5 @@
 {include file="page_header.tpl"}
-<body id="theBody" class="{$classPagina}" onload="executarNoFrameTema([populaElementoCor, carregarPaletaAtual], false); {if isset($smarty.cookies.showAlerta)}createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');{/if}">
+<body id="theBody" class="{$temaPagina}" onload="executarNoFrameTema([populaElementoCor, carregarPaletaAtual], false); {if isset($smarty.cookies.showAlerta)}createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');{/if}">
 <script type="text/javascript">
 function doAction(action) {
     if (action == '{$LANG.gravar}') {

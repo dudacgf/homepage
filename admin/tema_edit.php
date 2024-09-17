@@ -34,7 +34,7 @@ switch ($requests['mode'])
         $homepage->assign('tituloPaginaAlternativo', ':: Criação de tema');
         $homepage->assign('tituloTabelaAlternativo', ':: Novo tema :: ');
         $homepage->assign('tema', array('nome' => '', 'comentario' => ''));
-        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('temaPagina', $admPag->temaPagina);
         $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
         $homepage->assign('temas', Temas\Temas::getArray());
 
@@ -58,7 +58,7 @@ switch ($requests['mode'])
         $homepage->assign('tituloPaginaAlternativo', $tema->nome . ' :: Edição');
         $homepage->assign('tituloTabelaAlternativo', $tema->nome . ' :: Edição');
         $homepage->assign('tema', array('nome' => $tema->nome, 'comentario' => $tema->comentario));
-        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('temaPagina', $admPag->temaPagina);
         $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
 
         // obtém os items do menu

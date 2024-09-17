@@ -14,7 +14,7 @@ include($admin_path . 'ler_menu.php');
 $homepage->assign('displayImagemTitulo', '1');
 $homepage->assign('tituloPagina', ':: Arquivos');
 $homepage->assign('tituloTabela', ' :: Carregar Arquivos');
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('displaySelectColor', 0);
 

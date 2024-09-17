@@ -6,7 +6,7 @@ class Pagina extends ElementoAgrupado
 {
     var $idPagina;
     var $tituloPagina;
-    var $classPagina;
+    var $temaPagina;
     var $tituloTabela;
     var $displayFortune;
     var $displayImagemTitulo;
@@ -27,11 +27,11 @@ class Pagina extends ElementoAgrupado
             $this->tituloPagina = $line['TituloPagina'];
             if (isset($_REQUEST['class']) && $_REQUEST['class'] != '')
             {
-                $this->classPagina = $_REQUEST['class'];
+                $this->temaPagina = $_REQUEST['class'];
             }
             else
             {
-                $this->classPagina = $line['classPagina'];
+                $this->temaPagina = $line['temaPagina'];
             }
             $this->tituloTabela = $line['TituloTabela'];
             $this->idPagina = $line['idPagina'];
@@ -44,9 +44,9 @@ class Pagina extends ElementoAgrupado
     public function inserir()
     {
         $_sql = $this->hpDB->prepare("INSERT INTO hp_paginas
-                                      (tituloPagina, tituloTabela, classPagina, displayFortune, displayImagemTitulo, displaySelectColor)
+                                      (tituloPagina, tituloTabela, temaPagina, displayFortune, displayImagemTitulo, displaySelectColor)
                                       VALUES (?, ?, ?, ?, ?, ?)");
-        $_sql->bind_param("sssiii", $this->tituloPagina, $this->tituloTabela , $this->classPagina, $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor);
+        $_sql->bind_param("sssiii", $this->tituloPagina, $this->tituloTabela , $this->temaPagina, $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor);
 
 
         // executa o query e resgata o id criado.
@@ -58,10 +58,10 @@ class Pagina extends ElementoAgrupado
 
     public function atualizar ()
     {
-        $_sql = $this->hpDB->prepare("UPDATE hp_paginas SET tituloPagina = ?, tituloTabela = ?, classPagina = ?,
+        $_sql = $this->hpDB->prepare("UPDATE hp_paginas SET tituloPagina = ?, tituloTabela = ?, temaPagina = ?,
                                                             displayFortune = ?, displayImagemTitulo = ?, displaySelectColor = ?
                                       WHERE idPagina = ?");
-        $_sql->bind_param("sssiiii", $this->tituloPagina, $this->tituloTabela, $this->classPagina,
+        $_sql->bind_param("sssiiii", $this->tituloPagina, $this->tituloTabela, $this->temaPagina,
             $this->displayFortune, $this->displayImagemTitulo, $this->displaySelectColor, $this->idPagina);
 
         // executa o query e retorna o número de linhas afetadas (uma, se tudo der certo)
@@ -106,7 +106,7 @@ class Pagina extends ElementoAgrupado
                 'idPagina' => $this->idPagina,
                 'tituloPagina' => $this->tituloPagina,
                 'tituloTabela' => $this->tituloTabela,
-                'classPagina' => $this->classPagina,
+                'temaPagina' => $this->temaPagina,
                 'displayImagemTitulo' => $this->displayImagemTitulo,
                 'displaySelectColor' => $this->displaySelectColor                );
         }

@@ -4,7 +4,7 @@ include($language_path . "lang_homepage_admin.php");
 
 // obtém a página administrativa
 $admPag = new pagina(ID_ADM_PAG);
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 
 // verifica em que passo estamos:
 if (!isset($requests['passo']))

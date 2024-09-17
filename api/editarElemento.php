@@ -76,7 +76,7 @@ if (isset($requests['idGrp'])) {
         $homepage->assign('criarElemento', false);
         $homepage->assign('imagesPATH', $images_path);
         $homepage->assign('displayImagemTitulo', '0');
-        $homepage->assign('classPagina', $admPag->classPagina);
+        $homepage->assign('temaPagina', $admPag->temaPagina);
         $html_template = base64_encode($homepage->fetch($template));
         $homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
     } else 

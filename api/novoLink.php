@@ -16,7 +16,7 @@ else
 $grupo = new Pagina\Grupo($_idGrupo);
 $homepage->assign('grupo', $grupo->getArray());
 
-// obtém a página administrativa para poder usar classPagina mais tarde
+// obtém a página administrativa para poder usar temaPagina mais tarde
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 // organiza o que vai passar para o template
@@ -38,7 +38,7 @@ $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novoLink'] . ' ::');
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarElemento', $criarElemento);
 $homepage->assign('imagesPATH', $images_path);
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 $html_template = base64_encode($homepage->fetch($template));
 $homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');

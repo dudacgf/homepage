@@ -1,6 +1,6 @@
 {assign var="edicaoPagina" value="1"}
 {include file="page_header.tpl"}
-<body id="theBody" class="{$classPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
+<body id="theBody" class="{$temaPagina}"{if isset($smarty.cookies.showAlerta)} onload="createToast('{$smarty.cookies.iconAlerta|default:info}', '{$smarty.cookies.msgAlerta}');"{/if}>
 {include file="admin/menu.tpl"}
 <div  class="titulo">
   {if $displayImagemTitulo == '1'}<div class="logo">{strip}{$logo_shires}{/strip}</div>{/if}
@@ -77,11 +77,11 @@ function carregaEstilo(nomeEstilo) {
     <div class="item"><input type="text" class="FormExtra" size=30 name="tituloPagina" placeholder="{$LANG.hp_paginas_Placeholder_TituloPagina}" value="{$tituloPagina}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_paginas_TituloTabela}</div>
     <div class="item"><input type="text" class="FormExtra" size=30 name="tituloTabela" placeholder="{$LANG.hp_paginas_Placeholder_TituloTabela}" value="{$tituloTabela}" tabindex="1" /></div>
-    <div class="itemLateral">{$LANG.hp_paginas_classPagina}</div>
+    <div class="itemLateral">{$LANG.hp_paginas_temaPagina}</div>
     <div class="item">
-        <select style=" width: 122pt;" name="classPagina" id="classPagina" onChange="carregaEstilo(this.value);" >
+        <select style=" width: 122pt;" name="temaPagina" id="temaPagina" onChange="carregaEstilo(this.value);" >
         {section name=cp loop=$classNames}
-            <option value="{$classNames[cp]}" {if $classNames[cp] == $classPagina}selected="selected"{/if} >{$classNames[cp]}</option>
+            <option value="{$classNames[cp]}" {if $classNames[cp] == $temaPagina}selected="selected"{/if} >{$classNames[cp]}</option>
         {/section}
         </select>
     </div>

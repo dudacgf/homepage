@@ -101,7 +101,7 @@ switch ($requests['mode'])
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
 
 if ($template == 'admin/grupo_edit.tpl') {
-    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('temaPagina', $admPag->temaPagina);
     $homepage->assign('tiposGrupos', Pagina\TiposGrupos::getArray());
 
     if (!$criarGrupo) {

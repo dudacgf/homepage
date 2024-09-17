@@ -12,7 +12,7 @@ $homepage->assign('idPagina', 0);
 $homepage->assign('categorias', Pagina\Categoria::getCategorias());
 $homepage->assign('tituloPaginaAlternativo', $lang['tituloPaginaSelecionarCategoria']);
 $homepage->assign('tituloTabelaAlternativo', $lang['tituloTabelaSelecionarCategoria']);
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 $homepage->assign('displaySelectColor', 0);
 
 // obtém os items do menu

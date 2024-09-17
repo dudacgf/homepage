@@ -39,7 +39,7 @@ function retornaLoginComErro($errMsg) {
     $admPag = new pagina(ID_ADM_PAG);
     $homepage->assign('target_url', (empty($_SERVER['HTTPS']) ? 'http' : 'https').'//:'.$_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI']);
     $homepage->assign('admin_area', true);
-    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('temaPagina', $admPag->temaPagina);
     $homepage->assign('includePATH', INCLUDE_PATH);
     $homepage->display('admin/login.tpl');
     exit;

@@ -23,7 +23,7 @@ $pagina = new Pagina\Pagina(ID_TEMA_PAG);
 $homepage->assign('idTema', $_idTema);
 $homepage->assign('tituloPagina', $pagina->tituloPagina);
 $homepage->assign('tituloTabela', $pagina->tituloTabela);
-$homepage->assign('classPagina', $tema->nome);
+$homepage->assign('temaPagina', $tema->nome);
 $homepage->assign('displayImagemTitulo', $pagina->displayImagemTitulo);
 
 // se esta página apresentar fortune, obtém uma...

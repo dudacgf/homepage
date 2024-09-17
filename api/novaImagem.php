@@ -33,7 +33,7 @@ $homepage->assign('tituloTabelaAlternativo', ':: ' . $lang['novaImagem'] . ' ::'
 $homepage->assign('includePATH', INCLUDE_PATH);
 $homepage->assign('criarElemento', $criarElemento);
 $homepage->assign('imagesPATH', $images_path);
-$homepage->assign('classPagina', $admPag->classPagina);
+$homepage->assign('temaPagina', $admPag->temaPagina);
 $html_template = base64_encode($homepage->fetch($template));
 $homepage->assign('response', '{"status": "success", "message": "' . $html_template . '"}');
 $homepage->display('response.tpl');

@@ -100,7 +100,7 @@ switch ($requests['mode'])
 $admPag = new Pagina\Pagina(ID_ADM_PAG);
 if ($template == 'admin/categoria_edit.tpl') {
 
-    $homepage->assign('classPagina', $admPag->classPagina);
+    $homepage->assign('temaPagina', $admPag->temaPagina);
 
     if (!$criarCategoria) 
     {

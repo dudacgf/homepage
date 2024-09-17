@@ -36,7 +36,7 @@ $pagina = new Pagina\Pagina(ID_ADM_PAG);
 include($admin_path . 'ler_menu.php');
 
 // elementos enviados ao template
-$homepage->assign('classPagina', $pagina->classPagina);
+$homepage->assign('temaPagina', $pagina->temaPagina);
 $homepage->assign('tituloPaginaAlternativo', $lang['paginaEstatisticasTituloPagina']);
 $homepage->assign('tituloTabelaAlternativo', $lang['paginaEstatisticasTituloTabela']);
 $homepage->assign('displayImagemTitulo', $admPag->displayImagemTitulo);
