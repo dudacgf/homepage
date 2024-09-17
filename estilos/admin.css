@@ -23,16 +23,16 @@ div.tituloSecao {
 div.itemLateral {
     font-size: 0.9rem;
     font-weight: 600;
-    line-height: 1;
+    line-height: 1.5rem;
     text-align: right;
     float: left;
     clear: left;
     width: 25%;
-    height: fit-content;
+    height: 30px;
     border: 0px;
     border-bottom: 1px solid;
     margin: 2px;
-    padding: 8px 5px;
+    padding: 11px 5px 5px 5px;
 }
 div.itemstats {
     font-family: 'Roboto Mono';
@@ -49,13 +49,27 @@ div.itemstats {
 }
 div.item {
     font-size: 0.9rem;
-    align-items: center;
+    line-height: 1.5rem;
     float: left;
     width: 44%;
-    height: fit-content;
+    height: 30px;
+    border: 0px;
     border-bottom: 1px solid;
+    margin: 2px;
+    padding: 8px 5px;
+}
+div.item input[type=text].FormExtra {
+    font-size: 1.2cqw;
+    width: 80%;
+    height: 20px;
+    border: 1px;
     margin: 0;
-    padding: 7.5px 5px;
+    padding: 2px 5px;
+    border: 1px solid;
+    border-top-color: var(--cor-inputBTL);
+    border-left-color: var(--cor-inputBTL);
+    border-bottom-color: var(--cor-inputBBR);
+    border-right-color: var(--cor-inputBBR);
 }
 div.contentstats {
     margin-top: 10px;
