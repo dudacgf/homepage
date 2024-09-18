@@ -19,10 +19,10 @@ else {
 	$idTema = urldecode($_REQUEST['idTema']);
 	$root_var = urldecode($_REQUEST['root_var']);
 
-    $trv = new Temas\TemaRootVars();
+    $trv = new Temas\TemaCSS();
     try {
         $rv = Temas\VariaveisRoot::obterPorNome($root_var);
-        if ($trv->eliminar($idTema, $root_var))
+        if (Temas\TemaCSS::eliminarTemp($idTema, $root_var))
             $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] restaurada"}');
         else
             $homepage->assign('response', '{"status": "error", "message": "Não foi possível restaurar a cor de [' . $rv['descricao'] . ']"}');

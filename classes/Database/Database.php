@@ -21,6 +21,8 @@ class Database extends \mysqli
 		   unset($this->dbUser);
 		   unset($this->dbSchema);
 	   }
+
+       return True;
    }
 
    public function __destruct() {
@@ -138,20 +140,20 @@ class Database extends \mysqli
 		return $this->query("describe $table");
 	}
 	
-	function begin() {
-		$this->autocommit(false);
+    /*
+	function begin_transaction($flags = 0, $name = null): bool  {
+        return (parent::begin_transaction() and parent::autocommit(false));
+
 	}
 
 	function rollback($flags = NULL, $name = NULL) {
-		$this->rollback();
-		$this->autocommit(true);
+        parent::rollback();
+        parent::autocommit(true);
 	}
 
 	function commit($flags = NULL, $name = NULL) {
-		$this->autocommit(true);
-	} 
+        parent::commit();
+    }
+    */
 }
-
-//-- vi: set tabstop=4 shiftwidth=4 showmatch nowrap: 
-	
 ?>

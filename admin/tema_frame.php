@@ -31,18 +31,6 @@ if ($pagina->displayFortune != 0)
     $homepage->assign("fortune", array('autorFortune' => 'o administrador',
                          'textoFortune' => 'sem fortunes. uma pausa para seus próprios augúrios.'));
 
-// alterações de cor ainda não salvas
-$temaRootVars = Temas\TemaRootVars::getArray($_idTema);
-if ($temaRootVars) {
-    $homepage->assign('AAtrv', $temaRootVars);
-    $rv = ':root { ';
-    foreach ($temaRootVars as $rootvar)
-        $rv .= $rootvar['rootvar'] . ': ' . $rootvar['cor'] . ';';
-    $rv .= '}';
-    $homepage->assign('rootVars', $rv); 
-} else
-    $homepage->assign('rootVars', '');
-
 // Leio as categorias da página e percorro-as, incluíndo-as no template
 $pagina->lerElementos();
 foreach ($pagina->elementos as $categ) {

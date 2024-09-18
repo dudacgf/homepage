@@ -19,10 +19,10 @@ else {
 	$root_var = urldecode($_REQUEST['root_var']);
 	$color = urldecode($_REQUEST['color']);
 
-    $trv = new Temas\TemaRootVars();
+    $trv = new Temas\TemaCSS();
     try {
         $rv = Temas\VariaveisRoot::obterPorNome($root_var);
-        if ($trv ->inserir($idTema, $root_var, $color))
+        if (Temas\TemaCSS::inserirTemp($idTema, $root_var, $color))
             $homepage->assign('response', '{"status": "success", "message": "Cor de [' . $rv['descricao'] . '] alterada para ' . $color . '"}');
         else
             $homepage->assign('response', '{"status": "error", "message": "Não foi possível alterar a cor de [' . $rv['descricao'] . ']"}');

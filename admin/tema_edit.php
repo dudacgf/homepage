@@ -96,9 +96,8 @@ switch ($requests['mode'])
         else
         {
             if (isset($_REQUEST['temaBase'])) {
-                $temaBaseCssFile = HOMEPAGE_PATH . 'temas/' . $_REQUEST['temaBase'] . '.css';
-                $temaCssFile = HOMEPAGE_PATH . 'temas/' . $tema->nome . '.css';
-                if (!copy($temaBaseCssFile, $temaCssFile))
+                $_temaFrom = Temas\Temas::obterPorNome($requests['temaBase']);
+                if (!Temas\TemaCSS::duplicar($_temaFrom->id, $_idTema))
                     prepararToast('error', 'Conseguir gravar o tema no banco de dados mas deu erro na criação do arquivo .css');
                 else {
                     prepararToast('success', "Tema [" . $global_hpDB->real_escape_string($tema->nome) . "] criado com sucesso!");

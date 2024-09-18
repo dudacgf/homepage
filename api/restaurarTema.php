@@ -18,14 +18,13 @@ if (!isset($_REQUEST['idTema']))
 else {
 	$idTema = urldecode($_REQUEST['idTema']);
 
-    $trv = new Temas\TemaRootVars();
     try {
-        if ($trv->restaurarPagina($idTema))
-            $homepage->assign('response', '{"status": "success", "message": "Cores da página restauradas"}');
+        if (Temas\TemaCSS::restaurarPagina($idTema))
+            $homepage->assign('response', '{"status": "success", "message": "Cores do tema restauradas"}');
         else
-            $homepage->assign('response', '{"status": "error", "message": "Não foi possível restaurar as cores da página"}');
+            $homepage->assign('response', '{"status": "error", "message": "Não foi possível restaurar as cores do tema "}');
     } catch (Exception $e) {
-        $homepage->assign('response', '{"status": "error", "message": "Erro ao restaurar as cores da página: ' . $e->getMessage() . '"}');
+        $homepage->assign('response', '{"status": "error", "message": "Erro ao restaurar as cores do tema: ' . $e->getMessage() . '"}');
     }
 }
 $homepage->display('response.tpl');

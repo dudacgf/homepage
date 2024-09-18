@@ -28,14 +28,32 @@ class Temas
 
         return;
     }
+    
+    public static function obterPorNome($_nome) {
+        global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare("select * from hp_temas where nome = ?");
+        $_sql->bind_param('s', $_nome);
+        if (!$_sql->execute())
+            throw new Exception('Erro ao obter tema por nome: ' . $_sql->getMessage());
+
+        $instance = new self();
+        $result = $_sql->get_result()->fetch_assoc();
+        $instance->id = $result['id'];
+        $instance->nome = $result['nome'];
+        $instance->comentario = $result['comentario'];
+
+        return $instance;
+    }
 
     public function inserir() {
         $_sql = $this->hpDB->prepare('insert into hp_temas (nome, comentario) values (?, ?)');
         $_sql->bind_param('ss', $this->nome, $this->comentario);
         if (!$_sql->execute())
             throw new Exception('erro ao inserir tema: ' . $this->hpDB->real_escape_string($_sql->error));
+        $this->id = $this->hpDB->getLastInsertId();
 
-        return true;
+        return $this->id;
     }
 
     public function atualizar() {

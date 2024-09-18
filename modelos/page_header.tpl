@@ -10,7 +10,7 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/base.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/colorbase.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/fawsome.css" />
-<link rel="stylesheet" type="text/css" href="{$includePATH}temas/{$temaPagina}.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}temaPagina/{$temaPagina}.css" />
 {if isset($admin_area)}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/admin.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />

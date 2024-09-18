@@ -106,7 +106,7 @@ class Grupo extends ElementoAgrupado
 
         $this->lerElementos();
 
-        $result = $result and $this->hpDB->begin();
+        $result = $result and $this->hpDB->begin_transaction();
 
         foreach ($this->elementos as $elemento) {
             $result = $result and $elemento->excluir();

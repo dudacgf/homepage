@@ -206,6 +206,7 @@ const restaurarRootVar = async (rt = null, temaNome = null) => {
         if (!rt)
             rt = document.querySelector(':root');
 
+        /*
         const temaRules = getThemeStyleSheetCssRule0(rt, temaNome);
         if (!temaRules) {
             createToast('info', 'Esse elemento não havia sido alterado anteriormente');
@@ -213,10 +214,12 @@ const restaurarRootVar = async (rt = null, temaNome = null) => {
         }
 
         const color = temaRules.style.getPropertyValue('--cor-' + root_var);
+        */
+        rt.style.setProperty("--cor-" + root_var, '');
+
+        const color = getComputedStyle(rt).getPropertyValue('--cor-' + root_var);
         const oboxCor = document.getElementById(root_var);
         const preview = document.getElementById('previewElementoPicked');
-        
-        rt.style.setProperty("--cor-" + root_var, '');
         oboxCor.parentElement.style.setProperty("--elemento-cor", color);
         preview.style.backgroundColor = color;
         preview.style.color = HSP(color);

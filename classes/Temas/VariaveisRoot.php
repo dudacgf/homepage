@@ -2,6 +2,15 @@
 
 Namespace Shiresco\Homepage\Temas;
 
+/**
+ * VariaveisRoot
+ *
+ * representam atributos da página cujas cores pode ser alteradas nos Temas
+ *
+ * essa classe apenas devolve um ou mais atributos. não há métodos para 
+ * edição (inserção/atualização/exclusão)
+ *
+ */
 class VariaveisRoot {
 	var $hpDB;
 	var $id;
