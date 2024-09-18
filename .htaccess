@@ -5,3 +5,5 @@ RedirectMatch 404 /download
 RedirectMatch 404 /language
 RedirectMatch 404 /modelos
 #
+RewriteEngine On
+RewriteRule "temaPagina/(.*)\.css$" "api/temaPagina.php?nome=$1"
