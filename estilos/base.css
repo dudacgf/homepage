@@ -96,6 +96,8 @@ div.logo {
 .logo { fill:none; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
 .logo_brand { font-family:sans-serif; font-size:40px; line-height:1.25; shape-inside:url(#rect8229); white-space:pre; word-spacing:0px; }
 .logo_star { fill:#ff6600; stroke:#ff6600; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
+
+/* link */
 a {
 display: block; text-decoration: none; white-space: nowrap;
 font-size: 1cqw;
@@ -127,7 +129,7 @@ input[type=submit], input[type=button], button {
     font-size: 1cqw; 
     font-weight: 600; 
     padding: 8px 16px; 
-    min-width: 50px; 
+    width: auto; 
     margin: 10px 1rem;
 }
 input[pattern]:invalid{
@@ -232,7 +234,7 @@ div.footer {
 clear: both; position: relative; bottom: 0px;
 }
 div.tituloCategoria {
-clear: both; font-size: 1.2cqw; font-weight: 600; border-style: solid; border-width: 2px; border-radius: 5px; margin-bottom: 5px; padding: 3px;
+clear: both; font-size: 1.3cqw; font-weight: 600; border-style: solid; border-width: 2px; border-radius: 5px; margin-bottom: 5px; padding: 6px;
 }
 table {
 clear: both; margin: 0 auto;
@@ -291,9 +293,9 @@ div.expanded, div.interior:hover, div.expandable:hover {
     height: auto;
 }
 div.headclickable, div.headexpandable {
-border: 2px solid; border-radius: 5px; padding: 5px 5px; height: 14px;
+border: 2px solid; border-radius: 5px; height: auto;
 font-size: 1.1cqw; cursor: pointer; margin-top: 2px; white-space: nowrap;
-font-weight: 600;
+font-weight: 600; padding: 6px;;
 }
 div.headclickable {
     cursor: pointer;
