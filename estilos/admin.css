@@ -2,12 +2,14 @@
  * páginas administrativas.
  *
  */
+
 div.subTitulo {
     font-size: 1.1rem;
     font-weight: 900;
     border-bottom: 1pt solid;
     clear: both;
     padding: 5px;
+    margin-top: 20px;
 }
 div.tituloSecao {
     font-size: 1.1rem;
@@ -142,7 +144,7 @@ body div.expanded a:hover,
 body div.expandable:hover a:hover,
 body div.interior:hover a:hover,
 body div.exemploCategoria a:hover {
-padding: 0.3em 0.3em 0.3em 0.3em;
+    padding: 0.1rem;
 }
 .click_div:hover {
     cursor: pointer;
@@ -201,9 +203,7 @@ padding: 0.3em 0.3em 0.3em 0.3em;
     position: absolute;
     width: 160px;
     right: 0;
-    padding-left: 5px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 15;
 }
@@ -664,3 +664,28 @@ pre.colorOut {
     padding: 10px; 
     margin: 5px; 
 }
+
+/* usa font fixa na página tema_frame */
+body.reset a {
+    font-size: 12px;
+}
+body.reset input[type=text] {
+    width: 80%;
+}
+body.reset input[type=submit], body.reset input[type=button], body.reset button {
+    font-size: 12px;
+    width: auto;
+}
+body.reset div.tituloCategoria {
+    font-size: 14px;
+}
+body.reset div.headclickable, body.reset div.headexpandable {
+    font-size: 13px;
+}
+body.reset span.separador {
+    font-size: 13px;
+}
+body.reset label.separador {
+    font-size: 13px;
+}
+
