@@ -93,10 +93,10 @@ function doAction(pressed) {
 <div class="tituloColuna">{$LANG.excluir}</div>
 <div class="tituloColuna">{$LANG.tipoElemento}</div>
 <p>
-<div id="elementos_div">
+<div id="elementos_div" style="margin-top: 5px; margin-bottom: 20px;">
 {include file="admin/elementos_div.tpl"}
 </div>
-<div class="subTitulo">{$LANG.novosElementos}:</div>
+<div class="subTitulo" style="margin-bottom: 5px;">{$LANG.novosElementos}:</div>
 <div class="menuBarra" style="">
     <div class="menuBarraItem fa-link" onClick="editarElemento('novoLink', 0, {$grupo.idGrupo});">
         {$LANG.novoLink}

@@ -3,6 +3,13 @@
  *
  */
 
+div.contentFxAlignCenter {
+    display: flex; 
+    float: left; 
+    align-items: center; 
+    padding-left: 10px;
+    margin-top: 5px;
+}
 div.subTitulo {
     font-size: 1.1rem;
     font-weight: 900;
@@ -53,7 +60,7 @@ div.item {
     font-size: 0.9rem;
     line-height: 1.5rem;
     float: left;
-    width: 44%;
+    width: 64%;
     height: 30px;
     border: 0px;
     border-bottom: 1px solid;
@@ -82,13 +89,22 @@ div.contentstats {
 }
 div.left {
 text-align: left !important;
+align-items: flex-start;
 }
 div.right {
 text-align: right !important;
 }
 div.opcoes {
-font-size: 0.9rem; float: left; width: 44%; border-bottom: 1pt solid; height: 21px; vertical-align: text-bottom; padding: 3px 0 0 3px;
-clear: left; width: 70%; text-align: left;
+    font-size: 0.9rem; 
+    float: left; 
+    width: 44%; 
+    border-bottom: 1pt solid; 
+    height: 21px; 
+    vertical-align: text-bottom; 
+    padding: 3px 0 0 3px;
+    clear: left; 
+    width: 93%; 
+    text-align: left;
 }
 div.menuBarra {
 font-size: 0.9rem; clear: both;
@@ -113,18 +129,23 @@ display: flex;
     cursor: pointer;
 }
 iframe.exemploPagina {
-box-shadow: 12px 15px var(--cor-dark); z-index: 10;
-position: absolute; right: 1%; top: +160px;
-transform: scale(0.40); transform-origin: top right; pointer-events: none;
+    position: relative; 
+    left: 5%; 
+    top: 5%; 
+    box-shadow: 12px 15px 10px rgb(from var(--cor-medium) r g b / 0.5);
+    pointer-events: none;
+    z-index: 10;
 }
 @media screen and (orientation:portrait) {
     iframe.exemploPagina {
-        width: 60vw; height: 40vw;
+        width: 40vmax; height: 70vmax;
+        transform: scale(0.90); transform-origin: top left;
     }
 }
 @media screen and (orientation:landscape) {
     iframe.exemploPagina {
-        width: 42vw; height: 28vw;
+        width: 42vmax; height: 50vmax;
+        transform: scale(0.80); transform-origin: top left;
     }
 }
 div.exemploCategoria a {
@@ -133,11 +154,33 @@ display: block;
 div.exemploCategoria span.separador {
 text-align: left;
 }
-div.coluna, div.colunaTransparente {
-float: left; padding: 2px; margin: 3px; font-size: 1rem; width: 15%;
-}
 div.tituloColuna {
-border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: 600; font-size: 1rem; width: 15%;
+    font-weight: 600; 
+    font-size: 1rem; 
+    width: 15%;
+    border-width: 1px; 
+    border-style: solid; 
+    padding: 2px; 
+    margin: 2px; 
+    float: left; 
+}
+div.tituloColuna a {
+    font-size: 12px;
+}
+div.w25pc {
+    width: 25%;
+    min-width: 25%;
+}
+div.w60pc {
+    width: 60%;
+    min-width: 60%;
+}
+div.coluna, div.colunaTransparente {
+    font-size: 1rem; 
+    float: left; 
+    width: 15%;
+    margin: 3px; 
+    padding: 2px; 
 }
 body a:hover,
 body div.expanded a:hover,

@@ -1,4 +1,5 @@
 {section name=gp loop=$gruposPresentes}
+<div class="content left">
 	<div class="tituloColuna" style="clear: left;">
 		<a href="{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp={$gruposPresentes[gp].idGrupo}">{$gruposPresentes[gp].descricaoGrupo|default:$LANG.semTitulo}</a>
 	</div>
@@ -24,17 +25,20 @@
 	<div class="coluna" >
 		{if $gruposPresentes[gp].grupoRestrito == 1}Sim [{$gruposPresentes[gp].restricaoGrupo}]{else}N&atilde;o{/if}
 	</div>
+</div>
 {sectionelse}
 	<div class="subTitulo">{$LANG.categoriavazia}</div>
 {/section}
+<div class="content left">
 <div class="subTitulo">{$LANG.novoGrupo}:</div>
-<div class="novoFilho">
 <form id="nwCat">
-	<select id="grupoSelector" name="grupoSelector">
+<div style="display: flex; float: left; align-items: center; padding-left: 10px;">
+	<select class="novoFilho" id="grupoSelector" name="grupoSelector">
 	{section name=ne loop=$gruposAusentes}
 		<option value="{$gruposAusentes[ne].idGrupo}">{$gruposAusentes[ne].descricaoGrupo|default:$LANG.semTitulo}</option>
 	{/section}
 	</select>
-	<input type="button" class="submit" onclick="editarGrupo('incluirGrupo', {$idCategoria}, document.getElementById('grupoSelector').value)" value="{$LANG.incluir}">
+	<input type="button" class="submit" onclick="editarGrupo('incluirGrupo', {$idCategoria}, document.getElementById('grupoSelector').value)" value="{$LANG.incluir}" style="margin-top: 2px; margin-bottom: 2px;">
+</div>
 </form>
 </div>
