@@ -1,0 +1,125 @@
+/* páginas administrativas. */
+select {
+  border: 2px solid;
+  border-top-color: var(--cor-buttonBTL); 
+  border-left-color: var(--cor-buttonBTL); 
+  border-bottom-color: var(--cor-buttonBBR); 
+  border-right-color: var(--cor-buttonBBR); 
+  background-color: var(--cor-buttonBG);
+  color: var(--cor-buttonC);
+  padding: 6px;
+  outline: 0 none;
+}
+option {
+  border-color: var(--cor-buttonBTL); 
+  background-color: var(--cor-buttonBG);
+  color: var(--cor-buttonC);
+  padding: 6px;
+}
+div.subTitulo, div.coluna, div.tituloColuna, div.tituloSecao {
+  border-Top-color: var(--cor-headerBTL); 
+  border-Left-color: var(--cor-headerBTL);
+  border-Bottom-color: var(--cor-headerBBR); 
+  border-Right-color: var(--cor-headerBBR);
+  background-color: var(--cor-headerBG);
+  color: var(--cor-headerC);
+}
+div.tituloColuna a {
+  color: var(--cor-headerC);
+}
+div.opcoes {
+    color: var(--cor-opcoesC);
+}
+.menuButton {
+    background-color: var(--cor-mButtonBG);
+    color: var(--cor-mButtonHBG);
+}
+.menuButton:hover {
+    color: var(--cor-mButtonBG);
+    background-color: var(--cor-mButtonHBG);
+}
+div.menuDropDown {
+    background-color: var(--cor-mDropdownBG);
+    color: var(--cor-mDropdownC);
+    border-left-color: var(--cor-mDropdownBTL);
+    border-top-color: var(--cor-mDropdownBTL);
+    border-right-color: var(--cor-mDropdownBBR);
+    border-bottom-color: var(--cor-mDropdownBBR);
+}
+div.item, div.itemstats {
+  border-color: var(--cor-bodyC); 
+  color: var(--cor-itemC);
+}
+div.colunaTransparente, div.colunaTransparente div.item {
+	border-bottom: 1pt var(--cor-dark) solid;
+}
+#form_div {
+    background-color: var(--cor-bodyBG);
+}
+#invisivel_div {
+    background-color: var(--cor-light);
+}
+div.tituloCores {
+    color: var(--cor-tituloCategC);
+    background-color: var(--cor-tituloCategBG);
+    border-top-color: var(--cor-tituloBB);
+    border-bottom-color: var(--cor-tituloBB);
+
+}
+div.tituloClaro {
+    color: var(--cor-bodyC);
+    background-color: var(--cor-bodyBG);
+    border-bottom-color: transparent;
+    border-top-color: var(--cor-tituloBB);
+}
+label.boxRadioLabel {
+    color: var(--cor-bodyC);
+}
+
+/* admin login */
+.login {
+  	background-color: var(--cor-bodyBG);
+}
+.login h1 {
+  	background-color: var(--cor-tituloBG);
+  	color: var(--cor-tituloC);
+  	border-bottom: #dee0e4;
+}
+.login form label {
+  	background-color: var(--cor-buttonBG);
+  	color: var(--cor-buttonC);
+}
+.login form label:has(input:required) :after {
+	color: var(--cor-buttonC);
+}
+.login form input[type="password"], .login form input[type="text"] {
+	background: var(--cor-inputBG);
+	color: var(--cor-inputC);
+}
+.login form input[type="submit"] {
+  	background-color: var(--cor-buttonBG);
+  	color: var(--cor-buttonC);
+}
+.login form input[type="submit"]:hover {
+	background-color: var(--cor-buttonC);
+	color: var(--cor-buttonBG);
+}
+/* animatted tabs. from: https://codepen.io/alvarotrigo/pen/QWqXYmG tks a lot */
+.tabs {
+    background-color: transparent;
+}
+.tab-label {
+    background: var(--cor-buttonBG);
+    border-right: 0.125rem solid rgb(from var(--cor-buttonBG) r g b / 0.5);
+    color: var(--cor-buttonC);
+}
+.tab-content {
+    background-color: rgba(from var(--cor-light) r g b / 0.2);
+}
+.tab-switch:checked + .tab-label {
+    background-color: #fff;
+    color: #2c3e50;
+    border-right: #fff;
+}
+
+

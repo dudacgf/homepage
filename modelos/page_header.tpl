@@ -13,6 +13,7 @@
 <link rel="stylesheet" type="text/css" href="{$includePATH}temaPagina/{$temaPagina}.css" />
 {if isset($admin_area)}
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/admin.css" />
+<link rel="stylesheet" type="text/css" href="{$includePATH}estilos/coloradmin.css" />
 <link rel="stylesheet" type="text/css" href="{$includePATH}estilos/toast_style.css" />
 {if isset($tema)}
 <script type="text/javascript" src="{$includePATH}js/temasAPI.js"></script>

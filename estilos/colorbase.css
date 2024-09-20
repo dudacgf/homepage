@@ -35,8 +35,10 @@
     --cor-fortuneBG:
     --cor-fortuneC:
 
-    * Categorias (div.tituloCategoria;div.tituloLateral;div.itemLateral;div.subTitulo;div.coluna;div.tituloColuna): background-color, color, border s-e, border i-d 
-    --cor-tituloCategBG:
+    * headers: 
+    * categorias, grupos, tituloLateral, itemLateral, subTitulo, tituloColunas
+    * background-color, color, border s-e, border i-d 
+    --cor-headerBG:
     --cor-tituloCategC:
     --cor-categBTL:
     --cor-categBBR:
@@ -72,9 +74,9 @@
     --cor-sepC:
     --cor-sepH:
 
-    * Links (a): color, links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): background-color, color, font-size
+    * Links (a): color, links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): color, hover background-color e color
     --cor-linkC:
-    --cor-expandedColor:
+    --cor-linkBG:
     --cor-linkH:
 
     * menus: botão: cor do botão 
@@ -136,13 +138,13 @@ div.titulo {
     fill: var(--cor-logostarBG);
     stroke: var(--cor-logostarBG);
 }
-div.tituloCategoria, div.tituloLateral {
-    background-color: var(--cor-tituloCategBG);
-    color: var(--cor-tituloCategC);
-    border-Top-color: var(--cor-categBTL); 
-    border-Left-color: var(--cor-categBTL);
-    border-Bottom-color: var(--cor-categBBR); 
-    border-Right-color: var(--cor-categBBR);
+div.tituloCategoria, div.tituloLateral, div.headclickable, div.headexpandable, div.itemLateral {
+    background-color: var(--cor-headerBG);
+    color: var(--cor-headerC);
+    border-Top-color: var(--cor-headerBTL); 
+    border-Left-color: var(--cor-headerBTL);
+    border-Bottom-color: var(--cor-headerBBR); 
+    border-Right-color: var(--cor-headerBBR);
 }
 /* grupos de links */
 div.expanded, div.expandable:hover, div.interior:hover {
@@ -153,26 +155,20 @@ div.expanded, div.expandable:hover, div.interior:hover {
     border-bottom-color: var(--cor-expandedBBR);
     border-right-color: var(--cor-expandedBBR);
 }
-div.headexpandable, div.headclickable {
-    background-color: var(--cor-expandBG);
-    color: var(--cor-expandC);
-    border-Top-color: var(--cor-expandBTL); 
-    border-Left-color: var(--cor-expandBTL);
-    border-Bottom-color: var(--cor-expandBBR); 
-    border-Right-color: var(--cor-expandBBR);
-}
-div.expanded a, div.expandable:hover a, div.interior:hover a {
-  color: var(--cor-linkH);
-}
-/* links */
+/* links 
+ * normal, como apareceria em qualquer lugar
+ * como aparecerá na homepage ao expandir um dos grupos
+ * como aparecerá ao passar o mouse
+ */
 a {
     color: var(--cor-linkC);
 }
-a:hover, div.expanded a:hover, div.expandable:hover a:hover, div.interior:hover a:hover {
-    background-color: var(--cor-linkH);
-    color: var(--cor-expandedColor);
-    border-right-color: var(--cor-expandBBR);
-    border-bottom-color: var(--cor-expandBBR);
+div.expanded a, div.expandable:hover a, div.interior:hover a {
+  color: var(--cor-linkexpC);
+}
+a:hover, div.expanded a:hover, div.expandable:hover a:hover, div.interior:hover a:hover, div.tituloColuna:hover a:hover {
+    background-color: var(--cor-linkBG);
+    color: var(--cor-linkH);
 }
 span.separador, label.separador {
     color: var(--cor-sepC);
@@ -185,8 +181,8 @@ div.expandable label.separador,
 div.interior:hover label.separador {
     color: var(--cor-sepH);
 }
-div.tituloColuna a {
-    color: var(--cor-categC);
+div.tituloColuna {
+    color: var(--cor-expandedC);
 }
 /* inputs, selects, buttons etc */
 input[type=text], input[type=select ]{
@@ -218,108 +214,3 @@ input[type=radio].selectElemento::after {
   fill: var(--cor-buttonBG);
   stroke: white;
 }
-/* páginas administrativas. */
-div.subTitulo, div.itemLateral, div.coluna, div.tituloColuna, div.tituloSecao {
-  border-Top-color: var(--cor-buttonBTL); 
-  border-Left-color: var(--cor-buttonBTL);
-  border-Bottom-color: var(--cor-buttonBBR); 
-  border-Right-color: var(--cor-buttonBBR);
-  background-color: var(--cor-buttonBG);
-  color: var(--cor-tituloCategC);
-}
-div.opcoes {
-    color: var(--cor-opcoesC);
-}
-.menuButton {
-    background-color: var(--cor-mButtonBG);
-    color: var(--cor-mButtonHBG);
-}
-.menuButton:hover {
-    color: var(--cor-mButtonBG);
-    background-color: var(--cor-mButtonHBG);
-}
-div.menuDropDown {
-    background-color: var(--cor-mDropdownBG);
-    color: var(--cor-mDropdownC);
-    border-left-color: var(--cor-mDropdownBTL);
-    border-top-color: var(--cor-mDropdownBTL);
-    border-right-color: var(--cor-mDropdownBBR);
-    border-bottom-color: var(--cor-mDropdownBBR);
-}
-div.item, div.itemstats {
-  border-color: var(--cor-bodyC); 
-  color: var(--cor-itemC);
-}
-div.colunaTransparente, div.colunaTransparente div.item {
-	border-bottom: 1pt var(--cor-dark) solid;
-}
-#form_div {
-    background-color: var(--cor-bodyBG);
-}
-#invisivel_div {
-    background-color: var(--cor-light);
-}
-div.tituloCores {
-    color: var(--cor-tituloCategC);
-    background-color: var(--cor-tituloCategBG);
-    border-top-color: var(--cor-tituloBB);
-    border-bottom-color: var(--cor-tituloBB);
-
-}
-div.tituloClaro {
-    color: var(--cor-bodyC);
-    background-color: var(--cor-bodyBG);
-    border-bottom-color: transparent;
-    border-top-color: var(--cor-tituloBB);
-}
-label.boxRadioLabel {
-    color: var(--cor-bodyC);
-}
-
-/* admin login */
-.login {
-  	background-color: var(--cor-bodyBG);
-}
-.login h1 {
-  	background-color: var(--cor-tituloBG);
-  	color: var(--cor-tituloC);
-  	border-bottom: #dee0e4;
-}
-.login form label {
-  	background-color: var(--cor-buttonBG);
-  	color: var(--cor-buttonC);
-}
-.login form label:has(input:required) :after {
-	color: var(--cor-buttonC);
-}
-.login form input[type="password"], .login form input[type="text"] {
-	background: var(--cor-inputBG);
-	color: var(--cor-inputC);
-}
-.login form input[type="submit"] {
-  	background-color: var(--cor-buttonBG);
-  	color: var(--cor-buttonC);
-}
-.login form input[type="submit"]:hover {
-	background-color: var(--cor-buttonC);
-	color: var(--cor-buttonBG);
-}
-/* animatted tabs. from: https://codepen.io/alvarotrigo/pen/QWqXYmG tks a lot */
-.tabs {
-    background-color: transparent;
-}
-.tab-label {
-    background: var(--cor-buttonBG);
-    border-right: 0.125rem solid rgb(from var(--cor-buttonBG) r g b / 0.5);
-    color: var(--cor-buttonC);
-}
-.tab-content {
-    background-color: rgba(from var(--cor-light) r g b / 0.2);
-}
-.tab-switch:checked + .tab-label {
-    background-color: #fff;
-    color: #2c3e50;
-    border-right: #fff;
-}
-
-
