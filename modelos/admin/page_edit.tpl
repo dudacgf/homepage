@@ -42,7 +42,7 @@ function doAction(pressed) {
 
 const exemploPaginaSrc = "{$includePATH}homepage.php?id={$idPagina}&gr=all";
 function carregaEstilo(nomeEstilo) {
-    const classURL = window.includePATH + 'temas/' + nomeEstilo + '.css';
+    const classURL = window.includePATH + 'temaPagina/' + nomeEstilo + '.css';
     const headRef = document.createElement('link');
     headRef.rel = "stylesheet";
     headRef.type = "text/css";
