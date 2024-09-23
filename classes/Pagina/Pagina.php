@@ -217,9 +217,7 @@ class Pagina extends ElementoAgrupado
 
     function numeroElementos() { }
 
-    public function lerElementos()
-    {
-
+    public function lerElementos() {
         // verifica se foi pedido algum grupo restrito
         // na stored proc chamada, eu faço um REGEXP com os grupos passados. aqui eu monto a expressão regular...
         if (isset($_REQUEST['gr']))
@@ -266,6 +264,45 @@ class Pagina extends ElementoAgrupado
         {
             $this->elementos[] = Categoria::newFromArray($_el);
         }
+    }
+
+    public function lerPagina() {
+        // Leio as categorias da página e percorro-as, incluíndo-as no template
+        $this->lerElementos();
+        foreach ($this->elementos as $categ) {
+
+            $descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
+            
+            // Leio os grupos desta categoria e percorro-os, incluíndo-os no template
+            $categ->lerElementos();
+            foreach ($categ->elementos as $grupo) 
+            {
+
+                // Leio os elementos deste grupo e percorro-os, incluíndo-os no template
+                $grupo->lerElementos();
+                foreach($grupo->elementos as $elemento) 
+                {
+                    $elementos[] = $elemento->getArray();
+                }		
+
+                $grupos[] = array(
+                                'grupo' => $grupo->descricaoGrupo,
+                                'idtipoGrupo' => $grupo->idTipoGrupo,
+                                'elementos' => $elementos);
+                $elementos = [];
+
+            }
+            
+            $descricoesGrupos[] = array(
+                                    'index' => $grupo->posCategoria, 
+                                    'idGrupo' => $grupo->idGrupo,
+                                    'grupos' => $grupos 
+                                    );
+            $grupos = [];
+
+        }
+        return array('descricoesCategorias' => (isset($descricoesCategorias) ? $descricoesCategorias: []),
+                     'descricoesGrupos' => (isset($descricoesGrupos)? $descricoesGrupos: []));
     }
 
     function elementoNaPosicao($_posElemento) { }

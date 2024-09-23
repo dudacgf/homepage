@@ -8,8 +8,8 @@
   {assign var="grupo" value=$menuGrupos[dc].grupos[dg]}
   <div class="interior">
     {strip}
-    {section name=el loop=$grupo.menuItems}
-        {assign var="elemento" value=$grupo.menuItems[el]}
+    {section name=el loop=$grupo.elementos}
+        {assign var="elemento" value=$grupo.elementos[el]}
         {if $elemento.tipoElemento == 1}
         <a href="{if $elemento.urlElementoSSL}
                      https://

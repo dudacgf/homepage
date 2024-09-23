@@ -31,42 +31,10 @@ if ($pagina->displayFortune != 0)
     $homepage->assign("fortune", array('autorFortune' => 'o administrador',
                          'textoFortune' => 'sem fortunes. uma pausa para seus próprios augúrios.'));
 
-// Leio as categorias da página e percorro-as, incluíndo-as no template
-$pagina->lerElementos();
-foreach ($pagina->elementos as $categ) {
-
-    $descricoesCategorias[] = array('index' => $categ->posPagina, 'categoria' => $categ->descricaoCategoria);
-    
-    // Leio os grupos desta categoria e percorro-os, incluíndo-os no template
-    $categ->lerElementos();
-    unset($grupos);
-    foreach ($categ->elementos as $grupo) 
-    {
-
-    	// Leio os elementos deste grupo e percorro-os, incluíndo-os no template
-    	$grupo->lerElementos();
-    	unset($elementos);
-    	foreach($grupo->elementos as $elemento) 
-    	{
-    		$elementos[] = $elemento->getArray();
-    	}		
-
-    	$grupos[] = array(
-    					'grupo' => $grupo->descricaoGrupo,
-    					'idtipoGrupo' => $grupo->idTipoGrupo,
-    					'elementos' => $elementos);
-
-    }
-    
-    $descricoesGrupos[] = array(
-    						'index' => $grupo->posCategoria, 
-    						'idGrupo' => $grupo->idGrupo,
-    						'grupos' => $grupos 
-    						);
-
-}
-$homepage->assign('descricoesCategorias', (isset($descricoesCategorias) ? $descricoesCategorias: []));
-$homepage->assign('descricoesGrupos', (isset($descricoesGrupos)? $descricoesGrupos: []));
+// Leio as categorias e grupos da página
+$links = $pagina->lerPagina();
+$homepage->assign('descricoesCategorias', $links['descricoesCategorias']);
+$homepage->assign('descricoesGrupos', $links['descricoesGrupos']);
 
 // elementos enviados ao template
 $homepage->assign('includePATH', INCLUDE_PATH);
