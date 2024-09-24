@@ -10,6 +10,54 @@
   nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
 @font-face {
+  font-family: "Roboto";
+  src: url("../webfonts/Roboto-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../webfonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../webfonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../webfonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../webfonts/Ubuntu-Light.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../webfonts/Ubuntu-Regular.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../webfonts/Ubuntu-Medium.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Ubuntu";
+  src: url("../webfonts/Ubuntu-Bold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
   font-family: "Libre Franklin";
   src: url("../webfonts/LibreFranklin-Regular.ttf") format("truetype");
   font-weight: 400;
@@ -52,8 +100,8 @@
   font-style: normal;
 }
 :root {
-    --font-rootFS: 12px;
-    font-family: 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
+    --font-rootFS: 1cqmax;
+    font-family: 'Ubuntu', 'Roboto', 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
     font-size: var(--font-rootFS);
     font-weight: 500;
     touch-action: pan-x pan-y;
@@ -65,8 +113,7 @@
   -khtml-user-select: none;    /* Konqueror HTML */
   -moz-user-select: none;      /* Old versions of Firefox */
   -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: contain;           /* Non-prefixed version, currently
-                                  supported by Chrome, Edge, Opera and Firefox */
+  user-select: contain;        /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 body {
     border: 0;
@@ -79,17 +126,23 @@ body {
 }
 /* link */
 a {
-display: block; text-decoration: none; white-space: nowrap;
-font-size: 1cqw;
+    font-size: 1cqw;
+    display: block; 
+    text-decoration: none; 
+    white-space: nowrap;
 }
 form {
-margin-top: 0px; margin-bottom: 0px;
+    margin-top: 0px; 
+    margin-bottom: 0px;
 }
 form.edit {
-margin: 1rem 0.5rem;
+    margin: 1rem 0.5rem;
 }
 form a {
-display: inline;
+    display: inline;
+}
+div.interior a img {
+    max-width: -moz-available;
 }
 input[type=text], input[type=select] {
     border: 1pt solid; 
@@ -98,7 +151,7 @@ input[type=text], input[type=select] {
     width: 12cqw;
 }
 select {
-margin-left: 2px;
+    margin-left: 2px;
 }
 input[type=submit], input[type=button], button {
     border-width: 2px; 
@@ -181,11 +234,29 @@ div.titulo span {
     font-weight: 900;
     text-align: left;
 }
-/* arco externo, marca e estrela (retirados do svg gerado pelo inkscapep */
-.logo { fill:none; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
-.logo_brand { font-family:sans-serif; font-size:40px; line-height:1.25; shape-inside:url(#rect8229); white-space:pre; word-spacing:0px; }
-.logo_star { fill:#ff6600; stroke:#ff6600; stroke-dasharray:none; stroke-miterlimit:4; stroke-opacity:1; stroke-width:3; }
-
+.logo { 
+    fill: none; 
+    stroke-dasharray: none; 
+    stroke-miterlimit: 4; 
+    stroke-opacity: 1; 
+    stroke-width: 3; 
+}
+.logo_brand { 
+    font-family: sans-serif; 
+    font-size: 40px; 
+    line-height: 1.25; 
+    shape-inside: url(#rect8229); 
+    white-space: pre; 
+    word-spacing: 0px; 
+}
+.logo_star { 
+    fill: #ff6600;  
+    stroke:#ff6600; 
+    stroke-dasharray: none; 
+    stroke-miterlimit: 4; 
+    stroke-opacity: 1; 
+    stroke-width: 3; 
+}
 .barraFinal {
     width: 100%;
     height: 20px; 
@@ -201,50 +272,53 @@ div.content {
     width: 100%;
     text-align: center;
     height: auto;
-    display: table;
-}
-div.contentColumn {
-    flex-flow: column;
-    float: left;
-    clear: both;
-    white-space: nowrap;
-    padding: 0;
-    margin: 0;
-    border: 0;
-    text-align: left;
-    height: auto;
     display: flex;
 }
-
 div.containerCategoria {
-float: left; flex-grow: 0; flex-shrink: 1; flex-basis: 100%; margin-left: 3px; margin-right: 3px; text-align: left;
+    text-align: left;
+    float: left; 
+    flex-grow: 0; 
+    flex-shrink: 1; 
+    flex-basis: 100%; 
+    margin-left: 3px; 
+    margin-right: 3px; 
 }
 div.footer {
-clear: both; position: relative; bottom: 0px;
+    clear: both; 
+    position: relative; 
+    bottom: 0px;
 }
 div.tituloCategoria {
-clear: both; font-size: 1.3cqw; font-weight: 600; border-style: solid; border-width: 2px; border-radius: 5px; margin-bottom: 5px; padding: 6px;
+    clear: both; 
+    font-size: 1.3cqw; 
+    font-weight: 600; 
+    border-style: solid; 
+    border-width: 2px; 
+    border-radius: 5px; 
+    margin-bottom: 5px; 
+    padding: 6px;
 }
-table {
-clear: both; margin: 0 auto;
-}
-div.lineForm {
-clear: both; border-style: solid none; border-width: 0px; height: 30px; padding-top: 2px; padding-bottom: 4px;
-  }
 div.tituloLateral {
-border-width: 1px; border-style: solid; padding: 2px; margin: 2px; float: left; font-weight: 600; font-size: x-small; width: 90px;
-}
-div.formLateral {
-border-width: 0px; padding: 0px; margin-top: 2px; float: left;
+    float: left; 
+    font-weight: 600; 
+    font-size: x-small; 
+    width: 90px;
+    border-width: 1px; 
+    border-style: solid; 
+    padding: 2px; 
+    margin: 2px; 
 }
 div.fortune {
-font-size: 1rem; clear: both;
-margin: 0; padding: 10px; border: 0;
-position: fixed; bottom: 0px; left: 0px; width: 100%;
-font-weight: 500;
-}
-div.fortune a {
-font-weight: 600; display: inline; font-size: 1rem; width: 100%;
+    clear: both;
+    font-size: 1rem; 
+    font-weight: 500;
+    position: fixed; 
+    bottom: 0px; 
+    left: 0px; 
+    width: 100%;
+    border: 0;
+    margin: 0; 
+    padding: 10px; 
 }
 /*
  * as classes a seguir fazem a magica dos menus expansiveis. São de dois tipos:
@@ -266,7 +340,9 @@ font-weight: 600; display: inline; font-size: 1rem; width: 100%;
  * </div>
 */
 div.interior {
-clear: both; border-width: 0px; padding: 2px;
+    clear: both; 
+    border-width: 0px; 
+    padding: 2px;
 }
 div.expandable, div.clickable {
     overflow: hidden; 
@@ -282,27 +358,30 @@ div.expanded, div.interior:hover, div.expandable:hover {
     height: auto;
 }
 div.headclickable, div.headexpandable {
-border: 2px solid; border-radius: 5px; height: auto;
-font-size: 1.1cqw; cursor: pointer; margin-top: 2px; white-space: nowrap;
-font-weight: 600; padding: 6px;;
+    font-size: 1.1cqw; 
+    font-weight: 600; 
+    height: auto;
+    border: 2px solid; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    margin-top: 2px; 
+    white-space: nowrap;
+    padding: 4px;
 }
 div.headclickable {
     cursor: pointer;
 }
 span.separador {
-font-weight: 800;
-padding-bottom: 5px;
-font-size: 1.1cqw;
+    font-size: 1.1cqw;
+    font-weight: 900;
+    padding-bottom: 5px;
 }
 label.separador {
-font-weight: 600;
-padding-top: 5px;
-padding-bottom: 5px;
-margin-bottom: 5px;
-font-size: 1cqw;
-}
-.texto {
-vertical-align: bottom;
+    font-size: 1cqw;
+    font-weight: 900;
+    margin-bottom: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 .copyright {
     position: fixed;
@@ -331,5 +410,10 @@ vertical-align: bottom;
     font-weight: 400;
 }
 div.fawLeftPointer {
-cursor: pointer; display: flex; float: right; width: 12px; height: 12px; padding-right: 8px;
+    cursor: pointer; 
+    display: flex; 
+    float: right; 
+    width: 12px; 
+    height: 12px; 
+    padding-right: 8px;
 }
