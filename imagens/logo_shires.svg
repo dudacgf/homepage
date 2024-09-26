@@ -7,7 +7,7 @@
        class="logo" />
     <circle id="path1517" cx="37.445465" cy="20.567383" r="11.707489" class="logo_star" />
     <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-39.164303,-26.643296)" id="text8227" class="logo_brand">
-       <tspan x="173.60742" y="301.60919" id="tspan1254"><tspan style="font-weight:900;font-size:64px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Heavy'" id="tspan1250">The Shires</tspan><tspan style="font-weight:900;font-size:18.6667px;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Heavy'" id="tspan1252">Co</tspan></tspan>
+       <tspan x="173.60742" y="301.60919" id="tspan1254"><tspan style="font-weight:800;font-size:4cqmax;" id="tspan1250">The Shires</tspan><tspan style="font-weight:800;font-size:1cqmax;" id="tspan1252">Co</tspan></tspan>
     </text>
   </g>
 </svg>
