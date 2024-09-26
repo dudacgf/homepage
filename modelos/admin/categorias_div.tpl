@@ -26,7 +26,7 @@
 {sectionelse}
 	<div class="subTitulo">{$LANG.paginavazia}</div>
 {/section}
-<div class="content left">
+<div class="content contentTable">
 <div class="subTitulo" >{$LANG.novaCategoria}:</div>
 <form id="nwCat" method="POST">
 <div class="contentFxAlignCenter">

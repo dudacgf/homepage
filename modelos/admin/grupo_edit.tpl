@@ -49,25 +49,27 @@ function doAction(pressed) {
 
 <form id="edGrp" action="{$includePATH}admin/grupo_edit.php" name="edGrp" method="POST">
     <div class="subTitulo">{$LANG.configuracao}</div><p />
-    <div class="itemLateral">{$LANG.hp_grupos_DescricaoGrupo}</div>
-    <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_DescricaoGrupo}" value="{$grupo.descricaoGrupo}" tabindex="1" /></div>
-    <div class="itemLateral">{$LANG.hp_grupos_TipoGrupo}</div>
-    <div class="item">
-        <select style=" width: 122pt;" name="idTipoGrupo" id="idTipoGrupo" >
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_grupos_DescricaoGrupo}</div>
+    <div class="item" style="padding: 0;">
+        <input type="text" class="FormExtra" size=30 name="descricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_DescricaoGrupo}" value="{$grupo.descricaoGrupo}" tabindex="1"  style="padding: 0; padding-left: 3px;" />
+    </div>
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_grupos_TipoGrupo}</div>
+    <div class="item" style="padding: 0;">
+        <select style="margin: 0; padding: 1px; padding-left: 3px; width: 122pt;" name="idTipoGrupo" id="idTipoGrupo" >
          {foreach key=tg item=tipoGrupo from=$tiposGrupos}
             <option value="{$tg}" {if $tg == $grupo.idTipoGrupo}selected="selected"{/if}>{$tipoGrupo}</option>
         {/foreach}
         </select>
     </div>
-    <div class="itemLateral">{$LANG.hp_grupos_Label_Restricao}</div>
-    <div class="item">
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_grupos_Label_Restricao}</div>
+    <div class="item" style="padding: 0;">
         <input id="grupoRestrito" type="checkbox" name="grupoRestrito" {if $grupo.grupoRestrito == '1'}checked{/if} 
-                onClick="javascript: document.getElementById('restricaoGrupo').disabled = !(document.getElementById('grupoRestrito').checked);" />
+                onClick="javascript: document.getElementById('restricaoGrupo').disabled = !(document.getElementById('grupoRestrito').checked);"  style="padding: 0; padding-left: 3px;" />
         <label for="grupoRestrito">{$LANG.hp_grupos_GrupoRestrito}</label>
     </div>
-    <div class="itemLateral">{$LANG.hp_grupos_RestricaoGrupo}</div>
-    <div class="item">
-        <input type="text" class="FormExtra" size=30 name="restricaoGrupo" id="restricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_RestricaoGrupo}" value="{$grupo.restricaoGrupo}" tabindex="1" />
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_grupos_RestricaoGrupo}</div>
+    <div class="item" style="padding: 0;">
+        <input type="text" class="FormExtra" size=30 name="restricaoGrupo" id="restricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_RestricaoGrupo}" value="{$grupo.restricaoGrupo}" tabindex="1" style="padding: 0; padding-left: 3px;" />
         <script type="text/javascript">document.getElementById('restricaoGrupo').disabled = !(document.getElementById('grupoRestrito').checked);</script> 
     </div>
     <div class="interior" style=" text-align: center; padding-top: 4pt;">

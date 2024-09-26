@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content contentTable">
 <div class="itemLateral">{$title}</div>
 <div class="item left">{$totalLinks} links diferentes visitados</div>
 <div class="contentstats">

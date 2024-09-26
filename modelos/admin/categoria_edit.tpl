@@ -40,6 +40,7 @@
 }
 </script>
 
+<div class="subTitulo">{$LANG.configuracao}</div>
 <form id="edCat" name="edCat" method="POST" action="{$includePATH}admin/categoria_edit.php">
 {if $criarCategoria}
 	<input type="hidden" id="mode" name="mode" value="crCat" />
@@ -48,18 +49,19 @@
 	<input type="hidden" id="id" name="id" value="{$idPagina}" />
 	<input type="hidden" id="idCat" name="idCat" value="{$idCategoria}" />
 {/if}
-	<div class="subTitulo">{$LANG.configuracao}</div>
-	<div class="itemLateral">{$LANG.hp_categorias_DescricaoCategoria}</div>
-	<div class="item"><input type="text" class="FormExtra" size=30 name="descricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_DescricaoCategoria}" value="{$descricaoCategoria}" tabindex="1" /></div>
-	<div class="itemLateral">{$LANG.hp_categorias_Label_Restricao}</div>
-	<div class="item">
+	<div class="itemLateral" style="padding: 5px;">{$LANG.hp_categorias_DescricaoCategoria}</div>
+	<div class="item" style="padding: 0;">
+        <input type="text" class="FormExtra" size=30 name="descricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_DescricaoCategoria}" value="{$descricaoCategoria}" tabindex="1" style="padding: 0; padding-left: 3px; margin: 0;" />
+    </div>
+	<div class="itemLateral" style="padding: 5px;">{$LANG.hp_categorias_Label_Restricao}</div>
+	<div class="item" style="padding: 0; padding-top: 6px;">
 		<input id="categoriaRestrita" type="checkbox" name="categoriaRestrita" {if $categoriaRestrita == '1'}checked{/if} 
-				onClick="javascript: document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);" />
+			onClick="javascript: document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);" style="margin: 0;" />
 		<label for="categoriaRestrita">{$LANG.hp_categorias_CategoriaRestrita}</label>
 	</div>
-	<div class="itemLateral">{$LANG.hp_categorias_RestricaoCategoria}</div>
-	<div class="item">
-		<input type="text" class="FormExtra" size=30 name="restricaoCategoria" id="restricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_RestricaoCategoria}" value="{$restricaoCategoria}" tabindex="1" />
+	<div class="itemLateral" style="padding: 5px;">{$LANG.hp_categorias_RestricaoCategoria}</div>
+	<div class="item" style="padding: 0;">
+		<input type="text" class="FormExtra" size=30 name="restricaoCategoria" id="restricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_RestricaoCategoria}" value="{$restricaoCategoria}" tabindex="1" style="padding: 0; padding-left: 3px; margin: 0;" />
   		<script type="text/javascript">document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);</script> 
 	</div>
 	<div class="interior" style=" text-align: center; padding-top: 4pt;">

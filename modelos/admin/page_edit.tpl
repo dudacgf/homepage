@@ -71,13 +71,17 @@ function carregaEstilo(nomeEstilo) {
             <input type="hidden" id="id" name="id" value="{$idPagina}" />
             <input type="hidden" id="mode" name="mode" value="svPag" />
         {/if}
-            <div class="itemLateral">{$LANG.hp_paginas_TituloPagina}</div>
-            <div class="item"><input type="text" class="FormExtra" size=30 name="tituloPagina" placeholder="{$LANG.hp_paginas_Placeholder_TituloPagina}" value="{$tituloPagina}" tabindex="1" /></div>
-            <div class="itemLateral">{$LANG.hp_paginas_TituloTabela}</div>
-            <div class="item"><input type="text" class="FormExtra" size=30 name="tituloTabela" placeholder="{$LANG.hp_paginas_Placeholder_TituloTabela}" value="{$tituloTabela}" tabindex="1" /></div>
-            <div class="itemLateral">{$LANG.hp_paginas_temaPagina}</div>
-            <div class="item">
-                <select style=" width: 122pt;" name="temaPagina" id="temaPagina" onChange="carregaEstilo(this.value);" >
+            <div class="itemLateral" style="padding: 5px;">{$LANG.hp_paginas_TituloPagina}</div>
+            <div class="item" style="padding: 0;">
+                <input type="text" class="FormExtra" size=30 name="tituloPagina" placeholder="{$LANG.hp_paginas_Placeholder_TituloPagina}" value="{$tituloPagina}" tabindex="1" style="padding: 0; padding-left: 3px;" />
+            </div>
+            <div class="itemLateral" style="padding: 5px;">{$LANG.hp_paginas_TituloTabela}</div>
+            <div class="item" style="padding: 0;">
+                <input type="text" class="FormExtra" size=30 name="tituloTabela" placeholder="{$LANG.hp_paginas_Placeholder_TituloTabela}" value="{$tituloTabela}" tabindex="2" style="padding: 0; padding-left: 3px;" />
+            </div>
+            <div class="itemLateral" style="padding: 5px;">{$LANG.hp_paginas_temaPagina}</div>
+            <div class="item" style="padding: 0;">
+                <select style="margin: 0; padding: 1px; padding-left: 3px; width: 122pt;" name="temaPagina" id="temaPagina" onChange="carregaEstilo(this.value);" tabindex="3">
                 {section name=cp loop=$classNames}
                     <option value="{$classNames[cp]}" {if $classNames[cp] == $temaPagina}selected="selected"{/if} >{$classNames[cp]}</option>
                 {/section}

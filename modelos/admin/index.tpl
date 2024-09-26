@@ -5,7 +5,7 @@
   {if $displayImagemTitulo == '1'}<div class="logo">{strip}{$logo_shires}{/strip}</div>{/if}
   <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
 </div>
-<div class="content">
+<div class="content contentTable">
 <div class="itemLateral">{$LANG.NumPaginas}</div>
 <div class="item" style="text-align: left;">{$numPaginas}</div>
 <div class="itemLateral">{$LANG.NumCategorias}</div>

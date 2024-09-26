@@ -6,10 +6,8 @@
   <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
 </div>
 <input type="hidden" id="idTema" value="" />
-<div class="content" style="text-align: left;">
 <div class="subTitulo">Fortunes</div>
 {include file="admin/box_upload_file.tpl" fileField="Fortunes"}
-</div>
 <script>
 function formatarResultado_Fortunes(resultadoProcesso) {
     return  '<p>Resultados do processamento</p>Processadas: ' + resultadoProcesso.totalQuotes +

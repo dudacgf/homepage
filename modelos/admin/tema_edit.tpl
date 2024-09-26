@@ -37,16 +37,16 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
   {if $displayImagemTitulo == '1'}<div class="logo">{strip}{$logo_shires}{/strip}</div>{/if}
   <span>{if !isset($tituloTabelaAlternativo)}{$tituloTabela}{else}{$tituloTabelaAlternativo}{/if}</span>
 </div>
-<div class="content" style="text-align: left;">
+<div class="subTitulo">{$LANG.configuracao}</div>
+<div class="content contentTable" style="text-align: left;">
 <form id="edTema" name="edTema" method="POST">
-    <div class="subTitulo">{$LANG.configuracao}</div><p />
-    <div class="itemLateral">{$LANG.hp_temas_nome}</div>
-    <div class="item">
-        <input type="text" class="FormExtra" size=30 id="nome" name="nome" placeholder="{$LANG.hp_temas_Placeholder_nome}" value="{$tema.nome}" tabindex="1" {if !$criarTema}disabled{/if}/>
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_temas_nome}</div>
+    <div class="item" style="padding: 0;">
+        <input type="text" class="FormExtra" size=30 id="nome" name="nome" placeholder="{$LANG.hp_temas_Placeholder_nome}" value="{$tema.nome}" tabindex="1" {if !$criarTema}disabled{/if} style="padding: 0; padding-left: 3px;"/>
     </div>
-    <div class="itemLateral">{$LANG.hp_temas_comentario}</div>
-    <div class="item">
-        <input type="text" class="FormExtra" size=30 id="comentario" name="comentario" placeholder="{$LANG.hp_temas_Placeholder_comentario}" value="{$tema.comentario}" tabindex="1" />
+    <div class="itemLateral" style="padding: 5px;">{$LANG.hp_temas_comentario}</div>
+    <div class="item" style="padding: 0;">
+        <input type="text" class="FormExtra" size=30 id="comentario" name="comentario" placeholder="{$LANG.hp_temas_Placeholder_comentario}" value="{$tema.comentario}" tabindex="1" style="padding: 0; padding-left: 3px;" />
     </div>
 {if $criarTema}
     <div class="itemLateral">{$LANG.hp_temas_derivarTema}</div>

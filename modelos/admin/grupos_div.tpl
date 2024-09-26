@@ -29,8 +29,7 @@
 {sectionelse}
 	<div class="subTitulo">{$LANG.categoriavazia}</div>
 {/section}
-<div class="content left">
-<div class="subTitulo">{$LANG.novoGrupo}:</div>
+<div class="subTitulo Left">{$LANG.novoGrupo}:</div>
 <form id="nwCat">
 <div style="display: flex; float: left; align-items: center; padding-left: 10px;">
 	<select class="novoFilho" id="grupoSelector" name="grupoSelector">
@@ -41,4 +40,3 @@
 	<input type="button" class="submit" onclick="editarGrupo('incluirGrupo', {$idCategoria}, document.getElementById('grupoSelector').value)" value="{$LANG.incluir}" style="margin-top: 2px; margin-bottom: 2px;">
 </div>
 </form>
-</div>
