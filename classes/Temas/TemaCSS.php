@@ -16,11 +16,11 @@ Namespace Shiresco\Homepage\Temas;
 class TemaCSS {
     var $hpDB;
 
-    public static function inserirTemp($idTema, $rootvar, $cor) {
+    public static function inserirTemp($idTema, $rootvar, $valor) {
         global $global_hpDB;
 
-        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, cor) values (?, ?, 'temp', ?) on duplicate key update cor = ?");
-        $_sql->bind_param("isss", $idTema, $rootvar, $cor, $cor);
+        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, valor) values (?, ?, 'temp', ?) on duplicate key update valor = ?");
+        $_sql->bind_param("isss", $idTema, $rootvar, $valor, $valor);
 
         try {
             if (!$_sql->execute()) 
@@ -32,11 +32,11 @@ class TemaCSS {
         }
     }
 
-    public static function atualizarTemp($idTema, $rootvar, $cor) {
+    public static function atualizarTemp($idTema, $rootvar, $valor) {
         global $global_hpDB;
 
-        $_sql = $global_hpDB->prepare("update hp_temacss set cor = ? where idTema = ? and rootvar = ? and uso = 'temp'");
-        $_sql->bind_param("sis", $cor, $idTema, $rootvar);
+        $_sql = $global_hpDB->prepare("update hp_temacss set valor = ? where idTema = ? and rootvar = ? and uso = 'temp'");
+        $_sql->bind_param("sis", $valor, $idTema, $rootvar);
 
         try {
             if (!$_sql->execute()) 
@@ -84,9 +84,10 @@ class TemaCSS {
 
         // obtém o tema estável
         global $global_hpDB;
-        $_sql = $global_hpDB->prepare("SELECT rootvar, cor
-                                       FROM hp_temacss
-                                       WHERE idTema = ? and uso = 'main'");
+        $_sql = $global_hpDB->prepare("SELECT r.tipo as tipo, t.rootvar, t.valor
+                                       FROM hp_temacss t, hp_rootvars r
+                                       WHERE r.rootvar = t.rootvar 
+                                         AND t.idTema = ? and t.uso = 'main'");
         $_sql->bind_param('i', $_idTema);
         try {
             if (!$_sql->execute()) 
@@ -94,7 +95,7 @@ class TemaCSS {
 
             $rvs = $_sql->get_result();
             while ($rv = $rvs->fetch_assoc()) {
-                $temaMain[] = array($rv['rootvar'], $rv['cor']);
+                $temaMain[] = array($rv['rootvar'], $rv['valor'], $rv['tipo']);
             }
         } catch (Exception $e) {
             throw new Exception("Erro ao obter o tema: $e->getMessage()");
@@ -102,9 +103,10 @@ class TemaCSS {
 
         // obtém os atributos alterados
         global $global_hpDB;
-        $_sql = $global_hpDB->prepare("SELECT rootvar, cor
-                                       FROM hp_temacss
-                                       WHERE idTema = ? and uso = 'temp'");
+        $_sql = $global_hpDB->prepare("SELECT r.tipo as tipo, t.rootvar, t.valor
+                                       FROM hp_temacss t, hp_rootvars r
+                                       WHERE r.rootvar = t.rootvar 
+                                         AND t.idTema = ? and t.uso = 'temp'");
         $_sql->bind_param('i', $_idTema);
         try {
             if (!$_sql->execute()) 
@@ -112,7 +114,7 @@ class TemaCSS {
 
             $rvs = $_sql->get_result();
             while ($rv = $rvs->fetch_assoc()) {
-                $temaTemp[] = array($rv['rootvar'], $rv['cor']);
+                $temaTemp[] = array($rv['rootvar'], $rv['valor'], $rv['tipo']);
             }
         } catch (Exception $e) {
             throw new Exception("Erro ao obter o tema: $e->getMessage()");
@@ -126,7 +128,7 @@ class TemaCSS {
 
         // prepara o resultado
         foreach ($tema as $t)
-            $temaCSS[] = array('rootvar' => $t[0], 'cor' => $t[1]);
+            $temaCSS[] = array('rootvar' => $t[0], 'valor' => $t[1], 'tipo' => $t[2]);
 
         return isset($temaCSS) ? $temaCSS : false ;
     }
@@ -135,9 +137,10 @@ class TemaCSS {
     {
         // obtém o tema estável
         global $global_hpDB;
-        $_sql = $global_hpDB->prepare("SELECT rootvar, cor
-                                       FROM hp_temacss
-                                       WHERE idTema = ? and uso = 'main'");
+        $_sql = $global_hpDB->prepare("SELECT r.tipo as tipo, t.rootvar, t.valor
+                                       FROM hp_temacss t, hp_rootvars r
+                                       WHERE r.rootvar = t.rootvar 
+                                         AND t.idTema = ? and t.uso = 'main'");
         $_sql->bind_param('i', $_idTema);
         try {
             if (!$_sql->execute()) 
@@ -145,7 +148,7 @@ class TemaCSS {
 
             $rvs = $_sql->get_result();
             while ($rv = $rvs->fetch_assoc()) {
-                $temaCSS[] = array('rootvar' => $rv['rootvar'], 'cor' => $rv['cor']);
+                $temaCSS[] = array('rootvar' => $rv['rootvar'], 'valor' => $rv['valor'], 'tipo' => $rv['tipo']);
             }
         } catch (Exception $e) {
             throw new Exception("Erro ao obter o tema: $e->getMessage()");
@@ -154,13 +157,50 @@ class TemaCSS {
         return isset($temaCSS) ? $temaCSS : false ;
     }
 
+    public static function obterValor($_idTema = 1, $rootvar) {
+        global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare("select valor from hp_temacss where idTema = ? and rootvar = ? and uso = 'main'");
+        $_sql->bind_param("is", $_idTema, $rootvar);
+        if (!$_sql->execute())
+            throw new Exception('Erro ao ler valor de tema');
+        $result = $_sql->get_result();
+
+        if ($result->num_rows > 0)
+            return $result->fetch_assoc()['valor'];
+        else 
+            return FALSE;
+    }
+
+    public static function obterTempValor($_idTema = 1, $rootvar) {
+        global $global_hpDB;
+
+        $_sql = $global_hpDB->prepare("select valor from hp_temacss where idTema = ? and rootvar = ? and uso = 'temp'");
+        $_sql->bind_param("is", $_idTema, $rootvar);
+        if (!$_sql->execute())
+            throw new Exception('Erro ao ler valor de tema');
+        $result = $_sql->get_result();
+        if ($result->num_rows > 0) 
+            return $result->fetch_assoc()['valor'];
+
+        $_sql = $global_hpDB->prepare("select valor from hp_temacss where idTema = ? and rootvar = ? and uso = 'main'");
+        $_sql->bind_param("is", $_idTema, $rootvar);
+        if (!$_sql->execute())
+            throw new Exception('Erro ao ler valor de tema');
+        $result = $_sql->get_result();
+        if ($result->num_rows > 0) 
+            return $result->fetch_assoc()['valor'];
+        else
+            return FALSE;
+    }
+
     public static function criarDeArray($_idTema = 1, $rootvars) {
         global $global_hpDB;
 
-        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, cor) values (?, ?, 'main', ?)");
+        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, valor) values (?, ?, 'main', ?)");
         
         foreach ($rootvars as $rv) {
-            $_sql->bind_param('iss', $_idTema, $rv['rootvar'], $rv['cor']);
+            $_sql->bind_param('iss', $_idTema, $rv['rootvar'], $rv['valor']);
             if (!$_sql->execute())
                 throw new Exception('Erro ao criar tema a partir de array: ' . $_sql->getMessage());
         }
@@ -172,7 +212,7 @@ class TemaCSS {
         // executa o update dos atributos 'main'
         $_sql = $global_hpDB->prepare("UPDATE hp_temacss t1 
                                        INNER JOIN hp_temacss t2 on t1.idTema = t2.idTema and t1.rootvar = t2.rootvar 
-                                       and t1.uso = 'main' and t2.uso = 'temp' and t1.idTema = ? SET t1.cor = t2.cor;");
+                                       and t1.uso = 'main' and t2.uso = 'temp' and t1.idTema = ? SET t1.valor = t2.valor;");
         $_sql->bind_param('i', $_idTema);
 
         if (!$_sql->execute()) 
@@ -194,8 +234,8 @@ class TemaCSS {
     public static function duplicar($_idTemaFrom, $_idTemaTo) {
         global $global_hpDB;
 
-        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, cor) 
-                                       select ?, rootvar, 'main', cor from hp_temacss where idTema = ?");
+        $_sql = $global_hpDB->prepare("insert into hp_temacss (idTema, rootvar, uso, valor) 
+                                       select ?, rootvar, 'main', valor from hp_temacss where idTema = ?");
         $_sql->bind_param("ii", $_idTemaTo, $_idTemaFrom);
 
         try {
