@@ -1,119 +1,42 @@
 /*------------------------------------------------------------------
 
-  base.css
+    base.css
   (c) ecgf - 2005
 
-  Estilos utilizados em minha página pessoal.
+    Estilos utilizados em minha página pessoal.
 
-  Base.css - o básico dos estilos - tamanho, estrutura, borda, etc. 
+    Base.css - o básico dos estilos - tamanho, estrutura, borda, etc. 
 
-  nada do que está aqui deveria ser modificado nos estilos de cor.
+    nada do que está aqui deveria ser modificado nos estilos de cor.
 --------------------------------------------------------------------*/
 @font-face {
-  font-family: "Roboto";
-  src: url("../webfonts/Roboto-Light.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
+    font-family: "Font Awesome 6 Free Regular";
+    src: url("../webfonts/fa-regular-400.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
 @font-face {
-  font-family: "Roboto";
-  src: url("../webfonts/Roboto-Regular.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
+    font-family: "Font Awesome 6 Brands Regular", "Font Awesome 6 Free Regular";
+    src: url("../webfonts/fa-brands-400.ttf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
 }
-@font-face {
-  font-family: "Roboto";
-  src: url("../webfonts/Roboto-Medium.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Roboto";
-  src: url("../webfonts/Roboto-Bold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Ubuntu";
-  src: url("../webfonts/Ubuntu-Light.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Ubuntu";
-  src: url("../webfonts/Ubuntu-Regular.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Ubuntu";
-  src: url("../webfonts/Ubuntu-Medium.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Ubuntu";
-  src: url("../webfonts/Ubuntu-Bold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("../webfonts/LibreFranklin-Regular.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("../webfonts/LibreFranklin-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("../webfonts/LibreFranklin-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Libre Franklin";
-  src: url("../webfonts/LibreFranklin-ExtraBold.ttf") format("truetype");
-  font-weight: 800;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Roboto Mono";
-  src: url("../webfonts/RobotoMono-SemiBold.ttf") format("truetype");
-  font-weight: 600;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Font Awesome 6 Free Regular";
-  src: url("../webfonts/fa-regular-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face {
-  font-family: "Font Awesome 6 Brands Regular", "Font Awesome 6 Free Regular";
-  src: url("../webfonts/fa-brands-400.ttf") format("truetype");
-  font-weight: 400;
-  font-style: normal;
-}
+
 :root {
-    --font-rootFS: 1cqmax;
-    font-family: 'Ubuntu', 'Roboto', 'Libre Franklin', 'Verdana', 'Arial', sans-serif;
+    font-family: 'Clan Pro', 'Ubuntu', 'Roboto', 'Libre Franklin', 'Noto Serif', 'Verdana', 'Arial', sans-serif;
+    font-family: var(--font-rootFF);
     font-size: var(--font-rootFS);
     font-weight: 500;
     touch-action: pan-x pan-y;
     height: 100% 
 }
 .noselect {
-  -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none;   /* Safari */
-  -khtml-user-select: none;    /* Konqueror HTML */
-  -moz-user-select: none;      /* Old versions of Firefox */
-  -ms-user-select: none;       /* Internet Explorer/Edge */
-  user-select: contain;        /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none;   /* Safari */
+    -khtml-user-select: none;    /* Konqueror HTML */
+    -moz-user-select: none;      /* Old versions of Firefox */
+    -ms-user-select: none;       /* Internet Explorer/Edge */
+    user-select: contain;        /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
 body {
     border: 0;
@@ -126,7 +49,7 @@ body {
 }
 /* link */
 a {
-    font-size: 1cqw;
+    font-size: 1rem;
     display: block; 
     text-decoration: none; 
     white-space: nowrap;
@@ -148,7 +71,7 @@ input[type=text], input[type=select] {
     border: 1pt solid; 
     border-Left: 1pt solid; 
     margin: 0;
-    width: 12cqw;
+    width: 12rem;
 }
 select {
     margin-left: 2px;
@@ -159,17 +82,17 @@ input[type=submit], input[type=button], button {
     border-radius: 5px; 
     vertical-align: top; 
     text-align: center;
-    font-size: 1cqw; 
+    font-size: 1rem; 
     font-weight: 600; 
     padding: 8px 16px; 
     width: auto; 
     margin: 10px 1rem;
 }
 input[pattern]:invalid{
-  color: #FF1744;
+    color: #FF1744;
 }
 input[type=text]:focus {
-  outline: 0 none currentColor;
+    outline: 0 none currentColor;
 }
 input[type=file].inputFile {
     position: absolute; 
@@ -190,13 +113,13 @@ label.resultadoProcesso {
     padding: 10px; 
 }
 label.botao {
-    font-size: 2cqw;
+    font-size: 2rem;
     display: flex; 
     justify-content: center; 
     align-items: center;
 }
 label.resultadoProcesso {
-    font-size: 1cqw;
+    font-size: 1rem;
     font-weight: 400;
     text-align: left; 
     display: block; 
@@ -213,24 +136,25 @@ label.resultadoProcesso p {
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
 div.titulo {
+    font-weight: 900;
     display: flex;
     align-items: center;
     width: 100%;
     border: 0px;
     margin: 0px;
     margin-bottom: 20px;
-    padding: 1cqmax;
+    padding: 1rem;
     border-bottom: 20px solid;
 }
 /* o logo no título é definido aqui */
 div.logo {
     display: flex; 
     float: left; 
-    width: 8cqmax; 
-    margin-right: 1cqmax;
+    width: 8rem; 
+    margin-right: 1rem;
 }
 div.titulo span {
-    font-size: 6cqmax;
+    font-size: 4rem;
     font-weight: 900;
     text-align: left;
 }
@@ -290,7 +214,7 @@ div.footer {
 }
 div.tituloCategoria {
     clear: both; 
-    font-size: 1.3cqw; 
+    font-size: 1.3rem; 
     font-weight: 600; 
     border-style: solid; 
     border-width: 2px; 
@@ -358,7 +282,7 @@ div.expanded, div.interior:hover, div.expandable:hover {
     height: auto;
 }
 div.headclickable, div.headexpandable {
-    font-size: 1.1cqw; 
+    font-size: 1.1rem; 
     font-weight: 600; 
     height: auto;
     border: 2px solid; 
@@ -372,12 +296,12 @@ div.headclickable {
     cursor: pointer;
 }
 span.separador {
-    font-size: 1.1cqw;
+    font-size: 1.1rem;
     font-weight: 900;
     padding-bottom: 5px;
 }
 label.separador {
-    font-size: 1cqw;
+    font-size: 1rem;
     font-weight: 900;
     margin-bottom: 5px;
     padding-top: 5px;

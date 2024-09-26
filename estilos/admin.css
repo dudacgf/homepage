@@ -3,6 +3,15 @@
  *
  */
 
+@font-face {
+  font-family: "Roboto Mono";
+  src: url("../webfonts/RobotoMono-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+div.contentTable {
+    display: table;
+}
 div.contentFxAlignCenter {
     display: flex; 
     float: left; 
@@ -32,16 +41,14 @@ div.tituloSecao {
 div.itemLateral {
     font-size: 0.9rem;
     font-weight: 600;
-    line-height: 1.5rem;
     text-align: right;
     float: left;
     clear: left;
     width: 25%;
-    height: 30px;
     border: 0px;
     border-bottom: 1px solid;
     margin: 2px;
-    padding: 11px 5px 5px 5px;
+    padding: 3px;
 }
 div.itemstats {
     font-family: 'Roboto Mono';
@@ -51,24 +58,21 @@ div.itemstats {
     border-bottom: 1pt solid;
     width: 25%;
     text-align: left;
-    margin-left: 13px;
-    padding: 0;
+    margin: 2px;
     height: fit-content;
-    padding-top: 8px 5px;
+    padding: 3px;
 }
 div.item {
     font-size: 0.9rem;
-    line-height: 1.5rem;
     float: left;
     width: 64%;
-    height: 30px;
     border: 0px;
     border-bottom: 1px solid;
     margin: 2px;
-    padding: 8px 5px;
+    padding: 3px;
 }
 div.item input[type=text].FormExtra {
-    font-size: 1.2cqw;
+    font-size: 1.2rem;
     width: 80%;
     height: 20px;
     border: 1px;
