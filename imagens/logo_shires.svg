@@ -1,13 +1,1 @@
-<svg
-   viewBox="0 0 100 80" height="80px" width="100px"
-   xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
-  <g>
-    <path id="path75"
-       d="M 64.890912,59.078155 A 34.944241,34.944241 0 0 1 20.67437,68.102796 34.944241,34.944241 0 0 1 4.4306571,25.999489 34.944241,34.944241 0 0 1 43.250986,2.9879976 34.944241,34.944241 0 0 1 72.390934,37.446815"
-       class="logo" />
-    <circle id="path1517" cx="37.445465" cy="20.567383" r="11.707489" class="logo_star" />
-    <text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-39.164303,-26.643296)" id="text8227" class="logo_brand">
-       <tspan x="173.60742" y="301.60919" id="tspan1254"><tspan style="font-weight:800;font-size:4cqmax;" id="tspan1250">The Shires</tspan><tspan style="font-weight:800;font-size:1cqmax;" id="tspan1252">Co</tspan></tspan>
-    </text>
-  </g>
-</svg>
+<svg viewBox="0 0 100 80" height="80px" width="100px" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg"><g><path id="path75" d="M 64.890912,59.078155 A 34.944241,34.944241 0 0 1 20.67437,68.102796 34.944241,34.944241 0 0 1 4.4306571,25.999489 34.944241,34.944241 0 0 1 43.250986,2.9879976 34.944241,34.944241 0 0 1 72.390934,37.446815" class="logo" /><circle id="path1517" cx="38.445465" cy="23.567383" r="11.707489" class="logo_star" /><text xml:space="preserve" transform="matrix(0.26458333,0,0,0.26458333,-39.164303,-26.643296)" id="text8227" class="logo_brand"><tspan x="180.60742" y="295.60919" id="tspan1254"><tspan class="logo_text_big" id="tspan1250">The Shires</tspan><tspan class="logo_text_small" id="tspan1252">Co</tspan></tspan></text></g></svg>
