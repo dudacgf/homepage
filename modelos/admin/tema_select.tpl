@@ -21,7 +21,7 @@
             {/section}
         </div>
     </div>
-    <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
+    <div class=barra>
         <input type="submit" value="{$LANG.confirmar}" onclick="window.location = '{$includePATH}admin/tema_edit.php?mode=edTema&idTema=' + document.getElementById('idTema').value";/> 
         <input type="submit" value="{$LANG.novoTema}" onclick="window.location = '{$includePATH}admin/tema_edit.php?mode=nwTema'";/>
         <input type="submit" value="{$LANG.voltar}" onclick="window.location = '{$includePATH}admin/index.php'";/>

@@ -63,14 +63,8 @@ function carregaEstilo(nomeEstilo) {
 
 <div class="subTitulo">{$LANG.configuracao}</div>
 <div class="content" style="display: flex">
-    <div class="columnBox left" style="width: 60%">
+    <div class="columnBox left" style="width: {if !$criarPagina}60%{else}100%{/if}">
         <form id="edPag" name="edPag" method="POST">
-        {if $criarPagina}
-            <input type="hidden" id="mode" name="mode" value="crPag" />
-        {else}
-            <input type="hidden" id="id" name="id" value="{$idPagina}" />
-            <input type="hidden" id="mode" name="mode" value="svPag" />
-        {/if}
             <div class="itemLateral" style="padding: 5px;">{$LANG.hp_paginas_TituloPagina}</div>
             <div class="item" style="padding: 0;">
                 <input type="text" class="FormExtra" size=30 name="tituloPagina" placeholder="{$LANG.hp_paginas_Placeholder_TituloPagina}" value="{$tituloPagina}" tabindex="1" style="padding: 0; padding-left: 3px;" />
@@ -93,11 +87,15 @@ function carregaEstilo(nomeEstilo) {
                 <input id="displayImagemTitulo" type="checkbox" name="displayImagemTitulo" {if $displayImagemTitulo == '1'}checked{/if} />
                 <label for="displayImagemTitulo">{$LANG.hp_paginas_displayImagemTitulo}</label>
             </div>
-            <div class="interior" style="width: 93%; text-align: center; padding-top: 4pt;">
+            <div class=barra>
                 <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
         {if !$criarPagina}
+                <input type="hidden" id="id" name="id" value="{$idPagina}" />
+                <input type="hidden" id="mode" name="mode" value="svPag" />
                 <input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>
                 <input type="submit" name="go" id="go" value="{$LANG.novaPagina}" class="submit" onclick="doAction('{$LANG.novaPagina}')"/>
+        {else}
+                <input type="hidden" id="mode" name="mode" value="crPag" />
         {/if}
                 <input type="submit" name="go" id="go" value="{$LANG.cancelar}" class="submit" onclick="doAction('{$LANG.cancelar}')"/> 
             </div>
@@ -111,15 +109,54 @@ function carregaEstilo(nomeEstilo) {
             <div class="tituloColuna">{$LANG.excluir}</div>
             <div class="tituloColuna w25pc">{$LANG.categoriaRestrita}</div>
             <div id="categorias_div">
-            {include file="admin/categorias_div.tpl"}
+                {section name=dc loop=$categoriasPresentes}
+                <div class="content left">
+                    <div class="tituloColuna" style="clear: left;">
+                        <a href="{$includePATH}admin/categoria_edit.php?mode=edCat&id={$idPagina}&idCat={$categoriasPresentes[dc].idCategoria}">{$categoriasPresentes[dc].descricaoCategoria}</a>
+                    </div>
+                    <div class="colunaTransparente" >
+                        <div class="click_div" onClick="editarCategoria('ascenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+                            <i class="fa-solid fa-circle-arrow-up" style="color: var(--cor-dark);"></i>
+                        </div>
+                    </div>
+                    <div class="colunaTransparente" >
+                        <div class="click_div" onClick="editarCategoria('descenderCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+                            <i class="fa-solid fa-circle-arrow-down" style="color: var(--cor-dark);"></i>
+                        </div>
+                    </div>
+                    <div class="colunaTransparente" >
+                        <div class="click_div" onClick="editarCategoria('excluirCategoria', {$idPagina}, {$categoriasPresentes[dc].idCategoria});">
+                            <i class="fa-solid fa-circle-xmark" style="color: var(--cor-dark);"></i>
+                        </div>
+                    </div>
+                    <div class="coluna w25pc" >
+                            {if $categoriasPresentes[dc].categoriaRestrita == 1}Sim [{$categoriasPresentes[dc].restricaoCategoria}]{else}Não{/if}
+                    </div>
+                </div>
+                {sectionelse}
+                    <div class="subTitulo">{$LANG.paginavazia}</div>
+                {/section}
+                <div class="content contentTable">
+                <div class="subTitulo" >{$LANG.novaCategoria}:</div>
+                <form id="nwCat" method="POST">
+                <div class="contentFxAlignCenter">
+                    <select class="novoFilho" id="categoriaSelector" name="categoriaSelector">
+                    {section name=dnc loop=$categoriasAusentes}
+                        <option value="{$categoriasAusentes[dnc].idCategoria}">{$categoriasAusentes[dnc].descricaoCategoria}</option>
+                    {/section}
+                    </select>
+                    <input type="button" class="submit" onClick="editarCategoria('incluirCategoria', {$idPagina}, document.getElementById('categoriaSelector').value);" value="{$LANG.incluir}" style="margin-top: 2px; margin-bottom: 2px;">
+                </div>
+                </form>
+                </div>
             </div>
         </div>
+        {/if}
     </div>
-    <div class="columnBox" style="width: 40%; clear: top;">
     {if !$criarPagina}
+    <div class="columnBox" style="width: 40%; clear: top;">
         <iframe id="exemploPagina" class="exemploPagina" src="{$includePATH}homepage.php?id={$idPagina}&gr=all"></iframe>
-    {/if}
     </div>
+    {/if}
 </div>
-{/if}
 {include file="page_footer.tpl"}

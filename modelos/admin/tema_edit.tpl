@@ -58,7 +58,7 @@ const executarNoFrameTema = (callFunctions, reloadFrame = true) => {
         </select>
     </div>
 {/if}
-    <div class="interior" style=" text-align: center; padding-top: 4pt; align-items: center;">
+    <div class=barra>
 {if !$criarTema}
         <input type="hidden" id="idTema" name="idTema" value="{$idTema}" />
         <input type="hidden" id="mode" name="mode" value="svTema" />

@@ -3,11 +3,11 @@
     <div class="subTitulo">{$tituloPaginaAlternativo}{$tituloTabelaAlternativo}</div><p />
     <div class="itemLateral">{$LANG.hp_separadores_descricaoSeparador}</div>
     <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoSeparador" placeholder="{$LANG.hp_separadores_Placeholder_descricaoSeparador}" value="{$elemento.descricaoSeparador}" tabindex="1" /></div>
-    <div class="interior" style="width: 99%; Text-Align: left; ">
+    <div class=barra>
         <input id="breakBefore" type="checkbox" name="breakBefore" {if $elemento.breakBefore == '1'}checked{/if} tabindex="2"/>
         <label for="breakBefore">{$LANG.hp_separadores_breakBefore}</label>
     </div>
-    <div class="interior" style="width: 99%; Text-Align: center;">
+    <div class=barra>
 {if $criarElemento}
         <input type="hidden" name="mode" id="mode" value="criarSeparador" />
 {else}

@@ -30,6 +30,9 @@ div.tituloColuna a {
 div.opcoes {
     color: var(--cor-opcoesC);
 }
+div.barra:hover {
+    background-color: var(--cor-expandedBG);
+}
 .menuButton {
     background-color: var(--cor-mButtonBG);
     color: var(--cor-mButtonHBG);

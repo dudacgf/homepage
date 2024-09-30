@@ -64,7 +64,7 @@
 		<input type="text" class="FormExtra" size=30 name="restricaoCategoria" id="restricaoCategoria" placeholder="{$LANG.hp_categorias_Placeholder_RestricaoCategoria}" value="{$restricaoCategoria}" tabindex="1" style="padding: 0; padding-left: 3px; margin: 0;" />
   		<script type="text/javascript">document.getElementById('restricaoCategoria').disabled = !(document.getElementById('categoriaRestrita').checked);</script> 
 	</div>
-	<div class="interior" style=" text-align: center; padding-top: 4pt;">
+        <div class=barra>
 		<input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>
 {if !$criarCategoria}
 		<input type="submit" name="go" id="go" value="{$LANG.excluir}" class="submit" onclick="doAction('{$LANG.excluir}')"/>

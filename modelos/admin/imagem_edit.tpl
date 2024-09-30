@@ -5,11 +5,11 @@
     <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoImagem" placeholder="{$LANG.hp_imagens_Placeholder_descricaoImagem}" value="{$elemento.descricaoImagem}" tabindex="1" /></div>
     <div class="itemLateral">{$LANG.hp_imagens_urlImagem}</div>
     <div class="item"><input type="text" class="FormExtra" size=30 name="urlImagem" placeholder="{$LANG.hp_imagens_Placeholder_urlImagem}" value="{$elemento.urlImagem}" tabindex="2" /></div>
-    <div class="interior" style="width: 99%; Text-Align: center;">
+    <div class=barra>
         <input id="localLink" type="checkbox" name="localLink" {if $elemento.localLink == '1'}checked{/if} tabindex="3"/>
         <label for="localLink">{$LANG.hp_imagens_localLink}</label>
     </div>
-    <div class="interior" colspan="10" style="width: 99%; margin-top: 5px; Text-Align: center;">
+    <div class=barra>
 {if $criarElemento}
        <input type="hidden" name="mode" id="mode" value="criarImagem" />
 {else}

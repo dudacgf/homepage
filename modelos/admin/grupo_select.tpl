@@ -20,7 +20,7 @@
 		{/section}
         </div>
     </div>
-    <div class="interior" style="text-align: center; padding-top: 4pt; margin: 1.5rem;">
+    <div class=barra>
         <input type="submit" value="{$LANG.confirmar}"
                onclick="window.location = '{$includePATH}admin/grupo_edit.php?mode=edGrp&idGrp=' + document.getElementById('idGrp').value";/> 
         <input type="submit" value="{$LANG.novoGrupo}"

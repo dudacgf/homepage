@@ -72,7 +72,7 @@ function doAction(pressed) {
         <input type="text" class="FormExtra" size=30 name="restricaoGrupo" id="restricaoGrupo" placeholder="{$LANG.hp_grupos_Placeholder_RestricaoGrupo}" value="{$grupo.restricaoGrupo}" tabindex="1" style="padding: 0; padding-left: 3px;" />
         <script type="text/javascript">document.getElementById('restricaoGrupo').disabled = !(document.getElementById('grupoRestrito').checked);</script> 
     </div>
-    <div class="interior" style=" text-align: center; padding-top: 4pt;">
+    <div class=barra>
 {if $criarGrupo}
         <input type="hidden" id="mode" name="mode" value="crGrp" />
         <input type="submit" name="go" id="go" value="{$LANG.gravar}" class="submit" onclick="doAction('{$LANG.gravar}')"/>

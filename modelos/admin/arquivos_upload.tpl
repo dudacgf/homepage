@@ -28,5 +28,16 @@ function formatarResultado_Paletas(resultadoProcesso) {
             '<br/>Falhas: ' + resultadoProcesso.totalFalhas;
 }
 </script>
+<div class="subTitulo">Fontes</div>
+{include file="admin/box_upload_file.tpl" fileField="Fontes"}
+</div>
+<script>
+function formatarResultado_Fontes(resultadoProcesso) {
+    return  '<p>Resultados do processamento</p>Processadas: ' + resultadoProcesso.totalFontes +
+            '<br/>Criadas: ' + resultadoProcesso.totalCriadas +
+            '<br/>Repetidas: ' + resultadoProcesso.totalRepetidas +
+            '<br/>Falhas: ' + resultadoProcesso.totalFalhas;
+}
+</script>
 <div class="barraFinal"></div>
 {include file="page_footer.tpl"}

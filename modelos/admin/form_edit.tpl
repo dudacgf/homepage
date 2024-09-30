@@ -11,7 +11,7 @@
     <div class="item"><input type="text" class="FormExtra" size=30 name="tamanhoCampo" placeholder="{$LANG.hp_forms_Placeholder_tamanhoCampo}" value="{$elemento.tamanhoCampo}" tabindex="4" /></div>
     <div class="itemLateral">{$LANG.hp_forms_descricaoForm}</div>
     <div class="item"><input type="text" class="FormExtra" size=30 name="descricaoForm" placeholder="{$LANG.hp_forms_Placeholder_descricaoForm}" value="{$elemento.descricaoForm}" tabindex="5" /></div>
-    <div class="interior" style="width: 99%; Text-Align: center;">
+    <div class=barra>
 {if $criarElemento}
         <input type="hidden" name="mode" id="mode" value="criarForm" />
 {else}
