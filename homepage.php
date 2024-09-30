@@ -31,6 +31,7 @@ if ($pagina->displayFortune != 0)
 $links = $pagina->lerPagina();
 $homepage->assign('descricoesCategorias', $links['descricoesCategorias']);
 $homepage->assign('descricoesGrupos', $links['descricoesGrupos']);
+$homepage->assign('rootVars', ':root { --numCategorias: ' . sizeof($links['descricoesCategorias']) . ';}');
 
 // elementos enviados ao template
 $homepage->assign('includePATH', INCLUDE_PATH);
