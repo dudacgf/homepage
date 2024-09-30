@@ -10,7 +10,7 @@
   <div class="tituloCategoria">{$descricoesCategorias[dc].categoria}</div>
           {section name=dg loop=$descricoesGrupos[dc].grupos}
           {assign var="grupo" value=$descricoesGrupos[dc].grupos[dg]}
-          <div class="interior">
+          <div class="containerGrupo">
               {if $grupo.idtipoGrupo == '2'}
                 <div class="headclickable fa-square-plus" onclick="this.parentElement.classList.toggle('expanded');">
                   {$grupo.grupo}

@@ -1,4 +1,4 @@
-<div class="interior">
+<div class="containerGrupo">
 <input type="submit" class="submit" value="Bot&atilde;o!" name="b"  />
 </div>
 

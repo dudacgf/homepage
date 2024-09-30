@@ -6,7 +6,7 @@
   <div class="tituloCategoria">{$menuCategorias[dc].categoria}</div>
   {section name=dg loop=$menuGrupos[dc].grupos}
   {assign var="grupo" value=$menuGrupos[dc].grupos[dg]}
-  <div class="interior">
+  <div class="containerGrupo">
     {strip}
     {section name=el loop=$grupo.elementos}
         {assign var="elemento" value=$grupo.elementos[el]}
