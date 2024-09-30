@@ -64,7 +64,8 @@ form.edit {
 form a {
     display: inline;
 }
-div.interior a img {
+img {
+    max-width: -webkit-fill-available;
     max-width: -moz-available;
 }
 input[type=text], input[type=select] {
@@ -163,7 +164,7 @@ div.titulo span {
     stroke-dasharray: none; 
     stroke-miterlimit: 4; 
     stroke-opacity: 1; 
-    stroke-width: 3; 
+    stroke-width: 4; 
 }
 .logo_brand { 
     font-family: sans-serif; 
@@ -180,6 +181,14 @@ div.titulo span {
     stroke-miterlimit: 4; 
     stroke-opacity: 1; 
     stroke-width: 3; 
+}
+.logo_text_big {
+    font-weight:800;
+    font-size: clamp(18px, 6rem, 46px);
+}
+.logo_text_small {
+    font-weight:800;
+    font-size: clamp(7px, 2rem, 20px);
 }
 .barraFinal {
     width: 100%;
@@ -204,6 +213,7 @@ div.containerCategoria {
     flex-grow: 0; 
     flex-shrink: 1; 
     flex-basis: 100%; 
+    width: max-content;
     margin-left: 3px; 
     margin-right: 3px; 
 }
@@ -268,12 +278,21 @@ div.interior {
     border-width: 0px; 
     padding: 2px;
 }
-div.expandable, div.clickable {
-    overflow: hidden; 
-    height: 30px; 
-    border-width: 0px;
+div.interior:has(div.headclickable),
+div.interior:has(div.headexpandable) {
+    max-height: calc(1.1rem + 18px);
+    overflow: hidden;
+    padding: 0;
 }
-div.expanded, div.interior:hover, div.expandable:hover {
+div.interior:has(div.headclickable).expanded,
+div.interior:has(div.headexpandable):hover {
+    height: auto;
+    max-height: 100vh;    
+    overflow-y: auto;
+    padding: 3px;
+}
+div.expanded,
+div.interior:hover {
     padding: 2px; 
     margin-bottom: 5px; 
     margin-top: 3px; 
