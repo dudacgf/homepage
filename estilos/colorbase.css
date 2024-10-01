@@ -43,10 +43,10 @@
     --cor-categBTL:
     --cor-categBBR:
 
-    * Grupos (div.interior): background-color 
+    * Grupos (div.containerGrupo): background-color 
     --cor-interiorBG:
 
-    * Grupos (div.expanded;div.interior:hover;div.expandable:hover): background-color, color, border s-e, border i-d 
+    * Grupos (div.expanded;div.containerGrupo:hover;div.expandable:hover): background-color, color, border s-e, border i-d 
     --cor-expandedBG:
     --cor-expandedC:
     --cor-expandedBTL:
@@ -74,7 +74,7 @@
     --cor-sepC:
     --cor-sepH:
 
-    * Links (a): color, links when hover (a:hover;div.expanded a;div.expandable:hover a;div.interior:hover a ): color, hover background-color e color
+    * Links (a): color, links when hover (a:hover;div.expanded a;div.expandable:hover a;div.containerGrupo:hover a ): color, hover background-color e color
     --cor-linkC:
     --cor-linkBG:
     --cor-linkH:
@@ -147,7 +147,7 @@ div.tituloCategoria, div.tituloLateral, div.headclickable, div.headexpandable, d
     border-Right-color: var(--cor-headerBBR);
 }
 /* grupos de links */
-div.expanded, div.expandable:hover, div.interior:hover {
+div.expanded, div.expandable:hover, div.containerGrupo:hover {
     background-color: var(--cor-expandedBG);
     color: var(--cor-expandedC);
     border-top-color: var(--cor-expandedBTL);
@@ -163,10 +163,10 @@ div.expanded, div.expandable:hover, div.interior:hover {
 a {
     color: var(--cor-linkC);
 }
-div.expanded a, div.expandable:hover a, div.interior:hover a {
+div.expanded a, div.expandable:hover a, div.containerGrupo:hover a {
   color: var(--cor-linkexpC);
 }
-a:hover, div.expanded a:hover, div.expandable:hover a:hover, div.interior:hover a:hover, div.tituloColuna:hover a:hover {
+a:hover, div.expanded a:hover, div.expandable:hover a:hover, div.containerGrupo:hover a:hover, div.tituloColuna:hover a:hover {
     background-color: var(--cor-linkBG);
     color: var(--cor-linkH);
 }
@@ -175,10 +175,10 @@ span.separador, label.separador {
 }
 div.expanded span.separador,
 div.expandable span.separador,
-div.interior:hover span.separador,
+div.containerGrupo:hover span.separador,
 div.expanded label.separador,
 div.expandable label.separador,
-div.interior:hover label.separador {
+div.containerGrupo:hover label.separador {
     color: var(--cor-sepH);
 }
 div.tituloColuna {

@@ -17,16 +17,22 @@ if (isset($_SERVER['HTTP_REFERER']) and
     (strpos($_SERVER['HTTP_REFERER'], 'tema_edit') > 0 or 
      strpos($_SERVER['HTTP_REFERER'], 'tema_frame') > 0)) {
     $homepage->assign('rootvars', Temas\TemaCSS::obterTempCSS($_tema->id));
-    $ffamily = Temas\TemaCSS::obterTempValor($_tema->id, 'rootFF');
-    if (!$ffamily)
-        $ffamily = 'Ubuntu';
-    $homepage->assign('fontFamily', $ffamily);
+    $rootFF = Temas\TemaCSS::obterTempValor($_tema->id, 'rootFF');
+    if (!$rootFF)
+        $rootFF = 'Ubuntu';
+    $homepage->assign('rootFF', $rootFF);
+    $tituloFF = Temas\TemaCSS::obterTempValor($_tema->id, 'tituloFF');
+    if ($tituloFF)
+        $homepage->assign('tituloFF', $tituloFF);
 } else {
     $homepage->assign('rootvars', Temas\TemaCSS::obterCSS($_tema->id));
-    $ffamily = Temas\TemaCSS::obterValor($_tema->id, 'rootFF');
-    if (!$ffamily)
-        $ffamily = 'Ubuntu';
-    $homepage->assign('fontFamily', $ffamily);
+    $rootFF = Temas\TemaCSS::obterValor($_tema->id, 'rootFF');
+    if (!$rootFF)
+        $rootFF = 'Ubuntu';
+    $homepage->assign('rootFF', $rootFF);
+    $tituloFF = Temas\TemaCSS::obterValor($_tema->id, 'tituloFF');
+    if ($tituloFF != '')
+        $homepage->assign('tituloFF', $tituloFF);
 }
 
 $homepage->assign('includePATH', INCLUDE_PATH);

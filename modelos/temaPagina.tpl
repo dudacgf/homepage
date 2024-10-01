@@ -3,7 +3,10 @@
  *
  * {$tema->comentario}
 *****/
-@import url('{$includePATH}estilos/{$fontFamily|lower|replace:" ":"-"}.css');
+@import url('{$includePATH}estilos/{$rootFF|lower|replace:" ":"-"}.css');
+{if isset($tituloFF)}
+@import url('{$includePATH}estilos/{$tituloFF|lower|replace:" ":"-"}.css');
+{/if}
 
 :root {
 {section name=rv loop=$rootvars}
