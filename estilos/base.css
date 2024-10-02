@@ -139,7 +139,7 @@ label.resultadoProcesso p {
 div.titulo {
     font-weight: 900;
     display: flex;
-    align-items: self-end;
+    align-items: center;
     width: 100%;
     border: 0px;
     margin: 0px;
@@ -151,12 +151,12 @@ div.titulo {
 div.logo {
     display: flex; 
     float: left; 
-    width: 8rem; 
-    margin-right: 1rem;
+    max-width: 8rem; 
+    overflow-x: hidden;
 }
 div.titulo span {
     font-family: var(--font-tituloFF, --font-rootFF);
-    font-size: var(--font-tituloFS, calc(1rem * 4));
+    font-size: var(--font-tituloFS, calc(1rem * 6));
     font-weight: 900;
     text-align: left;
 }
@@ -256,22 +256,18 @@ div.fortune {
     padding: 10px; 
 }
 /*
- * as classes a seguir fazem a magica dos menus expansiveis. São de dois tipos:
+ * as classes a seguir fazem a magica dos grupos expansiveis. São de dois tipos:
  * no primeiro, que se expande quando se passa o mouse por  cima, uso a
  * seguinte estrutura:
- * <div class="containerGrupo">
- * <div class="expandable" onMouse[over<->out] => class="[expandable<->containerGrupo]">
+ * <div class="containerGrupo"> has:xxxx hover
  *   <div class="headexpandable">headname</div>
  *   [  grupos de links   ]
- * </div>
  * </div>
  * no segundo, que se expande quando se clica em seu cabeçalho, a seguinte
  * estrutura foi utilizada:
  * <div class="containerGrupo">
- * <div class="expandable" onClick[expandable<->expanded]>
- *   <div class="headclickable">headname</div>
+ *   <div class="headclickable" onClick(parentElement.classList.toggle(expanded))>headname</div>
  *   [  grupos de links   ]
- * </div>
  * </div>
 */
 div.containerGrupo {
@@ -287,33 +283,36 @@ div.containerGrupo:has(div.headexpandable) {
 }
 div.containerGrupo:has(div.headclickable).expanded,
 div.containerGrupo:has(div.headexpandable):hover {
+    overflow-y: auto;
     height: auto;
     max-height: 100vh;    
-    overflow-y: auto;
-    padding: 3px;
+    padding: 4px;
 }
 div.expanded,
 div.containerGrupo:hover {
-    padding: 2px; 
+    height: auto;
+    overflow: visible; 
+    border: 1px solid;
+    border-radius:5px;
     margin-bottom: 5px; 
     margin-top: 3px; 
-    border: 1px solid;
-    overflow: visible; 
-    height: auto;
+    padding: 4px; 
 }
-div.headclickable, div.headexpandable {
+div.headclickable,
+div.headexpandable {
     font-size: 1.1rem; 
     font-weight: 600; 
+    white-space: nowrap;
     height: auto;
     border: 2px solid; 
     border-radius: 5px; 
-    cursor: pointer; 
     margin-top: 2px; 
-    white-space: nowrap;
     padding: 4px;
+    cursor: pointer; 
 }
-div.headclickable {
-    cursor: pointer;
+div.headclickable:active,
+div.headclickable:focus {
+    outline: 0 none currentColor;
 }
 span.separador {
     font-size: 1.1rem;
