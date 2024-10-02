@@ -47,92 +47,6 @@ body {
     overflow-y: auto;
     tabindex: -1;
 }
-/* link */
-a {
-    font-size: 1rem;
-    display: block; 
-    text-decoration: none; 
-    white-space: nowrap;
-}
-form {
-    margin-top: 0px; 
-    margin-bottom: 0px;
-}
-form.edit {
-    margin: 1rem 0.5rem;
-}
-form a {
-    display: inline;
-}
-img {
-    max-width: -webkit-fill-available;
-    max-width: -moz-available;
-}
-input[type=text], input[type=select] {
-    border: 1pt solid; 
-    border-Left: 1pt solid; 
-    margin: 0;
-    width: 12rem;
-}
-select {
-    margin-left: 2px;
-}
-input[type=submit], input[type=button], button {
-    border-width: 2px; 
-    border-style: solid; 
-    border-radius: 5px; 
-    vertical-align: top; 
-    text-align: center;
-    font-size: 1rem; 
-    font-weight: 600; 
-    padding: 8px 16px; 
-    width: auto; 
-    margin: 10px 1rem;
-}
-input[pattern]:invalid{
-    color: #FF1744;
-}
-input[type=text]:focus {
-    outline: 0 none currentColor;
-}
-input[type=file].inputFile {
-    position: absolute; 
-    width: 0.1px; 
-    height: 0.1px; 
-    z-index: -1;
-}
-label.botao, 
-label.resultadoProcesso {
-    font-weight: 600;
-    float: left;
-    overflow: hidden;
-    width: 40vmin; 
-    height: 100px; 
-    border: 1px solid #c0c0c0; 
-    border-radius: 10px;
-    margin: 10px; 
-    padding: 10px; 
-}
-label.botao {
-    font-size: 2rem;
-    display: flex; 
-    justify-content: center; 
-    align-items: center;
-}
-label.resultadoProcesso {
-    font-size: 1rem;
-    font-weight: 400;
-    text-align: left; 
-    display: block; 
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding-top: 0.5rem;
-    padding-left: 1rem;
-}
-label.resultadoProcesso p {
-    margin: 5px 0;
-    font-weight: 600;
-}
 /*----------------------------------------
  *------- Estrutura da tabela de links ---
  *---------------------------------------*/
@@ -144,7 +58,7 @@ div.titulo {
     border: 0px;
     margin: 0px;
     margin-bottom: 20px;
-    padding: 1rem;
+    padding: 0.5rem;
     border-bottom: 20px solid;
 }
 /* o logo no título é definido aqui */
@@ -159,6 +73,7 @@ div.titulo span {
     font-size: var(--font-tituloFS, calc(1rem * 6));
     font-weight: 900;
     text-align: left;
+    line-height: 1;
 }
 .logo { 
     fill: none; 
@@ -359,4 +274,90 @@ div.fawLeftPointer {
     width: 12px; 
     height: 12px; 
     padding-right: 8px;
+}
+/* elementos comuns */
+a {
+    font-size: 1rem;
+    display: block; 
+    text-decoration: none; 
+    white-space: nowrap;
+}
+form {
+    margin-top: 0px; 
+    margin-bottom: 0px;
+}
+form.edit {
+    margin: 1rem 0.5rem;
+}
+form a {
+    display: inline;
+}
+img {
+    max-width: -webkit-fill-available;
+    max-width: -moz-available;
+}
+input[type=text], input[type=select] {
+    border: 1pt solid; 
+    border-Left: 1pt solid; 
+    margin: 0;
+    width: 12rem;
+}
+select {
+    margin-left: 2px;
+}
+input[type=submit], input[type=button], button {
+    border-width: 2px; 
+    border-style: solid; 
+    border-radius: 5px; 
+    vertical-align: top; 
+    text-align: center;
+    font-size: 1rem; 
+    font-weight: 600; 
+    padding: 8px 16px; 
+    width: auto; 
+    margin: 10px 1rem;
+}
+input[pattern]:invalid{
+    color: #FF1744;
+}
+input[type=text]:focus {
+    outline: 0 none currentColor;
+}
+input[type=file].inputFile {
+    position: absolute; 
+    width: 0.1px; 
+    height: 0.1px; 
+    z-index: -1;
+}
+label.botao, 
+label.resultadoProcesso {
+    font-weight: 600;
+    float: left;
+    overflow: hidden;
+    width: 40vmin; 
+    height: 100px; 
+    border: 1px solid #c0c0c0; 
+    border-radius: 10px;
+    margin: 10px; 
+    padding: 10px; 
+}
+label.botao {
+    font-size: 2rem;
+    display: flex; 
+    justify-content: center; 
+    align-items: center;
+}
+label.resultadoProcesso {
+    font-size: 1rem;
+    font-weight: 400;
+    text-align: left; 
+    display: block; 
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+}
+label.resultadoProcesso p {
+    margin: 5px 0;
+    font-weight: 600;
 }
