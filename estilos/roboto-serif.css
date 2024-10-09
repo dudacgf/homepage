@@ -1,0 +1,6 @@
+@font-face {
+  font-family: "Roboto Serif";
+  src: url("../webfonts/RobotoSerif-VariableFont_GRAD,opsz,wdth,wght.ttf") format("truetype");
+  font-weight: 100 200 300 400 500 600 700 800 900;
+  font-style: normal;
+}

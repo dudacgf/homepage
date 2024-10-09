@@ -29,14 +29,13 @@ function formatarResultado_Paletas(resultadoProcesso) {
 }
 </script>
 <div class="subTitulo">Fontes</div>
-{include file="admin/box_upload_file.tpl" fileField="Fontes"}
+{include file="admin/box_upload_file.tpl" fileField="Fonte"}
 </div>
 <script>
-function formatarResultado_Fontes(resultadoProcesso) {
-    return  '<p>Resultados do processamento</p>Processadas: ' + resultadoProcesso.totalFontes +
-            '<br/>Criadas: ' + resultadoProcesso.totalCriadas +
-            '<br/>Repetidas: ' + resultadoProcesso.totalRepetidas +
-            '<br/>Falhas: ' + resultadoProcesso.totalFalhas;
+function formatarResultado_Fonte(resultadoProcesso) {
+    return  '<p>Resultados do processamento</p>Processadas: ' + resultadoProcesso.family_name +
+            '<br/>Tipo: ' + resultadoProcesso.tipo +
+            '<br/>Nº variantes: ' + resultadoProcesso.variantes;
 }
 </script>
 <div class="barraFinal"></div>

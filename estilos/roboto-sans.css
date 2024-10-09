@@ -1,0 +1,54 @@
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Thin.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-ExtraLight.ttf") format("truetype");
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Light.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-ExtraBold.ttf") format("truetype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto Sans";
+  src: url("../webfonts/RobotoSans-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}

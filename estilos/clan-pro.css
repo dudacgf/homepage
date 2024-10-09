@@ -2,76 +2,53 @@
     font-family:clan pro;
     font-style:normal;
     font-weight:450;
-    src:local('Clan Pro'),url(../webfonts/FFClanProRegular.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProRegular.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProRegular.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:250;
-    src:local('Clan Pro'),url(../webfonts/FFClanProThin.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProThin.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProThin.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:475;
-    src:local('Clan Pro'),url(../webfonts/FFClanProCondRgNews.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProCondRgNews.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProCondRgNews.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:475;
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgNarNews.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgNarNews.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProRgNarNews.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:475;
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgNews.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgNews.TTF) format('truetype')
-}
-@font-face{
-    font-family:clan pro;
-    font-style:italic;
-    font-weight:475;
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgItNarNews.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgItNarNews.TTF) format('truetype')
-}
-@font-face{
-    font-family:clan pro;
-    font-style:italic;
-    font-weight:475;
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgItNews.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProRgItNews.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProRgNews.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:500;
-    src:local('Clan Pro'),url(../webfonts/FFClanProMedium.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProMedium.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProMedium.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:700;
-    src:local('Clan Pro'),url(../webfonts/FFClanProBold.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProBold.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProBold.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:900;
-    src:local('Clan Pro'),url(../webfonts/FFClanProBlk.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProBlk.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProBlk.woff) format('woff')
 }
 @font-face{
     font-family:clan pro;
     font-style:normal;
     font-weight:950;
-    src:local('Clan Pro'),url(../webfonts/FFClanProUltra.woff) format('woff'),
-    src:local('Clan Pro'),url(../webfonts/FFClanProUltra.TTF) format('truetype')
+    src:local('Clan Pro'),url(../webfonts/FFClanProUltra.woff) format('woff')
 }

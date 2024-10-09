@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Abril Display";
+  src: url("../webfonts/Abril_Display_Regular.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abril Display";
+  src: url("../webfonts/Abril_Display_SemiBold.otf") format("opentype");
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abril Display";
+  src: url("../webfonts/Abril_Display_Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abril Display";
+  src: url("../webfonts/Abril_Display_ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Abril Display";
+  src: url("../webfonts/Abril_Display_Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}

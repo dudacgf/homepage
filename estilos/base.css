@@ -23,6 +23,8 @@
 }
 
 :root {
+    --font-rootFF: 'Clan Pro';
+    --font-rootFS: clamp(8px, 1.3vmin, 14px);
     font-family: 'Clan Pro', 'Ubuntu', 'Roboto', 'Libre Franklin', 'Noto Serif', 'Verdana', 'Arial', sans-serif;
     font-family: var(--font-rootFF);
     font-size: var(--font-rootFS);
