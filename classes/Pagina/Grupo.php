@@ -460,7 +460,7 @@ class Grupo extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT * FROM hp_grupos order by descricaoGrupo";
-        $_grupos = $global_hpDB->query($_sql);
+        $_grupos = $global_hpDB->simple_query($_sql);
         if (!$_grupos)
         {
             throw new \Exception('erro: não consegui ler nenhum grupo!');
@@ -485,7 +485,7 @@ class Grupo extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_grupos";
-        $_count = $global_hpDB->query($_sql);
+        $_count = $global_hpDB->simple_query($_sql);
         if (!$_count)
         {
             return 0;

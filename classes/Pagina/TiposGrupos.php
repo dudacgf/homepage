@@ -9,7 +9,7 @@ class TiposGrupos
         global $global_hpDB;
 
         $_sql = "select * from hp_tiposgrupos";
-        $tipos = $global_hpDB->query($_sql);
+        $tipos = $global_hpDB->simple_query($_sql);
         if (!$tipos)
         {
             throw new \Exception('não consegui ler a tabela de tipos de grupos!');

@@ -46,7 +46,7 @@ class Database extends \mysqli
        return true;
    }
 
-   public function query($sql, $resultmode = NULL )
+   public function simple_query($sql, $resultmode = NULL )
    {
 	    if (!parent::ping()) parent::connect();
 		if (!($query = parent::query($sql)))
@@ -70,7 +70,7 @@ class Database extends \mysqli
 
 	public function get_columns_max_len($dbTable)
 	{
-		if (!($result = $this->query("DESCRIBE $dbTable")))
+		if (!($result = $this->simple_query("DESCRIBE $dbTable")))
 		{
 			return FALSE;
 		}
@@ -87,7 +87,7 @@ class Database extends \mysqli
 
 	public function get_columns_comments($dbTable)
 	{
-		if (!($result = $this->query("SHOW CREATE TABLE $dbTable")))
+		if (!($result = $this->simple_query("SHOW CREATE TABLE $dbTable")))
 		{
 			return FALSE;
 		}
@@ -107,7 +107,7 @@ class Database extends \mysqli
 
 	public function get_enum_options($dbTable, $dbColumn)
 	{
-		if (!($result = $this->query("DESCRIBE $dbTable")))
+		if (!($result = $this->simple_query("DESCRIBE $dbTable")))
 		{
 			return FALSE;
 		}
@@ -137,7 +137,7 @@ class Database extends \mysqli
 
 	function getFields($table) 
 	{
-		return $this->query("describe $table");
+		return $this->simple_query("describe $table");
 	}
 	
     /*

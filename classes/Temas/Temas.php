@@ -80,7 +80,7 @@ class Temas
         global $global_hpDB;
 
         $_sql = "select * from hp_temas";
-        $temas = $global_hpDB->query($_sql);
+        $temas = $global_hpDB->simple_query($_sql);
         if (!$temas)
         {
             throw new Exception('não consegui ler a tabela de temas!');
@@ -106,7 +106,7 @@ class Temas
         global $global_hpDB;
 
         $_sql = "select nome from hp_temas";
-        $temas = $global_hpDB->query($_sql);
+        $temas = $global_hpDB->simple_query($_sql);
         if (!$temas)
         {
             throw new Exception('não consegui ler a tabela de temas!');

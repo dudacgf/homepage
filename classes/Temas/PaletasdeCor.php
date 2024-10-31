@@ -20,7 +20,7 @@ class PaletasdeCor
             global $global_hpDB;
 
             $_sql = "select * from hp_paletasdecor where nome = '". strtolower($nome) ."'";
-            $parCor = $global_hpDB->query($_sql);
+            $parCor = $global_hpDB->simple_query($_sql);
             if (!$parCor)
             {
                 die('não consegui ler a tabela de pares de cores!');
@@ -46,7 +46,7 @@ class PaletasdeCor
             global $global_hpDB;
 
             $_sql = "select id from hp_paletasdecor where cor = '$cor'";
-            $result = $global_hpDB->query($_sql);
+            $result = $global_hpDB->simple_query($_sql);
             if (!$result) 
             {
                 return false;

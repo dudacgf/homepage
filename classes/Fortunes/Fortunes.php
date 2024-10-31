@@ -63,7 +63,7 @@ class Fortunes {
         global $global_hpDB;
 
         $_sql = "select count(*) as nFortunes from hp_fortunes where 1 = 1";
-        $result = $global_hpDB->query($_sql);
+        $result = $global_hpDB->simple_query($_sql);
         if (!$result)
             return false;
         else 

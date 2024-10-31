@@ -443,7 +443,7 @@ class Pagina extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT idPagina FROM hp_paginas";
-        $_paginas = $global_hpDB->query($_sql);
+        $_paginas = $global_hpDB->simple_query($_sql);
         if (!$_paginas)
         {
             throw new \Exception('erro: não consegui ler nenhuma página!');
@@ -464,7 +464,7 @@ class Pagina extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_paginas";
-        $_count = $global_hpDB->query($_sql);
+        $_count = $global_hpDB->simple_query($_sql);
         if (!$_count)
         {
             return 0;

@@ -319,7 +319,7 @@ class Categoria extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT * FROM hp_categorias ORDER BY descricaoCategoria";
-        $_categorias = $global_hpDB->query($_sql);
+        $_categorias = $global_hpDB->simple_query($_sql);
         if (!$_categorias)
         {
             throw new \Exception('erro: não consegui ler nenhuma categoria!');
@@ -343,7 +343,7 @@ class Categoria extends ElementoAgrupado
         global $global_hpDB;
 
         $_sql = "SELECT COUNT(*) as numElementos FROM hp_categorias";
-        $_count = $global_hpDB->query($_sql);
+        $_count = $global_hpDB->simple_query($_sql);
         if (!$_count)
         {
             return 0;
