@@ -38,10 +38,10 @@ class Database extends \mysqli
        if (!isset($connectionInfo))
            return false;
 
-       $this->dbHost    = $connectionInfo['dbHost'];
-       $this->dbUser    = $connectionInfo['dbUser'];
+       $this->dbHost = $connectionInfo['dbHost'];
+       $this->dbUser = $connectionInfo['dbUser'];
        $this->dbPassword = $connectionInfo['dbPassword'];
-       $this->dbSchema  = $connectionInfo['dbSchema'];
+       $this->dbSchema = $connectionInfo['dbSchema'];
 
        return true;
    }
@@ -55,7 +55,7 @@ class Database extends \mysqli
 		}
 
 		if (!is_object($query)) {
-			return $query;
+			return false;
 		}
 		else
 		{
